@@ -28,3 +28,5 @@ handle the inclusion of the R packages output. You can use
 [R-Studio](http://www.rstudio.com/) to edit the document as it offers methods
 to compile the document to markdown and other document formats (e.g html) with
 the Knitr package.
+
+* Using [R Markdown](http://www.rstudio.com/ide/docs/authoring/using_markdown)
