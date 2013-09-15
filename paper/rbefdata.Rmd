@@ -2,9 +2,6 @@
 # this loads the befdata package
 require("rbefdata")  
 require("ggplot2") 
-
-# load your user credentials
-source("./secrets.R") 
 ```
 
 ## Abstract 
@@ -69,7 +66,7 @@ bef.options()
 * query options
 
 ```{r query_rbefdata_options}
-bef.options("user_credentials")
+bef.options("url")
 ```
 
 * set options 
@@ -78,6 +75,13 @@ bef.options("user_credentials")
 bef.options("user_credentials" = "aölkjspoiul12")
 bef.options("url" = "http://my.own.befdat.instance.com")
 ```
+
+```{r load_secret_credentials, eval = T, include = F}  
+# load your credentials
+source("./secrets.R") 
+```
+
+Introduction to the rbefdata R package
 
 * get datasets 
 
@@ -106,7 +110,7 @@ the R command `attributes()`
 metadata = bef.portal.get.dataset_for_proposal(id = 1)
 ```
 
-* vizualize your portal (keywords) 
+* vizualize the portal (keywords) 
 
 ```{r vizalize_keywords, cache = T} 
 bef.portal.vizualize.keywords()
@@ -115,3 +119,9 @@ bef.portal.vizualize.keywords()
 ## Results 
 
 ## Discussion
+
+## Appendix
+
+### Figures 
+
+### Tables

@@ -77,7 +77,7 @@ bef.options()
 ## [1] "downloads"
 ## 
 ## $user_credentials
-## [1] "pM6L8jvrWBt0jqxcvBdm"
+## [1] ""
 ```
 
 
@@ -85,11 +85,11 @@ bef.options()
 
 
 ```r
-bef.options("user_credentials")
+bef.options("url")
 ```
 
 ```
-## [1] "pM6L8jvrWBt0jqxcvBdm"
+## [1] "http://china.befdata.biow.uni-leipzig.de"
 ```
 
 
@@ -101,6 +101,11 @@ bef.options(user_credentials = "aölkjspoiul12")
 bef.options(url = "http://my.own.befdat.instance.com")
 ```
 
+
+
+
+
+Introduction to the rbefdata R package
 
 * get datasets 
 
@@ -148,7 +153,7 @@ metadata = bef.portal.get.dataset_for_proposal(id = 1)
 ```
 
 
-* vizualize your portal (keywords) 
+* vizualize the portal (keywords) 
 
 
 ```r
@@ -226,3 +231,9 @@ bef.portal.vizualize.keywords()
 ## Results 
 
 ## Discussion
+
+## Appendix
+
+### Figures 
+
+### Tables

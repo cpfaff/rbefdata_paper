@@ -88,3 +88,17 @@ to compile the document from R Markdown to markdown and then to other document
 formats (e.g html) with the Knitr package.
 
 * Using [R Markdown](http://www.rstudio.com/ide/docs/authoring/using_markdown)
+
+
+### Work with rbefdata
+
+As the rbefdata quires you to set your credentials to authenticate against the
+BEFdata portal you need to set them somewhere. But as they are like passwords
+you should not set it in the files that will be pushed to GitHub. For this I
+created `.gitignore` file that makes the repository ignore a `secretes.R` file
+in the `paper` folder. After download create it and add a line into it like
+this but replace with your real credentials.
+
+```
+bef.options("user_credentials" = "s0l0p982340987uöaf")
+```
