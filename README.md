@@ -21,12 +21,12 @@ scenario with already published data.
 
 ## Technique
 
-The whole paper is written in markdown, which is a lightweight markup language.
-For a description of commands that are available see
-[here](http://markdown.de/syntax/). The markdown markup makes it easier to
-handle the inclusion of the R packages output. You can use
+The whole paper is written in R markdown. Markdown which is a lightweight
+markup language. For a description of commands that are available in Markdown
+see [here](http://markdown.de/syntax/). The R Markdown markup makes it easier
+to handle the inclusion of the R packages commands and output. You can use
 [R-Studio](http://www.rstudio.com/) to edit the document as it offers methods
-to compile the document to markdown and other document formats (e.g html) with
-the Knitr package.
+to compile the document from R Markdown to markdown and then to other document
+formats (e.g html) with the Knitr package.
 
 * Using [R Markdown](http://www.rstudio.com/ide/docs/authoring/using_markdown)
