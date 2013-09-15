@@ -8,6 +8,11 @@
 
 ???
 
+### Read the paper
+
+You can have a first glance on the contents in nice formatted markdown if you go
+to the [markdown representation](paper/rbefdata.md) of the paper in this repository.
+
 ### Description
 
 This paper deals with rbefdata and discusses the functionality on a real
