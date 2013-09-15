@@ -2,10 +2,9 @@
 
 * Lots of data available
 * Many accessible (with some hindrances) 
-  - metadata missing (renders data useless)
+    - metadata missing (renders data useless)
 * Many get still lost (needs help e.g rebind)
 * Data often hard to find/use 
-* 
 
 ## Introduction 
 
