@@ -1,3 +1,12 @@
+```{r load_requirements, eval = T, include = F}  
+# this loads the befdata package
+require("rbefdata")  
+require("ggplot2") 
+
+# load your user credentials
+source("./secrets.R") 
+```
+
 ## Abstract 
 
 * Lots of data available
@@ -95,6 +104,12 @@ the R command `attributes()`
 
 ```{r rbefdata_metadata}
 metadata = bef.portal.get.dataset_for_proposal(id = 1)
+```
+
+* vizualize your portal (keywords) 
+
+```{r vizalize_keywords, cache = T} 
+bef.portal.vizualize.keywords()
 ```
 
 ## Results 
