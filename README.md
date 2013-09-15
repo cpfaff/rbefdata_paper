@@ -70,6 +70,13 @@ git push
 * Repeat the steps after another part is finished.
 
 
+NOTE:
+
+If you have conflicts on merging files with git you need to resolve them
+manually. This is usually best done in a 3 way merge tool. Conflicts happen if
+a part of document is modified in both the aim and the version you like to
+merge in. You need to pick the changes you like to keep then manually.
+
 ### R Markdown and Markdown
 
 The whole paper is written in R markdown. Markdown which is a lightweight
