@@ -24,28 +24,61 @@ forlder name for attached freeformat content of a dataset and
 
 * load the package
 
-```{r require_rbefdata}
+
+```r
 require(rbefdata)
 ```
 
+```
+## Loading required package: rbefdata
+```
+
+
 * list options
 
-```{r list_rbefdata_options}
+
+```r
 bef.options()
 ```
 
+```
+## $url
+## [1] "http://china.befdata.biow.uni-leipzig.de"
+## 
+## $tematres_url
+## [1] "http://tematres.befdata.biow.uni-leipzig.de/vocab/index.php"
+## 
+## $tematres_service_url
+## [1] "http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php"
+## 
+## $download_dir
+## [1] "downloads"
+## 
+## $user_credentials
+## [1] ""
+```
+
+
 * query options
 
-```{r query_rbefdata_options}
+
+```r
 bef.options("user_credentials")
 ```
 
+```
+## [1] ""
+```
+
+
 * set options 
 
-```{r set_rbefdata_options, eval = F}
-bef.options("user_credentials" = "aölkjspoiul12")
-bef.options("url" = "http://my.own.befdat.instance.com")
+
+```r
+bef.options(user_credentials = "aölkjspoiul12")
+bef.options(url = "http://my.own.befdat.instance.com")
 ```
+
 
 * get datasets 
 
@@ -58,10 +91,23 @@ if they like to participate and how. After all authors have granted access on is
 with the `rbefdata` package. One can draw all datasets associated to a proposal in one turn 
 with the package.
 
-```{r rbefdata_get_datasets_from_proposal}
+
+```r
 dataset_list = bef.portal.get.datasets_for_proposal(id = 1)
+```
+
+```
+## Error: Not Found
+```
+
+```r
 extract_one_dataset = dataset_list[[1]]
 ```
+
+```
+## Error: object 'dataset_list' not found
+```
+
 
 * Inspect datasets
 
@@ -70,9 +116,15 @@ This is used in the `rbefdata` package to associate a downloaded dataset with in
 are required to understand a dataset. This information can be extracted from a dataset with 
 the R command `attributes()`
 
-```{r rbefdata_metadata}
+
+```r
 metadata = bef.portal.get.dataset_for_proposal(id = 1)
 ```
+
+```
+## Error: could not find function "bef.portal.get.dataset_for_proposal"
+```
+
 
 ## Results 
 
