@@ -1,4 +1,12 @@
-## rbefdata a package to access data stored on a BEFdata portal
+## rbefdata paper
+
+* Tentative title:
+
+`rbefdata` a package to access and process data stored on a BEFdata portal instance
+
+* Journal:
+
+???
 
 ### Description
 
