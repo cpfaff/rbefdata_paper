@@ -122,7 +122,8 @@ see figure ... in appendix
 
 ### Figures 
 
-```{r vizalize_keywords, cache = T} 
+```{r vizalize_keywords, cache = T, waring = F, message = F, error = F} 
+
 bef.portal.vizualize.keywords()
 ```
 ### Tables
