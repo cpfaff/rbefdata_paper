@@ -112,9 +112,7 @@ metadata = bef.portal.get.dataset_for_proposal(id = 1)
 
 * vizualize the portal (keywords) 
 
-```{r vizalize_keywords, cache = T} 
-bef.portal.vizualize.keywords()
-```
+see figure ... in appendix
 
 ## Results 
 
@@ -124,4 +122,7 @@ bef.portal.vizualize.keywords()
 
 ### Figures 
 
+```{r vizalize_keywords, cache = T} 
+bef.portal.vizualize.keywords()
+```
 ### Tables
