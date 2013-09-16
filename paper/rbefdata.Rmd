@@ -111,44 +111,22 @@ covering all necessary terms of a complex research domain like ecology.
     - find relevant data 
     - get the data into Statistics software 
 
-There is a growing demand to use data already available and here we present you
-one software solution that deals with it. We introduce the rbefdata package as
-companion package to the data management platform BEFdata of the BEF-China
-project (cite Karin). We demonstrate a workflow that shows the integration of
-xxx datasets from the BEF-China project and. For that we use data that already
-has been published and is open access so everybody will be able to reproduce
-the workflow presented here. 
+There is a growing demand to use and reuse available data and to embed small
+heterogeneous data into a wider context. We here introduce the `rbefdata` R
+package. It is the companion package to the BEFdata portal of the BEF-China
+project and provides access to the data and meta data stored on that portal. We
+depict the integration of two small datasets into an anylsis which shows the
+interaction between the package and the BEFdata portal. 
 
-The combination of both tools offers solutions to the data life cycle
-in terms of storing, describing and sharing data.  The rbefdata package makes
-the data available 
+The workflow in a workflow that uses already published data. It shows how to
+pull use the data and metadata the R statistics environment for analysis and
+how the data can be put back directly after the analysis with an attached
+script which is good for data provenance. 
 
-
-
-think of ways on how to make the most out of the data we already have before we
-start to collect more data in general or even worse repeat to pick up data that
-already has been collected by someone else.
-
-Another problem with data is putting data into a public accessible database is
-a good step for long term preservation this is only the first step. 
-
-While some research disciples do very well with the solutions available (e.g
-Genetics), others facing more problems. 
-
-The integration of dataset into meta analyses is still a very time and labour
-intensive process. 
-
-which is
-error prone especially with a growing heterogeneity of the underlying data.
-
-Ontology needs also be discussed here a bit more intensive... 
-
-Ontologies can play an important role as they potentially offer a backbones for
-the development of smart tools helping researchers to find and merge data (cite
-XXX). But their application in ecology is discussed controversially as
-capturing the knowledge of ecology in a formal representation can be highly
-complex for a interdisciplinary research domains. 
-
+We also discuss the rbefdata package and BEFdata in the light of future
+development on the integration of ontologies that will make smart merges and
+unit conversion possible to help researchers with the integration of
+heterogeneous dataset.
 
 ## Material and Methods 
 
