@@ -22,25 +22,65 @@ The story board:
 
 ## Introduction 
 
-With a growing awareness in the last years on the long term value of data, many
-effort has been put into building data management platforms to preserve data
-(Data One, GBIF, BEFdata). So many specialized solutions for diffrent
-scientific disciplines appeared like for example the diversity workbench or
-BEFdata that offer solutions for smaller scale projects. Other platforms offer
-solutions for a small projects or collaborations (cite e.g BEFdata) up to
-global databases that serve as nodes that integrate smaller platforms and serve
-as data warehouses (DATA ONE, GBIF, cite xxx). 
+* data is valuable 
+    - also in the long run  
+    - there are solutions for data storage
+    - and also nodes that collect the data 
+
+With a growing awareness on the long term value of data many effort has been
+put into building data management platforms, to preserve all kind of
+environtmental and historic data, over the last years. Many specialized
+solutions for diffrent scientific disciplines appeared that offer data
+management plans for small scale projects or collaborations as well as for
+large data producing long term or remote sensing projects. An ongoing trend in
+that context is the development of integrative databases or data portals. They
+serve as nodes that collect data from smaller databases of a certain domain and
+they give researchers of that domain the oportunity to access a wide range of
+relevant data from one place. This portals in fact offer a solution to to one
+of the most pressing problems that we face with our valuable data today, their
+lost. 
+
+* data reuse 
+    - data needs to be reusable 
+    - otherwise it is almost worthless
+    - this needs metadata so others can understand what we have done
+
+Another big problem is as we like to reuse available data is the understanding
+of datasets.  Usually plain datasets say nothing to one who is not familiar
+with it and they are even hard to understand by the author itself after some
+time has passed. It is hard to remember exactly what methods have been used or
+what abbreviations and headers mean in a dataset. To solve this metadata
+frameworks have been developed and published as standards so nobody needs to
+think about requirements for an own set of dataset relevant metadata.
+
+
+* find/merge and prepare data takes time   
+    - ontologies are discussed controversally in ecology 
+    - on one hand they offer a solid backbone to develop smart software
+    - on the other hand they are they are hard to create especially 
+      for a high heterogeneous reaearch domain like ecology.
+
+There is a growing need to make use of the data available and we need to think
+of ways on how to make the most out of the data we alredy have before we start
+to collect more data in general or even worse repeat to pick up data that
+already has been collected by someone else.
+
+Another problem with data is t putting data into a public accssable database is
+a good step for long term perservation this is only the first step. 
 
 While some research disciplies do very well with the solutions available (e.g
-Genetics), others facing more problems. For example, ecology has grown into a
+Genetics), others facing more problems. 
+
+For example, ecology has grown into a
 more collaborative, interdisciplinary and data intensive science over the last
 decade, to address questions on a greater temporal and spatial scale (e.g
 michener et al 2012). The data here is mainly provided by small scale studies
 spread all over the world (e.g heidorn2009 shedding light on the dark) but also
 through bigger long term projects like LTER (cite xxx), BEF-China (cite xxx),
 governmental projects and private initiatives (cite xxx). This in fact results
-in a wild growing, complex and heterogeneous data landscape in ecology that we
-need to deal with.  
+in a wild growing, complex and heterogeneous data landscape in that we need to
+deal with. 
+
 
 While the process of understanding data is meanwhile more guided by metadata
 the process of cleaing, reshaping and integrating the data still needs a lot of
