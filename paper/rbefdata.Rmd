@@ -51,7 +51,7 @@ we face with our valuable data today, their lost.
     - otherwise it is almost worthless
     - this needs metadata so others can understand what we have done
 
-Another big problem with data, especially if we like to reuse available data,
+Another big problem with data, especially in terms of reuse of available data,
 is the general understanding of datasets. Usually plain datasets say nothing,
 to one who is not familiar with it and they are even hard to decipher by the
 author itself after some time has passed. It is usually hard to remember
@@ -70,13 +70,15 @@ new tools that help with the description process.
     - on the other hand they are they are hard to create especially 
       for a high heterogeneous reaearch domain like ecology.
 
-While well described data helps in understanding datasets and on deciding upon
-the relevance and applicability in a certain meta analysis there is still lots
-of manual intervention necessary after that to prepare the data. It may needs
-to be cleaned, imputed, reshaped and merged which usually takes up to 70% of
-the analysis workflow before the (cite the workflow paper of Karin and me).
-This step is not only time and labour intensive it is also potentially error
-prone, especially as the complexity of analyses grows. 
+While well described data helps a lot in understanding datasets and on deciding
+upon the relevance and applicability in a certain meta analysis there is still
+lots of manual intervention necessary after that to prepare the data for
+analysis. It may needs to be cleaned, imputed, reshaped and merged which
+usually takes up to 70% of the analysis workflow, before the smart models can
+be applied to the data to find intresing patters (cite the workflow paper of
+Karin and me). This preparation steps are not only time and labour intensive
+but also potentially error prone, especially as the complexity of analyses
+grows. 
 
 For example, ecology has grown into a more collaborative, interdisciplinary and
 data intensive science over the last decade, to address questions on a greater
@@ -87,7 +89,16 @@ LTER (cite xxx), BEF-China (cite xxx), governmental projects and private
 initiatives (cite xxx). This in fact results in a wild growing, complex and
 heterogeneous data landscape in that we need to deal with. 
 
-* Here we provide one solution to the 
+* Here we like to introducde you to the rbefdata package
+    - it provides a solution to one part of the dat lifecycle
+    - together with the BEFdata portal it covers: 
+        + data storage 
+        + harmonization 
+ 
+provide solution to a part of the data lifecylcle 
+  - find relevant data 
+  - Pul it into analysis software 
+
 
 There is a growing need to make use of the data available and we need to think
 of ways on how to make the most out of the data we alredy have before we start
@@ -105,19 +116,11 @@ The application of ontologies in ecology is discussed controversally which is
 mainly related to the heterogeneity of the research domain and it is argued 
 that they can be a benefit 
 
-()
-
-
 The integration of dataset into meta analyses is still a very time and labour
 intensive process. 
 
 which is
 error prone especially with a growing heterogeneity of the onderlying data.
-
-and cleaning 
-
-
-
 
 Ontology needs also be discussed here a bit more intensive... 
 
@@ -219,15 +222,20 @@ attributes(dataset_list[[1]])$title
 * write your scripts 
 
 
-
-
 * vizualize the portal (keywords) 
 
 see figure ... in appendix
 
-## Results 
+## Results
+
+The results presents a usecase maybe we just rename results to usecase and
+introduce the data used in the material and methods section. 
 
 ## Discussion
+
+Discussion will be in the light of future features like the upcomming
+integration of tematres into BEFdata and the rbefdata package so they play well
+together semantically.
 
 ## Appendix
 
