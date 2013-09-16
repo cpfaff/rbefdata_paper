@@ -78,27 +78,34 @@ usually takes up to 70% of the analysis workflow, before the smart models can
 be applied to the data to find intresing patters (cite the workflow paper of
 Karin and me). This preparation steps are not only time and labour intensive
 but also potentially error prone, especially as the complexity of analyses
-grows. 
+grows. Ontologies, formal representations of knowledge potentially offer a
+versatile tool to deal with that step of data preparation.
 
-For example, ecology has grown into a more collaborative, interdisciplinary and
-data intensive science over the last decade, to address questions on a greater
-temporal and spatial scale (e.g michener et al 2012). The data here is mainly
-provided by small scale studies spread all over the world (e.g heidorn2009
-shedding light on the dark) but also through bigger long term projects like
-LTER (cite xxx), BEF-China (cite xxx), governmental projects and private
-initiatives (cite xxx). This in fact results in a wild growing, complex and
-heterogeneous data landscape in that we need to deal with. 
+* Ontologies are discussed controversally 
+    * Here we like to introducde you to the rbefdata package
+        - it provides a solution to one part of the dat lifecycle
+        - together with the BEFdata portal it covers: 
+            + data storage 
+            + harmonization 
 
-* Here we like to introducde you to the rbefdata package
-    - it provides a solution to one part of the dat lifecycle
-    - together with the BEFdata portal it covers: 
-        + data storage 
-        + harmonization 
- 
-provide solution to a part of the data lifecylcle 
+While they are already heavily used in some research domains like genetics
+other domains face more problems with them. For example, ecology has grown into
+a more collaborative, interdisciplinary and data intensive science over the
+last decade, to address questions on a greater temporal and spatial scale (e.g
+michener et al 2012). The data here is mainly provided by small scale studies
+spread all over the world (e.g heidorn2009 shedding light on the dark) but also
+through bigger long term projects like LTER (cite xxx), BEF-China (cite xxx),
+governmental projects and private initiatives (cite xxx). This in fact results
+in a wild growing, complex and heterogeneous data landscape in that we need to
+deal with. The application of ontologies in ecology is discussed controversally
+(cite xxx) which is mainly related to the heterogeneity of the research domain
+and it is argued that they can be a benefit but it is hard to set up a
+versatile ontology covering all necessary terms of a a complex research domain
+like ecology.
+
+* provide solution to a part of the data lifecylcle 
   - find relevant data 
   - Pul it into analysis software 
-
 
 There is a growing need to make use of the data available and we need to think
 of ways on how to make the most out of the data we alredy have before we start
@@ -111,10 +118,6 @@ a good step for long term perservation this is only the first step.
 While some research disciplies do very well with the solutions available (e.g
 Genetics), others facing more problems. 
 
-
-The application of ontologies in ecology is discussed controversally which is
-mainly related to the heterogeneity of the research domain and it is argued 
-that they can be a benefit 
 
 The integration of dataset into meta analyses is still a very time and labour
 intensive process. 
