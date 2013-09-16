@@ -234,7 +234,7 @@ parts of that cycle we offer soutions.</p></li>
 put into building data management platforms, to preserve all kind of
 environmental and historic data, over the last years (e.g. diversity workbench,
 BEFdata). Many specialized solutions for different scientific disciplines
-appeared that offer data management plans for small scale projects or
+appeared that provide data management plans for small scale projects or
 collaborations as well as for large data producing long term or remote sensing
 projects. An ongoing trend in that context is the development of integrative
 databases or data portals. They serve as nodes that collect data from smaller
@@ -282,83 +282,87 @@ upon the relevance and applicability in a certain meta analysis there is still
 lots of manual intervention necessary after that to prepare the data for
 analysis. It may needs to be cleaned, imputed, reshaped and merged which
 usually takes up to 70% of the analysis workflow, before the smart models can
-be applied to the data to find intresing patters (cite the workflow paper of
+be applied to the data to find interring patters (cite the workflow paper of
 Karin and me). This preparation steps are not only time and labour intensive
 but also potentially error prone, especially as the complexity of analyses
-grows. Ontologies, formal representations of knowledge potentially offer a
-versatile tool to deal with that step of data preparation.</p>
+grows. </p>
 
 <ul>
-<li>Ontologies are discussed controversally 
+<li>Ontologies are either already used or discussed controversially 
 
 <ul>
-<li>Here we like to introducde you to the rbefdata package
-
-<ul>
-<li>it provides a solution to one part of the dat lifecycle</li>
-<li>together with the BEFdata portal it covers: 
-
-<ul>
-<li>data storage </li>
-<li>harmonization </li>
-</ul></li>
-</ul></li>
+<li>ontologies are used to capture knowledge as formal representations of domain knowledge</li>
+<li>they can be used to develop smart software </li>
+<li>smart software can help </li>
+<li>in finding relevant data </li>
+<li>merge and prepare heterogeneous data for analysis</li>
 </ul></li>
 </ul>
 
-<p>While they are already heavily used in some research domains like genetics
-other domains face more problems with them. For example, ecology has grown into
-a more collaborative, interdisciplinary and data intensive science over the
-last decade, to address questions on a greater temporal and spatial scale (e.g
-michener et al 2012). The data here is mainly provided by small scale studies
-spread all over the world (e.g heidorn2009 shedding light on the dark) but also
-through bigger long term projects like LTER (cite xxx), BEF-China (cite xxx),
-governmental projects and private initiatives (cite xxx). This in fact results
-in a wild growing, complex and heterogeneous data landscape in that we need to
-deal with. The application of ontologies in ecology is discussed controversally
-(cite xxx) which is mainly related to the heterogeneity of the research domain
-and it is argued that they can be a benefit but it is hard to set up a
-versatile ontology covering all necessary terms of a a complex research domain
-like ecology.</p>
+<p>Ontologies, formal representations of knowledge potentially offer a
+sophisticated tool to deal with that step of data preparation. While they are
+already used in some research domains like genetics, other domains face more
+problems using it. For example, ecology has grown into a more collaborative,
+interdisciplinary and data intensive science over the last decade, to address
+questions on a greater temporal and spatial scale (e.g michener et al 2012).
+The data here is mainly provided by small scale studies spread all over the
+world (e.g heidorn2009 shedding light on the dark) but also through bigger long
+term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
+and local initiatives (cite xxx). This in fact results in a wild growing,
+complex and heterogeneous data landscape in that we need to deal with. The
+application of ontologies in ecology is discussed controversially (cite xxx)
+which is mainly related to the heterogeneity of the research domain and it is
+argued that they can be a benefit but it is hard to set up a versatile ontology
+covering all necessary terms of a complex research domain like ecology.</p>
 
 <ul>
-<li>provide solution to a part of the data lifecylcle 
+<li>rbefdata in combination with BEFdata provide solutions to a parts of the data
+life cycle in ecology:
 
 <ul>
+<li>store data </li>
+<li>describe the data (metadata) </li>
+<li>share data and </li>
 <li>find relevant data </li>
-<li>Pul it into analysis software </li>
+<li>get the data into Statistics software </li>
 </ul></li>
 </ul>
 
-<p>There is a growing need to make use of the data available and we need to think
-of ways on how to make the most out of the data we alredy have before we start
-to collect more data in general or even worse repeat to pick up data that
+<p>There is a growing demand to use data already available and here we present you
+one software solution that deals with it. We introduce the rbefdata package as
+companion package to the data management platform BEFdata of the BEF-China
+project (cite Karin). We demonstrate a workflow that shows the integration of
+xxx datasets from the BEF-China project and. For that we use data that already
+has been published and is open access so everybody will be able to reproduce
+the workflow presented here. </p>
+
+<p>The combination of both tools offers solutions to the data life cycle
+in terms of storing, describing and sharing data.  The rbefdata package makes
+the data available </p>
+
+<p>think of ways on how to make the most out of the data we already have before we
+start to collect more data in general or even worse repeat to pick up data that
 already has been collected by someone else.</p>
 
-<p>Another problem with data is t putting data into a public accssable database is
-a good step for long term perservation this is only the first step. </p>
+<p>Another problem with data is putting data into a public accessible database is
+a good step for long term preservation this is only the first step. </p>
 
-<p>While some research disciplies do very well with the solutions available (e.g
+<p>While some research disciples do very well with the solutions available (e.g
 Genetics), others facing more problems. </p>
 
 <p>The integration of dataset into meta analyses is still a very time and labour
 intensive process. </p>
 
 <p>which is
-error prone especially with a growing heterogeneity of the onderlying data.</p>
+error prone especially with a growing heterogeneity of the underlying data.</p>
 
 <p>Ontology needs also be discussed here a bit more intensive&hellip; </p>
 
-<p>Ontologies can play an important role as they potentially offer backbones for
+<p>Ontologies can play an important role as they potentially offer a backbones for
 the development of smart tools helping researchers to find and merge data (cite
 XXX). But their application in ecology is discussed controversially as
 capturing the knowledge of ecology in a formal representation can be highly
 complex for a interdisciplinary research domains. </p>
-
-<p>We here show how heterogeneous data from the BEF-China project is integrated
-into a workflow using the combination of the BEFdata portal and its companion
-package <code>rbefdata</code>. We use data that is already published and open access so
-everybody will be able to reproduce this analysis.</p>
 
 <h2>Material and Methods</h2>
 
@@ -366,10 +370,15 @@ everybody will be able to reproduce this analysis.</p>
 
 <p>The BEFdata portal (cite Kain,
 <a href="http://befdataproduction.biow.uni-leipzig.de/">url</a>) is a data management
-platform developed within the BEF-China project (FOR 891) of the German science
-foundation. It is specialized in harmonizing small heterogeneous data, offers a
-social component that lowers the hurdles on sharing data online and tools that
-help researchers to describe their data with metadata.</p>
+platform developed within the BEF-China project (FOR 891) which is funded by
+the German science foundation. The BEF China experiment is a &hellip; (should I go
+into details here?)</p>
+
+<p>The BEFdata platform is specialized in harmonizing small heterogeneous data
+that usually has to be dealt with in biodiversity ecosystem functioning but
+also in other parts of ecological research. The portal offers a social
+component that lowers the hurdles on sharing data online and tools that help
+researchers to describe their data with metadata.</p>
 
 <h3>Data used</h3>
 
