@@ -355,7 +355,16 @@ for metadta and is specialized in harmonizing small heterogeneous data that
 usually has to be dealt with in biodiversity ecosystem functioning but also in
 other parts of ecological research. The portal offers a social component that
 lowers the hurdles on sharing data online and tools that help researchers to
-describe their data with metadata.</p>
+describe their data with metadata. </p>
+
+<p>As a paper proposal process integrated. You shop together datasets and
+afterwards create a paper proposal based on the shopped dataset. In the
+proposal you have to give information like a title for the proposal and a
+rationale describing how you intend to use the data and where and when to
+publish the results. If the proposal is handed in the authors will be informed
+that somebody likes to access their datasets and they can decide if they like
+to participate and how.  After all authors have granted access on is good to go
+with the <code>rbefdata</code> package. </p>
 
 <h3>Data used</h3>
 
@@ -389,6 +398,8 @@ script which is good for data provenance. </p>
 <p>The <code>rbefdata</code> package offers an option list that is used to determine the
 servers URLs the package contacts to to retrieve data, the download folder name
 for attached free format content of a dataset and </p>
+
+<h3>Setup rbefdata</h3>
 
 <ul>
 <li>load the package</li>
@@ -438,23 +449,14 @@ for attached free format content of a dataset and </p>
 bef.options(url = &quot;http://my.own.befdat.instance.com&quot;)
 </code></pre>
 
-<p>Introduction to the rbefdata R package</p>
+<h2>Results (or rather usecase)</h2>
 
-<ul>
-<li>get datasets </li>
-</ul>
+<p>For the workflow we start right after the access to the data has been approved
+by all data owners. We use the ID of the proposal to pull all datastes in one
+step into the R statistics environment (see below). </p>
 
-<p>In the very heart of the BEFdata portal there is a paper proposal process
-integrated. You shop together datasets and afterwards create a paper proposal
-based on the shopped dataset. In the proposal you have to give information like
-a title for the proposal and a rationale describing how you intend to use the
-data and where and when to publish the results. If the proposal is handed in
-the authors will be informed that somebody likes to access their datasets and
-they can decide if they like to participate and how. After all authors have
-granted access on is good to go with the <code>rbefdata</code> package. One can draw all
-datasets associated to a proposal in one turn with the package.</p>
-
-<pre><code class="r">dataset_list = bef.get.datasets_for_proposal(id = 90)
+<pre><code class="r">require(rbefdata)
+dataset_list = bef.get.datasets_for_proposal(id = 90)
 extract_one_dataset = dataset_list[[1]]
 </code></pre>
 
@@ -469,12 +471,6 @@ So you always have acces to the information that is required to understand a
 dataset. This information can be extracted from a dataset with the R command
 <code>attributes()</code></p>
 
-<pre><code class="r">dataset_list = bef.get.datasets_for_proposal(id = 1)
-</code></pre>
-
-<pre><code>## Error: Not Found
-</code></pre>
-
 <pre><code class="r">attributes(dataset_list[[1]])$title
 </code></pre>
 
@@ -482,13 +478,8 @@ dataset. This information can be extracted from a dataset with the R command
 </code></pre>
 
 <ul>
-<li>write your scripts (showcase)</li>
+<li>write your scripts (showcase here comes annes input)</li>
 </ul>
-
-<h2>Results</h2>
-
-<p>The results presents a usecase maybe we just rename results to usecase and
-introduce the data used in the material and methods section. </p>
 
 <h2>Discussion</h2>
 
