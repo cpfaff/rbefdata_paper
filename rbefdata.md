@@ -1,8 +1,5 @@
-```{r load_requirements, eval = T, include = F}  
-# this loads the befdata package
-require("rbefdata")  
-require("ggplot2") 
-```
+
+
 
 ## Abstract 
 
@@ -106,33 +103,60 @@ for attached free format content of a dataset and
 
 * load the package
 
-```{r require_rbefdata}
+
+```r
 require(rbefdata)
 ```
 
+
 * list options
 
-```{r list_rbefdata_options}
+
+```r
 bef.options()
 ```
 
+```
+## $url
+## [1] "http://china.befdata.biow.uni-leipzig.de"
+## 
+## $tematres_url
+## [1] "http://tematres.befdata.biow.uni-leipzig.de/vocab/index.php"
+## 
+## $tematres_service_url
+## [1] "http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php"
+## 
+## $download_dir
+## [1] "downloads"
+## 
+## $user_credentials
+## [1] ""
+```
+
+
 * query options
 
-```{r query_rbefdata_options}
+
+```r
 bef.options("url")
 ```
 
+```
+## [1] "http://china.befdata.biow.uni-leipzig.de"
+```
+
+
 * set options 
 
-```{r set_rbefdata_options, eval = F}
-bef.options("user_credentials" = "aölkjspoiul12")
-bef.options("url" = "http://my.own.befdat.instance.com")
+
+```r
+bef.options(user_credentials = "aölkjspoiul12")
+bef.options(url = "http://my.own.befdat.instance.com")
 ```
 
-```{r load_secret_credentials, eval = T, include = F}  
-# load your credentials
-source("./secrets.R") 
-```
+
+
+
 
 Introduction to the rbefdata R package
 
@@ -148,10 +172,23 @@ they can decide if they like to participate and how. After all authors have
 granted access on is good to go with the `rbefdata` package. One can draw all
 datasets associated to a proposal in one turn with the package.
 
-```{r rbefdata_get_datasets_from_proposal}
+
+```r
 dataset_list = bef.portal.get.datasets_for_proposal(id = 1)
+```
+
+```
+## Error: Not Found
+```
+
+```r
 extract_one_dataset = dataset_list[[1]]
 ```
+
+```
+## Error: object 'dataset_list' not found
+```
+
 
 * Inspect datasets
 
@@ -162,10 +199,23 @@ So you always have acces to the information that is required to understand a
 dataset. This information can be extracted from a dataset with the R command
 `attributes()`
 
-```{r rbefdata_metadata}
-dataset_list = bef.portal.get.dataset_for_proposal(id = 1) 
+
+```r
+dataset_list = bef.portal.get.dataset_for_proposal(id = 1)
+```
+
+```
+## Error: could not find function "bef.portal.get.dataset_for_proposal"
+```
+
+```r
 attributes(dataset_list[[1]])$title
 ```
+
+```
+## Error: object 'dataset_list' not found
+```
+
 * write your scripts 
 
 
@@ -183,8 +233,78 @@ see figure ... in appendix
 
 ### Figures 
 
-```{r vizalize_keywords, cache = T, waring = F, message = F, error = F} 
+
+```r
 
 bef.portal.vizualize.keywords()
 ```
+
+```
+## Warning: chemical leaf composition could not be fit on page. It will not
+## be plotted. Warning: individual based values could not be fit on page. It
+## will not be plotted. Warning: wood perforation plates could not be fit on
+## page. It will not be plotted. Warning: cadmium at wavelength 214nm could
+## not be fit on page. It will not be plotted. Warning: cadmium at wavelength
+## 228nm could not be fit on page. It will not be plotted. Warning: cation
+## exchange capacity could not be fit on page. It will not be plotted.
+## Warning: data management could not be fit on page. It will not be plotted.
+## Warning: leaf anatomy could not be fit on page. It will not be plotted.
+## Warning: leaf physical resistance could not be fit on page. It will not be
+## plotted. Warning: microbial biomass could not be fit on page. It will not
+## be plotted. Warning: phylogenetic diversity could not be fit on page. It
+## will not be plotted. Warning: plant trait could not be fit on page. It
+## will not be plotted. Warning: rarefied diversity could not be fit on page.
+## It will not be plotted. Warning: response variable could not be fit on
+## page. It will not be plotted. Warning: soil erosion could not be fit on
+## page. It will not be plotted. Warning: spatial genetic structure could not
+## be fit on page. It will not be plotted. Warning: species trait could not
+## be fit on page. It will not be plotted. Warning: trait dissimilarity could
+## not be fit on page. It will not be plotted. Warning: wood bending could
+## not be fit on page. It will not be plotted. Warning: wood compression
+## could not be fit on page. It will not be plotted. Warning: wood shearing
+## could not be fit on page. It will not be plotted. Warning: wood shrinkage
+## could not be fit on page. It will not be plotted. Warning: wood stretching
+## could not be fit on page. It will not be plotted. Warning: wood toughness
+## could not be fit on page. It will not be plotted. Warning: aeromorphic
+## organic layer could not be fit on page. It will not be plotted. Warning:
+## basal area increment could not be fit on page. It will not be plotted.
+## Warning: BEF China projects could not be fit on page. It will not be
+## plotted. Warning: climatic niche could not be fit on page. It will not be
+## plotted. Warning: crown overlap could not be fit on page. It will not be
+## plotted. Warning: crown projection area could not be fit on page. It will
+## not be plotted. Warning: directed extinction could not be fit on page. It
+## will not be plotted. Warning: eco-physiologic traits could not be fit on
+## page. It will not be plotted. Warning: ecosystem functioning could not be
+## fit on page. It will not be plotted. Warning: experimental treatment could
+## not be fit on page. It will not be plotted. Warning: flight interception
+## could not be fit on page. It will not be plotted. Warning: Flora of China
+## could not be fit on page. It will not be plotted. Warning: food web could
+## not be fit on page. It will not be plotted. Warning: forest canopy could
+## not be fit on page. It will not be plotted. Warning: genetic
+## autocorrelation could not be fit on page. It will not be plotted. Warning:
+## hunting type could not be fit on page. It will not be plotted. Warning:
+## inbreeding could not be fit on page. It will not be plotted. Warning:
+## litter thickness could not be fit on page. It will not be plotted.
+## Warning: mixed models could not be fit on page. It will not be plotted.
+## Warning: multi-trophic interactions could not be fit on page. It will not
+## be plotted. Warning: phylogenetic distinctness could not be fit on page.
+## It will not be plotted. Warning: phytophagous insects could not be fit on
+## page. It will not be plotted. Warning: PI meeting could not be fit on
+## page. It will not be plotted. Warning: rainfall simulator could not be fit
+## on page. It will not be plotted. Warning: research proposals could not be
+## fit on page. It will not be plotted. Warning: rooting depth could not be
+## fit on page. It will not be plotted. Warning: simpson diversity could not
+## be fit on page. It will not be plotted. Warning: species identity variable
+## could not be fit on page. It will not be plotted. Warning: stem core could
+## not be fit on page. It will not be plotted. Warning: temperature could not
+## be fit on page. It will not be plotted. Warning: topography could not be
+## fit on page. It will not be plotted. Warning: vegetation stratum could not
+## be fit on page. It will not be plotted. Warning: wood ground tissue could
+## not be fit on page. It will not be plotted. Warning: wood mechanics could
+## not be fit on page. It will not be plotted. Warning: wood porosity could
+## not be fit on page. It will not be plotted.
+```
+
+![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
+
 ### Tables

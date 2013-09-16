@@ -109,14 +109,15 @@ Introduction to the rbefdata R package
 
 * get datasets 
 
-In the very heart of the BEFdata portal there is a paper proposal process integrated. You shop together 
-datasets and afterwards create a paper proposal based on the shopped dataset. In the proposal
-you have to give information like a title for the proposal and a rationale describing how you 
-intend to use the data and where and when to publish the results. If the proposal is handed in 
-the authors will be informed that somebody likes to access their datasets and they can decide 
-if they like to participate and how. After all authors have granted access on is good to go 
-with the `rbefdata` package. One can draw all datasets associated to a proposal in one turn 
-with the package.
+In the very heart of the BEFdata portal there is a paper proposal process
+integrated. You shop together datasets and afterwards create a paper proposal
+based on the shopped dataset. In the proposal you have to give information like
+a title for the proposal and a rationale describing how you intend to use the
+data and where and when to publish the results. If the proposal is handed in
+the authors will be informed that somebody likes to access their datasets and
+they can decide if they like to participate and how. After all authors have
+granted access on is good to go with the `rbefdata` package. One can draw all
+datasets associated to a proposal in one turn with the package.
 
 
 ```r
@@ -138,19 +139,33 @@ extract_one_dataset = dataset_list[[1]]
 
 * Inspect datasets
 
-The BEFdata portal offers metadat in Ecological Metadata Language format standard for download. 
-This is used in the `rbefdata` package to associate a downloaded dataset with informations that
-are required to understand a dataset. This information can be extracted from a dataset with 
-the R command `attributes()`
+The BEFdata portal offers metadat in Ecological Metadata Language format
+standard for download (cite EML). We make use of that metadata in the`rbefdata`
+package as well and each dataset is associated with its metadata on download.
+So you always have acces to the information that is required to understand a
+dataset. This information can be extracted from a dataset with the R command
+`attributes()`
 
 
 ```r
-metadata = bef.portal.get.dataset_for_proposal(id = 1)
+dataset_list = bef.portal.get.dataset_for_proposal(id = 1)
 ```
 
 ```
 ## Error: could not find function "bef.portal.get.dataset_for_proposal"
 ```
+
+```r
+attributes(dataset_list[[1]])$title
+```
+
+```
+## Error: object 'dataset_list' not found
+```
+
+* write your scripts 
+
+
 
 
 * vizualize the portal (keywords) 

@@ -284,14 +284,15 @@ bef.options(url = &quot;http://my.own.befdat.instance.com&quot;)
 <li>get datasets </li>
 </ul>
 
-<p>In the very heart of the BEFdata portal there is a paper proposal process integrated. You shop together 
-datasets and afterwards create a paper proposal based on the shopped dataset. In the proposal
-you have to give information like a title for the proposal and a rationale describing how you 
-intend to use the data and where and when to publish the results. If the proposal is handed in 
-the authors will be informed that somebody likes to access their datasets and they can decide 
-if they like to participate and how. After all authors have granted access on is good to go 
-with the <code>rbefdata</code> package. One can draw all datasets associated to a proposal in one turn 
-with the package.</p>
+<p>In the very heart of the BEFdata portal there is a paper proposal process
+integrated. You shop together datasets and afterwards create a paper proposal
+based on the shopped dataset. In the proposal you have to give information like
+a title for the proposal and a rationale describing how you intend to use the
+data and where and when to publish the results. If the proposal is handed in
+the authors will be informed that somebody likes to access their datasets and
+they can decide if they like to participate and how. After all authors have
+granted access on is good to go with the <code>rbefdata</code> package. One can draw all
+datasets associated to a proposal in one turn with the package.</p>
 
 <pre><code class="r">dataset_list = bef.portal.get.datasets_for_proposal(id = 1)
 </code></pre>
@@ -309,19 +310,28 @@ with the package.</p>
 <li>Inspect datasets</li>
 </ul>
 
-<p>The BEFdata portal offers metadat in Ecological Metadata Language format standard for download. 
-This is used in the <code>rbefdata</code> package to associate a downloaded dataset with informations that
-are required to understand a dataset. This information can be extracted from a dataset with 
-the R command <code>attributes()</code></p>
+<p>The BEFdata portal offers metadat in Ecological Metadata Language format
+standard for download (cite EML). We make use of that metadata in the<code>rbefdata</code>
+package as well and each dataset is associated with its metadata on download.
+So you always have acces to the information that is required to understand a
+dataset. This information can be extracted from a dataset with the R command
+<code>attributes()</code></p>
 
-<pre><code class="r">metadata = bef.portal.get.dataset_for_proposal(id = 1)
+<pre><code class="r">dataset_list = bef.portal.get.dataset_for_proposal(id = 1)
 </code></pre>
 
 <pre><code>## Error: could not find function &quot;bef.portal.get.dataset_for_proposal&quot;
 </code></pre>
 
+<pre><code class="r">attributes(dataset_list[[1]])$title
+</code></pre>
+
+<pre><code>## Error: object &#39;dataset_list&#39; not found
+</code></pre>
+
 <ul>
-<li>vizualize the portal (keywords) </li>
+<li><p>write your scripts </p></li>
+<li><p>vizualize the portal (keywords) </p></li>
 </ul>
 
 <p>see figure &hellip; in appendix</p>
