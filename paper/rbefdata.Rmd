@@ -175,8 +175,6 @@ for attached free format content of a dataset and
 
 * load the package
 
-
-
 ```{r require_rbefdata}
 require(rbefdata)
 ```
@@ -202,7 +200,7 @@ bef.options("url" = "http://my.own.befdat.instance.com")
 
 ```{r load_secret_credentials, eval = T, include = F}  
 # load your credentials
-source("./secrets.R") 
+source("secrets.R") 
 ```
 
 Introduction to the rbefdata R package
@@ -219,8 +217,8 @@ they can decide if they like to participate and how. After all authors have
 granted access on is good to go with the `rbefdata` package. One can draw all
 datasets associated to a proposal in one turn with the package.
 
-```{r rbefdata_get_datasets_from_proposal}
-dataset_list = bef.portal.get.datasets_for_proposal(id = 1)
+```{r rbefdata_get_datasets_from_proposal, cache = T}
+dataset_list = bef.get.datasets_for_proposal(id = 90)
 extract_one_dataset = dataset_list[[1]]
 ```
 
@@ -236,13 +234,10 @@ dataset. This information can be extracted from a dataset with the R command
 ```{r rbefdata_metadata}
 dataset_list = bef.portal.get.dataset_for_proposal(id = 1) 
 attributes(dataset_list[[1]])$title
-```
-* write your scripts 
+``` 
 
 
-* vizualize the portal (keywords) 
-
-see figure ... in appendix
+* write your scripts (showcase)
 
 ## Results
 
@@ -259,8 +254,10 @@ together semantically.
 
 ### Figures 
 
-```{r vizalize_keywords, cache = T, waring = F, message = F, error = F} 
+* vizualization plugin (keywords) 
 
+```{r vizalize_keywords, cache = T, waring = F, message = F, error = F} 
 bef.portal.vizualize.keywords()
 ```
+
 ### Tables
