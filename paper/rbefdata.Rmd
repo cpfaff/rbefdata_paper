@@ -232,10 +232,9 @@ dataset. This information can be extracted from a dataset with the R command
 `attributes()`
 
 ```{r rbefdata_metadata}
-dataset_list = bef.portal.get.dataset_for_proposal(id = 1) 
+dataset_list = bef.get.datasets_for_proposal(id = 1) 
 attributes(dataset_list[[1]])$title
 ``` 
-
 
 * write your scripts (showcase)
 

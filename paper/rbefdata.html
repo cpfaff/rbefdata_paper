@@ -469,10 +469,10 @@ So you always have acces to the information that is required to understand a
 dataset. This information can be extracted from a dataset with the R command
 <code>attributes()</code></p>
 
-<pre><code class="r">dataset_list = bef.portal.get.dataset_for_proposal(id = 1)
+<pre><code class="r">dataset_list = bef.get.datasets_for_proposal(id = 1)
 </code></pre>
 
-<pre><code>## Error: could not find function &quot;bef.portal.get.dataset_for_proposal&quot;
+<pre><code>## Error: Not Found
 </code></pre>
 
 <pre><code class="r">attributes(dataset_list[[1]])$title

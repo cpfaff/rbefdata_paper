@@ -259,11 +259,11 @@ dataset. This information can be extracted from a dataset with the R command
 
 
 ```r
-dataset_list = bef.portal.get.dataset_for_proposal(id = 1)
+dataset_list = bef.get.datasets_for_proposal(id = 1)
 ```
 
 ```
-## Error: could not find function "bef.portal.get.dataset_for_proposal"
+## Error: Not Found
 ```
 
 ```r
@@ -273,7 +273,6 @@ attributes(dataset_list[[1]])$title
 ```
 ## [1] "Competition of saplings for N -Pilot- system 15N retention"
 ```
-
 
 
 * write your scripts (showcase)
