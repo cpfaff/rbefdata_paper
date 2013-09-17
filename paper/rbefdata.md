@@ -119,7 +119,7 @@ to get acknowledged for providing their data (cite Karin). Based a proposal we
 start our workflow here on integrating three datasets form the BEFdata
 instance.
 
-### Data used
+### The proposal
 
 The data was collected by xxx independent projects of the biodiversity -
 ecosystem functioning - China (BEF-China) research group within the years xxx ,
