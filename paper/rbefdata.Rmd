@@ -233,8 +233,8 @@ attributes(dataset_list[[1]])$title
 ## Discussion
 
 As there is a growind demand in effective reuse of available data this puts
-pressure on development of solutions that help researchs not only to preserve
-and describe their datasets with metadata 
+puts much pressure on development of solutions that help researchs not only to
+preserve and describe their datasets with metadata 
 
 data but 
 
