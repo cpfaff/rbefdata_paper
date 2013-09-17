@@ -120,6 +120,40 @@ acknowledged for providing their data (cite Karin).
 
 ### The proposal
 
+
+We would like to use an already published dataset as an example to present the
+functionalities and interlinkages between the BEF China dataportal and
+rbefdata.  To test the effect of species richness on system N retention and
+tree sapling N uptake we conducted a 15N tracer experiment in a young tree
+plantation. To this end, saplings of four abundant early successional tree
+species have been planted in monocultures, in two- and four-species mixtures,
+and as individual trees. Afforestations are increasing globally to produce
+timber and pulp wood, but also to enhance ecosystem services such as carbon
+sequestration, nutrient retention, or groundwater recharge. In order to further
+optimise these services with regard to balanced nutrient (particularly
+nitrogen) cycles, it is important to know whether the use of mixtures of native
+tree species in afforestation projects promotes greater acquisition and
+retention of nitrogen compared to the currently established large-scale
+monocultures.  Experimental design and data acquisition Four species were
+chosen for the experiment: Schima superba Gardn. et Champ. and Elaeocarpus
+decipiens Hemsley (evergreen), Quercus serrata Murray and Castanea henryi
+(Skan) Rehd. et Wils. (deciduous; Yu et al. 2001). The following planting
+schemes were established in 1-mÂ² plots.  In each plot 16 saplings were planted
+in an array of four by four. Monocultures, two-species combinations and
+four-species combinations were established. The four study species provided a
+total of eleven species combinations four monocultures, six two-species
+combinations, and one four-species combination. All treatments were replicated
+four times, once in each of the four blocks. Pulse labelling with 15NH415NO3
+(98% 15N) was performed in August and in September 2009. Leaf, fine root and
+soil samples have been collected in September 2010. Samples have been analysed
+for 15N content and leaf, fine root and soil recovery have been calculated. The
+sum of the three compartement recoveries is referred to as system N retention.
+Relative leaf, root and soil recovery was calculted as percentage of system N
+retention (for a detailed description of the material and methods we refer to
+Lang et al. 2013). 
+
+...
+
 Based a proposal we start our workflow here on integrating three datasets form
 the BEFdata instance. The data was collected by xxx independent projects of the
 biodiversity - ecosystem functioning - China (BEF-China) research group within
@@ -133,7 +167,6 @@ from the BEFdata portal. The data is free as it already was published.
 proposal created ...
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
-
 
 ### rbefdata 
 
@@ -234,8 +267,12 @@ http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 
 ```r
 # proposal id is
-dataset_list = bef.get.datasets_for_proposal(id = 90)
+datasets = bef.get.datasets_for_proposal(id = 90)
 extract_one_dataset = dataset_list[[1]]
+```
+
+```
+## Error: object 'dataset_list' not found
 ```
 
 
@@ -256,154 +293,11 @@ attributes(dataset_list[[1]])$title
 ```
 
 ```
-## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
+## Error: object 'dataset_list' not found
 ```
 
 
-## Discussion
-
-* General discussion 
-  - high need to effective use/reuse data 
-  - relevant data needs to be simply detectable 
-
-* BEFdata and rbefdata 
-  - in combination provide a solution to 
-    + data storage
-    + describing data with metadata
-    + collaboration and data sharing 
-    + simply pull data into analysis software and push data back
-    + data provenance by attaching R scripts to uploads
-  - will provide solution with next versions 
-    + easier finding relevant data 
-    + smart merges (including unit conversions)
-
-As there is a growing demand to effectively reuse available data this puts much
-pressure on the development of solutions that help researchers not only to find
-but also to integrate heterogeneous small data into a wider context of in
-different analyses (cite xxx, data intensive science, long tail). The
-combination of BEFdata and the rbefdata package provides a solutions to a one
-part of the data life cycle and especially introduces a solution to deal with
-high heterogeneous data.
-
-We recently stared to develop an ontology using a tematres server containing
-knowledge extracted from portals that deal with data management for ecological
-research. The tematres server offers an API so all the contained terms can be
-accessed by the upcoming version of rbefdata 
-
-The formalization developed is and will be based on the knowledge used in
-biodiversity research. Thus we will here discuss the software combination
-BEFdata and rbefdata in the light of the upcoming features and in general
-context state of the art data management today. In one of the next versions to
-be rolled out the BEFdata portal will get a semantical annotation feature.
-This will give admins and data admins the ability to tag each column of
-datasets with a general term that best describes the content. So the field will
-contain top terms of the ontology. The tagging will be reflected in the API and
-can thus be simply queried to use the information within the R package.  Using
-the knowledge about the content of a column in the R package will enable us to
-do support smart merges that work 
-
-`tematres` ([homepage](http://www.vocabularyserver.com/))into BEFdata and the
-rbefdata package so they play well together semantically.
-
-## Acknowledgements 
-
-Thanks to all the data owners of the proposal for providing access to the
-datasets. ...
-
-## Literature
-
-This will be done externally as markdown has no good way to deal with
-references and stuff. We can collect here a list of links to references. I will
-then collect them with e.g zotero to export a format we can hand them in for
-publication.
-
-## Appendix
-
-* maybe will not be used extensively but we will see
-
-### Figures 
-
-* vizualization plugin (keywords) 
-
-One can visualize the keywords associated with the dataset of a BEFdata portal
-using the vitalization functionality. This gives a short overview about the
-contents the portal data is dealing with.
 
 
 
-```r
-bef.portal.vizualize.keywords()
-```
 
-```
-## Warning: Gram-positive bacteria could not be fit on page. It will not be
-## plotted. Warning: individual based values could not be fit on page. It
-## will not be plotted. Warning: kinetic energy could not be fit on page. It
-## will not be plotted. Warning: base saturation could not be fit on page. It
-## will not be plotted. Warning: cadmium at wavelength 214nm could not be fit
-## on page. It will not be plotted. Warning: chemical defense could not be
-## fit on page. It will not be plotted. Warning: coefficient of variation
-## could not be fit on page. It will not be plotted. Warning: digital data
-## acquisition could not be fit on page. It will not be plotted. Warning:
-## diversity treatment could not be fit on page. It will not be plotted.
-## Warning: experimental design could not be fit on page. It will not be
-## plotted. Warning: intraspecific diversity could not be fit on page. It
-## will not be plotted. Warning: leaf anatomy could not be fit on page. It
-## will not be plotted. Warning: leaf physical resistance could not be fit on
-## page. It will not be plotted. Warning: phylogenetic diversity could not be
-## fit on page. It will not be plotted. Warning: response variable could not
-## be fit on page. It will not be plotted. Warning: spatial genetic structure
-## could not be fit on page. It will not be plotted. Warning: standard
-## deviation could not be fit on page. It will not be plotted. Warning: trait
-## dissimilarity could not be fit on page. It will not be plotted. Warning:
-## tree identifier could not be fit on page. It will not be plotted. Warning:
-## wood compression could not be fit on page. It will not be plotted.
-## Warning: wood shearing could not be fit on page. It will not be plotted.
-## Warning: wood shrinkage could not be fit on page. It will not be plotted.
-## Warning: wood toughness could not be fit on page. It will not be plotted.
-## Warning: aeromorphic organic layer could not be fit on page. It will not
-## be plotted. Warning: BEF China projects could not be fit on page. It will
-## not be plotted. Warning: cavity nesting hymenoptera could not be fit on
-## page. It will not be plotted. Warning: community similarity could not be
-## fit on page. It will not be plotted. Warning: community weighted mean
-## trait could not be fit on page. It will not be plotted. Warning: directed
-## extinction could not be fit on page. It will not be plotted. Warning:
-## eco-physiologic traits could not be fit on page. It will not be plotted.
-## Warning: ecosystem functioning could not be fit on page. It will not be
-## plotted. Warning: experimental treatment could not be fit on page. It will
-## not be plotted. Warning: flight interception could not be fit on page. It
-## will not be plotted. Warning: forest canopy could not be fit on page. It
-## will not be plotted. Warning: genetic autocorrelation could not be fit on
-## page. It will not be plotted. Warning: inbreeding could not be fit on
-## page. It will not be plotted. Warning: leaf longevity could not be fit on
-## page. It will not be plotted. Warning: migration could not be fit on page.
-## It will not be plotted. Warning: mineralisation could not be fit on page.
-## It will not be plotted. Warning: multi-trophic interactions could not be
-## fit on page. It will not be plotted. Warning: non-random extinction could
-## not be fit on page. It will not be plotted. Warning: parasitoids could not
-## be fit on page. It will not be plotted. Warning: phylogenetic distinctness
-## could not be fit on page. It will not be plotted. Warning: phytophagous
-## insects could not be fit on page. It will not be plotted. Warning: PI
-## meeting could not be fit on page. It will not be plotted. Warning: Rao's Q
-## could not be fit on page. It will not be plotted. Warning: research
-## proposals could not be fit on page. It will not be plotted. Warning:
-## rooting depth could not be fit on page. It will not be plotted. Warning:
-## runoff plots could not be fit on page. It will not be plotted. Warning:
-## simpson diversity could not be fit on page. It will not be plotted.
-## Warning: specialization could not be fit on page. It will not be plotted.
-## Warning: species identity variable could not be fit on page. It will not
-## be plotted. Warning: temperature could not be fit on page. It will not be
-## plotted. Warning: tree crown could not be fit on page. It will not be
-## plotted. Warning: vegetation stratum could not be fit on page. It will not
-## be plotted. Warning: water content could not be fit on page. It will not
-## be plotted. Warning: Weibull distribution could not be fit on page. It
-## will not be plotted. Warning: wood ground tissue could not be fit on page.
-## It will not be plotted. Warning: wood mechanics could not be fit on page.
-## It will not be plotted. Warning: wood porosity could not be fit on page.
-## It will not be plotted.
-```
-
-![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
-
-
-### Tables
