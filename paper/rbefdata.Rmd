@@ -182,10 +182,10 @@ bef.options()
 bef.options("url") 
 ```
 
-```{r require_and_setup_two, eval = F}
+```{r require_and_setup_two, eval = F, include = T}
 # set options  
 bef.options("user_credentials" = "aölkjspoiul12")
-bef.options("url" = "http://my.own.befdat.instance.com")
+bef.options("url" = "http://my.own.befdata.instance.com")
 
 ```
 
@@ -215,11 +215,31 @@ attributes(dataset_list[[1]])$title
 
 ## Discussion
 
-Discussion will be in the light of future features like the upcomming
-integration of tematres into BEFdata and the rbefdata package so they play well
-together semantically.
+We recently stared to develop an ontology using a tematres server. The
+formalization developed is and will be based on the knowledge used in
+biodiversity research. Thus we will here discuss the software combination
+BEFdata and rbefdata in the light of the upcoming features and in general
+context state of the art data management today. In one of the next versions to
+be rolled out the BEFdata portal will get a semantical annotation feature.
+This will give admins and data admins the ability to tag each column of
+datasets with a general term that best describes the content. So the field will
+contain top terms of the ontology. The tagging will be reflected in the API and
+can thus be simply queried to use the information within the R package.  Using
+the knowledge about the content of a column in the R package will enable us to
+do support smart merges that work 
+
+
+and ideas around a semantical
+tagging in the BEFdat portal and how to use  Discussion will be in the light of
+future features like the upcoming integration of `tematres`
+([homepage](http://www.vocabularyserver.com/))into BEFdata and the rbefdata
+package so they play well together semantically.
+
+
 
 ## Appendix
+
+* maybe will not be used extensively but we will see
 
 ### Figures 
 
