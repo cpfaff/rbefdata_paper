@@ -26,19 +26,21 @@ The story board:
 
 ## Abstract 
 
-We face a deluge of data today, that scientists need to deal with in many
-different domains. While there are already good solutions to some parts of the
-data life cycle the applicability of the solutions to certain scientific
-domains often varies. Especially research domains with high heterogeneity like
-ecology face problems in dealing with valuable concepts like ontologies that
-potentially can be used to improve or automate some of the most common steps in
-ecological analyses like finding relevant data, cleaning and merging of
-datasets. We here introduce the rbefata package that connects to the data
-management platform BEFdata that is used in the BEF-China experiment. We do
-this using an example workflow that integrates two datasets. We also discuss
-the combination BEFdata and rbefdata in the light of upcoming developments that
-will introduce semantical tagging and the integration of formal representation
-of knowledge as a potential solution to the make use of ontologies in ecology.
+We face a deluge of data that scientists need to deal with in many different
+domains today. While there are already good solutions to some parts of the data
+life cycle the applicability of them to certain scientific domains often
+varies. Especially research domains with high heterogeneity in methods and data
+in general like ecology face problems in dealing with valuable concepts like
+ontologies that potentially can be used to improve or automate some of the most
+common tasks in analyses like finding relevant data, cleaning and merging of
+datasets. We here introduce the rbefata package that connects to the open
+source data management platform BEFdata that has been developed and is used
+within the BEF-China experiment. We show the use of the package in combination
+with the portal using an example workflow that integrates three datasets from
+the BEF-China experiment. We discuss the combination BEFdata and rbefdata in
+the context of the data life cycle and the state of the art data handling as
+well as we give an outlook onto upcoming features that will bring semantical
+integration based on an ontology we created. 
 
 ## Introduction 
 
@@ -115,13 +117,12 @@ is an open source data management platform developed within the BEF-China
 project funded by the German science foundation (DFG, FOR 891). The BEF-China
 experiment is a Biodiversity Ecosystem Functioning (BEF) experiment in the
 subtropics of China located in the provinces Jianxi and Zhejiang.  The
-BEF-China research group (\url{www.bef-china.de}) uses two main research
-platforms. An experimental forest diversity gradient of 50~ha, and 27
-observational plots of 30x30~m each located in the Gutianshan Nature Reserve.
-The observational plots were selected according to a crossed sampling design
-along tree species richness and stand age. The data for the workflow on carbon
-pools stems from 22 to 116 years consisting of 14 to 35 species (cite
-Bruelheide, 2010).  
+BEF-China research group (www.bef-china.de) uses two main research platforms.
+An experimental forest diversity gradient of 50~ha, and 27 observational plots
+of 30x30~m each located in the Gutianshan Nature Reserve.  The observational
+plots were selected according to a crossed sampling design along tree species
+richness and stand age. The data for the workflow on carbon pools stems from 22
+to 116 years consisting of 14 to 35 species (cite Bruelheide, 2010 ?).  
 
 The data management platform adheres to standards like the Ecological Metadata
 Language for metadata and is specialized in harmonizing small heterogeneous
@@ -250,7 +251,17 @@ future features like the upcoming integration of `tematres`
 ([homepage](http://www.vocabularyserver.com/))into BEFdata and the rbefdata
 package so they play well together semantically.
 
+## Acknowledgements 
 
+Thanks to all the data owners of the proposal for providing access to the
+datasets. ...
+
+## Literature
+
+This will be done externally as markdown has no good way to deal with
+references and stuff. We can collect here a list of links to references. I will
+then collect them with e.g zotero to export a format we can hand them in for
+publication.
 
 ## Appendix
 
