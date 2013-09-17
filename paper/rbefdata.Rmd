@@ -172,10 +172,6 @@ stone for reproducible research.
 
 ## Usecase (results)
 
-```{r load_secret_credentials_and_setup, eval = T, include = F}  
-# load your credentials
-source("secrets.R") 
-```
 * Starting 
   - from proposal
   - get all data in one step 
@@ -194,7 +190,7 @@ not required in this case as it defaults to the BEF-China project instance of
 the BEFdata portal. If one has set up an own instance of the BEFdata portal,
 this URL needs to be changed so the package communicates with the right server.
 
-```{r require_and_setup, cache = F}
+```{r require_and_setup}
 require(rbefdata)  
 # options list
 bef.options() 
@@ -211,6 +207,11 @@ bef.options("user_credentials" = "aölkjspoiul12")
 ```{r require_and_setup_three, eval = F, include = T}
 # set URL example
 bef.options("url" = "http://my.own.befdata.instance.com")
+```
+
+```{r load_secret_credentials_and_setup, eval = T, include = F}  
+# load your credentials
+source("secrets.R") 
 ```
 
 After setting up the `rbefdata` package we start right away from the proposal

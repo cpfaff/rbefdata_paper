@@ -169,8 +169,6 @@ stone for reproducible research.
 
 ## Usecase (results)
 
-
-
 * Starting 
   - from proposal
   - get all data in one step 
@@ -210,7 +208,7 @@ bef.options()
 ## [1] "downloads"
 ## 
 ## $user_credentials
-## [1] "pM6L8jvrWBt0jqxcvBdm"
+## [1] ""
 ```
 
 ```r
@@ -236,6 +234,9 @@ bef.options(user_credentials = "aölkjspoiul12")
 # set URL example
 bef.options(url = "http://my.own.befdata.instance.com")
 ```
+
+
+
 
 
 After setting up the `rbefdata` package we start right away from the proposal
