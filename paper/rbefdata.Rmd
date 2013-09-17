@@ -474,7 +474,7 @@ using the vitalization functionality. This gives a short overview about the
 contents the portal data is dealing with.
 
 
-```{r vizalize_keywords, waring = F, message = F, error = F, echo = F} 
+```{r vizalize_keywords, warings = F, messages = F, errors = F, echo = F} 
 bef.portal.vizualize.keywords()
 ```
 
