@@ -139,8 +139,8 @@ proposal created ...
 
 The `rbefdata` package started its development within the BEF-Cina experiment.
 Meanwhile it is part of the rOpenSci package porfolio (http://ropensci.org/),
-which is a community driven approach to wrap all science APIs, to make it easy
-to pull data from different repositories into R for analysis. 
+which is a community driven approach to wrap all science APIs and to create
+solutions to pull data from different repositories into R for analysis. 
 
 The package can be installed from the CRAN package repository
 (https://github.com/befdata/befdata) and enables access to the data, meta data
@@ -153,10 +153,6 @@ original datasets which provides a valuable insight into data provenance and
 also is a stepping stone for reproducible research.
 
 ## Usecase (results)
-
-* Starting 
-  - from proposal
-  - get all data in one step 
 
 First steps after the paper proposal are to setup the rbefdata package for
 work. This requires loading the package and to set the package options that are
@@ -224,11 +220,11 @@ bef.options(url = "http://my.own.befdata.instance.com")
 
 
 
-After setting up the `rbefdata` package we start right away from the proposal
-created to pull in all the associated datasets in one step into the R
-environment. We use the proposal download command of the rbefdata providing it
-with the ID of the proposal. The proposal ID can be obtained from the URL of
-the proposal on the BEFdata platform. 
+After setting up the `rbefdata` package we can start right away using the data
+from the proposal. The proposal download method is used for that which we need
+to provide with ID of the proposal. It draws all associated datasets in one
+step into the R environment so we can work with it. The ID of the proposal can
+be found in its URL.
 
 ```
 # the id is 90
@@ -247,11 +243,12 @@ extract_one_dataset = dataset_list[[1]]
   - after download (attributes())
   - in general bef.get.metadata_for(dataset = id) 
 
-We make use of the EML metadata export of the BEFdata portal within the
-`rbefdata` package as well. Each dataset is associated with its available
-metadata on download and it can be extracted using the built-in R function
-`attributes()`. As this requires access to the dataset there is also a function
-especially to only draw metadata with is always free for download. 
+As the BEFdata portal provides metadata via EML we also make use of it within
+the rbefdata package. Each dataset is associated with its metadata available on
+the portal on download. It can be extracted using the built-in R function
+`attributes()` like shown in code box xxx. As this requires access to the
+dataset, there is also a function especially to only draw metadata with is
+always free for download. 
 
 
 ```r
@@ -265,20 +262,19 @@ attributes(dataset_list[[1]])$title
 
 ## Discussion
 
-As there is a growind demand in effective reuse of available data this puts
-puts much pressure on development of solutions that help researchs not only to
-preserve and describe their datasets with metadata 
+As there is a growind demand to effectively reuse available data this puts much
+pressure on the development of solutions that helps researchs not only to find
+but also integrate heterogeneous small data into a wider context of different
+analyses. 
 
-data but 
+example to integrate datasets (cite xxx, data intensive science). The
+combination of BEFdata and the rbefdata package privides partially solutions to
+the data lifecycle.  We recently stared to develop an ontology using a tematres
+server containing knowledge extracted from portals that deal with data
+management for ecological research. The tematres server offers an API so all
+the contained terms can be accessed by the upcoming version of rbefdata 
 
-We recently stared to develop an ontology using a tematres server containing
-knowledge extracted from portals that deal with data management for ecological
-research. The tematres server offers an API so all the contained terms can be
-accessed by the upcoming version of rbefdata 
-
-In the upcoming
-
-. The formalization developed is and will be based on the knowledge used in
+The formalization developed is and will be based on the knowledge used in
 biodiversity research. Thus we will here discuss the software combination
 BEFdata and rbefdata in the light of the upcoming features and in general
 context state of the art data management today. In one of the next versions to
@@ -291,11 +287,8 @@ the knowledge about the content of a column in the R package will enable us to
 do support smart merges that work 
 
 
-and ideas around a semantical
-tagging in the BEFdat portal and how to use  Discussion will be in the light of
-future features like the upcoming integration of `tematres`
-([homepage](http://www.vocabularyserver.com/))into BEFdata and the rbefdata
-package so they play well together semantically.
+`tematres` ([homepage](http://www.vocabularyserver.com/))into BEFdata and the
+rbefdata package so they play well together semantically.
 
 ## Acknowledgements 
 
@@ -317,70 +310,68 @@ publication.
 
 * vizualization plugin (keywords) 
 
+One can visualize the keywords associated with the dataset of a BEFdata portal
+using the vitalization functionality. This gives a short overview about the
+contents the portal data is dealing with.
+
+
 
 ```r
 bef.portal.vizualize.keywords()
 ```
 
 ```
-## Warning: additional trees could not be fit on page. It will not be
-## plotted. Warning: cadmium at wavelength 214nm could not be fit on page. It
-## will not be plotted. Warning: cadmium at wavelength 228nm could not be fit
-## on page. It will not be plotted. Warning: cation exchange capacity could
-## not be fit on page. It will not be plotted. Warning: diversity treatment
-## could not be fit on page. It will not be plotted. Warning: experimental
-## design could not be fit on page. It will not be plotted. Warning:
-## intraspecific diversity could not be fit on page. It will not be plotted.
-## Warning: leaf physical resistance could not be fit on page. It will not be
-## plotted. Warning: rarefied diversity could not be fit on page. It will not
-## be plotted. Warning: response variable could not be fit on page. It will
-## not be plotted. Warning: secondary compounds could not be fit on page. It
-## will not be plotted. Warning: spatial genetic structure could not be fit
-## on page. It will not be plotted. Warning: species trait could not be fit
-## on page. It will not be plotted. Warning: trait dissimilarity could not be
-## fit on page. It will not be plotted. Warning: tree identifier could not be
-## fit on page. It will not be plotted. Warning: wood bending could not be
-## fit on page. It will not be plotted. Warning: wood compression could not
-## be fit on page. It will not be plotted. Warning: wood shearing could not
-## be fit on page. It will not be plotted. Warning: wood shrinkage could not
-## be fit on page. It will not be plotted. Warning: wood stretching could not
-## be fit on page. It will not be plotted. Warning: aeromorphic organic layer
-## could not be fit on page. It will not be plotted. Warning: basal area
-## increment could not be fit on page. It will not be plotted. Warning: BEF
-## China projects could not be fit on page. It will not be plotted. Warning:
-## cavity nesting hymenoptera could not be fit on page. It will not be
-## plotted. Warning: community similarity could not be fit on page. It will
-## not be plotted. Warning: crown projection area could not be fit on page.
-## It will not be plotted. Warning: ecosystem functioning could not be fit on
-## page. It will not be plotted. Warning: experimental treatment could not be
-## fit on page. It will not be plotted. Warning: flight interception could
-## not be fit on page. It will not be plotted. Warning: genetic
+## Warning: BEF conference 2011 could not be fit on page. It will not be
+## plotted. Warning: species richness could not be fit on page. It will not
+## be plotted. Warning: replanted species could not be fit on page. It will
+## not be plotted. Warning: competitive neighbourhood could not be fit on
+## page. It will not be plotted. Warning: wood perforation plates could not
+## be fit on page. It will not be plotted. Warning: cadmium at wavelength
+## 228nm could not be fit on page. It will not be plotted. Warning: cation
+## exchange capacity could not be fit on page. It will not be plotted.
+## Warning: diversity treatment could not be fit on page. It will not be
+## plotted. Warning: experimental design could not be fit on page. It will
+## not be plotted. Warning: intraspecific diversity could not be fit on page.
+## It will not be plotted. Warning: microbial biomass could not be fit on
+## page. It will not be plotted. Warning: response variable could not be fit
+## on page. It will not be plotted. Warning: secondary compounds could not be
+## fit on page. It will not be plotted. Warning: soil profile could not be
+## fit on page. It will not be plotted. Warning: spatial genetic structure
+## could not be fit on page. It will not be plotted. Warning: tree identifier
+## could not be fit on page. It will not be plotted. Warning: wood bending
+## could not be fit on page. It will not be plotted. Warning: wood
+## compression could not be fit on page. It will not be plotted. Warning:
+## wood shearing could not be fit on page. It will not be plotted. Warning:
+## wood shrinkage could not be fit on page. It will not be plotted. Warning:
+## wood toughness could not be fit on page. It will not be plotted. Warning:
+## aeromorphic organic layer could not be fit on page. It will not be
+## plotted. Warning: basal area increment could not be fit on page. It will
+## not be plotted. Warning: branch water potential could not be fit on page.
+## It will not be plotted. Warning: coarse root density could not be fit on
+## page. It will not be plotted. Warning: community weighted mean trait could
+## not be fit on page. It will not be plotted. Warning: directed extinction
+## could not be fit on page. It will not be plotted. Warning: eco-physiologic
+## traits could not be fit on page. It will not be plotted. Warning: Flora of
+## China could not be fit on page. It will not be plotted. Warning: genetic
 ## autocorrelation could not be fit on page. It will not be plotted. Warning:
-## matching status could not be fit on page. It will not be plotted. Warning:
+## mineralization could not be fit on page. It will not be plotted. Warning:
 ## multi-trophic interactions could not be fit on page. It will not be
 ## plotted. Warning: mycorrhiza could not be fit on page. It will not be
-## plotted. Warning: nitrification could not be fit on page. It will not be
-## plotted. Warning: nitrogen cycling could not be fit on page. It will not
-## be plotted. Warning: non-random extinction could not be fit on page. It
-## will not be plotted. Warning: pesticide could not be fit on page. It will
+## plotted. Warning: non-random extinction could not be fit on page. It will
 ## not be plotted. Warning: phylogenetic distinctness could not be fit on
 ## page. It will not be plotted. Warning: research proposals could not be fit
-## on page. It will not be plotted. Warning: rooting depth could not be fit
-## on page. It will not be plotted. Warning: runoff plots could not be fit on
+## on page. It will not be plotted. Warning: respiration could not be fit on
+## page. It will not be plotted. Warning: rooting depth could not be fit on
+## page. It will not be plotted. Warning: runoff plots could not be fit on
 ## page. It will not be plotted. Warning: simpson diversity could not be fit
-## on page. It will not be plotted. Warning: slope form could not be fit on
-## page. It will not be plotted. Warning: specialization could not be fit on
-## page. It will not be plotted. Warning: species identity variable could not
-## be fit on page. It will not be plotted. Warning: temperature could not be
-## fit on page. It will not be plotted. Warning: topography could not be fit
-## on page. It will not be plotted. Warning: trap nest could not be fit on
-## page. It will not be plotted. Warning: vegetation stratum could not be fit
-## on page. It will not be plotted. Warning: water content could not be fit
-## on page. It will not be plotted. Warning: Weibull distribution could not
-## be fit on page. It will not be plotted. Warning: wood ground tissue could
-## not be fit on page. It will not be plotted. Warning: wood mechanics could
-## not be fit on page. It will not be plotted. Warning: wood porosity could
-## not be fit on page. It will not be plotted.
+## on page. It will not be plotted. Warning: species identity variable could
+## not be fit on page. It will not be plotted. Warning: tree crown could not
+## be fit on page. It will not be plotted. Warning: vegetation stratum could
+## not be fit on page. It will not be plotted. Warning: Weibull distribution
+## could not be fit on page. It will not be plotted. Warning: wood ground
+## tissue could not be fit on page. It will not be plotted. Warning: wood
+## mechanics could not be fit on page. It will not be plotted. Warning: wood
+## porosity could not be fit on page. It will not be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
