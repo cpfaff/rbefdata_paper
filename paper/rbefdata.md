@@ -104,7 +104,7 @@ showcase the functionality of the package available with version 0.3.5 creating
 a workflow for integration of two datasets and discuss the rbefdata package and
 BEFdata in the light of future development on the integration of ontologies
 that will make finding data, smart merges and unit conversion possible to help
-researchers to deal with the upcomming challenges in dealing with data like
+researchers to deal with the upcoming challenges in dealing with data like
 integration of heterogeneous datasets.
 
 ## Material and Methods 
@@ -161,11 +161,11 @@ The `rbefdata` package is the companion R package to the BEFdata, data
 management platform (https://github.com/befdata/befdata). It can be installed
 from CRAN package repository and enables access to the data, meta data
 structures of the platform and provides convenient methods to pull single or
-multiple dataset into the R environment in one step for analysis. Additionaly
+multiple dataset into the R environment in one step for analysis. Additionally
 it offers functions that help to upload final results datasets with the script
 attached that has been used to derive the results from the original datasets.
 This provides a valuable insight into data provenance and also is a stepping
-stone for reproducable research.
+stone for reproducible research.
 
 ## Usecase (results)
 
@@ -180,13 +180,13 @@ work. This requires loading the package and to set the package options that are
 required so it works properly. Having a look into the options list reveals
 several fields that can be filled in like the URL to the BEFdata server, user
 credentials and a download folder that is used to store downloaded freeformat
-files. The most essential setting for the workflow we show is the user
-credentials. This credentials are used to authenticate the user against the
-portal to ensure the access to the data has been granted and to log the
-download process. Setting the URL is not required in this case as it defaults
-to the BEF-China project instance of the BEFdata portal. If one has set up an
-own instance of the BEFdata portal, this URL needs to be changed so the package
-communicates with the right server.
+files. The most essential setting for the workflow we show here is the user
+credentials. These are used to authenticate the user against the portal to
+ensure the access to the data has been granted and to log the data access so.
+Setting the URL is not required in this case as it defaults to the BEF-China
+project instance of the BEFdata portal. If one has set up an own instance of
+the BEFdata portal, this URL needs to be changed so the package communicates
+with the right server.
 
 
 ```r
@@ -225,14 +225,15 @@ bef.options("url")
 
 
 ```r
-# set options (examples)
-
-# credentials
+# set credentials example
 bef.options(user_credentials = "aölkjspoiul12")
+```
 
-# URL
+
+
+```r
+# set URL example
 bef.options(url = "http://my.own.befdata.instance.com")
-
 ```
 
 
