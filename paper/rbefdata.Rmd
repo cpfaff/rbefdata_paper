@@ -340,7 +340,7 @@ library(multcomp)
 library(car)
 ```
 
-```{r anne_script_model_tests}`
+```{r anne_script_model_tests}
 #### Model one Overall recovery/N retention  
 
 model1 = lme(recov_plot_t~gbd_T0.mm.+species_diversity,syndata,random=~1|block,na.action=na.omit,method="REML")
