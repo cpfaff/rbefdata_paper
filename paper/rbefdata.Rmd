@@ -260,37 +260,62 @@ always free for download.
 attributes(dataset_list[[1]])$title
 ``` 
 
+<<<<<<< HEAD
 ```{r anne_script} 
+=======
+
+```{r anne_script}
+>>>>>>> author_cpfaff
 ### executes the titles of the datasets downloaded
 titles = sapply(datasets, function(x) attributes(x)$title)
 titles
 names(attributes(dataset))
+<<<<<<< HEAD
 
 Nretention = datasets[[1]]
 design = datasets[[2]]
+=======
+Nrecov = datasets[[1]]
+Nretention = datasets[[2]]
+design = datasets[[3]]
+>>>>>>> author_cpfaff
 
 ### to analyse the dataset of system N retention we do need information about species diversity of the plots and the
 ### information about which plot is placed in which block from the design dataset. Furthermore we need values of the initial 
 ### basal diameter from the dataset Nrecov
+<<<<<<< HEAD
+=======
+names(Nrecov)
+>>>>>>> author_cpfaff
 names(Nretention)
 names(design)
 
 
 ### all datasets include the column "plot_id" and can be merged by this column. We need to merge them two by two.
 
+<<<<<<< HEAD
 merge(Nretention,design)->syndata
 
+=======
+merge(Nrecov,Nretention)->syndata1
+merge(syndata1,design)->syndata
+>>>>>>> author_cpfaff
 
 ### However, this synthesis dataset now includes many columns that we do not need. These, will thus be excluded from the
 ### dataset.
 
 names(syndata)
+<<<<<<< HEAD
 syndata=syndata[-c(9:14,16:41)]
+=======
+syndata=syndata[-c(2:13,15:17,24:29,31:56)]
+>>>>>>> author_cpfaff
 names(syndata)
 
 ### check for data properties
 str(syndata)
 
+<<<<<<< HEAD
 
 
 ### we want to use 'species_diversity' as a factor
@@ -380,6 +405,168 @@ boxplot(persoil_plot~species_diversity,las=1,ylab="Relative soil recovery (%)",
 text(1,70,"a",font=2);text(2,70,"ab",font=2);text(3,70,"b",font=2);text(3.4,98,"(D)",font=2)
 ```
 
+=======
+### we want to use 'species_diversity' as a factor
+
+syndata$species_diversity=as.factor(syndata$species_diversity)
+
+
+
+attach(p)
+
+boxplot(recov_sum_plot~Richness)
+boxplot(recov_sum_plot~combination)
+
+qqnorm(recov_sum_plot^.5)
+qqline(recov_sum_plot^.5,lty=2)
+p$recov_sum_plot_t<-p$recov_sum_plot^.5
+
+qqnorm(X.leaf_plot^.5)
+qqline(X.leaf_plot^.5,lty=2)
+p$X.leaf_plot_t<- p$X.leaf_plot^.5
+p$X.root_plot_t<- p$X.root_plot^.5
+p$X.bio_plot_t<- p$X.bio_plot^.5
+p$X.soil_plot_t<- p$X.soil_plot^.5
+qqnorm(X.soil_plot^.5)
+qqline(X.soil_plot,lty=2)
+
+library(nlme)
+library(multcomp)
+library(car)
+attach(p)
+
+####   Overall recovery  
+model<-lme(recov_sum_plot_t~gbd_T0.mm.+Richness,p,random=~1|block,na.action=na.omit,method="REML")
+anova(model)
+summary(model)
+summary(glht(model,linfct = mcp(Richness="Tukey")))
+Anova(model,type="II" )
+->aplot
+summary(aplot)
+
+
+plot(model,resid(.)~fitted(.),na.rm=T)
+plot(model,recov_sum_plot_t~fitted(.),na.rm=T)
+
+model<-lme(recov_sum_plot_t~gbd_T0.mm.+combination,p,random=~1|block,na.action=na.omit,method="REML")
+anova(model)
+summary(model)
+summary(glht(model,linfct = mcp(Richness="Tukey")))
+Anova(model,type="II" )
+
+plot(model,resid(.)~fitted(.),na.rm=T)
+plot(model,recov_sum_plot_t~fitted(.),na.rm=T)
+
+#### Anteil leaf recovery
+
+model<-lme(X.leaf_plot_t~Richness,p,random=~1|block,na.action=na.omit,method="REML")
+anova(model)
+summary(glht(model,linfct = mcp(Richness="Tukey")))
+Anova(model,type="II")
+boxplot(X.leaf_plot~Richness)
+
+plot(model,resid(.)~fitted(.),na.rm=T)
+plot(model,X.leaf_plot_t~fitted(.),na.rm=T)
+
+model<-lme(X.leaf_plot_t~combination,p,random=~1|block,na.action=na.omit,method="REML")
+anova(model)
+summary(glht(model,linfct = mcp(combination="Tukey")))
+Anova(model,type="II")
+
+##############################################################################
+#Abbildung combination-leaf and root relative recovery
+par(bty="l")
+boxplot(p$X.leaf_plot~p$combination,las=1,ylab="relative leaf recovery (%)",xaxt="n")
+label<-c("Ss","Ed","Qs","Ch","Ss/Ed","Ss/Qs","Ss/Ch","Ed/Qs","Ed/Ch","Qs/Ch","all")
+axis(1,c(1:11),label,las=2)
+text (11.5,28,"(A)",font=2)
+text(2,25,"bc",font=2)
+text(3,25,"c",font=2)
+text(4,25,"c",font=2)
+text(7,25,"a", font=2)
+text(8,25,"b",font=2)
+
+par(bty="l")
+boxplot(p$X.root_plot~p$combination,las=1,ylab="relative root recovery (%)",xaxt="n",col="light grey")
+axis(1,c(1:11),label,las=2)
+text (11.5,8.6,"(B)",font=2)
+text(2,8.6,"bc",font=2)
+text(3,8.6,"bc",font=2)
+text(4,8.6,"cd",font=2)
+text(7,8.6,"a",font=2)
+text(8,8.6,"ab",font=2)
+text(11,8.6,"ab",font=2)
+
+
+tapply(X.soil_plot,Richness,mean)
+
+### Anteil Root an overall recovery
+
+model<-lme(X.root_plot_t~Richness,p,random=~1|block,na.action=na.omit,method="REML")
+anova(model)
+summary(glht(model,linfct = mcp(Richness="Tukey")))
+Anova(model,type="II")
+boxplot(X.root_plot~Richness)
+
+model<-lme(X.root_plot_t~combination,p,random=~1|block,na.action=na.omit,method="REML")
+anova(model)
+summary(glht(model,linfct = mcp(combination="Tukey")))
+Anova(model,type="II")
+boxplot(X.root_plot~combination,las=1, ylab="percentage root recovery of overall plot recovery")
+
+### Anteil soil recovery an overall
+
+model<-lme(X.soil_plot_t~Richness,p,random=~1|block,na.action=na.omit,method="REML")
+anova(model)
+summary(glht(model,linfct = mcp(Richness="Tukey")))
+Anova(model,type="II")
+boxplot(X.root_plot~Richness)
+
+model<-lme(X.soil_plot_t~combination,p,random=~1|block,na.action=na.omit,method="REML")
+anova(model)
+summary(glht(model,linfct = mcp(combination="Tukey")))
+Anova(model,type="II")
+boxplot(X.root_plot~Richness)
+
+
+#### Abbildung 2
+par(mfrow=c(2,2),bty="l")
+boxplot(recov_sum_plot~Richness,las=1,ylab="N retention (at.%)",col="gray",
+        xlab="Species richness")
+text(3.4,31,"(A)",font=2)
+boxplot(X.leaf_plot~Richness,las=1,ylab=" Relative leaf recovery (%) ",
+        col=c("dark gray","white","light gray"),xlab="Species richness")
+text(1,25,"b",font=2);text(2,25,"a",font=2);text(3,25,"ab",font=2);text(3.4,27,"(B)",font=2)
+boxplot(X.root_plot~Richness,las=1,ylab="Relative root recovery (%)",
+        col=c("dark gray","white","white"),xlab="Species richness")
+text(1,8.3,"b",font=2);text(2,8.3,"a",font=2);text(3,8.3,"a",font=2);text(3.4,8.3,"(C)",font=2)
+boxplot(X.soil_plot~Richness,las=1,ylab="Relative soil recovery (%)",
+        col=c("white","light gray","dark gray"),xlab="Species richness")
+text(1,70,"a",font=2);text(2,70,"ab",font=2);text(3,70,"b",font=2);text(3.4,98,"(D)",font=2)
+
+###Anteil biomass recovery from overall
+
+model<-lme(X.bio_plot_t~Richness,p,random=~1|block,na.action=na.omit,method="REML")
+anova(model)
+summary(glht(model,linfct = mcp(Richness="Tukey")))
+Anova(model,type="II")
+boxplot(X.bio_plot~Richness)
+
+model<-lme(X.bio_plot_t~combination,p,random=~1|block,na.action=na.omit,method="REML")
+anova(model)
+summary(glht(model,linfct = mcp(combination="Tukey")))
+Anova(model,type="II")
+boxplot(X.bio_plot~combination,las=1,ylab="percentage biomass recovery of overall recovery")
+
+
+
+#####  barplots mit Anteiliger Blatt,Wurzel,Soil recovery
+
+read.table("barplot.txt",header=T,sep="\t",dec=".")->b
+str(b)
+b<-as.matrix(b[,-1])
+barplot(b)
+>>>>>>> author_cpfaff
 
 ## Discussion
 
