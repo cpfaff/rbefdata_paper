@@ -81,11 +81,11 @@ As there is a growing demand to use and reuse available data and to embed small
 heterogeneous data into a wider context in ecology we here introduce the R
 package `rbefdata` that in combination with BEFdata exactly deals with that. We
 showcase the functionality of the package available with version 0.3.5 creating
-a workflow for integration of two datasets and discuss the rbefdata package and
-BEFdata in the light of future development on the integration of ontologies
-that will make finding data, smart merges and unit conversion possible to help
-researchers to deal with the upcoming challenges in dealing with data like
-integration of heterogeneous datasets.
+a workflow for integration of three datasets and discuss the rbefdata package
+and BEFdata in the light of future developments on the integration of
+ontologies that will make finding data, smart merges and unit conversion
+possible to help researchers to deal with the upcoming challenges in dealing
+with data like integration of heterogeneous datasets.
 
 ## Material and Methods 
 
@@ -95,29 +95,24 @@ The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal (cite Kain)
 is an open source data management platform developed within the BEF-China
 project funded by the German science foundation (DFG, FOR 891). The BEF-China
 experiment is a Biodiversity Ecosystem Functioning (BEF) experiment in the
-subtropics of China located in the provinces Jianxi and Zhejiang.  The
-BEF-China research group (www.bef-china.de) uses two main research platforms.
-An experimental forest diversity gradient of 50~ha, and 27 observational plots
-of 30x30~m each located in the Gutianshan Nature Reserve.  The observational
-plots were selected according to a crossed sampling design along tree species
+subtropics of China located in the provinces Jianxi and Zhejiang. The BEF-China
+research group (www.bef-china.de) uses two main research platforms. An
+experimental forest diversity gradient of 50~ha, and 27 observational plots of
+30x30~m each located in the Gutianshan Nature Reserve. The observational plots
+were selected according to a crossed sampling design along tree species
 richness and stand age. The data for the workflow on carbon pools stems from 22
-to 116 years consisting of 14 to 35 species (cite Bruelheide, 2010 ?).  
+to 116 years consisting of 14 to 35 species (cite Bruelheide, 2010).  
 
 The data management platform adheres to standards like the Ecological Metadata
 Language for metadata and is specialized in harmonizing small heterogeneous
-data that usually has to be dealt with in BEF research other parts of
-ecological research. The portal offers a social component where researchers can
-shop dataset and write a paper proposals. They give some additional information
-like a title and a rationale. With a proposal they can ask for access to
-datasets and provide the data owners with necessary information about the paper
-in planning. They can decide if and how they like to participate in the
-upcoming paper or if they only like to get acknowledged for providing their
-data. 
-
-If the proposal is handed in the authors will be informed that somebody likes
-to access their datasets and they can decide if they like to participate and
-how.  After all authors have granted access on is good to go with the
-`rbefdata` package. 
+data that usually has to be dealt with in BEF but also other parts of research
+in ecology. The portal offers a social component where researchers can shop
+dataset and write a paper proposals. They give some additional information like
+a title and a rationale an envisaged journal and date. With a proposal they can
+ask for access to datasets and provide the data owners with necessary
+information about the paper in planning. They data owners can decide if and how
+they like to participate in the upcoming paper or if they only like to get
+acknowledged for providing their data (cite Karin). 
 
 ### Data used
 
@@ -137,15 +132,20 @@ proposal created ...
 
 ### rbefdata 
 
-The `rbefdata` package is the companion R package to the BEFdata, data
-management platform (https://github.com/befdata/befdata). It can be installed
-from CRAN package repository and enables access to the data, meta data
-structures of the platform and provides convenient methods to pull single or
-multiple dataset into the R environment in one step for analysis. Additionally
-it offers functions that help to upload final results datasets with the script
-attached that has been used to derive the results from the original datasets.
-This provides a valuable insight into data provenance and also is a stepping
-stone for reproducible research.
+The `rbefdata` package started its development within the BEF-Cina experiment
+and is meanwhile part of the rOpenSci pacage porfolio (http://ropensci.org/).
+rOpenSci is a community driven approach to wrap all science APIs to make it
+easy to get data into R for analysis.  
+
+the companion R package to the BEFdata, data management platform
+(https://github.com/befdata/befdata). It can be installed from CRAN package
+repository and enables access to the data, meta data structures of the platform
+and provides convenient methods to pull single or multiple dataset into the R
+environment in one step for analysis. Additionally it offers functions that
+help to upload final results datasets with the script attached that has been
+used to derive the results from the original datasets.  This provides a
+valuable insight into data provenance and also is a stepping stone for
+reproducible research.
 
 ## Usecase (results)
 
