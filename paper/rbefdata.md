@@ -25,19 +25,21 @@ The story board:
 
 We face a deluge of data that scientists need to deal with in many different
 domains today. While there are already good solutions to some parts of the data
-life cycle the applicability of them to certain scientific domains often
-varies. Especially research domains with high heterogeneity in methods and data
-in general like ecology face problems in dealing with valuable concepts like
-ontologies that potentially can be used to improve or automate some of the most
-common tasks in analyses like finding relevant data, cleaning and merging of
-datasets. We here introduce the rbefata package that connects to the open
-source data management platform BEFdata that has been developed and is used
-within the BEF-China experiment. We show the use of the package in combination
-with the portal using an example workflow that integrates three datasets from
-the BEF-China experiment. We discuss the combination BEFdata and rbefdata in
-the context of the data life cycle and the state of the art data handling as
-well as we give an outlook onto upcoming features that will bring semantical
-integration based on an ontology we created. 
+life cycle the applicability of the solutions to certain scientific domains
+often varies. Especially research domains with high degree of interdisciplinary
+interactions and heterogeneity in methods and data in general like ecology face
+problems in dealing with some valuable concepts like ontologies that
+potentially can be used to improve or automate some of the most common tasks in
+analyses like finding relevant data, cleaning and merging of datasets. We here
+introduce the `rbefata` package that connects to the open source data
+management platform `BEFdata` that has been developed and is used within the
+BEF-China experiment. We show the use of the package in combination with the
+portal using an example workflow that integrates three datasets from the
+BEF-China experiment that represents an analysis that has been published
+already. We discuss the combination of the portal and `rbefdata` in the context
+of the data state of the art data handling as well as we give an outlook onto
+upcoming features that will bring semantical integration of an ontology we
+created and the smart features based on that. 
 
 ## Introduction 
 
