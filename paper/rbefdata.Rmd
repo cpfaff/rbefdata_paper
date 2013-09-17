@@ -185,13 +185,14 @@ work. This requires loading the package and to set the package options that are
 required so it works properly. Having a look into the options list reveals
 several fields that can be filled in like the URL to the BEFdata server, user
 credentials and a download folder that is used to store downloaded freeformat
-files. The most essential setting for the workflow we show here is the user
-credentials. These are used to authenticate the user against the portal to
-ensure the access to the data has been granted and to log the data access so.
-Setting the URL is not required in this case as it defaults to the BEF-China
-project instance of the BEFdata portal. If one has set up an own instance of
-the BEFdata portal, this URL needs to be changed so the package communicates
-with the right server.
+files. The tematres server related URLs are already part of upcomming features
+and will be of no special interest for the workflow we present. The most
+essential setting for the workflow we show here is the user credentials. These
+are used to authenticate the user against the portal to ensure the access to
+the data has been granted and to log the data access so.  Setting the URL is
+not required in this case as it defaults to the BEF-China project instance of
+the BEFdata portal. If one has set up an own instance of the BEFdata portal,
+this URL needs to be changed so the package communicates with the right server.
 
 ```{r require_and_setup}
 require(rbefdata)  
