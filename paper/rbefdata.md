@@ -53,39 +53,41 @@ new tools that help with the description process.
 
 While well described data helps a lot in understanding datasets and on deciding
 upon the relevance and applicability in a certain analysis there is still lots
-of manual intervention necessary after that to prepare the data for analysis.
-It may needs to be cleaned, imputed, reshaped and merged which usually takes up
-to 70% of the analysis workflow, before the smart models can be applied to the
-data to find interesting patters (cite the workflow paper of Karin and me).
-This preparation steps are not only time and labour intensive but also
-potentially error prone, especially as the complexity of analyses grows. 
+of manual intervention necessary after that to prepare the data for analysis
+(cite yourself? or xxx).  It may needs to be cleaned, imputed, reshaped and
+merged which usually takes up to 70% of the analysis workflow, before the smart
+models can be applied to the data to find interesting patters (cite the
+workflow paper of Karin and me). This preparation steps not only are time and
+labour intensive but also potentially error prone, especially as the complexity
+of analyses grows. 
 
 Ontologies, formal representations of knowledge potentially offer a
-sophisticated tool to deal with that step of data preparation. While they are
-already used in some research domains like genetics, other domains face more
-problems using it. For example in ecology, that has grown into a very
-collaborative, interdisciplinary and data intensive science over the last
-decade, to address questions on a greater temporal and spatial scale (e.g
-michener et al 2012). The data here is mainly provided by small scale studies
-spread all over the world (e.g heidorn2009 shedding light on the dark) but also
-through bigger long term projects like LTER (cite xxx), BEF-China (cite xxx),
-governmental projects and local initiatives (cite xxx). This in fact results in
-a wild growing, complex and heterogeneous data landscape in that we need to
-deal with. The application of ontologies in ecology is discussed
-controversially (cite xxx) which is mainly related to the heterogeneity of the
-research domain and it is argued that they can be a benefit but it is hard to
-set up a versatile ontology covering all necessary terms of a complex research
+sophisticated tool to deal with that step of data preparation (cite supporting
+ecology as data intensive science). While they are already used in some
+research domains like genetics (cite xxx), other domains face more problems
+using it. For example in ecology, that has grown into a very collaborative,
+interdisciplinary and data intensive science over the last decade, to address
+questions on a greater temporal and spatial scale (e.g michener et al 2012).
+The data here is mainly provided by small scale studies spread all over the
+world (e.g heidorn2009 shedding light on the dark) but also through bigger long
+term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
+and local initiatives (cite xxx). This in fact results in a wild growing,
+complex and heterogeneous data landscape in that we need to deal with. The
+application of ontologies in ecology is discussed controversially (cite xxx)
+which is mainly related to the heterogeneity of the research domain and it is
+argued that they can be a benefit, but it is hard to set up a sophisticated
+ontology covering all necessary terms and relation of a that complex research
 domain like ecology.
 
 As there is a growing demand to use and reuse available data and to embed small
 heterogeneous data into a wider context in ecology we here introduce the R
-package `rbefdata` that deals exactly with that. We showcase the functionality
-of the package available with version 0.3.5 creating a workflow for integration
-of two datasets and discuss the rbefdata package and BEFdata in the light of
-future development on the integration of ontologies that will make finding
-data, smart merges and unit conversion possible to help researchers to deal
-with the upcomming challenges in dealing with data like integration of
-heterogeneous datasets.
+package `rbefdata` that in combination with BEFdata exactly deals with that. We
+showcase the functionality of the package available with version 0.3.5 creating
+a workflow for integration of two datasets and discuss the rbefdata package and
+BEFdata in the light of future development on the integration of ontologies
+that will make finding data, smart merges and unit conversion possible to help
+researchers to deal with the upcomming challenges in dealing with data like
+integration of heterogeneous datasets.
 
 ## Material and Methods 
 
@@ -93,18 +95,25 @@ heterogeneous datasets.
 
 The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal (cite Kain)
 is an open source data management platform developed within the BEF-China
-project funded by the German science foundation (FOR 891). The BEF-China
-experiment is a Biodiversity Ecosystem Functioning experiment in the subtropics
-of China located in the provinces Jianxi and Zhejiang.
+project funded by the German science foundation (DFG, FOR 891). The BEF-China
+experiment is a Biodiversity Ecosystem Functioning (BEF) experiment in the
+subtropics of China located in the provinces Jianxi and Zhejiang.  The
+BEF-China research group (\url{www.bef-china.de}) uses two main research
+platforms. An experimental forest diversity gradient of 50~ha, and 27
+observational plots of 30x30~m each located in the Gutianshan Nature Reserve.
+The observational plots were selected according to a crossed sampling design
+along tree species richness and stand age. The data for the workflow on carbon
+pools stems from 22 to 116 years consisting of 14 to 35 species (cite
+Bruelheide, 2010).  
 
-The BEFdata platform sticks to standards like the Ecological Metadata Lanauge
+The BEFdata platform adheres to standards like the Ecological Metadata Lanauge
 for metadta and is specialized in harmonizing small heterogeneous data that
-usually has to be dealt with in biodiversity ecosystem functioning but also in
-other parts of ecological research. The portal offers a social component that
-lowers the hurdles on sharing data online and tools that help researchers to
-describe their data with metadata. 
+usually has to be dealt with in BEF but also in other parts of ecological
+research. The portal offers a social component (proposals) that lower the
+hurdles on sharing data online and tools that help researchers to describe
+their data with metadata. 
 
-As a paper proposal process integrated. You shop together datasets and
+As the paper proposal process integrated. You shop together datasets and
 afterwards create a paper proposal based on the shopped dataset. In the
 proposal you have to give information like a title for the proposal and a
 rationale describing how you intend to use the data and where and when to
@@ -115,45 +124,47 @@ with the `rbefdata` package.
 
 ### Data used
 
+The data was collected by xxx independent projects of the biodiversity -
+ecosystem functioning - China (BEF-China) research group within the years xxx ,
+yyy
+
+* this needs input from Anne Lang
+
 The data used for the presentation of this package stems from (A. Lang. ...)
-from the BEFdata portal. The data is free as it already was published.
+from the BEFdata portal. The data is free as it already was published. 
 
-### rbefdata
+### rbefdata 
 
-The rbefdata package is the companion to the open source data management
-solution BEFdata that has been developed and is used within the BEF-China
-project (FOR xxx). The package provides access to the data and the meta data
-stored on a BEFdata portal instance and offers convenient methods to pull
-multiple dataset into the R environment in one step for analysis as well as
-functions that help to upload final results as datasets with a the script
-attached that has been used to derive the results from the original data pulled
-from the portal. This is not only a good star
+The `rbefdata` package is the companion R package to the BEFdata, data
+management platform (https://github.com/befdata/befdata). It can be installed
+from CRAN and enables access to the data, meta data structures of the platform
+and provides convenient methods to pull single or multiple dataset into the R
+environment in one step for analysis. Additionaly it offers functions that help
+to upload final results datasets with the script attached that has been used to
+derive the results from the original datasets. This provides a valuable insight
+into data provenance and also is a stepping stone for reproducable research.
 
-We show a worfkow for the integration of two datasets starting from a paper
-proposal within the BEFdata platform. The analysis shown is based on alredy
-published data and will only be there for the reason to show a real usecase.
+## Results (or rather usecase)
 
-and scripts that have been used to derive the results from the original
-datasets which offers an insight into data provenance and also is a stepping
-stone for reproducable research.
 
-We showcase the package building a workflow that uses already published data.
-It shows how to pull data and metadata into the R environment for analysis and
-how the data can be put back directly after the analysis with an attached
-script which is good for data provenance. 
 
-The `rbefdata` package offers an option list that is used to determine the
-servers URLs the package contacts to to retrieve data, the download folder name
-for attached free format content of a dataset and 
 
-### Setup rbefdata 
-
-* load the package
+First steps after the paper proposal are to setup the rbefdata package for
+work. This requires loading the package first and use the options command to
+setup the necessary information the packages needs to work properly. Having a
+look into the options list reveals several fields that can be filled in. 
 
 
 ```r
 require(rbefdata)
 ```
+
+
+In this 
+showcase workflow it reaqu
+
+As 
+the package is associated
 
 
 * list options
@@ -177,7 +188,7 @@ bef.options()
 ## [1] "downloads"
 ## 
 ## $user_credentials
-## [1] ""
+## [1] "pM6L8jvrWBt0jqxcvBdm"
 ```
 
 
@@ -201,8 +212,6 @@ bef.options(user_credentials = "aölkjspoiul12")
 bef.options(url = "http://my.own.befdat.instance.com")
 ```
 
-
-## Results (or rather usecase)
 
 
 
