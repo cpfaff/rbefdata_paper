@@ -123,6 +123,40 @@ acknowledged for providing their data (cite Karin).
 
 ### The proposal
 
+
+We would like to use an already published dataset as an example to present the
+functionalities and interlinkages between the BEF China dataportal and
+rbefdata.  To test the effect of species richness on system N retention and
+tree sapling N uptake we conducted a 15N tracer experiment in a young tree
+plantation. To this end, saplings of four abundant early successional tree
+species have been planted in monocultures, in two- and four-species mixtures,
+and as individual trees. Afforestations are increasing globally to produce
+timber and pulp wood, but also to enhance ecosystem services such as carbon
+sequestration, nutrient retention, or groundwater recharge. In order to further
+optimise these services with regard to balanced nutrient (particularly
+nitrogen) cycles, it is important to know whether the use of mixtures of native
+tree species in afforestation projects promotes greater acquisition and
+retention of nitrogen compared to the currently established large-scale
+monocultures.  Experimental design and data acquisition Four species were
+chosen for the experiment: Schima superba Gardn. et Champ. and Elaeocarpus
+decipiens Hemsley (evergreen), Quercus serrata Murray and Castanea henryi
+(Skan) Rehd. et Wils. (deciduous; Yu et al. 2001). The following planting
+schemes were established in 1-mÂ² plots.  In each plot 16 saplings were planted
+in an array of four by four. Monocultures, two-species combinations and
+four-species combinations were established. The four study species provided a
+total of eleven species combinations four monocultures, six two-species
+combinations, and one four-species combination. All treatments were replicated
+four times, once in each of the four blocks. Pulse labelling with 15NH415NO3
+(98% 15N) was performed in August and in September 2009. Leaf, fine root and
+soil samples have been collected in September 2010. Samples have been analysed
+for 15N content and leaf, fine root and soil recovery have been calculated. The
+sum of the three compartement recoveries is referred to as system N retention.
+Relative leaf, root and soil recovery was calculted as percentage of system N
+retention (for a detailed description of the material and methods we refer to
+Lang et al. 2013). 
+
+...
+
 Based a proposal we start our workflow here on integrating three datasets form
 the BEFdata instance. The data was collected by xxx independent projects of the
 biodiversity - ecosystem functioning - China (BEF-China) research group within
@@ -136,7 +170,6 @@ from the BEFdata portal. The data is free as it already was published.
 proposal created ...
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
-
 
 ### rbefdata 
 
@@ -208,7 +241,7 @@ http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 
 ```{r rbefdata_get_datasets_from_proposal, cache = T}  
 # proposal id is 
-dataset_list = bef.get.datasets_for_proposal(id = 90)
+datasets = bef.get.datasets_for_proposal(id = 90)
 extract_one_dataset = dataset_list[[1]]
 ```
 
@@ -226,6 +259,127 @@ always free for download.
 ```{r rbefdata_metadata}
 attributes(dataset_list[[1]])$title
 ``` 
+
+```{r anne_script} 
+### executes the titles of the datasets downloaded
+titles = sapply(datasets, function(x) attributes(x)$title)
+titles
+names(attributes(dataset))
+
+Nretention = datasets[[1]]
+design = datasets[[2]]
+
+### to analyse the dataset of system N retention we do need information about species diversity of the plots and the
+### information about which plot is placed in which block from the design dataset. Furthermore we need values of the initial 
+### basal diameter from the dataset Nrecov
+names(Nretention)
+names(design)
+
+
+### all datasets include the column "plot_id" and can be merged by this column. We need to merge them two by two.
+
+merge(Nretention,design)->syndata
+
+
+### However, this synthesis dataset now includes many columns that we do not need. These, will thus be excluded from the
+### dataset.
+
+names(syndata)
+syndata=syndata[-c(9:14,16:41)]
+names(syndata)
+
+### check for data properties
+str(syndata)
+
+
+
+### we want to use 'species_diversity' as a factor
+
+syndata$species_diversity=as.factor(syndata$species_diversity)
+attach(syndata)
+
+### check response variables for normality and transform
+
+qqnorm(recov_plot^.5)
+qqline(recov_plot^.5,lty=2)
+syndata$recov_plot_t=syndata$recov_plot^.5
+
+qqnorm(perleaf_plot^.5)
+qqline(perleaf_plot^.5,lty=2)
+syndata$perleaf_plot_t=syndata$perleaf_plot^.5
+### All response variables have been square root transformed
+
+syndata$perroot_plot_t=syndata$perroot_plot^.5
+syndata$perbio_plot_t=syndata$perbio_plot^.5
+syndata$persoil_plot_t=syndata$persoil_plot^.5
+
+### runden aller antwortvariablen
+syndata$recov_plot_t=round(syndata$recov_plot_t, digits=2)
+syndata$perleaf_plot_t=round(syndata$perleaf_plot_t, digits=2)
+syndata$perroot_plot_t=round(syndata$perroot_plot_t, digits=2)
+syndata$persoil_plot_t=round(syndata$persoil_plot_t, digits=2)
+
+attach(syndata)
+### we want to analyse our data by linear mixed effects models. Since our plots are clumbed in space, we use block as random factor
+### we will use the packages (nlme) for model analysis and (multcomp) for post-hoc comparisons
+library(nlme)
+library(multcomp)
+library(car)
+
+####   Overall recovery/N retention 
+
+model1<-lme(recov_plot_t~gbd_T0.mm.+species_diversity,syndata,random=~1|block,na.action=na.omit,method="REML")
+anova(model1)
+summary(glht(model,linfct = mcp(species_diversity="Tukey")))
+##To adjust for the unbalanced experimental design, Anova Type II (package “car” (Fox & Weisberg 2011)) was used to test for main effects
+model1c=Anova(model1,type="II" )
+model1c
+### model check
+plot(model1,resid(.)~fitted(.))
+plot(model1,recov_plot_t~fitted(.))
+
+#### Model2 percentage leaf recovery of plot recovery 
+
+model2<-lme(perleaf_plot_t~species_diversity,syndata,random=~1|block,method="REML")
+anova(model2)
+summary(glht(model2,linfct = mcp(species_diversity="Tukey")))
+Anova(model2,type="II")
+
+plot(model2,resid(.)~fitted(.))
+plot(model,perleaf_plot_t~fitted(.))
+
+
+### Model3 percentage root recovery of overall recovery
+
+model3<-lme(perroot_plot_t~species_diversity,syndata,random=~1|block,method="REML")
+anova(model3)
+summary(glht(model,linfct = mcp(species_diversity="Tukey")))
+Anova(model,type="II")
+
+
+### Model 4 percentage soil recovery of overall recovery
+
+model4<-lme(persoil_plot_t~species_diversity,syndata,random=~1|block,method="REML")
+anova(model4)
+summary(glht(model,linfct = mcp(species_diversity="Tukey")))
+Anova(model4,type="II")
+
+#### Figure
+par(mfrow=c(2,2),bty="l")
+boxplot(recov_plot~species_diversity,las=1,ylab="N retention (at.%)",col="gray",
+        xlab="Species richness")
+text(3.4,31,"(A)",font=2)
+boxplot(perleaf_plot~species_diversity,las=1,ylab=" Relative leaf recovery (%) ",
+        col=c("dark gray","white","light gray"),xlab="Species richness")
+text(1,25,"b",font=2);text(2,25,"a",font=2);text(3,25,"ab",font=2);text(3.4,27,"(B)",font=2)
+boxplot(perroot_plot~species_diversity,las=1,ylab="Relative root recovery (%)",
+        col=c("dark gray","white","white"),xlab="Species richness")
+text(1,8.3,"b",font=2);text(2,8.3,"a",font=2);text(3,8.3,"a",font=2);text(3.4,8.3,"(C)",font=2)
+boxplot(persoil_plot~species_diversity,las=1,ylab="Relative soil recovery (%)",
+        col=c("white","light gray","dark gray"),xlab="Species richness")
+text(1,70,"a",font=2);text(2,70,"ab",font=2);text(3,70,"b",font=2);text(3.4,98,"(D)",font=2)
+```
+
 
 ## Discussion
 
