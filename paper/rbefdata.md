@@ -118,13 +118,13 @@ necessary information about the paper. The data owners then can decide if and
 how they like to participate in the upcoming paper or if they only like to get
 acknowledged for providing their data (cite Karin).
 
+
 ### The proposal
 
-
-We would like to use an already published dataset as an example to present the
+We use an already published dataset as an example to present the
 functionalities and interlinkages between the BEF China dataportal and
-rbefdata.  To test the effect of species richness on system N retention and
-tree sapling N uptake we conducted a 15N tracer experiment in a young tree
+rbefdata. To test the effect of species richness on system N retention and tree
+sapling N uptake we conducted a 15N tracer experiment in a young tree
 plantation. To this end, saplings of four abundant early successional tree
 species have been planted in monocultures, in two- and four-species mixtures,
 and as individual trees. Afforestations are increasing globally to produce
@@ -152,19 +152,7 @@ Relative leaf, root and soil recovery was calculted as percentage of system N
 retention (for a detailed description of the material and methods we refer to
 Lang et al. 2013). 
 
-...
-
-Based a proposal we start our workflow here on integrating three datasets form
-the BEFdata instance. The data was collected by xxx independent projects of the
-biodiversity - ecosystem functioning - China (BEF-China) research group within
-the years xxx , yyy
-
-* this needs input from Anne Lang
-
-The data used for the presentation of this package stems from (A. Lang. ...)
-from the BEFdata portal. The data is free as it already was published. 
-
-proposal created ...
+* figure shows the proposal page
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
 
@@ -187,19 +175,21 @@ also is a stepping stone for reproducible research.
 
 ## Usecase (results)
 
-First steps after the paper proposal are to setup the rbefdata package for
-work. This requires loading the package and to set the package options that are
-required so it works properly. Having a look into the options list reveals
-several fields that can be filled in like the URL to the BEFdata server, user
-credentials and a download folder that is used to store downloaded freeformat
-files. The tematres server related URLs are already part of upcomming features
-and will be of no special interest for the workflow we present. The most
-essential setting for the workflow we show here is the user credentials. These
-are used to authenticate the user against the portal to ensure the access to
-the data has been granted and to log the data access so.  Setting the URL is
-not required in this case as it defaults to the BEF-China project instance of
-the BEFdata portal. If one has set up an own instance of the BEFdata portal,
-this URL needs to be changed so the package communicates with the right server.
+The next step after the an accepted paper proposal is to setup the `rbefdata`
+package. This requires loading the package and setting the required package
+options. Having a look into the options list reveals several fields that can be
+filled in, like the URL to the BEFdata server, user credentials and a download
+folder name that is used to store downloaded freeformat files. The tematres
+server related URLs in the options are part of upcomming features that are non
+fully functional on the time of writing. 
+
+The most essential setting for the workflow we present here is the user
+credentials. These are used to authenticate the user against the portal to
+ensure the access to the data has been granted and to log the data access.
+Setting the URL is not required here as it defaults to the BEF-China project
+instance of the BEFdata portal that we retrieve data from. If one has set up an
+own instance of the BEFdata portal, this URL needs to be changed so the package
+communicates with the right server (see box below).
 
 
 ```r
@@ -253,11 +243,11 @@ bef.options(url = "http://my.own.befdata.instance.com")
 
 
 
-After setting up the `rbefdata` package we can start right away using the data
-from the proposal. The proposal download method is used for that which we need
-to provide with ID of the proposal. It draws all associated datasets in one
-step into the R environment so we can work with it. The ID of the proposal can
-be found in its URL.
+After the setup of the `rbefdata` package we can start right away using data
+from the proposal. A (proposal) download function is used for that which draws
+all associated datasets of the proposal into the R environment in one single
+step (see blow). The functin reuires the ID of the proposal that can be found
+in the URL of the proposal on the BEFdata portal (see blow).
 
 ```
 # the id is 90
@@ -276,12 +266,12 @@ extract_one_dataset = datasets[[1]]
   - after download (attributes())
   - in general bef.get.metadata_for(dataset = id) 
 
-As the BEFdata portal provides metadata via EML we also make use of it within
-the rbefdata package. Each dataset is associated with its metadata available on
-the portal on download. It can be extracted using the built-in R function
-`attributes()` like shown in code box xxx. As this requires access to the
-dataset, there is also a function especially to only draw metadata with is
-always free for download. 
+As the BEFdata portal provides metadata via EML standard, we also make use of
+that within rbefdata. Each dataset on download is associated with the metadata
+provided by its authors. This information can be extracted using the built-in R
+function `attributes()` (see code box below). As this requires granted access
+rights to the dataset, there is also a function especially to only draw the
+metadata which is always free for download. 
 
 
 ```r
@@ -323,6 +313,17 @@ names(attributes(datasets[[1]]))
 ## [17] "related_material"         "columns"
 ```
 
+```r
+
+# only get metadtata by dataset id
+bef.portal.get.metadata(dataset = 335)$title
+```
+
+```
+## [1] "Competition of saplings for N -Pilot- system 15N retention"
+```
+
+
 
 * both datasets contain a `plot_id` that can be used for merge
   - extract into separate datasets
@@ -332,6 +333,7 @@ names(attributes(datasets[[1]]))
   species diversity of the plots and the information about which plot is placed
   in which block from the design dataset. Furthermore we need values of the
   initial basal diameter from the dataset Nrecov 
+
 
 
 ```r
@@ -376,6 +378,7 @@ names(design)
 
 * However, this synthesis dataset now includes many columns that we do not
   need. Thus they will be excluded in a synthesis dataset we create.
+
 
 
 ```r
@@ -476,9 +479,11 @@ attach(syndata)
 ```
 
 
+
 * we want to analyse our data by linear mixed effects models. Since our plots
   are clumbed in space, we use block as random factor we will use the we will 
   use the packages (nlme) for model analysis and (multcomp) for post-hoc comparisons
+
 
 
 ```
@@ -486,6 +491,7 @@ attach(syndata)
 ## Loading required package: splines Loading required package: MASS Loading
 ## required package: nnet
 ```
+
 
 
 
@@ -552,7 +558,6 @@ model1c
 
 # vizual check plot(model1,resid(.)~fitted(.))
 # plot(model1,recov_plot_t~fitted(.))
-
 
 #### Model2 percentage leaf recovery of plot recovery
 
@@ -640,9 +645,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.600      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.731      0.289    2.53   0.0288 * 
-## 4 - 2 == 0    0.130      0.278    0.47   0.8827   
+## 2 - 1 == 0    0.600      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.731      0.289    2.53    0.029 * 
+## 4 - 2 == 0    0.130      0.278    0.47    0.883   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -801,68 +806,72 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: stem morphology could not be fit on page. It will not be plotted.
-## Warning: competitive neighbourhood could not be fit on page. It will not
+## Warning: BEF conference 2011 could not be fit on page. It will not be
+## plotted. Warning: replanted species could not be fit on page. It will not
 ## be plotted. Warning: Gram-negative bacteria could not be fit on page. It
-## will not be plotted. Warning: wood perforation plates could not be fit on
-## page. It will not be plotted. Warning: cadmium at wavelength 228nm could
-## not be fit on page. It will not be plotted. Warning: coefficient of
-## variation could not be fit on page. It will not be plotted. Warning:
-## geomorphology could not be fit on page. It will not be plotted. Warning:
-## intraspecific diversity could not be fit on page. It will not be plotted.
-## Warning: leaf anatomy could not be fit on page. It will not be plotted.
-## Warning: leaf physical resistance could not be fit on page. It will not be
-## plotted. Warning: microbial biomass could not be fit on page. It will not
-## be plotted. Warning: phylogenetic diversity could not be fit on page. It
-## will not be plotted. Warning: rarefied diversity could not be fit on page.
-## It will not be plotted. Warning: secondary compounds could not be fit on
-## page. It will not be plotted. Warning: standard deviation could not be fit
-## on page. It will not be plotted. Warning: trait dissimilarity could not be
-## fit on page. It will not be plotted. Warning: tree age could not be fit on
-## page. It will not be plotted. Warning: wood bending could not be fit on
-## page. It will not be plotted. Warning: wood compression could not be fit
-## on page. It will not be plotted. Warning: wood shrinkage could not be fit
-## on page. It will not be plotted. Warning: wood stretching could not be fit
-## on page. It will not be plotted. Warning: wood toughness could not be fit
-## on page. It will not be plotted. Warning: aboveground biomass could not be
-## fit on page. It will not be plotted. Warning: aeromorphic organic layer
-## could not be fit on page. It will not be plotted. Warning: BEF China
-## projects could not be fit on page. It will not be plotted. Warning: cavity
-## nesting hymenoptera could not be fit on page. It will not be plotted.
+## will not be plotted. Warning: Gram-positive bacteria could not be fit on
+## page. It will not be plotted. Warning: shannon diversity could not be fit
+## on page. It will not be plotted. Warning: tree performance could not be
+## fit on page. It will not be plotted. Warning: wood perforation plates
+## could not be fit on page. It will not be plotted. Warning: base saturation
+## could not be fit on page. It will not be plotted. Warning: cadmium at
+## wavelength 214nm could not be fit on page. It will not be plotted.
+## Warning: cadmium at wavelength 228nm could not be fit on page. It will not
+## be plotted. Warning: digital data acquisition could not be fit on page. It
+## will not be plotted. Warning: experimental design could not be fit on
+## page. It will not be plotted. Warning: gene diversity could not be fit on
+## page. It will not be plotted. Warning: geomorphology could not be fit on
+## page. It will not be plotted. Warning: leaf physical resistance could not
+## be fit on page. It will not be plotted. Warning: phylogenetic diversity
+## could not be fit on page. It will not be plotted. Warning: rarefied
+## diversity could not be fit on page. It will not be plotted. Warning:
+## response variable could not be fit on page. It will not be plotted.
+## Warning: secondary compounds could not be fit on page. It will not be
+## plotted. Warning: standard deviation could not be fit on page. It will not
+## be plotted. Warning: tree identifier could not be fit on page. It will not
+## be plotted. Warning: wood bending could not be fit on page. It will not be
+## plotted. Warning: wood shearing could not be fit on page. It will not be
+## plotted. Warning: wood shrinkage could not be fit on page. It will not be
+## plotted. Warning: wood stretching could not be fit on page. It will not be
+## plotted. Warning: aboveground biomass could not be fit on page. It will
+## not be plotted. Warning: aeromorphic organic layer could not be fit on
+## page. It will not be plotted. Warning: basal area increment could not be
+## fit on page. It will not be plotted. Warning: branch water potential could
+## not be fit on page. It will not be plotted. Warning: cavity nesting
+## hymenoptera could not be fit on page. It will not be plotted. Warning:
+## coarse root density could not be fit on page. It will not be plotted.
 ## Warning: community similarity could not be fit on page. It will not be
 ## plotted. Warning: community weighted mean trait could not be fit on page.
 ## It will not be plotted. Warning: crown projection area could not be fit on
-## page. It will not be plotted. Warning: eco-physiologic traits could not be
-## fit on page. It will not be plotted. Warning: ecosystem functioning could
-## not be fit on page. It will not be plotted. Warning: experimental
-## treatment could not be fit on page. It will not be plotted. Warning:
-## genetic autocorrelation could not be fit on page. It will not be plotted.
-## Warning: land use history could not be fit on page. It will not be
-## plotted. Warning: leaf longevity could not be fit on page. It will not be
-## plotted. Warning: litter biomass could not be fit on page. It will not be
-## plotted. Warning: matching status could not be fit on page. It will not be
-## plotted. Warning: mineralization could not be fit on page. It will not be
-## plotted. Warning: mixed models could not be fit on page. It will not be
-## plotted. Warning: multi-trophic interactions could not be fit on page. It
-## will not be plotted. Warning: nitrogen cycling could not be fit on page.
-## It will not be plotted. Warning: non-random extinction could not be fit on
-## page. It will not be plotted. Warning: parasitoids could not be fit on
-## page. It will not be plotted. Warning: phylogenetic distinctness could not
-## be fit on page. It will not be plotted. Warning: phytophagous insects
-## could not be fit on page. It will not be plotted. Warning: research
-## proposals could not be fit on page. It will not be plotted. Warning:
-## respiration could not be fit on page. It will not be plotted. Warning:
-## seedling could not be fit on page. It will not be plotted. Warning: slope
-## form could not be fit on page. It will not be plotted. Warning: social
-## status could not be fit on page. It will not be plotted. Warning:
-## specialization could not be fit on page. It will not be plotted. Warning:
-## species identity variable could not be fit on page. It will not be
-## plotted. Warning: temperature could not be fit on page. It will not be
-## plotted. Warning: topography could not be fit on page. It will not be
-## plotted. Warning: vegetation stratum could not be fit on page. It will not
-## be plotted. Warning: wood ground tissue could not be fit on page. It will
-## not be plotted. Warning: wood mechanics could not be fit on page. It will
-## not be plotted.
+## page. It will not be plotted. Warning: ecosystem functioning could not be
+## fit on page. It will not be plotted. Warning: experimental treatment could
+## not be fit on page. It will not be plotted. Warning: forest canopy could
+## not be fit on page. It will not be plotted. Warning: functional trait
+## could not be fit on page. It will not be plotted. Warning: hunting type
+## could not be fit on page. It will not be plotted. Warning: laboratories
+## could not be fit on page. It will not be plotted. Warning: leaf longevity
+## could not be fit on page. It will not be plotted. Warning: matching status
+## could not be fit on page. It will not be plotted. Warning: mineralisation
+## could not be fit on page. It will not be plotted. Warning: mixed models
+## could not be fit on page. It will not be plotted. Warning: mycorrhiza
+## could not be fit on page. It will not be plotted. Warning: phylogenetic
+## distinctness could not be fit on page. It will not be plotted. Warning:
+## phytophagous insects could not be fit on page. It will not be plotted.
+## Warning: position could not be fit on page. It will not be plotted.
+## Warning: rainfall simulator could not be fit on page. It will not be
+## plotted. Warning: research proposals could not be fit on page. It will not
+## be plotted. Warning: simpson diversity could not be fit on page. It will
+## not be plotted. Warning: slope form could not be fit on page. It will not
+## be plotted. Warning: snag height could not be fit on page. It will not be
+## plotted. Warning: specialization could not be fit on page. It will not be
+## plotted. Warning: species identity variable could not be fit on page. It
+## will not be plotted. Warning: topography could not be fit on page. It will
+## not be plotted. Warning: vegetation stratum could not be fit on page. It
+## will not be plotted. Warning: Weibull distribution could not be fit on
+## page. It will not be plotted. Warning: wood ground tissue could not be fit
+## on page. It will not be plotted. Warning: wood mechanics could not be fit
+## on page. It will not be plotted. Warning: wood porosity could not be fit
+## on page. It will not be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 

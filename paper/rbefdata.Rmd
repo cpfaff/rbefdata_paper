@@ -121,13 +121,13 @@ necessary information about the paper. The data owners then can decide if and
 how they like to participate in the upcoming paper or if they only like to get
 acknowledged for providing their data (cite Karin).
 
+
 ### The proposal
 
-
-We would like to use an already published dataset as an example to present the
+We use an already published dataset as an example to present the
 functionalities and interlinkages between the BEF China dataportal and
-rbefdata.  To test the effect of species richness on system N retention and
-tree sapling N uptake we conducted a 15N tracer experiment in a young tree
+rbefdata. To test the effect of species richness on system N retention and tree
+sapling N uptake we conducted a 15N tracer experiment in a young tree
 plantation. To this end, saplings of four abundant early successional tree
 species have been planted in monocultures, in two- and four-species mixtures,
 and as individual trees. Afforestations are increasing globally to produce
@@ -155,19 +155,7 @@ Relative leaf, root and soil recovery was calculted as percentage of system N
 retention (for a detailed description of the material and methods we refer to
 Lang et al. 2013). 
 
-...
-
-Based a proposal we start our workflow here on integrating three datasets form
-the BEFdata instance. The data was collected by xxx independent projects of the
-biodiversity - ecosystem functioning - China (BEF-China) research group within
-the years xxx , yyy
-
-* this needs input from Anne Lang
-
-The data used for the presentation of this package stems from (A. Lang. ...)
-from the BEFdata portal. The data is free as it already was published. 
-
-proposal created ...
+* figure shows the proposal page
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
 
@@ -190,19 +178,21 @@ also is a stepping stone for reproducible research.
 
 ## Usecase (results)
 
-First steps after the paper proposal are to setup the rbefdata package for
-work. This requires loading the package and to set the package options that are
-required so it works properly. Having a look into the options list reveals
-several fields that can be filled in like the URL to the BEFdata server, user
-credentials and a download folder that is used to store downloaded freeformat
-files. The tematres server related URLs are already part of upcomming features
-and will be of no special interest for the workflow we present. The most
-essential setting for the workflow we show here is the user credentials. These
-are used to authenticate the user against the portal to ensure the access to
-the data has been granted and to log the data access so.  Setting the URL is
-not required in this case as it defaults to the BEF-China project instance of
-the BEFdata portal. If one has set up an own instance of the BEFdata portal,
-this URL needs to be changed so the package communicates with the right server.
+The next step after the an accepted paper proposal is to setup the `rbefdata`
+package. This requires loading the package and setting the required package
+options. Having a look into the options list reveals several fields that can be
+filled in, like the URL to the BEFdata server, user credentials and a download
+folder name that is used to store downloaded freeformat files. The tematres
+server related URLs in the options are part of upcomming features that are non
+fully functional on the time of writing. 
+
+The most essential setting for the workflow we present here is the user
+credentials. These are used to authenticate the user against the portal to
+ensure the access to the data has been granted and to log the data access.
+Setting the URL is not required here as it defaults to the BEF-China project
+instance of the BEFdata portal that we retrieve data from. If one has set up an
+own instance of the BEFdata portal, this URL needs to be changed so the package
+communicates with the right server (see box below).
 
 ```{r require_and_setup}
 require(rbefdata)  
@@ -228,11 +218,11 @@ bef.options("url" = "http://my.own.befdata.instance.com")
 source("secrets.R") 
 ```
 
-After setting up the `rbefdata` package we can start right away using the data
-from the proposal. The proposal download method is used for that which we need
-to provide with ID of the proposal. It draws all associated datasets in one
-step into the R environment so we can work with it. The ID of the proposal can
-be found in its URL.
+After the setup of the `rbefdata` package we can start right away using data
+from the proposal. A (proposal) download function is used for that which draws
+all associated datasets of the proposal into the R environment in one single
+step (see blow). The functin reuires the ID of the proposal that can be found
+in the URL of the proposal on the BEFdata portal (see blow).
 
 ```
 # the id is 90
@@ -249,12 +239,12 @@ extract_one_dataset = datasets[[1]]
   - after download (attributes())
   - in general bef.get.metadata_for(dataset = id) 
 
-As the BEFdata portal provides metadata via EML we also make use of it within
-the rbefdata package. Each dataset is associated with its metadata available on
-the portal on download. It can be extracted using the built-in R function
-`attributes()` like shown in code box xxx. As this requires access to the
-dataset, there is also a function especially to only draw metadata with is
-always free for download. 
+As the BEFdata portal provides metadata via EML standard, we also make use of
+that within rbefdata. Each dataset on download is associated with the metadata
+provided by its authors. This information can be extracted using the built-in R
+function `attributes()` (see code box below). As this requires granted access
+rights to the dataset, there is also a function especially to only draw the
+metadata which is always free for download. 
 
 ```{r rbefdata_metadata} 
 # extract title of one dataset
@@ -265,8 +255,12 @@ titles = sapply(datasets, function(x) attributes(x)$title)
 titles 
 
 # other metadata available
-names(attributes(datasets[[1]]))
+names(attributes(datasets[[1]])) 
+
+# only get metadtata by dataset id
+bef.portal.get.metadata(dataset = 335)$title
 ``` 
+
 
 * both datasets contain a `plot_id` that can be used for merge
   - extract into separate datasets
@@ -276,6 +270,7 @@ names(attributes(datasets[[1]]))
   species diversity of the plots and the information about which plot is placed
   in which block from the design dataset. Furthermore we need values of the
   initial basal diameter from the dataset Nrecov 
+
 
 ```{r anne_script_seprate_datasets} 
 # extract into separate datasets
@@ -289,6 +284,7 @@ names(design)
 
 * However, this synthesis dataset now includes many columns that we do not
   need. Thus they will be excluded in a synthesis dataset we create.
+
 
 ```{r anne_script_two} 
 # the synthesis dataset
@@ -330,15 +326,18 @@ syndata$persoil_plot_t=round(syndata$persoil_plot_t, digits=2)
 attach(syndata)
 ```
 
+
 * we want to analyse our data by linear mixed effects models. Since our plots
   are clumbed in space, we use block as random factor we will use the we will 
   use the packages (nlme) for model analysis and (multcomp) for post-hoc comparisons
+
 
 ```{r anne_script_load_packages, echo = F} 
 library(nlme)
 library(multcomp)
 library(car)
 ```
+
 
 ```{r anne_script_model_tests}
 #### Model one Overall recovery/N retention  
@@ -355,7 +354,6 @@ model1c
 # vizual check
 # plot(model1,resid(.)~fitted(.))
 # plot(model1,recov_plot_t~fitted(.))
-
 
 #### Model2 percentage leaf recovery of plot recovery 
 
