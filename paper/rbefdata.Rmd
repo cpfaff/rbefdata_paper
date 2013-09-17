@@ -334,7 +334,7 @@ attach(syndata)
   are clumbed in space, we use block as random factor we will use the we will 
   use the packages (nlme) for model analysis and (multcomp) for post-hoc comparisons
 
-```{r anne_script_load_packages} 
+```{r anne_script_load_packages, echo = F} 
 library(nlme)
 library(multcomp)
 library(car)
