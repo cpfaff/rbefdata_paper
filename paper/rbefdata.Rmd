@@ -229,17 +229,33 @@ attributes(dataset_list[[1]])$title
 
 ## Discussion
 
-As there is a growind demand to effectively reuse available data this puts much
-pressure on the development of solutions that helps researchs not only to find
-but also integrate heterogeneous small data into a wider context of different
-analyses. 
+* General discussion 
+  - high need to effective use/reuse data 
+  - relevant data needs to be simply detectable 
 
-example to integrate datasets (cite xxx, data intensive science). The
-combination of BEFdata and the rbefdata package privides partially solutions to
-the data lifecycle.  We recently stared to develop an ontology using a tematres
-server containing knowledge extracted from portals that deal with data
-management for ecological research. The tematres server offers an API so all
-the contained terms can be accessed by the upcoming version of rbefdata 
+* BEFdata and rbefdata 
+  - in combination provide a solution to 
+    + data storage
+    + describing data with metadata
+    + collaboration and data sharing 
+    + simply pull data into analysis software and push data back
+    + data provenance by attaching R scripts to uploads
+  - will provide solution with next versions 
+    + easier finding relevant data 
+    + smart merges (including unit conversions)
+
+As there is a growing demand to effectively reuse available data this puts much
+pressure on the development of solutions that help researchers not only to find
+but also to integrate heterogeneous small data into a wider context of in
+different analyses (cite xxx, data intensive science, long tail). The
+combination of BEFdata and the rbefdata package provides a solutions to a one
+part of the data life cycle and especially introduces a solution to deal with
+high heterogeneous data.
+
+We recently stared to develop an ontology using a tematres server containing
+knowledge extracted from portals that deal with data management for ecological
+research. The tematres server offers an API so all the contained terms can be
+accessed by the upcoming version of rbefdata 
 
 The formalization developed is and will be based on the knowledge used in
 biodiversity research. Thus we will here discuss the software combination
@@ -252,7 +268,6 @@ contain top terms of the ontology. The tagging will be reflected in the API and
 can thus be simply queried to use the information within the R package.  Using
 the knowledge about the content of a column in the R package will enable us to
 do support smart merges that work 
-
 
 `tematres` ([homepage](http://www.vocabularyserver.com/))into BEFdata and the
 rbefdata package so they play well together semantically.
