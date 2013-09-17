@@ -141,14 +141,15 @@ proposal created ...
 
 The `rbefdata` package is the companion R package to the BEFdata, data
 management platform (https://github.com/befdata/befdata). It can be installed
-from CRAN and enables access to the data, meta data structures of the platform
-and provides convenient methods to pull single or multiple dataset into the R
-environment in one step for analysis. Additionaly it offers functions that help
-to upload final results datasets with the script attached that has been used to
-derive the results from the original datasets. This provides a valuable insight
-into data provenance and also is a stepping stone for reproducable research.
+from CRAN package repository and enables access to the data, meta data
+structures of the platform and provides convenient methods to pull single or
+multiple dataset into the R environment in one step for analysis. Additionaly
+it offers functions that help to upload final results datasets with the script
+attached that has been used to derive the results from the original datasets.
+This provides a valuable insight into data provenance and also is a stepping
+stone for reproducable research.
 
-## Results (or rather usecase)
+## Usecase (results)
 
 
 
@@ -158,23 +159,19 @@ work. This requires loading the package first and use the options command to
 setup the necessary information the packages needs to work properly. Having a
 look into the options list reveals several fields that can be filled in. 
 
+For the case of this workflow it only requires to setting the user credentials
+that each user can find on his BEFdata portal profile page. The user
+credentials are used to authenticate the user against the portal to make sure
+the access to the data has been granted and to log the download process. The
+URL to a portal needs only to be set when an own instance of the BEFdata portal
+was set up, so the package will communicate with the right portal then. The
+download folder is used to store free format attachments of data sets like
+scripts that are downloaded from within R. 
+
 
 ```r
 require(rbefdata)
-```
-
-
-In this 
-showcase workflow it reaqu
-
-As 
-the package is associated
-
-
-* list options
-
-
-```r
+# options list
 bef.options()
 ```
 
@@ -195,11 +192,9 @@ bef.options()
 ## [1] "pM6L8jvrWBt0jqxcvBdm"
 ```
 
-
-* query options
-
-
 ```r
+
+# querry single options
 bef.options("url")
 ```
 
@@ -207,28 +202,35 @@ bef.options("url")
 ## [1] "http://china.befdata.biow.uni-leipzig.de"
 ```
 
-
-* set options 
-
-
 ```r
+
+# set options
 bef.options(user_credentials = "aölkjspoiul12")
 bef.options(url = "http://my.own.befdat.instance.com")
 ```
 
 
-
-
-
-For the workflow we start right after the access to the data has been approved
-by all data owners. We use the ID of the proposal to pull all datastes in one
-step into the R statistics environment (see below). 
+After setup the `rbefdata` package we start right away from the proposal
+created to pull in all the associated datasets in one step into the R
+environment. We use the proposal download command of the package for this that
+we need to provide with the ID of the proposal. The proposal ID can be found in
+the URL of the proposal (here 90). 
 
 
 ```r
-require(rbefdata)
 dataset_list = bef.get.datasets_for_proposal(id = 90)
+```
+
+```
+## Error: Couldn't resolve host 'my.own.befdat.instance.com'
+```
+
+```r
 extract_one_dataset = dataset_list[[1]]
+```
+
+```
+## Error: object 'dataset_list' not found
 ```
 
 
@@ -247,11 +249,8 @@ attributes(dataset_list[[1]])$title
 ```
 
 ```
-## [1] "Competition of saplings for N -Pilot- system 15N retention"
+## Error: object 'dataset_list' not found
 ```
-
-
-* write your scripts (showcase here comes annes input)
 
 
 ## Discussion
