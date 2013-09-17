@@ -1,8 +1,6 @@
 
 
 
-## Abstract 
-
 The story board:
 
 * Huge amount of data available (deluge of data)
@@ -21,6 +19,22 @@ The story board:
         + rbefdata (Find and understand and analyse data as well as reuse of data). 
 * Maybe also shorlty introduce the data lifecycle and use it to show to which 
   parts of that cycle we offer soutions.
+
+
+
+## Abstract 
+
+We face a deluge of data today that scientists need to deal with in many
+different domains. While there are already many good solutions to some parts of
+the data life cycle the applicability of the solutions to a certain scientific
+domain often varies. Especially research domains with high heterogeneity like
+ecology face problems in dealing with highly valuable concepts like ontologies
+that potentially can be used to automate some of the most common steps in
+ecological analyses like cleaning and merging of data. We her introduce an R
+package called rbefata that together with the data management platform BEFdata
+offers a solution to that problem. We discuss the package in the light of
+upcoming developments in the BEFdata platforms where a ontolgy will be
+integrated.
 
 ## Introduction 
 
@@ -105,21 +119,21 @@ along tree species richness and stand age. The data for the workflow on carbon
 pools stems from 22 to 116 years consisting of 14 to 35 species (cite
 Bruelheide, 2010).  
 
-The BEFdata platform adheres to standards like the Ecological Metadata Lanauge
-for metadta and is specialized in harmonizing small heterogeneous data that
-usually has to be dealt with in BEF but also in other parts of ecological
-research. The portal offers a social component (proposals) that lower the
-hurdles on sharing data online and tools that help researchers to describe
-their data with metadata. 
+The data management platform adheres to standards like the Ecological Metadata
+Language for metadata and is specialized in harmonizing small heterogeneous
+data that usually has to be dealt with in BEF research other parts of
+ecological research. The portal offers a social component where researchers can
+shop dataset and write a paper proposals. They give some additional information
+like a title and a rationale. With a proposal they can ask for access to
+datasets and provide the data owners with necessary information about the paper
+in planning. They can decide if and how they like to participate in the
+upcoming paper or if they only like to get acknowledged for providing their
+data. 
 
-As the paper proposal process integrated. You shop together datasets and
-afterwards create a paper proposal based on the shopped dataset. In the
-proposal you have to give information like a title for the proposal and a
-rationale describing how you intend to use the data and where and when to
-publish the results. If the proposal is handed in the authors will be informed
-that somebody likes to access their datasets and they can decide if they like
-to participate and how.  After all authors have granted access on is good to go
-with the `rbefdata` package. 
+If the proposal is handed in the authors will be informed that somebody likes
+to access their datasets and they can decide if they like to participate and
+how.  After all authors have granted access on is good to go with the
+`rbefdata` package. 
 
 ### Data used
 
