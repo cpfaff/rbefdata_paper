@@ -113,20 +113,20 @@ also very valuable to use in any other scientific domain that needs to deal
 with complex small and heterogeneous data. 
 
 The portal offers a social component where researchers can shop datasets and
-write a paper proposals. They give need to give some additional information
-like a title, a rationale, an envisaged journal and date. With a proposal a
-researcher can ask for access to datasets and provide the data owners with
-necessary information about the paper in planning. The data owners can decide
-if and how they like to participate in the upcoming paper or if they only like
-to get acknowledged for providing their data (cite Karin). Based a proposal we
-start our workflow here on integrating three datasets form the BEFdata
-instance.
+write a paper proposals based on the datasets in the shopping cart. In the
+process of creating a proposal some information like a title, a rationale, an
+envisaged journal and date needs to be provided. Sending in a proposal a
+researcher asks for access to the datasets and provides the data owners with
+necessary information about the paper. The data owners then can decide if and
+how they like to participate in the upcoming paper or if they only like to get
+acknowledged for providing their data (cite Karin).
 
 ### The proposal
 
-The data was collected by xxx independent projects of the biodiversity -
-ecosystem functioning - China (BEF-China) research group within the years xxx ,
-yyy
+Based a proposal we start our workflow here on integrating three datasets form
+the BEFdata instance. The data was collected by xxx independent projects of the
+biodiversity - ecosystem functioning - China (BEF-China) research group within
+the years xxx , yyy
 
 * this needs input from Anne Lang
 
@@ -140,20 +140,20 @@ proposal created ...
 
 ### rbefdata 
 
-The `rbefdata` package started its development within the BEF-Cina experiment
-and is meanwhile part of the rOpenSci pacage porfolio (http://ropensci.org/).
-rOpenSci is a community driven approach to wrap all science APIs to make it
-easy to get data into R for analysis.  
+The `rbefdata` package started its development within the BEF-Cina experiment.
+Meanwhile it is part of the rOpenSci package porfolio (http://ropensci.org/),
+which is a community driven approach to wrap all science APIs, to make it easy
+to pull data from different repositories into R for analysis. 
 
-the companion R package to the BEFdata, data management platform
-(https://github.com/befdata/befdata). It can be installed from CRAN package
-repository and enables access to the data, meta data structures of the platform
-and provides convenient methods to pull single or multiple dataset into the R
-environment in one step for analysis. Additionally it offers functions that
-help to upload final results datasets with the script attached that has been
-used to derive the results from the original datasets.  This provides a
-valuable insight into data provenance and also is a stepping stone for
-reproducible research.
+The package can be installed from the CRAN package repository
+(https://github.com/befdata/befdata) and enables access to the data, meta data
+structures of the platform and provides convenient methods to pull single or
+multiple dataset into the R environment in one step for analysis.  
+
+Additionally it offers functions that help to upload final results datasets
+with the script attached that has been used to derive the results from the
+original datasets which provides a valuable insight into data provenance and
+also is a stepping stone for reproducible research.
 
 ## Usecase (results)
 
