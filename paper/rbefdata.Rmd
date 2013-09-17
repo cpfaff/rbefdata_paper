@@ -326,15 +326,21 @@ syndata$persoil_plot_t=syndata$persoil_plot^.5
 syndata$recov_plot_t=round(syndata$recov_plot_t, digits=2)
 syndata$perleaf_plot_t=round(syndata$perleaf_plot_t, digits=2)
 syndata$perroot_plot_t=round(syndata$perroot_plot_t, digits=2)
-syndata$persoil_plot_t=round(syndata$persoil_plot_t, digits=2)
-
+syndata$persoil_plot_t=round(syndata$persoil_plot_t, digits=2) 
 attach(syndata)
-### we want to analyse our data by linear mixed effects models. Since our plots are clumbed in space, we use block as random factor
-### we will use the packages (nlme) for model analysis and (multcomp) for post-hoc comparisons
+```
+
+* we want to analyse our data by linear mixed effects models. Since our plots
+  are clumbed in space, we use block as random factor we will use the we will 
+  use the packages (nlme) for model analysis and (multcomp) for post-hoc comparisons
+
+```{r anne_script_load_packages} 
 library(nlme)
 library(multcomp)
 library(car)
+```
 
+```{r anne_script_model_tests}`
 #### Model one Overall recovery/N retention  
 
 model1 = lme(recov_plot_t~gbd_T0.mm.+species_diversity,syndata,random=~1|block,na.action=na.omit,method="REML")
@@ -385,7 +391,6 @@ Anova(model4,type="II")
 # vizual check
 # plot(model4,resid(.)~fitted(.))
 # plot(model4,perleaf_plot_t~fitted(.)) 
-
 ```
 
 ```{r final_plot, echo = F}

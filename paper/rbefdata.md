@@ -465,7 +465,6 @@ syndata$recov_plot_t = round(syndata$recov_plot_t, digits = 2)
 syndata$perleaf_plot_t = round(syndata$perleaf_plot_t, digits = 2)
 syndata$perroot_plot_t = round(syndata$perroot_plot_t, digits = 2)
 syndata$persoil_plot_t = round(syndata$persoil_plot_t, digits = 2)
-
 attach(syndata)
 ```
 
@@ -476,10 +475,13 @@ attach(syndata)
 ##     persoil_plot, plot_id, recov_plot, species_diversity
 ```
 
+
+* we want to analyse our data by linear mixed effects models. Since our plots
+  are clumbed in space, we use block as random factor we will use the we will 
+  use the packages (nlme) for model analysis and (multcomp) for post-hoc comparisons
+
+
 ```r
-### we want to analyse our data by linear mixed effects models. Since our
-### plots are clumbed in space, we use block as random factor we will use the
-### packages (nlme) for model analysis and (multcomp) for post-hoc comparisons
 library(nlme)
 library(multcomp)
 ```
@@ -497,243 +499,59 @@ library(car)
 ## Loading required package: MASS Loading required package: nnet
 ```
 
-```r
 
-#### Model one Overall recovery/N retention
+```{r anne_script_model_tests}`
+#### Model one Overall recovery/N retention  
 
-model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | 
-    block, na.action = na.omit, method = "REML")
+model1 = lme(recov_plot_t~gbd_T0.mm.+species_diversity,syndata,random=~1|block,na.action=na.omit,method="REML")
 anova(model1)
-```
+summary(glht(model1,linfct = mcp(species_diversity="Tukey"))) 
 
-```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    34   871.4  <.0001
-## gbd_T0.mm.            1    34     7.5  0.0098
-## species_diversity     2    34     2.9  0.0708
-```
+## To adjust for the unbalanced experimental design, Anova Type II (package “car” (Fox & Weisberg 2011)) was used to test for main effects 
 
-```r
-summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
-```
-
-```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
-##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.378      0.251   -1.51    0.279  
-## 4 - 1 == 0    0.479      0.420    1.14    0.480  
-## 4 - 2 == 0    0.858      0.398    2.15    0.076 .
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
-```
-
-```r
-
-## To adjust for the unbalanced experimental design, Anova Type II (package
-## “car” (Fox & Weisberg 2011)) was used to test for main effects
-
-model1c = Anova(model1, type = "II")
+model1c=Anova(model1,type="II" )
 model1c
-```
 
-```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: recov_plot_t
-##                   Chisq Df Pr(>Chisq)   
-## gbd_T0.mm.         7.42  1     0.0065 **
-## species_diversity  5.73  2     0.0570 . 
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-```
-
-```r
-
-# vizual check plot(model1,resid(.)~fitted(.))
+# vizual check
+# plot(model1,resid(.)~fitted(.))
 # plot(model1,recov_plot_t~fitted(.))
 
 
-#### Model2 percentage leaf recovery of plot recovery
+#### Model2 percentage leaf recovery of plot recovery 
 
-model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, 
-    method = "REML")
+model2=lme(perleaf_plot_t~species_diversity,syndata,random=~1|block,method="REML")
 anova(model2)
-```
+summary(glht(model2,linfct = mcp(species_diversity="Tukey")))
+Anova(model2,type="II")
 
-```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36  273.07  <.0001
-## species_diversity     2    36    6.55  0.0037
-```
-
-```r
-summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
-```
-
-```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.052      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.187      0.479   -0.39     0.92    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
-```
-
-```r
-Anova(model2, type = "II")
-```
-
-```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: perleaf_plot_t
-##                   Chisq Df Pr(>Chisq)   
-## species_diversity  13.1  2     0.0014 **
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-```
-
-```r
-
-# vizual check plot(model2,resid(.)~fitted(.))
+# vizual check
+# plot(model2,resid(.)~fitted(.))
 # plot(model2,perleaf_plot_t~fitted(.))
 
 
 ### Model3 percentage root recovery of overall recovery
 
-model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, 
-    method = "REML")
+model3 = lme(perroot_plot_t~species_diversity,syndata,random=~1|block,method="REML")
 anova(model3)
-```
+summary(glht(model3,linfct = mcp(species_diversity="Tukey")))
+Anova(model3,type="II")
 
-```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36   373.7  <.0001
-## species_diversity     2    36     7.1  0.0024
-```
-
-```r
-summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
-```
-
-```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.600      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.731      0.289    2.53    0.029 * 
-## 4 - 2 == 0    0.130      0.278    0.47    0.883   
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
-```
-
-```r
-Anova(model3, type = "II")
-```
-
-```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: perroot_plot_t
-##                   Chisq Df Pr(>Chisq)    
-## species_diversity  14.3  2    0.00079 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-```
-
-```r
-
-# vizual check plot(model3,resid(.)~fitted(.))
+# vizual check
+# plot(model3,resid(.)~fitted(.))
 # plot(model3,perleaf_plot_t~fitted(.))
 
 
 ### Model 4 percentage soil recovery of overall recovery
 
-model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, 
-    method = "REML")
+model4 = lme(persoil_plot_t~species_diversity,syndata,random=~1|block,method="REML")
 anova(model4)
-```
+summary(glht(model4,linfct = mcp(species_diversity="Tukey")))
+Anova(model4,type="II")
 
+# vizual check
+# plot(model4,resid(.)~fitted(.))
+# plot(model4,perleaf_plot_t~fitted(.)) 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36   26200  <.0001
-## species_diversity     2    36       4  0.0274
-```
-
-```r
-summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
-```
-
-```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 .
-## 4 - 1 == 0   -0.501      0.215   -2.33    0.049 *
-## 4 - 2 == 0   -0.207      0.207   -1.00    0.570  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
-```
-
-```r
-Anova(model4, type = "II")
-```
-
-```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: persoil_plot_t
-##                   Chisq Df Pr(>Chisq)  
-## species_diversity  7.96  2      0.019 *
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-```
-
-```r
-
-# vizual check plot(model4,resid(.)~fitted(.))
-# plot(model4,perleaf_plot_t~fitted(.))
-```
-
 
 ![plot of chunk final_plot](figure/final_plot.png) 
 
@@ -810,62 +628,54 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: replanted species could not be fit on page. It will not be
-## plotted. Warning: shrub individual could not be fit on page. It will not
-## be plotted. Warning: Plant functional traits could not be fit on page. It
-## will not be plotted. Warning: vegetation cover could not be fit on page.
-## It will not be plotted. Warning: arbuscular mycorrhizal fungi could not be
-## fit on page. It will not be plotted. Warning: competitive neighbourhood
-## could not be fit on page. It will not be plotted. Warning: Gram-negative
-## bacteria could not be fit on page. It will not be plotted. Warning:
-## shannon diversity could not be fit on page. It will not be plotted.
-## Warning: wood parenchym could not be fit on page. It will not be plotted.
-## Warning: wood perforation plates could not be fit on page. It will not be
-## plotted. Warning: cadmium at wavelength 214nm could not be fit on page. It
-## will not be plotted. Warning: cadmium at wavelength 228nm could not be fit
-## on page. It will not be plotted. Warning: cation exchange capacity could
-## not be fit on page. It will not be plotted. Warning: digital data
-## acquisition could not be fit on page. It will not be plotted. Warning:
-## diversity treatment could not be fit on page. It will not be plotted.
-## Warning: functional eveness could not be fit on page. It will not be
-## plotted. Warning: intraspecific diversity could not be fit on page. It
+## Warning: BEF summerschool 2011 could not be fit on page. It will not be
+## plotted. Warning: functional eveness could not be fit on page. It will not
+## be plotted. Warning: intraspecific diversity could not be fit on page. It
 ## will not be plotted. Warning: leaf physical resistance could not be fit on
-## page. It will not be plotted. Warning: phylogenetic diversity could not be
-## fit on page. It will not be plotted. Warning: productivity could not be
-## fit on page. It will not be plotted. Warning: rarefied diversity could not
-## be fit on page. It will not be plotted. Warning: response variable could
-## not be fit on page. It will not be plotted. Warning: secondary compounds
-## could not be fit on page. It will not be plotted. Warning: spatial genetic
-## structure could not be fit on page. It will not be plotted. Warning: trait
-## dissimilarity could not be fit on page. It will not be plotted. Warning:
-## wood shearing could not be fit on page. It will not be plotted. Warning:
-## wood stretching could not be fit on page. It will not be plotted. Warning:
-## aboveground biomass could not be fit on page. It will not be plotted.
-## Warning: branch water potential could not be fit on page. It will not be
-## plotted. Warning: cavity nesting hymenoptera could not be fit on page. It
-## will not be plotted. Warning: community similarity could not be fit on
-## page. It will not be plotted. Warning: crown projection area could not be
-## fit on page. It will not be plotted. Warning: eco-physiologic traits could
-## not be fit on page. It will not be plotted. Warning: ecosystem functioning
-## could not be fit on page. It will not be plotted. Warning: experimental
-## treatment could not be fit on page. It will not be plotted. Warning:
-## genetic autocorrelation could not be fit on page. It will not be plotted.
-## Warning: multi-trophic interactions could not be fit on page. It will not
-## be plotted. Warning: phylogenetic distinctness could not be fit on page.
-## It will not be plotted. Warning: phytophagous insects could not be fit on
-## page. It will not be plotted. Warning: respiration could not be fit on
-## page. It will not be plotted. Warning: rooting depth could not be fit on
-## page. It will not be plotted. Warning: slope form could not be fit on
-## page. It will not be plotted. Warning: specialization could not be fit on
-## page. It will not be plotted. Warning: species identity variable could not
-## be fit on page. It will not be plotted. Warning: topography could not be
-## fit on page. It will not be plotted. Warning: vegetation stratum could not
-## be fit on page. It will not be plotted. Warning: water content could not
-## be fit on page. It will not be plotted. Warning: Weibull distribution
-## could not be fit on page. It will not be plotted. Warning: wood ground
-## tissue could not be fit on page. It will not be plotted. Warning: wood
-## mechanics could not be fit on page. It will not be plotted. Warning: wood
-## porosity could not be fit on page. It will not be plotted.
+## page. It will not be plotted. Warning: microbial biomass could not be fit
+## on page. It will not be plotted. Warning: phylogenetic diversity could not
+## be fit on page. It will not be plotted. Warning: rarefied diversity could
+## not be fit on page. It will not be plotted. Warning: response variable
+## could not be fit on page. It will not be plotted. Warning: secondary
+## compounds could not be fit on page. It will not be plotted. Warning:
+## spatial genetic structure could not be fit on page. It will not be
+## plotted. Warning: wood bending could not be fit on page. It will not be
+## plotted. Warning: wood compression could not be fit on page. It will not
+## be plotted. Warning: wood shearing could not be fit on page. It will not
+## be plotted. Warning: wood shrinkage could not be fit on page. It will not
+## be plotted. Warning: wood stretching could not be fit on page. It will not
+## be plotted. Warning: wood toughness could not be fit on page. It will not
+## be plotted. Warning: aboveground biomass could not be fit on page. It will
+## not be plotted. Warning: aeromorphic organic layer could not be fit on
+## page. It will not be plotted. Warning: branch water potential could not be
+## fit on page. It will not be plotted. Warning: cavity nesting hymenoptera
+## could not be fit on page. It will not be plotted. Warning: coarse root
+## density could not be fit on page. It will not be plotted. Warning:
+## community weighted mean trait could not be fit on page. It will not be
+## plotted. Warning: crown overlap could not be fit on page. It will not be
+## plotted. Warning: crown projection area could not be fit on page. It will
+## not be plotted. Warning: eco-physiologic traits could not be fit on page.
+## It will not be plotted. Warning: ecosystem functioning could not be fit on
+## page. It will not be plotted. Warning: human influence could not be fit on
+## page. It will not be plotted. Warning: hunting type could not be fit on
+## page. It will not be plotted. Warning: inbreeding could not be fit on
+## page. It will not be plotted. Warning: matching status could not be fit on
+## page. It will not be plotted. Warning: multi-trophic interactions could
+## not be fit on page. It will not be plotted. Warning: nitrogen cycling
+## could not be fit on page. It will not be plotted. Warning: phylogenetic
+## distinctness could not be fit on page. It will not be plotted. Warning:
+## phytophagous insects could not be fit on page. It will not be plotted.
+## Warning: simpson diversity could not be fit on page. It will not be
+## plotted. Warning: social status could not be fit on page. It will not be
+## plotted. Warning: specialization could not be fit on page. It will not be
+## plotted. Warning: species identity variable could not be fit on page. It
+## will not be plotted. Warning: temperature could not be fit on page. It
+## will not be plotted. Warning: topography could not be fit on page. It will
+## not be plotted. Warning: vegetation stratum could not be fit on page. It
+## will not be plotted. Warning: Weibull distribution could not be fit on
+## page. It will not be plotted. Warning: wood ground tissue could not be fit
+## on page. It will not be plotted. Warning: wood porosity could not be fit
+## on page. It will not be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
