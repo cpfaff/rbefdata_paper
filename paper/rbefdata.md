@@ -21,20 +21,21 @@ The story board:
   parts of that cycle we offer soutions.
 
 
-
 ## Abstract 
 
-We face a deluge of data today that scientists need to deal with in many
-different domains. While there are already many good solutions to some parts of
-the data life cycle the applicability of the solutions to a certain scientific
-domain often varies. Especially research domains with high heterogeneity like
-ecology face problems in dealing with highly valuable concepts like ontologies
-that potentially can be used to automate some of the most common steps in
-ecological analyses like cleaning and merging of data. We her introduce an R
-package called rbefata that together with the data management platform BEFdata
-offers a solution to that problem. We discuss the package in the light of
-upcoming developments in the BEFdata platforms where a ontolgy will be
-integrated.
+We face a deluge of data today, that scientists need to deal with in many
+different domains. While there are already good solutions to some parts of the
+data life cycle the applicability of the solutions to certain scientific
+domains often varies. Especially research domains with high heterogeneity like
+ecology face problems in dealing with valuable concepts like ontologies that
+potentially can be used to improve or automate some of the most common steps in
+ecological analyses like finding relevant data, cleaning and merging of
+datasets. We here introduce the rbefata package that connects to the data
+management platform BEFdata that is used in the BEF-China experiment. We do
+this using an example workflow that integrates two datasets. We also discuss
+the combination BEFdata and rbefdata in the light of upcoming developments that
+will introduce semantical tagging and the integration of formal representation
+of knowledge as a potential solution to the make use of ontologies in ecology.
 
 ## Introduction 
 
@@ -62,7 +63,7 @@ really needs to think about an own set of requirements to describe its data.
 The Ecological Metadata Language is only one example for that. While this
 theoretically solves the problem with not well described datasets it is still
 hard to make people use it extensively as this usually always means to learn
-new tools that help with the description process.
+new tools that help with the description process (e.g morpho, data up).
 
 While well described data helps a lot in understanding datasets and on deciding
 upon the relevance and applicability in a certain analysis there is still lots
