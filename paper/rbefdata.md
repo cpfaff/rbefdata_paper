@@ -134,7 +134,7 @@ from the BEFdata portal. The data is free as it already was published.
 
 proposal created ...
 
-[showcase_proposal](./figure/static/showcase_proposal.png)
+![showcase_proposal](./figure/static/showcase_proposal.png)
 
 
 ### rbefdata 
