@@ -18,11 +18,11 @@ introduce the `rbefata` package that connects to the open source data
 management platform `BEFdata` that has been developed and is used within the
 BEF-China experiment. We show the use of the package in combination with the
 portal using an example workflow that integrates three datasets from the
-BEF-China experiment that represents an analysis that has been published
-already. We discuss the combination of the portal and `rbefdata` in the context
-of the data state of the art data handling as well as we give an outlook onto
-upcoming features that will bring semantical integration of an ontology we
-created and the smart features based on that. 
+BEF-China experiment representing an analysis that has been published already.
+We discuss the combination of the R package `rbefdata` and the data poral in
+the context of state of the art data management as well as we give an outlook
+on upcoming features that will bring semantical featues like smart merges based
+on an ontology we created. 
 
 ## Introduction 
 
@@ -55,7 +55,7 @@ new tools that help with the description process (e.g morpho, data up).
 While well described data helps a lot in understanding datasets and on deciding
 upon the relevance and applicability in a certain analysis there is still lots
 of manual intervention necessary after that to prepare the data for analysis
-(cite yourself? or xxx).  It may needs to be cleaned, imputed, reshaped and
+(cite yourself? or xxx). It may needs to be cleaned, imputed, reshaped and
 merged which usually takes up to 70% of the analysis workflow, before the smart
 models can be applied to the data to find interesting patters (cite the
 workflow paper of Karin and me). This preparation steps not only are time and
@@ -92,30 +92,35 @@ with data like integration of heterogeneous datasets.
 
 ## Material and Methods 
 
-### BEFdata portal
+### BEF-China and the BEFdata portal
 
-The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal (cite Kain)
-is an open source data management platform developed within the BEF-China
-project funded by the German science foundation (DFG, FOR 891). The BEF-China
-experiment is a Biodiversity Ecosystem Functioning (BEF) experiment in the
-subtropics of China located in the provinces Jianxi and Zhejiang. The BEF-China
-research group (www.bef-china.de) uses two main research platforms. An
-experimental forest diversity gradient of 50~ha, and 27 observational plots of
-30x30~m each located in the Gutianshan Nature Reserve. The observational plots
-were selected according to a crossed sampling design along tree species
+The BEF-China experiment is a Biodiversity Ecosystem Functioning (BEF)
+experiment funded by the German science foundation (DFG, FOR 891). It is
+located in the subtropics of China in the provinces Jianxi and Zhejiang. The
+BEF-China research group (www.bef-china.de) uses two main research platforms.
+An experimental forest diversity gradient of 50~ha, and 27 observational plots
+of 30x30 m each located in the Gutianshan Nature Reserve.  The observational
+plots were selected according to a crossed sampling design along tree species
 richness and stand age. The data for the workflow on carbon pools stems from 22
 to 116 years consisting of 14 to 35 species (cite Bruelheide, 2010).  
 
-The data management platform adheres to standards like the Ecological Metadata
-Language for metadata and is specialized in harmonizing small heterogeneous
-data that usually has to be dealt with in BEF but also other parts of research
-in ecology. The portal offers a social component where researchers can shop
-dataset and write a paper proposals. They give some additional information like
-a title and a rationale an envisaged journal and date. With a proposal they can
-ask for access to datasets and provide the data owners with necessary
-information about the paper in planning. They data owners can decide if and how
-they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin). 
+The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is an open
+source data management platform developed within the BEF-China project. It
+adheres to standards like the Ecological Metadata Language for describing
+datasets with metadata and is specialized in harmonizing small heterogeneous
+data that usually has to be dealt with in BEF. But its specialization makes it
+also very valuable to use in any other scientific domain that needs to deal
+with complex small and heterogeneous data. 
+
+The portal offers a social component where researchers can shop datasets and
+write a paper proposals. They give need to give some additional information
+like a title, a rationale, an envisaged journal and date. With a proposal a
+researcher can ask for access to datasets and provide the data owners with
+necessary information about the paper in planning. The data owners can decide
+if and how they like to participate in the upcoming paper or if they only like
+to get acknowledged for providing their data (cite Karin). Based a proposal we
+start our workflow here on integrating three datasets form the BEFdata
+instance.
 
 ### Data used
 
