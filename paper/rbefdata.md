@@ -265,6 +265,12 @@ attributes(dataset_list[[1]])$title
 
 ## Discussion
 
+As there is a growind demand in effective reuse of available data this puts
+pressure on development of solutions that help researchs not only to preserve
+and describe their datasets with metadata 
+
+data but 
+
 We recently stared to develop an ontology using a tematres server containing
 knowledge extracted from portals that deal with data management for ecological
 research. The tematres server offers an API so all the contained terms can be
