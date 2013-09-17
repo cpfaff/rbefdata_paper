@@ -194,7 +194,7 @@ not required in this case as it defaults to the BEF-China project instance of
 the BEFdata portal. If one has set up an own instance of the BEFdata portal,
 this URL needs to be changed so the package communicates with the right server.
 
-```{r require_and_setup}
+```{r require_and_setup, cache = F}
 require(rbefdata)  
 # options list
 bef.options() 
@@ -203,7 +203,7 @@ bef.options()
 bef.options("url") 
 ```
 
-```{r require_and_setup_two, eval = T}
+```{r require_and_setup_two}
 # set credentials example
 bef.options("user_credentials" = "aölkjspoiul12")  
 ```
