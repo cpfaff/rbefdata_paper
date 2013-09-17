@@ -22,7 +22,6 @@ The story board:
     - Data life cycle (we cover it partially focused and doing this well) 
         + BEFdata (Store data, Describe it with metadat, Collaborate and Share it)
         + rbefdata (Find and understand and analyse data as well as reuse of data). 
-          
 * Maybe also shorlty introduce the data lifecycle and use it to show to which 
   parts of that cycle we offer soutions.
 
@@ -135,6 +134,11 @@ yyy
 
 The data used for the presentation of this package stems from (A. Lang. ...)
 from the BEFdata portal. The data is free as it already was published. 
+
+proposal created ...
+
+[showcase_proposal](./figure/static/showcase_proposal.png)
+
 
 ### rbefdata 
 
