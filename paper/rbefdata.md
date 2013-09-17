@@ -1,26 +1,6 @@
 
 
 
-The story board:
-
-* Huge amount of data available (deluge of data)
-* More and more gets accessible (with some hindrances) 
-    - metadata missing (renders data useless) 
-    - lack of reward for data providers (people keep their data secret)
-    - so lots of data gets still lost (needs help e.g rebind)
-* Data often hard to find/reuse 
-    - if not well described 
-* But there is a growing need to reuse data 
-    - so we need tools supporting researchers in doing so (reuse available)
-* The BEFdata portal provides a good base for heterogeneous data in ecology  
-    - we dock onto that with rbefdata to pull data into data statistics  
-    - Data life cycle (we cover it partially focused and doing this well) 
-        + BEFdata (Store data, Describe it with metadat, Collaborate and Share it)
-        + rbefdata (Find and understand and analyse data as well as reuse of data). 
-* Maybe also shorlty introduce the data lifecycle and use it to show to which 
-  parts of that cycle we offer soutions.
-
-
 ## Abstract 
 
 We face a deluge of data that scientists need to deal with in many different
