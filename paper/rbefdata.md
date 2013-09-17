@@ -202,15 +202,17 @@ bef.options("url")
 ## [1] "http://china.befdata.biow.uni-leipzig.de"
 ```
 
-```r
 
+
+```r
 # set options
 bef.options(user_credentials = "aölkjspoiul12")
 bef.options(url = "http://my.own.befdat.instance.com")
+
 ```
 
 
-After setup the `rbefdata` package we start right away from the proposal
+After setting up the `rbefdata` package we start right away from the proposal
 created to pull in all the associated datasets in one step into the R
 environment. We use the proposal download command of the package for this that
 we need to provide with the ID of the proposal. The proposal ID can be found in
