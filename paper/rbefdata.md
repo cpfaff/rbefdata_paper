@@ -171,20 +171,22 @@ stone for reproducable research.
 
 
 
+* Starting 
+  - from proposal
+  - get all data in one step 
 
 First steps after the paper proposal are to setup the rbefdata package for
-work. This requires loading the package first and use the options command to
-setup the necessary information the packages needs to work properly. Having a
-look into the options list reveals several fields that can be filled in. 
-
-For the case of this workflow it only requires to setting the user credentials
-that each user can find on his BEFdata portal profile page. The user
-credentials are used to authenticate the user against the portal to make sure
-the access to the data has been granted and to log the download process. The
-URL to a portal needs only to be set when an own instance of the BEFdata portal
-was set up, so the package will communicate with the right portal then. The
-download folder is used to store free format attachments of data sets like
-scripts that are downloaded from within R. 
+work. This requires loading the package and to set the package options that are
+required so it works properly. Having a look into the options list reveals
+several fields that can be filled in like the URL to the BEFdata server, user
+credentials and a download folder that is used to store downloaded freeformat
+files. The most essential setting for the workflow we show is the user
+credentials. This credentials are used to authenticate the user against the
+portal to ensure the access to the data has been granted and to log the
+download process. Setting the URL is not required in this case as it defaults
+to the BEF-China project instance of the BEFdata portal. If one has set up an
+own instance of the BEFdata portal, this URL needs to be changed so the package
+communicates with the right server.
 
 
 ```r
@@ -223,8 +225,12 @@ bef.options("url")
 
 
 ```r
-# set options
+# set options (examples)
+
+# credentials
 bef.options(user_credentials = "aölkjspoiul12")
+
+# URL
 bef.options(url = "http://my.own.befdata.instance.com")
 
 ```
@@ -232,36 +238,32 @@ bef.options(url = "http://my.own.befdata.instance.com")
 
 After setting up the `rbefdata` package we start right away from the proposal
 created to pull in all the associated datasets in one step into the R
-environment. We use the proposal download command of the package for this that
-we need to provide with the ID of the proposal. The proposal ID can be found in
-the URL of the proposal (here 90). 
+environment. We use the proposal download command of the rbefdata providing it
+with the ID of the proposal. The proposal ID can be obtained from the URL of
+the proposal on the BEFdata platform. 
+
+```
+# the id is 90
+http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
+```
 
 
 ```r
+# proposal id is
 dataset_list = bef.get.datasets_for_proposal(id = 90)
-```
-
-```
-## Error: Couldn't resolve host 'my.own.befdat.instance.com'
-```
-
-```r
 extract_one_dataset = dataset_list[[1]]
-```
-
-```
-## Error: object 'dataset_list' not found
 ```
 
 
 * Inspect datasets
+  - after download (attributes())
+  - in general bef.get.metadata_for(dataset = id) 
 
-The BEFdata portal offers metadat in Ecological Metadata Language format
-standard for download (cite EML). We make use of that metadata in the`rbefdata`
-package as well and each dataset is associated with its metadata on download.
-So you always have acces to the information that is required to understand a
-dataset. This information can be extracted from a dataset with the R command
-`attributes()`
+We make use of the EML metadata export of the BEFdata portal within the
+`rbefdata` package as well. Each dataset is associated with its available
+metadata on download and it can be extracted using the built-in R function
+`attributes()`. As this requires access to the dataset there is also a function
+especially to only draw metadata with is always free for download. 
 
 
 ```r
@@ -269,14 +271,20 @@ attributes(dataset_list[[1]])$title
 ```
 
 ```
-## Error: object 'dataset_list' not found
+## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
 ```
 
 
 ## Discussion
 
-We recently stared to develop an ontology using a tematres server. The
-formalization developed is and will be based on the knowledge used in
+We recently stared to develop an ontology using a tematres server containing
+knowledge extracted from portals that deal with data management for ecological
+research. The tematres server offers an API so all the contained terms can be
+accessed by the upcoming version of rbefdata 
+
+In the upcoming
+
+. The formalization developed is and will be based on the knowledge used in
 biodiversity research. Thus we will here discuss the software combination
 BEFdata and rbefdata in the light of the upcoming features and in general
 context state of the art data management today. In one of the next versions to
