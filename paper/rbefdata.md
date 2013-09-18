@@ -638,9 +638,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -764,34 +764,12 @@ add them to the proposal.
 bef.portal.attach.to_proposal(id = 90, attachment = "/path/to/script.R", description = "The R script that has been used to derive the results in the published paper")
 ```
 
-
-
-```r
-# prepare the plot figure as png
-png(filename = file.path(tempdir(), "results_plot_proposal_90.png"))
-par(mfrow = c(2, 2), bty = "l")
-boxplot(recov_plot ~ species_diversity, las = 1, ylab = "N retention (at.%)", col = "gray", xlab = "Species richness")
-text(3.4, 31, "(A)", font = 2)
-boxplot(perleaf_plot ~ species_diversity, las = 1, ylab = " Relative leaf recovery (%) ", col = c("dark gray", 
-    "white", "light gray"), xlab = "Species richness")
-text(1, 25, "b", font = 2)
-text(2, 25, "a", font = 2)
-text(3, 25, "ab", font = 2)
-text(3.4, 27, "(B)", font = 2)
-boxplot(perroot_plot ~ species_diversity, las = 1, ylab = "Relative root recovery (%)", col = c("dark gray", 
-    "white", "white"), xlab = "Species richness")
-text(1, 8.3, "b", font = 2)
-text(2, 8.3, "a", font = 2)
-text(3, 8.3, "a", font = 2)
-text(3.4, 8.3, "(C)", font = 2)
-boxplot(persoil_plot ~ species_diversity, las = 1, ylab = "Relative soil recovery (%)", col = c("white", 
-    "light gray", "dark gray"), xlab = "Species richness")
-text(1, 70, "a", font = 2)
-text(2, 70, "ab", font = 2)
-text(3, 70, "b", font = 2)
-text(3.4, 98, "(D)", font = 2)
-dev.off()
 ```
+## Error: specified file does not exist: /path/to/script.R.  You must specify a valid file name
+## or provide the contents to send.
+```
+
+
 
 ```
 ## pdf 

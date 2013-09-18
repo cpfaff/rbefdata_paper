@@ -439,12 +439,12 @@ the merged dataset would only mean duplication of data on the data management
 platform. So we upload the script and the four pane figure with its caption to
 add them to the proposal. 
 
-```{r upload_script, include = T, eval = F}
+```{r upload_script, include = T, eval = T, cache = T}
 # attach the script
 bef.portal.attach.to_proposal(id = 90, attachment = "/path/to/script.R", description = "The R script that has been used to derive the results in the published paper")
 ```
 
-```{r prepare_plot_png}
+```{r prepare_plot_png, echo = F}
 # prepare the plot figure as png
 png(filename = file.path(tempdir(), "results_plot_proposal_90.png"))
   par(mfrow=c(2,2),bty="l")

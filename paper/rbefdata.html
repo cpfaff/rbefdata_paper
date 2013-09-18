@@ -751,9 +751,9 @@ anova(model3)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -866,30 +866,8 @@ add them to the proposal. </p>
 bef.portal.attach.to_proposal(id = 90, attachment = &quot;/path/to/script.R&quot;, description = &quot;The R script that has been used to derive the results in the published paper&quot;)
 </code></pre>
 
-<pre><code class="r"># prepare the plot figure as png
-png(filename = file.path(tempdir(), &quot;results_plot_proposal_90.png&quot;))
-par(mfrow = c(2, 2), bty = &quot;l&quot;)
-boxplot(recov_plot ~ species_diversity, las = 1, ylab = &quot;N retention (at.%)&quot;, col = &quot;gray&quot;, xlab = &quot;Species richness&quot;)
-text(3.4, 31, &quot;(A)&quot;, font = 2)
-boxplot(perleaf_plot ~ species_diversity, las = 1, ylab = &quot; Relative leaf recovery (%) &quot;, col = c(&quot;dark gray&quot;, 
-    &quot;white&quot;, &quot;light gray&quot;), xlab = &quot;Species richness&quot;)
-text(1, 25, &quot;b&quot;, font = 2)
-text(2, 25, &quot;a&quot;, font = 2)
-text(3, 25, &quot;ab&quot;, font = 2)
-text(3.4, 27, &quot;(B)&quot;, font = 2)
-boxplot(perroot_plot ~ species_diversity, las = 1, ylab = &quot;Relative root recovery (%)&quot;, col = c(&quot;dark gray&quot;, 
-    &quot;white&quot;, &quot;white&quot;), xlab = &quot;Species richness&quot;)
-text(1, 8.3, &quot;b&quot;, font = 2)
-text(2, 8.3, &quot;a&quot;, font = 2)
-text(3, 8.3, &quot;a&quot;, font = 2)
-text(3.4, 8.3, &quot;(C)&quot;, font = 2)
-boxplot(persoil_plot ~ species_diversity, las = 1, ylab = &quot;Relative soil recovery (%)&quot;, col = c(&quot;white&quot;, 
-    &quot;light gray&quot;, &quot;dark gray&quot;), xlab = &quot;Species richness&quot;)
-text(1, 70, &quot;a&quot;, font = 2)
-text(2, 70, &quot;ab&quot;, font = 2)
-text(3, 70, &quot;b&quot;, font = 2)
-text(3.4, 98, &quot;(D)&quot;, font = 2)
-dev.off()
+<pre><code>## Error: specified file does not exist: /path/to/script.R.  You must specify a valid file name
+## or provide the contents to send.
 </code></pre>
 
 <pre><code>## pdf 
