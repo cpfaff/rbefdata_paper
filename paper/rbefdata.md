@@ -3,88 +3,90 @@
 
 ## Abstract 
 
-We face a deluge of data scientists need to deal with in many different
-disciplines today. While there are already good solutions to some parts of the
-data life cycle the applicability of the solutions to certain scientific
-domains often varies. Especially research domains with high degree of
-interdisciplinary interactions and heterogeneity in methods and data in general
-like ecology face problems in dealing with some valuable concepts like
-ontologies that potentially can be used to improve or automate some of the most
-common tasks in analyses like finding relevant data, cleaning and merging of
-datasets. We here introduce the `rbefata` package that connects to the open
-source data management platform `BEFdata` that has been developed and is used
-within the BEF-China experiment. We show the use of the package in combination
-with the portal using an example workflow that integrates three datasets from
-the BEF-China experiment representing an analysis that has been published
-already.  We discuss the combination of the R package `rbefdata` and the data
-portal in the context of state of the art data management as well as we give an
-outlook on upcoming features that will bring semantical features like smart
-merges based on an ontology we created. 
+We face a deluge of data today scientists need to deal with in many different
+disciplines. While there are already good solutions to some parts of the data
+life cycle the applicability of the solutions to certain scientific domains
+often varies. Especially research domains with high degree of interdisciplinary
+interactions and heterogeneity in methods and data like ecology face problems
+in dealing with valuable concepts like ontologies that potentially can be used
+to improve or automate some of the most common tasks in analyses like finding
+relevant data, cleaning and merging of datasets. We here introduce the
+`rbefata` package that connects to the open source data management platform
+`BEFdata` that has been developed and is used within the BEF-China experiment.
+We show the use of the package in combination with the data portal using an
+example workflow that integrates two datasets from the BEF-China experiment
+representing an analysis that has been published already. We discuss the
+combination of the R package `rbefdata` and the data portal in the context of
+state of the art data management as well as we give an outlook on upcoming
+features that bring semantical tool that will enable smart merges and finding
+of data based on an ontology we created. 
 
 ## Introduction 
 
-With a growing awareness on value of data, much effort has been put into
+With a growing awareness on the value of data, much effort has been put into
 building data management platforms, to preserve all kind of environmental and
-historic data, over the last years (e.g. diversity workbench, `BEFdata`). Many
-specialized solutions for different scientific disciplines appeared that
-provide data management plans for small scale projects or collaborations as
-well as for large data producing long term or remote sensing projects. An
-ongoing trend in that context is the development of integrative databases or
-data portals. They serve as nodes that collect data from smaller databases of a
-certain domain and they give researchers of that domain the opportunity to
-access a wide range of relevant data all from one place. These data management
-portals in fact offer a solution to to one of the most pressing problems that
-we face with our valuable data today, their lost. 
+historic data, over the last years (e.g. diversity workbench, GBIF, `BEFdata`).
+Many solutions for different scientific disciplines appeared that provide data
+management plans for small scale projects or collaborations as well as for
+large data producing long term or remote sensing projects. An ongoing trend in
+that context is the development of integrative databases or data portals. They
+serve as nodes that collect data from smaller databases of a certain domain and
+they give researchers of that domain the opportunity to access a wide range of
+relevant data all from one place. These data management portals in fact offer a
+solution to to one of the most pressing problems that we face with our valuable
+data today, their lost. 
 
-Another big problem, especially in terms of reuse of available data, is the
-general understanding of datasets. Usually plain datasets say nothing, to one
-who is not familiar with it and they are even hard to decipher by the author
-itself after some time has passed. It is usually hard to remember exactly what
-methods have been used to collect a certain columns data or what the
-abbreviations or headers in the dataset mean. To solve this problem metadata
-frameworks have been developed and published as standards so nobody really
-needs to think about an own set of requirements to describe its data. The
-Ecological Metadata Language is only one example for that. While this
+With a growing global data pool there is a also a growing demand to use and
+reuse available data and to embed small heterogeneous data into a wider
+context. A problem here is the general understanding of datasets. Usually plain
+datasets say nothing, to one who is not familiar with it and they are even hard
+to decipher by the author itself after some time has passed. It is usually hard
+to remember exactly what methods have been used to collect a certain columns
+data or what the abbreviations or headers in the dataset mean. To solve this
+problem metadata frameworks have been developed and published as standards so
+nobody really needs to think about an own set of requirements to describe its
+data. The Ecological Metadata Language is only one example for that. While this
 theoretically solves the problem with not well described datasets it is still
-hard to make people use it extensively as this usually always means to learn
-new tools that help with the description process (e.g morpho, data up).
+hard to make researchers use it extensively as this usually always means to
+learn new tools that help with the description process (e.g morpho, data up).
 
 While well described data can help a lot in understanding datasets and on
 deciding upon the relevance and applicability in a certain analysis there is
 still lots of manual intervention necessary after that to prepare the data for
 analysis (cite yourself and Karin? or xxx). It may needs to be cleaned,
 imputed, reshaped and merged which usually takes up to 70% of an analysis
-workflow, before the smart models can be applied to the data to find
-interesting patters (cite the workflow paper of Karin and me). This preparation
-steps not only are time and labour intensive but also potentially error prone,
-especially as the complexity of analyses grows. 
+workflow, before smart models can be applied to the data to find interesting
+patters (cite the workflow paper of Karin and me). This preparation steps not
+only are time and labour intensive but also potentially error prone, especially
+as the complexity of analyses grows. 
 
-Ontologies, formal representations of knowledge, potentially offer a
+Ontologies, as formal representations of knowledge, potentially offer a
 sophisticated tool to deal with that step of data preparation (cite supporting
 ecology as data intensive science). While they are already used in some
 research domains like genetics (cite xxx, eg. http://www.geneontology.org/),
 other domains face more problems using it (cite xxx, morpho team announced
-semantic tagging but the plug-in did not appear anywhere). For example in
-ecology, that has grown into a very collaborative, interdisciplinary and data
-intensive science over the last decade, to address questions on a greater
-temporal and spatial scale (e.g michener et al 2012).  The data here is mainly
-provided by small scale studies spread all over the world (e.g heidorn2009
-shedding light on the dark) but also through bigger long term projects like
-LTER (cite xxx), BEF-China (cite xxx), governmental projects and local
-initiatives (cite xxx).  This in fact results in a wild growing, complex and
-heterogeneous data landscape that we need to deal with. The application of
-ontologies in ecology is thus discussed controversially (cite xxx) and it is
-argued that they can be a benefit, but it is hard to set up a sophisticated
-ontology covering all necessary terms and relation of a that complex research
-domain like ecology (cite xxx).
+semantic tagging but the plug-in did not appear anywhere). The application of
+ontologies in ecology is discussed controversially (cite xxx) and it is argued
+that they can be a huge benefit, but it is hard to set up a sophisticated
+ontology covering all necessary terms and relation of a highly complex research
+domains (cite xxx). 
 
-With growing global data pool there is a growing demand to use and reuse
-available data and to embed small heterogeneous data into a wider context. We
-here introduce the R package `rbefdata` that in combination with the `BEFdata`
-data management platform exactly deals with that. We showcase the functionality
-of the package available with version 0.3.5 creating a workflow that integrates
-two datasets using an analysis that has been published already and discuss the
-`rbefdata` package and `BEFdata` in the light of upcoming developments like the
+For example ecology, which has grown into a very collaborative,
+interdisciplinary and data intensive science over the last decade, to address
+questions on a greater temporal and spatial scale (e.g michener et al 2012).
+The data here is mainly provided by small scale studies spread all over the
+world (e.g heidorn2009 shedding light on the dark) but also through bigger long
+term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
+and local initiatives (cite xxx) and private persons. This in fact results in a
+wild growing, complex and heterogeneous data landscape that an ontology would
+need to capture to be usable.
+
+We here introduce the R package `rbefdata` that in combination with the
+`BEFdata` data management platform deals with finding, analysing, reusing of
+data. We showcase the functionality of the package available with version
+`0.3.5` creating a workflow which integrates two datasets and reconstructs one
+facet of an analysis that has been published already. We discuss the `rbefdata`
+package and `BEFdata` in the light of upcoming developments like the
 integration of an ontology we built that will make finding data and smart
 merges possible, to help researchers to deal with the future challenges in
 handling complex and heterogeneous data.
@@ -584,10 +586,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
-## 4 - 1 == 0    0.865      0.497    1.74    0.184   
-## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -638,9 +640,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0286 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -691,9 +693,9 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
-## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 .
+## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
+## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -865,48 +867,44 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: arbuscular mycorrhizal fungi could not be fit on page. It will not be plotted.
-## Warning: successional age could not be fit on page. It will not be plotted. Warning: wood
-## parenchym could not be fit on page. It will not be plotted. Warning: wood vessels could not be
-## fit on page. It will not be plotted. Warning: air temperature could not be fit on page. It
-## will not be plotted. Warning: cadmium at wavelength 214nm could not be fit on page. It will
-## not be plotted. Warning: cadmium at wavelength 228nm could not be fit on page. It will not be
-## plotted. Warning: data management could not be fit on page. It will not be plotted. Warning:
-## digital data acquisition could not be fit on page. It will not be plotted. Warning: diversity
-## treatment could not be fit on page. It will not be plotted. Warning: intraspecific diversity
-## could not be fit on page. It will not be plotted. Warning: leaf physical resistance could not
-## be fit on page. It will not be plotted. Warning: response variable could not be fit on page.
-## It will not be plotted. Warning: secondary compounds could not be fit on page. It will not be
-## plotted. Warning: spatial genetic structure could not be fit on page. It will not be plotted.
-## Warning: standard deviation could not be fit on page. It will not be plotted. Warning: wood
-## bending could not be fit on page. It will not be plotted. Warning: wood compression could not
-## be fit on page. It will not be plotted. Warning: wood stretching could not be fit on page. It
-## will not be plotted. Warning: BEF China projects could not be fit on page. It will not be
-## plotted. Warning: branch water potential could not be fit on page. It will not be plotted.
+## Warning: cadmium at wavelength 214nm could not be fit on page. It will not be plotted.
+## Warning: cadmium at wavelength 228nm could not be fit on page. It will not be plotted.
+## Warning: leaf physical resistance could not be fit on page. It will not be plotted. Warning:
+## spatial genetic structure could not be fit on page. It will not be plotted. Warning: water
+## content could not be fit on page. It will not be plotted. Warning: wood shearing could not be
+## fit on page. It will not be plotted. Warning: wood stretching could not be fit on page. It
+## will not be plotted. Warning: aeromorphic organic layer could not be fit on page. It will not
+## be plotted. Warning: BEF China projects could not be fit on page. It will not be plotted.
 ## Warning: community weighted mean trait could not be fit on page. It will not be plotted.
-## Warning: eco-physiologic traits could not be fit on page. It will not be plotted. Warning:
-## ecosystem functioning could not be fit on page. It will not be plotted. Warning: experimental
-## treatment could not be fit on page. It will not be plotted. Warning: Flora of China could not
-## be fit on page. It will not be plotted. Warning: genetic autocorrelation could not be fit on
-## page. It will not be plotted. Warning: haplotype could not be fit on page. It will not be
-## plotted. Warning: human influence could not be fit on page. It will not be plotted. Warning:
-## leaf longevity could not be fit on page. It will not be plotted. Warning: migration could not
-## be fit on page. It will not be plotted. Warning: mixed models could not be fit on page. It
-## will not be plotted. Warning: multi-trophic interactions could not be fit on page. It will not
-## be plotted. Warning: phylogenetic distinctness could not be fit on page. It will not be
-## plotted. Warning: phytophagous insects could not be fit on page. It will not be plotted.
-## Warning: rainfall simulator could not be fit on page. It will not be plotted. Warning:
-## research proposals could not be fit on page. It will not be plotted. Warning: simpson
-## diversity could not be fit on page. It will not be plotted. Warning: specialization could not
-## be fit on page. It will not be plotted. Warning: species identity variable could not be fit on
-## page. It will not be plotted. Warning: temperature could not be fit on page. It will not be
-## plotted. Warning: trap nest could not be fit on page. It will not be plotted. Warning: tree
-## crown could not be fit on page. It will not be plotted. Warning: vegetation stratum could not
-## be fit on page. It will not be plotted. Warning: weevils could not be fit on page. It will not
-## be plotted. Warning: Weibull distribution could not be fit on page. It will not be plotted.
-## Warning: wood ground tissue could not be fit on page. It will not be plotted. Warning: wood
-## mechanics could not be fit on page. It will not be plotted. Warning: wood porosity could not
-## be fit on page. It will not be plotted.
+## Warning: crown projection area could not be fit on page. It will not be plotted. Warning:
+## deposition could not be fit on page. It will not be plotted. Warning: eco-physiologic traits
+## could not be fit on page. It will not be plotted. Warning: ecosystem functioning could not be
+## fit on page. It will not be plotted. Warning: experimental treatment could not be fit on page.
+## It will not be plotted. Warning: flight interception could not be fit on page. It will not be
+## plotted. Warning: Flora of China could not be fit on page. It will not be plotted. Warning:
+## haplotype could not be fit on page. It will not be plotted. Warning: human influence could not
+## be fit on page. It will not be plotted. Warning: inbreeding could not be fit on page. It will
+## not be plotted. Warning: land use history could not be fit on page. It will not be plotted.
+## Warning: leaf longevity could not be fit on page. It will not be plotted. Warning: litter
+## thickness could not be fit on page. It will not be plotted. Warning: matching status could not
+## be fit on page. It will not be plotted. Warning: microrelief could not be fit on page. It will
+## not be plotted. Warning: mineralization could not be fit on page. It will not be plotted.
+## Warning: multi-trophic interactions could not be fit on page. It will not be plotted. Warning:
+## mycorrhiza could not be fit on page. It will not be plotted. Warning: nitrification could not
+## be fit on page. It will not be plotted. Warning: nitrogen cycling could not be fit on page. It
+## will not be plotted. Warning: non-random extinction could not be fit on page. It will not be
+## plotted. Warning: phylogenetic distinctness could not be fit on page. It will not be plotted.
+## Warning: phytophagous insects could not be fit on page. It will not be plotted. Warning:
+## predators could not be fit on page. It will not be plotted. Warning: rainfall simulator could
+## not be fit on page. It will not be plotted. Warning: research proposals could not be fit on
+## page. It will not be plotted. Warning: rooting depth could not be fit on page. It will not be
+## plotted. Warning: runoff plots could not be fit on page. It will not be plotted. Warning: snag
+## height could not be fit on page. It will not be plotted. Warning: specialization could not be
+## fit on page. It will not be plotted. Warning: species identity variable could not be fit on
+## page. It will not be plotted. Warning: topography could not be fit on page. It will not be
+## plotted. Warning: vegetation stratum could not be fit on page. It will not be plotted.
+## Warning: Weibull distribution could not be fit on page. It will not be plotted. Warning: wood
+## porosity could not be fit on page. It will not be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
