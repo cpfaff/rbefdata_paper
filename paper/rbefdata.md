@@ -52,40 +52,42 @@ new tools that help with the description process (e.g morpho, data up).
 While well described data can help a lot in understanding datasets and on
 deciding upon the relevance and applicability in a certain analysis there is
 still lots of manual intervention necessary after that to prepare the data for
-analysis (cite yourself? or xxx). It may needs to be cleaned, imputed, reshaped
-and merged which usually takes up to 70% of an analysis workflow, before the
-smart models can be applied to the data to find interesting patters (cite the
-workflow paper of Karin and me). This preparation steps not only are time and
-labour intensive but also potentially error prone, especially as the complexity
-of analyses grows. 
+analysis (cite yourself and Karin? or xxx). It may needs to be cleaned,
+imputed, reshaped and merged which usually takes up to 70% of an analysis
+workflow, before the smart models can be applied to the data to find
+interesting patters (cite the workflow paper of Karin and me). This preparation
+steps not only are time and labour intensive but also potentially error prone,
+especially as the complexity of analyses grows. 
 
 Ontologies, formal representations of knowledge, potentially offer a
 sophisticated tool to deal with that step of data preparation (cite supporting
 ecology as data intensive science). While they are already used in some
-research domains like genetics (cite xxx), other domains face more problems
-using it. For example in ecology, that has grown into a very collaborative,
-interdisciplinary and data intensive science over the last decade, to address
-questions on a greater temporal and spatial scale (e.g michener et al 2012).
-The data here is mainly provided by small scale studies spread all over the
-world (e.g heidorn2009 shedding light on the dark) but also through bigger long
-term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
-and local initiatives (cite xxx). This in fact results in a wild growing,
-complex and heterogeneous data landscape that we need to deal with. The
-application of ontologies in ecology is thus discussed controversially (cite
-xxx) and it is argued that they can be a benefit, but it is hard to set up a
-sophisticated ontology covering all necessary terms and relation of a that
-complex research domain like ecology (cite xxx).
+research domains like genetics (cite xxx, eg. http://www.geneontology.org/),
+other domains face more problems using it (cite xxx, morpho team announced
+semantic tagging but the plug-in did not appear anywhere). For example in
+ecology, that has grown into a very collaborative, interdisciplinary and data
+intensive science over the last decade, to address questions on a greater
+temporal and spatial scale (e.g michener et al 2012).  The data here is mainly
+provided by small scale studies spread all over the world (e.g heidorn2009
+shedding light on the dark) but also through bigger long term projects like
+LTER (cite xxx), BEF-China (cite xxx), governmental projects and local
+initiatives (cite xxx).  This in fact results in a wild growing, complex and
+heterogeneous data landscape that we need to deal with. The application of
+ontologies in ecology is thus discussed controversially (cite xxx) and it is
+argued that they can be a benefit, but it is hard to set up a sophisticated
+ontology covering all necessary terms and relation of a that complex research
+domain like ecology (cite xxx).
 
 With growing global data pool there is a growing demand to use and reuse
 available data and to embed small heterogeneous data into a wider context. We
-here introduce the R package `rbefdata` that in combination with `BEFdata`
-exactly deals with that. We showcase the functionality of the package available
-with version 0.3.5 creating a workflow that integrates two datasets using a
-analysis that has been published already and discuss the `rbefdata` package and
-`BEFdata` in the light of upcoming developments like the integration of an
-ontology we built that will make finding data and smart merges possible to help
-researchers to deal with the upcoming challenges in handling complex and
-heterogeneous data.
+here introduce the R package `rbefdata` that in combination with the `BEFdata`
+data management platform exactly deals with that. We showcase the functionality
+of the package available with version 0.3.5 creating a workflow that integrates
+two datasets using an analysis that has been published already and discuss the
+`rbefdata` package and `BEFdata` in the light of upcoming developments like the
+integration of an ontology we built that will make finding data and smart
+merges possible, to help researchers to deal with the future challenges in
+handling complex and heterogeneous data.
 
 ## Material and Methods 
 
@@ -174,21 +176,22 @@ stone for reproducible research.
 ## Usecase (results)
 
 The next step after an accepted paper proposal is to setup the `rbefdata`
-package. This requires loading the package and setting the required package
-options. Having a look into the options list reveals several fields that can be
-filled in, like the URL to the BEFdata server, user credentials and a download
-folder name that is used to store downloaded freeformat files that can be
-attached to datasets. The tematres server related URLs in the options are part
-of upcoming features that are non fully functional on the time of writing and
-thus can be ignored. 
+package. This requires installing, loading the package and setting the required
+package options. Having a look into the options list reveals several fields
+that can be filled in, like the URL to the `BEFdata` server, user credentials
+and a download folder name that is used to store free format files attached to
+datasets. The `tematres` server related URLs in the options are part of
+upcoming features that are non fully functional on the time of writing and thus
+can be ignored by now. 
 
-The most essential setting for the workflow we present here is the user
+The most essential setting for the example workflow we present here is the user
 credentials. These are used to authenticate the user against the portal to
 ensure the access to the data has been granted before download and to log the
 data access. Setting the server URL is not required here as it defaults to the
-BEF-China project instance of the BEFdata portal that we retrieve data from. If
-one has set up an own instance of the BEFdata portal, this URL needs to be
-changed so the package communicates with the right server (see box below).
+BEF-China project instance of the `BEFdata` portal that we retrieve data from
+in this example. If one has set up an own instance of the `BEFdata` portal,
+this URL needs to be changed so the package communicates with the right server
+(see box below).
 
 
 ```r
@@ -242,14 +245,15 @@ bef.options(url = "http://my.own.befdata.instance.com")
 
 
 
-After the setup of `rbefdata`  one can start right away using data from the
-proposal. The proposal download function is used for that which draws all
-associated datasets of a proposal into the R environment in one single step
-(see blow). The function requires the ID of the proposal which can be found in
-the end of the URL of the proposal in the BEFdata portal (see blow).
+After setup we can start right away using data from the proposal. The proposal
+download function of `rbefdata` is used for that. It draws all associated
+datasets of a proposal into the R environment in one single step. It returns a
+list object that keeps a data frame per list element containing a dataset of
+the proposal each (see blow). The function requires the ID of the proposal to
+work. The ID can be found in the URL of the proposal (see blow).
 
 ```
-# the id is 90
+# the proposal URL shows the id is 90 
 http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```
 
@@ -261,16 +265,26 @@ extract_one_dataset = datasets[[1]]
 ```
 
 
-The metadata in EML format provided by the `BEFdata` portal is also accessible
-in `rbefdata`. Each dataset on download is associated with the metadata
-provided by its authors. This information can be extracted using the built-in R
-function `attributes()`. As this requires granted access rights to the dataset,
-there is also a function to only draw metadata of a dataset which is always
-free for download (see code box below). 
+Each dataset in the BEFdata portal is associated with metadata. We also provide
+access to the metadata from within `rbefdata`. It can be accessed either
+directly via a metadata download command that takes the ID of a dataset or
+extracted via the R internal `attributes()` command. The extraction is possible
+as each dataset is attached with its metadata when using one of the download
+commands of `rbefdata` (see box below).
 
 
 ```r
-# extract title of one dataset
+# get metadtata only, by dataset ID
+bef.portal.get.metadata(dataset = 335)$title
+```
+
+```
+## [1] "Competition of saplings for N -Pilot- system 15N retention"
+```
+
+```r
+
+# extract title of first dataset in proposal
 attributes(datasets[[1]])$title
 ```
 
@@ -280,7 +294,7 @@ attributes(datasets[[1]])$title
 
 ```r
 
-# for all dataset in the proposal
+# extract all dataset titles in the proposal
 titles = sapply(datasets, function(x) attributes(x)$title)
 titles
 ```
@@ -308,29 +322,15 @@ names(attributes(datasets[[1]]))
 ## [17] "related_material"         "columns"
 ```
 
-```r
 
-# only get metadtata by dataset id
-bef.portal.get.metadata(dataset = 335)$title
-```
-
-```
-## [1] "Competition of saplings for N -Pilot- system 15N retention"
-```
-
-
-We write the datasets into two variables called `Nretention` and `design`
-before merging. Both datasets contain a column with a `plot_id` that has been
-used for merging. After merging the new synthesis dataset still contains many
-unused column that will be removed in another step so only variables of
-interest remain.
-
-To analyse the dataset of system N retention we do need information about
-species diversity of the plots and the information about which plot is placed
-in which block from the design dataset. Furthermore we need values of the
-initial basal diameter from the dataset `Nrecov` 
-
-!!! Note I cannot find Nrecov dataset where is that one you are talking about?
+The dataset from the proposal were written into two variables called
+`Nretention` and `design` before deciding upon how to merge. Inspecting both
+dataset reveals each contains a column with a `plot_id` that is suitable for
+merging. After merging the datasets the new synthesis dataset still contains
+many column not required for the analysis that have been dropped. To analyse
+the dataset of system N retention we require the information about species
+diversity in the plots and the information about which plot is placed in which
+block from the design dataset. 
 
 
 ```r
@@ -615,10 +615,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0286 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -671,7 +671,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -777,67 +777,70 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: genetic diversity could not be fit on page. It will not be
-## plotted. Warning: allelic richness could not be fit on page. It will not
-## be plotted. Warning: biomass allocation could not be fit on page. It will
-## not be plotted. Warning: cadmium at wavelength 228nm could not be fit on
-## page. It will not be plotted. Warning: cation exchange capacity could not
-## be fit on page. It will not be plotted. Warning: coefficient of variation
-## could not be fit on page. It will not be plotted. Warning: digital data
-## acquisition could not be fit on page. It will not be plotted. Warning:
-## diversity treatment could not be fit on page. It will not be plotted.
-## Warning: dry weight could not be fit on page. It will not be plotted.
-## Warning: experimental design could not be fit on page. It will not be
-## plotted. Warning: gene diversity could not be fit on page. It will not be
-## plotted. Warning: geomorphology could not be fit on page. It will not be
-## plotted. Warning: intraspecific diversity could not be fit on page. It
-## will not be plotted. Warning: leaf physical resistance could not be fit on
-## page. It will not be plotted. Warning: phylogenetic diversity could not be
-## fit on page. It will not be plotted. Warning: productivity could not be
-## fit on page. It will not be plotted. Warning: rarefied diversity could not
-## be fit on page. It will not be plotted. Warning: response variable could
-## not be fit on page. It will not be plotted. Warning: secondary compounds
-## could not be fit on page. It will not be plotted. Warning: spatial genetic
-## structure could not be fit on page. It will not be plotted. Warning:
-## standard deviation could not be fit on page. It will not be plotted.
-## Warning: trait dissimilarity could not be fit on page. It will not be
-## plotted. Warning: wood compression could not be fit on page. It will not
-## be plotted. Warning: wood shrinkage could not be fit on page. It will not
-## be plotted. Warning: wood stretching could not be fit on page. It will not
-## be plotted. Warning: aeromorphic organic layer could not be fit on page.
-## It will not be plotted. Warning: basal area increment could not be fit on
-## page. It will not be plotted. Warning: BEF China projects could not be fit
-## on page. It will not be plotted. Warning: community weighted mean trait
-## could not be fit on page. It will not be plotted. Warning: crown
-## projection area could not be fit on page. It will not be plotted. Warning:
-## eco-physiologic traits could not be fit on page. It will not be plotted.
-## Warning: experimental treatment could not be fit on page. It will not be
-## plotted. Warning: genetic autocorrelation could not be fit on page. It
-## will not be plotted. Warning: human influence could not be fit on page. It
-## will not be plotted. Warning: laboratories could not be fit on page. It
-## will not be plotted. Warning: land use history could not be fit on page.
-## It will not be plotted. Warning: matching status could not be fit on page.
-## It will not be plotted. Warning: mineralisation could not be fit on page.
-## It will not be plotted. Warning: mineralization could not be fit on page.
-## It will not be plotted. Warning: multi-trophic interactions could not be
-## fit on page. It will not be plotted. Warning: nitrogen cycling could not
-## be fit on page. It will not be plotted. Warning: non-random extinction
-## could not be fit on page. It will not be plotted. Warning: phylogenetic
-## distinctness could not be fit on page. It will not be plotted. Warning:
-## phytophagous insects could not be fit on page. It will not be plotted.
-## Warning: rooting depth could not be fit on page. It will not be plotted.
-## Warning: runoff plots could not be fit on page. It will not be plotted.
+## Warning: replanted species could not be fit on page. It will not be
+## plotted. Warning: Gram-negative bacteria could not be fit on page. It will
+## not be plotted. Warning: wood perforation plates could not be fit on page.
+## It will not be plotted. Warning: cation exchange capacity could not be fit
+## on page. It will not be plotted. Warning: digital data acquisition could
+## not be fit on page. It will not be plotted. Warning: experimental design
+## could not be fit on page. It will not be plotted. Warning: intraspecific
+## diversity could not be fit on page. It will not be plotted. Warning: leaf
+## anatomy could not be fit on page. It will not be plotted. Warning: leaf
+## physical resistance could not be fit on page. It will not be plotted.
+## Warning: phylogenetic diversity could not be fit on page. It will not be
+## plotted. Warning: secondary compounds could not be fit on page. It will
+## not be plotted. Warning: spatial genetic structure could not be fit on
+## page. It will not be plotted. Warning: species trait could not be fit on
+## page. It will not be plotted. Warning: standard deviation could not be fit
+## on page. It will not be plotted. Warning: trait dissimilarity could not be
+## fit on page. It will not be plotted. Warning: wood bending could not be
+## fit on page. It will not be plotted. Warning: wood shearing could not be
+## fit on page. It will not be plotted. Warning: wood shrinkage could not be
+## fit on page. It will not be plotted. Warning: wood stretching could not be
+## fit on page. It will not be plotted. Warning: wood toughness could not be
+## fit on page. It will not be plotted. Warning: aboveground biomass could
+## not be fit on page. It will not be plotted. Warning: ammonification could
+## not be fit on page. It will not be plotted. Warning: basal area increment
+## could not be fit on page. It will not be plotted. Warning: BEF China
+## projects could not be fit on page. It will not be plotted. Warning: branch
+## water potential could not be fit on page. It will not be plotted. Warning:
+## cavity nesting hymenoptera could not be fit on page. It will not be
+## plotted. Warning: coarse root density could not be fit on page. It will
+## not be plotted. Warning: community weighted mean trait could not be fit on
+## page. It will not be plotted. Warning: Diplopoda could not be fit on page.
+## It will not be plotted. Warning: eco-physiologic traits could not be fit
+## on page. It will not be plotted. Warning: ecosystem functioning could not
+## be fit on page. It will not be plotted. Warning: flight interception could
+## not be fit on page. It will not be plotted. Warning: Flora of China could
+## not be fit on page. It will not be plotted. Warning: forest canopy could
+## not be fit on page. It will not be plotted. Warning: genetic
+## autocorrelation could not be fit on page. It will not be plotted. Warning:
+## human influence could not be fit on page. It will not be plotted. Warning:
+## land use history could not be fit on page. It will not be plotted.
+## Warning: litter thickness could not be fit on page. It will not be
+## plotted. Warning: matching status could not be fit on page. It will not be
+## plotted. Warning: mixed models could not be fit on page. It will not be
+## plotted. Warning: multi-trophic interactions could not be fit on page. It
+## will not be plotted. Warning: mycorrhiza could not be fit on page. It will
+## not be plotted. Warning: nitrogen cycling could not be fit on page. It
+## will not be plotted. Warning: non-random extinction could not be fit on
+## page. It will not be plotted. Warning: phylogenetic distinctness could not
+## be fit on page. It will not be plotted. Warning: phytophagous insects
+## could not be fit on page. It will not be plotted. Warning: research
+## proposals could not be fit on page. It will not be plotted. Warning:
+## respiration could not be fit on page. It will not be plotted. Warning:
+## rooting depth could not be fit on page. It will not be plotted. Warning:
+## simpson diversity could not be fit on page. It will not be plotted.
 ## Warning: slope form could not be fit on page. It will not be plotted.
 ## Warning: snag height could not be fit on page. It will not be plotted.
 ## Warning: specialization could not be fit on page. It will not be plotted.
-## Warning: species identity variable could not be fit on page. It will not
-## be plotted. Warning: temperature could not be fit on page. It will not be
-## plotted. Warning: vegetation stratum could not be fit on page. It will not
-## be plotted. Warning: Weibull distribution could not be fit on page. It
-## will not be plotted. Warning: wood ground tissue could not be fit on page.
-## It will not be plotted. Warning: wood mechanics could not be fit on page.
-## It will not be plotted. Warning: wood porosity could not be fit on page.
-## It will not be plotted.
+## Warning: topography could not be fit on page. It will not be plotted.
+## Warning: trap nest could not be fit on page. It will not be plotted.
+## Warning: vegetation stratum could not be fit on page. It will not be
+## plotted. Warning: wood ground tissue could not be fit on page. It will not
+## be plotted. Warning: wood mechanics could not be fit on page. It will not
+## be plotted. Warning: wood porosity could not be fit on page. It will not
+## be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
