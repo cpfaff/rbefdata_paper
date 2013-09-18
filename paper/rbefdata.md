@@ -284,12 +284,41 @@ below).
 http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```
 
-```{r rbefdata_get_datasets_from_proposal, cache = F  
-# proposal id is 
+
+```r
+# proposal id is
 datasets = bef.get.datasets_for_proposal(id = 90)
-extract_first_dataset = datasets[[1]] 
+extract_first_dataset = datasets[[1]]
 head(extract_first_dataset, 5)
 ```
+
+```
+##     plot_id             Spp Leaf_15N_recovery_g_T5 Leaf_15Nrecovery_atp_T5
+## 1 pilot1C09 Castanea henryi              1.504e-05                0.015979
+## 2 pilot1D10 Castanea henryi              8.604e-05                0.091426
+## 3 pilot2C11 Castanea henryi              2.905e-05                0.030868
+## 4 pilot2D01 Castanea henryi              8.923e-06                0.009482
+## 5 pilot2D07 Castanea henryi              7.483e-05                0.079518
+##   Root_15N_recovery.g. Root_15N_recovery. X15Nleaf..15Nroot. recovery_g_T1 recovery_atp_T1
+## 1            1.113e-06            0.01183             13.511     4.324e-05        0.091892
+## 2            6.315e-06            0.06710             13.626     6.774e-06        0.014395
+## 3            2.188e-06            0.02325             13.278     1.245e-06        0.002646
+## 4            3.383e-06            0.03595              2.637     2.235e-06        0.004749
+## 5            4.156e-06            0.04416             18.005     1.386e-06        0.002945
+##   recovery_g_T3 recovery_atp_T3 recovery_g_T4 recovery_atp_T4 gbd_T0.mm. sum_bio_recov
+## 1     2.425e-04        0.257727     1.609e-04         0.17101        5.0       0.02781
+## 2     1.359e-04        0.144382     2.034e-04         0.21612        5.5       0.15853
+## 3     1.242e-04        0.131926     5.784e-05         0.06146        6.0       0.05412
+## 4     3.045e-04        0.323553     1.497e-04         0.15906        6.0       0.04543
+## 5     6.270e-06        0.006662     9.212e-05         0.09788        4.0       0.12368
+##   per_leaf_recov per_root_recov
+## 1          57.47          42.53
+## 2          57.67          42.33
+## 3          57.04          42.96
+## 4          20.87          79.13
+## 5          64.29          35.71
+```
+
 
 Each dataset in the `BEFdata` portal is associated with metadata the authors of
 the dataset provide. We also provide access to the metadata from within
@@ -316,25 +345,20 @@ attributes(datasets[[1]])$title
 ```
 
 ```
-## Error: object 'datasets' not found
+## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
 ```
 
 ```r
 
 # extract all dataset titles in the proposal
 titles = sapply(datasets, function(x) attributes(x)$title)
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 titles
 ```
 
 ```
-## Error: object 'titles' not found
+## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
+## [2] "Competition of saplings for N -Pilot- system 15N retention"                  
+## [3] "Plottreatment and -location within the blocks of the Pilot-Experiment"
 ```
 
 ```r
@@ -344,7 +368,12 @@ names(attributes(datasets[[1]]))
 ```
 
 ```
-## Error: object 'datasets' not found
+##  [1] "names"                    "class"                    "row.names"               
+##  [4] "title"                    "abstract"                 "publicationDate"         
+##  [7] "language"                 "creators"                 "authors"                 
+## [10] "intellectualRights"       "distribution"             "keywords"                
+## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"        
+## [16] "temporal_coverage"        "related_material"         "columns"
 ```
 
 
@@ -359,21 +388,7 @@ the case (see box below).
 ```r
 # extract into separate datasets
 Nretention = datasets[[2]]
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 design = datasets[[3]]
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 
 # overview about the contents of the datasets
 
@@ -382,25 +397,19 @@ names(Nretention)
 ```
 
 ```
-## Error: object 'Nretention' not found
+## [1] "plot_id"      "recov_plot"   "perleaf_plot" "perroot_plot" "perbio_plot"  "persoil_plot"
+## [7] "gbd_T0.mm."
 ```
 
 ```r
 
 # description of column plot_id
 Nretention_column_plot_id_description = attributes(Nretention)$columns[1, ]$description
-```
-
-```
-## Error: object 'Nretention' not found
-```
-
-```r
 Nretention_column_plot_id_description
 ```
 
 ```
-## Error: object 'Nretention_column_plot_id_description' not found
+## [1] "Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively. (plot_id: plot_id; Datagroup description: Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively.)"
 ```
 
 ```r
@@ -410,24 +419,28 @@ names(design)
 ```
 
 ```
-## Error: object 'design' not found
+##  [1] "block"                    "x"                        "y"                       
+##  [4] "plot_id"                  "control_ID"               "block_community_code"    
+##  [7] "community_number"         "species_mixture"          "species_diversity"       
+## [10] "species_pool"             "species_code"             "research_group_colour"   
+## [13] "control"                  "closed_canopy"            "density"                 
+## [16] "Natives"                  "depth"                    "harvest"                 
+## [19] "fungicide"                "inoculation"              "pesticide"               
+## [22] "native"                   "genetic_diverstiy"        "seed_addition"           
+## [25] "fertilizer"               "plot_treatment_connected" "sp1"                     
+## [28] "sp2"                      "sp3"                      "sp4"                     
+## [31] "sp5"                      "sp7"                      "sp8"                     
+## [34] "sp11"                     "sp_connected"
 ```
 
 ```r
 
 design_column_plot_id_description = attributes(design)$columns[4, ]$description
-```
-
-```
-## Error: object 'design' not found
-```
-
-```r
 design_column_plot_id_description
 ```
 
 ```
-## Error: object 'design_column_plot_id_description' not found
+## [1] "Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively. (plot_id: Individual complex ID for identifying exactly each plot; it connects with underline character the block number and the community code, i. e. the block number with the plots treatment. The plot identifier contains the information, which block the plot is in and which community is is comprised of.)"
 ```
 
 
@@ -443,82 +456,51 @@ transformed (box below).
 ```r
 # the synthesis dataset
 syndata = merge(Nretention, design)
-```
-
-```
-## Error: object 'Nretention' not found
-```
-
-```r
 
 # overview about the content of the synthesis dataset
 names(syndata)
 ```
 
 ```
-## Error: object 'syndata' not found
+##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"            
+##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"            
+##  [7] "gbd_T0.mm."               "block"                    "x"                       
+## [10] "y"                        "control_ID"               "block_community_code"    
+## [13] "community_number"         "species_mixture"          "species_diversity"       
+## [16] "species_pool"             "species_code"             "research_group_colour"   
+## [19] "control"                  "closed_canopy"            "density"                 
+## [22] "Natives"                  "depth"                    "harvest"                 
+## [25] "fungicide"                "inoculation"              "pesticide"               
+## [28] "native"                   "genetic_diverstiy"        "seed_addition"           
+## [31] "fertilizer"               "plot_treatment_connected" "sp1"                     
+## [34] "sp2"                      "sp3"                      "sp4"                     
+## [37] "sp5"                      "sp7"                      "sp8"                     
+## [40] "sp11"                     "sp_connected"
 ```
 
 ```r
 
 # remove unwanted variables from synthesis datset
 syndata = syndata[-c(9:14, 16:41)]
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 names(syndata)
 ```
 
 ```
-## Error: object 'syndata' not found
+## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"     
+## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"            
+## [9] "species_diversity"
 ```
 
 ```r
 
 # > we want to use 'species_diversity' as a factor
 syndata$species_diversity = as.factor(syndata$species_diversity)
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 
 # square root transforme response variables
 syndata$recov_plot_t = syndata$recov_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 syndata$perleaf_plot_t = syndata$perleaf_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 syndata$perroot_plot_t = syndata$perroot_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 syndata$persoil_plot_t = syndata$persoil_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
 ```
 
 
@@ -542,18 +524,14 @@ require(car)
 ### Model 1: Overall recovery/N retention
 model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
     method = "REML")
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 anova(model1)
 ```
 
 ```
-## Error: object 'model1' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    34   870.6  <.0001
+## gbd_T0.mm.            1    34     7.5  0.0098
+## species_diversity     2    34     2.9  0.0714
 ```
 
 ```r
@@ -561,25 +539,41 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
+##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)  
+## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
+## 4 - 1 == 0    0.478      0.420    1.14    0.482  
+## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
 
 # ANOVA type II test for unbalanced design
 model1c = Anova(model1, type = "II")
-```
-
-```
-## Error: object 'model1' not found
-```
-
-```r
 model1c
 ```
 
 ```
-## Error: object 'model1c' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: recov_plot_t
+##                   Chisq Df Pr(>Chisq)   
+## gbd_T0.mm.         7.42  1     0.0064 **
+## species_diversity  5.71  2     0.0576 . 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -591,18 +585,13 @@ model1c
 
 ## Model2 percentage leaf recovery of plot recovery
 model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 anova(model2)
 ```
 
 ```
-## Error: object 'model2' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36  273.06  <.0001
+## species_diversity     2    36    6.56  0.0037
 ```
 
 ```r
@@ -610,7 +599,23 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -618,7 +623,13 @@ Anova(model2, type = "II")
 ```
 
 ```
-## Error: object 'model2' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: perleaf_plot_t
+##                   Chisq Df Pr(>Chisq)   
+## species_diversity  13.1  2     0.0014 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -628,18 +639,13 @@ Anova(model2, type = "II")
 
 ## Model3 percentage root recovery of overall recovery
 model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 anova(model3)
 ```
 
 ```
-## Error: object 'model3' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36   374.2  <.0001
+## species_diversity     2    36     7.2  0.0024
 ```
 
 ```r
@@ -647,7 +653,23 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -655,7 +677,13 @@ Anova(model3, type = "II")
 ```
 
 ```
-## Error: object 'model3' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: perroot_plot_t
+##                   Chisq Df Pr(>Chisq)    
+## species_diversity  14.3  2    0.00077 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -665,18 +693,13 @@ Anova(model3, type = "II")
 
 ## Model 4 percentage soil recovery of overall recovery
 model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 anova(model4)
 ```
 
 ```
-## Error: object 'model4' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36   26248  <.0001
+## species_diversity     2    36       4  0.0274
 ```
 
 ```r
@@ -684,7 +707,23 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)  
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -692,7 +731,13 @@ Anova(model4, type = "II")
 ```
 
 ```
-## Error: object 'model4' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: persoil_plot_t
+##                   Chisq Df Pr(>Chisq)  
+## species_diversity  7.96  2      0.019 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -725,42 +770,7 @@ forest systems even after a few years. This in turn has the potential to
 significantly reduce N losses and thus N accumulation in the leachate or
 groundwater (Lang et al. 2013).
 
-
-```
-## Error: object 'syndata' not found
-```
-
-```
-## Error: object 'recov_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'perleaf_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'perroot_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'persoil_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
+![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
 
 * caption:  Nitrogen (N) retention affected by species richness. N retention summed as
