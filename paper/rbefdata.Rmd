@@ -2,7 +2,7 @@
 # this loads the befdata package
 require("rbefdata")  
 require("ggplot2")  
-options(width = 95) 
+options(width = 95)
 ```
 
 ## Abstract 
@@ -431,12 +431,36 @@ text(1,70,"a",font=2);text(2,70,"ab",font=2);text(3,70,"b",font=2);text(3.4,98,"
             recovery (c) and relative soil recovery (d). Significant differences as revealed by post
             hoc Tukey’s test (P < 0.05) are indicated by different letters.
 
-Finally we need to decide on either to upload a resulting dataset that results
-from a synthesis or only a script that highlights the road to the results and
-maybe some figures for a fast overview of the final findings with description.
-In this case here the latter choice is the way to go as here an upload of the
-merged dataset would only mean duplication. So we upload the script and the
-four pane figure with its caption to add them to the proposal.
+Finally we need to decide on either to upload a full dataset resulted from a
+synthesis or only a script that highlights the road to the results from the
+used source datasets and maybe add some figures for a fast overview of the
+final findings with a description. In the case of this example we decide for
+the latter choice as the way to go as an upload of the merged dataset would
+only mean duplication of data in the data management platform. So we upload the
+script and the four pane figure with its caption to add them to the proposal. 
+
+```{r prepare_upload, include = T, eval = F}
+# attach the script
+bef.portal.attach.to_proposal(id = 90, attachment = "/path/to/script.R", description = "The R script that has been used to derive the results")
+
+# attach a figure as png
+png(filename = file.path(tempdir(), "results_plot_proposal_90.png"))
+  par(mfrow=c(2,2),bty="l")
+  boxplot(recov_plot~species_diversity,las=1,ylab="N retention (at.%)",col="gray",
+          xlab="Species richness")
+  text(3.4,31,"(A)",font=2)
+  boxplot(perleaf_plot~species_diversity,las=1,ylab=" Relative leaf recovery (%) ",
+          col=c("dark gray","white","light gray"),xlab="Species richness")
+  text(1,25,"b",font=2);text(2,25,"a",font=2);text(3,25,"ab",font=2);text(3.4,27,"(B)",font=2)
+  boxplot(perroot_plot~species_diversity,las=1,ylab="Relative root recovery (%)",
+          col=c("dark gray","white","white"),xlab="Species richness")
+  text(1,8.3,"b",font=2);text(2,8.3,"a",font=2);text(3,8.3,"a",font=2);text(3.4,8.3,"(C)",font=2)
+  boxplot(persoil_plot~species_diversity,las=1,ylab="Relative soil recovery (%)",
+          col=c("white","light gray","dark gray"),xlab="Species richness")
+  text(1,70,"a",font=2);text(2,70,"ab",font=2);text(3,70,"b",font=2);text(3.4,98,"(D)",font=2)
+dev.off()
+
+```
 
 ## Discussion
 
