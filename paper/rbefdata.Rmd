@@ -267,14 +267,8 @@ names(attributes(datasets[[1]]))
 The dataset from the proposal is written into two variables called `Nretention`
 and `design` before deciding upon how to merge. Inspecting both dataset reveals
 each of them contains a column with a `plot_id` that seems suitable for
-merging. We also can use the metadata for columns to check if this is really
-the case.
-
-After merging the datasets the new synthesis dataset still contains many column
-not required for the analysis that have been dropped. To analyse the dataset of
-system N retention we require the information about species diversity in the
-plots and the information about which plot is placed in which block from the
-design dataset.  
+merging. We also can use the metadata for columns to check if this really is
+the case (see box below).
 
 ```{r anne_script_seprate_datasets} 
 # extract into separate datasets
@@ -293,9 +287,18 @@ Nretention_column_plot_id_description
 # names in dataset Nretention
 names(design)  
 
-design_column_plot_id_description = attributes(design)$columns[5,]$description
+attributes(design)$columns
+design_column_plot_id_description = attributes(design)$columns[4,]$description
 design_column_plot_id_description 
 ```
+
+After merging the datasets the new synthesis dataset still contains many column
+not required for the analysis that have been dropped. To analyse the dataset of
+system N retention we require the information about species diversity in the
+plots and the information about which plot is placed in which block from the
+design dataset.  
+
+* some more glue text that describes what happens ... Anne???
 
 The response variables have been checked for normality with `qqplot` and
 transformed where necessary (box below).
@@ -307,7 +310,7 @@ syndata = merge(Nretention, design)
 # overview about the content of the synthesis dataset
 names(syndata) 
 
-# restriction of the synthesis datset
+# remove unwanted variables from synthesis datset
 syndata=syndata[-c(9:14,16:41)]
 names(syndata)
 
@@ -315,23 +318,20 @@ names(syndata)
 str(syndata)
 
 #> we want to use 'species_diversity' as a factor
-
 syndata$species_diversity=as.factor(syndata$species_diversity)
-# attach(syndata)
 
-### All response variables have been square root transformed
-
+# square root transforme response variables
 syndata$perroot_plot_t=syndata$perroot_plot^.5
 syndata$persoil_plot_t=syndata$persoil_plot^.5
 syndata$recov_plot_t=syndata$recov_plot^.5
-syndata$perleaf_plot_t=syndata$perleaf_plot^.5
+syndata$perleaf_plot_t=syndata$perleaf_plot^.5 
 ```
 
 We analysed our data by linear mixed effects models. Since the plots are
-clumped in space, we use block as a random factor we will use the R packages
-(`nlme`) for model analysis and (`multcomp`) for post-hoc comparisons. To
-adjust for an unbalanced experimental design, ANOVA Type II (package `car` (Fox
-& Weisberg 2011)) was used to test for main effects 
+clumped in space, we use block as a random factor. The analysis uses the R
+packages `nlme` for modeling and `multcomp` for post-hoc comparisons. To adjust
+for an unbalanced experimental design an ANOVA Type II was carried out to test
+for main effects using the R package `car` (Fox & Weisberg 2011)  
 
 ```{r anne_script_load_packages, message = F} 
 require(nlme)
