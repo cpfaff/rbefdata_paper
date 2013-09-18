@@ -235,7 +235,8 @@ http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```{r rbefdata_get_datasets_from_proposal, cache = T}  
 # proposal id is 
 datasets = bef.get.datasets_for_proposal(id = 90)
-extract_one_dataset = datasets[[1]]
+extract_first_dataset = datasets[[1]] 
+head(extract_first_dataset, 5)
 ```
 
 Each dataset in the BEFdata portal is associated with metadata. We also provide
