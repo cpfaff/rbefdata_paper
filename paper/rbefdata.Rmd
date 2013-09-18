@@ -257,7 +257,7 @@ box below).
 bef.portal.get.metadata(dataset = 335)$title
 
 # extract title of first dataset in proposal
-attributes(datasets[[1]])$title  
+attributes(datasets[[1]])$title 
 
 # extract all dataset titles in the proposal
 titles = sapply(datasets, function(x) attributes(x)$title)
@@ -290,7 +290,6 @@ Nretention_column_plot_id_description
 # names in dataset Nretention
 names(design)  
 
-attributes(design)$columns
 design_column_plot_id_description = attributes(design)$columns[4,]$description
 design_column_plot_id_description 
 ```
