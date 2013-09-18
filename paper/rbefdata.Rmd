@@ -311,17 +311,15 @@ syndata$perleaf_plot_t=syndata$perleaf_plot^.5
 
 We analysed our data by linear mixed effects models. Since the plots are
 clumped in space, we use block as a random factor we will use the R packages
-(`nlme`) for model analysis and (`multcomp`) for post-hoc comparisons
+(`nlme`) for model analysis and (`multcomp`) for post-hoc comparisons. To
+adjust for an unbalanced experimental design, ANOVA Type II (package `car` (Fox
+& Weisberg 2011)) was used to test for main effects 
 
-!!! What is the package "car" used for?
-
-```{r anne_script_load_packages, echo = F} 
-library(nlme)
-library(multcomp)
-library(car)
+```{r anne_script_load_packages, message = F} 
+require(nlme)
+require(multcomp)
+require(car)
 ```
-
-* To adjust for the unbalanced experimental design, Anova Type II (package “car” (Fox & Weisberg 2011)) was used to test for main effects 
 
 ```{r anne_script_model_tests}
 ### Model one Overall recovery/N retention  

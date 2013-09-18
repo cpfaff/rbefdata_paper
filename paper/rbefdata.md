@@ -459,19 +459,17 @@ syndata$perleaf_plot_t = syndata$perleaf_plot^0.5
 
 We analysed our data by linear mixed effects models. Since the plots are
 clumped in space, we use block as a random factor we will use the R packages
-(`nlme`) for model analysis and (`multcomp`) for post-hoc comparisons
+(`nlme`) for model analysis and (`multcomp`) for post-hoc comparisons. To
+adjust for an unbalanced experimental design, ANOVA Type II (package `car` (Fox
+& Weisberg 2011)) was used to test for main effects 
 
-!!! What is the package "car" used for?
 
-
+```r
+require(nlme)
+require(multcomp)
+require(car)
 ```
-## Loading required package: mvtnorm Loading required package: survival
-## Loading required package: splines Loading required package: MASS Loading
-## required package: nnet
-```
 
-
-* To adjust for the unbalanced experimental design, Anova Type II (package “car” (Fox & Weisberg 2011)) was used to test for main effects 
 
 
 ```r
@@ -617,10 +615,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0278 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
+## 4 - 2 == 0    0.132      0.278    0.48    0.879    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -673,9 +671,9 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 *
-## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
-## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -779,79 +777,67 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: arbuscular mycorrhizal fungi could not be fit on page. It will
-## not be plotted. Warning: competitive neighbourhood could not be fit on
-## page. It will not be plotted. Warning: Gram-negative bacteria could not be
-## fit on page. It will not be plotted. Warning: Gram-positive bacteria could
-## not be fit on page. It will not be plotted. Warning: tree layer could not
-## be fit on page. It will not be plotted. Warning: wind speed could not be
-## fit on page. It will not be plotted. Warning: wood fibres could not be fit
-## on page. It will not be plotted. Warning: wood perforation plates could
-## not be fit on page. It will not be plotted. Warning: air temperature could
-## not be fit on page. It will not be plotted. Warning: belowground biomass
-## could not be fit on page. It will not be plotted. Warning: biomass
-## allocation could not be fit on page. It will not be plotted. Warning:
-## cadmium at wavelength 214nm could not be fit on page. It will not be
-## plotted. Warning: cadmium at wavelength 228nm could not be fit on page. It
-## will not be plotted. Warning: cation exchange capacity could not be fit on
-## page. It will not be plotted. Warning: coefficient of variation could not
-## be fit on page. It will not be plotted. Warning: digital data acquisition
-## could not be fit on page. It will not be plotted. Warning: fresh weight
-## could not be fit on page. It will not be plotted. Warning: geomorphology
-## could not be fit on page. It will not be plotted. Warning: intraspecific
-## diversity could not be fit on page. It will not be plotted. Warning: leaf
-## anatomy could not be fit on page. It will not be plotted. Warning: leaf
-## physical resistance could not be fit on page. It will not be plotted.
-## Warning: phylogenetic diversity could not be fit on page. It will not be
-## plotted. Warning: productivity could not be fit on page. It will not be
-## plotted. Warning: rarefied diversity could not be fit on page. It will not
-## be plotted. Warning: secondary compounds could not be fit on page. It will
-## not be plotted. Warning: spatial genetic structure could not be fit on
-## page. It will not be plotted. Warning: species trait could not be fit on
-## page. It will not be plotted. Warning: standard deviation could not be fit
-## on page. It will not be plotted. Warning: trait dissimilarity could not be
-## fit on page. It will not be plotted. Warning: wood bending could not be
-## fit on page. It will not be plotted. Warning: wood compression could not
-## be fit on page. It will not be plotted. Warning: wood shearing could not
-## be fit on page. It will not be plotted. Warning: wood shrinkage could not
-## be fit on page. It will not be plotted. Warning: wood toughness could not
-## be fit on page. It will not be plotted. Warning: aeromorphic organic layer
-## could not be fit on page. It will not be plotted. Warning: basal area
-## increment could not be fit on page. It will not be plotted. Warning: BEF
-## China projects could not be fit on page. It will not be plotted. Warning:
-## body length could not be fit on page. It will not be plotted. Warning:
-## branch water potential could not be fit on page. It will not be plotted.
-## Warning: cavity nesting hymenoptera could not be fit on page. It will not
-## be plotted. Warning: control treatment could not be fit on page. It will
-## not be plotted. Warning: crown overlap could not be fit on page. It will
-## not be plotted. Warning: crown projection area could not be fit on page.
-## It will not be plotted. Warning: eco-physiologic traits could not be fit
-## on page. It will not be plotted. Warning: ecosystem functioning could not
-## be fit on page. It will not be plotted. Warning: Flora of China could not
-## be fit on page. It will not be plotted. Warning: genetic autocorrelation
-## could not be fit on page. It will not be plotted. Warning: land use
-## history could not be fit on page. It will not be plotted. Warning: leaf
-## longevity could not be fit on page. It will not be plotted. Warning:
-## litter biomass could not be fit on page. It will not be plotted. Warning:
-## litter thickness could not be fit on page. It will not be plotted.
-## Warning: matching status could not be fit on page. It will not be plotted.
-## Warning: mineralisation could not be fit on page. It will not be plotted.
-## Warning: mixed models could not be fit on page. It will not be plotted.
-## Warning: multi-trophic interactions could not be fit on page. It will not
-## be plotted. Warning: nitrogen cycling could not be fit on page. It will
-## not be plotted. Warning: pesticide could not be fit on page. It will not
-## be plotted. Warning: phylogenetic distinctness could not be fit on page.
-## It will not be plotted. Warning: phytophagous insects could not be fit on
-## page. It will not be plotted. Warning: PI meeting could not be fit on
-## page. It will not be plotted. Warning: predators could not be fit on page.
-## It will not be plotted. Warning: research proposals could not be fit on
-## page. It will not be plotted. Warning: runoff plots could not be fit on
-## page. It will not be plotted. Warning: simpson diversity could not be fit
-## on page. It will not be plotted. Warning: snag height could not be fit on
-## page. It will not be plotted. Warning: specialization could not be fit on
-## page. It will not be plotted. Warning: wood ground tissue could not be fit
-## on page. It will not be plotted. Warning: wood porosity could not be fit
-## on page. It will not be plotted.
+## Warning: genetic diversity could not be fit on page. It will not be
+## plotted. Warning: allelic richness could not be fit on page. It will not
+## be plotted. Warning: biomass allocation could not be fit on page. It will
+## not be plotted. Warning: cadmium at wavelength 228nm could not be fit on
+## page. It will not be plotted. Warning: cation exchange capacity could not
+## be fit on page. It will not be plotted. Warning: coefficient of variation
+## could not be fit on page. It will not be plotted. Warning: digital data
+## acquisition could not be fit on page. It will not be plotted. Warning:
+## diversity treatment could not be fit on page. It will not be plotted.
+## Warning: dry weight could not be fit on page. It will not be plotted.
+## Warning: experimental design could not be fit on page. It will not be
+## plotted. Warning: gene diversity could not be fit on page. It will not be
+## plotted. Warning: geomorphology could not be fit on page. It will not be
+## plotted. Warning: intraspecific diversity could not be fit on page. It
+## will not be plotted. Warning: leaf physical resistance could not be fit on
+## page. It will not be plotted. Warning: phylogenetic diversity could not be
+## fit on page. It will not be plotted. Warning: productivity could not be
+## fit on page. It will not be plotted. Warning: rarefied diversity could not
+## be fit on page. It will not be plotted. Warning: response variable could
+## not be fit on page. It will not be plotted. Warning: secondary compounds
+## could not be fit on page. It will not be plotted. Warning: spatial genetic
+## structure could not be fit on page. It will not be plotted. Warning:
+## standard deviation could not be fit on page. It will not be plotted.
+## Warning: trait dissimilarity could not be fit on page. It will not be
+## plotted. Warning: wood compression could not be fit on page. It will not
+## be plotted. Warning: wood shrinkage could not be fit on page. It will not
+## be plotted. Warning: wood stretching could not be fit on page. It will not
+## be plotted. Warning: aeromorphic organic layer could not be fit on page.
+## It will not be plotted. Warning: basal area increment could not be fit on
+## page. It will not be plotted. Warning: BEF China projects could not be fit
+## on page. It will not be plotted. Warning: community weighted mean trait
+## could not be fit on page. It will not be plotted. Warning: crown
+## projection area could not be fit on page. It will not be plotted. Warning:
+## eco-physiologic traits could not be fit on page. It will not be plotted.
+## Warning: experimental treatment could not be fit on page. It will not be
+## plotted. Warning: genetic autocorrelation could not be fit on page. It
+## will not be plotted. Warning: human influence could not be fit on page. It
+## will not be plotted. Warning: laboratories could not be fit on page. It
+## will not be plotted. Warning: land use history could not be fit on page.
+## It will not be plotted. Warning: matching status could not be fit on page.
+## It will not be plotted. Warning: mineralisation could not be fit on page.
+## It will not be plotted. Warning: mineralization could not be fit on page.
+## It will not be plotted. Warning: multi-trophic interactions could not be
+## fit on page. It will not be plotted. Warning: nitrogen cycling could not
+## be fit on page. It will not be plotted. Warning: non-random extinction
+## could not be fit on page. It will not be plotted. Warning: phylogenetic
+## distinctness could not be fit on page. It will not be plotted. Warning:
+## phytophagous insects could not be fit on page. It will not be plotted.
+## Warning: rooting depth could not be fit on page. It will not be plotted.
+## Warning: runoff plots could not be fit on page. It will not be plotted.
+## Warning: slope form could not be fit on page. It will not be plotted.
+## Warning: snag height could not be fit on page. It will not be plotted.
+## Warning: specialization could not be fit on page. It will not be plotted.
+## Warning: species identity variable could not be fit on page. It will not
+## be plotted. Warning: temperature could not be fit on page. It will not be
+## plotted. Warning: vegetation stratum could not be fit on page. It will not
+## be plotted. Warning: Weibull distribution could not be fit on page. It
+## will not be plotted. Warning: wood ground tissue could not be fit on page.
+## It will not be plotted. Warning: wood mechanics could not be fit on page.
+## It will not be plotted. Warning: wood porosity could not be fit on page.
+## It will not be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
