@@ -585,9 +585,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59  0.00075 ***
-## 4 - 1 == 0    0.865      0.497    1.74  0.18387    
-## 4 - 2 == 0   -0.188      0.479   -0.39  0.91634    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -691,7 +691,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -813,6 +813,8 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 ## [1] "Attachment to proposal with ID: 90 successful!"
 ```
 
+
+![showcase_proposal_attachment](./figure/static/showcase_proposal_attachments.png)
 
 ## Discussion
 

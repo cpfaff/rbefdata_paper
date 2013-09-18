@@ -474,6 +474,8 @@ caption = "Nitrogen (N) retention affected by species richness. N retention summ
 bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "results_plot_proposal_90.png"), description = caption)  
 ``` 
 
+![showcase_proposal_attachment](./figure/static/showcase_proposal_attachments.png)
+
 ## Discussion
 
 * General discussion 
