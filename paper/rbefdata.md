@@ -266,18 +266,12 @@ head(extract_first_dataset, 5)
 ```
 
 ```
-##     plot_id recov_plot perleaf_plot perroot_plot perbio_plot
-## 1 pilot1D01     15.642        2.918       1.0015       3.920
-## 2 pilot1D02     13.032        5.523       1.3688       6.891
-## 3 pilot1D04     20.292        1.057       0.5157       1.572
-## 4 pilot1D05      9.595        4.187       1.0861       2.032
-## 5 pilot1D07      8.354       15.100       5.0983      17.963
-##   persoil_plot gbd_T0.mm.
-## 1        96.08         NA
-## 2        93.11      3.688
-## 3        98.43      2.875
-## 4        97.97      6.000
-## 5        82.04      7.000
+##     plot_id recov_plot perleaf_plot perroot_plot perbio_plot persoil_plot gbd_T0.mm.
+## 1 pilot1D01     15.642        2.918       1.0015       3.920        96.08         NA
+## 2 pilot1D02     13.032        5.523       1.3688       6.891        93.11      3.688
+## 3 pilot1D04     20.292        1.057       0.5157       1.572        98.43      2.875
+## 4 pilot1D05      9.595        4.187       1.0861       2.032        97.97      6.000
+## 5 pilot1D07      8.354       15.100       5.0983      17.963        82.04      7.000
 ```
 
 
@@ -327,15 +321,12 @@ names(attributes(datasets[[1]]))
 ```
 
 ```
-##  [1] "names"                    "class"                   
-##  [3] "row.names"                "title"                   
-##  [5] "abstract"                 "publicationDate"         
-##  [7] "language"                 "creators"                
-##  [9] "authors"                  "intellectualRights"      
-## [11] "distribution"             "keywords"                
-## [13] "generalTaxonomicCoverage" "samplingDescription"     
-## [15] "spatial_coverage"         "temporal_coverage"       
-## [17] "related_material"         "columns"
+##  [1] "names"                    "class"                    "row.names"               
+##  [4] "title"                    "abstract"                 "publicationDate"         
+##  [7] "language"                 "creators"                 "authors"                 
+## [10] "intellectualRights"       "distribution"             "keywords"                
+## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"        
+## [16] "temporal_coverage"        "related_material"         "columns"
 ```
 
 
@@ -359,8 +350,8 @@ names(Nretention)
 ```
 
 ```
-## [1] "plot_id"      "recov_plot"   "perleaf_plot" "perroot_plot"
-## [5] "perbio_plot"  "persoil_plot" "gbd_T0.mm."
+## [1] "plot_id"      "recov_plot"   "perleaf_plot" "perroot_plot" "perbio_plot"  "persoil_plot"
+## [7] "gbd_T0.mm."
 ```
 
 ```r
@@ -368,24 +359,18 @@ names(design)
 ```
 
 ```
-##  [1] "block"                    "x"                       
-##  [3] "y"                        "plot_id"                 
-##  [5] "control_ID"               "block_community_code"    
-##  [7] "community_number"         "species_mixture"         
-##  [9] "species_diversity"        "species_pool"            
-## [11] "species_code"             "research_group_colour"   
-## [13] "control"                  "closed_canopy"           
-## [15] "density"                  "Natives"                 
-## [17] "depth"                    "harvest"                 
-## [19] "fungicide"                "inoculation"             
-## [21] "pesticide"                "native"                  
-## [23] "genetic_diverstiy"        "seed_addition"           
-## [25] "fertilizer"               "plot_treatment_connected"
-## [27] "sp1"                      "sp2"                     
-## [29] "sp3"                      "sp4"                     
-## [31] "sp5"                      "sp7"                     
-## [33] "sp8"                      "sp11"                    
-## [35] "sp_connected"
+##  [1] "block"                    "x"                        "y"                       
+##  [4] "plot_id"                  "control_ID"               "block_community_code"    
+##  [7] "community_number"         "species_mixture"          "species_diversity"       
+## [10] "species_pool"             "species_code"             "research_group_colour"   
+## [13] "control"                  "closed_canopy"            "density"                 
+## [16] "Natives"                  "depth"                    "harvest"                 
+## [19] "fungicide"                "inoculation"              "pesticide"               
+## [22] "native"                   "genetic_diverstiy"        "seed_addition"           
+## [25] "fertilizer"               "plot_treatment_connected" "sp1"                     
+## [28] "sp2"                      "sp3"                      "sp4"                     
+## [31] "sp5"                      "sp7"                      "sp8"                     
+## [34] "sp11"                     "sp_connected"
 ```
 
 
@@ -402,27 +387,20 @@ names(syndata)
 ```
 
 ```
-##  [1] "plot_id"                  "recov_plot"              
-##  [3] "perleaf_plot"             "perroot_plot"            
-##  [5] "perbio_plot"              "persoil_plot"            
-##  [7] "gbd_T0.mm."               "block"                   
-##  [9] "x"                        "y"                       
-## [11] "control_ID"               "block_community_code"    
-## [13] "community_number"         "species_mixture"         
-## [15] "species_diversity"        "species_pool"            
-## [17] "species_code"             "research_group_colour"   
-## [19] "control"                  "closed_canopy"           
-## [21] "density"                  "Natives"                 
-## [23] "depth"                    "harvest"                 
-## [25] "fungicide"                "inoculation"             
-## [27] "pesticide"                "native"                  
-## [29] "genetic_diverstiy"        "seed_addition"           
-## [31] "fertilizer"               "plot_treatment_connected"
-## [33] "sp1"                      "sp2"                     
-## [35] "sp3"                      "sp4"                     
-## [37] "sp5"                      "sp7"                     
-## [39] "sp8"                      "sp11"                    
-## [41] "sp_connected"
+##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"            
+##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"            
+##  [7] "gbd_T0.mm."               "block"                    "x"                       
+## [10] "y"                        "control_ID"               "block_community_code"    
+## [13] "community_number"         "species_mixture"          "species_diversity"       
+## [16] "species_pool"             "species_code"             "research_group_colour"   
+## [19] "control"                  "closed_canopy"            "density"                 
+## [22] "Natives"                  "depth"                    "harvest"                 
+## [25] "fungicide"                "inoculation"              "pesticide"               
+## [28] "native"                   "genetic_diverstiy"        "seed_addition"           
+## [31] "fertilizer"               "plot_treatment_connected" "sp1"                     
+## [34] "sp2"                      "sp3"                      "sp4"                     
+## [37] "sp5"                      "sp7"                      "sp8"                     
+## [40] "sp11"                     "sp_connected"
 ```
 
 ```r
@@ -433,9 +411,9 @@ names(syndata)
 ```
 
 ```
-## [1] "plot_id"           "recov_plot"        "perleaf_plot"     
-## [4] "perroot_plot"      "perbio_plot"       "persoil_plot"     
-## [7] "gbd_T0.mm."        "block"             "species_diversity"
+## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"     
+## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"            
+## [9] "species_diversity"
 ```
 
 ```r
@@ -490,8 +468,8 @@ require(car)
 
 ```r
 ### Model one Overall recovery/N retention
-model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | 
-    block, na.action = na.omit, method = "REML")
+model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
+    method = "REML")
 anova(model1)
 ```
 
@@ -546,12 +524,10 @@ model1c
 
 ```r
 
-# model evaluation plot(model1,resid(.)~fitted(.))
-# plot(model1,recov_plot_t~fitted(.))
+# model evaluation plot(model1,resid(.)~fitted(.)) plot(model1,recov_plot_t~fitted(.))
 
 ## Model2 percentage leaf recovery of plot recovery
-model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | 
-    block, method = "REML")
+model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
 anova(model2)
 ```
 
@@ -576,10 +552,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59   0.0011 **
+## 4 - 1 == 0    0.865      0.497    1.74   0.1840   
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -601,12 +577,10 @@ Anova(model2, type = "II")
 
 ```r
 
-# model evaluation plot(model2,resid(.)~fitted(.))
-# plot(model2,perleaf_plot_t~fitted(.))
+# model evaluation plot(model2,resid(.)~fitted(.)) plot(model2,perleaf_plot_t~fitted(.))
 
 ## Model3 percentage root recovery of overall recovery
-model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | 
-    block, method = "REML")
+model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
 anova(model3)
 ```
 
@@ -632,9 +606,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8793   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -656,12 +630,10 @@ Anova(model3, type = "II")
 
 ```r
 
-# model evaluation plot(model3,resid(.)~fitted(.))
-# plot(model3,perleaf_plot_t~fitted(.))
+# model evaluation plot(model3,resid(.)~fitted(.)) plot(model3,perleaf_plot_t~fitted(.))
 
 ## Model 4 percentage soil recovery of overall recovery
-model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | 
-    block, method = "REML")
+model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
 anova(model4)
 ```
 
@@ -687,7 +659,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -711,8 +683,7 @@ Anova(model4, type = "II")
 
 ```r
 
-# model evalution plot(model4,resid(.)~fitted(.))
-# plot(model4,perleaf_plot_t~fitted(.))
+# model evalution plot(model4,resid(.)~fitted(.)) plot(model4,perleaf_plot_t~fitted(.))
 ```
 
 
@@ -793,75 +764,55 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: BEF conference 2011 could not be fit on page. It will not be
-## plotted. Warning: competitive neighbourhood could not be fit on page.
-## It will not be plotted. Warning: Gram-positive bacteria could not be
-## fit on page. It will not be plotted. Warning: tree performance could
-## not be fit on page. It will not be plotted. Warning: wood perforation
-## plates could not be fit on page. It will not be plotted. Warning:
-## belowground biomass could not be fit on page. It will not be plotted.
-## Warning: cadmium at wavelength 228nm could not be fit on page. It
-## will not be plotted. Warning: cation exchange capacity could not be
-## fit on page. It will not be plotted. Warning: chemical defense could
-## not be fit on page. It will not be plotted. Warning: coefficient of
-## variation could not be fit on page. It will not be plotted. Warning:
-## diversity treatment could not be fit on page. It will not be plotted.
-## Warning: geomorphology could not be fit on page. It will not be
-## plotted. Warning: leaf physical resistance could not be fit on page.
-## It will not be plotted. Warning: response variable could not be fit
-## on page. It will not be plotted. Warning: secondary compounds could
-## not be fit on page. It will not be plotted. Warning: spatial genetic
-## structure could not be fit on page. It will not be plotted. Warning:
-## species trait could not be fit on page. It will not be plotted.
-## Warning: standard deviation could not be fit on page. It will not be
-## plotted. Warning: wood compression could not be fit on page. It will
-## not be plotted. Warning: wood shearing could not be fit on page. It
-## will not be plotted. Warning: wood stretching could not be fit on
-## page. It will not be plotted. Warning: wood toughness could not be
-## fit on page. It will not be plotted. Warning: aboveground biomass
-## could not be fit on page. It will not be plotted. Warning:
-## aeromorphic organic layer could not be fit on page. It will not be
-## plotted. Warning: BEF China projects could not be fit on page. It
-## will not be plotted. Warning: below ground could not be fit on page.
-## It will not be plotted. Warning: branch water potential could not be
-## fit on page. It will not be plotted. Warning: cavity nesting
-## hymenoptera could not be fit on page. It will not be plotted.
-## Warning: coarse root density could not be fit on page. It will not be
-## plotted. Warning: community weighted mean trait could not be fit on
-## page. It will not be plotted. Warning: crown projection area could
-## not be fit on page. It will not be plotted. Warning: dbh distribution
-## could not be fit on page. It will not be plotted. Warning:
-## eco-physiologic traits could not be fit on page. It will not be
-## plotted. Warning: experimental treatment could not be fit on page. It
-## will not be plotted. Warning: Flora of China could not be fit on
-## page. It will not be plotted. Warning: genetic autocorrelation could
-## not be fit on page. It will not be plotted. Warning: growth rings
-## could not be fit on page. It will not be plotted. Warning: leaf
-## longevity could not be fit on page. It will not be plotted. Warning:
-## matching status could not be fit on page. It will not be plotted.
-## Warning: mineralisation could not be fit on page. It will not be
-## plotted. Warning: mineralization could not be fit on page. It will
-## not be plotted. Warning: mixed models could not be fit on page. It
-## will not be plotted. Warning: multi-trophic interactions could not be
-## fit on page. It will not be plotted. Warning: nitrogen cycling could
-## not be fit on page. It will not be plotted. Warning: phylogenetic
-## distinctness could not be fit on page. It will not be plotted.
-## Warning: phytophagous insects could not be fit on page. It will not
-## be plotted. Warning: research proposals could not be fit on page. It
-## will not be plotted. Warning: respiration could not be fit on page.
-## It will not be plotted. Warning: rooting depth could not be fit on
-## page. It will not be plotted. Warning: shrub layer could not be fit
-## on page. It will not be plotted. Warning: simpson diversity could not
-## be fit on page. It will not be plotted. Warning: snag height could
-## not be fit on page. It will not be plotted. Warning: specialization
-## could not be fit on page. It will not be plotted. Warning: species
-## identity variable could not be fit on page. It will not be plotted.
-## Warning: trap nest could not be fit on page. It will not be plotted.
-## Warning: vegetation stratum could not be fit on page. It will not be
-## plotted. Warning: wood ground tissue could not be fit on page. It
-## will not be plotted. Warning: wood mechanics could not be fit on
-## page. It will not be plotted. Warning: wood porosity could not be fit
-## on page. It will not be plotted.
+## Warning: species richness could not be fit on page. It will not be plotted. Warning: replanted
+## species could not be fit on page. It will not be plotted. Warning: arbuscular mycorrhizal
+## fungi could not be fit on page. It will not be plotted. Warning: individual based values could
+## not be fit on page. It will not be plotted. Warning: shannon diversity could not be fit on
+## page. It will not be plotted. Warning: BEF China PIs could not be fit on page. It will not be
+## plotted. Warning: cadmium at wavelength 214nm could not be fit on page. It will not be
+## plotted. Warning: cadmium at wavelength 228nm could not be fit on page. It will not be
+## plotted. Warning: cation exchange capacity could not be fit on page. It will not be plotted.
+## Warning: data management could not be fit on page. It will not be plotted. Warning:
+## experimental design could not be fit on page. It will not be plotted. Warning: geomorphology
+## could not be fit on page. It will not be plotted. Warning: intraspecific diversity could not
+## be fit on page. It will not be plotted. Warning: leaf physical resistance could not be fit on
+## page. It will not be plotted. Warning: microbial biomass could not be fit on page. It will not
+## be plotted. Warning: phylogenetic diversity could not be fit on page. It will not be plotted.
+## Warning: rarefied diversity could not be fit on page. It will not be plotted. Warning:
+## response variable could not be fit on page. It will not be plotted. Warning: secondary
+## compounds could not be fit on page. It will not be plotted. Warning: spatial genetic structure
+## could not be fit on page. It will not be plotted. Warning: standard deviation could not be fit
+## on page. It will not be plotted. Warning: wood shearing could not be fit on page. It will not
+## be plotted. Warning: wood toughness could not be fit on page. It will not be plotted. Warning:
+## aeromorphic organic layer could not be fit on page. It will not be plotted. Warning: branch
+## water potential could not be fit on page. It will not be plotted. Warning: cavity nesting
+## hymenoptera could not be fit on page. It will not be plotted. Warning: community similarity
+## could not be fit on page. It will not be plotted. Warning: community weighted mean trait could
+## not be fit on page. It will not be plotted. Warning: control treatment could not be fit on
+## page. It will not be plotted. Warning: crown projection area could not be fit on page. It will
+## not be plotted. Warning: directed extinction could not be fit on page. It will not be plotted.
+## Warning: ecosystem functioning could not be fit on page. It will not be plotted. Warning:
+## flight interception could not be fit on page. It will not be plotted. Warning: functional
+## trait could not be fit on page. It will not be plotted. Warning: land use history could not be
+## fit on page. It will not be plotted. Warning: leaf longevity could not be fit on page. It will
+## not be plotted. Warning: matching status could not be fit on page. It will not be plotted.
+## Warning: mineralization could not be fit on page. It will not be plotted. Warning: mixed
+## models could not be fit on page. It will not be plotted. Warning: multi-trophic interactions
+## could not be fit on page. It will not be plotted. Warning: non-random extinction could not be
+## fit on page. It will not be plotted. Warning: phylogenetic distinctness could not be fit on
+## page. It will not be plotted. Warning: phytophagous insects could not be fit on page. It will
+## not be plotted. Warning: predators could not be fit on page. It will not be plotted. Warning:
+## rainfall simulator could not be fit on page. It will not be plotted. Warning: red mould could
+## not be fit on page. It will not be plotted. Warning: research proposals could not be fit on
+## page. It will not be plotted. Warning: shrub layer could not be fit on page. It will not be
+## plotted. Warning: simpson diversity could not be fit on page. It will not be plotted. Warning:
+## snag height could not be fit on page. It will not be plotted. Warning: trap nest could not be
+## fit on page. It will not be plotted. Warning: vegetation stratum could not be fit on page. It
+## will not be plotted. Warning: water content could not be fit on page. It will not be plotted.
+## Warning: Weibull distribution could not be fit on page. It will not be plotted. Warning: wood
+## ground tissue could not be fit on page. It will not be plotted. Warning: wood mechanics could
+## not be fit on page. It will not be plotted. Warning: wood porosity could not be fit on page.
+## It will not be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
