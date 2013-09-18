@@ -431,6 +431,11 @@ text(1,70,"a",font=2);text(2,70,"ab",font=2);text(3,70,"b",font=2);text(3.4,98,"
             recovery (c) and relative soil recovery (d). Significant differences as revealed by post
             hoc Tukey’s test (P < 0.05) are indicated by different letters.
 
+Finally we need to upload the resulting dataset? With figures and our script
+attached so everybody will be able to see what has been done and is able to
+reproduce the results by executing the script. We also can do this directly
+from with R using the upload function for datasets as well as the upload
+function for free format files.
 
 ## Discussion
 
