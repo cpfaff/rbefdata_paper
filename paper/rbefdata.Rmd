@@ -287,17 +287,19 @@ transformed where necessary (box below).
 syndata = merge(Nretention, design)
 
 # overview about the content of the synthesis dataset
-names(syndata)
+names(syndata) 
+
+# restriction of the synthesis datset
 syndata=syndata[-c(9:14,16:41)]
 names(syndata)
 
-### check for data properties (keep?)
+# check for data properties (keep this?)
 str(syndata)
 
-### we want to use 'species_diversity' as a factor
+#> we want to use 'species_diversity' as a factor
 
 syndata$species_diversity=as.factor(syndata$species_diversity)
-attach(syndata)
+# attach(syndata)
 
 ### All response variables have been square root transformed
 
