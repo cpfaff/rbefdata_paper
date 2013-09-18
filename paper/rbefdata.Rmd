@@ -440,8 +440,8 @@ platform. So we upload the script and the four pane figure with its caption to
 add them to the proposal. 
 
 ```{r upload_script, include = T, eval = T, cache = T}
-# attach the script
-bef.portal.attach.to_proposal(id = 90, attachment = "/path/to/script.R", description = "The R script that has been used to derive the results in the published paper")
+# attach the script using a path  
+bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", description = "The R script that has been used to derive the results in the published paper")
 ```
 
 ```{r prepare_plot_png, echo = F}

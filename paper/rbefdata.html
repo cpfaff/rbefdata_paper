@@ -752,7 +752,7 @@ anova(model3)
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
 ## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 1 == 0    0.733      0.288    2.54   0.0285 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
@@ -798,9 +798,9 @@ anova(model4)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
-## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 .
+## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
+## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -862,12 +862,11 @@ the merged dataset would only mean duplication of data on the data management
 platform. So we upload the script and the four pane figure with its caption to
 add them to the proposal. </p>
 
-<pre><code class="r"># attach the script
-bef.portal.attach.to_proposal(id = 90, attachment = &quot;/path/to/script.R&quot;, description = &quot;The R script that has been used to derive the results in the published paper&quot;)
+<pre><code class="r"># attach the script using a path
+bef.portal.attach.to_proposal(id = 90, attachment = &quot;./rbefdata.Rmd&quot;, description = &quot;The R script that has been used to derive the results in the published paper&quot;)
 </code></pre>
 
-<pre><code>## Error: specified file does not exist: /path/to/script.R.  You must specify a valid file name
-## or provide the contents to send.
+<pre><code>## [1] &quot;Attachment to proposal with ID: 90 successful!&quot;
 </code></pre>
 
 <pre><code>## pdf 

@@ -639,7 +639,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
 ## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 1 == 0    0.733      0.288    2.54   0.0285 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -691,9 +691,9 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
-## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 .
+## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
+## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -760,13 +760,12 @@ add them to the proposal.
 
 
 ```r
-# attach the script
-bef.portal.attach.to_proposal(id = 90, attachment = "/path/to/script.R", description = "The R script that has been used to derive the results in the published paper")
+# attach the script using a path
+bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", description = "The R script that has been used to derive the results in the published paper")
 ```
 
 ```
-## Error: specified file does not exist: /path/to/script.R.  You must specify a valid file name
-## or provide the contents to send.
+## [1] "Attachment to proposal with ID: 90 successful!"
 ```
 
 
