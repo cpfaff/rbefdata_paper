@@ -131,8 +131,8 @@ his/her research idea to the dataowners and possible collaborators. This more so
 the portal allows to include and acknowledge all researchers involved in the data sampling process, 
 promotes collaborations between research units, avoids publication initiatives of the same research 
 ideas and adds to the transparency of data publication. 
-To create a paper proposal the researcher can shop datasets which are to be included in the analyses.
-Furthermore basic information such as the title, the rationale, the
+To create a paper proposal the researcher can shop (select) datasets which are to be included in the analyses.
+Furthermore basic information of the proposed paper such as the title, the rationale, the
 envisaged journal and date needs to be provided. The data owners and proposed collaborators are informed
 and can decide if and how they like to participate in the upcoming paper or if they only like to get
 acknowledged for providing their data (cite Karin). Furthermore the datasets assembled by the paper proposal can be 
@@ -150,8 +150,8 @@ package can be installed from the CRAN package repository
 structures of the database.  rbefdata provides convenient methods to pull single or
 multiple datasets into the R environment in one step for analysis.  Additionally,
 it offers functions that help to upload final results datasets with the Rscripts
-attached. The supply of Rscripts which have been used to derive the results from 
-the original datasets provides a valuable insight into data provenance and is a stepping
+attached. The provision of Rscripts which have been used to derive the results from 
+the original datasets offer a valuable insight into data provenance and is a stepping
 stone for reproducible research.
 
 
@@ -161,7 +161,10 @@ stone for reproducible research.
 In this paper we use an already published dataset as a usecase to present the
 functionalities and inter linkages between the BEF-China data portal and
 `rbefdata`. However, we will as well give some ecological background of the
-datasets used and the respective analyses.
+datasets used and the respective analyses. The usecase is dealing with data from
+a small scale experiment called pilot experiment. It is a 15N tracer experiment which
+aims to disentangle the effect of species mixtures on system N retention.
+
 We created a paper proposal with the following rationale: 
 'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
 forest ecosystems is still very limited, particularly as regards macronutrients
@@ -184,42 +187,17 @@ More precisely we wanted to test the following hypotheses:
 (H1) Nitrogen acquisition and retention increases with species richness due complementary effects in species mixtures. 
 (H2) Species richness effects strengthen over time.'
 The respective proposal can be assessed under (url)
-
-
-
-###
-
-Four species were chosen for the experiment: Schima superba Gardn. et Champ.
-and Elaeocarpus decipiens Hemsley (evergreen), Quercus serrata Murray and
-Castanea henryi (Skan) Rehd. et Wils. (deciduous; Yu et al. 2001). The
-following planting schemes were established in 1-mÂ² plots.  In each plot 16
-saplings were planted in an array of four by four. Monocultures, two-species
-combinations and four-species combinations were established. The four study
-species provided a total of eleven species combinations four monocultures, six
-two-species combinations, and one four-species combination. All treatments were
-replicated four times, once in each of the four blocks. Pulse labelling with
-15NH415NO3 (98% 15N) was performed in August and in September 2009. Leaf, fine
-root and soil samples have been collected in September 2010. Samples have been
-analysed for 15N content and leaf, fine root and soil recovery have been
-calculated. The sum of the three compartment recoveries is referred to as
-system N retention.  Relative leaf, root and soil recovery was calculated as
-percentage of system N retention (for a detailed description of the material
-and methods we refer to Lang et al. 2013). ####
-
-
+For a detailed description of the experimental design we refer to Lang et al. 2013 (DOI)
 ![showcase_proposal](./figure/static/showcase_proposal.png) 
-
 * caption: The paper proposal in its final approved state. The information on that page contains a title 
           rational envisaged date and journal. The calculated authors and email lists for 
           communication as well as the attached datasets and sub projects involved (only partially shown).
 
 
-
-
-
-The next step after an accepted paper proposal is to setup the `rbefdata`
-package. This requires installing, loading the package and setting the required
-package options. Having a look into the options list reveals several fields
+When all dataowners accepted the paper proposal rbefdata can be used to directly access the
+datasets from the dataportal and transfer them to the R environment. To do so
+the `rbefdata`package needs to be setup. This requires installing, loading the 
+package and setting the required package options. Having a look into the options list reveals several fields
 that can be filled in, like the URL to the `BEFdata` server, user credentials
 and a download folder name that is used to store free format files attached to
 datasets. The `tematres` server related URLs in the options are part of
@@ -265,7 +243,7 @@ draws all associated datasets of a proposal into the R environment in one
 single step. It returns a list object that keeps a data frame per list element
 containing a dataset of the proposal each (see blow). The function requires the
 ID of the proposal to work. The ID can be found in the URL of the proposal (see
-blow).
+below).
 
 ```
 # the proposal URL shows the id is 90 
@@ -288,7 +266,7 @@ with its metadata when using one of the download commands of `rbefdata` (see
 box below).
 
 ```{r rbefdata_metadata} 
-# get metadtata only, by dataset ID
+# get metadata only, by dataset ID
 bef.portal.get.metadata(dataset = 335)$title
 
 # extract title of first dataset in proposal
@@ -302,7 +280,8 @@ titles
 names(attributes(datasets[[1]])) 
 ``` 
 
-The dataset from the proposal is written into two variables called `Nretention`
+The dataset from the proposal contains of three datasets, of which we do only use
+the second and third. These two are written into two variables called `Nretention`
 and `design` before deciding upon how to merge. Inspecting both dataset reveals
 each of them contains a column with a `plot_id` that seems suitable for
 merging. We also can use the metadata for columns to check if this really is
@@ -310,8 +289,8 @@ the case (see box below).
 
 ```{r anne_script_seprate_datasets} 
 # extract into separate datasets
-Nretention = datasets[[1]]
-design = datasets[[2]]
+Nretention = datasets[[2]]
+design = datasets[[3]]
 
 # overview about the contents of the datasets
 
@@ -329,16 +308,13 @@ design_column_plot_id_description = attributes(design)$columns[4,]$description
 design_column_plot_id_description 
 ```
 
-After merging the datasets the new synthesis dataset still contains many column
-not required for the analysis that have been dropped. To analyse the dataset of
+After merging the datasets the new synthesis dataset still contains many columns
+not required for the analysis that can be dropped. To analyse the dataset of
 system N retention we require the information about species diversity in the
 plots and the information about which plot is placed in which block from the
-design dataset.  
-
-* some more glue text that describes what happens ... Anne???
-
-The response variables have been checked for normality with `qqplot` and
-transformed where necessary (box below).
+design dataset. 'Species diversity' is used as a factor containing three levels (1,2,4 species mixtures).
+The response variables have been checked for normality with `qqplot` and 
+transformed (box below).
 
 ```{r anne_script_two} 
 # the synthesis dataset
@@ -351,24 +327,22 @@ names(syndata)
 syndata=syndata[-c(9:14,16:41)]
 names(syndata)
 
-# check for data properties (keep this?)
-str(syndata)
-
 #> we want to use 'species_diversity' as a factor
 syndata$species_diversity=as.factor(syndata$species_diversity)
 
 # square root transforme response variables
+syndata$recov_plot_t=syndata$recov_plot^.5 
+syndata$perleaf_plot_t=syndata$perleaf_plot^.5 
 syndata$perroot_plot_t=syndata$perroot_plot^.5
 syndata$persoil_plot_t=syndata$persoil_plot^.5
-syndata$recov_plot_t=syndata$recov_plot^.5
-syndata$perleaf_plot_t=syndata$perleaf_plot^.5 
 ```
 
 We analysed our data by linear mixed effects models. Since the plots are
-clumped in space, we use block as a random factor. The analysis uses the R
-packages `nlme` for modeling and `multcomp` for post-hoc comparisons. To adjust
+nested in blocks, we use block as a random factor. The analysis uses the R
+packages `nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
+for post-hoc comparisons. To adjust
 for an unbalanced experimental design an ANOVA Type II was carried out to test
-for main effects using the R package `car` (Fox & Weisberg 2011)  
+for main effects using the R package `car` (Fox and Weisberg 2011). Models have been evaluated visually.
 
 ```{r anne_script_load_packages, message = F} 
 require(nlme)
@@ -377,7 +351,7 @@ require(car)
 ```
 
 ```{r anne_script_model_tests}
-### Model one Overall recovery/N retention  
+### Model 1: Overall recovery/N retention  
 model1 = lme(recov_plot_t~gbd_T0.mm.+species_diversity,syndata,random=~1|block,na.action=na.omit,method="REML")
 anova(model1)
 summary(glht(model1,linfct = mcp(species_diversity="Tukey"))) 
@@ -386,9 +360,13 @@ summary(glht(model1,linfct = mcp(species_diversity="Tukey")))
 model1c=Anova(model1,type="II" )
 model1c
 
-# model evaluation
-# plot(model1,resid(.)~fitted(.))
-# plot(model1,recov_plot_t~fitted(.))
+### model evaluation
+#checking plots to assess whether residuals are well behaved 
+#plot(model1)
+#whether the response variable is a reasonable linear function of the fitted values
+#plot(model1,recov_plot_t~fitted(.))
+#and whether the errors are reasonably close to normal distribution in all four blocks (Crawley 2009)
+#qqnorm(model1,~resid(.)|block)
 
 ## Model2 percentage leaf recovery of plot recovery 
 model2=lme(perleaf_plot_t~species_diversity,syndata,random=~1|block,method="REML")
@@ -397,8 +375,9 @@ summary(glht(model2,linfct = mcp(species_diversity="Tukey")))
 Anova(model2,type="II")
 
 # model evaluation
-# plot(model2,resid(.)~fitted(.))
-# plot(model2,perleaf_plot_t~fitted(.))
+#plot(model2)
+#plot(model2,recov_plot_t~fitted(.))
+#qqnorm(model2,~resid(.)|block)
 
 ## Model3 percentage root recovery of overall recovery
 model3 = lme(perroot_plot_t~species_diversity,syndata,random=~1|block,method="REML")
@@ -407,8 +386,9 @@ summary(glht(model3,linfct = mcp(species_diversity="Tukey")))
 Anova(model3,type="II")
 
 # model evaluation
-# plot(model3,resid(.)~fitted(.))
-# plot(model3,perleaf_plot_t~fitted(.))
+#plot(model3)
+#plot(model3,recov_plot_t~fitted(.))
+#qqnorm(model3,~resid(.)|block)
 
 ## Model 4 percentage soil recovery of overall recovery
 model4 = lme(persoil_plot_t~species_diversity,syndata,random=~1|block,method="REML")
@@ -417,10 +397,11 @@ summary(glht(model4,linfct = mcp(species_diversity="Tukey")))
 Anova(model4,type="II")
 
 # model evalution
-# plot(model4,resid(.)~fitted(.))
-# plot(model4,perleaf_plot_t~fitted(.)) 
+#plot(model4)
+#plot(model4,recov_plot_t~fitted(.))
+#qqnorm(model4,~resid(.)|block)
 ```
-
+Results of our showcase:
 System 15N retention (overall plot recovery) was positively affected by species
 richness at the level of P = 0.l0576 (Chisq: 5.7; Fig. Xa). The analysis of the
 different system compartments (leaves, fine roots and soil) revealed that fine
