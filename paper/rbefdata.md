@@ -245,12 +245,13 @@ bef.options(url = "http://my.own.befdata.instance.com")
 
 
 
-After setup we can start right away using data from the proposal. The proposal
-download function of `rbefdata` is used for that. It draws all associated
-datasets of a proposal into the R environment in one single step. It returns a
-list object that keeps a data frame per list element containing a dataset of
-the proposal each (see blow). The function requires the ID of the proposal to
-work. The ID can be found in the URL of the proposal (see blow).
+After setup we can start right away using data from the proposal that we
+created. The proposal download function of `rbefdata` is used for that. It
+draws all associated datasets of a proposal into the R environment in one
+single step. It returns a list object that keeps a data frame per list element
+containing a dataset of the proposal each (see blow). The function requires the
+ID of the proposal to work. The ID can be found in the URL of the proposal (see
+blow).
 
 ```
 # the proposal URL shows the id is 90 
@@ -275,12 +276,13 @@ head(extract_first_dataset, 5)
 ```
 
 
-Each dataset in the BEFdata portal is associated with metadata. We also provide
-access to the metadata from within `rbefdata`. It can be accessed either
-directly via a metadata download command that takes the ID of a dataset or
-extracted via the R internal `attributes()` command. The extraction is possible
-as each dataset is attached with its metadata when using one of the download
-commands of `rbefdata` (see box below).
+Each dataset in the `BEFdata` portal is associated with metadata the authors of
+the dataset provide. We also provide access to the metadata from within
+`rbefdata`. It can be accessed either directly via a metadata download command
+that takes the ID of a dataset or extracted via the R internal `attributes()`
+command. The extraction via attributes is possible as each dataset is attached
+with its metadata when using one of the download commands of `rbefdata` (see
+box below).
 
 
 ```r
@@ -330,14 +332,17 @@ names(attributes(datasets[[1]]))
 ```
 
 
-The dataset from the proposal were written into two variables called
-`Nretention` and `design` before deciding upon how to merge. Inspecting both
-dataset reveals each contains a column with a `plot_id` that is suitable for
-merging. After merging the datasets the new synthesis dataset still contains
-many column not required for the analysis that have been dropped. To analyse
-the dataset of system N retention we require the information about species
-diversity in the plots and the information about which plot is placed in which
-block from the design dataset. 
+The dataset from the proposal is written into two variables called `Nretention`
+and `design` before deciding upon how to merge. Inspecting both dataset reveals
+each of them contains a column with a `plot_id` that seems suitable for
+merging. We also can use the metadata for columns to check if this is really
+the case.
+
+After merging the datasets the new synthesis dataset still contains many column
+not required for the analysis that have been dropped. To analyse the dataset of
+system N retention we require the information about species diversity in the
+plots and the information about which plot is placed in which block from the
+design dataset.  
 
 
 ```r
@@ -346,6 +351,8 @@ Nretention = datasets[[1]]
 design = datasets[[2]]
 
 # overview about the contents of the datasets
+
+# names in dataset Nretention
 names(Nretention)
 ```
 
@@ -355,6 +362,19 @@ names(Nretention)
 ```
 
 ```r
+
+# description of column plot_id
+Nretention_column_plot_id_description = attributes(Nretention)$columns[1, ]$description
+Nretention_column_plot_id_description
+```
+
+```
+## [1] "Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively. (plot_id: plot_id; Datagroup description: Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively.)"
+```
+
+```r
+
+# names in dataset Nretention
 names(design)
 ```
 
@@ -371,6 +391,16 @@ names(design)
 ## [28] "sp2"                      "sp3"                      "sp4"                     
 ## [31] "sp5"                      "sp7"                      "sp8"                     
 ## [34] "sp11"                     "sp_connected"
+```
+
+```r
+
+design_column_plot_id_description = attributes(design)$columns[5, ]$description
+design_column_plot_id_description
+```
+
+```
+## [1] "Helper column to understand other columns in this data set (control_ID: character ID encoding the plots treatment in the narrower sense, e.g. fungicide- or pesticide-treatment; identical for each plot in one of the four blocks showing the same control ID.  The plot treatment in the experiment is coded as increasing caracters: A , B , C ,…, AA, AB, AC,…,AZ, BA)"
 ```
 
 
@@ -552,10 +582,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59   0.0011 **
-## 4 - 1 == 0    0.865      0.497    1.74   0.1840   
-## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -606,9 +636,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8793   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0278 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -659,9 +689,9 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
-## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## 2 - 1 == 0   -0.294      0.127   -2.32    0.051 .
+## 4 - 1 == 0   -0.499      0.215   -2.33    0.050 *
+## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -687,10 +717,37 @@ Anova(model4, type = "II")
 ```
 
 
-![plot of chunk final_plot](figure/final_plot.png) 
+System 15N retention (overall plot recovery) was positively affected by species
+richness at the level of P = 0.l0576 (Chisq: 5.7; Fig. Xa). The analysis of the
+different system compartments (leaves, fine roots and soil) revealed that fine
+root recovery was lower than leaf recovery, and biomass recovery (leaves and
+fine roots) was lower than soil recovery.  Whereas the relative leaf and root
+recovery were significantly higher in species mixtures compared with
+monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
+reduced (Fig. Xd).  Our results demonstrate that species richness of mixtures
+increases system N retention in young subtropical tree plantations. Although
+relative soil recovery was highest compared with relative leaf and root
+recovery, soil recovery decreased with species richness (Fig. X). Thus, the
+observed positive relationship between species richness and system N retention
+is caused by an increase in relative N recovery of sapling biomass (fine roots
+and leaves) with higher species numbers in mixtures. Our findings suggest
+positive species diversity effects for an important ecosystem service, which is
+highly relevant for afforestation programmes as currently applied in China on a
+large scale. The positive relationship between species richness and system N
+retention suggests that mixed plantings even at the sapling stage of a
+restricted species pool may considerably increase N retention in subtropical
+forest systems even after a few years. This in turn has the potential to
+significantly reduce N losses and thus N accumulation in the leachate or
+groundwater (Lang et al. 2013).
+
+![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
 
-* caption: 
+* caption:  Nitrogen (N) retention affected by species richness. N retention summed as
+            the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root
+            recovery (c) and relative soil recovery (d). Significant differences as revealed by post
+            hoc Tukey’s test (P < 0.05) are indicated by different letters.
+
 
 ## Discussion
 
@@ -764,55 +821,58 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: species richness could not be fit on page. It will not be plotted. Warning: replanted
-## species could not be fit on page. It will not be plotted. Warning: arbuscular mycorrhizal
-## fungi could not be fit on page. It will not be plotted. Warning: individual based values could
-## not be fit on page. It will not be plotted. Warning: shannon diversity could not be fit on
-## page. It will not be plotted. Warning: BEF China PIs could not be fit on page. It will not be
-## plotted. Warning: cadmium at wavelength 214nm could not be fit on page. It will not be
-## plotted. Warning: cadmium at wavelength 228nm could not be fit on page. It will not be
-## plotted. Warning: cation exchange capacity could not be fit on page. It will not be plotted.
-## Warning: data management could not be fit on page. It will not be plotted. Warning:
-## experimental design could not be fit on page. It will not be plotted. Warning: geomorphology
-## could not be fit on page. It will not be plotted. Warning: intraspecific diversity could not
-## be fit on page. It will not be plotted. Warning: leaf physical resistance could not be fit on
-## page. It will not be plotted. Warning: microbial biomass could not be fit on page. It will not
-## be plotted. Warning: phylogenetic diversity could not be fit on page. It will not be plotted.
-## Warning: rarefied diversity could not be fit on page. It will not be plotted. Warning:
+## Warning: BEF conference 2011 could not be fit on page. It will not be plotted. Warning:
+## successional age could not be fit on page. It will not be plotted. Warning: wood perforation
+## plates could not be fit on page. It will not be plotted. Warning: air temperature could not be
+## fit on page. It will not be plotted. Warning: cadmium at wavelength 214nm could not be fit on
+## page. It will not be plotted. Warning: cadmium at wavelength 228nm could not be fit on page.
+## It will not be plotted. Warning: experimental design could not be fit on page. It will not be
+## plotted. Warning: intraspecific diversity could not be fit on page. It will not be plotted.
+## Warning: leaf physical resistance could not be fit on page. It will not be plotted. Warning:
 ## response variable could not be fit on page. It will not be plotted. Warning: secondary
 ## compounds could not be fit on page. It will not be plotted. Warning: spatial genetic structure
-## could not be fit on page. It will not be plotted. Warning: standard deviation could not be fit
-## on page. It will not be plotted. Warning: wood shearing could not be fit on page. It will not
-## be plotted. Warning: wood toughness could not be fit on page. It will not be plotted. Warning:
-## aeromorphic organic layer could not be fit on page. It will not be plotted. Warning: branch
-## water potential could not be fit on page. It will not be plotted. Warning: cavity nesting
-## hymenoptera could not be fit on page. It will not be plotted. Warning: community similarity
-## could not be fit on page. It will not be plotted. Warning: community weighted mean trait could
-## not be fit on page. It will not be plotted. Warning: control treatment could not be fit on
-## page. It will not be plotted. Warning: crown projection area could not be fit on page. It will
-## not be plotted. Warning: directed extinction could not be fit on page. It will not be plotted.
-## Warning: ecosystem functioning could not be fit on page. It will not be plotted. Warning:
-## flight interception could not be fit on page. It will not be plotted. Warning: functional
-## trait could not be fit on page. It will not be plotted. Warning: land use history could not be
-## fit on page. It will not be plotted. Warning: leaf longevity could not be fit on page. It will
-## not be plotted. Warning: matching status could not be fit on page. It will not be plotted.
-## Warning: mineralization could not be fit on page. It will not be plotted. Warning: mixed
-## models could not be fit on page. It will not be plotted. Warning: multi-trophic interactions
-## could not be fit on page. It will not be plotted. Warning: non-random extinction could not be
-## fit on page. It will not be plotted. Warning: phylogenetic distinctness could not be fit on
-## page. It will not be plotted. Warning: phytophagous insects could not be fit on page. It will
-## not be plotted. Warning: predators could not be fit on page. It will not be plotted. Warning:
-## rainfall simulator could not be fit on page. It will not be plotted. Warning: red mould could
-## not be fit on page. It will not be plotted. Warning: research proposals could not be fit on
-## page. It will not be plotted. Warning: shrub layer could not be fit on page. It will not be
-## plotted. Warning: simpson diversity could not be fit on page. It will not be plotted. Warning:
-## snag height could not be fit on page. It will not be plotted. Warning: trap nest could not be
-## fit on page. It will not be plotted. Warning: vegetation stratum could not be fit on page. It
-## will not be plotted. Warning: water content could not be fit on page. It will not be plotted.
-## Warning: Weibull distribution could not be fit on page. It will not be plotted. Warning: wood
-## ground tissue could not be fit on page. It will not be plotted. Warning: wood mechanics could
-## not be fit on page. It will not be plotted. Warning: wood porosity could not be fit on page.
-## It will not be plotted.
+## could not be fit on page. It will not be plotted. Warning: trait dissimilarity could not be
+## fit on page. It will not be plotted. Warning: tree identifier could not be fit on page. It
+## will not be plotted. Warning: wood compression could not be fit on page. It will not be
+## plotted. Warning: wood shearing could not be fit on page. It will not be plotted. Warning:
+## wood shrinkage could not be fit on page. It will not be plotted. Warning: aeromorphic organic
+## layer could not be fit on page. It will not be plotted. Warning: BEF China projects could not
+## be fit on page. It will not be plotted. Warning: branch water potential could not be fit on
+## page. It will not be plotted. Warning: cavity nesting hymenoptera could not be fit on page. It
+## will not be plotted. Warning: community weighted mean trait could not be fit on page. It will
+## not be plotted. Warning: control treatment could not be fit on page. It will not be plotted.
+## Warning: crown overlap could not be fit on page. It will not be plotted. Warning: crown
+## projection area could not be fit on page. It will not be plotted. Warning: directed extinction
+## could not be fit on page. It will not be plotted. Warning: dispersal could not be fit on page.
+## It will not be plotted. Warning: eco-physiologic traits could not be fit on page. It will not
+## be plotted. Warning: genetic autocorrelation could not be fit on page. It will not be plotted.
+## Warning: human influence could not be fit on page. It will not be plotted. Warning: hydrogen
+## could not be fit on page. It will not be plotted. Warning: land use history could not be fit
+## on page. It will not be plotted. Warning: leaf longevity could not be fit on page. It will not
+## be plotted. Warning: litter thickness could not be fit on page. It will not be plotted.
+## Warning: matching status could not be fit on page. It will not be plotted. Warning:
+## mineralisation could not be fit on page. It will not be plotted. Warning: multi-trophic
+## interactions could not be fit on page. It will not be plotted. Warning: nitrification could
+## not be fit on page. It will not be plotted. Warning: nitrogen cycling could not be fit on
+## page. It will not be plotted. Warning: non-random extinction could not be fit on page. It will
+## not be plotted. Warning: pesticide could not be fit on page. It will not be plotted. Warning:
+## phylogenetic distinctness could not be fit on page. It will not be plotted. Warning:
+## phytophagous insects could not be fit on page. It will not be plotted. Warning: rainfall
+## simulator could not be fit on page. It will not be plotted. Warning: red mould could not be
+## fit on page. It will not be plotted. Warning: research proposals could not be fit on page. It
+## will not be plotted. Warning: rooting depth could not be fit on page. It will not be plotted.
+## Warning: runoff plots could not be fit on page. It will not be plotted. Warning: sample could
+## not be fit on page. It will not be plotted. Warning: seedling could not be fit on page. It
+## will not be plotted. Warning: simpson diversity could not be fit on page. It will not be
+## plotted. Warning: snag height could not be fit on page. It will not be plotted. Warning:
+## specialization could not be fit on page. It will not be plotted. Warning: species identity
+## variable could not be fit on page. It will not be plotted. Warning: temperature could not be
+## fit on page. It will not be plotted. Warning: trap nest could not be fit on page. It will not
+## be plotted. Warning: vegetation stratum could not be fit on page. It will not be plotted.
+## Warning: water content could not be fit on page. It will not be plotted. Warning: weevils
+## could not be fit on page. It will not be plotted. Warning: Weibull distribution could not be
+## fit on page. It will not be plotted. Warning: wood mechanics could not be fit on page. It will
+## not be plotted. Warning: wood porosity could not be fit on page. It will not be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 

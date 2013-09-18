@@ -221,12 +221,13 @@ bef.options("url" = "http://my.own.befdata.instance.com")
 source("secrets.R") 
 ```
 
-After setup we can start right away using data from the proposal. The proposal
-download function of `rbefdata` is used for that. It draws all associated
-datasets of a proposal into the R environment in one single step. It returns a
-list object that keeps a data frame per list element containing a dataset of
-the proposal each (see blow). The function requires the ID of the proposal to
-work. The ID can be found in the URL of the proposal (see blow).
+After setup we can start right away using data from the proposal that we
+created. The proposal download function of `rbefdata` is used for that. It
+draws all associated datasets of a proposal into the R environment in one
+single step. It returns a list object that keeps a data frame per list element
+containing a dataset of the proposal each (see blow). The function requires the
+ID of the proposal to work. The ID can be found in the URL of the proposal (see
+blow).
 
 ```
 # the proposal URL shows the id is 90 
@@ -240,12 +241,13 @@ extract_first_dataset = datasets[[1]]
 head(extract_first_dataset, 5)
 ```
 
-Each dataset in the BEFdata portal is associated with metadata. We also provide
-access to the metadata from within `rbefdata`. It can be accessed either
-directly via a metadata download command that takes the ID of a dataset or
-extracted via the R internal `attributes()` command. The extraction is possible
-as each dataset is attached with its metadata when using one of the download
-commands of `rbefdata` (see box below).
+Each dataset in the `BEFdata` portal is associated with metadata the authors of
+the dataset provide. We also provide access to the metadata from within
+`rbefdata`. It can be accessed either directly via a metadata download command
+that takes the ID of a dataset or extracted via the R internal `attributes()`
+command. The extraction via attributes is possible as each dataset is attached
+with its metadata when using one of the download commands of `rbefdata` (see
+box below).
 
 ```{r rbefdata_metadata} 
 # get metadtata only, by dataset ID
@@ -262,14 +264,17 @@ titles
 names(attributes(datasets[[1]])) 
 ``` 
 
-The dataset from the proposal were written into two variables called
-`Nretention` and `design` before deciding upon how to merge. Inspecting both
-dataset reveals each contains a column with a `plot_id` that is suitable for
-merging. After merging the datasets the new synthesis dataset still contains
-many column not required for the analysis that have been dropped. To analyse
-the dataset of system N retention we require the information about species
-diversity in the plots and the information about which plot is placed in which
-block from the design dataset. 
+The dataset from the proposal is written into two variables called `Nretention`
+and `design` before deciding upon how to merge. Inspecting both dataset reveals
+each of them contains a column with a `plot_id` that seems suitable for
+merging. We also can use the metadata for columns to check if this is really
+the case.
+
+After merging the datasets the new synthesis dataset still contains many column
+not required for the analysis that have been dropped. To analyse the dataset of
+system N retention we require the information about species diversity in the
+plots and the information about which plot is placed in which block from the
+design dataset.  
 
 ```{r anne_script_seprate_datasets} 
 # extract into separate datasets
@@ -277,8 +282,19 @@ Nretention = datasets[[1]]
 design = datasets[[2]]
 
 # overview about the contents of the datasets
-names(Nretention)
-names(design) 
+
+# names in dataset Nretention
+names(Nretention) 
+
+# description of column plot_id
+Nretention_column_plot_id_description = attributes(Nretention)$columns[1,]$description
+Nretention_column_plot_id_description 
+
+# names in dataset Nretention
+names(design)  
+
+design_column_plot_id_description = attributes(design)$columns[5,]$description
+design_column_plot_id_description 
 ```
 
 The response variables have been checked for normality with `qqplot` and
@@ -368,7 +384,30 @@ Anova(model4,type="II")
 # plot(model4,perleaf_plot_t~fitted(.)) 
 ```
 
-```{r final_plot, echo = F}
+System 15N retention (overall plot recovery) was positively affected by species
+richness at the level of P = 0.l0576 (Chisq: 5.7; Fig. Xa). The analysis of the
+different system compartments (leaves, fine roots and soil) revealed that fine
+root recovery was lower than leaf recovery, and biomass recovery (leaves and
+fine roots) was lower than soil recovery.  Whereas the relative leaf and root
+recovery were significantly higher in species mixtures compared with
+monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
+reduced (Fig. Xd).  Our results demonstrate that species richness of mixtures
+increases system N retention in young subtropical tree plantations. Although
+relative soil recovery was highest compared with relative leaf and root
+recovery, soil recovery decreased with species richness (Fig. X). Thus, the
+observed positive relationship between species richness and system N retention
+is caused by an increase in relative N recovery of sapling biomass (fine roots
+and leaves) with higher species numbers in mixtures. Our findings suggest
+positive species diversity effects for an important ecosystem service, which is
+highly relevant for afforestation programmes as currently applied in China on a
+large scale. The positive relationship between species richness and system N
+retention suggests that mixed plantings even at the sapling stage of a
+restricted species pool may considerably increase N retention in subtropical
+forest systems even after a few years. This in turn has the potential to
+significantly reduce N losses and thus N accumulation in the leachate or
+groundwater (Lang et al. 2013).
+
+```{r anne_final_plot, echo = F}
 attach(syndata)
 par(mfrow=c(2,2),bty="l")
 boxplot(recov_plot~species_diversity,las=1,ylab="N retention (at.%)",col="gray",
@@ -385,7 +424,11 @@ boxplot(persoil_plot~species_diversity,las=1,ylab="Relative soil recovery (%)",
 text(1,70,"a",font=2);text(2,70,"ab",font=2);text(3,70,"b",font=2);text(3.4,98,"(D)",font=2)
 ```
 
-* caption: 
+* caption:  Nitrogen (N) retention affected by species richness. N retention summed as
+            the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root
+            recovery (c) and relative soil recovery (d). Significant differences as revealed by post
+            hoc Tukey’s test (P < 0.05) are indicated by different letters.
+
 
 ## Discussion
 
