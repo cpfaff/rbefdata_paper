@@ -1,4 +1,11 @@
 base
+car
 ggplot2
 knitr
+MASS
+multcomp
+mvtnorm
+nlme
+nnet
 rbefdata
+survival
