@@ -93,49 +93,97 @@ handling complex and heterogeneous data.
 
 ### BEF-China and the BEFdata portal
 
-The BEF-China experiment is a Biodiversity Ecosystem Functioning (BEF)
-experiment funded by the German science foundation (DFG, FOR 891). It is
-located in the subtropics of China in the provinces Jianxi and Zhejiang. The
-BEF-China research group (www.bef-china.de) uses two main research platforms.
-An experimental forest diversity gradient of 50~ha, and 27 observational plots
-of 30x30 m each located in the Gutianshan Nature Reserve.  The observational
-plots were selected according to a crossed sampling design along tree species
-richness and stand age. The data for the workflow on carbon pools stems from 22
-to 116 years consisting of 14 to 35 species (cite Bruelheide, 2010).  
+The  BEF- (Biodiversity and Ecosystem Functioning) China project is a research group 
+whose aim is to disentangle the 'The role of tree and shrub diversity
+for production, erosion control, element cycling, and species
+conservation in Chinese subtropical forest ecosystems'. The
+BEF-China research group (www.bef-china.de) is funded by the German science foundation 
+(DFG, FOR 891) and uses two main research platforms located in the provinces Jiangxi and Zhejiang. 
+The Main experiment was established in 2009 and 2010 as the first large scale forest biodiversity–ecosystem functioning 
+(BEF) experiment in the highly species-rich subtropics.
+In total, the area covers 50 ha and there are 566 plots of 400 trees each, ranging in diversity from monocultures 
+to 24-species mixtures. The experiment used 42 native tree species and 10 shrub species, 
+combined into different species pools. More than 400 000 tree and shrub saplings were planted. 
+In a parallel observational approach, a total of 27 Comparative Study Plots (CSPs) of 30x30 m each were set up 
+in existing forests in the adjacent Gutianshan National Nature Reserve (Zhejiang Province) in 2008.
+The observational plots were selected according to a crossed sampling design along tree species
+richness and stand age. The CSPs address the impact of successional age on ecosystem functioning, 
+providing a basis for assessing the successional processes at work across tree species diversity in the Main Experiment. 
+(cite Bruelheide et al., 2012).  
 
 The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is an open
 source data management platform developed within the BEF-China project. It
 adheres to standards like the Ecological Metadata Language for describing
 datasets with metadata and is specialized in harmonizing small heterogeneous
-data that usually has to be dealt with in BEF. But its specialization makes it
-also very valuable to use in any other scientific domain that needs to deal
-with complex small and heterogeneous data. 
-
-The portal offers a social component where researchers can shop datasets and
-write a paper proposals based on the datasets in the shopping cart. In the
-process of creating a proposal some information like a title, a rationale, an
-envisaged journal and date needs to be provided. Sending in a proposal a
-researcher asks for access to the datasets and provides the data owners with
-necessary information about the paper. The data owners then can decide if and
-how they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin).
+data that usually has to be dealt with in BEF research. 
+However, its specialization makes it also very valuable to use in any other
+scientific domain that needs to deal
+with complex small and heterogeneous datasets. 
 
 ### The proposal
+The portal facilitates research cooperation by the tool of paper proposals. 
+Sending in a proposal, a researcher asks for access to the datasets and proposes
+his/her research idea to the dataowners and possible collaborators. This more social component of
+the portal allows to include and acknowledge all researchers involved in the data sampling process, 
+promotes collaborations between research units, avoids publication initiatives of the same research 
+ideas and adds to the transparency of data publication. 
+To create a paper proposal the researcher can shop datasets which are to be included in the analyses.
+Furthermore basic information such as the title, the rationale, the
+envisaged journal and date needs to be provided. The data owners and proposed collaborators are informed
+and can decide if and how they like to participate in the upcoming paper or if they only like to get
+acknowledged for providing their data (cite Karin). Furthermore the datasets assembled by the paper proposal can be 
+readily imported in one step to the R environment by rbefdata.
 
-We use an already published dataset as an example to present the
+
+### rbefdata 
+
+The development of the `rbefdata` package started within the BEF-China project.
+Meanwhile it is part of the rOpenSci package portfolio (http://ropensci.org/),
+which is a community driven approach to wrap all science APIs and to create
+solutions to pull data from different repositories into R for analysis.  The
+package can be installed from the CRAN package repository
+(https://github.com/befdata/befdata) and enables access to the data and meta data
+structures of the database.  rbefdata provides convenient methods to pull single or
+multiple datasets into the R environment in one step for analysis.  Additionally,
+it offers functions that help to upload final results datasets with the Rscripts
+attached. The supply of Rscripts which have been used to derive the results from 
+the original datasets provides a valuable insight into data provenance and is a stepping
+stone for reproducible research.
+
+
+
+
+## Usecase (results)
+In this paper we use an already published dataset as a usecase to present the
 functionalities and inter linkages between the BEF-China data portal and
-`rbefdata`. To test the effect of species richness on system N retention and
-tree sapling N uptake we conducted a 15N tracer experiment in a young tree
-plantation. To this end, saplings of four abundant early successional tree
-species have been planted in monoculture, in two- and four-species mixtures,
-and as individual trees. Afforestations are increasing globally to produce
-timber and pulp wood, but also to enhance ecosystem services such as carbon
-sequestration, nutrient retention, or groundwater recharge. In order to further
-optimise these services with regard to balanced nutrient (particularly
-nitrogen) cycles, it is important to know whether the use of mixtures of native
-tree species in afforestation projects promotes greater acquisition and
-retention of nitrogen compared to the currently established large-scale
-monoculture. 
+`rbefdata`. However, we will as well give some ecological background of the
+datasets used and the respective analyses.
+We created a paper proposal with the following rationale: 
+'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
+forest ecosystems is still very limited, particularly as regards macronutrients
+such as nitrogen and phosphorus. Experimental approaches using tree saplings may
+promote an understanding of mechanisms that underlie nutrient acquisition and 
+cycling in early successional stages of secondary forests and forest plantations. 
+Insights in the potential of nutrient retention of young tree plantations are of 
+particular interest in China, where large areas have been reforested in order to 
+counteract soil erosion and to increase the soils’ water and nutrient retention capacity. 
+In this study we planted saplings of four abundant early successional 
+(evergreen and deciduous) tree species in monocultures, two- and four-species combination 
+to test the effect of species richness on nitrogen acquisition and retention by using a 15N 
+tracer experiment. 
+A crucial question in BEF research is the appropriate time scale of experiments which allows
+species richness effects to emerge. This question gains importance when long-lived and slowly
+growing organisms such as trees are considered. We wanted to analyse whether species richness
+effects occur during the establishment phase of early successional tree species typical of 
+subtropical forests of China.
+More precisely we wanted to test the following hypotheses: 
+(H1) Nitrogen acquisition and retention increases with species richness due complementary effects in species mixtures. 
+(H2) Species richness effects strengthen over time.'
+The respective proposal can be assessed under (url)
+
+
+
+###
 
 Four species were chosen for the experiment: Schima superba Gardn. et Champ.
 and Elaeocarpus decipiens Hemsley (evergreen), Quercus serrata Murray and
@@ -152,7 +200,7 @@ analysed for 15N content and leaf, fine root and soil recovery have been
 calculated. The sum of the three compartment recoveries is referred to as
 system N retention.  Relative leaf, root and soil recovery was calculated as
 percentage of system N retention (for a detailed description of the material
-and methods we refer to Lang et al. 2013). 
+and methods we refer to Lang et al. 2013). ####
 
 
 ![showcase_proposal](./figure/static/showcase_proposal.png) 
@@ -161,22 +209,9 @@ and methods we refer to Lang et al. 2013).
           rational envisaged date and journal. The calculated authors and email lists for 
           communication as well as the attached datasets and sub projects involved (only partially shown).
 
-### rbefdata 
 
-The `rbefdata` package started its development within the BEF-Cina experiment.
-Meanwhile it is part of the rOpenSci package portfolio (http://ropensci.org/),
-which is a community driven approach to wrap all science APIs and to create
-solutions to pull data from different repositories into R for analysis.  The
-package can be installed from the CRAN package repository
-(https://github.com/befdata/befdata) and enables access to the data, meta data
-structures of the platform and provides convenient methods to pull single or
-multiple dataset into the R environment in one step for analysis.  Additionally
-it offers functions that help to upload final results datasets with the script
-attached that has been used to derive the results from the original datasets
-which provides a valuable insight into data provenance and also is a stepping
-stone for reproducible research.
 
-## Usecase (results)
+
 
 The next step after an accepted paper proposal is to setup the `rbefdata`
 package. This requires installing, loading the package and setting the required
@@ -639,7 +674,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
 ## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
+## 4 - 1 == 0    0.733      0.288    2.54   0.0278 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -691,7 +726,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -863,57 +898,63 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: Gram-negative bacteria could not be fit on page. It will not be plotted. Warning:
-## wood perforation plates could not be fit on page. It will not be plotted. Warning: cadmium at
-## wavelength 214nm could not be fit on page. It will not be plotted. Warning: cadmium at
-## wavelength 228nm could not be fit on page. It will not be plotted. Warning: gene diversity
+## Warning: chemical leaf composition could not be fit on page. It will not be plotted. Warning:
+## kinetic energy could not be fit on page. It will not be plotted. Warning: tree performance
+## could not be fit on page. It will not be plotted. Warning: wood fibres could not be fit on
+## page. It will not be plotted. Warning: wood rays could not be fit on page. It will not be
+## plotted. Warning: wood vessels could not be fit on page. It will not be plotted. Warning: base
+## saturation could not be fit on page. It will not be plotted. Warning: belowground biomass
+## could not be fit on page. It will not be plotted. Warning: biomass allocation could not be fit
+## on page. It will not be plotted. Warning: cadmium at wavelength 214nm could not be fit on
+## page. It will not be plotted. Warning: cadmium at wavelength 228nm could not be fit on page.
+## It will not be plotted. Warning: cation exchange capacity could not be fit on page. It will
+## not be plotted. Warning: coefficient of variation could not be fit on page. It will not be
+## plotted. Warning: data management could not be fit on page. It will not be plotted. Warning:
+## diversity treatment could not be fit on page. It will not be plotted. Warning: fresh weight
 ## could not be fit on page. It will not be plotted. Warning: intraspecific diversity could not
-## be fit on page. It will not be plotted. Warning: phylogenetic diversity could not be fit on
-## page. It will not be plotted. Warning: rarefied diversity could not be fit on page. It will
-## not be plotted. Warning: response variable could not be fit on page. It will not be plotted.
-## Warning: secondary compounds could not be fit on page. It will not be plotted. Warning:
-## spatial genetic structure could not be fit on page. It will not be plotted. Warning: standard
-## deviation could not be fit on page. It will not be plotted. Warning: trait dissimilarity could
-## not be fit on page. It will not be plotted. Warning: wood compression could not be fit on
-## page. It will not be plotted. Warning: wood shearing could not be fit on page. It will not be
-## plotted. Warning: wood shrinkage could not be fit on page. It will not be plotted. Warning:
-## wood toughness could not be fit on page. It will not be plotted. Warning: aeromorphic organic
-## layer could not be fit on page. It will not be plotted. Warning: below ground could not be fit
-## on page. It will not be plotted. Warning: branch water potential could not be fit on page. It
-## will not be plotted. Warning: cavity nesting hymenoptera could not be fit on page. It will not
-## be plotted. Warning: climatic niche could not be fit on page. It will not be plotted. Warning:
-## coarse root density could not be fit on page. It will not be plotted. Warning: community
-## similarity could not be fit on page. It will not be plotted. Warning: community weighted mean
-## trait could not be fit on page. It will not be plotted. Warning: control treatment could not
-## be fit on page. It will not be plotted. Warning: crown projection area could not be fit on
-## page. It will not be plotted. Warning: dbh distribution could not be fit on page. It will not
-## be plotted. Warning: flight interception could not be fit on page. It will not be plotted.
-## Warning: forest canopy could not be fit on page. It will not be plotted. Warning: genetic
-## autocorrelation could not be fit on page. It will not be plotted. Warning: human influence
-## could not be fit on page. It will not be plotted. Warning: hunting type could not be fit on
-## page. It will not be plotted. Warning: laboratories could not be fit on page. It will not be
-## plotted. Warning: land use history could not be fit on page. It will not be plotted. Warning:
-## matching status could not be fit on page. It will not be plotted. Warning: mineralization
-## could not be fit on page. It will not be plotted. Warning: multi-trophic interactions could
-## not be fit on page. It will not be plotted. Warning: nitrogen cycling could not be fit on
-## page. It will not be plotted. Warning: non-random extinction could not be fit on page. It will
-## not be plotted. Warning: parasitoids could not be fit on page. It will not be plotted.
-## Warning: phylogenetic distinctness could not be fit on page. It will not be plotted. Warning:
-## phytophagous insects could not be fit on page. It will not be plotted. Warning: PI meeting
-## could not be fit on page. It will not be plotted. Warning: red mould could not be fit on page.
-## It will not be plotted. Warning: research proposals could not be fit on page. It will not be
-## plotted. Warning: respiration could not be fit on page. It will not be plotted. Warning:
-## rooting depth could not be fit on page. It will not be plotted. Warning: seedling could not be
-## fit on page. It will not be plotted. Warning: shrub layer could not be fit on page. It will
-## not be plotted. Warning: simpson diversity could not be fit on page. It will not be plotted.
-## Warning: slope form could not be fit on page. It will not be plotted. Warning: specialization
-## could not be fit on page. It will not be plotted. Warning: species identity variable could not
-## be fit on page. It will not be plotted. Warning: temperature could not be fit on page. It will
-## not be plotted. Warning: tree crown could not be fit on page. It will not be plotted. Warning:
-## vegetation stratum could not be fit on page. It will not be plotted. Warning: Weibull
-## distribution could not be fit on page. It will not be plotted. Warning: wood ground tissue
-## could not be fit on page. It will not be plotted. Warning: wood mechanics could not be fit on
-## page. It will not be plotted.
+## be fit on page. It will not be plotted. Warning: leaf area could not be fit on page. It will
+## not be plotted. Warning: leaf physical resistance could not be fit on page. It will not be
+## plotted. Warning: microbial biomass could not be fit on page. It will not be plotted. Warning:
+## rarefied diversity could not be fit on page. It will not be plotted. Warning: response
+## variable could not be fit on page. It will not be plotted. Warning: secondary compounds could
+## not be fit on page. It will not be plotted. Warning: soil erosion could not be fit on page. It
+## will not be plotted. Warning: spatial genetic structure could not be fit on page. It will not
+## be plotted. Warning: standard deviation could not be fit on page. It will not be plotted.
+## Warning: trait dissimilarity could not be fit on page. It will not be plotted. Warning: tree
+## rings could not be fit on page. It will not be plotted. Warning: wood bending could not be fit
+## on page. It will not be plotted. Warning: wood compression could not be fit on page. It will
+## not be plotted. Warning: wood shearing could not be fit on page. It will not be plotted.
+## Warning: wood shrinkage could not be fit on page. It will not be plotted. Warning: wood
+## stretching could not be fit on page. It will not be plotted. Warning: wood toughness could not
+## be fit on page. It will not be plotted. Warning: aeromorphic organic layer could not be fit on
+## page. It will not be plotted. Warning: BEF China projects could not be fit on page. It will
+## not be plotted. Warning: branch water potential could not be fit on page. It will not be
+## plotted. Warning: cavity nesting hymenoptera could not be fit on page. It will not be plotted.
+## Warning: chlorophyll could not be fit on page. It will not be plotted. Warning: community
+## similarity could not be fit on page. It will not be plotted. Warning: crown projection area
+## could not be fit on page. It will not be plotted. Warning: deposition could not be fit on
+## page. It will not be plotted. Warning: eco-physiologic traits could not be fit on page. It
+## will not be plotted. Warning: ecosystem functioning could not be fit on page. It will not be
+## plotted. Warning: experimental treatment could not be fit on page. It will not be plotted.
+## Warning: genetic autocorrelation could not be fit on page. It will not be plotted. Warning:
+## human influence could not be fit on page. It will not be plotted. Warning: land use history
+## could not be fit on page. It will not be plotted. Warning: leaf longevity could not be fit on
+## page. It will not be plotted. Warning: mixed models could not be fit on page. It will not be
+## plotted. Warning: nitrogen cycling could not be fit on page. It will not be plotted. Warning:
+## parasitoids could not be fit on page. It will not be plotted. Warning: phylogenetic
+## distinctness could not be fit on page. It will not be plotted. Warning: phytophagous insects
+## could not be fit on page. It will not be plotted. Warning: PI meeting could not be fit on
+## page. It will not be plotted. Warning: rainfall simulator could not be fit on page. It will
+## not be plotted. Warning: research proposals could not be fit on page. It will not be plotted.
+## Warning: shrub layer could not be fit on page. It will not be plotted. Warning: simpson
+## diversity could not be fit on page. It will not be plotted. Warning: snag height could not be
+## fit on page. It will not be plotted. Warning: social status could not be fit on page. It will
+## not be plotted. Warning: species identity variable could not be fit on page. It will not be
+## plotted. Warning: stem core could not be fit on page. It will not be plotted. Warning: trap
+## nest could not be fit on page. It will not be plotted. Warning: vegetation stratum could not
+## be fit on page. It will not be plotted. Warning: Weibull distribution could not be fit on
+## page. It will not be plotted. Warning: wood ground tissue could not be fit on page. It will
+## not be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
