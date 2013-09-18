@@ -29,7 +29,7 @@ merges based on an ontology we created.
 
 With a growing awareness on value of data, much effort has been put into
 building data management platforms, to preserve all kind of environmental and
-historic data, over the last years (e.g. diversity workbench, BEFdata). Many
+historic data, over the last years (e.g. diversity workbench, `BEFdata`). Many
 specialized solutions for different scientific disciplines appeared that
 provide data management plans for small scale projects or collaborations as
 well as for large data producing long term or remote sensing projects. An
@@ -439,7 +439,7 @@ text(1,70,"a",font=2);text(2,70,"ab",font=2);text(3,70,"b",font=2);text(3.4,98,"
   - high need to effective use/reuse data 
   - relevant data needs to be simply detectable 
 
-* BEFdata and rbefdata 
+* `BEFdata` and `rbefdata` 
   - in combination provide a solution to 
     + data storage
     + describing data with metadata
@@ -475,8 +475,8 @@ and can thus be simply queried to use the information within the R package.
 Using the knowledge about the content of a column in the R package will enable
 us to do support smart merges that work.
 
-`tematres` ([homepage](http://www.vocabularyserver.com/))into BEFdata and the
-rbefdata package so they play well together semantically.
+`tematres` ([homepage](http://www.vocabularyserver.com/))into `BEFdata` and the
+`rbefdata` package so they play well together semantically.
 
 ## Acknowledgements 
 
@@ -498,7 +498,7 @@ publication.
 
 * vizualization plugin (keywords) 
 
-One can visualize the keywords associated with the dataset of a BEFdata portal
+One can visualize the keywords associated with the dataset of a `BEFdata` portal
 using the vitalization functionality. This gives a short overview about the
 contents the portal data is dealing with.
 
