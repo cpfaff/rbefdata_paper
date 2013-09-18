@@ -158,9 +158,12 @@ system N retention.  Relative leaf, root and soil recovery was calculated as
 percentage of system N retention (for a detailed description of the material
 and methods we refer to Lang et al. 2013). 
 
-* figure shows the proposal page
 
-![showcase_proposal](./figure/static/showcase_proposal.png)
+![showcase_proposal](./figure/static/showcase_proposal.png) 
+
+* caption: The paper proposal in its final approved state. The information on that page contains a title 
+          rational envisaged date and journal. The calculated authors and email lists for 
+          communication as well as the attached datasets and sub projects involved (only partially shown).
 
 ### rbefdata 
 
