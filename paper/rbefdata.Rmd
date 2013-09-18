@@ -444,7 +444,7 @@ add them to the proposal.
 bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", description = "The R script that has been used to derive the results in the published paper")
 ```
 
-```{r prepare_plot_png, echo = F}
+```{r prepare_plot_png, echo = F, cache = T}
 # prepare the plot figure as png
 png(filename = file.path(tempdir(), "results_plot_proposal_90.png"))
   par(mfrow=c(2,2),bty="l")
