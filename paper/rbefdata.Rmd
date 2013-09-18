@@ -431,11 +431,12 @@ text(1,70,"a",font=2);text(2,70,"ab",font=2);text(3,70,"b",font=2);text(3.4,98,"
             recovery (c) and relative soil recovery (d). Significant differences as revealed by post
             hoc Tukey’s test (P < 0.05) are indicated by different letters.
 
-Finally we need to upload the resulting dataset? With figures and our script
-attached so everybody will be able to see what has been done and is able to
-reproduce the results by executing the script. We also can do this directly
-from with R using the upload function for datasets as well as the upload
-function for free format files.
+Finally we need to decide on either to upload a resulting dataset that results
+from a synthesis or only a script that highlights the road to the results and
+maybe some figures for a fast overview of the final findings with description.
+In this case here the latter choice is the way to go as here an upload of the
+merged dataset would only mean duplication. So we upload the script and the
+four pane figure with its caption to add them to the proposal.
 
 ## Discussion
 
