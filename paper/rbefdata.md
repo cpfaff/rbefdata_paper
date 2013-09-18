@@ -122,19 +122,23 @@ necessary information about the paper. The data owners then can decide if and
 how they like to participate in the upcoming paper or if they only like to get
 acknowledged for providing their data (cite Karin).
 
-### The proposal
-The portal facilitates research cooperation by the tool of paper proposals. 
-Sending in a proposal, a researcher asks for access to the datasets and proposes
-his/her research idea to the dataowners and possible collaborators. This more social component of
-the portal allows to include and acknowledge all researchers involved in the data sampling process, 
-promotes collaborations between research units, avoids publication initiatives of the same research 
-ideas and adds to the transparency of data publication. 
-To create a paper proposal the researcher can shop (select) datasets which are to be included in the analyses.
-Furthermore basic information of the proposed paper such as the title, the rationale, the
-envisaged journal and date needs to be provided. The data owners and proposed collaborators are informed
-and can decide if and how they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin). Furthermore the datasets assembled by the paper proposal can be 
-readily imported in one step to the R environment by rbefdata.
+### The proposal 
+
+The portal facilitates research cooperation by the tool of paper proposals.
+Sending in a proposal, a researcher asks for access to the datasets and
+proposes his/her research idea to the dataowners and possible collaborators.
+This more social component of the portal allows to include and acknowledge all
+researchers involved in the data sampling process, promotes collaborations
+between research units, avoids publication initiatives of the same research
+ideas and adds to the transparency of data publication.  To create a paper
+proposal the researcher can shop (select) datasets which are to be included in
+the analyses.  Furthermore basic information of the proposed paper such as the
+title, the rationale, the envisaged journal and date needs to be provided. The
+data owners and proposed collaborators are informed and can decide if and how
+they like to participate in the upcoming paper or if they only like to get
+acknowledged for providing their data (cite Karin). Furthermore the datasets
+assembled by the paper proposal can be readily imported in one step to the R
+environment by rbefdata.
 
 
 ### rbefdata 
@@ -153,55 +157,58 @@ which provides a valuable insight into data provenance and also is a stepping
 stone for reproducible research.
 
 
+## Usecase (results) 
 
-
-## Usecase (results)
 In this paper we use an already published dataset as a usecase to present the
 functionalities and inter linkages between the BEF-China data portal and
 `rbefdata`. However, we will as well give some ecological background of the
-datasets used and the respective analyses. The usecase is dealing with data from
-a small scale experiment called pilot experiment. It is a 15N tracer experiment which
-aims to disentangle the effect of species mixtures on system N retention.
+datasets used and the respective analyses. The usecase is dealing with data
+from a small scale experiment called pilot experiment. It is a 15N tracer
+experiment which aims to disentangle the effect of species mixtures on system N
+retention.
 
-We created a paper proposal with the following rationale: 
-'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
-forest ecosystems is still very limited, particularly as regards macronutrients
-such as nitrogen and phosphorus. Experimental approaches using tree saplings may
-promote an understanding of mechanisms that underlie nutrient acquisition and 
-cycling in early successional stages of secondary forests and forest plantations. 
-Insights in the potential of nutrient retention of young tree plantations are of 
-particular interest in China, where large areas have been reforested in order to 
-counteract soil erosion and to increase the soils’ water and nutrient retention capacity. 
-In this study we planted saplings of four abundant early successional 
-(evergreen and deciduous) tree species in monocultures, two- and four-species combination 
-to test the effect of species richness on nitrogen acquisition and retention by using a 15N 
-tracer experiment. 
-A crucial question in BEF research is the appropriate time scale of experiments which allows
-species richness effects to emerge. This question gains importance when long-lived and slowly
-growing organisms such as trees are considered. We wanted to analyse whether species richness
-effects occur during the establishment phase of early successional tree species typical of 
-subtropical forests of China.
-More precisely we wanted to test the following hypotheses: 
-(H1) Nitrogen acquisition and retention increases with species richness due complementary effects in species mixtures. 
-(H2) Species richness effects strengthen over time.'
-The respective proposal can be assessed under (url)
-For a detailed description of the experimental design we refer to Lang et al. 2013 (DOI)
+We created a paper proposal with the following rationale: 'Knowledge of
+biodiversity effects on nutrient cycling patterns in subtropical forest
+ecosystems is still very limited, particularly as regards macronutrients such
+as nitrogen and phosphorus. Experimental approaches using tree saplings may
+promote an understanding of mechanisms that underlie nutrient acquisition and
+cycling in early successional stages of secondary forests and forest
+plantations.  Insights in the potential of nutrient retention of young tree
+plantations are of particular interest in China, where large areas have been
+reforested in order to counteract soil erosion and to increase the soils’ water
+and nutrient retention capacity.  In this study we planted saplings of four
+abundant early successional (evergreen and deciduous) tree species in
+monocultures, two- and four-species combination to test the effect of species
+richness on nitrogen acquisition and retention by using a 15N tracer
+experiment.  A crucial question in BEF research is the appropriate time scale
+of experiments which allows species richness effects to emerge. This question
+gains importance when long-lived and slowly growing organisms such as trees are
+considered. We wanted to analyse whether species richness effects occur during
+the establishment phase of early successional tree species typical of
+subtropical forests of China.  More precisely we wanted to test the following
+hypotheses: (H1) Nitrogen acquisition and retention increases with species
+richness due complementary effects in species mixtures.  (H2) Species richness
+effects strengthen over time.' The respective proposal can be assessed under
+(url) For a detailed description of the experimental design we refer to Lang et
+al. 2013 (DOI) 
+
 ![showcase_proposal](./figure/static/showcase_proposal.png) 
-* caption: The paper proposal in its final approved state. The information on that page contains a title 
-          rational envisaged date and journal. The calculated authors and email lists for 
-          communication as well as the attached datasets and sub projects involved (only partially shown).
 
+* caption: The paper proposal in its final approved state. The information on that page
+           contains a title rational envisaged date and journal. The calculated authors
+           and email lists for communication as well as the attached datasets and sub
+           projects involved (only partially shown).
 
-
-When all dataowners accepted the paper proposal rbefdata can be used to directly access the
-datasets from the dataportal and transfer them to the R environment. To do so
-the `rbefdata`package needs to be setup. This requires installing, loading the 
-package and setting the required package options. Having a look into the options list reveals several fields
-that can be filled in, like the URL to the `BEFdata` server, user credentials
-and a download folder name that is used to store free format files attached to
-datasets. The `tematres` server related URLs in the options are part of
-upcoming features that are non fully functional on the time of writing and thus
-can be ignored by now. 
+When all dataowners accepted the paper proposal rbefdata can be used to
+directly access the datasets from the dataportal and transfer them to the R
+environment. To do so the `rbefdata`package needs to be setup. This requires
+installing, loading the package and setting the required package options.
+Having a look into the options list reveals several fields that can be filled
+in, like the URL to the `BEFdata` server, user credentials and a download
+folder name that is used to store free format files attached to datasets. The
+`tematres` server related URLs in the options are part of upcoming features
+that are non fully functional on the time of writing and thus can be ignored by
+now. 
 
 The most essential setting for the example workflow we present here is the user
 credentials. These are used to authenticate the user against the portal to
@@ -277,23 +284,12 @@ below).
 http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```
 
-
-```r
-# proposal id is
+```{r rbefdata_get_datasets_from_proposal, cache = F  
+# proposal id is 
 datasets = bef.get.datasets_for_proposal(id = 90)
-extract_first_dataset = datasets[[1]]
+extract_first_dataset = datasets[[1]] 
 head(extract_first_dataset, 5)
 ```
-
-```
-##     plot_id recov_plot perleaf_plot perroot_plot perbio_plot persoil_plot gbd_T0.mm.
-## 1 pilot1D01     15.642        2.918       1.0015       3.920        96.08         NA
-## 2 pilot1D02     13.032        5.523       1.3688       6.891        93.11      3.688
-## 3 pilot1D04     20.292        1.057       0.5157       1.572        98.43      2.875
-## 4 pilot1D05      9.595        4.187       1.0861       2.032        97.97      6.000
-## 5 pilot1D07      8.354       15.100       5.0983      17.963        82.04      7.000
-```
-
 
 Each dataset in the `BEFdata` portal is associated with metadata the authors of
 the dataset provide. We also provide access to the metadata from within
@@ -320,19 +316,25 @@ attributes(datasets[[1]])$title
 ```
 
 ```
-## [1] "Competition of saplings for N -Pilot- system 15N retention"
+## Error: object 'datasets' not found
 ```
 
 ```r
 
 # extract all dataset titles in the proposal
 titles = sapply(datasets, function(x) attributes(x)$title)
+```
+
+```
+## Error: object 'datasets' not found
+```
+
+```r
 titles
 ```
 
 ```
-## [1] "Competition of saplings for N -Pilot- system 15N retention"           
-## [2] "Plottreatment and -location within the blocks of the Pilot-Experiment"
+## Error: object 'titles' not found
 ```
 
 ```r
@@ -342,12 +344,7 @@ names(attributes(datasets[[1]]))
 ```
 
 ```
-##  [1] "names"                    "class"                    "row.names"               
-##  [4] "title"                    "abstract"                 "publicationDate"         
-##  [7] "language"                 "creators"                 "authors"                 
-## [10] "intellectualRights"       "distribution"             "keywords"                
-## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"        
-## [16] "temporal_coverage"        "related_material"         "columns"
+## Error: object 'datasets' not found
 ```
 
 
@@ -362,11 +359,18 @@ the case (see box below).
 ```r
 # extract into separate datasets
 Nretention = datasets[[2]]
+```
+
+```
+## Error: object 'datasets' not found
+```
+
+```r
 design = datasets[[3]]
 ```
 
 ```
-## Error: subscript out of bounds
+## Error: object 'datasets' not found
 ```
 
 ```r
@@ -378,29 +382,25 @@ names(Nretention)
 ```
 
 ```
-##  [1] "block"                    "x"                        "y"                       
-##  [4] "plot_id"                  "control_ID"               "block_community_code"    
-##  [7] "community_number"         "species_mixture"          "species_diversity"       
-## [10] "species_pool"             "species_code"             "research_group_colour"   
-## [13] "control"                  "closed_canopy"            "density"                 
-## [16] "Natives"                  "depth"                    "harvest"                 
-## [19] "fungicide"                "inoculation"              "pesticide"               
-## [22] "native"                   "genetic_diverstiy"        "seed_addition"           
-## [25] "fertilizer"               "plot_treatment_connected" "sp1"                     
-## [28] "sp2"                      "sp3"                      "sp4"                     
-## [31] "sp5"                      "sp7"                      "sp8"                     
-## [34] "sp11"                     "sp_connected"
+## Error: object 'Nretention' not found
 ```
 
 ```r
 
 # description of column plot_id
 Nretention_column_plot_id_description = attributes(Nretention)$columns[1, ]$description
+```
+
+```
+## Error: object 'Nretention' not found
+```
+
+```r
 Nretention_column_plot_id_description
 ```
 
 ```
-## [1] "there are 4 blocks in the pilot experiment (block: block in the pilot-experiment the plot is belonging to, there are four main blocks (1-4) and four additional blocks (g1-g4) for analyzing the genetic diversity treatments )"
+## Error: object 'Nretention_column_plot_id_description' not found
 ```
 
 ```r
@@ -446,7 +446,7 @@ syndata = merge(Nretention, design)
 ```
 
 ```
-## Error: object 'design' not found
+## Error: object 'Nretention' not found
 ```
 
 ```r

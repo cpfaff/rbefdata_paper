@@ -126,19 +126,23 @@ necessary information about the paper. The data owners then can decide if and
 how they like to participate in the upcoming paper or if they only like to get
 acknowledged for providing their data (cite Karin).
 
-### The proposal
-The portal facilitates research cooperation by the tool of paper proposals. 
-Sending in a proposal, a researcher asks for access to the datasets and proposes
-his/her research idea to the dataowners and possible collaborators. This more social component of
-the portal allows to include and acknowledge all researchers involved in the data sampling process, 
-promotes collaborations between research units, avoids publication initiatives of the same research 
-ideas and adds to the transparency of data publication. 
-To create a paper proposal the researcher can shop (select) datasets which are to be included in the analyses.
-Furthermore basic information of the proposed paper such as the title, the rationale, the
-envisaged journal and date needs to be provided. The data owners and proposed collaborators are informed
-and can decide if and how they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin). Furthermore the datasets assembled by the paper proposal can be 
-readily imported in one step to the R environment by rbefdata.
+### The proposal 
+
+The portal facilitates research cooperation by the tool of paper proposals.
+Sending in a proposal, a researcher asks for access to the datasets and
+proposes his/her research idea to the dataowners and possible collaborators.
+This more social component of the portal allows to include and acknowledge all
+researchers involved in the data sampling process, promotes collaborations
+between research units, avoids publication initiatives of the same research
+ideas and adds to the transparency of data publication.  To create a paper
+proposal the researcher can shop (select) datasets which are to be included in
+the analyses.  Furthermore basic information of the proposed paper such as the
+title, the rationale, the envisaged journal and date needs to be provided. The
+data owners and proposed collaborators are informed and can decide if and how
+they like to participate in the upcoming paper or if they only like to get
+acknowledged for providing their data (cite Karin). Furthermore the datasets
+assembled by the paper proposal can be readily imported in one step to the R
+environment by rbefdata.
 
 
 ### rbefdata 
@@ -157,55 +161,58 @@ which provides a valuable insight into data provenance and also is a stepping
 stone for reproducible research.
 
 
+## Usecase (results) 
 
-
-## Usecase (results)
 In this paper we use an already published dataset as a usecase to present the
 functionalities and inter linkages between the BEF-China data portal and
 `rbefdata`. However, we will as well give some ecological background of the
-datasets used and the respective analyses. The usecase is dealing with data from
-a small scale experiment called pilot experiment. It is a 15N tracer experiment which
-aims to disentangle the effect of species mixtures on system N retention.
+datasets used and the respective analyses. The usecase is dealing with data
+from a small scale experiment called pilot experiment. It is a 15N tracer
+experiment which aims to disentangle the effect of species mixtures on system N
+retention.
 
-We created a paper proposal with the following rationale: 
-'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
-forest ecosystems is still very limited, particularly as regards macronutrients
-such as nitrogen and phosphorus. Experimental approaches using tree saplings may
-promote an understanding of mechanisms that underlie nutrient acquisition and 
-cycling in early successional stages of secondary forests and forest plantations. 
-Insights in the potential of nutrient retention of young tree plantations are of 
-particular interest in China, where large areas have been reforested in order to 
-counteract soil erosion and to increase the soils’ water and nutrient retention capacity. 
-In this study we planted saplings of four abundant early successional 
-(evergreen and deciduous) tree species in monocultures, two- and four-species combination 
-to test the effect of species richness on nitrogen acquisition and retention by using a 15N 
-tracer experiment. 
-A crucial question in BEF research is the appropriate time scale of experiments which allows
-species richness effects to emerge. This question gains importance when long-lived and slowly
-growing organisms such as trees are considered. We wanted to analyse whether species richness
-effects occur during the establishment phase of early successional tree species typical of 
-subtropical forests of China.
-More precisely we wanted to test the following hypotheses: 
-(H1) Nitrogen acquisition and retention increases with species richness due complementary effects in species mixtures. 
-(H2) Species richness effects strengthen over time.'
-The respective proposal can be assessed under (url)
-For a detailed description of the experimental design we refer to Lang et al. 2013 (DOI)
+We created a paper proposal with the following rationale: 'Knowledge of
+biodiversity effects on nutrient cycling patterns in subtropical forest
+ecosystems is still very limited, particularly as regards macronutrients such
+as nitrogen and phosphorus. Experimental approaches using tree saplings may
+promote an understanding of mechanisms that underlie nutrient acquisition and
+cycling in early successional stages of secondary forests and forest
+plantations.  Insights in the potential of nutrient retention of young tree
+plantations are of particular interest in China, where large areas have been
+reforested in order to counteract soil erosion and to increase the soils’ water
+and nutrient retention capacity.  In this study we planted saplings of four
+abundant early successional (evergreen and deciduous) tree species in
+monocultures, two- and four-species combination to test the effect of species
+richness on nitrogen acquisition and retention by using a 15N tracer
+experiment.  A crucial question in BEF research is the appropriate time scale
+of experiments which allows species richness effects to emerge. This question
+gains importance when long-lived and slowly growing organisms such as trees are
+considered. We wanted to analyse whether species richness effects occur during
+the establishment phase of early successional tree species typical of
+subtropical forests of China.  More precisely we wanted to test the following
+hypotheses: (H1) Nitrogen acquisition and retention increases with species
+richness due complementary effects in species mixtures.  (H2) Species richness
+effects strengthen over time.' The respective proposal can be assessed under
+(url) For a detailed description of the experimental design we refer to Lang et
+al. 2013 (DOI) 
+
 ![showcase_proposal](./figure/static/showcase_proposal.png) 
-* caption: The paper proposal in its final approved state. The information on that page contains a title 
-          rational envisaged date and journal. The calculated authors and email lists for 
-          communication as well as the attached datasets and sub projects involved (only partially shown).
 
+* caption: The paper proposal in its final approved state. The information on that page
+           contains a title rational envisaged date and journal. The calculated authors
+           and email lists for communication as well as the attached datasets and sub
+           projects involved (only partially shown).
 
-
-When all dataowners accepted the paper proposal rbefdata can be used to directly access the
-datasets from the dataportal and transfer them to the R environment. To do so
-the `rbefdata`package needs to be setup. This requires installing, loading the 
-package and setting the required package options. Having a look into the options list reveals several fields
-that can be filled in, like the URL to the `BEFdata` server, user credentials
-and a download folder name that is used to store free format files attached to
-datasets. The `tematres` server related URLs in the options are part of
-upcoming features that are non fully functional on the time of writing and thus
-can be ignored by now. 
+When all dataowners accepted the paper proposal rbefdata can be used to
+directly access the datasets from the dataportal and transfer them to the R
+environment. To do so the `rbefdata`package needs to be setup. This requires
+installing, loading the package and setting the required package options.
+Having a look into the options list reveals several fields that can be filled
+in, like the URL to the `BEFdata` server, user credentials and a download
+folder name that is used to store free format files attached to datasets. The
+`tematres` server related URLs in the options are part of upcoming features
+that are non fully functional on the time of writing and thus can be ignored by
+now. 
 
 The most essential setting for the example workflow we present here is the user
 credentials. These are used to authenticate the user against the portal to
@@ -253,7 +260,7 @@ below).
 http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```
 
-```{r rbefdata_get_datasets_from_proposal, cache = T}  
+```{r rbefdata_get_datasets_from_proposal, cache = F  
 # proposal id is 
 datasets = bef.get.datasets_for_proposal(id = 90)
 extract_first_dataset = datasets[[1]] 
