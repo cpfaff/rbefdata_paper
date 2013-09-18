@@ -1,7 +1,8 @@
 ```{r load_requirements, eval = T, include = F}  
 # this loads the befdata package
 require("rbefdata")  
-require("ggplot2") 
+require("ggplot2")  
+options(width = 200)
 ```
 
 ## Abstract 
