@@ -320,9 +320,10 @@ names(attributes(datasets[[1]]))
 ```
 
 ```
-##  [1] "names"                    "class"                    "row.names"                "title"                    "abstract"                 "publicationDate"          "language"                
-##  [8] "creators"                 "authors"                  "intellectualRights"       "distribution"             "keywords"                 "generalTaxonomicCoverage" "samplingDescription"     
-## [15] "spatial_coverage"         "temporal_coverage"        "related_material"         "columns"
+##  [1] "names"                    "class"                    "row.names"                "title"                    "abstract"                
+##  [6] "publicationDate"          "language"                 "creators"                 "authors"                  "intellectualRights"      
+## [11] "distribution"             "keywords"                 "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"        
+## [16] "temporal_coverage"        "related_material"         "columns"
 ```
 
 
@@ -354,11 +355,13 @@ names(design)
 ```
 
 ```
-##  [1] "block"                    "x"                        "y"                        "plot_id"                  "control_ID"               "block_community_code"     "community_number"        
-##  [8] "species_mixture"          "species_diversity"        "species_pool"             "species_code"             "research_group_colour"    "control"                  "closed_canopy"           
-## [15] "density"                  "Natives"                  "depth"                    "harvest"                  "fungicide"                "inoculation"              "pesticide"               
-## [22] "native"                   "genetic_diverstiy"        "seed_addition"            "fertilizer"               "plot_treatment_connected" "sp1"                      "sp2"                     
-## [29] "sp3"                      "sp4"                      "sp5"                      "sp7"                      "sp8"                      "sp11"                     "sp_connected"
+##  [1] "block"                    "x"                        "y"                        "plot_id"                  "control_ID"              
+##  [6] "block_community_code"     "community_number"         "species_mixture"          "species_diversity"        "species_pool"            
+## [11] "species_code"             "research_group_colour"    "control"                  "closed_canopy"            "density"                 
+## [16] "Natives"                  "depth"                    "harvest"                  "fungicide"                "inoculation"             
+## [21] "pesticide"                "native"                   "genetic_diverstiy"        "seed_addition"            "fertilizer"              
+## [26] "plot_treatment_connected" "sp1"                      "sp2"                      "sp3"                      "sp4"                     
+## [31] "sp5"                      "sp7"                      "sp8"                      "sp11"                     "sp_connected"
 ```
 
 
@@ -375,12 +378,15 @@ names(syndata)
 ```
 
 ```
-##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"             "perroot_plot"             "perbio_plot"              "persoil_plot"             "gbd_T0.mm."              
-##  [8] "block"                    "x"                        "y"                        "control_ID"               "block_community_code"     "community_number"         "species_mixture"         
-## [15] "species_diversity"        "species_pool"             "species_code"             "research_group_colour"    "control"                  "closed_canopy"            "density"                 
-## [22] "Natives"                  "depth"                    "harvest"                  "fungicide"                "inoculation"              "pesticide"                "native"                  
-## [29] "genetic_diverstiy"        "seed_addition"            "fertilizer"               "plot_treatment_connected" "sp1"                      "sp2"                      "sp3"                     
-## [36] "sp4"                      "sp5"                      "sp7"                      "sp8"                      "sp11"                     "sp_connected"
+##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"             "perroot_plot"             "perbio_plot"             
+##  [6] "persoil_plot"             "gbd_T0.mm."               "block"                    "x"                        "y"                       
+## [11] "control_ID"               "block_community_code"     "community_number"         "species_mixture"          "species_diversity"       
+## [16] "species_pool"             "species_code"             "research_group_colour"    "control"                  "closed_canopy"           
+## [21] "density"                  "Natives"                  "depth"                    "harvest"                  "fungicide"               
+## [26] "inoculation"              "pesticide"                "native"                   "genetic_diverstiy"        "seed_addition"           
+## [31] "fertilizer"               "plot_treatment_connected" "sp1"                      "sp2"                      "sp3"                     
+## [36] "sp4"                      "sp5"                      "sp7"                      "sp8"                      "sp11"                    
+## [41] "sp_connected"
 ```
 
 ```r
@@ -391,7 +397,8 @@ names(syndata)
 ```
 
 ```
-## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"      "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"             "species_diversity"
+## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"      "perbio_plot"       "persoil_plot"      "gbd_T0.mm."       
+## [8] "block"             "species_diversity"
 ```
 
 ```r
@@ -583,7 +590,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
 ## 4 - 1 == 0    0.733      0.288    2.54   0.0285 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
@@ -636,7 +643,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -741,30 +748,39 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: competitive neighbourhood could not be fit on page. It will not be plotted. Warning: successional age could not be fit on page. It will not be plotted. Warning: tree performance could not be
-## fit on page. It will not be plotted. Warning: wood parenchym could not be fit on page. It will not be plotted. Warning: wood perforation plates could not be fit on page. It will not be plotted.
-## Warning: wood rays could not be fit on page. It will not be plotted. Warning: belowground biomass could not be fit on page. It will not be plotted. Warning: cadmium at wavelength 214nm could not be
-## fit on page. It will not be plotted. Warning: cadmium at wavelength 228nm could not be fit on page. It will not be plotted. Warning: diversity treatment could not be fit on page. It will not be
-## plotted. Warning: functional eveness could not be fit on page. It will not be plotted. Warning: geomorphology could not be fit on page. It will not be plotted. Warning: phylogenetic diversity could
-## not be fit on page. It will not be plotted. Warning: secondary compounds could not be fit on page. It will not be plotted. Warning: spatial genetic structure could not be fit on page. It will not be
-## plotted. Warning: standard deviation could not be fit on page. It will not be plotted. Warning: wood bending could not be fit on page. It will not be plotted. Warning: wood compression could not be
-## fit on page. It will not be plotted. Warning: wood shearing could not be fit on page. It will not be plotted. Warning: wood stretching could not be fit on page. It will not be plotted. Warning: wood
-## toughness could not be fit on page. It will not be plotted. Warning: aboveground biomass could not be fit on page. It will not be plotted. Warning: BEF China projects could not be fit on page. It
-## will not be plotted. Warning: branch water potential could not be fit on page. It will not be plotted. Warning: cavity nesting hymenoptera could not be fit on page. It will not be plotted. Warning:
-## coarse root density could not be fit on page. It will not be plotted. Warning: community similarity could not be fit on page. It will not be plotted. Warning: community weighted mean trait could not
-## be fit on page. It will not be plotted. Warning: crown overlap could not be fit on page. It will not be plotted. Warning: crown projection area could not be fit on page. It will not be plotted.
-## Warning: directed extinction could not be fit on page. It will not be plotted. Warning: eco-physiologic traits could not be fit on page. It will not be plotted. Warning: ecosystem functioning could
-## not be fit on page. It will not be plotted. Warning: experimental treatment could not be fit on page. It will not be plotted. Warning: flight interception could not be fit on page. It will not be
-## plotted. Warning: Flora of China could not be fit on page. It will not be plotted. Warning: functional trait could not be fit on page. It will not be plotted. Warning: genetic autocorrelation could
-## not be fit on page. It will not be plotted. Warning: growth rings could not be fit on page. It will not be plotted. Warning: land use history could not be fit on page. It will not be plotted.
-## Warning: matching status could not be fit on page. It will not be plotted. Warning: mixed models could not be fit on page. It will not be plotted. Warning: multi-trophic interactions could not be fit
-## on page. It will not be plotted. Warning: nitrogen cycling could not be fit on page. It will not be plotted. Warning: non-random extinction could not be fit on page. It will not be plotted. Warning:
-## phylogenetic distinctness could not be fit on page. It will not be plotted. Warning: phytophagous insects could not be fit on page. It will not be plotted. Warning: research proposals could not be
-## fit on page. It will not be plotted. Warning: rooting depth could not be fit on page. It will not be plotted. Warning: runoff plots could not be fit on page. It will not be plotted. Warning: simpson
-## diversity could not be fit on page. It will not be plotted. Warning: species identity variable could not be fit on page. It will not be plotted. Warning: trap nest could not be fit on page. It will
-## not be plotted. Warning: vegetation stratum could not be fit on page. It will not be plotted. Warning: water content could not be fit on page. It will not be plotted. Warning: Weibull distribution
-## could not be fit on page. It will not be plotted. Warning: wood ground tissue could not be fit on page. It will not be plotted. Warning: wood mechanics could not be fit on page. It will not be
-## plotted. Warning: wood porosity could not be fit on page. It will not be plotted.
+## Warning: arbuscular mycorrhizal fungi could not be fit on page. It will not be plotted. Warning: tree layer could not be fit on page. It will not be
+## plotted. Warning: wood parenchym could not be fit on page. It will not be plotted. Warning: wood perforation plates could not be fit on page. It will
+## not be plotted. Warning: wood rays could not be fit on page. It will not be plotted. Warning: cadmium at wavelength 228nm could not be fit on page.
+## It will not be plotted. Warning: cation exchange capacity could not be fit on page. It will not be plotted. Warning: data management could not be fit
+## on page. It will not be plotted. Warning: digital data acquisition could not be fit on page. It will not be plotted. Warning: diversity treatment
+## could not be fit on page. It will not be plotted. Warning: experimental design could not be fit on page. It will not be plotted. Warning: functional
+## eveness could not be fit on page. It will not be plotted. Warning: geomorphology could not be fit on page. It will not be plotted. Warning:
+## intraspecific diversity could not be fit on page. It will not be plotted. Warning: response variable could not be fit on page. It will not be
+## plotted. Warning: secondary compounds could not be fit on page. It will not be plotted. Warning: standard deviation could not be fit on page. It will
+## not be plotted. Warning: trait dissimilarity could not be fit on page. It will not be plotted. Warning: tree identifier could not be fit on page. It
+## will not be plotted. Warning: wood bending could not be fit on page. It will not be plotted. Warning: wood compression could not be fit on page. It
+## will not be plotted. Warning: wood stretching could not be fit on page. It will not be plotted. Warning: wood toughness could not be fit on page. It
+## will not be plotted. Warning: basal area increment could not be fit on page. It will not be plotted. Warning: BEF China projects could not be fit on
+## page. It will not be plotted. Warning: branch water potential could not be fit on page. It will not be plotted. Warning: cavity nesting hymenoptera
+## could not be fit on page. It will not be plotted. Warning: coarse root density could not be fit on page. It will not be plotted. Warning: community
+## weighted mean trait could not be fit on page. It will not be plotted. Warning: crown projection area could not be fit on page. It will not be
+## plotted. Warning: ecosystem functioning could not be fit on page. It will not be plotted. Warning: experimental treatment could not be fit on page.
+## It will not be plotted. Warning: functional trait could not be fit on page. It will not be plotted. Warning: genetic autocorrelation could not be fit
+## on page. It will not be plotted. Warning: litter thickness could not be fit on page. It will not be plotted. Warning: matching status could not be
+## fit on page. It will not be plotted. Warning: mineralization could not be fit on page. It will not be plotted. Warning: multi-trophic interactions
+## could not be fit on page. It will not be plotted. Warning: nitrogen cycling could not be fit on page. It will not be plotted. Warning: non-random
+## extinction could not be fit on page. It will not be plotted. Warning: parasitoids could not be fit on page. It will not be plotted. Warning:
+## phytophagous insects could not be fit on page. It will not be plotted. Warning: predators could not be fit on page. It will not be plotted. Warning:
+## research proposals could not be fit on page. It will not be plotted. Warning: respiration could not be fit on page. It will not be plotted. Warning:
+## rooting depth could not be fit on page. It will not be plotted. Warning: runoff plots could not be fit on page. It will not be plotted. Warning:
+## seedling could not be fit on page. It will not be plotted. Warning: simpson diversity could not be fit on page. It will not be plotted. Warning:
+## slope form could not be fit on page. It will not be plotted. Warning: social status could not be fit on page. It will not be plotted. Warning:
+## specialization could not be fit on page. It will not be plotted. Warning: species identity variable could not be fit on page. It will not be plotted.
+## Warning: temperature could not be fit on page. It will not be plotted. Warning: topography could not be fit on page. It will not be plotted. Warning:
+## trap nest could not be fit on page. It will not be plotted. Warning: vegetation stratum could not be fit on page. It will not be plotted. Warning:
+## water content could not be fit on page. It will not be plotted. Warning: Weibull distribution could not be fit on page. It will not be plotted.
+## Warning: wood ground tissue could not be fit on page. It will not be plotted. Warning: wood mechanics could not be fit on page. It will not be
+## plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 

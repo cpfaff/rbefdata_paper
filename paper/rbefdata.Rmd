@@ -2,7 +2,7 @@
 # this loads the befdata package
 require("rbefdata")  
 require("ggplot2")  
-options(width = 200)
+options(width = 150) 
 ```
 
 ## Abstract 
