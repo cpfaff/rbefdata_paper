@@ -123,49 +123,23 @@ how they like to participate in the upcoming paper or if they only like to get
 acknowledged for providing their data (cite Karin).
 
 ### The proposal
+The portal facilitates research cooperation by the tool of paper proposals. 
+Sending in a proposal, a researcher asks for access to the datasets and proposes
+his/her research idea to the dataowners and possible collaborators. This more social component of
+the portal allows to include and acknowledge all researchers involved in the data sampling process, 
+promotes collaborations between research units, avoids publication initiatives of the same research 
+ideas and adds to the transparency of data publication. 
+To create a paper proposal the researcher can shop (select) datasets which are to be included in the analyses.
+Furthermore basic information of the proposed paper such as the title, the rationale, the
+envisaged journal and date needs to be provided. The data owners and proposed collaborators are informed
+and can decide if and how they like to participate in the upcoming paper or if they only like to get
+acknowledged for providing their data (cite Karin). Furthermore the datasets assembled by the paper proposal can be 
+readily imported in one step to the R environment by rbefdata.
 
-We use an already published dataset as an example to present the
-functionalities and inter linkages between the BEF-China data portal and
-`rbefdata`. To test the effect of species richness on system N retention and
-tree sapling N uptake we conducted a 15N tracer experiment in a young tree
-plantation. To this end, saplings of four abundant early successional tree
-species have been planted in monoculture, in two- and four-species mixtures,
-and as individual trees. Afforestations are increasing globally to produce
-timber and pulp wood, but also to enhance ecosystem services such as carbon
-sequestration, nutrient retention, or groundwater recharge. In order to further
-optimise these services with regard to balanced nutrient (particularly
-nitrogen) cycles, it is important to know whether the use of mixtures of native
-tree species in afforestation projects promotes greater acquisition and
-retention of nitrogen compared to the currently established large-scale
-monoculture. 
-
-Four species were chosen for the experiment: Schima superba Gardn. et Champ.
-and Elaeocarpus decipiens Hemsley (evergreen), Quercus serrata Murray and
-Castanea henryi (Skan) Rehd. et Wils. (deciduous; Yu et al. 2001). The
-following planting schemes were established in 1-mÂ² plots.  In each plot 16
-saplings were planted in an array of four by four. Monocultures, two-species
-combinations and four-species combinations were established. The four study
-species provided a total of eleven species combinations four monocultures, six
-two-species combinations, and one four-species combination. All treatments were
-replicated four times, once in each of the four blocks. Pulse labelling with
-15NH415NO3 (98% 15N) was performed in August and in September 2009. Leaf, fine
-root and soil samples have been collected in September 2010. Samples have been
-analysed for 15N content and leaf, fine root and soil recovery have been
-calculated. The sum of the three compartment recoveries is referred to as
-system N retention.  Relative leaf, root and soil recovery was calculated as
-percentage of system N retention (for a detailed description of the material
-and methods we refer to Lang et al. 2013). 
-
-
-![showcase_proposal](./figure/static/showcase_proposal.png) 
-
-* caption: The paper proposal in its final approved state. The information on that page contains a title 
-          rational envisaged date and journal. The calculated authors and email lists for 
-          communication as well as the attached datasets and sub projects involved (only partially shown).
 
 ### rbefdata 
 
-The `rbefdata` package started its development within the BEF-Cina experiment.
+The development of the `rbefdata` package started within the BEF-China project.
 Meanwhile it is part of the rOpenSci package portfolio (http://ropensci.org/),
 which is a community driven approach to wrap all science APIs and to create
 solutions to pull data from different repositories into R for analysis.  The
@@ -178,11 +152,51 @@ attached that has been used to derive the results from the original datasets
 which provides a valuable insight into data provenance and also is a stepping
 stone for reproducible research.
 
-## Usecase (results)
 
-The next step after an accepted paper proposal is to setup the `rbefdata`
-package. This requires installing, loading the package and setting the required
-package options. Having a look into the options list reveals several fields
+
+
+## Usecase (results)
+In this paper we use an already published dataset as a usecase to present the
+functionalities and inter linkages between the BEF-China data portal and
+`rbefdata`. However, we will as well give some ecological background of the
+datasets used and the respective analyses. The usecase is dealing with data from
+a small scale experiment called pilot experiment. It is a 15N tracer experiment which
+aims to disentangle the effect of species mixtures on system N retention.
+
+We created a paper proposal with the following rationale: 
+'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
+forest ecosystems is still very limited, particularly as regards macronutrients
+such as nitrogen and phosphorus. Experimental approaches using tree saplings may
+promote an understanding of mechanisms that underlie nutrient acquisition and 
+cycling in early successional stages of secondary forests and forest plantations. 
+Insights in the potential of nutrient retention of young tree plantations are of 
+particular interest in China, where large areas have been reforested in order to 
+counteract soil erosion and to increase the soils’ water and nutrient retention capacity. 
+In this study we planted saplings of four abundant early successional 
+(evergreen and deciduous) tree species in monocultures, two- and four-species combination 
+to test the effect of species richness on nitrogen acquisition and retention by using a 15N 
+tracer experiment. 
+A crucial question in BEF research is the appropriate time scale of experiments which allows
+species richness effects to emerge. This question gains importance when long-lived and slowly
+growing organisms such as trees are considered. We wanted to analyse whether species richness
+effects occur during the establishment phase of early successional tree species typical of 
+subtropical forests of China.
+More precisely we wanted to test the following hypotheses: 
+(H1) Nitrogen acquisition and retention increases with species richness due complementary effects in species mixtures. 
+(H2) Species richness effects strengthen over time.'
+The respective proposal can be assessed under (url)
+For a detailed description of the experimental design we refer to Lang et al. 2013 (DOI)
+![showcase_proposal](./figure/static/showcase_proposal.png) 
+* caption: The paper proposal in its final approved state. The information on that page contains a title 
+          rational envisaged date and journal. The calculated authors and email lists for 
+          communication as well as the attached datasets and sub projects involved (only partially shown).
+
+
+
+When all dataowners accepted the paper proposal rbefdata can be used to directly access the
+datasets from the dataportal and transfer them to the R environment. To do so
+the `rbefdata`package needs to be setup. This requires installing, loading the 
+package and setting the required package options. Having a look into the options list reveals several fields
 that can be filled in, like the URL to the `BEFdata` server, user credentials
 and a download folder name that is used to store free format files attached to
 datasets. The `tematres` server related URLs in the options are part of
@@ -256,7 +270,7 @@ draws all associated datasets of a proposal into the R environment in one
 single step. It returns a list object that keeps a data frame per list element
 containing a dataset of the proposal each (see blow). The function requires the
 ID of the proposal to work. The ID can be found in the URL of the proposal (see
-blow).
+below).
 
 ```
 # the proposal URL shows the id is 90 
@@ -291,7 +305,7 @@ box below).
 
 
 ```r
-# get metadtata only, by dataset ID
+# get metadata only, by dataset ID
 bef.portal.get.metadata(dataset = 335)$title
 ```
 
@@ -337,7 +351,8 @@ names(attributes(datasets[[1]]))
 ```
 
 
-The dataset from the proposal is written into two variables called `Nretention`
+The dataset from the proposal contains of three datasets, of which we do only use
+the second and third. These two are written into two variables called `Nretention`
 and `design` before deciding upon how to merge. Inspecting both dataset reveals
 each of them contains a column with a `plot_id` that seems suitable for
 merging. We also can use the metadata for columns to check if this really is
@@ -346,35 +361,20 @@ the case (see box below).
 
 ```r
 # extract into separate datasets
-Nretention = datasets[[1]]
-design = datasets[[2]]
+Nretention = datasets[[2]]
+design = datasets[[3]]
+```
+
+```
+## Error: subscript out of bounds
+```
+
+```r
 
 # overview about the contents of the datasets
 
 # names in dataset Nretention
 names(Nretention)
-```
-
-```
-## [1] "plot_id"      "recov_plot"   "perleaf_plot" "perroot_plot" "perbio_plot"  "persoil_plot"
-## [7] "gbd_T0.mm."
-```
-
-```r
-
-# description of column plot_id
-Nretention_column_plot_id_description = attributes(Nretention)$columns[1, ]$description
-Nretention_column_plot_id_description
-```
-
-```
-## [1] "Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively. (plot_id: plot_id; Datagroup description: Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively.)"
-```
-
-```r
-
-# names in dataset Nretention
-names(design)
 ```
 
 ```
@@ -394,102 +394,140 @@ names(design)
 
 ```r
 
+# description of column plot_id
+Nretention_column_plot_id_description = attributes(Nretention)$columns[1, ]$description
+Nretention_column_plot_id_description
+```
+
+```
+## [1] "there are 4 blocks in the pilot experiment (block: block in the pilot-experiment the plot is belonging to, there are four main blocks (1-4) and four additional blocks (g1-g4) for analyzing the genetic diversity treatments )"
+```
+
+```r
+
+# names in dataset Nretention
+names(design)
+```
+
+```
+## Error: object 'design' not found
+```
+
+```r
+
 design_column_plot_id_description = attributes(design)$columns[4, ]$description
+```
+
+```
+## Error: object 'design' not found
+```
+
+```r
 design_column_plot_id_description
 ```
 
 ```
-## [1] "Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively. (plot_id: Individual complex ID for identifying exactly each plot; it connects with underline character the block number and the community code, i. e. the block number with the plots treatment. The plot identifier contains the information, which block the plot is in and which community is is comprised of.)"
+## Error: object 'design_column_plot_id_description' not found
 ```
 
 
-After merging the datasets the new synthesis dataset still contains many column
-not required for the analysis that have been dropped. To analyse the dataset of
+After merging the datasets the new synthesis dataset still contains many columns
+not required for the analysis that can be dropped. To analyse the dataset of
 system N retention we require the information about species diversity in the
 plots and the information about which plot is placed in which block from the
-design dataset.  
-
-* some more glue text that describes what happens ... Anne???
-
-The response variables have been checked for normality with `qqplot` and
-transformed where necessary (box below).
+design dataset. 'Species diversity' is used as a factor containing three levels (1,2,4 species mixtures).
+The response variables have been checked for normality with `qqplot` and 
+transformed (box below).
 
 
 ```r
 # the synthesis dataset
 syndata = merge(Nretention, design)
+```
+
+```
+## Error: object 'design' not found
+```
+
+```r
 
 # overview about the content of the synthesis dataset
 names(syndata)
 ```
 
 ```
-##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"            
-##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"            
-##  [7] "gbd_T0.mm."               "block"                    "x"                       
-## [10] "y"                        "control_ID"               "block_community_code"    
-## [13] "community_number"         "species_mixture"          "species_diversity"       
-## [16] "species_pool"             "species_code"             "research_group_colour"   
-## [19] "control"                  "closed_canopy"            "density"                 
-## [22] "Natives"                  "depth"                    "harvest"                 
-## [25] "fungicide"                "inoculation"              "pesticide"               
-## [28] "native"                   "genetic_diverstiy"        "seed_addition"           
-## [31] "fertilizer"               "plot_treatment_connected" "sp1"                     
-## [34] "sp2"                      "sp3"                      "sp4"                     
-## [37] "sp5"                      "sp7"                      "sp8"                     
-## [40] "sp11"                     "sp_connected"
+## Error: object 'syndata' not found
 ```
 
 ```r
 
 # remove unwanted variables from synthesis datset
 syndata = syndata[-c(9:14, 16:41)]
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
 names(syndata)
 ```
 
 ```
-## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"     
-## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"            
-## [9] "species_diversity"
-```
-
-```r
-
-# check for data properties (keep this?)
-str(syndata)
-```
-
-```
-## 'data.frame':	42 obs. of  9 variables:
-##  $ plot_id          : Factor w/ 42 levels "pilot1D01","pilot1D02",..: 1 2 3 4 5 6 7 8 9 10 ...
-##  $ recov_plot       : num  15.64 13.03 20.29 9.6 8.35 ...
-##  $ perleaf_plot     : num  2.92 5.52 1.06 4.19 15.1 ...
-##  $ perroot_plot     : num  1.001 1.369 0.516 1.086 5.098 ...
-##  $ perbio_plot      : num  3.92 6.89 1.57 2.03 17.96 ...
-##  $ persoil_plot     : num  96.1 93.1 98.4 98 82 ...
-##  $ gbd_T0.mm.       : num  NA 3.69 2.88 6 7 ...
-##  $ block            : Factor w/ 8 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 1 2 ...
-##  $ species_diversity: int  1 1 1 2 2 2 2 2 4 1 ...
+## Error: object 'syndata' not found
 ```
 
 ```r
 
 # > we want to use 'species_diversity' as a factor
 syndata$species_diversity = as.factor(syndata$species_diversity)
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
 
 # square root transforme response variables
-syndata$perroot_plot_t = syndata$perroot_plot^0.5
-syndata$persoil_plot_t = syndata$persoil_plot^0.5
 syndata$recov_plot_t = syndata$recov_plot^0.5
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
 syndata$perleaf_plot_t = syndata$perleaf_plot^0.5
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+syndata$perroot_plot_t = syndata$perroot_plot^0.5
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+syndata$persoil_plot_t = syndata$persoil_plot^0.5
+```
+
+```
+## Error: object 'syndata' not found
 ```
 
 
 We analysed our data by linear mixed effects models. Since the plots are
-clumped in space, we use block as a random factor. The analysis uses the R
-packages `nlme` for modeling and `multcomp` for post-hoc comparisons. To adjust
+nested in blocks, we use block as a random factor. The analysis uses the R
+packages `nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
+for post-hoc comparisons. To adjust
 for an unbalanced experimental design an ANOVA Type II was carried out to test
-for main effects using the R package `car` (Fox & Weisberg 2011)  
+for main effects using the R package `car` (Fox and Weisberg 2011). Models have been evaluated visually.
 
 
 ```r
@@ -501,17 +539,21 @@ require(car)
 
 
 ```r
-### Model one Overall recovery/N retention
+### Model 1: Overall recovery/N retention
 model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
     method = "REML")
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
 anova(model1)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    34   870.6  <.0001
-## gbd_T0.mm.            1    34     7.5  0.0098
-## species_diversity     2    34     2.9  0.0714
+## Error: object 'model1' not found
 ```
 
 ```r
@@ -519,56 +561,48 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
-##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
-## 4 - 1 == 0    0.478      0.420    1.14    0.482  
-## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: no 'model.matrix' method for 'model' found!
 ```
 
 ```r
 
 # ANOVA type II test for unbalanced design
 model1c = Anova(model1, type = "II")
+```
+
+```
+## Error: object 'model1' not found
+```
+
+```r
 model1c
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: recov_plot_t
-##                   Chisq Df Pr(>Chisq)   
-## gbd_T0.mm.         7.42  1     0.0064 **
-## species_diversity  5.71  2     0.0576 . 
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model1c' not found
 ```
 
 ```r
 
-# model evaluation plot(model1,resid(.)~fitted(.)) plot(model1,recov_plot_t~fitted(.))
+### model evaluation checking plots to assess whether residuals are well behaved plot(model1)
+### whether the response variable is a reasonable linear function of the fitted values
+### plot(model1,recov_plot_t~fitted(.)) and whether the errors are reasonably close to normal
+### distribution in all four blocks (Crawley 2009) qqnorm(model1,~resid(.)|block)
 
 ## Model2 percentage leaf recovery of plot recovery
 model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
 anova(model2)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36  273.06  <.0001
-## species_diversity     2    36    6.56  0.0037
+## Error: object 'model2' not found
 ```
 
 ```r
@@ -576,23 +610,7 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: no 'model.matrix' method for 'model' found!
 ```
 
 ```r
@@ -600,28 +618,28 @@ Anova(model2, type = "II")
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: perleaf_plot_t
-##                   Chisq Df Pr(>Chisq)   
-## species_diversity  13.1  2     0.0014 **
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model2' not found
 ```
 
 ```r
 
-# model evaluation plot(model2,resid(.)~fitted(.)) plot(model2,perleaf_plot_t~fitted(.))
+# model evaluation plot(model2) plot(model2,recov_plot_t~fitted(.))
+# qqnorm(model2,~resid(.)|block)
 
 ## Model3 percentage root recovery of overall recovery
 model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
 anova(model3)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36   374.2  <.0001
-## species_diversity     2    36     7.2  0.0024
+## Error: object 'model3' not found
 ```
 
 ```r
@@ -629,23 +647,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: no 'model.matrix' method for 'model' found!
 ```
 
 ```r
@@ -653,28 +655,28 @@ Anova(model3, type = "II")
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: perroot_plot_t
-##                   Chisq Df Pr(>Chisq)    
-## species_diversity  14.3  2    0.00077 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model3' not found
 ```
 
 ```r
 
-# model evaluation plot(model3,resid(.)~fitted(.)) plot(model3,perleaf_plot_t~fitted(.))
+# model evaluation plot(model3) plot(model3,recov_plot_t~fitted(.))
+# qqnorm(model3,~resid(.)|block)
 
 ## Model 4 percentage soil recovery of overall recovery
 model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
 anova(model4)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36   26248  <.0001
-## species_diversity     2    36       4  0.0274
+## Error: object 'model4' not found
 ```
 
 ```r
@@ -682,23 +684,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 .
-## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
-## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: no 'model.matrix' method for 'model' found!
 ```
 
 ```r
@@ -706,21 +692,16 @@ Anova(model4, type = "II")
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: persoil_plot_t
-##                   Chisq Df Pr(>Chisq)  
-## species_diversity  7.96  2      0.019 *
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model4' not found
 ```
 
 ```r
 
-# model evalution plot(model4,resid(.)~fitted(.)) plot(model4,perleaf_plot_t~fitted(.))
+# model evalution plot(model4) plot(model4,recov_plot_t~fitted(.))
+# qqnorm(model4,~resid(.)|block)
 ```
 
-
+Results of our showcase:
 System 15N retention (overall plot recovery) was positively affected by species
 richness at the level of P = 0.l0576 (Chisq: 5.7; Fig. Xa). The analysis of the
 different system compartments (leaves, fine roots and soil) revealed that fine
@@ -744,7 +725,42 @@ forest systems even after a few years. This in turn has the potential to
 significantly reduce N losses and thus N accumulation in the leachate or
 groundwater (Lang et al. 2013).
 
-![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
+
+```
+## Error: object 'syndata' not found
+```
+
+```
+## Error: object 'recov_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```
+## Error: object 'perleaf_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```
+## Error: object 'perroot_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```
+## Error: object 'persoil_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
 
 
 * caption:  Nitrogen (N) retention affected by species richness. N retention summed as
@@ -867,44 +883,42 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: cadmium at wavelength 214nm could not be fit on page. It will not be plotted.
-## Warning: cadmium at wavelength 228nm could not be fit on page. It will not be plotted.
-## Warning: leaf physical resistance could not be fit on page. It will not be plotted. Warning:
-## spatial genetic structure could not be fit on page. It will not be plotted. Warning: water
-## content could not be fit on page. It will not be plotted. Warning: wood shearing could not be
-## fit on page. It will not be plotted. Warning: wood stretching could not be fit on page. It
-## will not be plotted. Warning: aeromorphic organic layer could not be fit on page. It will not
-## be plotted. Warning: BEF China projects could not be fit on page. It will not be plotted.
-## Warning: community weighted mean trait could not be fit on page. It will not be plotted.
-## Warning: crown projection area could not be fit on page. It will not be plotted. Warning:
-## deposition could not be fit on page. It will not be plotted. Warning: eco-physiologic traits
-## could not be fit on page. It will not be plotted. Warning: ecosystem functioning could not be
-## fit on page. It will not be plotted. Warning: experimental treatment could not be fit on page.
-## It will not be plotted. Warning: flight interception could not be fit on page. It will not be
-## plotted. Warning: Flora of China could not be fit on page. It will not be plotted. Warning:
-## haplotype could not be fit on page. It will not be plotted. Warning: human influence could not
-## be fit on page. It will not be plotted. Warning: inbreeding could not be fit on page. It will
-## not be plotted. Warning: land use history could not be fit on page. It will not be plotted.
-## Warning: leaf longevity could not be fit on page. It will not be plotted. Warning: litter
-## thickness could not be fit on page. It will not be plotted. Warning: matching status could not
-## be fit on page. It will not be plotted. Warning: microrelief could not be fit on page. It will
-## not be plotted. Warning: mineralization could not be fit on page. It will not be plotted.
-## Warning: multi-trophic interactions could not be fit on page. It will not be plotted. Warning:
-## mycorrhiza could not be fit on page. It will not be plotted. Warning: nitrification could not
+## Warning: competitive neighbourhood could not be fit on page. It will not be plotted. Warning:
+## tree performance could not be fit on page. It will not be plotted. Warning: air temperature
+## could not be fit on page. It will not be plotted. Warning: biomass allocation could not be fit
+## on page. It will not be plotted. Warning: digital data acquisition could not be fit on page.
+## It will not be plotted. Warning: gene diversity could not be fit on page. It will not be
+## plotted. Warning: geomorphology could not be fit on page. It will not be plotted. Warning:
+## intraspecific diversity could not be fit on page. It will not be plotted. Warning: response
+## variable could not be fit on page. It will not be plotted. Warning: secondary compounds could
+## not be fit on page. It will not be plotted. Warning: spatial genetic structure could not be
+## fit on page. It will not be plotted. Warning: trait dissimilarity could not be fit on page. It
+## will not be plotted. Warning: wood bending could not be fit on page. It will not be plotted.
+## Warning: wood compression could not be fit on page. It will not be plotted. Warning: wood
+## shearing could not be fit on page. It will not be plotted. Warning: aeromorphic organic layer
+## could not be fit on page. It will not be plotted. Warning: basal area increment could not be
+## fit on page. It will not be plotted. Warning: cavity nesting hymenoptera could not be fit on
+## page. It will not be plotted. Warning: coarse root density could not be fit on page. It will
+## not be plotted. Warning: community weighted mean trait could not be fit on page. It will not
+## be plotted. Warning: directed extinction could not be fit on page. It will not be plotted.
+## Warning: ecosystem functioning could not be fit on page. It will not be plotted. Warning:
+## experimental treatment could not be fit on page. It will not be plotted. Warning: human
+## influence could not be fit on page. It will not be plotted. Warning: multi-trophic
+## interactions could not be fit on page. It will not be plotted. Warning: mycorrhiza could not
 ## be fit on page. It will not be plotted. Warning: nitrogen cycling could not be fit on page. It
 ## will not be plotted. Warning: non-random extinction could not be fit on page. It will not be
-## plotted. Warning: phylogenetic distinctness could not be fit on page. It will not be plotted.
-## Warning: phytophagous insects could not be fit on page. It will not be plotted. Warning:
-## predators could not be fit on page. It will not be plotted. Warning: rainfall simulator could
-## not be fit on page. It will not be plotted. Warning: research proposals could not be fit on
-## page. It will not be plotted. Warning: rooting depth could not be fit on page. It will not be
-## plotted. Warning: runoff plots could not be fit on page. It will not be plotted. Warning: snag
-## height could not be fit on page. It will not be plotted. Warning: specialization could not be
-## fit on page. It will not be plotted. Warning: species identity variable could not be fit on
-## page. It will not be plotted. Warning: topography could not be fit on page. It will not be
-## plotted. Warning: vegetation stratum could not be fit on page. It will not be plotted.
-## Warning: Weibull distribution could not be fit on page. It will not be plotted. Warning: wood
-## porosity could not be fit on page. It will not be plotted.
+## plotted. Warning: pesticide could not be fit on page. It will not be plotted. Warning:
+## phytophagous insects could not be fit on page. It will not be plotted. Warning: rainfall
+## simulator could not be fit on page. It will not be plotted. Warning: research proposals could
+## not be fit on page. It will not be plotted. Warning: respiration could not be fit on page. It
+## will not be plotted. Warning: simpson diversity could not be fit on page. It will not be
+## plotted. Warning: snag height could not be fit on page. It will not be plotted. Warning:
+## species identity variable could not be fit on page. It will not be plotted. Warning:
+## temperature could not be fit on page. It will not be plotted. Warning: topography could not be
+## fit on page. It will not be plotted. Warning: tree crown could not be fit on page. It will not
+## be plotted. Warning: Weibull distribution could not be fit on page. It will not be plotted.
+## Warning: wood ground tissue could not be fit on page. It will not be plotted. Warning: wood
+## mechanics could not be fit on page. It will not be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
