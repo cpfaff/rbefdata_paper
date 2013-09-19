@@ -1,6 +1,5 @@
 
 
-
 ## Abstract 
 
 We face a deluge of data today scientists need to deal with in many different
@@ -10,7 +9,7 @@ often varies. Especially research domains with high degree of interdisciplinary
 interactions and heterogeneity in methods and data like ecology face problems
 in dealing with valuable concepts like ontologies that potentially can be used
 to improve or automate some of the most common tasks in analyses like finding
-relevant data, cleaning and merging of datasets. We here introduce the
+relevant data, cleaning, and merging of datasets. We here introduce the
 `rbefata` package that connects to the open source data management platform
 `BEFdata` that has been developed and is used within the BEF-China experiment.
 We show how to use the package in combination with the data portal on an
@@ -18,14 +17,14 @@ example workflow that integrates two datasets from the BEF-China experiment
 representing an analysis that has been published already. We discuss the
 combination of the R package `rbefdata` and the data portal in the context of
 state of the art data management and the data lifecycle as well as we give an
-outlook on upcoming features like semantical tools that will enable smart
+outlook on upcoming features like semantic tools that will enable smart
 merges and finding of data based on an ontology we are building. 
 
 ## Introduction 
 
 With a growing awareness on the value of data, much effort has been put into
 building data management platforms, to preserve all kind of environmental and
-historic data, over the last years (e.g. diversity workbench, GBIF, `BEFdata`).
+historic data, over the last years (e.g. diversity workbench, GBIF, `BEFdata`, DataONE, LifeWatch).
 Many solutions for different scientific disciplines appeared that provide data
 management plans for small scale projects or collaborations as well as for
 large data producing long term or remote sensing projects. An ongoing trend in
@@ -34,18 +33,18 @@ serve as nodes that collect data from smaller databases of a certain domain and
 they give researchers of that domain the opportunity to access a wide range of
 relevant data all from one place. These data management portals in fact offer a
 solution to to one of the most pressing problems that we face with our valuable
-data today, their lost. 
+data today, their loss. 
 
 With a growing global data pool there is a also a growing demand to use and
 reuse available data and to embed small heterogeneous data into a wider
-context. A problem here is the general understanding of datasets. Usually plain
+context. A problem here is the legibility of datasets. Usually plain
 datasets say nothing, to one who is not familiar with it and they are even hard
-to decipher by the author itself after some time has passed. It is usually hard
+to decipher by the author herself after some time has passed. It is usually hard
 to remember exactly what methods have been used to collect a certain columns
 data or what the abbreviations or headers in the dataset mean. To solve this
 problem metadata frameworks have been developed and published as standards so
-nobody really needs to think about an own set of requirements to describe its
-data. The Ecological Metadata Language is only one example for that. While this
+nobody really needs to think about an own set of requirements to describe their
+data. The Ecological Metadata Language (EML)[] is only one example for that. While this
 theoretically solves the problem with not well described datasets it is still
 hard to make researchers use it extensively as this usually always means to
 learn new tools that help with the description process (e.g morpho, data up).
