@@ -91,10 +91,10 @@ experiment. It is a 15N tracer experiment which aims to disentangle the effect
 of species mixtures on system N retention. The workflow depicts how to pull
 data into the R environment, the inspection of datasets metadata and how to
 upload data and attachments. It reconstructs a facet of an analysis that has
-been published already (cite Anne Lang). The use case is dealing with data from
-a small scale experiment called pilot experiment. It is a 15N tracer experiment
-which aims to disentangle the effect of species mixtures on system N retention.
-
+been published already (Lang et al. 2013)). The use case is dealing with data
+from a small scale experiment called the pilot experiment. It is a 15N tracer
+experiment which aims to disentangle the effect of species mixtures on system N
+retention.
 
 ## Material and Methods
 
@@ -147,7 +147,6 @@ acknowledged for providing their data (cite Karin). Furthermore the datasets
 assembled by the paper proposal can be readily imported in one step to the R
 environment by rbefdata.
 
-
 ### rbefdata
 
 The development of the `rbefdata` package started within the BEF-China project.
@@ -178,15 +177,15 @@ ecosystems is still very limited, particularly as regards macro nutrients such
 as nitrogen and phosphorus. Experimental approaches using tree saplings may
 promote an understanding of mechanisms that underlie nutrient acquisition and
 cycling in early successional stages of secondary forests and forest
-plantations.  Insights in the potential of nutrient retention of young tree
+plantations. Insights in the potential of nutrient retention of young tree
 plantations are of particular interest in China, where large areas have been
 reforested in order to counteract soil erosion and to increase the soils’ water
 and nutrient retention capacity.  In this study we planted saplings of four
 abundant early successional (evergreen and deciduous) tree species in
 monocultures, two- and four-species combination to test the effect of species
 richness on nitrogen acquisition and retention by using a 15N tracer
-experiment.  A crucial question in BEF research is the appropriate time scale
-of experiments which allows species richness effects to emerge. This question
+experiment. A crucial question in BEF research is the appropriate time scale of
+experiments which allows species richness effects to emerge. This question
 gains importance when long-lived and slowly growing organisms such as trees are
 considered. We wanted to analyse whether species richness effects occur during
 the establishment phase of early successional tree species typical of
@@ -207,10 +206,9 @@ attributes, plot diversity, etc. , another one for species names!!
 * caption: The paper proposal in its final approved state. The information on that page
            contains a title rational envisaged date and journal. The calculated authors
            and email lists for communication as well as the attached datasets and sub
-           projects involved (only partially shown).
+           projects involved (only partially shown). The proposal is published as paper 
+           (Lang et al. 2013).
 
-
-?? Is this based on a published paper? Then we should cite that paper!??
 
 When all data owners accepted the paper proposal `rbefdata` can be used to
 directly access the datasets from the data platform and transfer them to the R
@@ -440,10 +438,7 @@ dataset of system N retention we need information about the species diversity
 in the plots and about which plot is placed in which block from the design
 dataset. 'Species diversity' is used as a factor containing three levels (1,2,4
 species mixtures). The response variables have been checked for normality with
-`qqplot` and transformed (box below).
-
-!! Very cool!!!
-
+`qqplot` and transformed (see box below).
 
 
 ```r
@@ -656,10 +651,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8793   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -711,9 +706,9 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 *
-## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
-## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -751,10 +746,6 @@ recovery were significantly higher in species mixtures compared with
 monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
 reduced (Fig. Xd).
 
-?? This should have been reported elsewhere! This paper should be cited here!!
-
-?? was the general aim of the analysis part of the introduction? It should be!!
-
 Our results demonstrate that species richness of mixtures increases system N
 retention in young subtropical tree plantations. Although relative soil
 recovery was highest compared with relative leaf and root recovery, soil
@@ -771,8 +762,11 @@ after a few years. This in turn has the potential to significantly reduce N
 losses and thus N accumulation in the leachate or groundwater (Lang et al.
 2013).
 
-!! This is really well done!!
+?? This should have been reported elsewhere! This paper should be cited here!!
 
+?? was the general aim of the analysis part of the introduction? It should be!!
+
+!! This is really well done!!
 
 ![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
@@ -781,6 +775,10 @@ losses and thus N accumulation in the leachate or groundwater (Lang et al.
             the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root
             recovery (c) and relative soil recovery (d). Significant differences as revealed by post
             hoc Tukey’s test (P < 0.05) are indicated by different letters.
+
+* note cpfaff: This now depends on what we decide to use if we use more dataset and there
+               if a new dataset is generated then yes we need to upload but at the moment 
+               no way!
 
 Finally we need to decide on either to upload a full dataset which we could do
 using the dataset upload function `bef.portal.upload.dataset()` or only to
@@ -792,9 +790,9 @@ For the shown example it is the best way to go with an attachment to the
 proposal as uploading the merged dataset would only mean duplication of data in
 the database of the data management platform.
 
-!! no! Upload!. There should be some new data, maybe on plot level, maybe on species level.
-Maybe something such as general N uptake at median species diversity for the species in
-question, that can then be used by other projects as functional traits. Upload data!
+* note kej: !! no! Upload!. There should be some new data, maybe on plot level, maybe on species level.
+            Maybe something such as general N uptake at median species diversity for the species in
+            question, that can then be used by other projects as functional traits. Upload data!
 
 So we upload the script and the four pane figure with its caption to add them
 to the proposal. The figure is prepared as Portable Network Graphics (PNG)
