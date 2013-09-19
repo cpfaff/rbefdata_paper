@@ -586,9 +586,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59  0.00081 ***
-## 4 - 1 == 0    0.865      0.497    1.74  0.18387    
-## 4 - 2 == 0   -0.188      0.479   -0.39  0.91634    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -639,10 +639,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
+## 4 - 2 == 0    0.132      0.278    0.48    0.879    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -760,17 +760,17 @@ losses and thus N accumulation in the leachate or groundwater (Lang et al.
 
 Finally we need to decide on either to upload a full dataset which we could do
 using the dataset upload function `bef.portal.upload.dataset()` or only to
-upload the script and maybe a plot figure that highlight the road to the
-results starting from the used source datasets with
-`bef.portal.attach.to_proposal()`. 
+upload the script and maybe a figure to highlight the road to the results
+starting from the source datasets used. This can be done by attaching to the
+proposal with `bef.portal.attach.to_proposal()`. 
 
-For the shown example here it is the best way to go with the latter one as
-uploading the merged dataset would only mean duplication of data in the
-database of the data management platform. So we upload the script and the four
-pane figure with its caption to add them to the proposal. The figure is
-prepared as png before using the R internal png device to write it to a
-temporary folder and then uploaded. The script in this case is an R markdown
-file.
+For the shown example it is the best way to go with an attachment to the
+proposal as uploading the merged dataset would only mean duplication of data in
+the database of the data management platform. So we upload the script and the
+four pane figure with its caption to add them to the proposal. The figure is
+prepared as Portable Network Graphics (PNG) using the R internal PNG device. It
+is written to a temporary folder and then uploaded. The script in this case is
+an R markdown file that we attach to the proposal (see box below).
 
 
 ```r
@@ -831,7 +831,29 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 As there is a growing demand to effectively reuse available data this puts much
 pressure on the development of solutions that help researchers not only to find
-but also to integrate heterogeneous small data into a wider context 
+but also to integrate heterogeneous small data into a wider context. Highly
+interdisciplinary research domains like ecology are challenging in terms of
+data reuse and exchange. While data storage and description is almost the same
+for all kind of data the effective interlinking of data via an ontology
+requires the development of a common terminology all contributing scientist of
+a research domain accept and not only use but help do develop and discuss it.
+Thus collaborative ontology engineering approaches like `ontoverse` 
+(Zoulfa El Jerroudi et al. 2008) or `tematres` are highly valuable as the not 
+only help to set up ontologies but also to develop and maintain them over time 
+even if the researchers change that contribute to it. 
+
+The software combination of `rbefdata` and `BEFdata` offers a solutions to data
+storage for different sizes of projects, it helps in describing data with
+metadata and to provide a public with the information via the EMl metadata
+standard, it fosters the collaboration and the trust in sharing data online by
+paper proposals and the helps in analysing by offering simple tools to pull
+data right direct from the portal into the R statistics environment. The upload
+functionality provided by `rbefdata` 
+
+(metadata) 
+    + collaboration (data sharing)
+    + simply pull data into analysis software and push data back
+    + data provenance by attaching R scripts to uploads
 
 
 (data intensive science, long tail). The
@@ -840,9 +862,8 @@ of the data lifecycle as it deals with finding and describing data as well as
 the as it promotes the understanding and reuse of data, as it is adhering
 metadata standards.
 
-a one
-part of the data life cycle and especially introduces a solution to deal with
-high heterogeneous data.
+a one part of the data life cycle and especially introduces a solution to deal
+with high heterogeneous data.
 
 We recently stared to develop an ontology using a `tematres` server containing
 knowledge extracted from portals that deal with data management for ecological
