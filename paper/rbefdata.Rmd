@@ -486,7 +486,7 @@ proposal (see box below).
 bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", description = "The R script that has been used to derive the results in the published paper")
 ```
 
-```{r prepare_plot_png, echo = F, cache = T}
+```{r prepare_plot_png, echo = F, cache = F}
 # prepare the plot figure as png
 png(filename = file.path(tempdir(), "results_plot_proposal_90.png"))
   par(mfrow=c(2,2),bty="l")
@@ -506,7 +506,7 @@ dev.off()
 ```
 
 ```{r caption_and_upload_figure, cache = T}
-# caption for the figure
+# caption of the figure
 caption = "Nitrogen (N) retention affected by species richness. N retention summed as
            the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root
            recovery (c) and relative soil recovery (d). Significant differences as revealed by post
@@ -525,7 +525,7 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 ## Discussion
 
 * up to now no use of the thesaurus! If this stays as such, all the passages on ontologies have
-  to be removed! So try to integrate the use of thesauri! Then ontologies can be discussed. But
+  to be removed! So try to integrate the use of the thesaurus! Then ontologies can be discussed. But
   ontologies should not have such a high prominence in the introduction.
 
 * pros and cons of sending data to a local script or sending a script to a central database,
@@ -686,6 +686,8 @@ upcoming features and the like the use of ontologies for semantical assisted
 exploration of data and  integration of an ontology we built that will make
 finding data and smart merges possible, to help researchers to deal with the
 future challenges in handling complex and heterogeneous data.
+
+
 
 We discuss `rbefdata` and `BEFdata` in in the light of current and future
 challenges for data management give an outlook onto upcoming features that
