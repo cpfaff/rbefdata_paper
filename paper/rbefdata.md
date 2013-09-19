@@ -3,24 +3,24 @@
 
 ## Abstract
 
-Today we face a deluge of data scientists need to deal with in many different
-disciplines. While there are already good solutions to some parts of the data
-life cycle the applicability of the solutions to certain scientific domains
-often varies. Especially research domains with a high degree of
-interdisciplinary interactions and heterogeneity in methods and data like
-ecology are facing problems in dealing with some valuable concepts like
-ontologies that potentially can be used to improve or automate some of the most
-common tasks in analyses like finding relevant data, cleaning and merging and a
-exchange of datasets. We here introduce the `rbefata` package that connects to
-the open source data management platform `BEFdata` that has been developed and
-is used within the BEF-China experiment. We show the use of the package in
-interaction with the data management platform using an example workflow that
-integrates two datasets from the BEF-China experiment. The workflow is
-representing an analysis that has been published already. Finally we discuss
-this software combination in the context of current and future data management
-requirements and the data life cycle. We also give an outlook on upcoming
-features like a semantical assisted search and merging of data to be integrated
-with `rbefdata` and `BEFdata`.
+Today we face a deluge of data, scientists need to deal with in many different
+disciplines. While there are already good software solutions to assist
+reasearcher throughout the the data life cycle the applicability of the
+solutions to certain scientific domains often varies. Especially research
+domains with a high degree of interdisciplinary interactions and heterogeneity
+in methods and data like ecology are facing problems in dealing with some
+valuable concepts like ontologies that potentially can be used to improve or
+automate some of the most common tasks in analyses like finding relevant data,
+cleaning and merging and a exchange of datasets. We here introduce the
+`rbefata` package that connects to the open source data management platform
+`BEFdata` that has been developed and is used within the BEF-China experiment.
+We show the use of the package in interaction with the data management platform
+using an example workflow that integrates two datasets from the BEF-China
+experiment and is representing an analysis that has been published already.
+Finally we discuss this software combination in the context of current and
+future data management requirements and the data life cycle. We also give an
+outlook on upcoming features like a semantical assisted search and merging of
+data to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
@@ -280,21 +280,7 @@ http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```r
 # proposal id is
 datasets = bef.get.datasets_for_proposal(id = 90)
-```
-
-```
-## Error: Couldn't resolve host 'china.befdata.biow.uni-leipzig.de'
-```
-
-```r
 extract_second_dataset = datasets[[2]]
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 head(extract_first_dataset, 5)
 ```
 
@@ -318,12 +304,7 @@ bef.portal.get.metadata(dataset = 335)$title
 ```
 
 ```
-## No such file or directoryfailed to load external entity "http://china.befdata.biow.uni-leipzig.de/datasets/335.eml?separate_category_columns=TRUE"
-```
-
-```
-## Error: 1: No such file or directory2: failed to load external entity
-## "http://china.befdata.biow.uni-leipzig.de/datasets/335.eml?separate_category_columns=TRUE"
+## [1] "Competition of saplings for N -Pilot- system 15N retention"
 ```
 
 ```r
@@ -333,25 +314,20 @@ attributes(datasets[[1]])$title
 ```
 
 ```
-## Error: object 'datasets' not found
+## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
 ```
 
 ```r
 
 # extract all dataset titles in the proposal
 titles = sapply(datasets, function(x) attributes(x)$title)
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 titles
 ```
 
 ```
-## Error: object 'titles' not found
+## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
+## [2] "Competition of saplings for N -Pilot- system 15N retention"                  
+## [3] "Plottreatment and -location within the blocks of the Pilot-Experiment"
 ```
 
 ```r
@@ -361,7 +337,12 @@ names(attributes(datasets[[1]]))
 ```
 
 ```
-## Error: object 'datasets' not found
+##  [1] "names"                    "class"                    "row.names"               
+##  [4] "title"                    "abstract"                 "publicationDate"         
+##  [7] "language"                 "creators"                 "authors"                 
+## [10] "intellectualRights"       "distribution"             "keywords"                
+## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"        
+## [16] "temporal_coverage"        "related_material"         "columns"
 ```
 
 
@@ -376,21 +357,7 @@ metadata for columns to check if this really is the case (see box below).
 ```r
 # extract into separate datasets
 Nretention = datasets[[2]]
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 design = datasets[[3]]
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 
 # overview about the contents of the datasets
 
@@ -399,25 +366,19 @@ names(Nretention)
 ```
 
 ```
-## Error: object 'Nretention' not found
+## [1] "plot_id"      "recov_plot"   "perleaf_plot" "perroot_plot" "perbio_plot"  "persoil_plot"
+## [7] "gbd_T0.mm."
 ```
 
 ```r
 
 # description of column plot_id
 Nretention_column_plot_id_description = attributes(Nretention)$columns[1, ]$description
-```
-
-```
-## Error: object 'Nretention' not found
-```
-
-```r
 Nretention_column_plot_id_description
 ```
 
 ```
-## Error: object 'Nretention_column_plot_id_description' not found
+## [1] "Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively. (plot_id: plot_id; Datagroup description: Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively.)"
 ```
 
 ```r
@@ -427,24 +388,28 @@ names(design)
 ```
 
 ```
-## Error: object 'design' not found
+##  [1] "block"                    "x"                        "y"                       
+##  [4] "plot_id"                  "control_ID"               "block_community_code"    
+##  [7] "community_number"         "species_mixture"          "species_diversity"       
+## [10] "species_pool"             "species_code"             "research_group_colour"   
+## [13] "control"                  "closed_canopy"            "density"                 
+## [16] "Natives"                  "depth"                    "harvest"                 
+## [19] "fungicide"                "inoculation"              "pesticide"               
+## [22] "native"                   "genetic_diverstiy"        "seed_addition"           
+## [25] "fertilizer"               "plot_treatment_connected" "sp1"                     
+## [28] "sp2"                      "sp3"                      "sp4"                     
+## [31] "sp5"                      "sp7"                      "sp8"                     
+## [34] "sp11"                     "sp_connected"
 ```
 
 ```r
 
 design_column_plot_id_description = attributes(design)$columns[4, ]$description
-```
-
-```
-## Error: object 'design' not found
-```
-
-```r
 design_column_plot_id_description
 ```
 
 ```
-## Error: object 'design_column_plot_id_description' not found
+## [1] "Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively. (plot_id: Individual complex ID for identifying exactly each plot; it connects with underline character the block number and the community code, i. e. the block number with the plots treatment. The plot identifier contains the information, which block the plot is in and which community is is comprised of.)"
 ```
 
 
@@ -463,82 +428,51 @@ species mixtures). The response variables have been checked for normality with
 ```r
 # the synthesis dataset
 syndata = merge(Nretention, design)
-```
-
-```
-## Error: object 'Nretention' not found
-```
-
-```r
 
 # overview about the content of the synthesis dataset
 names(syndata)
 ```
 
 ```
-## Error: object 'syndata' not found
+##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"            
+##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"            
+##  [7] "gbd_T0.mm."               "block"                    "x"                       
+## [10] "y"                        "control_ID"               "block_community_code"    
+## [13] "community_number"         "species_mixture"          "species_diversity"       
+## [16] "species_pool"             "species_code"             "research_group_colour"   
+## [19] "control"                  "closed_canopy"            "density"                 
+## [22] "Natives"                  "depth"                    "harvest"                 
+## [25] "fungicide"                "inoculation"              "pesticide"               
+## [28] "native"                   "genetic_diverstiy"        "seed_addition"           
+## [31] "fertilizer"               "plot_treatment_connected" "sp1"                     
+## [34] "sp2"                      "sp3"                      "sp4"                     
+## [37] "sp5"                      "sp7"                      "sp8"                     
+## [40] "sp11"                     "sp_connected"
 ```
 
 ```r
 
 # remove unwanted variables from synthesis datset
 syndata = syndata[-c(9:14, 16:41)]
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 names(syndata)
 ```
 
 ```
-## Error: object 'syndata' not found
+## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"     
+## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"            
+## [9] "species_diversity"
 ```
 
 ```r
 
 # > we want to use 'species_diversity' as a factor
 syndata$species_diversity = as.factor(syndata$species_diversity)
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 
 # square root transforme response variables
 syndata$recov_plot_t = syndata$recov_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 syndata$perleaf_plot_t = syndata$perleaf_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 syndata$perroot_plot_t = syndata$perroot_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 syndata$persoil_plot_t = syndata$persoil_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
 ```
 
 
@@ -562,18 +496,14 @@ require(car)
 ### Model 1: Overall recovery/N retention
 model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
     method = "REML")
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 anova(model1)
 ```
 
 ```
-## Error: object 'model1' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    34   870.6  <.0001
+## gbd_T0.mm.            1    34     7.5  0.0098
+## species_diversity     2    34     2.9  0.0714
 ```
 
 ```r
@@ -581,25 +511,41 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
+##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)  
+## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
+## 4 - 1 == 0    0.478      0.420    1.14    0.482  
+## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
 
 # ANOVA type II test for unbalanced design
 model1c = Anova(model1, type = "II")
-```
-
-```
-## Error: object 'model1' not found
-```
-
-```r
 model1c
 ```
 
 ```
-## Error: object 'model1c' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: recov_plot_t
+##                   Chisq Df Pr(>Chisq)   
+## gbd_T0.mm.         7.42  1     0.0064 **
+## species_diversity  5.71  2     0.0576 . 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -611,18 +557,13 @@ model1c
 
 ## Model2 percentage leaf recovery of plot recovery
 model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 anova(model2)
 ```
 
 ```
-## Error: object 'model2' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36  273.06  <.0001
+## species_diversity     2    36    6.56  0.0037
 ```
 
 ```r
@@ -630,7 +571,23 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59   0.0011 **
+## 4 - 1 == 0    0.865      0.497    1.74   0.1840   
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -638,7 +595,13 @@ Anova(model2, type = "II")
 ```
 
 ```
-## Error: object 'model2' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: perleaf_plot_t
+##                   Chisq Df Pr(>Chisq)   
+## species_diversity  13.1  2     0.0014 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -648,18 +611,13 @@ Anova(model2, type = "II")
 
 ## Model3 percentage root recovery of overall recovery
 model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 anova(model3)
 ```
 
 ```
-## Error: object 'model3' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36   374.2  <.0001
+## species_diversity     2    36     7.2  0.0024
 ```
 
 ```r
@@ -667,7 +625,23 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -675,7 +649,13 @@ Anova(model3, type = "II")
 ```
 
 ```
-## Error: object 'model3' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: perroot_plot_t
+##                   Chisq Df Pr(>Chisq)    
+## species_diversity  14.3  2    0.00077 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -685,18 +665,13 @@ Anova(model3, type = "II")
 
 ## Model 4 percentage soil recovery of overall recovery
 model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 anova(model4)
 ```
 
 ```
-## Error: object 'model4' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36   26248  <.0001
+## species_diversity     2    36       4  0.0274
 ```
 
 ```r
@@ -704,7 +679,23 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)  
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -712,7 +703,13 @@ Anova(model4, type = "II")
 ```
 
 ```
-## Error: object 'model4' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: persoil_plot_t
+##                   Chisq Df Pr(>Chisq)  
+## species_diversity  7.96  2      0.019 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -733,9 +730,7 @@ recovery were significantly higher in species mixtures compared with
 monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
 reduced (Fig. Xd).
 
-
 ?? This should have been reported elsewhere! This paper should be cited here!!
-
 
 ?? was the general aim of the analysis part of the introduction? It should be!!
 
@@ -758,42 +753,7 @@ losses and thus N accumulation in the leachate or groundwater (Lang et al.
 !! This is really well done!!
 
 
-
-```
-## Error: object 'syndata' not found
-```
-
-```
-## Error: object 'recov_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'perleaf_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'perroot_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'persoil_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
+![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
 
 * caption:  Nitrogen (N) retention affected by species richness. N retention summed as
@@ -890,18 +850,53 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
     + easier finding relevant data
     + smart merges (including unit conversions)
 
+
 As there is a growing demand to effectively reuse available data this puts much
 pressure on the development of solutions that help researchers not only to find
 but also to integrate heterogeneous small data into a wider context. Highly
 interdisciplinary research domains like ecology are challenging in terms of
-data reuse and exchange. While data storage and description is almost the same
-for all kind of data the effective interlinking of data via an ontology
-requires the development of a common terminology all contributing scientist of
-a research domain accept and not only use but help do develop and discuss it.
-Thus collaborative ontology engineering approaches like `ontoverse`
-(Zoulfa El Jerroudi et al. 2008) or `tematres` are highly valuable as the not
-only help to set up ontologies but also to develop and maintain them over time
-even if the researchers change that contribute to it.
+data reuse and exchange. 
+
+While data storage and description is almost the same for all kind of data the
+effective interlinking of data via an ontology requires the development of a
+common terminology all contributing scientist of a research domain accept and
+not only use but help do develop and discuss it.  Thus collaborative ontology
+engineering approaches like `ontoverse` (Zoulfa El Jerroudi et al. 2008) or
+`tematres` are highly valuable as the not only help to set up ontologies but
+also to develop and maintain them over time even if the researchers change that
+contribute to it.
+
+While well described data can help a lot in understanding datasets and on
+deciding upon the relevance and applicability in a certain analysis there is
+still lots of manual intervention necessary after that to prepare the data for
+analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
+reshaped and merged which usually takes up to 70% of an analysis workflow,
+before smart models can be applied to the data to find interesting patters
+(cite the workflow paper of Karin and me). This preparatory steps not only are
+time and labour intensive but also potentially error prone, especially as the
+complexity of the analyses increases.
+
+For example ecology, which has grown into a very collaborative,
+interdisciplinary and data intensive science over the last decade, to address
+questions on a greater temporal and spatial scale (e.g michener et al 2012).
+The data here is mainly provided by small scale studies spread all over the
+world (e.g heidorn2009 shedding light on the dark) but also through bigger long
+term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
+and local initiatives (cite xxx) and private persons. This in fact results in a
+wild growing, complex and heterogeneous data landscape that an ontology would
+need to capture to be usable.
+
+Ontologies, as formal representations of knowledge, potentially offer a
+sophisticated tool to deal with that step of data preparation (cite supporting
+ecology as data intensive science). While they are already used in some
+research domains like genetics (cite xxx, eg. http://www.geneontology.org/),
+other domains face more problems using it (cite xxx, morpho team announced
+semantic tagging but the plug-in did not appear anywhere). The application of
+ontologies in ecology is discussed controversially (cite xxx) and it is argued
+that they can be a huge benefit, but it is hard to set up a sophisticated
+ontology covering all necessary terms and relation of a highly complex research
+domains (cite xxx).
+
 
 The software combination of `rbefdata` and `BEFdata` offers a solutions to data
 storage for different sizes of projects, it helps in describing data with
@@ -916,12 +911,10 @@ functionality provided by `rbefdata`
     + simply pull data into analysis software and push data back
     + data provenance by attaching R scripts to uploads
 
-
-(data intensive science, long tail). The
-combination of `BEFdata` and the `rbefdata` package provides solutions to parts
-of the data lifecycle as it deals with finding and describing data as well as
-the as it promotes the understanding and reuse of data, as it is adhering
-metadata standards.
+(data intensive science, long tail). The combination of `BEFdata` and the
+`rbefdata` package provides solutions to parts of the data lifecycle as it
+deals with finding and describing data as well as the as it promotes the
+understanding and reuse of data, as it is adhering metadata standards.
 
 a one part of the data life cycle and especially introduces a solution to deal
 with high heterogeneous data.
@@ -931,17 +924,17 @@ knowledge extracted from portals that deal with data management for ecological
 research. The `tematres` server offers an API so all the contained terms can be
 accessed by the upcoming version of `rbefdata`
 
-The formalization developed is and will be based on the knowledge used in
-biodiversity research. Thus we will here discuss the software combination
-`BEFdata` and `rbefdata` in the light of the upcoming features and in general
-context state of the art data management today. In one of the next versions to
-be rolled out the `BEFdata` portal will get a semantical annotation feature.
-This will give administrators the ability to tag each column of datasets with a
-general term that best describes the content. So the field will contain
-potential top terms of the ontology. The tagging will be reflected in the API
-and can thus be simply queried to use the information within the R package.
-Using the knowledge about the content of a column in the R package will enable
-us to do support smart merges that work.
+The formalization developed will be based on the knowledge used in biodiversity
+research. Thus we will here discuss the software combination `BEFdata` and
+`rbefdata` in the light of the upcoming features and in general context state
+of the art data management today. In one of the next versions to be rolled out
+the `BEFdata` portal will get a semantical annotation feature.  This will give
+administrators the ability to tag each column of datasets with a general term
+that best describes the content. So the field will contain potential top terms
+of the ontology. The tagging will be reflected in the API and can thus be
+simply queried to use the information within the R package.  Using the
+knowledge about the content of a column in the R package will enable us to do
+support smart merges that work.
 
 `tematres` ([homepage](http://www.vocabularyserver.com/))into `BEFdata` and the
 `rbefdata` package so they play well together semantically.
@@ -972,3 +965,27 @@ contents the portal data is dealing with.
 
 
 
+![keywords](figure/vizalize_keywords.png)
+
+* caption: All keywords associated with datasets from the BEFdata portal instance of the
+           BEF-China experiment. There is a strong focus on CSP which is short for
+           comparative study plots so it is related to the overall desing of the study as
+           well as main experiment and species as it is an extinction scenario exmeriment.
+           Intresting terms more general we find the purple and organge part like GIS,
+           extinction treatment or basal diameter.  
+
+### saveaway 
+
+
+this might be in the discussion rather in the introduction 
+
+upcoming features and the like the use of ontologies for semantical assisted
+exploration of data and  integration of an ontology we built that will make
+finding data and smart merges possible, to help researchers to deal with the
+future challenges in handling complex and heterogeneous data.
+
+
+
+We discuss `rbefdata` and `BEFdata` in in the light of current and future
+challenges for data management give an outlook onto upcoming features that
+could help to solve them.
