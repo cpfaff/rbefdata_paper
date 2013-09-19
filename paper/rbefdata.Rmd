@@ -86,14 +86,14 @@ wild growing, complex and heterogeneous data landscape that an ontology would
 need to capture to be usable.
 
 We here introduce the R package `rbefdata` that in combination with the
-`BEFdata` data management platform deals with finding, analysing, reusing of
-data. We showcase the functionality of the package available with version
-`0.3.5` creating a workflow which integrates two datasets and reconstructs one
-facet of an analysis that has been published already. We discuss the `rbefdata`
-package and `BEFdata` in the light of upcoming developments like the
-integration of an ontology we built that will make finding data and smart
-merges possible, to help researchers to deal with the future challenges in
-handling complex and heterogeneous data.
+`BEFdata` data management platform deals with finding, analysing and describing
+data as well the reuse of availbale data. We showcase the functionality of the
+package available with version `0.3.5` creating a workflow which integrates two
+datasets and reconstructs one facet of an analysis that has been published
+already. We discuss the `rbefdata` package and `BEFdata` in the light of
+upcoming developments like the integration of an ontology we built that will
+make finding data and smart merges possible, to help researchers to deal with
+the future challenges in handling complex and heterogeneous data.
 
 ## Material and Methods 
 
@@ -159,7 +159,6 @@ it offers functions that help to upload final results datasets with the script
 attached that has been used to derive the results from the original datasets
 which provides a valuable insight into data provenance and also is a stepping
 stone for reproducible research.
-
 
 ## Usecase (results) 
 
@@ -263,7 +262,7 @@ http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```{r rbefdata_get_datasets_from_proposal, cache = F}
 # proposal id is 
 datasets = bef.get.datasets_for_proposal(id = 90)
-extract_first_dataset = datasets[[1]] 
+extract_second_dataset = datasets[[2]] 
 head(extract_first_dataset, 5)
 ```
 
@@ -290,12 +289,12 @@ titles
 names(attributes(datasets[[1]])) 
 ``` 
 
-The dataset from the proposal contains of three datasets, of which we do only use
-the second and third. These two are written into two variables called `Nretention`
-and `design` before deciding upon how to merge. Inspecting both dataset reveals
-each of them contains a column with a `plot_id` that seems suitable for
-merging. We also can use the metadata for columns to check if this really is
-the case (see box below).
+The dataset from the proposal contains three datasets, of which we do only use
+the second and third. These two are written into two variables called
+`Nretention` and `design` before deciding upon how to merge them. Inspecting
+the headers of both dataset reveals each of them contains a column containing a
+`plot_id` that seems suitable for merging. But we can also make use the
+metadata for columns to check if this really is the case (see box below).
 
 ```{r anne_script_seprate_datasets} 
 # extract into separate datasets
@@ -318,13 +317,13 @@ design_column_plot_id_description = attributes(design)$columns[4,]$description
 design_column_plot_id_description 
 ```
 
-After merging the datasets the new synthesis dataset still contains many columns
-not required for the analysis that can be dropped. To analyse the dataset of
-system N retention we require the information about species diversity in the
-plots and the information about which plot is placed in which block from the
-design dataset. 'Species diversity' is used as a factor containing three levels (1,2,4 species mixtures).
-The response variables have been checked for normality with `qqplot` and 
-transformed (box below).
+After merging the datasets the new synthesis dataset still contains many
+columns not required for the analysis that can be dropped. To analyse the
+dataset of system N retention we need information about the species diversity
+in the plots and about which plot is placed in which block from the design
+dataset. 'Species diversity' is used as a factor containing three levels (1,2,4
+species mixtures). The response variables have been checked for normality with
+`qqplot` and transformed (box below).
 
 ```{r anne_script_two} 
 # the synthesis dataset
@@ -347,12 +346,12 @@ syndata$perroot_plot_t=syndata$perroot_plot^.5
 syndata$persoil_plot_t=syndata$persoil_plot^.5
 ```
 
-We analysed our data by linear mixed effects models. Since the plots are
-nested in blocks, we use block as a random factor. The analysis uses the R
-packages `nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
-for post-hoc comparisons. To adjust
-for an unbalanced experimental design an ANOVA Type II was carried out to test
-for main effects using the R package `car` (Fox and Weisberg 2011). Models have been evaluated visually.
+We analysed our data by linear mixed effects models. Since the plots are nested
+in blocks, we use block as a random factor. The analysis uses the R packages
+`nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
+for post-hoc comparisons. To adjust for an unbalanced experimental design an
+ANOVA Type II was carried out to test for main effects using the R package
+`car` (Fox and Weisberg 2011). The models have been evaluated visually.
 
 ```{r anne_script_load_packages, message = F} 
 require(nlme)
@@ -411,7 +410,9 @@ Anova(model4,type="II")
 #plot(model4,recov_plot_t~fitted(.))
 #qqnorm(model4,~resid(.)|block)
 ```
-Results of our showcase:
+
+### Results of the showcase analysis
+
 System 15N retention (overall plot recovery) was positively affected by species
 richness at the level of P = 0.l0576 (Chisq: 5.7; Fig. Xa). The analysis of the
 different system compartments (leaves, fine roots and soil) revealed that fine
@@ -458,12 +459,16 @@ text(1,70,"a",font=2);text(2,70,"ab",font=2);text(3,70,"b",font=2);text(3.4,98,"
             hoc Tukey’s test (P < 0.05) are indicated by different letters.
 
 Finally we need to decide on either to upload a full dataset which we could do
-using the dataset upload function or only to upload the script and maybe a plot
-figure that highlight the road to the results starting from the used source
-datasets. For the shown example we decide for the second choice as uploading
-the merged dataset would only mean duplication of data on the data management
-platform. So we upload the script and the four pane figure with its caption to
-add them to the proposal. 
+using the dataset upload function `bef.portal.upload.dataset()` or only to
+upload the script and maybe a plot figure that highlight the road to the
+results starting from the used source datasets with
+`bef.portal.attach.to_proposal()`. For the shown example here it is the best
+way to go with the latter one as uploading the merged dataset would only mean
+duplication of data in the database of the data management platform. So we
+upload the script and the four pane figure with its caption to add them to the
+proposal. The figure is prepared as png before using the R internal png device
+to write it to a temporary folder and then uploaded. The script in this case is
+an R markdown file.
 
 ```{r upload_script, include = T, eval = T, cache = T}
 # attach the script using a path  
@@ -496,7 +501,7 @@ caption = "Nitrogen (N) retention affected by species richness. N retention summ
            recovery (c) and relative soil recovery (d). Significant differences as revealed by post
            hoc Tukey’s test (P < 0.05) are indicated by different letters."  
 
-# upload the 
+# upload the figure
 bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "results_plot_proposal_90.png"), description = caption)  
 ``` 
 
@@ -523,9 +528,14 @@ As there is a growing demand to effectively reuse available data this puts much
 pressure on the development of solutions that help researchers not only to find
 but also to integrate heterogeneous small data into a wider context in
 different analyses (cite xxx, data intensive science, long tail). The
-combination of `BEFdata` and the `rbefdata` package provides a solutions to a
-one part of the data life cycle and especially introduces a solution to deal
-with high heterogeneous data.
+combination of `BEFdata` and the `rbefdata` package provides solutions to parts
+of the data lifecycle as it deals with finding and describing data as well as
+the as it promotes the understanding and reuse of data, as it is adhering
+metadata standards.
+
+a one
+part of the data life cycle and especially introduces a solution to deal with
+high heterogeneous data.
 
 We recently stared to develop an ontology using a `tematres` server containing
 knowledge extracted from portals that deal with data management for ecological

@@ -82,14 +82,14 @@ wild growing, complex and heterogeneous data landscape that an ontology would
 need to capture to be usable.
 
 We here introduce the R package `rbefdata` that in combination with the
-`BEFdata` data management platform deals with finding, analysing, reusing of
-data. We showcase the functionality of the package available with version
-`0.3.5` creating a workflow which integrates two datasets and reconstructs one
-facet of an analysis that has been published already. We discuss the `rbefdata`
-package and `BEFdata` in the light of upcoming developments like the
-integration of an ontology we built that will make finding data and smart
-merges possible, to help researchers to deal with the future challenges in
-handling complex and heterogeneous data.
+`BEFdata` data management platform deals with finding, analysing and describing
+data as well the reuse of availbale data. We showcase the functionality of the
+package available with version `0.3.5` creating a workflow which integrates two
+datasets and reconstructs one facet of an analysis that has been published
+already. We discuss the `rbefdata` package and `BEFdata` in the light of
+upcoming developments like the integration of an ontology we built that will
+make finding data and smart merges possible, to help researchers to deal with
+the future challenges in handling complex and heterogeneous data.
 
 ## Material and Methods 
 
@@ -155,7 +155,6 @@ it offers functions that help to upload final results datasets with the script
 attached that has been used to derive the results from the original datasets
 which provides a valuable insight into data provenance and also is a stepping
 stone for reproducible research.
-
 
 ## Usecase (results) 
 
@@ -288,35 +287,12 @@ http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```r
 # proposal id is
 datasets = bef.get.datasets_for_proposal(id = 90)
-extract_first_dataset = datasets[[1]]
+extract_second_dataset = datasets[[2]]
 head(extract_first_dataset, 5)
 ```
 
 ```
-##     plot_id             Spp Leaf_15N_recovery_g_T5 Leaf_15Nrecovery_atp_T5
-## 1 pilot1C09 Castanea henryi              1.504e-05                0.015979
-## 2 pilot1D10 Castanea henryi              8.604e-05                0.091426
-## 3 pilot2C11 Castanea henryi              2.905e-05                0.030868
-## 4 pilot2D01 Castanea henryi              8.923e-06                0.009482
-## 5 pilot2D07 Castanea henryi              7.483e-05                0.079518
-##   Root_15N_recovery.g. Root_15N_recovery. X15Nleaf..15Nroot. recovery_g_T1 recovery_atp_T1
-## 1            1.113e-06            0.01183             13.511     4.324e-05        0.091892
-## 2            6.315e-06            0.06710             13.626     6.774e-06        0.014395
-## 3            2.188e-06            0.02325             13.278     1.245e-06        0.002646
-## 4            3.383e-06            0.03595              2.637     2.235e-06        0.004749
-## 5            4.156e-06            0.04416             18.005     1.386e-06        0.002945
-##   recovery_g_T3 recovery_atp_T3 recovery_g_T4 recovery_atp_T4 gbd_T0.mm. sum_bio_recov
-## 1     2.425e-04        0.257727     1.609e-04         0.17101        5.0       0.02781
-## 2     1.359e-04        0.144382     2.034e-04         0.21612        5.5       0.15853
-## 3     1.242e-04        0.131926     5.784e-05         0.06146        6.0       0.05412
-## 4     3.045e-04        0.323553     1.497e-04         0.15906        6.0       0.04543
-## 5     6.270e-06        0.006662     9.212e-05         0.09788        4.0       0.12368
-##   per_leaf_recov per_root_recov
-## 1          57.47          42.53
-## 2          57.67          42.33
-## 3          57.04          42.96
-## 4          20.87          79.13
-## 5          64.29          35.71
+## Error: object 'extract_first_dataset' not found
 ```
 
 
@@ -377,12 +353,12 @@ names(attributes(datasets[[1]]))
 ```
 
 
-The dataset from the proposal contains of three datasets, of which we do only use
-the second and third. These two are written into two variables called `Nretention`
-and `design` before deciding upon how to merge. Inspecting both dataset reveals
-each of them contains a column with a `plot_id` that seems suitable for
-merging. We also can use the metadata for columns to check if this really is
-the case (see box below).
+The dataset from the proposal contains three datasets, of which we do only use
+the second and third. These two are written into two variables called
+`Nretention` and `design` before deciding upon how to merge them. Inspecting
+the headers of both dataset reveals each of them contains a column containing a
+`plot_id` that seems suitable for merging. But we can also make use the
+metadata for columns to check if this really is the case (see box below).
 
 
 ```r
@@ -444,13 +420,13 @@ design_column_plot_id_description
 ```
 
 
-After merging the datasets the new synthesis dataset still contains many columns
-not required for the analysis that can be dropped. To analyse the dataset of
-system N retention we require the information about species diversity in the
-plots and the information about which plot is placed in which block from the
-design dataset. 'Species diversity' is used as a factor containing three levels (1,2,4 species mixtures).
-The response variables have been checked for normality with `qqplot` and 
-transformed (box below).
+After merging the datasets the new synthesis dataset still contains many
+columns not required for the analysis that can be dropped. To analyse the
+dataset of system N retention we need information about the species diversity
+in the plots and about which plot is placed in which block from the design
+dataset. 'Species diversity' is used as a factor containing three levels (1,2,4
+species mixtures). The response variables have been checked for normality with
+`qqplot` and transformed (box below).
 
 
 ```r
@@ -504,12 +480,12 @@ syndata$persoil_plot_t = syndata$persoil_plot^0.5
 ```
 
 
-We analysed our data by linear mixed effects models. Since the plots are
-nested in blocks, we use block as a random factor. The analysis uses the R
-packages `nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
-for post-hoc comparisons. To adjust
-for an unbalanced experimental design an ANOVA Type II was carried out to test
-for main effects using the R package `car` (Fox and Weisberg 2011). Models have been evaluated visually.
+We analysed our data by linear mixed effects models. Since the plots are nested
+in blocks, we use block as a random factor. The analysis uses the R packages
+`nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
+for post-hoc comparisons. To adjust for an unbalanced experimental design an
+ANOVA Type II was carried out to test for main effects using the R package
+`car` (Fox and Weisberg 2011). The models have been evaluated visually.
 
 
 ```r
@@ -664,9 +640,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -718,8 +694,8 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -746,7 +722,9 @@ Anova(model4, type = "II")
 # qqnorm(model4,~resid(.)|block)
 ```
 
-Results of our showcase:
+
+### Results of the showcase analysis
+
 System 15N retention (overall plot recovery) was positively affected by species
 richness at the level of P = 0.l0576 (Chisq: 5.7; Fig. Xa). The analysis of the
 different system compartments (leaves, fine roots and soil) revealed that fine
@@ -779,12 +757,16 @@ groundwater (Lang et al. 2013).
             hoc Tukey’s test (P < 0.05) are indicated by different letters.
 
 Finally we need to decide on either to upload a full dataset which we could do
-using the dataset upload function or only to upload the script and maybe a plot
-figure that highlight the road to the results starting from the used source
-datasets. For the shown example we decide for the second choice as uploading
-the merged dataset would only mean duplication of data on the data management
-platform. So we upload the script and the four pane figure with its caption to
-add them to the proposal. 
+using the dataset upload function `bef.portal.upload.dataset()` or only to
+upload the script and maybe a plot figure that highlight the road to the
+results starting from the used source datasets with
+`bef.portal.attach.to_proposal()`. For the shown example here it is the best
+way to go with the latter one as uploading the merged dataset would only mean
+duplication of data in the database of the data management platform. So we
+upload the script and the four pane figure with its caption to add them to the
+proposal. The figure is prepared as png before using the R internal png device
+to write it to a temporary folder and then uploaded. The script in this case is
+an R markdown file.
 
 
 ```r
@@ -809,13 +791,14 @@ bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", descriptio
 # caption for the figure
 caption = "Nitrogen (N) retention affected by species richness. N retention summed as\n           the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root\n           recovery (c) and relative soil recovery (d). Significant differences as revealed by post\n           hoc Tukey’s test (P < 0.05) are indicated by different letters."
 
-# upload the
+# upload the figure
 bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "results_plot_proposal_90.png"), 
     description = caption)
 ```
 
 ```
-## [1] "Attachment to proposal with ID: 90 successful!"
+## Error: specified file does not exist: /tmp/RtmpwjKr5z/results_plot_proposal_90.png.  You must
+## specify a valid file name or provide the contents to send.
 ```
 
 
@@ -842,9 +825,14 @@ As there is a growing demand to effectively reuse available data this puts much
 pressure on the development of solutions that help researchers not only to find
 but also to integrate heterogeneous small data into a wider context in
 different analyses (cite xxx, data intensive science, long tail). The
-combination of `BEFdata` and the `rbefdata` package provides a solutions to a
-one part of the data life cycle and especially introduces a solution to deal
-with high heterogeneous data.
+combination of `BEFdata` and the `rbefdata` package provides solutions to parts
+of the data lifecycle as it deals with finding and describing data as well as
+the as it promotes the understanding and reuse of data, as it is adhering
+metadata standards.
+
+a one
+part of the data life cycle and especially introduces a solution to deal with
+high heterogeneous data.
 
 We recently stared to develop an ontology using a `tematres` server containing
 knowledge extracted from portals that deal with data management for ecological
@@ -893,42 +881,50 @@ contents the portal data is dealing with.
 
 
 ```
-## Warning: competitive neighbourhood could not be fit on page. It will not be plotted. Warning:
-## tree performance could not be fit on page. It will not be plotted. Warning: air temperature
-## could not be fit on page. It will not be plotted. Warning: biomass allocation could not be fit
-## on page. It will not be plotted. Warning: digital data acquisition could not be fit on page.
-## It will not be plotted. Warning: gene diversity could not be fit on page. It will not be
-## plotted. Warning: geomorphology could not be fit on page. It will not be plotted. Warning:
-## intraspecific diversity could not be fit on page. It will not be plotted. Warning: response
-## variable could not be fit on page. It will not be plotted. Warning: secondary compounds could
-## not be fit on page. It will not be plotted. Warning: spatial genetic structure could not be
-## fit on page. It will not be plotted. Warning: trait dissimilarity could not be fit on page. It
-## will not be plotted. Warning: wood bending could not be fit on page. It will not be plotted.
-## Warning: wood compression could not be fit on page. It will not be plotted. Warning: wood
-## shearing could not be fit on page. It will not be plotted. Warning: aeromorphic organic layer
-## could not be fit on page. It will not be plotted. Warning: basal area increment could not be
-## fit on page. It will not be plotted. Warning: cavity nesting hymenoptera could not be fit on
-## page. It will not be plotted. Warning: coarse root density could not be fit on page. It will
-## not be plotted. Warning: community weighted mean trait could not be fit on page. It will not
-## be plotted. Warning: directed extinction could not be fit on page. It will not be plotted.
+## Warning: individual based values could not be fit on page. It will not be plotted. Warning:
+## wood perforation plates could not be fit on page. It will not be plotted. Warning: belowground
+## biomass could not be fit on page. It will not be plotted. Warning: cadmium at wavelength 214nm
+## could not be fit on page. It will not be plotted. Warning: coefficient of variation could not
+## be fit on page. It will not be plotted. Warning: digital data acquisition could not be fit on
+## page. It will not be plotted. Warning: diversity treatment could not be fit on page. It will
+## not be plotted. Warning: geomorphology could not be fit on page. It will not be plotted.
+## Warning: microbial biomass could not be fit on page. It will not be plotted. Warning:
+## secondary compounds could not be fit on page. It will not be plotted. Warning: soil horizon
+## could not be fit on page. It will not be plotted. Warning: spatial genetic structure could not
+## be fit on page. It will not be plotted. Warning: species trait could not be fit on page. It
+## will not be plotted. Warning: standard deviation could not be fit on page. It will not be
+## plotted. Warning: trait dissimilarity could not be fit on page. It will not be plotted.
+## Warning: tree rings could not be fit on page. It will not be plotted. Warning: wood bending
+## could not be fit on page. It will not be plotted. Warning: wood compression could not be fit
+## on page. It will not be plotted. Warning: wood shrinkage could not be fit on page. It will not
+## be plotted. Warning: wood toughness could not be fit on page. It will not be plotted. Warning:
+## aeromorphic organic layer could not be fit on page. It will not be plotted. Warning: BEF China
+## projects could not be fit on page. It will not be plotted. Warning: community similarity could
+## not be fit on page. It will not be plotted. Warning: community weighted mean trait could not
+## be fit on page. It will not be plotted. Warning: control treatment could not be fit on page.
+## It will not be plotted. Warning: co-variables could not be fit on page. It will not be
+## plotted. Warning: eco-physiologic traits could not be fit on page. It will not be plotted.
 ## Warning: ecosystem functioning could not be fit on page. It will not be plotted. Warning:
-## experimental treatment could not be fit on page. It will not be plotted. Warning: human
-## influence could not be fit on page. It will not be plotted. Warning: multi-trophic
-## interactions could not be fit on page. It will not be plotted. Warning: mycorrhiza could not
-## be fit on page. It will not be plotted. Warning: nitrogen cycling could not be fit on page. It
-## will not be plotted. Warning: non-random extinction could not be fit on page. It will not be
-## plotted. Warning: pesticide could not be fit on page. It will not be plotted. Warning:
-## phytophagous insects could not be fit on page. It will not be plotted. Warning: rainfall
-## simulator could not be fit on page. It will not be plotted. Warning: research proposals could
-## not be fit on page. It will not be plotted. Warning: respiration could not be fit on page. It
-## will not be plotted. Warning: simpson diversity could not be fit on page. It will not be
-## plotted. Warning: snag height could not be fit on page. It will not be plotted. Warning:
-## species identity variable could not be fit on page. It will not be plotted. Warning:
-## temperature could not be fit on page. It will not be plotted. Warning: topography could not be
-## fit on page. It will not be plotted. Warning: tree crown could not be fit on page. It will not
-## be plotted. Warning: Weibull distribution could not be fit on page. It will not be plotted.
-## Warning: wood ground tissue could not be fit on page. It will not be plotted. Warning: wood
-## mechanics could not be fit on page. It will not be plotted.
+## experimental treatment could not be fit on page. It will not be plotted. Warning: Flora of
+## China could not be fit on page. It will not be plotted. Warning: genetic autocorrelation could
+## not be fit on page. It will not be plotted. Warning: human influence could not be fit on page.
+## It will not be plotted. Warning: land use history could not be fit on page. It will not be
+## plotted. Warning: matching status could not be fit on page. It will not be plotted. Warning:
+## multi-trophic interactions could not be fit on page. It will not be plotted. Warning: nitrogen
+## cycling could not be fit on page. It will not be plotted. Warning: phosphorous could not be
+## fit on page. It will not be plotted. Warning: phylogenetic distinctness could not be fit on
+## page. It will not be plotted. Warning: phytophagous insects could not be fit on page. It will
+## not be plotted. Warning: predators could not be fit on page. It will not be plotted. Warning:
+## research proposals could not be fit on page. It will not be plotted. Warning: respiration
+## could not be fit on page. It will not be plotted. Warning: rooting depth could not be fit on
+## page. It will not be plotted. Warning: runoff plots could not be fit on page. It will not be
+## plotted. Warning: simpson diversity could not be fit on page. It will not be plotted. Warning:
+## specialization could not be fit on page. It will not be plotted. Warning: species identity
+## variable could not be fit on page. It will not be plotted. Warning: vegetation stratum could
+## not be fit on page. It will not be plotted. Warning: Weibull distribution could not be fit on
+## page. It will not be plotted. Warning: wood ground tissue could not be fit on page. It will
+## not be plotted. Warning: wood mechanics could not be fit on page. It will not be plotted.
+## Warning: wood porosity could not be fit on page. It will not be plotted.
 ```
 
 ![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
