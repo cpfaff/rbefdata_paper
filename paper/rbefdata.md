@@ -1,5 +1,5 @@
 
-
+Title?
 
 ## Abstract 
 
@@ -53,19 +53,19 @@ learn new tools that help with the description process (e.g morpho, data up).
 While well described data can help a lot in understanding datasets and on
 deciding upon the relevance and applicability in a certain analysis there is
 still lots of manual intervention necessary after that to prepare the data for
-analysis (cite yourself and Karin? or xxx). It may needs to be cleaned,
+analysis (cite yourself and Karin? or xxx). It may need to be cleaned,
 imputed, reshaped and merged which usually takes up to 70% of an analysis
 workflow, before smart models can be applied to the data to find interesting
-patters (cite the workflow paper of Karin and me). This preparation steps not
+patters (cite the workflow paper of Karin and me). This preparatory steps not
 only are time and labour intensive but also potentially error prone, especially
-as the complexity of analyses grows. 
+as the complexity of the analyses increases. 
 
 Ontologies, as formal representations of knowledge, potentially offer a
 sophisticated tool to deal with that step of data preparation (cite supporting
 ecology as data intensive science). While they are already used in some
 research domains like genetics (cite xxx, eg. http://www.geneontology.org/),
 other domains face more problems using it (cite xxx, morpho team announced
-semantic tagging but the plug-in did not appear anywhere). The application of
+semantic tagging but the plug-it did not appear anywhere). The application of
 ontologies in ecology is discussed controversially (cite xxx) and it is argued
 that they can be a huge benefit, but it is hard to set up a sophisticated
 ontology covering all necessary terms and relation of a highly complex research
@@ -91,12 +91,35 @@ upcoming developments like the integration of an ontology we built that will
 make finding data and smart merges possible, to help researchers to deal with
 the future challenges in handling complex and heterogeneous data.
 
+
+Comment: I think much of the introduction is more discussion. We will not show the use of 
+ontologies, so they should not be named in the introduction, and if they are named,
+then only to introduce thesauri as step towards more semantic ways of dealing with data.
+
+At this point, it is not clear to me, that rbefdata will be used for loading, analysing, and 
+uploading data. This must be much more highlighted. Another feature of rbefdata is that the 
+researchers are able to load and manipulate their data offline on their desktops. This is 
+crucial. There are attempts to enable on site manipulations of data by providing a server and
+to just send the script to the data rather than the data to the script. We will have to 
+discuss this, since sending the data to the script is much more network intensive and inefficient. 
+We still promote the inefficient way, since we think that researchers like it better to 
+work in their own working environment, rather than sending scripts to foreign hosts. However, it is
+still less efficient to do the work locally. This must be discussed! And can be introduced in 
+the introduction.
+
+We are inline with the ROpenSci initiatives to give the R - User all the flexibility of data access through 
+apis. This has to be mentioned in the introduction. 
+
+Rbefdata is also a step towards inter-archive communication!
+
+
 ## Material and Methods 
 
 ### BEF-China and the BEFdata portal
 
+BEFdata, including the rbefdata package, has been developed within the BEF-China experiment. 
 The BEF-China experiment is a Biodiversity Ecosystem Functioning (BEF)
-experiment funded by the German science foundation (DFG, FOR 891). It is
+experiment funded by the German science foundation (DFG, FOR 891). Experimental sites are 
 located in the subtropics of China in the provinces Jianxi and Zhejiang. The
 BEF-China research group (www.bef-china.de) uses two main research platforms.
 An experimental forest diversity gradient of 50~ha, and 27 observational plots
@@ -107,14 +130,14 @@ to 116 years consisting of 14 to 35 species (cite Bruelheide, 2010).
 
 The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is an open
 source data management platform developed within the BEF-China project. It
-adheres to standards like the Ecological Metadata Language for describing
+adheres to standards like the Ecological Metadata Language [has to be cited!] for describing
 datasets with metadata and is specialized in harmonizing small heterogeneous
 data that usually has to be dealt with in BEF. But its specialization makes it
 also very valuable to use in any other scientific domain that needs to deal
 with complex small and heterogeneous data. 
 
 The portal offers a social component where researchers can shop datasets and
-write a paper proposals based on the datasets in the shopping cart. In the
+write a paper proposals based on the datasets in their shopping cart. In the
 process of creating a proposal some information like a title, a rationale, an
 envisaged journal and date needs to be provided. Sending in a proposal a
 researcher asks for access to the datasets and provides the data owners with
@@ -158,14 +181,19 @@ stone for reproducible research.
 
 ## Usecase (results) 
 
-In this paper we use an already published dataset as a usecase to present the
+In this paper we use already published datasets (we should use more than one dataset!, e.g. CSP for all, species reference, ...)
+as a usecase to present the
 functionalities and inter linkages between the BEF-China data portal and
-`rbefdata`. However, we will as well give some ecological background of the
-datasets used and the respective analyses. The usecase is dealing with data
+`rbefdata`. 
+
+
+!! This should be moved into the introduction!!
+The usecase is dealing with data
 from a small scale experiment called pilot experiment. It is a 15N tracer
 experiment which aims to disentangle the effect of species mixtures on system N
 retention.
 
+!! Introduction !!
 We created a paper proposal with the following rationale: 'Knowledge of
 biodiversity effects on nutrient cycling patterns in subtropical forest
 ecosystems is still very limited, particularly as regards macronutrients such
@@ -191,12 +219,19 @@ effects strengthen over time.' The respective proposal can be assessed under
 (url) For a detailed description of the experimental design we refer to Lang et
 al. 2013 (DOI) 
 
+!! use more than one datafile!. In this case, there should be a separate file for 
+plot attributes, soil attributes, plot diversity, etc. , another one for species names!!
+
 ![showcase_proposal](./figure/static/showcase_proposal.png) 
 
 * caption: The paper proposal in its final approved state. The information on that page
            contains a title rational envisaged date and journal. The calculated authors
            and email lists for communication as well as the attached datasets and sub
            projects involved (only partially shown).
+
+
+!! Part of this workflow should be introduced in the introduction!!
+?? Is this based on a published paper? Then we should cite that paper!??
 
 When all dataowners accepted the paper proposal rbefdata can be used to
 directly access the datasets from the dataportal and transfer them to the R
@@ -428,6 +463,8 @@ dataset. 'Species diversity' is used as a factor containing three levels (1,2,4
 species mixtures). The response variables have been checked for normality with
 `qqplot` and transformed (box below).
 
+!! Very cool!!!
+
 
 ```r
 # the synthesis dataset
@@ -485,7 +522,7 @@ in blocks, we use block as a random factor. The analysis uses the R packages
 `nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
 for post-hoc comparisons. To adjust for an unbalanced experimental design an
 ANOVA Type II was carried out to test for main effects using the R package
-`car` (Fox and Weisberg 2011). The models have been evaluated visually.
+`car` (Fox and Weisberg 2011). The models (goodness of fit?) have been evaluated visually.
 
 
 ```r
@@ -734,6 +771,12 @@ recovery were significantly higher in species mixtures compared with
 monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
 reduced (Fig. Xd).  
 
+
+?? This should have been reported elsewhere! This paper should be cited here!!
+
+
+?? was the general aim of the analysis part of the introduction? It should be!!
+
 Our results demonstrate that species richness of mixtures increases system N
 retention in young subtropical tree plantations. Although relative soil
 recovery was highest compared with relative leaf and root recovery, soil
@@ -749,6 +792,8 @@ pool may considerably increase N retention in subtropical forest systems even
 after a few years. This in turn has the potential to significantly reduce N
 losses and thus N accumulation in the leachate or groundwater (Lang et al.
 2013).
+
+!! This is really well done!!
 
 ![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
@@ -766,7 +811,13 @@ proposal with `bef.portal.attach.to_proposal()`.
 
 For the shown example it is the best way to go with an attachment to the
 proposal as uploading the merged dataset would only mean duplication of data in
-the database of the data management platform. So we upload the script and the
+the database of the data management platform. 
+
+!! no! Upload!. There should be some new data, maybe on plot level, maybe on species level. 
+Maybe something such as general N uptake at median species diversity for the species in 
+question, that can then be used by other projects as functional traits. Upload data!
+
+So we upload the script and the
 four pane figure with its caption to add them to the proposal. The figure is
 prepared as Portable Network Graphics (PNG) using the R internal PNG device. It
 is written to a temporary folder and then uploaded. The script in this case is
@@ -813,6 +864,18 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
            the resutls in the published paper. 
 
 ## Discussion
+
+* up to now no use of the thesaurus! If this stays as such, all the passages on ontologies have
+  to be removed! So try to integrate the use of thesauri! Then ontologies can be discussed. But 
+  ontologies should not have such a high prominence in the introduction.
+
+* pros and cons of sending data to a local script or sending a script to a central database, 
+  - for researchers, it "feels" better, if the data are on the local machines
+  - more freedom for researchers to use their tools of choice and to mix data with data from
+    other sources
+  - pros for sending a script to the data are efficiency, less network traffic
+  - re-usability of scripts is easier, if they are sent to a central cluster, since everybody can 
+    do that.
 
 * General discussion 
   - high need to effective use/reuse data 
