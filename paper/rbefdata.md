@@ -15,11 +15,11 @@ relevant data, cleaning and merging of datasets. We here introduce the
 `BEFdata` that has been developed and is used within the BEF-China experiment.
 We show how to use the package in combination with the data portal using an
 example workflow that integrates two datasets from the BEF-China experiment
-representing an analysis that has been published already. We discuss this
-software combination in the context of state of the art data management and the
-data life cycle as well as we give an outlook on upcoming features like
-semantical tools that will enable smart merges and improve finding of data
-based on an ontology we are building.
+representing an analysis that has been published already. Finally we discuss
+this software combination in the context of current and future data management
+requirements and the data life cycle. We also give an outlook on upcoming
+features like semantical assisted search and merges of data to be integrated
+with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
@@ -63,12 +63,16 @@ download and upload of attachment files like R scripts or figures to datasets
 in the portal.
 
 We showcase the functionality of the package available with version `0.3.5`
-creating a workflow that integrates two datasets. The workflow depicts how to
-pull data into the R environment, the inspection of datasets metadata and how
-to upload data and attachments. It reconstructs a facet of an analysis that has
-been published already (cite Anne Lang). We discuss `rbefdata` and `BEFdata` in
-in the light of current and future challenges for data management give an
-outlook onto upcoming features that could help to solve them.
+creating a workflow that integrates two datasets. The use case is dealing with
+data from a small scale experiment called pilot experiment in the BEF-China
+experiment. It is a 15N tracer experiment which aims to disentangle the effect
+of species mixtures on system N retention. The workflow depicts how to pull
+data into the R environment, the inspection of datasets metadata and how to
+upload data and attachments. It reconstructs a facet of an analysis that has
+been published already (cite Anne Lang). The use case is dealing with data from
+a small scale experiment called pilot experiment. It is a 15N tracer experiment
+which aims to disentangle the effect of species mixtures on system N retention.
+
 
 ## Material and Methods
 
@@ -140,21 +144,15 @@ stone for reproducible research.
 ## Usecase (results)
 
 In this paper we use already published datasets (we should use more than one
-dataset!, e.g. CSP for all, species reference, ...) as a usecase to present the
-functionalities and inter linkages between the BEF-China data portal and
-`rbefdata`.
-
-!! This should be moved into the introduction!!
-
-The usecase is dealing with data from a small scale experiment called pilot
-experiment. It is a 15N tracer experiment which aims to disentangle the effect
-of species mixtures on system N retention.
+dataset!, e.g. CSP for all, species reference, ...) as a use case to present
+the functionalities and inter linkages between the BEF-China data portal and
+`rbefdata`. Starting on with a paper proposal on following rationale.
 
 !! Introduction !!
 
 We created a paper proposal with the following rationale: 'Knowledge of
 biodiversity effects on nutrient cycling patterns in subtropical forest
-ecosystems is still very limited, particularly as regards macronutrients such
+ecosystems is still very limited, particularly as regards macro nutrients such
 as nitrogen and phosphorus. Experimental approaches using tree saplings may
 promote an understanding of mechanisms that underlie nutrient acquisition and
 cycling in early successional stages of secondary forests and forest
@@ -190,12 +188,11 @@ attributes, plot diversity, etc. , another one for species names!!
            projects involved (only partially shown).
 
 
-!! Part of this workflow should be introduced in the introduction!!
 ?? Is this based on a published paper? Then we should cite that paper!??
 
-When all dataowners accepted the paper proposal rbefdata can be used to
-directly access the datasets from the dataportal and transfer them to the R
-environment. To do so the `rbefdata`package needs to be setup. This requires
+When all data owners accepted the paper proposal `rbefdata` can be used to
+directly access the datasets from the data platform and transfer them to the R
+environment. To do so the `rbefdata` package needs to be setup. This requires
 installing, loading the package and setting the required package options.
 Having a look into the options list reveals several fields that can be filled
 in, like the URL to the `BEFdata` server, user credentials and a download
@@ -583,10 +580,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59   0.0012 **
-## 4 - 1 == 0    0.865      0.497    1.74   0.1840   
-## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -638,9 +635,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0287 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -692,7 +689,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -992,3 +989,6 @@ domains (cite xxx).
 
 
 
+We discuss `rbefdata` and `BEFdata` in in the light of current and future
+challenges for data management give an outlook onto upcoming features that
+could help to solve them.
