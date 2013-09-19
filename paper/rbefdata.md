@@ -1,6 +1,4 @@
-
-
-## Abstract 
+## Abstract
 
 We face a deluge of data today scientists need to deal with in many different
 disciplines. While there are already good solutions to some parts of the data
@@ -9,7 +7,7 @@ often varies. Especially research domains with high degree of interdisciplinary
 interactions and heterogeneity in methods and data like ecology face problems
 in dealing with valuable concepts like ontologies that potentially can be used
 to improve or automate some of the most common tasks in analyses like finding
-relevant data, cleaning, and merging of datasets. We here introduce the
+relevant data, cleaning and merging of datasets. We here introduce the
 `rbefata` package that connects to the open source data management platform
 `BEFdata` that has been developed and is used within the BEF-China experiment.
 We show how to use the package in combination with the data portal on an
@@ -17,10 +15,10 @@ example workflow that integrates two datasets from the BEF-China experiment
 representing an analysis that has been published already. We discuss the
 combination of the R package `rbefdata` and the data portal in the context of
 state of the art data management and the data lifecycle as well as we give an
-outlook on upcoming features like semantic tools that will enable smart
-merges and finding of data based on an ontology we are building. 
+outlook on upcoming features like semantical tools that will enable smart
+merges and finding of data based on an ontology we are building.
 
-## Introduction 
+## Introduction
 
 With a growing awareness on the value of data, much effort has been put into
 building data management platforms, to preserve all kind of environmental and
@@ -33,7 +31,7 @@ serve as nodes that collect data from smaller databases of a certain domain and
 they give researchers of that domain the opportunity to access a wide range of
 relevant data all from one place. These data management portals in fact offer a
 solution to to one of the most pressing problems that we face with our valuable
-data today, their loss. 
+data today, their loss.
 
 With a growing global data pool there is a also a growing demand to use and
 reuse available data and to embed small heterogeneous data into a wider
@@ -55,9 +53,9 @@ still lots of manual intervention necessary after that to prepare the data for
 analysis (cite yourself and Karin? or xxx). It may needs to be cleaned,
 imputed, reshaped and merged which usually takes up to 70% of an analysis
 workflow, before smart models can be applied to the data to find interesting
-patters (cite the workflow paper of Karin and me). This preparation steps not
+patters (cite the workflow paper of Karin and me). This preparatory steps not
 only are time and labour intensive but also potentially error prone, especially
-as the complexity of analyses grows. 
+as the complexity of the analyses increases.
 
 Ontologies, as formal representations of knowledge, potentially offer a
 sophisticated tool to deal with that step of data preparation (cite supporting
@@ -68,7 +66,7 @@ semantic tagging but the plug-in did not appear anywhere). The application of
 ontologies in ecology is discussed controversially (cite xxx) and it is argued
 that they can be a huge benefit, but it is hard to set up a sophisticated
 ontology covering all necessary terms and relation of a highly complex research
-domains (cite xxx). 
+domains (cite xxx).
 
 For example ecology, which has grown into a very collaborative,
 interdisciplinary and data intensive science over the last decade, to address
@@ -90,30 +88,53 @@ upcoming developments like the integration of an ontology we built that will
 make finding data and smart merges possible, to help researchers to deal with
 the future challenges in handling complex and heterogeneous data.
 
-## Material and Methods 
+
+Comment: I think much of the introduction is more discussion. We will not show the use of
+ontologies, so they should not be named in the introduction, and if they are named,
+then only to introduce thesauri as step towards more semantic ways of dealing with data.
+
+At this point, it is not clear to me, that rbefdata will be used for loading, analysing, and
+uploading data. This must be much more highlighted. Another feature of rbefdata is that the
+researchers are able to load and manipulate their data offline on their desktops. This is
+crucial. There are attempts to enable on site manipulations of data by providing a server and
+to just send the script to the data rather than the data to the script. We will have to
+discuss this, since sending the data to the script is much more network intensive and inefficient.
+We still promote the inefficient way, since we think that researchers like it better to
+work in their own working environment, rather than sending scripts to foreign hosts. However, it is
+still less efficient to do the work locally. This must be discussed! And can be introduced in
+the introduction.
+
+We are inline with the ROpenSci initiatives to give the R - User all the flexibility of data access through
+apis. This has to be mentioned in the introduction.
+
+Rbefdata is also a step towards inter-archive communication!
+
+
+## Material and Methods
 
 ### BEF-China and the BEFdata portal
 
+BEFdata, including the rbefdata package, has been developed within the BEF-China experiment.
 The BEF-China experiment is a Biodiversity Ecosystem Functioning (BEF)
-experiment funded by the German science foundation (DFG, FOR 891). It is
+experiment funded by the German science foundation (DFG, FOR 891). Experimental sites are
 located in the subtropics of China in the provinces Jianxi and Zhejiang. The
 BEF-China research group (www.bef-china.de) uses two main research platforms.
 An experimental forest diversity gradient of 50~ha, and 27 observational plots
 of 30x30 m each located in the Gutianshan Nature Reserve.  The observational
 plots were selected according to a crossed sampling design along tree species
 richness and stand age. The data for the workflow on carbon pools stems from 22
-to 116 years consisting of 14 to 35 species (cite Bruelheide, 2010).  
+to 116 years consisting of 14 to 35 species (cite Bruelheide, 2010).
 
 The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is an open
 source data management platform developed within the BEF-China project. It
-adheres to standards like the Ecological Metadata Language for describing
+adheres to standards like the Ecological Metadata Language [has to be cited!] for describing
 datasets with metadata and is specialized in harmonizing small heterogeneous
 data that usually has to be dealt with in BEF. But its specialization makes it
 also very valuable to use in any other scientific domain that needs to deal
-with complex small and heterogeneous data. 
+with complex small and heterogeneous data.
 
 The portal offers a social component where researchers can shop datasets and
-write a paper proposals based on the datasets in the shopping cart. In the
+write a paper proposals based on the datasets in their shopping cart. In the
 process of creating a proposal some information like a title, a rationale, an
 envisaged journal and date needs to be provided. Sending in a proposal a
 researcher asks for access to the datasets and provides the data owners with
@@ -121,7 +142,7 @@ necessary information about the paper. The data owners then can decide if and
 how they like to participate in the upcoming paper or if they only like to get
 acknowledged for providing their data (cite Karin).
 
-### The proposal 
+### The proposal
 
 The portal facilitates research cooperation by the tool of paper proposals.
 Sending in a proposal, a researcher asks for access to the datasets and
@@ -140,7 +161,7 @@ assembled by the paper proposal can be readily imported in one step to the R
 environment by rbefdata.
 
 
-### rbefdata 
+### rbefdata
 
 The development of the `rbefdata` package started within the BEF-China project.
 Meanwhile it is part of the rOpenSci package portfolio (http://ropensci.org/),
@@ -155,16 +176,21 @@ attached that has been used to derive the results from the original datasets
 which provides a valuable insight into data provenance and also is a stepping
 stone for reproducible research.
 
-## Usecase (results) 
+## Usecase (results)
 
-In this paper we use an already published dataset as a usecase to present the
+In this paper we use already published datasets (we should use more than one dataset!, e.g. CSP for all, species reference, ...)
+as a usecase to present the
 functionalities and inter linkages between the BEF-China data portal and
-`rbefdata`. However, we will as well give some ecological background of the
-datasets used and the respective analyses. The usecase is dealing with data
+`rbefdata`.
+
+
+!! This should be moved into the introduction!!
+The usecase is dealing with data
 from a small scale experiment called pilot experiment. It is a 15N tracer
 experiment which aims to disentangle the effect of species mixtures on system N
 retention.
 
+!! Introduction !!
 We created a paper proposal with the following rationale: 'Knowledge of
 biodiversity effects on nutrient cycling patterns in subtropical forest
 ecosystems is still very limited, particularly as regards macronutrients such
@@ -188,14 +214,21 @@ hypotheses: (H1) Nitrogen acquisition and retention increases with species
 richness due complementary effects in species mixtures.  (H2) Species richness
 effects strengthen over time.' The respective proposal can be assessed under
 (url) For a detailed description of the experimental design we refer to Lang et
-al. 2013 (DOI) 
+al. 2013 (DOI)
 
-![showcase_proposal](./figure/static/showcase_proposal.png) 
+!! use more than one datafile!. In this case, there should be a separate file for
+plot attributes, soil attributes, plot diversity, etc. , another one for species names!!
+
+![showcase_proposal](./figure/static/showcase_proposal.png)
 
 * caption: The paper proposal in its final approved state. The information on that page
            contains a title rational envisaged date and journal. The calculated authors
            and email lists for communication as well as the attached datasets and sub
            projects involved (only partially shown).
+
+
+!! Part of this workflow should be introduced in the introduction!!
+?? Is this based on a published paper? Then we should cite that paper!??
 
 When all dataowners accepted the paper proposal rbefdata can be used to
 directly access the datasets from the dataportal and transfer them to the R
@@ -206,7 +239,7 @@ in, like the URL to the `BEFdata` server, user credentials and a download
 folder name that is used to store free format files attached to datasets. The
 `tematres` server related URLs in the options are part of upcoming features
 that are non fully functional on the time of writing and thus can be ignored by
-now. 
+now.
 
 The most essential setting for the example workflow we present here is the user
 credentials. These are used to authenticate the user against the portal to
@@ -227,16 +260,16 @@ bef.options()
 ```
 ## $url
 ## [1] "http://china.befdata.biow.uni-leipzig.de"
-## 
+##
 ## $tematres_url
 ## [1] "http://tematres.befdata.biow.uni-leipzig.de/vocab/index.php"
-## 
+##
 ## $tematres_service_url
 ## [1] "http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php"
-## 
+##
 ## $download_dir
 ## [1] "downloads"
-## 
+##
 ## $user_credentials
 ## [1] ""
 ```
@@ -278,7 +311,7 @@ ID of the proposal to work. The ID can be found in the URL of the proposal (see
 below).
 
 ```
-# the proposal URL shows the id is 90 
+# the proposal URL shows the id is 90
 http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```
 
@@ -332,7 +365,7 @@ titles
 
 ```
 ## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
-## [2] "Competition of saplings for N -Pilot- system 15N retention"                  
+## [2] "Competition of saplings for N -Pilot- system 15N retention"
 ## [3] "Plottreatment and -location within the blocks of the Pilot-Experiment"
 ```
 
@@ -343,11 +376,11 @@ names(attributes(datasets[[1]]))
 ```
 
 ```
-##  [1] "names"                    "class"                    "row.names"               
-##  [4] "title"                    "abstract"                 "publicationDate"         
-##  [7] "language"                 "creators"                 "authors"                 
-## [10] "intellectualRights"       "distribution"             "keywords"                
-## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"        
+##  [1] "names"                    "class"                    "row.names"
+##  [4] "title"                    "abstract"                 "publicationDate"
+##  [7] "language"                 "creators"                 "authors"
+## [10] "intellectualRights"       "distribution"             "keywords"
+## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"
 ## [16] "temporal_coverage"        "related_material"         "columns"
 ```
 
@@ -394,17 +427,17 @@ names(design)
 ```
 
 ```
-##  [1] "block"                    "x"                        "y"                       
-##  [4] "plot_id"                  "control_ID"               "block_community_code"    
-##  [7] "community_number"         "species_mixture"          "species_diversity"       
-## [10] "species_pool"             "species_code"             "research_group_colour"   
-## [13] "control"                  "closed_canopy"            "density"                 
-## [16] "Natives"                  "depth"                    "harvest"                 
-## [19] "fungicide"                "inoculation"              "pesticide"               
-## [22] "native"                   "genetic_diverstiy"        "seed_addition"           
-## [25] "fertilizer"               "plot_treatment_connected" "sp1"                     
-## [28] "sp2"                      "sp3"                      "sp4"                     
-## [31] "sp5"                      "sp7"                      "sp8"                     
+##  [1] "block"                    "x"                        "y"
+##  [4] "plot_id"                  "control_ID"               "block_community_code"
+##  [7] "community_number"         "species_mixture"          "species_diversity"
+## [10] "species_pool"             "species_code"             "research_group_colour"
+## [13] "control"                  "closed_canopy"            "density"
+## [16] "Natives"                  "depth"                    "harvest"
+## [19] "fungicide"                "inoculation"              "pesticide"
+## [22] "native"                   "genetic_diverstiy"        "seed_addition"
+## [25] "fertilizer"               "plot_treatment_connected" "sp1"
+## [28] "sp2"                      "sp3"                      "sp4"
+## [31] "sp5"                      "sp7"                      "sp8"
 ## [34] "sp11"                     "sp_connected"
 ```
 
@@ -427,6 +460,8 @@ dataset. 'Species diversity' is used as a factor containing three levels (1,2,4
 species mixtures). The response variables have been checked for normality with
 `qqplot` and transformed (box below).
 
+!! Very cool!!!
+
 
 ```r
 # the synthesis dataset
@@ -437,19 +472,19 @@ names(syndata)
 ```
 
 ```
-##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"            
-##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"            
-##  [7] "gbd_T0.mm."               "block"                    "x"                       
-## [10] "y"                        "control_ID"               "block_community_code"    
-## [13] "community_number"         "species_mixture"          "species_diversity"       
-## [16] "species_pool"             "species_code"             "research_group_colour"   
-## [19] "control"                  "closed_canopy"            "density"                 
-## [22] "Natives"                  "depth"                    "harvest"                 
-## [25] "fungicide"                "inoculation"              "pesticide"               
-## [28] "native"                   "genetic_diverstiy"        "seed_addition"           
-## [31] "fertilizer"               "plot_treatment_connected" "sp1"                     
-## [34] "sp2"                      "sp3"                      "sp4"                     
-## [37] "sp5"                      "sp7"                      "sp8"                     
+##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"
+##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"
+##  [7] "gbd_T0.mm."               "block"                    "x"
+## [10] "y"                        "control_ID"               "block_community_code"
+## [13] "community_number"         "species_mixture"          "species_diversity"
+## [16] "species_pool"             "species_code"             "research_group_colour"
+## [19] "control"                  "closed_canopy"            "density"
+## [22] "Natives"                  "depth"                    "harvest"
+## [25] "fungicide"                "inoculation"              "pesticide"
+## [28] "native"                   "genetic_diverstiy"        "seed_addition"
+## [31] "fertilizer"               "plot_treatment_connected" "sp1"
+## [34] "sp2"                      "sp3"                      "sp4"
+## [37] "sp5"                      "sp7"                      "sp8"
 ## [40] "sp11"                     "sp_connected"
 ```
 
@@ -461,8 +496,8 @@ names(syndata)
 ```
 
 ```
-## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"     
-## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"            
+## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"
+## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"
 ## [9] "species_diversity"
 ```
 
@@ -484,7 +519,7 @@ in blocks, we use block as a random factor. The analysis uses the R packages
 `nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
 for post-hoc comparisons. To adjust for an unbalanced experimental design an
 ANOVA Type II was carried out to test for main effects using the R package
-`car` (Fox and Weisberg 2011). The models have been evaluated visually.
+`car` (Fox and Weisberg 2011). The models (goodness of fit?) have been evaluated visually.
 
 
 ```r
@@ -497,7 +532,7 @@ require(car)
 
 ```r
 ### Model 1: Overall recovery/N retention
-model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
+model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit,
     method = "REML")
 anova(model1)
 ```
@@ -514,19 +549,19 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
+##
 ## 	 Simultaneous Tests for General Linear Hypotheses
-## 
+##
 ## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
+##
+##
+## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity,
 ##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
-## 
+##
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
-## 4 - 1 == 0    0.478      0.420    1.14    0.482  
+##            Estimate Std. Error z value Pr(>|z|)
+## 2 - 1 == 0   -0.378      0.251   -1.51    0.280
+## 4 - 1 == 0    0.478      0.420    1.14    0.482
 ## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -542,11 +577,11 @@ model1c
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-## 
+##
 ## Response: recov_plot_t
-##                   Chisq Df Pr(>Chisq)   
+##                   Chisq Df Pr(>Chisq)
 ## gbd_T0.mm.         7.42  1     0.0064 **
-## species_diversity  5.71  2     0.0576 . 
+## species_diversity  5.71  2     0.0576 .
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -574,20 +609,20 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
+##
 ## 	 Simultaneous Tests for General Linear Hypotheses
-## 
+##
 ## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
+##
+##
+## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata,
 ##     random = ~1 | block, method = "REML")
-## 
+##
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
+##            Estimate Std. Error z value Pr(>|z|)
 ## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## 4 - 1 == 0    0.865      0.497    1.74     0.18
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -599,9 +634,9 @@ Anova(model2, type = "II")
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-## 
+##
 ## Response: perleaf_plot_t
-##                   Chisq Df Pr(>Chisq)   
+##                   Chisq Df Pr(>Chisq)
 ## species_diversity  13.1  2     0.0014 **
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -628,20 +663,20 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
+##
 ## 	 Simultaneous Tests for General Linear Hypotheses
-## 
+##
 ## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
+##
+##
+## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata,
 ##     random = ~1 | block, method = "REML")
-## 
+##
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
+##            Estimate Std. Error z value Pr(>|z|)
 ## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 *
+## 4 - 2 == 0    0.132      0.278    0.48    0.879
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -653,9 +688,9 @@ Anova(model3, type = "II")
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-## 
+##
 ## Response: perroot_plot_t
-##                   Chisq Df Pr(>Chisq)    
+##                   Chisq Df Pr(>Chisq)
 ## species_diversity  14.3  2    0.00077 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -682,20 +717,20 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
+##
 ## 	 Simultaneous Tests for General Linear Hypotheses
-## 
+##
 ## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
+##
+##
+## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata,
 ##     random = ~1 | block, method = "REML")
-## 
+##
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
+##            Estimate Std. Error z value Pr(>|z|)
 ## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
-## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -707,9 +742,9 @@ Anova(model4, type = "II")
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-## 
+##
 ## Response: persoil_plot_t
-##                   Chisq Df Pr(>Chisq)  
+##                   Chisq Df Pr(>Chisq)
 ## species_diversity  7.96  2      0.019 *
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -731,7 +766,13 @@ root recovery was lower than leaf recovery, and biomass recovery (leaves and
 fine roots) was lower than soil recovery.  Whereas the relative leaf and root
 recovery were significantly higher in species mixtures compared with
 monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
-reduced (Fig. Xd).  
+reduced (Fig. Xd).
+
+
+?? This should have been reported elsewhere! This paper should be cited here!!
+
+
+?? was the general aim of the analysis part of the introduction? It should be!!
 
 Our results demonstrate that species richness of mixtures increases system N
 retention in young subtropical tree plantations. Although relative soil
@@ -749,7 +790,9 @@ after a few years. This in turn has the potential to significantly reduce N
 losses and thus N accumulation in the leachate or groundwater (Lang et al.
 2013).
 
-![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
+!! This is really well done!!
+
+![plot of chunk anne_final_plot](figure/anne_final_plot.png)
 
 
 * caption:  Nitrogen (N) retention affected by species richness. N retention summed as
@@ -761,11 +804,17 @@ Finally we need to decide on either to upload a full dataset which we could do
 using the dataset upload function `bef.portal.upload.dataset()` or only to
 upload the script and maybe a figure to highlight the road to the results
 starting from the source datasets used. This can be done by attaching to the
-proposal with `bef.portal.attach.to_proposal()`. 
+proposal with `bef.portal.attach.to_proposal()`.
 
 For the shown example it is the best way to go with an attachment to the
 proposal as uploading the merged dataset would only mean duplication of data in
-the database of the data management platform. So we upload the script and the
+the database of the data management platform.
+
+!! no! Upload!. There should be some new data, maybe on plot level, maybe on species level.
+Maybe something such as general N uptake at median species diversity for the species in
+question, that can then be used by other projects as functional traits. Upload data!
+
+So we upload the script and the
 four pane figure with its caption to add them to the proposal. The figure is
 prepared as Portable Network Graphics (PNG) using the R internal PNG device. It
 is written to a temporary folder and then uploaded. The script in this case is
@@ -784,7 +833,7 @@ bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", descriptio
 
 
 ```
-## pdf 
+## pdf
 ##   2
 ```
 
@@ -792,10 +841,10 @@ bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", descriptio
 
 ```r
 # caption for the figure
-caption = "Nitrogen (N) retention affected by species richness. N retention summed as\n           the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root\n           recovery (c) and relative soil recovery (d). Significant differences as revealed by post\n           hoc Tukey’s test (P < 0.05) are indicated by different letters."
+caption = "Nitrogen (N) retention affected by species richness. N retention summed as  the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root\n           recovery (c) and relative soil recovery (d). Significant differences as revealed by post\n           hoc Tukey’s test (P < 0.05) are indicated by different letters."
 
 # upload the figure
-bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "results_plot_proposal_90.png"), 
+bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "results_plot_proposal_90.png"),
     description = caption)
 ```
 
@@ -809,23 +858,35 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 * caption: The paper proposal in its final approved state with attachments. The
            attachments are the final plot and the R script that has been used to derive
-           the resutls in the published paper. 
+           the resutls in the published paper.
 
 ## Discussion
 
-* General discussion 
-  - high need to effective use/reuse data 
-  - relevant data needs to be simply detectable 
+* up to now no use of the thesaurus! If this stays as such, all the passages on ontologies have
+  to be removed! So try to integrate the use of thesauri! Then ontologies can be discussed. But
+  ontologies should not have such a high prominence in the introduction.
 
-* `BEFdata` and `rbefdata` 
-  - in combination provide a solution to 
+* pros and cons of sending data to a local script or sending a script to a central database,
+  - for researchers, it "feels" better, if the data are on the local machines
+  - more freedom for researchers to use their tools of choice and to mix data with data from
+    other sources
+  - pros for sending a script to the data are efficiency, less network traffic
+  - re-usability of scripts is easier, if they are sent to a central cluster, since everybody can
+    do that.
+
+* General discussion
+  - high need to effective use/reuse data
+  - relevant data needs to be simply detectable
+
+* `BEFdata` and `rbefdata`
+  - in combination provide a solution to
     + data storage
     + describing data with metadata
-    + collaboration and data sharing 
+    + collaboration and data sharing
     + simply pull data into analysis software and push data back
     + data provenance by attaching R scripts to uploads
-  - will provide solution with next versions 
-    + easier finding relevant data 
+  - will provide solution with next versions
+    + easier finding relevant data
     + smart merges (including unit conversions)
 
 As there is a growing demand to effectively reuse available data this puts much
@@ -836,10 +897,10 @@ data reuse and exchange. While data storage and description is almost the same
 for all kind of data the effective interlinking of data via an ontology
 requires the development of a common terminology all contributing scientist of
 a research domain accept and not only use but help do develop and discuss it.
-Thus collaborative ontology engineering approaches like `ontoverse` 
-(Zoulfa El Jerroudi et al. 2008) or `tematres` are highly valuable as the not 
-only help to set up ontologies but also to develop and maintain them over time 
-even if the researchers change that contribute to it. 
+Thus collaborative ontology engineering approaches like `ontoverse`
+(Zoulfa El Jerroudi et al. 2008) or `tematres` are highly valuable as the not
+only help to set up ontologies but also to develop and maintain them over time
+even if the researchers change that contribute to it.
 
 The software combination of `rbefdata` and `BEFdata` offers a solutions to data
 storage for different sizes of projects, it helps in describing data with
@@ -847,9 +908,9 @@ metadata and to provide a public with the information via the EMl metadata
 standard, it fosters the collaboration and the trust in sharing data online by
 paper proposals and the helps in analysing by offering simple tools to pull
 data right direct from the portal into the R statistics environment. The upload
-functionality provided by `rbefdata` 
+functionality provided by `rbefdata`
 
-(metadata) 
+(metadata)
     + collaboration (data sharing)
     + simply pull data into analysis software and push data back
     + data provenance by attaching R scripts to uploads
@@ -867,7 +928,7 @@ with high heterogeneous data.
 We recently stared to develop an ontology using a `tematres` server containing
 knowledge extracted from portals that deal with data management for ecological
 research. The `tematres` server offers an API so all the contained terms can be
-accessed by the upcoming version of `rbefdata` 
+accessed by the upcoming version of `rbefdata`
 
 The formalization developed is and will be based on the knowledge used in
 biodiversity research. Thus we will here discuss the software combination
@@ -884,7 +945,7 @@ us to do support smart merges that work.
 `tematres` ([homepage](http://www.vocabularyserver.com/))into `BEFdata` and the
 `rbefdata` package so they play well together semantically.
 
-## Acknowledgements 
+## Acknowledgements
 
 Thanks to all the data owners of the proposal for providing access to the
 datasets. ...
@@ -900,9 +961,9 @@ publication.
 
 * maybe will not be used extensively but we will see
 
-### Figures 
+### Figures
 
-* vizualization plugin (keywords) 
+* vizualization plugin (keywords)
 
 One can visualize the keywords associated with the dataset of a `BEFdata` portal
 using the vitalization functionality. This gives a short overview about the
@@ -957,7 +1018,7 @@ contents the portal data is dealing with.
 ## Warning: wood porosity could not be fit on page. It will not be plotted.
 ```
 
-![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
+![plot of chunk vizalize_keywords](figure/vizalize_keywords.png)
 
 
 ### Tables
