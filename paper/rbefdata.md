@@ -1,3 +1,6 @@
+
+
+
 ## Abstract
 
 We face a deluge of data today scientists need to deal with in many different
@@ -130,8 +133,8 @@ species (cite Bruelheide, 2010).
 
 The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is an open
 source data management platform developed within the BEF-China project. It
-adheres to standards like the Ecological Metadata Language [has to be cited!]
-for describing datasets with metadata and is specialized in harmonizing small
+adheres to standards like the Ecological Metadata Language (cite xxx) for
+describing datasets with metadata and is specialized in harmonizing small
 heterogeneous data that usually has to be dealt with in BEF. But its
 specialization makes it also very valuable to use in any other scientific
 domain that needs to deal with complex small and heterogeneous data.
@@ -256,6 +259,7 @@ in this example. If one has set up an own instance of the `BEFdata` portal,
 this URL needs to be changed so the package communicates with the right server
 (see box below).
 
+
 ```r
 require(rbefdata)
 # options list
@@ -265,16 +269,16 @@ bef.options()
 ```
 ## $url
 ## [1] "http://china.befdata.biow.uni-leipzig.de"
-##
+## 
 ## $tematres_url
 ## [1] "http://tematres.befdata.biow.uni-leipzig.de/vocab/index.php"
-##
+## 
 ## $tematres_service_url
 ## [1] "http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php"
-##
+## 
 ## $download_dir
 ## [1] "downloads"
-##
+## 
 ## $user_credentials
 ## [1] ""
 ```
@@ -313,10 +317,10 @@ draws all associated datasets of a proposal into the R environment in one
 single step. It returns a list object that keeps a data frame per list element
 containing a dataset of the proposal each (see blow). The function requires the
 ID of the proposal to work. The ID can be found in the URL of the proposal (see
-below).
+box below).
 
 ```
-# the proposal URL shows the id is 90
+# the proposal URL shows the id is 90 
 http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```
 
@@ -370,7 +374,7 @@ titles
 
 ```
 ## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
-## [2] "Competition of saplings for N -Pilot- system 15N retention"
+## [2] "Competition of saplings for N -Pilot- system 15N retention"                  
 ## [3] "Plottreatment and -location within the blocks of the Pilot-Experiment"
 ```
 
@@ -381,11 +385,11 @@ names(attributes(datasets[[1]]))
 ```
 
 ```
-##  [1] "names"                    "class"                    "row.names"
-##  [4] "title"                    "abstract"                 "publicationDate"
-##  [7] "language"                 "creators"                 "authors"
-## [10] "intellectualRights"       "distribution"             "keywords"
-## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"
+##  [1] "names"                    "class"                    "row.names"               
+##  [4] "title"                    "abstract"                 "publicationDate"         
+##  [7] "language"                 "creators"                 "authors"                 
+## [10] "intellectualRights"       "distribution"             "keywords"                
+## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"        
 ## [16] "temporal_coverage"        "related_material"         "columns"
 ```
 
@@ -432,17 +436,17 @@ names(design)
 ```
 
 ```
-##  [1] "block"                    "x"                        "y"
-##  [4] "plot_id"                  "control_ID"               "block_community_code"
-##  [7] "community_number"         "species_mixture"          "species_diversity"
-## [10] "species_pool"             "species_code"             "research_group_colour"
-## [13] "control"                  "closed_canopy"            "density"
-## [16] "Natives"                  "depth"                    "harvest"
-## [19] "fungicide"                "inoculation"              "pesticide"
-## [22] "native"                   "genetic_diverstiy"        "seed_addition"
-## [25] "fertilizer"               "plot_treatment_connected" "sp1"
-## [28] "sp2"                      "sp3"                      "sp4"
-## [31] "sp5"                      "sp7"                      "sp8"
+##  [1] "block"                    "x"                        "y"                       
+##  [4] "plot_id"                  "control_ID"               "block_community_code"    
+##  [7] "community_number"         "species_mixture"          "species_diversity"       
+## [10] "species_pool"             "species_code"             "research_group_colour"   
+## [13] "control"                  "closed_canopy"            "density"                 
+## [16] "Natives"                  "depth"                    "harvest"                 
+## [19] "fungicide"                "inoculation"              "pesticide"               
+## [22] "native"                   "genetic_diverstiy"        "seed_addition"           
+## [25] "fertilizer"               "plot_treatment_connected" "sp1"                     
+## [28] "sp2"                      "sp3"                      "sp4"                     
+## [31] "sp5"                      "sp7"                      "sp8"                     
 ## [34] "sp11"                     "sp_connected"
 ```
 
@@ -468,6 +472,7 @@ species mixtures). The response variables have been checked for normality with
 !! Very cool!!!
 
 
+
 ```r
 # the synthesis dataset
 syndata = merge(Nretention, design)
@@ -477,19 +482,19 @@ names(syndata)
 ```
 
 ```
-##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"
-##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"
-##  [7] "gbd_T0.mm."               "block"                    "x"
-## [10] "y"                        "control_ID"               "block_community_code"
-## [13] "community_number"         "species_mixture"          "species_diversity"
-## [16] "species_pool"             "species_code"             "research_group_colour"
-## [19] "control"                  "closed_canopy"            "density"
-## [22] "Natives"                  "depth"                    "harvest"
-## [25] "fungicide"                "inoculation"              "pesticide"
-## [28] "native"                   "genetic_diverstiy"        "seed_addition"
-## [31] "fertilizer"               "plot_treatment_connected" "sp1"
-## [34] "sp2"                      "sp3"                      "sp4"
-## [37] "sp5"                      "sp7"                      "sp8"
+##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"            
+##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"            
+##  [7] "gbd_T0.mm."               "block"                    "x"                       
+## [10] "y"                        "control_ID"               "block_community_code"    
+## [13] "community_number"         "species_mixture"          "species_diversity"       
+## [16] "species_pool"             "species_code"             "research_group_colour"   
+## [19] "control"                  "closed_canopy"            "density"                 
+## [22] "Natives"                  "depth"                    "harvest"                 
+## [25] "fungicide"                "inoculation"              "pesticide"               
+## [28] "native"                   "genetic_diverstiy"        "seed_addition"           
+## [31] "fertilizer"               "plot_treatment_connected" "sp1"                     
+## [34] "sp2"                      "sp3"                      "sp4"                     
+## [37] "sp5"                      "sp7"                      "sp8"                     
 ## [40] "sp11"                     "sp_connected"
 ```
 
@@ -501,8 +506,8 @@ names(syndata)
 ```
 
 ```
-## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"
-## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"
+## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"     
+## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"            
 ## [9] "species_diversity"
 ```
 
@@ -524,7 +529,7 @@ in blocks, we use block as a random factor. The analysis uses the R packages
 `nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
 for post-hoc comparisons. To adjust for an unbalanced experimental design an
 ANOVA Type II was carried out to test for main effects using the R package
-`car` (Fox and Weisberg 2011). The models (goodness of fit?) have been evaluated visually.
+`car` (Fox and Weisberg 2011). The models have been evaluated visually.
 
 
 ```r
@@ -537,7 +542,7 @@ require(car)
 
 ```r
 ### Model 1: Overall recovery/N retention
-model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit,
+model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
     method = "REML")
 anova(model1)
 ```
@@ -554,19 +559,19 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-##
+## 
 ## 	 Simultaneous Tests for General Linear Hypotheses
-##
+## 
 ## Multiple Comparisons of Means: Tukey Contrasts
-##
-##
-## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity,
+## 
+## 
+## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
 ##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
-##
+## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)
-## 2 - 1 == 0   -0.378      0.251   -1.51    0.280
-## 4 - 1 == 0    0.478      0.420    1.14    0.482
+##            Estimate Std. Error z value Pr(>|z|)  
+## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
+## 4 - 1 == 0    0.478      0.420    1.14    0.482  
 ## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -582,11 +587,11 @@ model1c
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-##
+## 
 ## Response: recov_plot_t
-##                   Chisq Df Pr(>Chisq)
+##                   Chisq Df Pr(>Chisq)   
 ## gbd_T0.mm.         7.42  1     0.0064 **
-## species_diversity  5.71  2     0.0576 .
+## species_diversity  5.71  2     0.0576 . 
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -614,20 +619,20 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-##
+## 
 ## 	 Simultaneous Tests for General Linear Hypotheses
-##
+## 
 ## Multiple Comparisons of Means: Tukey Contrasts
-##
-##
-## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata,
+## 
+## 
+## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
 ##     random = ~1 | block, method = "REML")
-##
+## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)
+##            Estimate Std. Error z value Pr(>|z|)    
 ## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -639,9 +644,9 @@ Anova(model2, type = "II")
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-##
+## 
 ## Response: perleaf_plot_t
-##                   Chisq Df Pr(>Chisq)
+##                   Chisq Df Pr(>Chisq)   
 ## species_diversity  13.1  2     0.0014 **
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -668,20 +673,20 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-##
+## 
 ## 	 Simultaneous Tests for General Linear Hypotheses
-##
+## 
 ## Multiple Comparisons of Means: Tukey Contrasts
-##
-##
-## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata,
+## 
+## 
+## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
 ##     random = ~1 | block, method = "REML")
-##
+## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)
-## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *
-## 4 - 2 == 0    0.132      0.278    0.48    0.879
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -693,9 +698,9 @@ Anova(model3, type = "II")
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-##
+## 
 ## Response: perroot_plot_t
-##                   Chisq Df Pr(>Chisq)
+##                   Chisq Df Pr(>Chisq)    
 ## species_diversity  14.3  2    0.00077 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -722,20 +727,20 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-##
+## 
 ## 	 Simultaneous Tests for General Linear Hypotheses
-##
+## 
 ## Multiple Comparisons of Means: Tukey Contrasts
-##
-##
-## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata,
+## 
+## 
+## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
 ##     random = ~1 | block, method = "REML")
-##
+## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)
+##            Estimate Std. Error z value Pr(>|z|)  
 ## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
-## 4 - 2 == 0   -0.205      0.207   -0.99     0.57
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -747,9 +752,9 @@ Anova(model4, type = "II")
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-##
+## 
 ## Response: persoil_plot_t
-##                   Chisq Df Pr(>Chisq)
+##                   Chisq Df Pr(>Chisq)  
 ## species_diversity  7.96  2      0.019 *
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -797,7 +802,8 @@ losses and thus N accumulation in the leachate or groundwater (Lang et al.
 
 !! This is really well done!!
 
-![plot of chunk anne_final_plot](figure/anne_final_plot.png)
+
+![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
 
 * caption:  Nitrogen (N) retention affected by species richness. N retention summed as
@@ -819,11 +825,11 @@ the database of the data management platform.
 Maybe something such as general N uptake at median species diversity for the species in
 question, that can then be used by other projects as functional traits. Upload data!
 
-So we upload the script and the
-four pane figure with its caption to add them to the proposal. The figure is
-prepared as Portable Network Graphics (PNG) using the R internal PNG device. It
-is written to a temporary folder and then uploaded. The script in this case is
-an R markdown file that we attach to the proposal (see box below).
+So we upload the script and the four pane figure with its caption to add them
+to the proposal. The figure is prepared as Portable Network Graphics (PNG)
+using the R internal PNG device. It is written to a temporary folder and then
+uploaded. The script in this case is an R markdown file that we attach to the
+proposal (see box below).
 
 
 ```r
@@ -838,7 +844,7 @@ bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", descriptio
 
 
 ```
-## pdf
+## pdf 
 ##   2
 ```
 
@@ -846,10 +852,10 @@ bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", descriptio
 
 ```r
 # caption for the figure
-caption = "Nitrogen (N) retention affected by species richness. N retention summed as  the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root\n           recovery (c) and relative soil recovery (d). Significant differences as revealed by post\n           hoc Tukey’s test (P < 0.05) are indicated by different letters."
+caption = "Nitrogen (N) retention affected by species richness. N retention summed as\n           the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root\n           recovery (c) and relative soil recovery (d). Significant differences as revealed by post\n           hoc Tukey’s test (P < 0.05) are indicated by different letters."
 
 # upload the figure
-bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "results_plot_proposal_90.png"),
+bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "results_plot_proposal_90.png"), 
     description = caption)
 ```
 
@@ -976,54 +982,11 @@ contents the portal data is dealing with.
 
 
 
-```
-## Warning: individual based values could not be fit on page. It will not be plotted. Warning:
-## wood perforation plates could not be fit on page. It will not be plotted. Warning: belowground
-## biomass could not be fit on page. It will not be plotted. Warning: cadmium at wavelength 214nm
-## could not be fit on page. It will not be plotted. Warning: coefficient of variation could not
-## be fit on page. It will not be plotted. Warning: digital data acquisition could not be fit on
-## page. It will not be plotted. Warning: diversity treatment could not be fit on page. It will
-## not be plotted. Warning: geomorphology could not be fit on page. It will not be plotted.
-## Warning: microbial biomass could not be fit on page. It will not be plotted. Warning:
-## secondary compounds could not be fit on page. It will not be plotted. Warning: soil horizon
-## could not be fit on page. It will not be plotted. Warning: spatial genetic structure could not
-## be fit on page. It will not be plotted. Warning: species trait could not be fit on page. It
-## will not be plotted. Warning: standard deviation could not be fit on page. It will not be
-## plotted. Warning: trait dissimilarity could not be fit on page. It will not be plotted.
-## Warning: tree rings could not be fit on page. It will not be plotted. Warning: wood bending
-## could not be fit on page. It will not be plotted. Warning: wood compression could not be fit
-## on page. It will not be plotted. Warning: wood shrinkage could not be fit on page. It will not
-## be plotted. Warning: wood toughness could not be fit on page. It will not be plotted. Warning:
-## aeromorphic organic layer could not be fit on page. It will not be plotted. Warning: BEF China
-## projects could not be fit on page. It will not be plotted. Warning: community similarity could
-## not be fit on page. It will not be plotted. Warning: community weighted mean trait could not
-## be fit on page. It will not be plotted. Warning: control treatment could not be fit on page.
-## It will not be plotted. Warning: co-variables could not be fit on page. It will not be
-## plotted. Warning: eco-physiologic traits could not be fit on page. It will not be plotted.
-## Warning: ecosystem functioning could not be fit on page. It will not be plotted. Warning:
-## experimental treatment could not be fit on page. It will not be plotted. Warning: Flora of
-## China could not be fit on page. It will not be plotted. Warning: genetic autocorrelation could
-## not be fit on page. It will not be plotted. Warning: human influence could not be fit on page.
-## It will not be plotted. Warning: land use history could not be fit on page. It will not be
-## plotted. Warning: matching status could not be fit on page. It will not be plotted. Warning:
-## multi-trophic interactions could not be fit on page. It will not be plotted. Warning: nitrogen
-## cycling could not be fit on page. It will not be plotted. Warning: phosphorous could not be
-## fit on page. It will not be plotted. Warning: phylogenetic distinctness could not be fit on
-## page. It will not be plotted. Warning: phytophagous insects could not be fit on page. It will
-## not be plotted. Warning: predators could not be fit on page. It will not be plotted. Warning:
-## research proposals could not be fit on page. It will not be plotted. Warning: respiration
-## could not be fit on page. It will not be plotted. Warning: rooting depth could not be fit on
-## page. It will not be plotted. Warning: runoff plots could not be fit on page. It will not be
-## plotted. Warning: simpson diversity could not be fit on page. It will not be plotted. Warning:
-## specialization could not be fit on page. It will not be plotted. Warning: species identity
-## variable could not be fit on page. It will not be plotted. Warning: vegetation stratum could
-## not be fit on page. It will not be plotted. Warning: Weibull distribution could not be fit on
-## page. It will not be plotted. Warning: wood ground tissue could not be fit on page. It will
-## not be plotted. Warning: wood mechanics could not be fit on page. It will not be plotted.
-## Warning: wood porosity could not be fit on page. It will not be plotted.
-```
+![keywords](figure/vizalize_keywords.png)
 
-![plot of chunk vizalize_keywords](figure/vizalize_keywords.png)
-
-
-### Tables
+* caption: All keywords associated with datasets from the BEFdata portal instance of the
+           BEF-China experiment. There is a strong focus on CSP which is short for
+           comparative study plots so it is related to the overall desing of the study as
+           well as main experiment and species as it is an extinction scenario exmeriment.
+           Intresting terms more general we find the purple and organge part like GIS,
+           extinction treatment or basal diameter. 
