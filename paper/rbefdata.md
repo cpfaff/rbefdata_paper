@@ -13,13 +13,13 @@ to improve or automate some of the most common tasks in analyses like finding
 relevant data, cleaning and merging of datasets. We here introduce the
 `rbefata` package that connects to the open source data management platform
 `BEFdata` that has been developed and is used within the BEF-China experiment.
-We show the use of the package in combination with the data portal using an
+We show how to use the package in combination with the data portal on an
 example workflow that integrates two datasets from the BEF-China experiment
 representing an analysis that has been published already. We discuss the
 combination of the R package `rbefdata` and the data portal in the context of
-state of the art data management as well as we give an outlook on upcoming
-features that bring semantical tool that will enable smart merges and finding
-of data based on an ontology we created. 
+state of the art data management and the data lifecycle as well as we give an
+outlook on upcoming features like semantical tools that will enable smart
+merges and finding of data based on an ontology we are building. 
 
 ## Introduction 
 
@@ -640,9 +640,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0282 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -694,8 +694,8 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -732,21 +732,23 @@ root recovery was lower than leaf recovery, and biomass recovery (leaves and
 fine roots) was lower than soil recovery.  Whereas the relative leaf and root
 recovery were significantly higher in species mixtures compared with
 monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
-reduced (Fig. Xd).  Our results demonstrate that species richness of mixtures
-increases system N retention in young subtropical tree plantations. Although
-relative soil recovery was highest compared with relative leaf and root
-recovery, soil recovery decreased with species richness (Fig. X). Thus, the
-observed positive relationship between species richness and system N retention
-is caused by an increase in relative N recovery of sapling biomass (fine roots
-and leaves) with higher species numbers in mixtures. Our findings suggest
-positive species diversity effects for an important ecosystem service, which is
-highly relevant for afforestation programmes as currently applied in China on a
-large scale. The positive relationship between species richness and system N
-retention suggests that mixed plantings even at the sapling stage of a
-restricted species pool may considerably increase N retention in subtropical
-forest systems even after a few years. This in turn has the potential to
-significantly reduce N losses and thus N accumulation in the leachate or
-groundwater (Lang et al. 2013).
+reduced (Fig. Xd).  
+
+Our results demonstrate that species richness of mixtures increases system N
+retention in young subtropical tree plantations. Although relative soil
+recovery was highest compared with relative leaf and root recovery, soil
+recovery decreased with species richness (Fig. X). Thus, the observed positive
+relationship between species richness and system N retention is caused by an
+increase in relative N recovery of sapling biomass (fine roots and leaves) with
+higher species numbers in mixtures. Our findings suggest positive species
+diversity effects for an important ecosystem service, which is highly relevant
+for afforestation programmes as currently applied in China on a large scale.
+The positive relationship between species richness and system N retention
+suggests that mixed plantings even at the sapling stage of a restricted species
+pool may considerably increase N retention in subtropical forest systems even
+after a few years. This in turn has the potential to significantly reduce N
+losses and thus N accumulation in the leachate or groundwater (Lang et al.
+2013).
 
 ![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
@@ -760,13 +762,15 @@ Finally we need to decide on either to upload a full dataset which we could do
 using the dataset upload function `bef.portal.upload.dataset()` or only to
 upload the script and maybe a plot figure that highlight the road to the
 results starting from the used source datasets with
-`bef.portal.attach.to_proposal()`. For the shown example here it is the best
-way to go with the latter one as uploading the merged dataset would only mean
-duplication of data in the database of the data management platform. So we
-upload the script and the four pane figure with its caption to add them to the
-proposal. The figure is prepared as png before using the R internal png device
-to write it to a temporary folder and then uploaded. The script in this case is
-an R markdown file.
+`bef.portal.attach.to_proposal()`. 
+
+For the shown example here it is the best way to go with the latter one as
+uploading the merged dataset would only mean duplication of data in the
+database of the data management platform. So we upload the script and the four
+pane figure with its caption to add them to the proposal. The figure is
+prepared as png before using the R internal png device to write it to a
+temporary folder and then uploaded. The script in this case is an R markdown
+file.
 
 
 ```r
@@ -803,6 +807,10 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 
 ![showcase_proposal_attachment](./figure/static/showcase_proposal_attachments.png)
+
+* caption: The paper proposal in its final approved state with attachments. The
+           attachments are the final plot and the R script that has been used to derive
+           the resutls in the published paper. 
 
 ## Discussion
 
