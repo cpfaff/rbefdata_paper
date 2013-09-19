@@ -14,12 +14,12 @@ often varies. Especially research domains with a high degree of
 interdisciplinary interactions and heterogeneity in methods and data like
 ecology are facing problems in dealing with some valuable concepts like
 ontologies that potentially can be used to improve or automate some of the most
-common tasks in analyses like finding relevant data, cleaning and merging of
-datasets. We here introduce the `rbefata` package that connects to the open
-source data management platform `BEFdata` that has been developed and is used
-within the BEF-China experiment. We show the use of the package in interaction
-with the data management platform using an example workflow that integrates two
-datasets from the BEF-China experiment. The workflow is representing an
+common tasks in analyses like finding relevant data, cleaning and merging and a
+exchange of datasets. We here introduce the `rbefata` package that connects to
+the open source data management platform `BEFdata` that has been developed and
+is used within the BEF-China experiment. We show the use of the package in
+interaction with the data management platform using an example workflow that
+integrates two datasets from the BEF-China experiment and is representing an
 analysis that has been published already. Finally we discuss this software
 combination in the context of current and future data management requirements
 and the data life cycle. We also give an outlook on upcoming features like a
