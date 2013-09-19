@@ -3,26 +3,6 @@
 
 ## Abstract
 
-<<<<<<< HEAD
-Today we face a deluge of data scientists need to deal with in many different
-disciplines. While there are already good solutions to some parts of the data
-life cycle the applicability of the solutions to certain scientific domains
-often varies. Especially research domains with a high degree of
-interdisciplinary interactions and heterogeneity in methods and data like
-ecology are facing problems in dealing with some valuable concepts like
-ontologies that potentially can be used to improve or automate some of the most
-common tasks in analyses like finding relevant data, cleaning and merging and a
-exchange of datasets. We here introduce the `rbefata` package that connects to
-the open source data management platform `BEFdata` that has been developed and
-is used within the BEF-China experiment. We show the use of the package in
-interaction with the data management platform by an example workflow that
-integrates two datasets from the BEF-China experiment where the workflow is
-representing an analysis that has been published already. Finally we discuss
-this software combination in the context of current and future data management
-requirements and the data life cycle. We also give an outlook on upcoming
-features like a semantical assisted searches and merging of data to be
-integrated with `rbefdata` and `BEFdata`.
-=======
 Today we face a deluge of data, scientists need to deal with in many different
 disciplines. While there are already good software solutions to assist
 reasearcher throughout the the data life cycle the applicability of the
@@ -41,7 +21,6 @@ Finally we discuss this software combination in the context of current and
 future data management requirements and the data life cycle. We also give an
 outlook on upcoming features like a semantical assisted search and merging of
 data to be integrated with `rbefdata` and `BEFdata`.
->>>>>>> author_cpfaff
 
 ## Introduction
 
@@ -206,7 +185,7 @@ attributes, plot diversity, etc. , another one for species names!!
 * caption: The paper proposal in its final approved state. The information on that page
            contains a title rational envisaged date and journal. The calculated authors
            and email lists for communication as well as the attached datasets and sub
-           projects involved (only partially shown). The proposal is published as paper 
+           projects involved (only partially shown). The proposal is published as paper
            (Lang et al. 2013).
 
 
@@ -345,7 +324,7 @@ titles
 
 ```
 ## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
-## [2] "Competition of saplings for N -Pilot- system 15N retention"                  
+## [2] "Competition of saplings for N -Pilot- system 15N retention"
 ## [3] "Plottreatment and -location within the blocks of the Pilot-Experiment"
 ```
 
@@ -356,11 +335,11 @@ names(attributes(datasets[[1]]))
 ```
 
 ```
-##  [1] "names"                    "class"                    "row.names"               
-##  [4] "title"                    "abstract"                 "publicationDate"         
-##  [7] "language"                 "creators"                 "authors"                 
-## [10] "intellectualRights"       "distribution"             "keywords"                
-## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"        
+##  [1] "names"                    "class"                    "row.names"
+##  [4] "title"                    "abstract"                 "publicationDate"
+##  [7] "language"                 "creators"                 "authors"
+## [10] "intellectualRights"       "distribution"             "keywords"
+## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"
 ## [16] "temporal_coverage"        "related_material"         "columns"
 ```
 
@@ -407,17 +386,17 @@ names(design)
 ```
 
 ```
-##  [1] "block"                    "x"                        "y"                       
-##  [4] "plot_id"                  "control_ID"               "block_community_code"    
-##  [7] "community_number"         "species_mixture"          "species_diversity"       
-## [10] "species_pool"             "species_code"             "research_group_colour"   
-## [13] "control"                  "closed_canopy"            "density"                 
-## [16] "Natives"                  "depth"                    "harvest"                 
-## [19] "fungicide"                "inoculation"              "pesticide"               
-## [22] "native"                   "genetic_diverstiy"        "seed_addition"           
-## [25] "fertilizer"               "plot_treatment_connected" "sp1"                     
-## [28] "sp2"                      "sp3"                      "sp4"                     
-## [31] "sp5"                      "sp7"                      "sp8"                     
+##  [1] "block"                    "x"                        "y"
+##  [4] "plot_id"                  "control_ID"               "block_community_code"
+##  [7] "community_number"         "species_mixture"          "species_diversity"
+## [10] "species_pool"             "species_code"             "research_group_colour"
+## [13] "control"                  "closed_canopy"            "density"
+## [16] "Natives"                  "depth"                    "harvest"
+## [19] "fungicide"                "inoculation"              "pesticide"
+## [22] "native"                   "genetic_diverstiy"        "seed_addition"
+## [25] "fertilizer"               "plot_treatment_connected" "sp1"
+## [28] "sp2"                      "sp3"                      "sp4"
+## [31] "sp5"                      "sp7"                      "sp8"
 ## [34] "sp11"                     "sp_connected"
 ```
 
@@ -450,19 +429,19 @@ names(syndata)
 ```
 
 ```
-##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"            
-##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"            
-##  [7] "gbd_T0.mm."               "block"                    "x"                       
-## [10] "y"                        "control_ID"               "block_community_code"    
-## [13] "community_number"         "species_mixture"          "species_diversity"       
-## [16] "species_pool"             "species_code"             "research_group_colour"   
-## [19] "control"                  "closed_canopy"            "density"                 
-## [22] "Natives"                  "depth"                    "harvest"                 
-## [25] "fungicide"                "inoculation"              "pesticide"               
-## [28] "native"                   "genetic_diverstiy"        "seed_addition"           
-## [31] "fertilizer"               "plot_treatment_connected" "sp1"                     
-## [34] "sp2"                      "sp3"                      "sp4"                     
-## [37] "sp5"                      "sp7"                      "sp8"                     
+##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"
+##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"
+##  [7] "gbd_T0.mm."               "block"                    "x"
+## [10] "y"                        "control_ID"               "block_community_code"
+## [13] "community_number"         "species_mixture"          "species_diversity"
+## [16] "species_pool"             "species_code"             "research_group_colour"
+## [19] "control"                  "closed_canopy"            "density"
+## [22] "Natives"                  "depth"                    "harvest"
+## [25] "fungicide"                "inoculation"              "pesticide"
+## [28] "native"                   "genetic_diverstiy"        "seed_addition"
+## [31] "fertilizer"               "plot_treatment_connected" "sp1"
+## [34] "sp2"                      "sp3"                      "sp4"
+## [37] "sp5"                      "sp7"                      "sp8"
 ## [40] "sp11"                     "sp_connected"
 ```
 
@@ -474,8 +453,8 @@ names(syndata)
 ```
 
 ```
-## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"     
-## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"            
+## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"
+## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"
 ## [9] "species_diversity"
 ```
 
@@ -527,19 +506,19 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
+##
 ## 	 Simultaneous Tests for General Linear Hypotheses
-## 
+##
 ## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
+##
+##
+## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity,
 ##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
-## 
+##
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
-## 4 - 1 == 0    0.478      0.420    1.14    0.482  
+##            Estimate Std. Error z value Pr(>|z|)
+## 2 - 1 == 0   -0.378      0.251   -1.51    0.280
+## 4 - 1 == 0    0.478      0.420    1.14    0.482
 ## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -555,11 +534,11 @@ model1c
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-## 
+##
 ## Response: recov_plot_t
-##                   Chisq Df Pr(>Chisq)   
+##                   Chisq Df Pr(>Chisq)
 ## gbd_T0.mm.         7.42  1     0.0064 **
-## species_diversity  5.71  2     0.0576 . 
+## species_diversity  5.71  2     0.0576 .
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
@@ -587,20 +566,20 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
+##
 ## 	 Simultaneous Tests for General Linear Hypotheses
-## 
+##
 ## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
+##
+##
+## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata,
 ##     random = ~1 | block, method = "REML")
-## 
+##
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
+##            Estimate Std. Error z value Pr(>|z|)
 ## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## 4 - 1 == 0    0.865      0.497    1.74     0.18
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -612,9 +591,9 @@ Anova(model2, type = "II")
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-## 
+##
 ## Response: perleaf_plot_t
-##                   Chisq Df Pr(>Chisq)   
+##                   Chisq Df Pr(>Chisq)
 ## species_diversity  13.1  2     0.0014 **
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -641,20 +620,20 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
+##
 ## 	 Simultaneous Tests for General Linear Hypotheses
-## 
+##
 ## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
+##
+##
+## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata,
 ##     random = ~1 | block, method = "REML")
-## 
+##
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
+##            Estimate Std. Error z value Pr(>|z|)
 ## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8793   
+## 4 - 1 == 0    0.733      0.288    2.54   0.0284 *
+## 4 - 2 == 0    0.132      0.278    0.48   0.8793
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -666,9 +645,9 @@ Anova(model3, type = "II")
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-## 
+##
 ## Response: perroot_plot_t
-##                   Chisq Df Pr(>Chisq)    
+##                   Chisq Df Pr(>Chisq)
 ## species_diversity  14.3  2    0.00077 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -695,20 +674,20 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
+##
 ## 	 Simultaneous Tests for General Linear Hypotheses
-## 
+##
 ## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
+##
+##
+## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata,
 ##     random = ~1 | block, method = "REML")
-## 
+##
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
+##            Estimate Std. Error z value Pr(>|z|)
 ## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
-## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -720,9 +699,9 @@ Anova(model4, type = "II")
 
 ```
 ## Analysis of Deviance Table (Type II tests)
-## 
+##
 ## Response: persoil_plot_t
-##                   Chisq Df Pr(>Chisq)  
+##                   Chisq Df Pr(>Chisq)
 ## species_diversity  7.96  2      0.019 *
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -768,7 +747,7 @@ losses and thus N accumulation in the leachate or groundwater (Lang et al.
 
 !! This is really well done!!
 
-![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
+![plot of chunk anne_final_plot](figure/anne_final_plot.png)
 
 
 * caption:  Nitrogen (N) retention affected by species richness. N retention summed as
@@ -777,7 +756,7 @@ losses and thus N accumulation in the leachate or groundwater (Lang et al.
             hoc Tukey’s test (P < 0.05) are indicated by different letters.
 
 * note cpfaff: This now depends on what we decide to use if we use more dataset and there
-               if a new dataset is generated then yes we need to upload but at the moment 
+               if a new dataset is generated then yes we need to upload but at the moment
                no way!
 
 Finally we need to decide on either to upload a full dataset which we could do
@@ -874,7 +853,7 @@ As there is a growing demand to effectively reuse available data this puts much
 pressure on the development of solutions that help researchers not only to find
 but also to integrate heterogeneous small data into a wider context. Highly
 interdisciplinary research domains like ecology are challenging in terms of
-data reuse and exchange. 
+data reuse and exchange.
 
 While data storage and description is almost the same for all kind of data the
 effective interlinking of data via an ontology requires the development of a
@@ -991,12 +970,12 @@ contents the portal data is dealing with.
            comparative study plots so it is related to the overall desing of the study as
            well as main experiment and species as it is an extinction scenario exmeriment.
            Intresting terms more general we find the purple and organge part like GIS,
-           extinction treatment or basal diameter.  
+           extinction treatment or basal diameter.
 
-### saveaway 
+### saveaway
 
 
-this might be in the discussion rather in the introduction 
+this might be in the discussion rather in the introduction
 
 upcoming features and the like the use of ontologies for semantical assisted
 exploration of data and  integration of an ontology we built that will make
