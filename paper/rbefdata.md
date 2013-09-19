@@ -221,16 +221,16 @@ bef.options()
 ```
 ## $url
 ## [1] "http://china.befdata.biow.uni-leipzig.de"
-## 
+##
 ## $tematres_url
 ## [1] "http://tematres.befdata.biow.uni-leipzig.de/vocab/index.php"
-## 
+##
 ## $tematres_service_url
 ## [1] "http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php"
-## 
+##
 ## $download_dir
 ## [1] "downloads"
-## 
+##
 ## $user_credentials
 ## [1] ""
 ```
@@ -272,7 +272,7 @@ ID of the proposal to work. The ID can be found in the URL of the proposal (see
 box below).
 
 ```
-# the proposal URL shows the id is 90 
+# the proposal URL shows the id is 90
 http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```
 
@@ -560,7 +560,7 @@ require(car)
 
 ```r
 ### Model 1: Overall recovery/N retention
-model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
+model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit,
     method = "REML")
 ```
 
@@ -834,7 +834,7 @@ bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", descriptio
 
 
 ```
-## pdf 
+## pdf
 ##   2
 ```
 
@@ -845,7 +845,7 @@ bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", descriptio
 caption = "Nitrogen (N) retention affected by species richness. N retention summed as\n           the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root\n           recovery (c) and relative soil recovery (d). Significant differences as revealed by post\n           hoc Tukey’s test (P < 0.05) are indicated by different letters."
 
 # upload the figure
-bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "results_plot_proposal_90.png"), 
+bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "results_plot_proposal_90.png"),
     description = caption)
 ```
 
