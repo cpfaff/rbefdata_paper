@@ -9,7 +9,7 @@ options(width = 95)
 
 Today we face a deluge of data scientists need to deal with in many different
 disciplines. While there are already good solutions to some parts of the data
-life cycle the applicability of the solutions to a certain scientific domain
+life cycle the applicability of the solutions to certain scientific domains
 often varies. Especially research domains with a high degree of
 interdisciplinary interactions and heterogeneity in methods and data like
 ecology are facing problems in dealing with some valuable concepts like
