@@ -258,17 +258,26 @@ retention.</p>
 
 <h3>BEF-China and the BEFdata portal</h3>
 
-<p>BEFdata, including the rbefdata package, has been developed within the
-BEF-China experiment.  The BEF-China experiment is a Biodiversity Ecosystem
-Functioning (BEF) experiment funded by the German science foundation (DFG, FOR
-891). Experimental sites are located in the subtropics of China in the
-provinces Jianxi and Zhejiang. The BEF-China research group (<a href="http://www.bef-china.de">www.bef-china.de</a>)
-uses two main research platforms.  An experimental forest diversity gradient of
-50~ha, and 27 observational plots of 30x30 m each located in the Gutianshan
-Nature Reserve.  The observational plots were selected according to a crossed
-sampling design along tree species richness and stand age. The data for the
-workflow on carbon pools stems from 22 to 116 years consisting of 14 to 35
-species (cite Bruelheide, 2010).</p>
+<p>The BEF- (Biodiversity and Ecosystem Functioning) China project is a research
+group whose aim is to disentangle the &#39;The role of tree and shrub diversity for
+production, erosion control, element cycling, and species conservation in
+Chinese subtropical forest ecosystems&#39;. The BEF-China research group
+(<a href="http://www.bef-china.de">www.bef-china.de</a>) is funded by the German science foundation (DFG, FOR 891)
+and uses two main research platforms located in the provinces Jiangxi and
+Zhejiang.  The Main experiment was established in 2009 and 2010 as the first
+large scale forest biodiversity–ecosystem functioning (BEF) experiment in the
+highly species-rich subtropics.  In total, the area covers 50 ha and there are
+566 plots of 400 trees each, ranging in diversity from monocultures to
+24-species mixtures. The experiment used 42 native tree species and 10 shrub
+species, combined into different species pools. More than 400 000 tree and
+shrub saplings were planted.  In a parallel observational approach, a total of
+27 Comparative Study Plots (CSPs) of 30x30 m each were set up in existing
+forests in the adjacent Gutianshan National Nature Reserve (Zhejiang Province)
+in 2008.  The observational plots were selected according to a crossed sampling
+design along tree species richness and stand age. The CSPs address the impact
+of successional age on ecosystem functioning, providing a basis for assessing
+the successional processes at work across tree species diversity in the Main
+Experiment (cite Bruelheide et al., 2012). </p>
 
 <p>The <a href="http://befdataproduction.biow.uni-leipzig.de/">BEFdata</a> portal is an open
 source data management platform developed within the BEF-China project. It
@@ -695,10 +704,10 @@ anova(model2)
 ##     random = ~1 | block, method = &quot;REML&quot;)
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(&gt;|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59  0.00079 ***
-## 4 - 1 == 0    0.865      0.497    1.74  0.18396    
-## 4 - 2 == 0   -0.188      0.479   -0.39  0.91633    
+##            Estimate Std. Error z value Pr(&gt;|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59   0.0012 **
+## 4 - 1 == 0    0.865      0.497    1.74   0.1841   
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -745,7 +754,7 @@ anova(model3)
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
 ## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 1 == 0    0.733      0.288    2.54   0.0286 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
@@ -792,7 +801,7 @@ anova(model4)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 .
+## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
 ## ---
