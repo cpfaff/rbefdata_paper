@@ -22,30 +22,31 @@ merges and finding of data based on an ontology we are building.
 
 With a growing awareness on the value of data, much effort has been put into
 building data management platforms, to preserve all kind of environmental and
-historic data, over the last years (e.g. diversity workbench, GBIF, `BEFdata`, DataONE, LifeWatch).
-Many solutions for different scientific disciplines appeared that provide data
-management plans for small scale projects or collaborations as well as for
-large data producing long term or remote sensing projects. An ongoing trend in
-that context is the development of integrative databases or data portals. They
-serve as nodes that collect data from smaller databases of a certain domain and
-they give researchers of that domain the opportunity to access a wide range of
-relevant data all from one place. These data management portals in fact offer a
-solution to to one of the most pressing problems that we face with our valuable
-data today, their loss.
+historic data, over the last years (e.g. diversity workbench, GBIF, `BEFdata`,
+DataONE, LifeWatch).  Many solutions for different scientific disciplines
+appeared that provide data management plans for small scale projects or
+collaborations as well as for large data producing long term or remote sensing
+projects. An ongoing trend in that context is the development of integrative
+databases or data portals. They serve as nodes that collect data from smaller
+databases of a certain domain and they give researchers of that domain the
+opportunity to access a wide range of relevant data all from one place. These
+data management portals in fact offer a solution to to one of the most pressing
+problems that we face with our valuable data today, their loss.
 
 With a growing global data pool there is a also a growing demand to use and
 reuse available data and to embed small heterogeneous data into a wider
-context. A problem here is the legibility of datasets. Usually plain
-datasets say nothing, to one who is not familiar with it and they are even hard
-to decipher by the author herself after some time has passed. It is usually hard
+context. A problem here is the legibility of datasets. Usually plain datasets
+say nothing, to one who is not familiar with it and they are even hard to
+decipher by the author herself after some time has passed. It is usually hard
 to remember exactly what methods have been used to collect a certain columns
 data or what the abbreviations or headers in the dataset mean. To solve this
 problem metadata frameworks have been developed and published as standards so
 nobody really needs to think about an own set of requirements to describe their
-data. The Ecological Metadata Language (EML)[] is only one example for that. While this
-theoretically solves the problem with not well described datasets it is still
-hard to make researchers use it extensively as this usually always means to
-learn new tools that help with the description process (e.g morpho, data up).
+data. The Ecological Metadata Language (EML)[] is only one example for that.
+While this theoretically solves the problem with not well described datasets it
+is still hard to make researchers use it extensively as this usually always
+means to learn new tools that help with the description process (e.g morpho,
+data up).
 
 While well described data can help a lot in understanding datasets and on
 deciding upon the relevance and applicability in a certain analysis there is
@@ -93,45 +94,47 @@ Comment: I think much of the introduction is more discussion. We will not show t
 ontologies, so they should not be named in the introduction, and if they are named,
 then only to introduce thesauri as step towards more semantic ways of dealing with data.
 
-At this point, it is not clear to me, that rbefdata will be used for loading, analysing, and
-uploading data. This must be much more highlighted. Another feature of rbefdata is that the
-researchers are able to load and manipulate their data offline on their desktops. This is
-crucial. There are attempts to enable on site manipulations of data by providing a server and
-to just send the script to the data rather than the data to the script. We will have to
-discuss this, since sending the data to the script is much more network intensive and inefficient.
-We still promote the inefficient way, since we think that researchers like it better to
-work in their own working environment, rather than sending scripts to foreign hosts. However, it is
-still less efficient to do the work locally. This must be discussed! And can be introduced in
-the introduction.
+At this point, it is not clear to me, that rbefdata will be used for loading,
+analysing, and uploading data. This must be much more highlighted. Another
+feature of rbefdata is that the researchers are able to load and manipulate
+their data offline on their desktops. This is crucial. There are attempts to
+enable on site manipulations of data by providing a server and to just send the
+script to the data rather than the data to the script. We will have to discuss
+this, since sending the data to the script is much more network intensive and
+inefficient.  We still promote the inefficient way, since we think that
+researchers like it better to work in their own working environment, rather
+than sending scripts to foreign hosts. However, it is still less efficient to
+do the work locally. This must be discussed! And can be introduced in the
+introduction.
 
 We are inline with the ROpenSci initiatives to give the R - User all the flexibility of data access through
 apis. This has to be mentioned in the introduction.
 
 Rbefdata is also a step towards inter-archive communication!
 
-
 ## Material and Methods
 
 ### BEF-China and the BEFdata portal
 
-BEFdata, including the rbefdata package, has been developed within the BEF-China experiment.
-The BEF-China experiment is a Biodiversity Ecosystem Functioning (BEF)
-experiment funded by the German science foundation (DFG, FOR 891). Experimental sites are
-located in the subtropics of China in the provinces Jianxi and Zhejiang. The
-BEF-China research group (www.bef-china.de) uses two main research platforms.
-An experimental forest diversity gradient of 50~ha, and 27 observational plots
-of 30x30 m each located in the Gutianshan Nature Reserve.  The observational
-plots were selected according to a crossed sampling design along tree species
-richness and stand age. The data for the workflow on carbon pools stems from 22
-to 116 years consisting of 14 to 35 species (cite Bruelheide, 2010).
+BEFdata, including the rbefdata package, has been developed within the
+BEF-China experiment.  The BEF-China experiment is a Biodiversity Ecosystem
+Functioning (BEF) experiment funded by the German science foundation (DFG, FOR
+891). Experimental sites are located in the subtropics of China in the
+provinces Jianxi and Zhejiang. The BEF-China research group (www.bef-china.de)
+uses two main research platforms.  An experimental forest diversity gradient of
+50~ha, and 27 observational plots of 30x30 m each located in the Gutianshan
+Nature Reserve.  The observational plots were selected according to a crossed
+sampling design along tree species richness and stand age. The data for the
+workflow on carbon pools stems from 22 to 116 years consisting of 14 to 35
+species (cite Bruelheide, 2010).
 
 The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is an open
 source data management platform developed within the BEF-China project. It
-adheres to standards like the Ecological Metadata Language [has to be cited!] for describing
-datasets with metadata and is specialized in harmonizing small heterogeneous
-data that usually has to be dealt with in BEF. But its specialization makes it
-also very valuable to use in any other scientific domain that needs to deal
-with complex small and heterogeneous data.
+adheres to standards like the Ecological Metadata Language [has to be cited!]
+for describing datasets with metadata and is specialized in harmonizing small
+heterogeneous data that usually has to be dealt with in BEF. But its
+specialization makes it also very valuable to use in any other scientific
+domain that needs to deal with complex small and heterogeneous data.
 
 The portal offers a social component where researchers can shop datasets and
 write a paper proposals based on the datasets in their shopping cart. In the
@@ -178,19 +181,20 @@ stone for reproducible research.
 
 ## Usecase (results)
 
-In this paper we use already published datasets (we should use more than one dataset!, e.g. CSP for all, species reference, ...)
-as a usecase to present the
+In this paper we use already published datasets (we should use more than one
+dataset!, e.g. CSP for all, species reference, ...) as a usecase to present the
 functionalities and inter linkages between the BEF-China data portal and
 `rbefdata`.
 
 
 !! This should be moved into the introduction!!
-The usecase is dealing with data
-from a small scale experiment called pilot experiment. It is a 15N tracer
-experiment which aims to disentangle the effect of species mixtures on system N
-retention.
+
+The usecase is dealing with data from a small scale experiment called pilot
+experiment. It is a 15N tracer experiment which aims to disentangle the effect
+of species mixtures on system N retention.
 
 !! Introduction !!
+
 We created a paper proposal with the following rationale: 'Knowledge of
 biodiversity effects on nutrient cycling patterns in subtropical forest
 ecosystems is still very limited, particularly as regards macronutrients such
@@ -216,8 +220,10 @@ effects strengthen over time.' The respective proposal can be assessed under
 (url) For a detailed description of the experimental design we refer to Lang et
 al. 2013 (DOI)
 
-!! use more than one datafile!. In this case, there should be a separate file for
-plot attributes, soil attributes, plot diversity, etc. , another one for species names!!
+!! use more than one datafile!.
+
+In this case, there should be a separate file for plot attributes, soil
+attributes, plot diversity, etc. , another one for species names!!
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
 
@@ -249,7 +255,6 @@ BEF-China project instance of the `BEFdata` portal that we retrieve data from
 in this example. If one has set up an own instance of the `BEFdata` portal,
 this URL needs to be changed so the package communicates with the right server
 (see box below).
-
 
 ```r
 require(rbefdata)
