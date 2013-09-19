@@ -182,24 +182,24 @@ hr {
 <body>
 <h2>Abstract</h2>
 
-<p>Today we face a deluge of data scientists need to deal with in many different
-disciplines. While there are already good solutions to some parts of the data
-life cycle the applicability of the solutions to certain scientific domains
-often varies. Especially research domains with a high degree of
-interdisciplinary interactions and heterogeneity in methods and data like
-ecology are facing problems in dealing with some valuable concepts like
-ontologies that potentially can be used to improve or automate some of the most
-common tasks in analyses like finding relevant data, cleaning and merging of
-datasets. We here introduce the <code>rbefata</code> package that connects to the open
-source data management platform <code>BEFdata</code> that has been developed and is used
-within the BEF-China experiment. We show the use of the package in interaction
-with the data management platform using an example workflow that integrates two
-datasets from the BEF-China experiment. The workflow is representing an
-analysis that has been published already. Finally we discuss this software
-combination in the context of current and future data management requirements
-and the data life cycle. We also give an outlook on upcoming features like a
-semantical assisted search and merging of data to be integrated with <code>rbefdata</code>
-and <code>BEFdata</code>.</p>
+<p>Today we face a deluge of data, scientists need to deal with in many different
+disciplines. While there are already good software solutions to assist
+reasearcher throughout the the data life cycle the applicability of the
+solutions to certain scientific domains often varies. Especially research
+domains with a high degree of interdisciplinary interactions and heterogeneity
+in methods and data like ecology are facing problems in dealing with some
+valuable concepts like ontologies that potentially can be used to improve or
+automate some of the most common tasks in analyses like finding relevant data,
+cleaning and merging and a exchange of datasets. We here introduce the
+<code>rbefata</code> package that connects to the open source data management platform
+<code>BEFdata</code> that has been developed and is used within the BEF-China experiment.
+We show the use of the package in interaction with the data management platform
+using an example workflow that integrates two datasets from the BEF-China
+experiment and is representing an analysis that has been published already.
+Finally we discuss this software combination in the context of current and
+future data management requirements and the data life cycle. We also give an
+outlook on upcoming features like a semantical assisted search and merging of
+data to be integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
 
 <h2>Introduction</h2>
 
@@ -697,10 +697,10 @@ anova(model2)
 ##     random = ~1 | block, method = &quot;REML&quot;)
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(&gt;|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   &lt;0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(&gt;|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59   0.0011 **
+## 4 - 1 == 0    0.865      0.497    1.74   0.1840   
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -746,8 +746,8 @@ anova(model3)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0283 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
@@ -794,9 +794,9 @@ anova(model4)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 *
-## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
-## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -953,14 +953,47 @@ do that.</li>
 pressure on the development of solutions that help researchers not only to find
 but also to integrate heterogeneous small data into a wider context. Highly
 interdisciplinary research domains like ecology are challenging in terms of
-data reuse and exchange. While data storage and description is almost the same
-for all kind of data the effective interlinking of data via an ontology
-requires the development of a common terminology all contributing scientist of
-a research domain accept and not only use but help do develop and discuss it.
-Thus collaborative ontology engineering approaches like <code>ontoverse</code>
-(Zoulfa El Jerroudi et al. 2008) or <code>tematres</code> are highly valuable as the not
-only help to set up ontologies but also to develop and maintain them over time
-even if the researchers change that contribute to it.</p>
+data reuse and exchange. </p>
+
+<p>While data storage and description is almost the same for all kind of data the
+effective interlinking of data via an ontology requires the development of a
+common terminology all contributing scientist of a research domain accept and
+not only use but help do develop and discuss it.  Thus collaborative ontology
+engineering approaches like <code>ontoverse</code> (Zoulfa El Jerroudi et al. 2008) or
+<code>tematres</code> are highly valuable as the not only help to set up ontologies but
+also to develop and maintain them over time even if the researchers change that
+contribute to it.</p>
+
+<p>While well described data can help a lot in understanding datasets and on
+deciding upon the relevance and applicability in a certain analysis there is
+still lots of manual intervention necessary after that to prepare the data for
+analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
+reshaped and merged which usually takes up to 70% of an analysis workflow,
+before smart models can be applied to the data to find interesting patters
+(cite the workflow paper of Karin and me). This preparatory steps not only are
+time and labour intensive but also potentially error prone, especially as the
+complexity of the analyses increases.</p>
+
+<p>For example ecology, which has grown into a very collaborative,
+interdisciplinary and data intensive science over the last decade, to address
+questions on a greater temporal and spatial scale (e.g michener et al 2012).
+The data here is mainly provided by small scale studies spread all over the
+world (e.g heidorn2009 shedding light on the dark) but also through bigger long
+term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
+and local initiatives (cite xxx) and private persons. This in fact results in a
+wild growing, complex and heterogeneous data landscape that an ontology would
+need to capture to be usable.</p>
+
+<p>Ontologies, as formal representations of knowledge, potentially offer a
+sophisticated tool to deal with that step of data preparation (cite supporting
+ecology as data intensive science). While they are already used in some
+research domains like genetics (cite xxx, eg. <a href="http://www.geneontology.org/">http://www.geneontology.org/</a>),
+other domains face more problems using it (cite xxx, morpho team announced
+semantic tagging but the plug-in did not appear anywhere). The application of
+ontologies in ecology is discussed controversially (cite xxx) and it is argued
+that they can be a huge benefit, but it is hard to set up a sophisticated
+ontology covering all necessary terms and relation of a highly complex research
+domains (cite xxx).</p>
 
 <p>The software combination of <code>rbefdata</code> and <code>BEFdata</code> offers a solutions to data
 storage for different sizes of projects, it helps in describing data with
@@ -975,11 +1008,10 @@ functionality provided by <code>rbefdata</code></p>
     + simply pull data into analysis software and push data back
     + data provenance by attaching R scripts to uploads</p>
 
-<p>(data intensive science, long tail). The
-combination of <code>BEFdata</code> and the <code>rbefdata</code> package provides solutions to parts
-of the data lifecycle as it deals with finding and describing data as well as
-the as it promotes the understanding and reuse of data, as it is adhering
-metadata standards.</p>
+<p>(data intensive science, long tail). The combination of <code>BEFdata</code> and the
+<code>rbefdata</code> package provides solutions to parts of the data lifecycle as it
+deals with finding and describing data as well as the as it promotes the
+understanding and reuse of data, as it is adhering metadata standards.</p>
 
 <p>a one part of the data life cycle and especially introduces a solution to deal
 with high heterogeneous data.</p>
@@ -989,17 +1021,17 @@ knowledge extracted from portals that deal with data management for ecological
 research. The <code>tematres</code> server offers an API so all the contained terms can be
 accessed by the upcoming version of <code>rbefdata</code></p>
 
-<p>The formalization developed is and will be based on the knowledge used in
-biodiversity research. Thus we will here discuss the software combination
-<code>BEFdata</code> and <code>rbefdata</code> in the light of the upcoming features and in general
-context state of the art data management today. In one of the next versions to
-be rolled out the <code>BEFdata</code> portal will get a semantical annotation feature.
-This will give administrators the ability to tag each column of datasets with a
-general term that best describes the content. So the field will contain
-potential top terms of the ontology. The tagging will be reflected in the API
-and can thus be simply queried to use the information within the R package.
-Using the knowledge about the content of a column in the R package will enable
-us to do support smart merges that work.</p>
+<p>The formalization developed will be based on the knowledge used in biodiversity
+research. Thus we will here discuss the software combination <code>BEFdata</code> and
+<code>rbefdata</code> in the light of the upcoming features and in general context state
+of the art data management today. In one of the next versions to be rolled out
+the <code>BEFdata</code> portal will get a semantical annotation feature.  This will give
+administrators the ability to tag each column of datasets with a general term
+that best describes the content. So the field will contain potential top terms
+of the ontology. The tagging will be reflected in the API and can thus be
+simply queried to use the information within the R package.  Using the
+knowledge about the content of a column in the R package will enable us to do
+support smart merges that work.</p>
 
 <p><code>tematres</code> (<a href="http://www.vocabularyserver.com/">homepage</a>)into <code>BEFdata</code> and the
 <code>rbefdata</code> package so they play well together semantically.</p>
@@ -1051,37 +1083,6 @@ contents the portal data is dealing with.</p>
 exploration of data and  integration of an ontology we built that will make
 finding data and smart merges possible, to help researchers to deal with the
 future challenges in handling complex and heterogeneous data.</p>
-
-<p>While well described data can help a lot in understanding datasets and on
-deciding upon the relevance and applicability in a certain analysis there is
-still lots of manual intervention necessary after that to prepare the data for
-analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
-reshaped and merged which usually takes up to 70% of an analysis workflow,
-before smart models can be applied to the data to find interesting patters
-(cite the workflow paper of Karin and me). This preparatory steps not only are
-time and labour intensive but also potentially error prone, especially as the
-complexity of the analyses increases.</p>
-
-<p>For example ecology, which has grown into a very collaborative,
-interdisciplinary and data intensive science over the last decade, to address
-questions on a greater temporal and spatial scale (e.g michener et al 2012).
-The data here is mainly provided by small scale studies spread all over the
-world (e.g heidorn2009 shedding light on the dark) but also through bigger long
-term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
-and local initiatives (cite xxx) and private persons. This in fact results in a
-wild growing, complex and heterogeneous data landscape that an ontology would
-need to capture to be usable.</p>
-
-<p>Ontologies, as formal representations of knowledge, potentially offer a
-sophisticated tool to deal with that step of data preparation (cite supporting
-ecology as data intensive science). While they are already used in some
-research domains like genetics (cite xxx, eg. <a href="http://www.geneontology.org/">http://www.geneontology.org/</a>),
-other domains face more problems using it (cite xxx, morpho team announced
-semantic tagging but the plug-in did not appear anywhere). The application of
-ontologies in ecology is discussed controversially (cite xxx) and it is argued
-that they can be a huge benefit, but it is hard to set up a sophisticated
-ontology covering all necessary terms and relation of a highly complex research
-domains (cite xxx).</p>
 
 <p>We discuss <code>rbefdata</code> and <code>BEFdata</code> in in the light of current and future
 challenges for data management give an outlook onto upcoming features that
