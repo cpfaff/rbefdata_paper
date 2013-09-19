@@ -534,8 +534,10 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 As there is a growing demand to effectively reuse available data this puts much
 pressure on the development of solutions that help researchers not only to find
-but also to integrate heterogeneous small data into a wider context in
-different analyses (cite xxx, data intensive science, long tail). The
+but also to integrate heterogeneous small data into a wider context 
+
+
+(data intensive science, long tail). The
 combination of `BEFdata` and the `rbefdata` package provides solutions to parts
 of the data lifecycle as it deals with finding and describing data as well as
 the as it promotes the understanding and reuse of data, as it is adhering

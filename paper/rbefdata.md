@@ -586,9 +586,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## 2 - 1 == 0    1.053      0.293    3.59  0.00081 ***
+## 4 - 1 == 0    0.865      0.497    1.74  0.18387    
+## 4 - 2 == 0   -0.188      0.479   -0.39  0.91634    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -640,9 +640,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0282 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -831,8 +831,10 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 As there is a growing demand to effectively reuse available data this puts much
 pressure on the development of solutions that help researchers not only to find
-but also to integrate heterogeneous small data into a wider context in
-different analyses (cite xxx, data intensive science, long tail). The
+but also to integrate heterogeneous small data into a wider context 
+
+
+(data intensive science, long tail). The
 combination of `BEFdata` and the `rbefdata` package provides solutions to parts
 of the data lifecycle as it deals with finding and describing data as well as
 the as it promotes the understanding and reuse of data, as it is adhering
