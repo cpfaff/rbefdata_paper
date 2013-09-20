@@ -35,9 +35,9 @@ collaborations as well as for large data producing long term or remote sensing
 projects. An ongoing trend in that context is the development of integrative
 databases or data portals. They serve as nodes that collect data from smaller
 databases of a certain domain and they give researchers of that domain the
-opportunity to access a wide range of relevant data all from one place. These
-data management portals in fact offer a solution to to one of the most pressing
-problems that we face with our valuable data today, their loss.
+opportunity to access a wide range of relevant data all from one place (e.g
+GBIF). These data management portals in fact offer a solution to to one of the
+most pressing problems that we face with our valuable data today, their loss.
 
 With a growing global data pool there is a also a growing demand to use and
 reuse available data and to embed small heterogeneous data into a wider
@@ -120,29 +120,29 @@ be provided. The data owners and proposed collaborators are informed and can
 decide if and how they like to participate in the upcoming paper or if they
 only like to get acknowledged for providing their data (cite Karin).
 Furthermore the datasets assembled by the paper proposal can be readily
-imported in one step to the R environment by rbefdata.
+imported in one step to the R environment by `rbefdata`.
 
 ### rbefdata
 
 The development of the `rbefdata` package started within the BEF-China project.
 Meanwhile it is part of the rOpenSci package portfolio (http://ropensci.org/),
 which is a community driven approach to wrap all science APIs and to create
-solutions to pull data from different repositories into R for analysis.  The
-package can be installed from the CRAN package repository
-(https://github.com/befdata/befdata) and enables access to the data, meta data
-structures of the platform and provides convenient methods to pull single or
-multiple dataset into the R environment in one step for analysis.  Additionally
-it offers functions that help to upload final results datasets with the script
-attached that has been used to derive the results from the original datasets
-which provides a valuable insight into data provenance and also is a stepping
-stone for reproducible research.
+solutions for R users to seamlessly pull data from different repositories
+spread over the internet into R for analysis. The package can be installed from
+the CRAN package repository (https://github.com/befdata/befdata). It enables
+access to the data and meta data structures of the platform and provides
+convenient methods to pull single or multiple dataset into the R environment in
+one step for analysis. Additionally it offers functions that help to upload
+final results datasets with the script attached that has been used to derive
+the results from the original datasets which provides a valuable insight into
+data provenance and also is a stepping stone for reproducible research.
 
 ## Usecase (results)
 
 In this paper we use already published datasets (we should use more than one
 dataset!, e.g. CSP for all, species reference, ...) as a use case to present
 the functionalities and inter linkages between the BEF-China data portal and
-`rbefdata`. Starting on with a paper proposal on following rationale.
+`rbefdata`. Starting on with a paper proposal on following rationale. 
 
 !! Introduction !!
 
@@ -572,10 +572,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
+## 4 - 1 == 0    0.865      0.497    1.74    0.184   
+## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -627,8 +627,8 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -718,7 +718,7 @@ different system compartments (leaves, fine roots and soil) revealed that fine
 root recovery was lower than leaf recovery, and biomass recovery (leaves and
 fine roots) was lower than soil recovery.  Whereas the relative leaf and root
 recovery were significantly higher in species mixtures compared with
-monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
+monoculture (Figs. Xb and Xc), the relative soil recovery was significantly
 reduced (Fig. Xd).
 
 Our results demonstrate that species richness of mixtures increases system N
@@ -737,12 +737,6 @@ after a few years. This in turn has the potential to significantly reduce N
 losses and thus N accumulation in the leachate or groundwater (Lang et al.
 2013).
 
-?? This should have been reported elsewhere! This paper should be cited here!!
-
-?? was the general aim of the analysis part of the introduction? It should be!!
-
-!! This is really well done!!
-
 ![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
 
@@ -759,21 +753,22 @@ Finally we need to decide on either to upload a full dataset which we could do
 using the dataset upload function `bef.portal.upload.dataset()` or only to
 upload the script and maybe a figure to highlight the road to the results
 starting from the source datasets used. This can be done by attaching to the
-proposal with `bef.portal.attach.to_proposal()`.
-
-For the shown example it is the best way to go with an attachment to the
-proposal as uploading the merged dataset would only mean duplication of data in
-the database of the data management platform.
-
-* note kej: !! no! Upload!. There should be some new data, maybe on plot level, maybe on species level.
-            Maybe something such as general N uptake at median species diversity for the species in
-            question, that can then be used by other projects as functional traits. Upload data!
+proposal with `bef.portal.attach.to_proposal()`. For the example shown it is
+the best way to go with an attachment to the proposal as uploading the merged
+dataset would only mean duplication of data in the database of the data
+management platform.
 
 So we upload the script and the four pane figure with its caption to add them
 to the proposal. The figure is prepared as Portable Network Graphics (PNG)
 using the R internal PNG device. It is written to a temporary folder and then
 uploaded. The script in this case is an R markdown file that we attach to the
 proposal (see box below).
+
+
+* note kej: !! no! Upload!. There should be some new data, maybe on plot level, maybe on
+            species level.  Maybe something such as general N uptake at median species
+            diversity for the species in question, that can then be used by other projects
+            as functional traits. Upload data!
 
 
 ```r
@@ -811,8 +806,8 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 ![showcase_proposal_attachment](./figure/static/showcase_proposal_attachments.png)
 
 * caption: The paper proposal in its final approved state with attachments. The
-           attachments are the final plot and the R script that has been used to derive
-           the resutls in the published paper.
+           attachments are the final results figure and the R script that has been 
+           used to derive the results in the published paper.
 
 ## Discussion
 
