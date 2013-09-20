@@ -40,8 +40,9 @@ projects. An ongoing trend in that context is the development of integrative
 databases or data portals. They serve as nodes that collect data from smaller
 databases of a certain domain and they give researchers of that domain the
 opportunity to access a wide range of relevant data all from one place (e.g
-GBIF). These data management portals in fact offer a solution to to one of the
-most pressing problems that we face with our valuable data today, their loss.
+GBIF, TRY). These data management portals in fact offer a solution to to one of
+the most pressing problems that we face with our valuable data today, their
+loss.
 
 With a growing global data pool there is a also a growing demand to use and
 reuse available data and to embed small heterogeneous data into a wider
@@ -52,12 +53,11 @@ to remember exactly what methods have been used to collect a certain columns
 data or what the abbreviations or headers in the dataset mean. To solve this
 problem metadata frameworks have been developed and published as standards so
 nobody really needs to think about an own set of requirements to describe their
-data. The Ecological Metadata Language
-[EML](http://knb.ecoinformatics.org/software/eml/) is only one example for
-that. While this theoretically solves the problem with not well described
-datasets it is still hard to make researchers use it extensively as this
-usually always means to learn new tools that help with the description process
-(e.g morpho, data up).
+data. The Ecological Metadata Language [EML](http://knb.ecoinformatics.org/software/eml/) 
+is only one example for that. While this theoretically solves the problem with
+not well described datasets it is still hard to make researchers use it
+extensively as this usually always means to learn new tools that help with the
+description process (e.g morpho, data up).
 
 We here introduce the R package `rbefdata` as part of the rOpenSci initiative
 which aim is to give the R - Users all the flexibility of data access through
@@ -94,7 +94,7 @@ and uses two main research platforms located in the provinces Jiangxi and
 Zhejiang.  The Main experiment was established in 2009 and 2010 as the first
 large scale forest biodiversity–ecosystem functioning (BEF) experiment in the
 highly species-rich subtropics.  In total, the area covers 50 ha and there are
-566 plots of 400 trees each, ranging in diversity from monocultures to
+566 plots of 400 trees each, ranging in diversity from monoculture to
 24-species mixtures. The experiment used 42 native tree species and 10 shrub
 species, combined into different species pools. More than 400 000 tree and
 shrub saplings were planted.  In a parallel observational approach, a total of
@@ -104,7 +104,7 @@ in 2008.  The observational plots were selected according to a crossed sampling
 design along tree species richness and stand age. The CSPs address the impact
 of successional age on ecosystem functioning, providing a basis for assessing
 the successional processes at work across tree species diversity in the Main
-Experiment (cite Bruelheide et al., 2012). 
+Experiment (Bruelheide et al., 2012). 
 
 ### BEFdata portal
 
@@ -112,8 +112,8 @@ The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) is specialized in
 managing small and heterogeneous datasets. It adheres to standards like EML and
 offers a social component as well. The portal facilitates research cooperation
 by the tool of paper proposals.  Sending in a proposal, a researcher asks for
-access to the datasets and proposes his/her research idea to the data owners
-and possible collaborators.  This more social component of the portal allows to
+access to the datasets and proposes his research idea to the data owners and
+possible collaborators. This more social component of the portal allows to
 include and acknowledge all researchers involved in the data sampling process,
 promotes collaborations between research units, avoids publication initiatives
 of the same research ideas and adds to the transparency of data publication.
@@ -146,9 +146,11 @@ data provenance and also is a stepping stone for reproducible research.
 In this paper we use already published datasets (we should use more than one
 dataset!, e.g. CSP for all, species reference, ...) as a use case to present
 the functionalities and inter linkages between the BEF-China data portal and
-`rbefdata`. Starting on with a paper proposal on following rationale. 
+`rbefdata`. 
 
 !! Introduction !!
+
+Starting on with a paper proposal on following rationale.  
 
 We created a paper proposal with the following rationale: 'Knowledge of
 biodiversity effects on nutrient cycling patterns in subtropical forest
@@ -161,7 +163,7 @@ plantations are of particular interest in China, where large areas have been
 reforested in order to counteract soil erosion and to increase the soils’ water
 and nutrient retention capacity.  In this study we planted saplings of four
 abundant early successional (evergreen and deciduous) tree species in
-monocultures, two- and four-species combination to test the effect of species
+monoculture, two- and four-species combination to test the effect of species
 richness on nitrogen acquisition and retention by using a 15N tracer
 experiment. A crucial question in BEF research is the appropriate time scale of
 experiments which allows species richness effects to emerge. This question
@@ -183,11 +185,10 @@ attributes, plot diversity, etc. , another one for species names!!
 ![showcase_proposal](./figure/static/showcase_proposal.png)
 
 * caption: The paper proposal in its final approved state. The information on that page
-           contains a title rational envisaged date and journal. The calculated authors
+           contains a title, a rational an envisaged date and journal. The calculated authors
            and email lists for communication as well as the attached datasets and sub
-           projects involved (only partially shown). The proposal is published as paper 
+           projects involved (only partially shown). The proposal is published alredy see 
            (Lang et al. 2013).
-
 
 When all data owners accepted the paper proposal `rbefdata` can be used to
 directly access the datasets from the data platform and transfer them to the R
@@ -401,7 +402,7 @@ Anova(model4,type="II")
 ### Results of the showcase analysis
 
 System 15N retention (overall plot recovery) was positively affected by species
-richness at the level of P = 0.l0576 (Chisq: 5.7; Fig. Xa). The analysis of the
+richness at the level of P = 0.0576 (Chisq: 5.7; Fig. Xa). The analysis of the
 different system compartments (leaves, fine roots and soil) revealed that fine
 root recovery was lower than leaf recovery, and biomass recovery (leaves and
 fine roots) was lower than soil recovery.  Whereas the relative leaf and root
