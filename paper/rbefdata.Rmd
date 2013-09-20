@@ -38,8 +38,13 @@ projects. An ongoing trend in that context is the development of integrative
 databases or data portals. They serve as nodes that collect data from smaller
 databases of a certain domain and they give researchers of that domain the
 opportunity to access a wide range of relevant data all from one place. These
-data management portals in fact offer a solution to to one of the most pressing
-problems that we face with our valuable data today, their loss.
+data management portals in fact offer a solution to one of the most pressing
+problems that we face with our valuable data today, their loss. However, by
+developing tools which allow an easy access and analyses of these data it can
+be ensured that these are not only preserved but used and reused. In this paper
+we want to introduce the new R package rbefdata which linkes the befdata
+portal with the statistics environment R. The aim of the package is to provide
+the tools to download data, analyse them and upload them back to the data portal.
 
 With a growing global data pool there is a also a growing demand to use and
 reuse available data and to embed small heterogeneous data into a wider
@@ -74,10 +79,7 @@ experiment. It is a 15N tracer experiment which aims to disentangle the effect
 of species mixtures on system N retention. The workflow depicts how to pull
 data into the R environment, the inspection of datasets metadata and how to
 upload data and attachments. It reconstructs a facet of an analysis that has
-been published already (Lang et al. 2013)). The use case is dealing with data
-from a small scale experiment called the pilot experiment. It is a 15N tracer
-experiment which aims to disentangle the effect of species mixtures on system N
-retention.
+been published already (Lang et al. 2013).
 
 ## Material and Methods
 
