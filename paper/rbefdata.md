@@ -77,7 +77,7 @@ retention.
 
 ## Material and Methods
 
-### BEF-China and the BEFdata portal
+### BEF-China 
 
 The BEF- (Biodiversity and Ecosystem Functioning) China project is a research
 group whose aim is to disentangle the 'The role of tree and shrub diversity for
@@ -100,40 +100,25 @@ of successional age on ecosystem functioning, providing a basis for assessing
 the successional processes at work across tree species diversity in the Main
 Experiment (cite Bruelheide et al., 2012). 
 
-The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is an open
-source data management platform developed within the BEF-China project. It
-adheres to standards like the Ecological Metadata Language (cite xxx) for
-describing datasets with metadata and is specialized in harmonizing small
-heterogeneous data that usually has to be dealt with in BEF. But its
-specialization makes it also very valuable to use in any other scientific
-domain that needs to deal with complex small and heterogeneous data.
+### BEFdata portal
 
-The portal offers a social component where researchers can shop datasets and
-write a paper proposals based on the datasets in their shopping cart. In the
-process of creating a proposal some information like a title, a rationale, an
-envisaged journal and date needs to be provided. Sending in a proposal a
-researcher asks for access to the datasets and provides the data owners with
-necessary information about the paper. The data owners then can decide if and
-how they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin).
-
-### The proposal
-
-The portal facilitates research cooperation by the tool of paper proposals.
-Sending in a proposal, a researcher asks for access to the datasets and
-proposes his/her research idea to the dataowners and possible collaborators.
-This more social component of the portal allows to include and acknowledge all
-researchers involved in the data sampling process, promotes collaborations
-between research units, avoids publication initiatives of the same research
-ideas and adds to the transparency of data publication.  To create a paper
-proposal the researcher can shop (select) datasets which are to be included in
-the analyses.  Furthermore basic information of the proposed paper such as the
-title, the rationale, the envisaged journal and date needs to be provided. The
-data owners and proposed collaborators are informed and can decide if and how
-they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin). Furthermore the datasets
-assembled by the paper proposal can be readily imported in one step to the R
-environment by rbefdata.
+The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) is specialized in
+managing small and heterogeneous datasets. It adheres to standards like EML and
+offers a social component as well. The portal facilitates research cooperation
+by the tool of paper proposals.  Sending in a proposal, a researcher asks for
+access to the datasets and proposes his/her research idea to the data owners
+and possible collaborators.  This more social component of the portal allows to
+include and acknowledge all researchers involved in the data sampling process,
+promotes collaborations between research units, avoids publication initiatives
+of the same research ideas and adds to the transparency of data publication.
+To create a paper proposal the researcher can shop (select) datasets which are
+to be included in the analyses.  Furthermore basic information of the proposed
+paper such as the title, the rationale, the envisaged journal and date needs to
+be provided. The data owners and proposed collaborators are informed and can
+decide if and how they like to participate in the upcoming paper or if they
+only like to get acknowledged for providing their data (cite Karin).
+Furthermore the datasets assembled by the paper proposal can be readily
+imported in one step to the R environment by rbefdata.
 
 ### rbefdata
 
@@ -586,9 +571,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59   0.0012 **
-## 4 - 1 == 0    0.865      0.497    1.74   0.1841   
-## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
+## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
+## 4 - 1 == 0    0.865      0.497    1.74    0.184   
+## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -639,10 +624,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0286 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
+## 4 - 1 == 0    0.733      0.288    2.54    0.029 *  
+## 4 - 2 == 0    0.132      0.278    0.48    0.879    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -694,9 +679,9 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 *
-## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
-## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)

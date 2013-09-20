@@ -81,7 +81,7 @@ retention.
 
 ## Material and Methods
 
-### BEF-China and the BEFdata portal
+### BEF-China 
 
 The BEF- (Biodiversity and Ecosystem Functioning) China project is a research
 group whose aim is to disentangle the 'The role of tree and shrub diversity for
@@ -104,40 +104,25 @@ of successional age on ecosystem functioning, providing a basis for assessing
 the successional processes at work across tree species diversity in the Main
 Experiment (cite Bruelheide et al., 2012). 
 
-The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is an open
-source data management platform developed within the BEF-China project. It
-adheres to standards like the Ecological Metadata Language (cite xxx) for
-describing datasets with metadata and is specialized in harmonizing small
-heterogeneous data that usually has to be dealt with in BEF. But its
-specialization makes it also very valuable to use in any other scientific
-domain that needs to deal with complex small and heterogeneous data.
+### BEFdata portal
 
-The portal offers a social component where researchers can shop datasets and
-write a paper proposals based on the datasets in their shopping cart. In the
-process of creating a proposal some information like a title, a rationale, an
-envisaged journal and date needs to be provided. Sending in a proposal a
-researcher asks for access to the datasets and provides the data owners with
-necessary information about the paper. The data owners then can decide if and
-how they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin).
-
-### The proposal
-
-The portal facilitates research cooperation by the tool of paper proposals.
-Sending in a proposal, a researcher asks for access to the datasets and
-proposes his/her research idea to the dataowners and possible collaborators.
-This more social component of the portal allows to include and acknowledge all
-researchers involved in the data sampling process, promotes collaborations
-between research units, avoids publication initiatives of the same research
-ideas and adds to the transparency of data publication.  To create a paper
-proposal the researcher can shop (select) datasets which are to be included in
-the analyses.  Furthermore basic information of the proposed paper such as the
-title, the rationale, the envisaged journal and date needs to be provided. The
-data owners and proposed collaborators are informed and can decide if and how
-they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin). Furthermore the datasets
-assembled by the paper proposal can be readily imported in one step to the R
-environment by rbefdata.
+The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) is specialized in
+managing small and heterogeneous datasets. It adheres to standards like EML and
+offers a social component as well. The portal facilitates research cooperation
+by the tool of paper proposals.  Sending in a proposal, a researcher asks for
+access to the datasets and proposes his/her research idea to the data owners
+and possible collaborators.  This more social component of the portal allows to
+include and acknowledge all researchers involved in the data sampling process,
+promotes collaborations between research units, avoids publication initiatives
+of the same research ideas and adds to the transparency of data publication.
+To create a paper proposal the researcher can shop (select) datasets which are
+to be included in the analyses.  Furthermore basic information of the proposed
+paper such as the title, the rationale, the envisaged journal and date needs to
+be provided. The data owners and proposed collaborators are informed and can
+decide if and how they like to participate in the upcoming paper or if they
+only like to get acknowledged for providing their data (cite Karin).
+Furthermore the datasets assembled by the paper proposal can be readily
+imported in one step to the R environment by rbefdata.
 
 ### rbefdata
 
