@@ -15,9 +15,12 @@ domains with a high degree of interdisciplinary interactions and heterogeneity
 in methods and data like ecology are facing problems in dealing with some
 valuable concepts like ontologies that potentially can be used to improve or
 automate some of the most common tasks in analyses like finding relevant data,
-cleaning and merging and a exchange of datasets. We here introduce the
-`rbefata` package that connects to the open source data management platform
-`BEFdata` that has been developed and is used within the BEF-China experiment.
+cleaning and merging and a exchange of datasets. 
+* ich würde den Teilsatz über onotologies hier rausnehmen. Du weist ja am Ende des
+Abstracts auf die kommenden features, wovon ontologies ein Teil sind....
+We here introduce the `rbefata` package that connects the R statistic environment
+to the open source data management platform `BEFdata` that has been developed
+and is used within the BEF-China project.
 We show the use of the package in interaction with the data management platform
 using an example workflow that integrates two datasets from the BEF-China
 experiment and is representing an analysis that has been published already.
