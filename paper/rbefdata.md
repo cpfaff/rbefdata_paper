@@ -194,8 +194,13 @@ Having a look into the options list reveals several fields that can be filled
 in, like the URL to the `BEFdata` server, user credentials and a download
 folder name that is used to store free format files attached to datasets. The
 `tematres` server related URLs in the options are part of upcoming features
-that are non fully functional on the time of writing and thus can be ignored by
-now.
+that are only partially functional on the time of writing. 
+
+They can contain the URLs of the `tematres` server that holds the vocabulary or
+ontology of a project. At the moment there is only support to find the
+relations of keywords and to display their descriptions. We depict this here
+example on how to find relevant datasets in context of the shown example
+analysis
 
 The most essential setting for the example workflow we present here is the user
 credentials. These are used to authenticate the user against the portal to
@@ -573,10 +578,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
-## 4 - 1 == 0    0.865      0.497    1.74    0.184   
-## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -628,9 +633,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0279 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -682,7 +687,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---

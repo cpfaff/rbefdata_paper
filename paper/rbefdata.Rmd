@@ -198,8 +198,13 @@ Having a look into the options list reveals several fields that can be filled
 in, like the URL to the `BEFdata` server, user credentials and a download
 folder name that is used to store free format files attached to datasets. The
 `tematres` server related URLs in the options are part of upcoming features
-that are non fully functional on the time of writing and thus can be ignored by
-now.
+that are only partially functional on the time of writing. 
+
+They can contain the URLs of the `tematres` server that holds the vocabulary or
+ontology of a project. At the moment there is only support to find the
+relations of keywords and to display their descriptions. We depict this here
+example on how to find relevant datasets in context of the shown example
+analysis
 
 The most essential setting for the example workflow we present here is the user
 credentials. These are used to authenticate the user against the portal to
