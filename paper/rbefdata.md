@@ -5,22 +5,24 @@
 
 Today we face a deluge of data, scientists need to deal with in many different
 disciplines. While there are already good software solutions to assist
-reasearcher throughout the the data life cycle the applicability of the
-solutions to certain scientific domains often varies. Especially research
-domains with a high degree of interdisciplinary interactions and heterogeneity
-in methods and data like ecology are facing problems in dealing with some
-valuable concepts like ontologies that potentially can be used to improve or
-automate some of the most common tasks in analyses like finding relevant data,
-cleaning and merging and a exchange of datasets. We here introduce the
-`rbefata` package that connects to the open source data management platform
-`BEFdata` that has been developed and is used within the BEF-China experiment.
-We show the use of the package in interaction with the data management platform
-using an example workflow that integrates two datasets from the BEF-China
-experiment and is representing an analysis that has been published already.
-Finally we discuss this software combination in the context of current and
-future data management requirements and the data life cycle. We also give an
-outlook on upcoming features like a semantical assisted search and merging of
-data to be integrated with `rbefdata` and `BEFdata`.
+researcher throughout the data life cycle, the applicability of the solutions
+to certain scientific domains often varies. Especially domains with a high
+degree of interdisciplinary interactions and heterogeneity in methods and data
+like ecology are facing problems in dealing with some highly valuable concepts
+like ontologies. Those potentially can be used to improve or automate some of
+the most common tasks in analyses starting from finding relevant data to
+cleaning and merging as well as they can facilitate the exchange of data. We
+here introduce the `rbefata` package that connects to the open source data
+management platform `BEFdata` that has been developed and is used within the
+BEF-China experiment. We show the use of the package and its interaction with
+the data management platform using an example workflow that integrates two
+datasets from the BEF-China experiment. The analysis in the workflow is
+representing already published results so the data will be open access in the
+near future. Finally we discuss the introduced combination of software in the
+context the data life cycle and current as well as future data management
+requirements. Additionally we give an outlook on upcoming semantical features
+like assisted search and merging functionality to be integrated with `rbefdata`
+and `BEFdata`.
 
 ## Introduction
 
@@ -570,10 +572,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
-## 4 - 1 == 0    0.865      0.497    1.74    0.184   
-## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -624,10 +626,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.029 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -679,7 +681,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
