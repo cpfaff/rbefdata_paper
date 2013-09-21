@@ -6,23 +6,17 @@
 Today we face a deluge of data, scientists need to deal with in many different
 disciplines. While there are already good software solutions to assist
 researcher throughout the data life cycle, the applicability of the solutions
-to certain scientific domains often varies. Especially domains with a high
-degree of interdisciplinary interactions and heterogeneity in methods and data
-like ecology are facing problems in dealing with some highly valuable concepts
-like ontologies. Those potentially can be used to improve or automate some of
-the most common tasks in analyses starting from finding relevant data to
-cleaning and merging as well as they can facilitate the exchange of data. We
-here introduce the `rbefata` package that connects to the open source data
-management platform `BEFdata` that has been developed and is used within the
-BEF-China experiment. We show the use of the package and its interaction with
-the data management platform using an example workflow that integrates two
-datasets from the BEF-China experiment. The analysis in the workflow is
-representing already published results so the data will be open access in the
-near future. Finally we discuss the introduced combination of software in the
-context the data life cycle and current as well as future data management
-requirements. Additionally we give an outlook on upcoming semantical features
-like assisted search and merging functionality to be integrated with `rbefdata`
-and `BEFdata`.
+to certain scientific domain often varies. We here introduce the `rbefata`
+package that connects to the open source data management platform `BEFdata`
+that has been developed and is used within the BEF-China experiment. We show
+the use of the package and its interaction with the data management platform
+using an example workflow that integrates two datasets from the BEF-China
+experiment. The analysis in the workflow is representing already published
+results, so the data will be open access in the near future. Finally we discuss
+the introduced combination of software in the context of the data life cycle
+and current as well as future data management requirements. Additionally we
+give an outlook on upcoming semantical features like an assisted search and
+smart merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
@@ -31,39 +25,39 @@ building data management platforms, to preserve all kind of environmental and
 historic data, over the last years (e.g. diversity workbench, GBIF, `BEFdata`,
 DataONE, LifeWatch). Many solutions for different scientific disciplines
 appeared that provide data management plans for small scale projects or
-collaborations as well as for large data producing long term or remote sensing
-projects. An ongoing trend in that context is the development of integrative
-databases or data portals. They serve as nodes that collect data from smaller
-databases of a certain domain and they give researchers of that domain the
-opportunity to access a wide range of relevant data all from one place (e.g
-GBIF, TRY). These data management portals in fact offer a solution to to one of
-the most pressing problems that we face with our valuable data today, their
-loss.
+collaborations as well as for large data producingk, long term or remote
+sensing projects. An ongoing trend in that context is the development of
+integrative databases or data portals. They serve as nodes that collect data
+from smaller databases of a certain domain and they give researchers of that
+domain the opportunity to access a wide range of relevant data all from one
+place (e.g GBIF, TRY). These data management portals in fact offer a solution
+to to one of the most pressing problems that we face with our valuable data
+today, their loss.
 
-With a growing global data pool there is a also a growing demand to use and
-reuse available data and to embed small heterogeneous data into a wider
-context. A problem here is the legibility of datasets. Usually plain datasets
-say nothing, to one who is not familiar with it and they are even hard to
-decipher by the author himself after some time has passed. It is usually hard
-to remember exactly what methods have been used to collect a certain columns
-data or what the abbreviations or headers in the dataset mean. To solve this
-problem metadata frameworks have been developed and published as standards so
-nobody really needs to think about an own set of requirements to describe their
-data. The Ecological Metadata Language [EML](http://knb.ecoinformatics.org/software/eml/) 
-is only one example for that. While this theoretically solves the problem with
-not well described datasets it is still hard to make researchers use it
-extensively as this usually always means to learn new tools that help with the
-description process (e.g morpho, data up).
+However, by developing tools which allow an easy access and analyses of these
+data it can be ensured that these are not only preserved but used and reused to
+embed small heterogeneous data into a wider context. A problem here is the
+legibility of datasets. Usually plain datasets say nothing, to one who is not
+familiar with it and they are even hard to decipher by the author himself after
+some time has passed. It is usually hard to remember exactly what methods have
+been used to collect a certain columns data or what the abbreviations or
+headers in the dataset mean. To solve this problem metadata frameworks have
+been developed and published as standards so nobody really needs to think about
+an own set of requirements to describe their data. The Ecological Metadata
+Language [EML](http://knb.ecoinformatics.org/software/eml/) is only one example
+for that. While this theoretically solves the problem with not well described
+datasets it is still hard to make researchers use it extensively as this
+usually always means to learn new tools that help with the description process
+(e.g morpho, data up).
 
-We here introduce the R package `rbefdata` as part of the rOpenSci initiative
-which aim is to give the R - Users all the flexibility of data access through
-APIs. Our package connects the R statistics environment to the data management
-platform `BEFdata`. It takes over the part of communicating with the data
-platform in terms of up and download of datasets as well as it provides methods
-to access the metadata provided by the dataset authors. Additionally it offers
-methods that enable the exploration of datasets by keyword associations and the
-download and upload of attachment files like R scripts or figures to datasets
-in the portal.
+In this paper we want to introduce the new R package `rbefdata` which links the
+open source data management platform `BEFdata` portal with the statistics
+environment R. The `rbefdata` package is part of the rOpenSci initiative which
+aim is to give the R - Users all the flexibility of data access through APIs.
+The aim of the package is to provide the tools to download data, analyse them
+and upload them back to the data portal. Additionally it offers methods that
+enable the exploration of datasets by keyword associations and an integration
+of a vocabulary server which can assists the dataset exploration process. 
 
 We showcase the functionality of the package available with version `0.3.5`
 creating a workflow that integrates two datasets. The use case is dealing with
@@ -72,10 +66,18 @@ experiment. It is a 15N tracer experiment which aims to disentangle the effect
 of species mixtures on system N retention. The workflow depicts how to pull
 data into the R environment, the inspection of datasets metadata and how to
 upload data and attachments. It reconstructs a facet of an analysis that has
-been published already (Lang et al. 2013)). The use case is dealing with data
-from a small scale experiment called the pilot experiment. It is a 15N tracer
-experiment which aims to disentangle the effect of species mixtures on system N
-retention.
+been published already (Lang et al. 2013). 
+
+Comment cpfaff: improve connection by describing the experiment a bit more maybe put
+         the part from the material and methods into here that Karin sayd that 
+         it should be here (proposal rationale)
+
+Especially domains with a high degree of interdisciplinary interactions and
+heterogeneity in methods and data like ecology are facing problems in dealing
+with some highly valuable concepts like ontologies. Those potentially can be
+used to improve or automate some of the most common tasks in analyses starting
+from finding relevant data to cleaning and merging as well as they can
+facilitate the exchange of data. 
 
 ## Material and Methods
 
@@ -122,29 +124,7 @@ only like to get acknowledged for providing their data (cite Karin).
 Furthermore the datasets assembled by the paper proposal can be readily
 imported in one step to the R environment by `rbefdata`.
 
-### rbefdata
-
-The development of the `rbefdata` package started within the BEF-China project.
-Meanwhile it is part of the rOpenSci package portfolio (http://ropensci.org/),
-which is a community driven approach to wrap all science APIs and to create
-solutions for R users to seamlessly pull data from different repositories
-spread over the internet into R for analysis. The package can be installed from
-the CRAN package repository (https://github.com/befdata/befdata). It enables
-access to the data and meta data structures of the platform and provides
-convenient methods to pull single or multiple dataset into the R environment in
-one step for analysis. Additionally it offers functions that help to upload
-final results datasets with the script attached that has been used to derive
-the results from the original datasets which provides a valuable insight into
-data provenance and also is a stepping stone for reproducible research.
-
-## Usecase (results)
-
-In this paper we use already published datasets (we should use more than one
-dataset!, e.g. CSP for all, species reference, ...) as a use case to present
-the functionalities and inter linkages between the BEF-China data portal and
-`rbefdata`. 
-
-!! Introduction !!
+### The proposal
 
 Starting on with a paper proposal on following rationale.  
 
@@ -173,48 +153,61 @@ effects strengthen over time.' The respective proposal can be assessed under
 (url) For a detailed description of the experimental design we refer to Lang et
 al. 2013 (DOI)
 
-!! use more than one datafile!.
+### rbefdata
 
-In this case, there should be a separate file for plot attributes, soil
-attributes, plot diversity, etc. , another one for species names!!
-
-![showcase_proposal](./figure/static/showcase_proposal.png)
-
-* caption: The paper proposal in its final approved state. The information on that page
-           contains a title, a rational an envisaged date and journal. The calculated authors
-           and email lists for communication as well as the attached datasets and sub
-           projects involved (only partially shown). The proposal is published alredy see 
-           (Lang et al. 2013).
-
-When all data owners accepted the paper proposal `rbefdata` can be used to
-directly access the datasets from the data platform and transfer them to the R
-environment. To do so the `rbefdata` package needs to be setup. This requires
-installing, loading the package and setting the required package options.
-Having a look into the options list reveals several fields that can be filled
-in, like the URL to the `BEFdata` server, user credentials and a download
-folder name that is used to store free format files attached to datasets. The
-`tematres` server related URLs in the options are part of upcoming features
-that are only partially functional on the time of writing. 
-
-They can contain the URLs of the `tematres` server that holds the vocabulary or
-ontology of a project. At the moment there is only support to find the
-relations of keywords and to display their descriptions. We depict this here
-example on how to find relevant datasets in context of the shown example
-analysis
-
-The most essential setting for the example workflow we present here is the user
-credentials. These are used to authenticate the user against the portal to
-ensure the access to the data has been granted before download and to log the
-data access. Setting the server URL is not required here as it defaults to the
-BEF-China project instance of the `BEFdata` portal that we retrieve data from
-in this example. If one has set up an own instance of the `BEFdata` portal,
-this URL needs to be changed so the package communicates with the right server
-(see box below).
+The development of the `rbefdata` package started within the BEF-China project.
+Meanwhile it is part of the rOpenSci package portfolio (http://ropensci.org/),
+which is a community driven approach to wrap all science APIs and to create
+solutions for R users to seamlessly pull data from different repositories
+spread over the internet into R for analysis. The package can be installed from
+the CRAN package repository (https://github.com/befdata/befdata) (see box
+below). It enables access to the data and meta data structures of the platform
+and provides convenient methods to pull single or multiple dataset into the R
+environment in one step for analysis. Additionally it offers functions that
+help to upload final results datasets with the script attached that has been
+used to derive the results from the original datasets which provides a valuable
+insight into data provenance and also is a stepping stone for reproducible
+research.
 
 
 ```r
+install.packages("rbefdata")
+```
+
+
+## Example workflow (results)
+
+In this paper we use an already published analysis as a use case to build a
+workflow that shows the functionalities and inter linkages between the
+BEF-China data portal and the `rbefdata` package. We start setting up the R
+package, highlight the dataset exploration features including the vocabulary
+integration via a `tematres` server before we come to the paper proposal and
+the download of data as well as to the upload of final results.  
+
+After loading `rbefdata` into the working environment the settings need to be
+set via the `bef.options()` command. Having a look into the options list we see
+several fields that can be filled in. The most essential setting for the
+example workflow we present here is the user credentials. These are used to
+authenticate the user against the portal and to ensure the access to the data
+has been granted as well as to log the data access. We need this as the data is
+not yet open access. But it will be in the near future and then not key will be
+required to download it.
+
+Other options we see here are URLs to the `BEFdata` instance and the `tematres`
+server as well as a field that stores the name of a download folder.  While the
+URL fields ensure the package communicates with the right servers the download
+folder name is used to create a folder in case we download attached files from
+a dataset or proposal. In our case there is no need to change the URL to
+`BEFdata` as it defaults to the BEF-China instance that we use to retrieve data
+from. If one has set up an own instance of the `BEFdata` portal, this URL needs
+to be changed so the package connects to the right server (see box below).
+
+
+```r
+# load the package
 require(rbefdata)
-# options list
+
+# list all options
 bef.options()
 ```
 
@@ -237,7 +230,7 @@ bef.options()
 
 ```r
 
-# querry single options
+# querry a single option
 bef.options("url")
 ```
 
@@ -263,13 +256,38 @@ bef.options(url = "http://my.own.befdata.instance.com")
 
 
 
-After setup we can start right away using data from the proposal that we
-created. The proposal download function of `rbefdata` is used for that. It
-draws all associated datasets of a proposal into the R environment in one
-single step. It returns a list object that keeps a data frame per list element
-containing a dataset of the proposal each (see blow). The function requires the
-ID of the proposal to work. The ID can be found in the URL of the proposal (see
-box below).
+The `tematres` server can hold different representations of formalized
+knowledge like a flat controlled vocabulary or even an ontology of a project.
+At the moment there is support to find terms and relations and to display their
+descriptions in `rbedfata` which can be used to improve the exploration of
+datasets (se box below). For example looking for datasets that deal with 
+
+
+```r
+bef.tematres.sea
+```
+
+```
+## Error: object 'bef.tematres.sea' not found
+```
+
+
+![showcase_proposal](./figure/static/showcase_proposal.png)
+
+* caption: The paper proposal in its final approved state. The information on that page
+           contains a title, a rational an envisaged date and journal. The calculated authors
+           and email lists for communication as well as the attached datasets and sub
+           projects involved (only partially shown). The proposal is published alredy see 
+           (Lang et al. 2013).
+
+If all data owners accepted the paper proposal `rbefdata` can be used to to
+access the datasets. After setup we can start right away using data from the
+proposal that we created. The proposal download function of `rbefdata` is used
+for that. It draws all associated datasets of a proposal into the R environment
+in one single step. It returns a list object that keeps a data frame per list
+element containing a dataset of the proposal each (see blow).  The function
+requires the ID of the proposal to work. The ID can be found in the URL of the
+proposal (see box below).
 
 ```
 # the proposal URL shows the id is 90 
@@ -633,9 +651,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -687,7 +705,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
