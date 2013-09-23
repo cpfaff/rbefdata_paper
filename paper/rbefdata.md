@@ -783,9 +783,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -877,6 +877,14 @@ recovery were significantly higher in species mixtures compared with
 monoculture (Figs. Xb and Xc), the relative soil recovery was significantly
 reduced (Fig. Xd).
 
+![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
+
+
+* caption:  Nitrogen (N) retention affected by species richness. N retention summed as
+            the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root
+            recovery (c) and relative soil recovery (d). Significant differences as revealed by post
+            hoc Tukey’s test (P < 0.05) are indicated by different letters.
+
 Our results demonstrate that species richness of mixtures increases system N
 retention in young subtropical tree plantations. Although relative soil
 recovery was highest compared with relative leaf and root recovery, soil
@@ -892,14 +900,6 @@ pool may considerably increase N retention in subtropical forest systems even
 after a few years. This in turn has the potential to significantly reduce N
 losses and thus N accumulation in the leachate or groundwater (Lang et al.
 2013).
-
-![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
-
-
-* caption:  Nitrogen (N) retention affected by species richness. N retention summed as
-            the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root
-            recovery (c) and relative soil recovery (d). Significant differences as revealed by post
-            hoc Tukey’s test (P < 0.05) are indicated by different letters.
 
 ### Upload data 
 
@@ -983,16 +983,23 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 There is a growing demand to effectively use and reuse available data which
 puts much pressure on the development of software solutions that help
-researchers not only to find but also to integrate heterogeneous small data
-into a wider context (cite xxx). The software combination `rbefdata`/`BEFdata`
-provides solutions to different parts of the data life cycle. On the `BEFdata`
-side it covers data storage, metadata support and social components that foster
-sharing data online in collaborations (cite Karin).  On `rbefdata` side the
-combination offers easy access to data and metadata which helps to understand
-and use data stored on a `BEFdata` platform.  Additionally it offers methods to
-simply push back datasets and attachments like plots and scripts to the
-`BEFdata` portal which is a stepping stone for reproducibility and data
-provenance. 
+researchers not only to find but also to reuse and integrate small and
+heterogeneous data into a wider context (cite xxx).  The software combination
+`rbefdata` and `BEFdata` provides solutions to different aspects of the data
+life cycle. While the `BEFdata` side covers data storage, metadata support and
+a social component that fosters sharing data online (cite Karin), the
+`rbefdata` side offers easy access to the data and metadata as well as to
+upload functionality of the `BEFdata` platform.
+
+While well described data helps in understanding the datasets and on
+deciding upon the relevance and applicability in a certain analysis there is
+still lots of manual intervention necessary after that to prepare the data for
+analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
+reshaped and merged which usually takes up to 70% of an analysis workflow,
+before smart models can be applied to the data to find interesting patters
+(cite the workflow paper of Karin and me). This preparatory steps not only are
+time and labour intensive but also potentially error prone, especially as the
+complexity of the analyses increases.
 
 The tag based exploration of datasets helps to find datasets relevant for a
 certain analysis. The `tematres` vocabulary server integration further supports
@@ -1017,6 +1024,10 @@ with some highly valuable concepts of data management like ontologies (e.g
                                                                        2012). 
 
 
+understand and use data stored on a `BEFdata` platform.  Additionally it offers
+methods to simply push back datasets and attachments like plots and scripts to
+the `BEFdata` portal which is a stepping stone for reproducibility and data
+provenance. 
 
 
 
@@ -1042,15 +1053,6 @@ support smart merges that work.
 `tematres` ([homepage](http://www.vocabularyserver.com/))into `BEFdata` and the
 `rbefdata` package so they play well together semantically.
     
-While well described data can help a lot in understanding datasets and on
-deciding upon the relevance and applicability in a certain analysis there is
-still lots of manual intervention necessary after that to prepare the data for
-analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
-reshaped and merged which usually takes up to 70% of an analysis workflow,
-before smart models can be applied to the data to find interesting patters
-(cite the workflow paper of Karin and me). This preparatory steps not only are
-time and labour intensive but also potentially error prone, especially as the
-complexity of the analyses increases.
 
 Those potentially can be used to improve or automate some of the most common
 tasks in analyses starting from finding relevant data to cleaning and merging
