@@ -185,7 +185,7 @@ hr {
 <p>Today scientists need to deal with a deluge of data in many different
 disciplines. While there are good solutions to assist researchers throughout
 the life cycle of data, the applicability of the solutions to a certain
-scientific domains often varies. We here introduce the <code>rbefata</code> package that
+scientific domain often varies. We here introduce the <code>rbefdata</code> package that
 connects the R statistics environment to the open source data management
 platform <code>BEFdata</code>. This platform has been developed and is used within the
 BEF-China experiment and is specialized in dealing with small and heterogeneous
@@ -193,7 +193,7 @@ data. We show the usage of the package and highlight its interactions with the
 data management platform <code>BEFdata</code>. For this an underlying analysis of already
 published results is used to build a workflow with the <code>rbefdata</code> package. We
 discuss the introduced combination of software in the context of the data life
-cycle and current as well as future data management requirements. Additionally
+cycle and current as well as future data management requirements. Additionally,
 we give an outlook on upcoming semantical features like an assisted search and
 smart merging functionality to be integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
 
@@ -884,9 +884,9 @@ anova(model3)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0279 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -1041,51 +1041,36 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), &quot;r
 
 <h2>Discussion</h2>
 
-<ul>
-<li><p>pros and cons of sending data to a local script or sending a script to a central database,</p>
+<p>There is a growing demand to use and reuse available data, which puts much
+pressure on the development of software solutions that help researchers not
+only to find but also to effectively reuse data. In ecology especially the
+integration of small and heterogeneous data seems promising, as it can be
+integrated into a wider context to answer questions on a broader temporal and
+spatial scale (cite xxx). But particulary domains like ecology that have a high
+degree of interdisciplinary interactions which also results in a heterogeneity
+in methods and data are challenging in terms of developing data management
+tools.</p>
 
-<ul>
-<li>for researchers, it &ldquo;feels&rdquo; better, if the data are on the local machines</li>
-<li>more freedom for researchers to use their tools of choice and to mix data with data from
-other sources</li>
-<li>pros for sending a script to the data are efficiency, less network traffic</li>
-<li>re-usability of scripts is easier, if they are sent to a central cluster, since everybody can
-do that.</li>
-</ul></li>
-<li><p>General discussion</p>
+<p>The software combination of <code>rbefdata</code> and <code>BEFdata</code> provides solutions to
+different aspects of the data life cycle. While the <code>BEFdata</code> portal covers
+data storage, and harmonization tools, metadata support and a social component
+that fosters sharing data online (cite Karin), the <code>rbefdata</code> package offers an
+easy access to data and metadata on the portal as well as it provides upload
+functionality for datasets and attachments like scripts or figures rigth from
+within R. </p>
 
-<ul>
-<li>high need to effective use/reuse data</li>
-<li>relevant data needs to be simply detectable</li>
-</ul></li>
-<li><p><code>BEFdata</code> and <code>rbefdata</code></p>
+<p>While it seems a waste of bandwidth on one hand to always transfer the data to
+a local script for processing this approach also has its upsides. Having the
+data locally offers full flexibilit in choice of tools and also enables the
+researchers to freely mix in other local data sources. While this approach
+works well for small data the direct opossite is the case for big data where
+transfering of data is not possible due to its size. Here the recent trend goes
+towards on-server/in-database statistics, a scenario where where scripts are to
+be sent to the server and it returns the answer after processing. </p>
 
-<ul>
-<li>in combination provide a solution to</li>
-<li>data storage</li>
-<li>describing data with metadata</li>
-<li>collaboration and data sharing</li>
-<li>simply pull data into analysis software and push data back</li>
-<li>data provenance by attaching R scripts to uploads</li>
-<li>will provide solution with next versions</li>
-<li>easier finding relevant data</li>
-<li>smart merges (including unit conversions)</li>
-</ul></li>
-</ul>
-
-<p>There is a growing demand to effectively use and reuse available data which
-puts much pressure on the development of software solutions that help
-researchers not only to find but also to reuse and integrate small and
-heterogeneous data into a wider context (cite xxx).  The software combination
-<code>rbefdata</code> and <code>BEFdata</code> provides solutions to different aspects of the data
-life cycle. While the <code>BEFdata</code> side covers data storage, metadata support and
-a social component that fosters sharing data online (cite Karin), the
-<code>rbefdata</code> side offers easy access to the data and metadata as well as to
-upload functionality of the <code>BEFdata</code> platform.</p>
-
-<p>While well described data helps in understanding the datasets and on
-deciding upon the relevance and applicability in a certain analysis there is
-still lots of manual intervention necessary after that to prepare the data for
+<p>While well described data helps in understanding the datasets and on deciding
+upon the relevance and applicability of data a certain analysis there is still
+lots of manual intervention necessary after that to prepare the data for
 analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
 reshaped and merged which usually takes up to 70% of an analysis workflow,
 before smart models can be applied to the data to find interesting patters
@@ -1098,36 +1083,32 @@ certain analysis. The <code>tematres</code> vocabulary server integration furthe
 this as it allows to retrieve term definitions as well as semantical relations
 to broaden or narrow down search terms. This feature is part of the upcoming
 integration of an ontology based on the vocabulary and knowledge of
-Biodiversity Ecosystem Functioning Experiment</p>
+Biodiversity Ecosystem Functioning Experiments.</p>
 
-<p>The <code>rbefdata</code> package makes the access to the data and metadata simple. The
-availability available via the R statistics environment with allows for fast
-analysis. The upload mechanisms of the package help to keep the Online platform
-up to date and gives other researchers the possibility to reproduce the results
-by downloading scripts attached to proposals. The uploaded script is not only a
+<p>The <code>rbefdata</code> package facilitates the access of data and metadata. The
+availability of both via the R statistics environment allows for fast analysis.
+The upload mechanisms of the package help to keep the online platform up to
+date and gives other researchers the possibility to reproduce the results by
+downloading scripts attached to proposals. The uploaded script is not only a
 stepping stone to reproducible research but also helps to track down data
 provenance.</p>
-
-<p>Especially domains with a high degree of interdisciplinary interactions and
-heterogeneity in methods and data like ecology are facing problems in dealing
-with some highly valuable concepts of data management like ontologies (e.g
-                                                                       michener
-                                                                       et al
-                                                                       2012). </p>
 
 <p>understand and use data stored on a <code>BEFdata</code> platform.  Additionally it offers
 methods to simply push back datasets and attachments like plots and scripts to
 the <code>BEFdata</code> portal which is a stepping stone for reproducibility and data
 provenance. </p>
 
-<p>We recently stared to develop an ontology using a <code>tematres</code> server containing
+<p>like ecology facing problems in dealing with some highly valuable concepts
+of data management like ontologies (e.g michener et al 2012). </p>
+
+<p>We recently started to develop an ontology using a <code>tematres</code> server containing
 knowledge extracted from portals that deal with data management for ecological
 research. The <code>tematres</code> server offers an API so all the contained terms can be
-accessed by the upcoming version of <code>rbefdata</code></p>
+accessed by the upcoming version of <code>rbefdata</code>.</p>
 
 <p>The formalization developed will be based on the knowledge used in biodiversity
 research. Thus we will here discuss the software combination <code>BEFdata</code> and
-<code>rbefdata</code> in the light of the upcoming features and in general context state
+<code>rbefdata</code> in the light of the upcoming features and in the general context of state
 of the art data management today. In one of the next versions to be rolled out
 the <code>BEFdata</code> portal will get a semantical annotation feature.  This will give
 administrators the ability to tag each column of datasets with a general term
@@ -1135,10 +1116,21 @@ that best describes the content. So the field will contain potential top terms
 of the ontology. The tagging will be reflected in the API and can thus be
 simply queried to use the information within the R package.  Using the
 knowledge about the content of a column in the R package will enable us to do
-support smart merges that work.</p>
+support smart merges *** explain this term again something like: with &#39;smart merges&#39;
+we refer to the merge&hellip;</p>
 
 <p><code>tematres</code> (<a href="http://www.vocabularyserver.com/">homepage</a>)into <code>BEFdata</code> and the
 <code>rbefdata</code> package so they play well together semantically.</p>
+
+<p>While well described data can help a lot in understanding datasets and on
+deciding upon the relevance and applicability in a certain analysis there is
+still lots of manual intervention necessary after that to prepare the data for
+analysis (cite Karin and me? or xxx). It may need to be cleaned, imputed,
+reshaped and merged which usually takes up to 70% of an analysis workflow,
+before smart models can be applied to the data to find interesting patters
+(cite the workflow paper of Karin and me). This preparatory steps not only are
+time and labour intensive but also potentially error prone, especially as the
+complexity of the analyses increases.</p>
 
 <p>Those potentially can be used to improve or automate some of the most common
 tasks in analyses starting from finding relevant data to cleaning and merging
