@@ -3,19 +3,19 @@
 
 ## Abstract
 
-Today we face a deluge of data, scientists need to deal with in many different
+Today scientists need to deal with a deluge of data in many different
 disciplines. While there are already good software solutions to assist
 researcher throughout the data life cycle, the applicability of the solutions
-to certain scientific domains often varies. We here introduce the `rbefata` R
-package that connects to the open source data management platform `BEFdata`
-that has been developed and is used within the BEF-China experiment. We show
-the use of the package and its interaction with the data management platform
-using an example workflow that integrates two datasets from the BEF-China
-experiment. The analysis in the workflow is representing already published
-results, so the data will be open access in the near future. Finally we discuss
-the introduced combination of software in the context of the data life cycle
-and current as well as future data management requirements. Additionally we
-give an outlook on upcoming semantical features like an assisted search and
+to certain scientific domains often varies. We here introduce the R statistics
+package `rbefata` that connects to the open source data management platform
+`BEFdata` that has been developed and is used within the BEF-China experiment.
+We show the use of the package and its interaction with the data management
+platform using an example workflow that integrates two datasets from the
+BEF-China experiment. The analysis in the workflow is representing already
+published results, so the data will be open access in the near future. We
+discuss the introduced combination of software in the context of the data life
+cycle and current as well as future data management requirements.  Additionally
+we give an outlook on upcoming semantical features like an assisted search and
 smart merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
@@ -34,30 +34,33 @@ GBIF, TRY). These data management portals in fact offer a solution to to one of
 the most pressing problems that we face with our valuable data today, their
 loss.
 
-However, by developing tools that allow an easy access and analyses of these
-data, it can be ensured that these are not only preserved but also used, reused
-and embedded into into a wider context. A problem here is the legibility of
-datasets. Usually plain datasets say nothing, to one who is not familiar with
-it and they are even hard to decipher by the author himself after some time has
-passed. It is usually hard to remember exactly what methods have been used to
-collect a certain columns data or what the abbreviations or headers in the
-dataset mean. To solve this problem metadata frameworks have been developed and
-published as standards so nobody really needs to think about an own set of
-requirements to describe their data. The Ecological Metadata Language
+There is a growing demand to use and reuse this preserved data. By developing
+tools that allow an easy access to the data for analyses, it can be assured
+that it is, reused and embedded into into a wider context. A problem here is
+the legibility of datasets. Usually plain datasets say nothing, to one who is
+not familiar with it and they are even hard to decipher by the author himself
+after some time has passed. It is hard to remember exactly what methods have
+been used to collect a certain columns data or what the abbreviations or
+headers in the dataset mean. 
+
+Metadata frameworks have been developed and published as standards to solve
+this problem, so nobody really needs to think about an own set of requirements
+to describe his data. The Ecological Metadata Language
 [EML](http://knb.ecoinformatics.org/software/eml/) is only one example for
 that. While this theoretically solves the problem with not well described
 datasets it is still hard to make researchers use it extensively as this
 usually always means to learn new tools that help with the description process
 (e.g morpho, data up).
 
-In this paper we want to introduce the new R package `rbefdata` which links the
-open source data management platform `BEFdata` portal with the statistics
-environment R. The `rbefdata` package is part of the rOpenSci initiative which
-aim is to give the R - Users all the flexibility of data access through APIs.
-The aim of the package is to provide the tools to download data, analyse them
-and upload them back to the data portal. Additionally it offers methods that
-enable the exploration of datasets by keyword associations and an integration
-of a vocabulary server which can assists the dataset exploration process. 
+In this paper we introduce the new R package `rbefdata` which links the R
+statistics Environment to the open source data management platform `BEFdata`.
+The `rbefdata` package is part of the rOpenSci initiative which aims to give
+R-Users all the flexibility to access a wide range of data repositories. The
+aim of the `rbefdata` package is to provide a tool which helps to download and
+analyse data as well to provide upload functionality to push back new datasets,
+scripts and figures to the data management portal. Additionally the package
+offers methods that ease the exploration of datasets by the integration of a
+vocabulary server. 
 
 We showcase the functionality of the package available with version `0.3.5`
 creating a workflow that integrates two datasets. The use case is dealing with
@@ -65,9 +68,8 @@ data from a small scale experiment called pilot experiment in the BEF-China
 experiment. It is a 15N tracer experiment which aims to disentangle the effect
 of species mixtures on system N retention. The workflow depicts how to pull
 data into the R environment, the inspection of datasets metadata and how to
-upload data and attachments. It reconstructs a facet of an analysis that has
-been published already (Lang et al. 2013). 
-
+upload data and attachments. The analysis in the workflow reconstructs a facet
+of an analysis that has been published already by Lang et al. 2013. 
 
 ## Material and Methods
 
@@ -715,10 +717,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59   0.0012 **
+## 4 - 1 == 0    0.865      0.497    1.74   0.1841   
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -770,9 +772,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0280 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -824,7 +826,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
