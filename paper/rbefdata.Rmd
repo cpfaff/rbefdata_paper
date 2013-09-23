@@ -9,10 +9,10 @@ options(width = 95)
 
 Today we face a deluge of data, scientists need to deal with in many different
 disciplines. While there are already good software solutions to assist
-reasearcher throughout the the data life cycle the applicability of the
+researchers throughout the the data life cycle, the applicability of the
 solutions to certain scientific domains often varies. Especially research
 domains with a high degree of interdisciplinary interactions and heterogeneity
-in methods and data like ecology are facing problems in dealing with some
+in methods and data as in ecology are facing problems in dealing with some
 valuable concepts like ontologies that potentially can be used to improve or
 automate some of the most common tasks in analyses like finding relevant data,
 cleaning and merging and a exchange of datasets. 
@@ -37,11 +37,11 @@ historic data, over the last years (e.g. diversity workbench, GBIF, `BEFdata`,
 DataONE, LifeWatch). Many solutions for different scientific disciplines
 appeared that provide data management plans for small scale projects or
 collaborations as well as for large data producing long term or remote sensing
-projects. An ongoing trend in that context is the development of integrative
+projects. An ongoing trend in this context is the development of integrative
 databases or data portals. They serve as nodes that collect data from smaller
-databases of a certain domain and they give researchers of that domain the
-opportunity to access a wide range of relevant data all from one place. These
-data management portals in fact offer a solution to one of the most pressing
+databases of a certain domain and whose researchers get the
+opportunity to access a wide range of relevant data all from one place. In fact, these
+data management portals offer a solution to one of the most pressing
 problems that we face with our valuable data today, their loss. However, by
 developing tools which allow an easy access and analyses of these data it can
 be ensured that these are not only preserved but used and reused. In this paper
@@ -49,7 +49,7 @@ we want to introduce the new R package rbefdata which linkes the befdata
 portal with the statistics environment R. The aim of the package is to provide
 the tools to download data, analyse them and upload them back to the data portal.
 
-With a growing global data pool there is a also a growing demand to use and
+With a growing global data pool there is also a growing demand to use and
 reuse available data and to embed small heterogeneous data into a wider
 context. A problem here is the legibility of datasets. Usually plain datasets
 say nothing, to one who is not familiar with it and they are even hard to
@@ -63,14 +63,17 @@ data. The Ecological Metadata Language
 that. While this theoretically solves the problem with not well described
 datasets it is still hard to make researchers use it extensively as this
 usually always means to learn new tools that help with the description process
-(e.g morpho, data up).
+(e.g morpho, data up). Thus, it is helpful to combine well known tools and techniques,
+such as excel workbooks or R scripts with the requirements of metadata language.
+These solutions are easily usable for researchers and may thus lead to more extensive
+use.
 
 We here introduce the R package `rbefdata` as part of the rOpenSci initiative
-which aim is to give the R - Users all the flexibility of data access through
+whose aim is to give the R - Users all the flexibility of data access through
 APIs. Our package connects the R statistics environment to the data management
 platform `BEFdata`. It takes over the part of communicating with the data
 platform in terms of up and download of datasets as well as it provides methods
-to access the metadata provided by the dataset authors. Additionally it offers
+to access the metadata provided by the dataset authors. Additionally, it offers
 methods that enable the exploration of datasets by keyword associations and the
 download and upload of attachment files like R scripts or figures to datasets
 in the portal.
@@ -78,7 +81,7 @@ in the portal.
 We showcase the functionality of the package available with version `0.3.5`
 creating a workflow that integrates two datasets. The use case is dealing with
 data from a small scale experiment called pilot experiment in the BEF-China
-experiment. It is a 15N tracer experiment which aims to disentangle the effect
+project. It is a 15N tracer experiment which aims to disentangle the effect
 of species mixtures on system N retention. The workflow depicts how to pull
 data into the R environment, the inspection of datasets metadata and how to
 upload data and attachments. It reconstructs a facet of an analysis that has
@@ -89,33 +92,25 @@ been published already (Lang et al. 2013).
 ### BEF-China and the BEFdata portal
 
 BEFdata, including the rbefdata package, has been developed within the
-BEF-China experiment.  The BEF-China experiment is a Biodiversity Ecosystem
-Functioning (BEF) experiment funded by the German science foundation (DFG, FOR
-891). Experimental sites are located in the subtropics of China in the
-provinces Jianxi and Zhejiang. The BEF-China research group (www.bef-china.de)
-uses two main research platforms.  An experimental forest diversity gradient of
+BEF-China project.  The Biodiversity and Ecosystem
+Functioning (BEF) China research group aims to disentangle the role of
+tree and shrub diversity for production, erosion control, element
+cycling, and species conservation in Chinese subtropical forest ecosystems.
+It is funded by the German science foundation (DFG, FOR
+891). The BEF-China research group (www.bef-china.de)
+uses two main research platforms: an experimental forest diversity gradient of
 50~ha, and 27 observational plots of 30x30 m each located in the Gutianshan
 Nature Reserve.  The observational plots were selected according to a crossed
-sampling design along tree species richness and stand age. The data for the
-workflow on carbon pools stems from 22 to 116 years consisting of 14 to 35
-species (cite Bruelheide, 2010).
+sampling design along tree species richness and stand age (cite Bruelheide, 2010).
 
 The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is an open
 source data management platform developed within the BEF-China project. It
 adheres to standards like the Ecological Metadata Language (cite xxx) for
 describing datasets with metadata and is specialized in harmonizing small
-heterogeneous data that usually has to be dealt with in BEF. But its
+heterogeneous data that usually has to be dealt with in BEF. However, its
 specialization makes it also very valuable to use in any other scientific
 domain that needs to deal with complex small and heterogeneous data.
 
-The portal offers a social component where researchers can shop datasets and
-write a paper proposals based on the datasets in their shopping cart. In the
-process of creating a proposal some information like a title, a rationale, an
-envisaged journal and date needs to be provided. Sending in a proposal a
-researcher asks for access to the datasets and provides the data owners with
-necessary information about the paper. The data owners then can decide if and
-how they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin).
 
 ### The proposal
 
@@ -144,7 +139,7 @@ solutions to pull data from different repositories into R for analysis.  The
 package can be installed from the CRAN package repository
 (https://github.com/befdata/befdata) and enables access to the data, meta data
 structures of the platform and provides convenient methods to pull single or
-multiple dataset into the R environment in one step for analysis.  Additionally
+multiple datasets into the R environment in one step for analysis.  Additionally,
 it offers functions that help to upload final results datasets with the script
 attached that has been used to derive the results from the original datasets
 which provides a valuable insight into data provenance and also is a stepping
@@ -152,14 +147,10 @@ stone for reproducible research.
 
 ## Usecase (results)
 
-In this paper we use already published datasets (we should use more than one
-dataset!, e.g. CSP for all, species reference, ...) as a use case to present
+In this paper we use already published datasets as a use case to present
 the functionalities and inter linkages between the BEF-China data portal and
-`rbefdata`. Starting on with a paper proposal on following rationale.
-
-!! Introduction !!
-
-We created a paper proposal with the following rationale: 'Knowledge of
+`rbefdata`. Starting on with a paper proposal on following rationale:
+'Knowledge of
 biodiversity effects on nutrient cycling patterns in subtropical forest
 ecosystems is still very limited, particularly as regards macro nutrients such
 as nitrogen and phosphorus. Experimental approaches using tree saplings may
@@ -182,12 +173,8 @@ hypotheses: (H1) Nitrogen acquisition and retention increases with species
 richness due complementary effects in species mixtures.  (H2) Species richness
 effects strengthen over time.' The respective proposal can be assessed under
 (url) For a detailed description of the experimental design we refer to Lang et
-al. 2013 (DOI)
+al. 2013 (DOI: 10.1111/1365-2664.12157)
 
-!! use more than one datafile!.
-
-In this case, there should be a separate file for plot attributes, soil
-attributes, plot diversity, etc. , another one for species names!!
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
 
@@ -416,29 +403,9 @@ root recovery was lower than leaf recovery, and biomass recovery (leaves and
 fine roots) was lower than soil recovery.  Whereas the relative leaf and root
 recovery were significantly higher in species mixtures compared with
 monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
-reduced (Fig. Xd).
-
-Our results demonstrate that species richness of mixtures increases system N
-retention in young subtropical tree plantations. Although relative soil
-recovery was highest compared with relative leaf and root recovery, soil
-recovery decreased with species richness (Fig. X). Thus, the observed positive
-relationship between species richness and system N retention is caused by an
-increase in relative N recovery of sapling biomass (fine roots and leaves) with
-higher species numbers in mixtures. Our findings suggest positive species
-diversity effects for an important ecosystem service, which is highly relevant
-for afforestation programmes as currently applied in China on a large scale.
-The positive relationship between species richness and system N retention
-suggests that mixed plantings even at the sapling stage of a restricted species
-pool may considerably increase N retention in subtropical forest systems even
-after a few years. This in turn has the potential to significantly reduce N
-losses and thus N accumulation in the leachate or groundwater (Lang et al.
-2013).
-
-?? This should have been reported elsewhere! This paper should be cited here!!
-
-?? was the general aim of the analysis part of the introduction? It should be!!
-
-!! This is really well done!!
+reduced (Fig. Xd). Thus, we could show that the relative N retention of biomass
+was significantly increased in mixtures.
+For an interpretation of these results we refer to Lang et al. 2013.
 
 ```{r anne_final_plot, echo = F}
 attach(syndata)
@@ -568,7 +535,7 @@ effective interlinking of data via an ontology requires the development of a
 common terminology all contributing scientist of a research domain accept and
 not only use but help do develop and discuss it.  Thus collaborative ontology
 engineering approaches like `ontoverse` (Zoulfa El Jerroudi et al. 2008) or
-`tematres` are highly valuable as the not only help to set up ontologies but
+`tematres` are highly valuable as they not only help to set up ontologies but
 also to develop and maintain them over time even if the researchers change that
 contribute to it.
 
