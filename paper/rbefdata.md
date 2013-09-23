@@ -783,8 +783,8 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0279 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0280 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -837,8 +837,8 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -961,12 +961,12 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 There is a growing demand to use and reuse available data, which puts much
 pressure on the development of software solutions that help researchers not
 only to find but also to effectively reuse data. In ecology especially the
-integration of small and heterogeneous data seems promising, as it can be
-integrated into a wider context to answer questions on a broader temporal and
-spatial scale (cite xxx). But particulary domains like ecology that have a high
-degree of interdisciplinary interactions which also results in a heterogeneity
-in methods and data are challenging in terms of developing data management
-tools.
+integration of small and often heterogeneous data seems promising. It
+potentiially can be integrated into a wider context to answer questions on a
+broader temporal and spatial scale (cite xxx). But particulary domains like
+ecology are challenging in terms of data management as they show a high degree
+of interdisciplinary interactions which also results in heterogeneity in
+methods and data.
 
 The software combination of `rbefdata` and `BEFdata` provides solutions to
 different aspects of the data life cycle. While the `BEFdata` portal covers
@@ -976,14 +976,14 @@ easy access to data and metadata on the portal as well as it provides upload
 functionality for datasets and attachments like scripts or figures rigth from
 within R. 
 
-While it seems a waste of bandwidth on one hand to always transfer the data to
-a local script for processing this approach also has its upsides. Having the
-data locally offers full flexibilit in choice of tools and also enables the
-researchers to freely mix in other local data sources. While this approach
-works well for small data the direct opossite is the case for big data where
-transfering of data is not possible due to its size. Here the recent trend goes
-towards on-server/in-database statistics, a scenario where where scripts are to
-be sent to the server and it returns the answer after processing. 
+While it seems a waste of time and bandwidth on one hand to always transfer the
+data to a local script for processing this approach also has its upsides.
+Having the data locally offers full flexibilit in choice of tools and also
+enables the researcher to freely mix in other local data sources. While this
+approach works well for small data the direct opossite is the case for big data
+where the transfer of data is not possible due to its size. The recent trend
+here goes towards on-server/in-database statistics, a scenario where scripts
+are to be sent to the server before it returns the answer after processing. 
 
 While well described data helps in understanding the datasets and on deciding
 upon the relevance and applicability of data a certain analysis there is still
@@ -1001,7 +1001,6 @@ this as it allows to retrieve term definitions as well as semantical relations
 to broaden or narrow down search terms. This feature is part of the upcoming
 integration of an ontology based on the vocabulary and knowledge of
 Biodiversity Ecosystem Functioning Experiments.
-
 
 The `rbefdata` package facilitates the access of data and metadata. The
 availability of both via the R statistics environment allows for fast analysis.
