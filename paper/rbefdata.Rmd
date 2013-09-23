@@ -282,7 +282,7 @@ proposal (see box below).
 http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```
 
-```{r rbefdata_get_datasets_from_proposal, cache = F}
+```{r rbefdata_get_datasets_from_proposal, cache = T}
 # proposal id is 
 datasets = bef.get.datasets_for_proposal(id = 90)
 extract_second_dataset = datasets[[2]] 
