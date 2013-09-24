@@ -314,9 +314,9 @@ narrow_tasks_plant_organ = bef.tematres.api(task = "fetchDown", "plant organ")
 narrow_tasks_plant_organ  
 
 # enrich the search with narrower keywords
-datasets_plant_organ_narrow =
-bef.get.datasets_for_keyword(c(narrow_tasks_plant_organ$term))
-datasets_plant_organ_narrow   ```
+datasets_plant_organ_narrow = bef.get.datasets_for_keyword(c(narrow_tasks_plant_organ$term))
+datasets_plant_organ_narrow   
+```
 
 ### Download data 
 
