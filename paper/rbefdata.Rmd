@@ -5,6 +5,10 @@ require("ggplot2")
 options(width = 95)
 ```
 
+## Title
+
+rbefdata - leveraging access to data and semantics
+
 ## Abstract
 
 Today scientists need to deal with a deluge of data in many disciplines. While
@@ -74,29 +78,63 @@ pull data into the R environment, the inspection of metadata and shows how to
 upload data and attachments like figures and scripts back to the data
 management platform. 
 
+
+Karin:
+
+Something on data discovery and paper proposals: Interdisciplinary analyses
+depend on data coming from different research fields. Not one single research
+project or laboratory measures all data, but they come from different
+researchers.  Data discovery - finding data that is suitable to answer a
+pressing question - has become an integral part of science. Data discovery
+between scientific disciplines is hampared by different vocabularies and
+missing agreement on common semantics. Tools addressing this problem are
+thesauri, ontologies, etc. ... 
+
+Paper proposals are an emerging concept solving transparant data exchange and
+reuse across disciplines and laboratories [citations!]
+
+Introducing workflows, their merits, and ROpenSci. But also Kepler, Pegasus,
+etc. Cite our paper on workflows.
+
+ (http://ropensci.org/),
+which is a community driven approach to wrap all science APIs and to create
+solutions for R users to seamlessly pull data from different repositories
+spread over the internet into R for analysis. 
+
+There is a need for tools at the fingertips of the researchers, that can be
+easily integrated into their workflow and leverage their access to data as
+well as semantic repositories.
+
+
 ## Material and Methods
 
 ### BEF-China 
 
-The BEF - China project is a research group whose aim is to disentangle the
-'The role of tree and shrub diversity for production, erosion control, element
+The BEF - China project is a research collaboration consisting of 10-15
+independent research groups, whose overarching aim is to disentangle the 'The
+role of tree and shrub diversity for production, erosion control, element
 cycling, and species conservation in Chinese subtropical forest ecosystems'.
-The BEF-China research group (www.bef-china.de) is funded by the German science
+The BEF-China project (www.bef-china.de) is funded by the German science
 foundation (DFG, FOR 891) and uses two main research platforms located in the
-provinces Jiangxi and Zhejiang.  The Main experiment was established in 2009
-and 2010 as the first large scale forest biodiversity–ecosystem functioning
-experiment in the highly species-rich subtropics.  In total, the area covers 50
-ha and there are 566 plots of 400 trees each, ranging in diversity from
-monoculture to 24-species mixtures. The experiment used 42 native tree species
-and 10 shrub species, combined into different species pools. More than 400 000
-tree and shrub saplings were planted.  In a parallel observational approach, a
-total of 27 Comparative Study Plots (CSPs) of 30x30 m each were set up in
-existing forests in the adjacent Gutianshan National Nature Reserve (Zhejiang
-Province) in 2008.  The observational plots were selected according to a
-crossed sampling design along tree species richness and stand age. The CSPs
-address the impact of successional age on ecosystem functioning, providing a
-basis for assessing the successional processes at work across tree species
-diversity in the Main Experiment (Bruelheide et al., 2012). 
+provinces Jiangxi and Zhejiang [cite Helges design paper].  
+
+Karin: 
+- I would suggest to reduce the details of the following dramatically:
+
+The Main experiment was established in 2009 and 2010 as the first large scale
+forest biodiversity–ecosystem functioning experiment in the highly species-rich
+subtropics.  In total, the area covers 50 ha and there are 566 plots of 400
+trees each, ranging in diversity from monoculture to 24-species mixtures. The
+experiment used 42 native tree species and 10 shrub species, combined into
+different species pools. More than 400 000 tree and shrub saplings were
+planted.  In a parallel observational approach, a total of 27 Comparative Study
+Plots (CSPs) of 30x30 m each were set up in existing forests in the adjacent
+Gutianshan National Nature Reserve (Zhejiang Province) in 2008.  The
+observational plots were selected according to a crossed sampling design along
+tree species richness and stand age. The CSPs address the impact of
+successional age on ecosystem functioning, providing a basis for assessing the
+successional processes at work across tree species diversity in the Main
+Experiment (Bruelheide et al., 2012).
 
 ### BEFdata portal
 
@@ -118,12 +156,29 @@ initiatives on the same research ideas which adds to the transparency of data
 publication. Finally the datasets assembled in a paper proposal can be imported
 in one step to the R environment by `rbefdata` package.
 
-### The proposal
+Karin:
 
-In this paper we use an already published analysis as a use case to build a
-workflow that shows the functionalities and inter linkages between the
-BEF-China data portal and the `rbefdata` package. The analysis we use has the
-following rationale: 
+Something on keyword management and data discovery to include the semantics:
+Data discovery on BEFdata platforms can be done using a multitude of
+approaches: a search tool that accesses metadata, keywords, listing datasets
+per person and project, and listing datasets using the same datagroups and
+categories. Datasets as well as data columns within datasets can be tagged with
+keywords. BEFdata portals offer a range of functionality for keywords,
+including a word-cloud, and listing datasets using a keyword.
+
+Explain datagroups and categories? With focus on search and discovery.
+
+
+### Nutrient retention along a biodiversity gradient
+
+
+In this paper we use an already published analysis on nutrient retention along
+a biodiversity gradient as a use case to build a workflow that shows the
+functionalities and inter linkages between the BEF-China data portal and the
+`rbefdata` package. The analysis is typical for interdisciplinary sciencies, as
+it combines soil, taxon, and nutrient data. Data originating from field
+compaigns of different collaborating laboratories and has to be merged prior to
+analyses. The analysis we use has the following rationale: 
 
 'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
 forest ecosystems is still very limited, particularly as regards macro
@@ -156,14 +211,17 @@ Meanwhile it is part of the rOpenSci package portfolio (http://ropensci.org/),
 which is a community driven approach to wrap all science APIs and to create
 solutions for R users to seamlessly pull data from different repositories
 spread over the internet into R for analysis. The package can be installed from
-the CRAN package repository (https://github.com/befdata/befdata) (see box
-below). It enables access to the data and meta data structures of the platform
-and provides convenient methods to pull single or multiple dataset into the R
-environment in one step for analysis. Additionally it offers functions that
-help to upload final results datasets with the script attached that has been
-used to derive the results from the original datasets which provides a valuable
-insight into data provenance and also is a stepping stone for reproducible
-research.
+The package can be installed from the CRAN package repository
+(https://github.com/befdata/befdata) (see box below). It enables access to the
+data and meta data structures of the platform and provides convenient methods
+to pull single or multiple dataset into the R environment in one step for
+analysis. Additionally it offers functions that help to upload final results
+datasets with the script attached that has been used to derive the results from
+the original datasets which provides a valuable insight into data provenance
+and also is a stepping stone for reproducible research.
+
+
+Karin: thesauri, if used later
 
 ```{r install_package, include = T, eval = F} 
 install.packages("rbefdata")
@@ -175,6 +233,10 @@ We start setting up the R package, highlight the dataset exploration features
 using an example that shows the inclusion the `tematres` vocabulary server
 before we finally come to the processing of the data attached to the paper
 proposal, the download of data as well as to the upload of final results.
+
+Karin: How about using data discovery to find the species names reference file, or
+data discovery to find some files for soil properties in the pilot experiment?
+
 
 ### Setup `rbefdata`
 
@@ -229,8 +291,8 @@ A `tematres` server can hold different representations of formalized knowledge
 like a thesaurus or even an ontology of a project. The `rbefdata` package
 supports exploiting a `tematres` vocabulary server via the `rtematres` package.
 We can find terms and relations as well as we can display their descriptions in
-`rbefata`. This can be used to improve the exploration of datasets. For
-example looking for datasets that deal with  "plant organs" we can display the
+`rbefata`. This can be used to improve the exploration of datasets. For example
+looking for datasets that deal with  "plant organs" we can display the
 definition of that term first (box below). Then we ask the `BEFdata` portal for
 datasets that are tagged with that term and we get back a few datasets. In a
 next step we use the vocabulary on the `tematres` server to narrow down "plant
@@ -240,6 +302,9 @@ with them and get back all datasets associated with the narrower terms. This
 can be used the other way around as well to restrict the datasets we get back
 to higher order terms with `bef.tematres.api(task = "fetchUp", "plant organ")`.
  
+Karin: 
+Cool! are these datasets used later? 
+
 ```{r improved_data_exploration}   
 # define the term plant organ
 term_info = bef.tematres.api(task = "fetchNotes", "plant organ")  
@@ -250,7 +315,7 @@ datasets_plant_organ = bef.get.datasets_for_keyword("plant organ")
 datasets_plant_organ 
 
 # narrow down plant organ
-narrow_tasks_plant_organ = bef.tematres.api(task = "fetchDown", "plant organ")   
+narrow_tasks_plant_organ = bef.tematres.api(task = "fetchDown", "plant organ")
 narrow_tasks_plant_organ  
 
 # enrich the search with narrower keywords
@@ -258,16 +323,18 @@ datasets_plant_organ_narrow = bef.get.datasets_for_keyword(c(narrow_tasks_plant_
 datasets_plant_organ_narrow   
 ```
 
+
+
 ### Download data 
 
-After setup we can start right away using the data from the proposal that we
-created. If all data owners accepted the paper proposal `rbefdata` can be used
-to to pull the datasets. The proposal download function of `rbefdata` is used
-for that and it draws all associated data of a proposal into the R environment
-in one single step. It returns a list object that keeps a data frame per list
-element containing a dataset of the proposal each (see box below). The function
-requires the ID of the proposal to work which can be found in the URL of the
-proposal (see box below).
+Datasets discovered can then be assembled using paper proposals on BEFdata
+portals. Proposals accepted by the project board and the data owners give
+proponents access to the datasets requested. The rbefdata leverages data access
+through paper proposals by a download function. It loads all associated
+datasets of a proposal into the R environment in one single step.  It returns a
+list object that keeps a data frame per list element containing a dataset of
+the proposal each (see box below). The function requires the ID of the proposal
+to work. The ID can be found in the URL of the proposal (see box below).
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
 
