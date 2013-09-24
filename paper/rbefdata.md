@@ -4,20 +4,24 @@
 ## Abstract
 
 Today scientists need to deal with a deluge of data in many disciplines. While
-there are many good solutions to assist them throughout the data life cycle,
-the applicability of some solutions to certain scientific domains can be
-problematic. We here introduce the `rbefdata` package that links the R
-statistics environment to the open source data management platform `BEFdata`.
-The platform has been developed and is used within the BEF-China experiment and
-it is specialized in dealing with small and heterogeneous data from
-biodiversity research. We show a workflow with the `rbefdata` package based on
-a facet of an analysis that has been published already and highlight the
-interactions of the package with the data management platform `BEFdata`. We
-discuss the introduced combination of software in the context of the data life
-cycle and current as well as future data management requirements.
-Additionally, we give an outlook on upcoming semantical features like an
-assisted search and smart merging functionality to be integrated with
-`rbefdata` and `BEFdata`.
+there are some good and widely accepted solutions that solve some of the most
+pressing problems with data like their lost other valuable concepts like for
+example ontologies and the use of metadata are not wide spread enough. This is
+either related to a missing acceptance or the simple fact that the concept is
+hard to implement for a certain scientific domain. We here introduce the
+`rbefdata` package that links the R statistics environment to the open source
+data management platform `BEFdata`. The platform has been developed and is used
+within the BEF-China experiment to manage the data. It is specialized in the
+handling of small and heterogeneous data, which is representing the majority of
+data in biodiversity research. We show the usage of the package by creating a
+workflow in form of an R script. The workflow underlying analysis steps not
+only describe the interactions between the R package and the data management
+platform but reconstruct a facet of an analysis already were results have been
+published already. We discuss the introduced combination of software in the
+context of the data life cycle in ecology and the current as well as future
+data management requirements. Additionally, we give an outlook on upcoming
+semantical assisted features like an improved exploration of data and smart
+merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
@@ -251,7 +255,7 @@ A `tematres` server can hold different representations of formalized knowledge
 like a thesaurus or even an ontology of a project. The `rbefdata` package
 supports exploiting a `tematres` vocabulary server via the `rtematres` package.
 We can find terms and relations as well as we can display their descriptions in
-`rbedfata`. This can be used to improve the exploration of datasets. For
+`rbefata`. This can be used to improve the exploration of datasets. For
 example looking for datasets that deal with  "plant organs" we can display the
 definition of that term first (box below). Then we ask the `BEFdata` portal for
 datasets that are tagged with that term and we get back a few datasets. In a
@@ -779,7 +783,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0014 **
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
 ## 4 - 1 == 0    0.733      0.288    2.54   0.0282 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
@@ -833,7 +837,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -940,13 +944,14 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 ## Discussion
 
-There is a growing demand to use and reuse available data (long tail), which
-puts much pressure on the development of software solutions that help
-researchers not only to find but also to effectively reuse data (supporting).
-In ecology especially the integration of small and heterogeneous data seems
-promising as it potentially can be integrated into a wider context to answer
-questions on a broader temporal and spatial scale (cite xxx). But particularly
-domains like ecology with a high degree of interdisciplinary interactions are
+There is a growing demand to use and reuse available data, which puts much
+pressure on the development of software solutions that help researchers not
+only to find but also to effectively reuse data (supporting). In ecology
+especially the integration of small and heterogeneous data, which represent the
+majority of datasets, seems promising as it potentially can be integrated into
+a wider context to answer questions on a broader temporal and spatial scale
+(cite xxx). However, particularly research areas like ecology which are
+characterised by a high degree of interdisciplinary interactions are
 challenging in terms of data management.
 
 The software combination of `rbefdata` and `BEFdata` provides solutions to
@@ -955,7 +960,7 @@ the `BEFdata` portal covers storage, and data harmonization tools, metadata
 support and a social component that fosters sharing data online (cite Karin),
 the `rbefdata` package gives easy access to data and metadata on the portal as
 well as it provides upload functionality for datasets and attachments like
-scripts or figures right from within R. Additionally the tag based exploration
+scripts or figures right from within R. Additionally, the tag based exploration
 of datasets helps to find datasets relevant for a certain analysis. The
 `tematres` vocabulary server integration further supports this as it allows to
 retrieve term definitions as well as semantical relations to broaden or narrow
@@ -970,19 +975,19 @@ track down data provenance which can be interesting in acknowledging data
 providers even for only one data column that has been used in an analysis. 
 
 While it seems a waste of time and bandwidth on one hand to always transfer the
-data to a local script for processing this approach also has its upsides.
+data to a local script for processing, this approach also has its upsides.
 Having the data locally offers full flexibility in choice of tools and also
 enables the researcher to freely mix in other local data sources. While this
-approach works well for small data the direct opposite is the case for big data
-where the transfer of data is not possible due to its size. The recent trend
-here goes towards on-server/in-database statistics, a scenario where scripts
-are to be sent to the server before it returns the answer after processing.
-Keeping the `BEFdata` portal as flexible as possible this could be one of the
-future features. 
+approach works well for small data it does not for big data since the transfer
+of data is not possible for large sized data. The recent trend here is
+on-server/in-database statistics, a scenario where scripts are to be sent to
+the server before it returns the answer after processing (xxx). To keep the
+`BEFdata` portal as flexible as possible and to give the researchers the
+freedom of choice this could be one of the future features to be integrated. 
 
 While well described data helps a lot in understanding datasets and on deciding
 upon the relevance and applicability of data for a certain analysis there is
-still lots of manual intervention necessary after that to prepare the data for
+still lots of manual intervention necessary to prepare the data for
 analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
 reshaped and merged which usually takes up to 70% of an analysis workflow,
 before smart models can be applied to the data to find interesting patters
@@ -998,27 +1003,24 @@ semantic tagging but the plug-in did not appear anywhere). The application of
 ontologies in ecology is discussed controversially (cite xxx) and it is argued
 that they can be a huge benefit, but it is hard to set up a sophisticated
 ontology covering all necessary terms and relation of a highly complex research
-domains (cite xxx).
+domain (cite xxx).
 
 We recently started to develop an ontology using a `tematres` .The
 formalization we develop will be based on the knowledge used in biodiversity
 ecosystem functioning research. The `BEFdata` portal will get a semantical
-tagging feature that will allow data owners to to tag data fine granular on
+tagging feature that will allow data owners to tag data fine granular ?? on
 data column level. Using the same formalized knowledge from the ontology we
 will be able to provide smart merging and transformation features within the
-`rbefdata` package that help researchers to merge dataset semi automatic.
+`rbefdata` package that help researchers to merge datasets semi automatic.
 
 While data storage and description is almost the same for all kind of data the
 effective interlinking of data via an ontology requires the development of a
-common terminology all contributing scientist of project accept and not only
-use but help do develop and discuss it. The future goal on ontologies is of
-course the development of domain ontologies that can be interlinked and
-
-overarching ontology
-
-Thus collaborative ontology
+common terminology. The terminology should not only be accepted but used, developped and discussed
+by all contributing scientist of the project. The future goal on ontologies is of
+course the development of domain ontologies that can be interlinked to an
+overarching ontology. Thus, collaborative ontology
 engineering approaches like `ontoverse` (Zoulfa El Jerroudi et al. 2008) or
-`tematres` are highly valuable as the not only help to set up ontologies but
+`tematres` are highly valuable as they not only help to set up ontologies but
 also to develop and maintain them over time even if the researchers change that
 contribute to it.
 

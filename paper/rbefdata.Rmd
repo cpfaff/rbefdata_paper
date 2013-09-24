@@ -8,20 +8,24 @@ options(width = 95)
 ## Abstract
 
 Today scientists need to deal with a deluge of data in many disciplines. While
-there are many good solutions to assist them throughout the data life cycle,
-the applicability of some solutions to certain scientific domains can be
-problematic. We here introduce the `rbefdata` package that links the R
-statistics environment to the open source data management platform `BEFdata`.
-The platform has been developed and is used within the BEF-China experiment and
-it is specialized in dealing with small and heterogeneous data from
-biodiversity research. We show a workflow with the `rbefdata` package based on
-a facet of an analysis that has been published already and highlight the
-interactions of the package with the data management platform `BEFdata`. We
-discuss the introduced combination of software in the context of the data life
-cycle and current as well as future data management requirements.
-Additionally, we give an outlook on upcoming semantical features like an
-assisted search and smart merging functionality to be integrated with
-`rbefdata` and `BEFdata`.
+there are some good and widely accepted solutions that solve some of the most
+pressing problems with data like their lost other valuable concepts like for
+example ontologies and the use of metadata are not wide spread enough. This is
+either related to a missing acceptance or the simple fact that the concept is
+hard to implement for a certain scientific domain. We here introduce the
+`rbefdata` package that links the R statistics environment to the open source
+data management platform `BEFdata`. The platform has been developed and is used
+within the BEF-China experiment to manage the data. It is specialized in the
+handling of small and heterogeneous data, which is representing the majority of
+data in biodiversity research. We show the usage of the package by creating a
+workflow in form of an R script. The workflow underlying analysis steps not
+only describe the interactions between the R package and the data management
+platform but reconstruct a facet of an analysis already were results have been
+published already. We discuss the introduced combination of software in the
+context of the data life cycle in ecology and the current as well as future
+data management requirements. Additionally, we give an outlook on upcoming
+semantical assisted features like an improved exploration of data and smart
+merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
@@ -528,15 +532,15 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 ## Discussion
 
-There is a growing demand to use and reuse available data, which
-puts much pressure on the development of software solutions that help
-researchers not only to find but also to effectively reuse data (supporting).
-In ecology especially the integration of small and heterogeneous data which 
-represent the majortiy of datasets, seems
-promising as it potentially can be integrated into a wider context to answer
-questions on a broader temporal and spatial scale (cite xxx). However, particularly
-research areas like ecology which are characterised by a high degree of 
-interdisciplinary interactions are challenging in terms of data management.
+There is a growing demand to use and reuse available data, which puts much
+pressure on the development of software solutions that help researchers not
+only to find but also to effectively reuse data (supporting). In ecology
+especially the integration of small and heterogeneous data, which represent the
+majority of datasets, seems promising as it potentially can be integrated into
+a wider context to answer questions on a broader temporal and spatial scale
+(cite xxx). However, particularly research areas like ecology which are
+characterised by a high degree of interdisciplinary interactions are
+challenging in terms of data management.
 
 The software combination of `rbefdata` and `BEFdata` provides solutions to
 different aspects of the data life cycle for ecological research groups. While
@@ -562,12 +566,12 @@ While it seems a waste of time and bandwidth on one hand to always transfer the
 data to a local script for processing, this approach also has its upsides.
 Having the data locally offers full flexibility in choice of tools and also
 enables the researcher to freely mix in other local data sources. While this
-approach works well for small data it does not for big data since
-the transfer of data is not possible for large sized data. The recent trend
-here is on-server/in-database statistics, a scenario where scripts
-are to be sent to the server before it returns the answer after processing (xxx).
-Keeping the `BEFdata` portal as flexible as possible this could be one of the
-future features. 
+approach works well for small data it does not for big data since the transfer
+of data is not possible for large sized data. The recent trend here is
+on-server/in-database statistics, a scenario where scripts are to be sent to
+the server before it returns the answer after processing (xxx). To keep the
+`BEFdata` portal as flexible as possible and to give the researchers the
+freedom of choice this could be one of the future features to be integrated. 
 
 While well described data helps a lot in understanding datasets and on deciding
 upon the relevance and applicability of data for a certain analysis there is
