@@ -34,6 +34,19 @@ integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
+
+One paragraph with all this:
+* growing awareness of the value of data
+* general reluctance to use and provide data to and from repositories
+* at the same time a multitude of available data sources
+* especially with small to medium sized datasets, scientists want to have the data
+  at their fingertips, they want to use their own tools
+* growing availability of workflow packages on R
+* introducing the rbefdata package tailored to communicate with BEFdata 
+  repositories and tematres thesauri
+* we demonstrate the usage with an interdisciplinary analysis on nutrient retention
+
+
 With a growing awareness on the value of data, much effort has been put into
 building data management platforms, that preserve all kinds of environmental
 and historic data, (e.g. diversity workbench, GBIF, `BEFdata`, DataONE,
