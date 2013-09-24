@@ -12,22 +12,24 @@ options(width = 95)
 ## Abstract
 
 Today scientists need to deal with a deluge of data in many disciplines. While
-there are some good and widely accepted tools that solve some of the most
-pressing problems with data like their loss, other valuable concepts like for
-example the use of meta data and formal representations of knowledge in form of
-ontologies are not yet wide spread enough. This is related to the facts that
-concepts can be hard to implement into data management solutions, the
-reluctance of users towards new solutions, or a general lack of acceptance. We
-here introduce the `rbefdata` package that links the R statistics environment
-to the open source data management platform `BEFdata`. The platform has been
-developed and is used within the BEF-China experiment. It is specialized in
-handling small and heterogeneous data, which is representing the majority of
-data in biodiversity research. We show the usage of the package by creating a
-workflow in form of an R script. The analysis steps underlying the workflow do
-not only show the interactions between the R package and the data management
-platform but also reconstruct a facet of an analysis where results have been
-published already. We discuss the introduced combination of software in the
-context of the data life cycle and the current as well as future data
+there are some widely accepted concepts and tools that solve some of the most
+pressing problems in data management, other highly potential concepts are not
+yet wide spread throughout scientific domains. While data preservation and the
+general access to data for a wider audience is covered very well, describing
+data with metadata, the use of semantical concepts, and the integration of
+small datasets still lacks behind. This is partially related to the reluctance
+of users towards new solutions, a general lack of acceptance of certain
+concepts, or that some concepts are simply hard to implement for certain
+scientific domain. We here introduce the `rbefdata` package that links the R
+statistics environment to the open source data management platform `BEFdata`.
+The platform has been developed and is used within the BEF-China experiment. It
+is specialized in handling small and heterogeneous data, representing the
+majority of data in biodiversity research. We show the usage of the package by
+a workflow in form of an R script. The analysis steps underlying the workflow
+do not only show the interactions between the R package and the data management
+platform but also reconstruct a facet of an analysis, of which the results have
+been published already. We discuss the introduced combination of software in
+the terms of the data life cycle and the current as well as future data
 management requirements. Additionally, we give an outlook on upcoming
 semantical assisted features like an improved exploration of data and smart
 merging functionality to be integrated with `rbefdata` and `BEFdata`.
