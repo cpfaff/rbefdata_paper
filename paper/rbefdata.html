@@ -182,38 +182,39 @@ hr {
 <body>
 <h2>Title</h2>
 
-<p>rbefdata - leveraging access to data and semantics</p>
+<p><code>rbefdata</code> - leveraging access to data and semantics</p>
 
 <h2>Abstract</h2>
 
 <p>Today scientists need to deal with a deluge of data in many disciplines. While
 there are some good and widely accepted solutions that solve some of the most
-pressing problems like the lost of data other valuable concepts like for
-example the use of meta data and ontologies are not yet wide spread enough.
-This is either related to the fact that the concepts are hard to implement for
-a certain domain or a lack of acceptance. We here introduce the <code>rbefdata</code>
-package that links the R statistics environment to the open source data
-management platform <code>BEFdata</code>.  The platform has been developed and is used
-within the BEF-China experiment to manage the data. It is specialized in the
-handling of small and heterogeneous data, which is representing the majority of
-data in biodiversity research. We show the usage of the package by creating a
-workflow in form of an R script.  The workflow underlying analysis steps not
-only describe the interactions between the R package and the data management
-platform but also reconstruct a facet of an analysis where results have been
-published already. We discuss the introduced combination of software in the
-context of the data life cycle in ecology and the current as well as future
-data management requirements. Additionally, we give an outlook on upcoming
-semantical assisted features like an improved exploration of data and smart
-merging functionality to be integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
+pressing problems like the loss of data other valuable concepts like for
+example the use of meta data and formal representations of knowledge in form of
+ontologies are not yet wide spread enough. This is either related to the fact
+that the concepts are hard to implement for a certain domain or a lack of
+acceptance. We here introduce the <code>rbefdata</code> package that links the R
+statistics environment to the open source data management platform <code>BEFdata</code>.
+The platform has been developed and is used within the BEF-China experiment to
+manage the data. It is specialized in the handling of small and heterogeneous
+data, which is representing the majority of data in biodiversity research. We
+show the usage of the package by creating a workflow in form of an R script.
+The workflow underlying analysis steps not only describe the interactions
+between the R package and the data management platform but also reconstruct a
+facet of an analysis where results have been published already. We discuss the
+introduced combination of software in the context of the data life cycle in
+ecology and the current as well as future data management requirements.
+Additionally, we give an outlook on upcoming semantical assisted features like
+an improved exploration of data and smart merging functionality to be
+integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
 
 <h2>Introduction</h2>
 
 <p>With a growing awareness on the value of data, much effort has been put into
 building data management platforms, that preserve all kinds of environmental
 and historic data, (e.g. diversity workbench, GBIF, <code>BEFdata</code>, DataONE,
-LifeWatch). Solutions for different scientific disciplines emerged that provide
+LifeWatch). Solutions emerged in different scientific disciplines that provide
 data management plans for small scale projects as well as for large data
-producing long term or remote sensing collaborations. An ongoing trend in this
+producing long term or remote sensing collaborations. An ongoing trend in that
 context is the development of integrative databases and data platforms. They
 serve as nodes that collect data from smaller databases of certain domains and
 enable researchers to access a wide range of relevant data all from one place.
@@ -223,19 +224,20 @@ that we face with our valuable data today, their loss.  </p>
 <p>With a growing global data pool the demand to use and reuse available data
 grows as well. Especially in ecology the integration of small and heterogeneous
 data offers the opportunity to answer questions on a much broader temporal and
-spatial scale. Metadata is crucial for the effective reuse of data as it
-improves its legibility. A plain dataset is hard to understand, to one who is
-not familiar with it and it can be hard to decipher even by the author itself,
-after some time has passed. For example it is hard to remember what methods
-have been used to collect the data of a certain column or what the
+spatial scale. Metadata is a crucial component for the effective reuse of data
+as it improves its legibility. A plain dataset is hard to understand, to one
+who is not familiar with it and it can be hard to decipher even by the author
+itself, after some time has passed. For example it is hard to remember what
+methods have been used to collect the data of a certain column or what the
 abbreviations or the headers in the dataset mean. While metadata theoretically
 solves the problem with undescribed data it is still hard to make researchers
-use it extensively. This is related to the fact that it usually means to learn
-new tools that help with the description process of data (e.g morpho, dataUP).</p>
+use it extensively. This is closely related to the fact that it usually means
+to learn new tools that help with the description process of data (e.g morpho,
+dataUP).</p>
 
-<p>By developing tools which closely tie together the data management with data
-exploration, the access to data and tools that help to describe data we can
-ensure an effective use and reuse of data. Thus in this paper we want to
+<p>By developing tools which closely tie together data management platforms, data
+exploration features, the access to data and tools that help to describe data
+we can ensure an effective use and reuse of data. Thus in this paper we want to
 introduce the new R package <code>rbefdata</code> which links the open source data
 management platform <code>BEFdata</code> to the R statistics environment. While the
 <code>BEFdata</code> platform offers sophisticated tool to preserve, harmonize, describe
@@ -253,32 +255,6 @@ pull data into the R environment, the inspection of metadata and shows how to
 upload data and attachments like figures and scripts back to the data
 management platform. </p>
 
-<p>Karin:</p>
-
-<p>Something on data discovery and paper proposals: Interdisciplinary analyses
-depend on data coming from different research fields. Not one single research
-project or laboratory measures all data, but they come from different
-researchers.  Data discovery - finding data that is suitable to answer a
-pressing question - has become an integral part of science. Data discovery
-between scientific disciplines is hampared by different vocabularies and
-missing agreement on common semantics. Tools addressing this problem are
-thesauri, ontologies, etc. &hellip; </p>
-
-<p>Paper proposals are an emerging concept solving transparant data exchange and
-reuse across disciplines and laboratories [citations!]</p>
-
-<p>Introducing workflows, their merits, and ROpenSci. But also Kepler, Pegasus,
-etc. Cite our paper on workflows.</p>
-
-<p>(<a href="http://ropensci.org/">http://ropensci.org/</a>),
-which is a community driven approach to wrap all science APIs and to create
-solutions for R users to seamlessly pull data from different repositories
-spread over the internet into R for analysis. </p>
-
-<p>There is a need for tools at the fingertips of the researchers, that can be
-easily integrated into their workflow and leverage their access to data as
-well as semantic repositories.</p>
-
 <h2>Material and Methods</h2>
 
 <h3>BEF-China</h3>
@@ -289,69 +265,38 @@ role of tree and shrub diversity for production, erosion control, element
 cycling, and species conservation in Chinese subtropical forest ecosystems&#39;.
 The BEF-China project (<a href="http://www.bef-china.de">www.bef-china.de</a>) is funded by the German science
 foundation (DFG, FOR 891) and uses two main research platforms located in the
-provinces Jiangxi and Zhejiang [cite Helges design paper].  </p>
-
-<p>Karin: </p>
-
-<ul>
-<li>I would suggest to reduce the details of the following dramatically:</li>
-</ul>
-
-<p>The Main experiment was established in 2009 and 2010 as the first large scale
-forest biodiversity–ecosystem functioning experiment in the highly species-rich
-subtropics.  In total, the area covers 50 ha and there are 566 plots of 400
-trees each, ranging in diversity from monoculture to 24-species mixtures. The
-experiment used 42 native tree species and 10 shrub species, combined into
-different species pools. More than 400 000 tree and shrub saplings were
-planted.  In a parallel observational approach, a total of 27 Comparative Study
-Plots (CSPs) of 30x30 m each were set up in existing forests in the adjacent
-Gutianshan National Nature Reserve (Zhejiang Province) in 2008.  The
-observational plots were selected according to a crossed sampling design along
-tree species richness and stand age. The CSPs address the impact of
-successional age on ecosystem functioning, providing a basis for assessing the
-successional processes at work across tree species diversity in the Main
-Experiment (Bruelheide et al., 2012).</p>
+provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012).  </p>
 
 <h3>BEFdata portal</h3>
 
 <p>The <a href="http://befdataproduction.biow.uni-leipzig.de/">BEFdata</a> platform is
-specialized in managing small and heterogeneous datasets. It adheres to
-standards like EML and facilitates research cooperation by the social paper
-proposals tool. To create a paper proposal a researcher can shop (select)
-datasets which are to be included in the analyses. Furthermore basic
-information of the proposed paper such as the title, the rationale, the
-envisaged journal and date needs to be provided. Sending in a proposal, a
-researcher asks for access to the datasets and proposes his research idea to
-the data owners and possible collaborators. The data owners get informed and
-can decide if and how they like to participate in the upcoming paper or if they
-only like to get acknowledged for providing their data (cite Karin). This
-social component of the portal allows to include and acknowledge all
-researchers involved in the data sampling process, it promotes collaborations
-between research units and helps to avoid duplication in publication
-initiatives on the same research ideas which adds to the transparency of data
-publication. Finally the datasets assembled in a paper proposal can be imported
-in one step to the R environment by <code>rbefdata</code> package.</p>
-
-<p>Karin:</p>
-
-<p>Something on keyword management and data discovery to include the semantics:
-Data discovery on BEFdata platforms can be done using a multitude of
-approaches: a search tool that accesses metadata, keywords, listing datasets
-per person and project, and listing datasets using the same datagroups and
-categories. Datasets as well as data columns within datasets can be tagged with
-keywords. BEFdata portals offer a range of functionality for keywords,
-including a word-cloud, and listing datasets using a keyword.</p>
-
-<p>Explain datagroups and categories? With focus on search and discovery.</p>
+specialized in managing small and heterogeneous data. It adheres to standards
+like the Ecological Metadata Language (EML) and facilitates research
+cooperation by a paper proposals tool. To create a paper proposal a researcher
+can select datasets which are to be included in the analysis. Furthermore basic
+information of the proposed paper such as the title, a rationale, the envisaged
+journal and a date needs to be provided.  Sending in a proposal, a researcher
+asks for access to the data and proposes his research idea to the project board
+and data owners. The data owners get informed and can decide if and how they
+like to participate in the upcoming paper or if they only like to get
+acknowledged for providing their data (cite Karin). This process allows to
+include or acknowledge all researchers involved in the data sampling process,
+it promotes collaborations between research units and helps to avoid
+duplication in publication initiatives on the same research ideas which adds to
+the transparency of data publication. Finally the datasets assembled in a paper
+proposal can be imported in one step to the R environment by <code>rbefdata</code>
+package. Another strength of the <code>BEFdata</code> portal is the tagging functionality
+for datasets and data columns which which his is also used in the <code>rbefdata</code>
+package to explore datasets.</p>
 
 <h3>Nutrient retention along a biodiversity gradient</h3>
 
 <p>In this paper we use an already published analysis on nutrient retention along
 a biodiversity gradient as a use case to build a workflow that shows the
 functionalities and inter linkages between the BEF-China data portal and the
-<code>rbefdata</code> package. The analysis is typical for interdisciplinary sciencies, as
+<code>rbefdata</code> package. The analysis is typical for interdisciplinary sciences, as
 it combines soil, taxon, and nutrient data. Data originating from field
-compaigns of different collaborating laboratories and has to be merged prior to
+campaigns of different collaborating laboratories and has to be merged prior to
 analyses. The analysis we use has the following rationale: </p>
 
 <p>&#39;Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
@@ -380,21 +325,26 @@ al. 2013 </p>
 
 <h3>rbefdata</h3>
 
-<p>The development of the <code>rbefdata</code> package started within the BEF-China project.
-Meanwhile it is part of the rOpenSci package portfolio (<a href="http://ropensci.org/">http://ropensci.org/</a>),
-which is a community driven approach to wrap all science APIs and to create
-solutions for R users to seamlessly pull data from different repositories
-spread over the internet into R for analysis. The package can be installed from
-The package can be installed from the CRAN package repository
-(<a href="https://github.com/befdata/befdata">https://github.com/befdata/befdata</a>) (see box below). It enables access to the
-data and meta data structures of the platform and provides convenient methods
-to pull single or multiple dataset into the R environment in one step for
-analysis. Additionally it offers functions that help to upload final results
-datasets with the script attached that has been used to derive the results from
-the original datasets which provides a valuable insight into data provenance
-and also is a stepping stone for reproducible research.</p>
+<p>The <code>rbefdata</code> package is open source software and the development takes place
+on GitHub (<a href="https://github.com/befdata/befdata">https://github.com/befdata/befdata</a>). The latest version can be
+installed directly from the CRAN repository as usual, using the
+<code>install.packages()</code> command. The <code>rbefdata</code> package started its development
+within the BEF-China project and meanwhile is part of the rOpenSci project
+(<a href="http://ropensci.org/">http://ropensci.org/</a>). The rOpenSci project is a community driven approach to
+give R users convenient access to many scientific data repositories. </p>
 
-<p>Karin: thesauri, if used later</p>
+<p><code>rbefdata</code> enables access to the data and associated metadata stored on a
+<code>BEFdata</code> platform. The metadata is provided attached to the data.frames of raw
+data pulled from the platform. The package provides convenient methods to pull
+single or multiple dataset into the R environment and offers functions that
+help to upload final results datasets with the script attached that has been
+used to derive the results from the original datasets which provides a valuable
+insight into data provenance and also is a stepping stone for reproducible
+research. </p>
+
+<p>On top of that it also integrates the access to vocabularies stored on
+<code>tematres</code> servers which can be useful in exploring relevant data for an
+analysis.</p>
 
 <pre><code class="r">install.packages(&quot;rbefdata&quot;)
 </code></pre>
@@ -405,9 +355,6 @@ and also is a stepping stone for reproducible research.</p>
 using an example that shows the inclusion the <code>tematres</code> vocabulary server
 before we finally come to the processing of the data attached to the paper
 proposal, the download of data as well as to the upload of final results.</p>
-
-<p>Karin: How about using data discovery to find the species names reference file, or
-data discovery to find some files for soil properties in the pilot experiment?</p>
 
 <h3>Setup <code>rbefdata</code></h3>
 
@@ -485,9 +432,6 @@ narrower keywords to query the <code>BEFdata</code> server again for datasets as
 with them and get back all datasets associated with the narrower terms. This
 can be used the other way around as well to restrict the datasets we get back
 to higher order terms with <code>bef.tematres.api(task = &quot;fetchUp&quot;, &quot;plant organ&quot;)</code>.</p>
-
-<p>Karin: 
-Cool! are these datasets used later? </p>
 
 <pre><code class="r"># define the term plant organ
 term_info = bef.tematres.api(task = &quot;fetchNotes&quot;, &quot;plant organ&quot;)
@@ -608,10 +552,10 @@ datasets_plant_organ_narrow
 
 <h3>Download data</h3>
 
-<p>Datasets discovered can then be assembled using paper proposals on BEFdata
+<p>Datasets discovered can then be assembled using paper proposals on <code>BEFdata</code>
 portals. Proposals accepted by the project board and the data owners give
-proponents access to the datasets requested. The rbefdata leverages data access
-through paper proposals by a download function. It loads all associated
+proponents access to the datasets requested. The <code>rbefdata</code> leverages data
+access through paper proposals by a download function. It loads all associated
 datasets of a proposal into the R environment in one single step.  It returns a
 list object that keeps a data frame per list element containing a dataset of
 the proposal each (see box below). The function requires the ID of the proposal
@@ -898,9 +842,9 @@ anova(model2)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   &lt;0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## 2 - 1 == 0    1.053      0.293    3.59   0.0008 ***
+## 4 - 1 == 0    0.865      0.497    1.74   0.1840    
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -946,9 +890,9 @@ anova(model3)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0280 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8793   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -1197,6 +1141,52 @@ term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
 and local initiatives (cite xxx) and private persons. This in fact results in a
 wild growing, complex and heterogeneous data landscape that an ontology would
 need to capture to be usable.</p>
+
+<h3>into karin</h3>
+
+<p>Karin:</p>
+
+<p>thesauri, ontologies, etc. &hellip; </p>
+
+<p>Something on data discovery and paper
+proposals: Interdisciplinary analyses depend on data coming from different
+research fields. Not one single research project or laboratory measures all
+data, but they come from different researchers.  Data discovery - finding data
+that is suitable to answer a pressing question - has become an integral part of
+science. Data discovery between scientific disciplines is hampered by different
+vocabularies and missing agreement on common semantics. Tools addressing this
+problem are</p>
+
+<p>Introducing workflows, their merits, and ROpenSci. But also Kepler, Pegasus,
+etc. Cite our paper on workflows.</p>
+
+<p>(<a href="http://ropensci.org/">http://ropensci.org/</a>),
+which is a community driven approach to wrap all science APIs and to create
+solutions for R users to seamlessly pull data from different repositories
+spread over the internet into R for analysis.  </p>
+
+<h3>material and methods</h3>
+
+<p>Karin: </p>
+
+<ul>
+<li>I would suggest to reduce the details of the following dramatically:</li>
+</ul>
+
+<p>The Main experiment was established in 2009 and 2010 as the first large scale
+forest biodiversity–ecosystem functioning experiment in the highly species-rich
+subtropics.  In total, the area covers 50 ha and there are 566 plots of 400
+trees each, ranging in diversity from monoculture to 24-species mixtures. The
+experiment used 42 native tree species and 10 shrub species, combined into
+different species pools. More than 400 000 tree and shrub saplings were
+planted.  In a parallel observational approach, a total of 27 Comparative Study
+Plots (CSPs) of 30x30 m each were set up in existing forests in the adjacent
+Gutianshan National Nature Reserve (Zhejiang Province) in 2008.  The
+observational plots were selected according to a crossed sampling design along
+tree species richness and stand age. The CSPs address the impact of
+successional age on ecosystem functioning, providing a basis for assessing the
+successional processes at work across tree species diversity in the Main
+Experiment .</p>
 
 </body>
 
