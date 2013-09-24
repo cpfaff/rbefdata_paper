@@ -22,35 +22,40 @@ smart merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 With a growing awareness on the value of data, much effort has been put into
 building data management platforms, to preserve all kind of environmental and
-historic data, over the last years. Many solutions for different scientific
-disciplines appeared that provide data management plans for small scale
-projects or collaborations as well as for large data producing, long term or
-remote sensing projects (e.g. diversity workbench, `BEFdata`, DataONE,
-LifeWatch). An ongoing trend in that context is the development of integrative
+historic data, over the last years (e.g. diversity workbench, GBIF, `BEFdata`,
+DataONE, LifeWatch). Many solutions for different scientific disciplines
+appeared that provide data management plans for small scale projects or
+collaborations as well as for large data producing long term or remote sensing
+projects. An ongoing trend in this context is the development of integrative
 databases or data portals. They serve as nodes that collect data from smaller
-databases of a certain domain and they give researchers of that domain the
-opportunity to access a wide range of relevant data all from one place (e.g
-GBIF, TRY). These data management portals in fact offer a solution to to one of
-the most pressing problems that we face with our valuable data today, their
-loss.
+databases of a certain domain and whose researchers get the opportunity to
+access a wide range of relevant data all from one place. In fact, these data
+management portals offer a solution to one of the most pressing problems that
+we face with our valuable data today, their loss. However, by developing tools
+which allow an easy access and analyses of these data it can be ensured that
+these are not only preserved but used and reused. In this paper we want to
+introduce the new R package rbefdata which linkes the befdata portal with the
+statistics environment R. The aim of the package is to provide the tools to
+download data, analyse them and upload them back to the data portal.
 
-With more data getting available there is a growing demand to use and reuse it.
-By developing tools that allow an easy access to the data for analyses, it can
-be assured that it is not only reused but embedded into into a wider context. A
+With a growing global data pool there is also a growing demand to use and reuse
+available data and to embed small heterogeneous data into a wider context. A
 problem here is the legibility of datasets. Usually plain datasets say nothing,
 to one who is not familiar with it and they are even hard to decipher by the
-author himself after some time has passed. It is hard to remember exactly what
-methods have been used to collect a certain columns data or what the
-abbreviations or headers in the dataset mean. 
-
-Metadata frameworks have been developed and published as standards to solve
-this problem, so nobody really needs to think about an own set of requirements
-to describe data. The Ecological Metadata Language
+author himself after some time has passed. It is usually hard to remember
+exactly what methods have been used to collect a certain columns data or what
+the abbreviations or headers in the dataset mean. To solve this problem
+metadata frameworks have been developed and published as standards so nobody
+really needs to think about an own set of requirements to describe their data.
+The Ecological Metadata Language
 [EML](http://knb.ecoinformatics.org/software/eml/) is only one example for
 that. While this theoretically solves the problem with not well described
 datasets it is still hard to make researchers use it extensively as this
 usually always means to learn new tools that help with the description process
-(e.g morpho, data up).
+(e.g morpho, data up). Thus, it is helpful to combine well known tools and techniques,
+such as excel workbooks or R scripts with the requirements of metadata language.
+These solutions are easily usable for researchers and may thus lead to more extensive
+use.
 
 In this paper we introduce the R package `rbefdata` which links the R
 statistics Environment to the open source data management platform `BEFdata`.
@@ -145,7 +150,7 @@ hypotheses: (H1) Nitrogen acquisition and retention increases with species
 richness due complementary effects in species mixtures. (H2) Species richness
 effects strengthen over time.' The respective proposal can be assessed under
 (url) For a detailed description of the experimental design we refer to Lang et
-al. 2013 (DOI)
+al. 2013 
 
 ### rbefdata
 
@@ -730,10 +735,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59   0.0012 **
-## 4 - 1 == 0    0.865      0.497    1.74   0.1840   
-## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -785,8 +790,8 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0014 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0283 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0285 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -839,7 +844,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -876,8 +881,10 @@ different system compartments (leaves, fine roots and soil) revealed that fine
 root recovery was lower than leaf recovery, and biomass recovery (leaves and
 fine roots) was lower than soil recovery.  Whereas the relative leaf and root
 recovery were significantly higher in species mixtures compared with
-monoculture (Figs. Xb and Xc), the relative soil recovery was significantly
-reduced (Fig. Xd).
+monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
+reduced (Fig. Xd). Thus, we could show that the relative N retention of biomass
+was significantly increased in mixtures. For an interpretation of these
+results we refer to Lang et al. 2013.
 
 ![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
@@ -886,22 +893,6 @@ reduced (Fig. Xd).
             the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root
             recovery (c) and relative soil recovery (d). Significant differences as revealed by post
             hoc Tukey’s test (P < 0.05) are indicated by different letters.
-
-Our results demonstrate that species richness of mixtures increases system N
-retention in young subtropical tree plantations. Although relative soil
-recovery was highest compared with relative leaf and root recovery, soil
-recovery decreased with species richness (Fig. X). Thus, the observed positive
-relationship between species richness and system N retention is caused by an
-increase in relative N recovery of sapling biomass (fine roots and leaves) with
-higher species numbers in mixtures. Our findings suggest positive species
-diversity effects for an important ecosystem service, which is highly relevant
-for afforestation programmes as currently applied in China on a large scale.
-The positive relationship between species richness and system N retention
-suggests that mixed plantings even at the sapling stage of a restricted species
-pool may considerably increase N retention in subtropical forest systems even
-after a few years. This in turn has the potential to significantly reduce N
-losses and thus N accumulation in the leachate or groundwater (Lang et al.
-2013).
 
 ### Upload data 
 
