@@ -24,6 +24,17 @@ smart merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
+* growing awareness of the value of data
+* general reluctance to use and provide data to and from repositories
+* at the same time a multitude of available data sources
+* especially with small to medium sized datasets, scientists want to have the data
+  at their fingertips, they want to use their own tools
+* growing availability of workflow packages on R
+* introducing the rbefdata package tailored to communicate with BEFdata 
+  repositories and tematres thesauri
+* we demonstrate the usage with an interdisciplinary analysis on nutrient retention
+
+
 With a growing awareness on the value of data, much effort has been put into
 building data management platforms, to preserve all kind of environmental and
 historic data, over the last years. Many solutions for different scientific
@@ -38,9 +49,16 @@ GBIF, TRY). These data management portals in fact offer a solution to to one of
 the most pressing problems that we face with our valuable data today, their
 loss.
 
+Metadata [citations!]
+
+rbefdata is innovative in that it provides data together with metadata! This
+should be introduced as a problem, that R dataframes are often restricted to
+the tabular information, but we use the attributes to provide metadata
+together with thabular data!
+
 With more data getting available there is a growing demand to use and reuse it.
 By developing tools that allow an easy access to the data for analyses, it can
-be assured that it is not only reused but embedded into into a wider context. A
+be assured that it is not only reused but embedded into a wider context. A
 problem here is the legibility of datasets. Usually plain datasets say nothing,
 to one who is not familiar with it and they are even hard to decipher by the
 author himself after some time has passed. It is hard to remember exactly what
@@ -69,12 +87,13 @@ of a vocabulary server.
 We showcase the functionality of the package available with version `0.3.5`
 creating a workflow that integrates two datasets. The use case is dealing with
 data from a small scale experiment called pilot experiment in the BEF
-(Biodiversity and Ecosystem Functioning) - China experiment. It is a 15N tracer
-experiment which aims to disentangle the effect of species mixtures on system N
-retention. The workflow depicts how to pull data into the R environment, the
-inspection of metadata and shows how to upload data and attachments like
-figures and scripts. The analysis in the workflow reconstructs a facet of an
-analysis that has been published already by Lang et al. 2013. 
+(Biodiversity and Ecosystem Functioning) - China experiment. It is a 15N
+tracer experiment which aims to disentangle the effect of species mixtures on
+system N retention. The workflow depicts how collect datasets from different
+collaborating laboratories, load the data into the R environment, analyse and
+merge data, upload new data to the repository and attachments like figures and
+scripts. The analysis in the workflow reconstructs a facet of an analysis that
+has been published already by Lang et al. 2013.
 
 ## Material and Methods
 
