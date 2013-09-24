@@ -1,226 +1,208 @@
 
 
-## Abstract 
 
-We face a deluge of data today scientists need to deal with in many different
-disciplines. While there are already good solutions to some parts of the data
-life cycle the applicability of the solutions to certain scientific domains
-often varies. Especially research domains with high degree of interdisciplinary
-interactions and heterogeneity in methods and data like ecology face problems
-in dealing with valuable concepts like ontologies that potentially can be used
-to improve or automate some of the most common tasks in analyses like finding
-relevant data, cleaning, and merging of datasets. We here introduce the
-`rbefata` package that connects to the open source data management platform
-`BEFdata` that has been developed and is used within the BEF-China experiment.
-We show how to use the package in combination with the data portal on an
-example workflow that integrates two datasets from the BEF-China experiment
-representing an analysis that has been published already. We discuss the
-combination of the R package `rbefdata` and the data portal in the context of
-state of the art data management and the data lifecycle as well as we give an
-outlook on upcoming features like semantic tools that will enable smart
-merges and finding of data based on an ontology we are building. 
+## Abstract
 
-## Introduction 
+Today scientists need to deal with a deluge of data in many different
+disciplines. While there are good solutions to assist researchers throughout
+the life cycle of data, the applicability of the solutions to a certain
+scientific domain often varies. We here introduce the `rbefdata` package that
+connects the R statistics environment to the open source data management
+platform `BEFdata`. This platform has been developed and is used within the
+BEF-China experiment and is specialized in dealing with small and heterogeneous
+data. We show the usage of the package and highlight its interactions with the
+data management platform `BEFdata`. For this an underlying analysis of already
+published results is used to build a workflow with the `rbefdata` package. We
+discuss the introduced combination of software in the context of the data life
+cycle and current as well as future data management requirements. Additionally,
+we give an outlook on upcoming semantical features like an assisted search and
+smart merging functionality to be integrated with `rbefdata` and `BEFdata`.
+
+## Introduction
 
 With a growing awareness on the value of data, much effort has been put into
 building data management platforms, to preserve all kind of environmental and
-historic data, over the last years (e.g. diversity workbench, GBIF, `BEFdata`, DataONE, LifeWatch).
-Many solutions for different scientific disciplines appeared that provide data
-management plans for small scale projects or collaborations as well as for
-large data producing long term or remote sensing projects. An ongoing trend in
-that context is the development of integrative databases or data portals. They
-serve as nodes that collect data from smaller databases of a certain domain and
-they give researchers of that domain the opportunity to access a wide range of
-relevant data all from one place. These data management portals in fact offer a
-solution to to one of the most pressing problems that we face with our valuable
-data today, their loss. 
+historic data, over the last years. Many solutions for different scientific
+disciplines appeared that provide data management plans for small scale
+projects or collaborations as well as for large data producing, long term or
+remote sensing projects (e.g. diversity workbench, `BEFdata`, DataONE,
+LifeWatch). An ongoing trend in that context is the development of integrative
+databases or data portals. They serve as nodes that collect data from smaller
+databases of a certain domain and they give researchers of that domain the
+opportunity to access a wide range of relevant data all from one place (e.g
+GBIF, TRY). These data management portals in fact offer a solution to to one of
+the most pressing problems that we face with our valuable data today, their
+loss.
 
-With a growing global data pool there is a also a growing demand to use and
-reuse available data and to embed small heterogeneous data into a wider
-context. A problem here is the legibility of datasets. Usually plain
-datasets say nothing, to one who is not familiar with it and they are even hard
-to decipher by the author herself after some time has passed. It is usually hard
-to remember exactly what methods have been used to collect a certain columns
-data or what the abbreviations or headers in the dataset mean. To solve this
-problem metadata frameworks have been developed and published as standards so
-nobody really needs to think about an own set of requirements to describe their
-data. The Ecological Metadata Language (EML)[] is only one example for that. While this
-theoretically solves the problem with not well described datasets it is still
-hard to make researchers use it extensively as this usually always means to
-learn new tools that help with the description process (e.g morpho, data up).
+With more data getting available there is a growing demand to use and reuse it.
+By developing tools that allow an easy access to the data for analyses, it can
+be assured that it is not only reused but embedded into into a wider context. A
+problem here is the legibility of datasets. Usually plain datasets say nothing,
+to one who is not familiar with it and they are even hard to decipher by the
+author himself after some time has passed. It is hard to remember exactly what
+methods have been used to collect a certain columns data or what the
+abbreviations or headers in the dataset mean. 
 
-While well described data can help a lot in understanding datasets and on
-deciding upon the relevance and applicability in a certain analysis there is
-still lots of manual intervention necessary after that to prepare the data for
-analysis (cite yourself and Karin? or xxx). It may needs to be cleaned,
-imputed, reshaped and merged which usually takes up to 70% of an analysis
-workflow, before smart models can be applied to the data to find interesting
-patters (cite the workflow paper of Karin and me). This preparation steps not
-only are time and labour intensive but also potentially error prone, especially
-as the complexity of analyses grows. 
+Metadata frameworks have been developed and published as standards to solve
+this problem, so nobody really needs to think about an own set of requirements
+to describe data. The Ecological Metadata Language
+[EML](http://knb.ecoinformatics.org/software/eml/) is only one example for
+that. While this theoretically solves the problem with not well described
+datasets it is still hard to make researchers use it extensively as this
+usually always means to learn new tools that help with the description process
+(e.g morpho, data up).
 
-Ontologies, as formal representations of knowledge, potentially offer a
-sophisticated tool to deal with that step of data preparation (cite supporting
-ecology as data intensive science). While they are already used in some
-research domains like genetics (cite xxx, eg. http://www.geneontology.org/),
-other domains face more problems using it (cite xxx, morpho team announced
-semantic tagging but the plug-in did not appear anywhere). The application of
-ontologies in ecology is discussed controversially (cite xxx) and it is argued
-that they can be a huge benefit, but it is hard to set up a sophisticated
-ontology covering all necessary terms and relation of a highly complex research
-domains (cite xxx). 
+In this paper we introduce the R package `rbefdata` which links the R
+statistics Environment to the open source data management platform `BEFdata`.
+The `rbefdata` package is part of the rOpenSci initiative which aims to give
+R-Users all the flexibility in access to a wide range of data repositories. The
+aim of the `rbefdata` package is to provide a tool which helps to download and
+analyse data stored on a `BEFdata` platform as well to provide upload
+functionality to push back new datasets, scripts and figures. Additionally the
+package offers methods that ease the exploration of datasets by the integration
+of a vocabulary server. 
 
-For example ecology, which has grown into a very collaborative,
-interdisciplinary and data intensive science over the last decade, to address
-questions on a greater temporal and spatial scale (e.g michener et al 2012).
-The data here is mainly provided by small scale studies spread all over the
-world (e.g heidorn2009 shedding light on the dark) but also through bigger long
-term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
-and local initiatives (cite xxx) and private persons. This in fact results in a
-wild growing, complex and heterogeneous data landscape that an ontology would
-need to capture to be usable.
-
-We here introduce the R package `rbefdata` that in combination with the
-`BEFdata` data management platform deals with finding, analysing and describing
-data as well the reuse of availbale data. We showcase the functionality of the
-package available with version `0.3.5` creating a workflow which integrates two
-datasets and reconstructs one facet of an analysis that has been published
-already. We discuss the `rbefdata` package and `BEFdata` in the light of
-upcoming developments like the integration of an ontology we built that will
-make finding data and smart merges possible, to help researchers to deal with
-the future challenges in handling complex and heterogeneous data.
-
-## Material and Methods 
-
-### BEF-China and the BEFdata portal
-
-The BEF-China experiment is a Biodiversity Ecosystem Functioning (BEF)
-experiment funded by the German science foundation (DFG, FOR 891). It is
-located in the subtropics of China in the provinces Jianxi and Zhejiang. The
-BEF-China research group (www.bef-china.de) uses two main research platforms.
-An experimental forest diversity gradient of 50~ha, and 27 observational plots
-of 30x30 m each located in the Gutianshan Nature Reserve.  The observational
-plots were selected according to a crossed sampling design along tree species
-richness and stand age. The data for the workflow on carbon pools stems from 22
-to 116 years consisting of 14 to 35 species (cite Bruelheide, 2010).  
-
-The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is an open
-source data management platform developed within the BEF-China project. It
-adheres to standards like the Ecological Metadata Language for describing
-datasets with metadata and is specialized in harmonizing small heterogeneous
-data that usually has to be dealt with in BEF. But its specialization makes it
-also very valuable to use in any other scientific domain that needs to deal
-with complex small and heterogeneous data. 
-
-The portal offers a social component where researchers can shop datasets and
-write a paper proposals based on the datasets in the shopping cart. In the
-process of creating a proposal some information like a title, a rationale, an
-envisaged journal and date needs to be provided. Sending in a proposal a
-researcher asks for access to the datasets and provides the data owners with
-necessary information about the paper. The data owners then can decide if and
-how they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin).
-
-### The proposal 
-
-The portal facilitates research cooperation by the tool of paper proposals.
-Sending in a proposal, a researcher asks for access to the datasets and
-proposes his/her research idea to the dataowners and possible collaborators.
-This more social component of the portal allows to include and acknowledge all
-researchers involved in the data sampling process, promotes collaborations
-between research units, avoids publication initiatives of the same research
-ideas and adds to the transparency of data publication.  To create a paper
-proposal the researcher can shop (select) datasets which are to be included in
-the analyses.  Furthermore basic information of the proposed paper such as the
-title, the rationale, the envisaged journal and date needs to be provided. The
-data owners and proposed collaborators are informed and can decide if and how
-they like to participate in the upcoming paper or if they only like to get
-acknowledged for providing their data (cite Karin). Furthermore the datasets
-assembled by the paper proposal can be readily imported in one step to the R
-environment by rbefdata.
-
-
-### rbefdata 
-
-The development of the `rbefdata` package started within the BEF-China project.
-Meanwhile it is part of the rOpenSci package portfolio (http://ropensci.org/),
-which is a community driven approach to wrap all science APIs and to create
-solutions to pull data from different repositories into R for analysis.  The
-package can be installed from the CRAN package repository
-(https://github.com/befdata/befdata) and enables access to the data, meta data
-structures of the platform and provides convenient methods to pull single or
-multiple dataset into the R environment in one step for analysis.  Additionally
-it offers functions that help to upload final results datasets with the script
-attached that has been used to derive the results from the original datasets
-which provides a valuable insight into data provenance and also is a stepping
-stone for reproducible research.
-
-## Usecase (results) 
-
-In this paper we use an already published dataset as a usecase to present the
-functionalities and inter linkages between the BEF-China data portal and
-`rbefdata`. However, we will as well give some ecological background of the
-datasets used and the respective analyses. The usecase is dealing with data
-from a small scale experiment called pilot experiment. It is a 15N tracer
+We showcase the functionality of the package available with version `0.3.5`
+creating a workflow that integrates two datasets. The use case is dealing with
+data from a small scale experiment called pilot experiment in the BEF
+(Biodiversity and Ecosystem Functioning) - China experiment. It is a 15N tracer
 experiment which aims to disentangle the effect of species mixtures on system N
-retention.
+retention. The workflow depicts how to pull data into the R environment, the
+inspection of metadata and shows how to upload data and attachments like
+figures and scripts. The analysis in the workflow reconstructs a facet of an
+analysis that has been published already by Lang et al. 2013. 
 
-We created a paper proposal with the following rationale: 'Knowledge of
-biodiversity effects on nutrient cycling patterns in subtropical forest
-ecosystems is still very limited, particularly as regards macronutrients such
-as nitrogen and phosphorus. Experimental approaches using tree saplings may
-promote an understanding of mechanisms that underlie nutrient acquisition and
-cycling in early successional stages of secondary forests and forest
-plantations.  Insights in the potential of nutrient retention of young tree
-plantations are of particular interest in China, where large areas have been
-reforested in order to counteract soil erosion and to increase the soils’ water
-and nutrient retention capacity.  In this study we planted saplings of four
-abundant early successional (evergreen and deciduous) tree species in
-monocultures, two- and four-species combination to test the effect of species
+## Material and Methods
+
+### BEF-China 
+
+The BEF - China project is a research group whose aim is to disentangle the
+'The role of tree and shrub diversity for production, erosion control, element
+cycling, and species conservation in Chinese subtropical forest ecosystems'.
+The BEF-China research group (www.bef-china.de) is funded by the German science
+foundation (DFG, FOR 891) and uses two main research platforms located in the
+provinces Jiangxi and Zhejiang.  The Main experiment was established in 2009
+and 2010 as the first large scale forest biodiversity–ecosystem functioning
+experiment in the highly species-rich subtropics.  In total, the area covers 50
+ha and there are 566 plots of 400 trees each, ranging in diversity from
+monoculture to 24-species mixtures. The experiment used 42 native tree species
+and 10 shrub species, combined into different species pools. More than 400 000
+tree and shrub saplings were planted.  In a parallel observational approach, a
+total of 27 Comparative Study Plots (CSPs) of 30x30 m each were set up in
+existing forests in the adjacent Gutianshan National Nature Reserve (Zhejiang
+Province) in 2008.  The observational plots were selected according to a
+crossed sampling design along tree species richness and stand age. The CSPs
+address the impact of successional age on ecosystem functioning, providing a
+basis for assessing the successional processes at work across tree species
+diversity in the Main Experiment (Bruelheide et al., 2012). 
+
+### BEFdata portal
+
+The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) platform is
+specialized in managing small and heterogeneous datasets. It adheres to
+standards like EML and facilitates research cooperation by the social paper
+proposals tool. To create a paper proposal a researcher can shop (select)
+datasets which are to be included in the analyses. Furthermore basic
+information of the proposed paper such as the title, the rationale, the
+envisaged journal and date needs to be provided. Sending in a proposal, a
+researcher asks for access to the datasets and proposes his research idea to
+the data owners and possible collaborators. The data owners get informed and
+can decide if and how they like to participate in the upcoming paper or if they
+only like to get acknowledged for providing their data (cite Karin). This
+social component of the portal allows to include and acknowledge all
+researchers involved in the data sampling process, it promotes collaborations
+between research units and helps to avoid duplication in publication
+initiatives on the same research ideas which adds to the transparency of data
+publication. Finally the datasets assembled in a paper proposal can be imported
+in one step to the R environment by `rbefdata` package.
+
+### The proposal
+
+In this paper we use an already published analysis as a use case to build a
+workflow that shows the functionalities and inter linkages between the
+BEF-China data portal and the `rbefdata` package. The underlying analysis we
+use as backbone for our workflow has the following rationale: 
+
+'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
+forest ecosystems is still very limited, particularly as regards macro
+nutrients such as nitrogen and phosphorus. Experimental approaches using tree
+saplings may promote an understanding of mechanisms that underlie nutrient
+acquisition and cycling in early successional stages of secondary forests and
+forest plantations. Insights in the potential of nutrient retention of young
+tree plantations are of particular interest in China, where large areas have
+been reforested in order to counteract soil erosion and to increase the soils’
+water and nutrient retention capacity.  In this study we planted saplings of
+four abundant early successional (evergreen and deciduous) tree species in
+monoculture, two- and four-species combination to test the effect of species
 richness on nitrogen acquisition and retention by using a 15N tracer
-experiment.  A crucial question in BEF research is the appropriate time scale
-of experiments which allows species richness effects to emerge. This question
+experiment. A crucial question in BEF research is the appropriate time scale of
+experiments which allows species richness effects to emerge. This question
 gains importance when long-lived and slowly growing organisms such as trees are
 considered. We wanted to analyse whether species richness effects occur during
 the establishment phase of early successional tree species typical of
 subtropical forests of China.  More precisely we wanted to test the following
 hypotheses: (H1) Nitrogen acquisition and retention increases with species
-richness due complementary effects in species mixtures.  (H2) Species richness
+richness due complementary effects in species mixtures. (H2) Species richness
 effects strengthen over time.' The respective proposal can be assessed under
 (url) For a detailed description of the experimental design we refer to Lang et
-al. 2013 (DOI) 
+al. 2013 (DOI)
 
-![showcase_proposal](./figure/static/showcase_proposal.png) 
+### rbefdata
 
-* caption: The paper proposal in its final approved state. The information on that page
-           contains a title rational envisaged date and journal. The calculated authors
-           and email lists for communication as well as the attached datasets and sub
-           projects involved (only partially shown).
-
-When all dataowners accepted the paper proposal rbefdata can be used to
-directly access the datasets from the dataportal and transfer them to the R
-environment. To do so the `rbefdata`package needs to be setup. This requires
-installing, loading the package and setting the required package options.
-Having a look into the options list reveals several fields that can be filled
-in, like the URL to the `BEFdata` server, user credentials and a download
-folder name that is used to store free format files attached to datasets. The
-`tematres` server related URLs in the options are part of upcoming features
-that are non fully functional on the time of writing and thus can be ignored by
-now. 
-
-The most essential setting for the example workflow we present here is the user
-credentials. These are used to authenticate the user against the portal to
-ensure the access to the data has been granted before download and to log the
-data access. Setting the server URL is not required here as it defaults to the
-BEF-China project instance of the `BEFdata` portal that we retrieve data from
-in this example. If one has set up an own instance of the `BEFdata` portal,
-this URL needs to be changed so the package communicates with the right server
-(see box below).
+The development of the `rbefdata` package started within the BEF-China project.
+Meanwhile it is part of the rOpenSci package portfolio (http://ropensci.org/),
+which is a community driven approach to wrap all science APIs and to create
+solutions for R users to seamlessly pull data from different repositories
+spread over the internet into R for analysis. The package can be installed from
+the CRAN package repository (https://github.com/befdata/befdata) (see box
+below). It enables access to the data and meta data structures of the platform
+and provides convenient methods to pull single or multiple dataset into the R
+environment in one step for analysis. Additionally it offers functions that
+help to upload final results datasets with the script attached that has been
+used to derive the results from the original datasets which provides a valuable
+insight into data provenance and also is a stepping stone for reproducible
+research.
 
 
 ```r
+install.packages("rbefdata")
+```
+
+
+## Example workflow 
+
+We start setting up the R package, highlight the dataset exploration features
+using an example that shows the inclusion the `tematres` vocabulary server
+before we finally come to the processing of the data attached to the paper
+proposal, the download of data as well as to the upload of final results.
+
+### Setup `rbefdata`
+
+After loading `rbefdata` into the working environment the settings need to be
+set via the `bef.options()` command. A look into the options reveals several
+fields that can be filled in. The most essential setting for the example
+workflow we present here is the user credentials. These are used to
+authenticate the user against the portal and to ensure the access to the data
+has been granted as well as to log the data access. We need to set it as the
+data is not yet open access at the time of writing. When it will be open access
+in the near future, a key is no longer required to download the data.
+
+Other options are the URLs to the `BEFdata` server instance and the `tematres`
+vocabulary server as well as a field that stores the name of a download folder.
+While the URL fields ensure the package communicates with the right servers the
+download folder name is used to create a folder in case we download attached
+files from a dataset or proposal. In our case there is no need to change the
+URL to `BEFdata` server, as it defaults to the BEF-China instance that we use
+to retrieve data from. If an own instance of the `BEFdata` portal or has been
+set up, this URL needs to be changed so the package communicates with the right
+server (see box below).
+
+
+```r
+# load the package
 require(rbefdata)
-# options list
+
+# list all options
 bef.options()
 ```
 
@@ -243,7 +225,7 @@ bef.options()
 
 ```r
 
-# querry single options
+# querry a single option
 bef.options("url")
 ```
 
@@ -269,13 +251,166 @@ bef.options(url = "http://my.own.befdata.instance.com")
 
 
 
-After setup we can start right away using data from the proposal that we
-created. The proposal download function of `rbefdata` is used for that. It
-draws all associated datasets of a proposal into the R environment in one
-single step. It returns a list object that keeps a data frame per list element
-containing a dataset of the proposal each (see blow). The function requires the
-ID of the proposal to work. The ID can be found in the URL of the proposal (see
-below).
+### Vocabulary integration 
+
+A `tematres` server can hold different representations of formalized knowledge
+like a thesaurus or even an ontology of a project. The `rbefdata` package
+supports exploiting a `tematres` vocabulary server via the `rtematres` package.
+We can find terms and relations as well as we can display their descriptions in
+`rbedfata`. This can be used to improve the exploration of datasets. For
+example looking for datasets that deal with  "plant organs" we can display the
+definition of that task first (box below). Then we ask the `BEFdata` portal for
+datasets that are tagged with the keyword we are looking for. We get back a few
+datasets. In a next step we use the vocabulary on the `tematres` server to
+narrow down "plant organs" and we find "leaf",  "root", "twig" as well as
+plural forms. We use the narrower keywords to query the `BEFdata` server again
+for datasets associated with them.
+
+
+```r
+# define the term plant organ
+term_info = bef.tematres.api(task = "fetchNotes", "plant organ")
+term_info
+```
+
+```
+## $id
+## [1] "74"
+## 
+## $term
+## [1] "plant organ"
+## 
+## $language
+## [1] "en"
+## 
+## $description
+## [1] "In biology, an organ is a collection of tissues joined in a structural unit to serve a common function."
+```
+
+```r
+
+# get datasets tagged with plant organ
+datasets_plant_organ = bef.get.datasets_for_keyword("plant organ")
+datasets_plant_organ
+```
+
+```
+##    id
+## 1 357
+## 2 202
+## 3 187
+##                                                                                                title
+## 1                                              Biomass Allometry Equations of Pilot Experiment (SP7)
+## 2 Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
+## 3                                              Traits of ferns and herb species occuring in the CSPs
+```
+
+```r
+
+# narrow down plant organ
+narrow_tasks_plant_organ = bef.tematres.api(task = "fetchDown", "plant organ")
+narrow_tasks_plant_organ
+```
+
+```
+## $id
+## [1] "73" "75" "76" "30"
+## 
+## $term
+## [1] "leaf"  "root"  "roots" "twig"
+```
+
+```r
+
+# enrich the search with narrower keywords
+datasets_plant_organ_narrow = bef.get.datasets_for_keyword(c(narrow_tasks_plant_organ$term))
+datasets_plant_organ_narrow
+```
+
+```
+##     id
+## 1  242
+## 2  320
+## 3  323
+## 4  359
+## 5  371
+## 6  372
+## 7  108
+## 8  357
+## 9  188
+## 10 202
+## 11 143
+## 12 145
+## 13 360
+## 14 160
+## 15 166
+## 16 147
+## 17 367
+## 18 368
+## 19 384
+## 20 219
+## 21 212
+## 22 187
+## 23 381
+## 24 319
+## 25 347
+## 26 322
+## 27 107
+## 28 192
+## 29 313
+## 30 105
+##                                                                                                                                            title
+## 1                                                               Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
+## 2                                       Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A& B)
+## 3                                                         Leaf traits and chemicals from individual trees in the Main Experiment (Sites A and B)
+## 4                                                                                             Coarse root density in the Comparative Study Plots
+## 5                                                                   Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 & 3)
+## 6                                                                                  Estimated Root Biomass of July 2010 of Pilot Experiment (SP1)
+## 7                                   Talk 5: Leaf eco-physiological traits and coarse root spatial distribution characteristic in CSPs (2010)—SP3
+## 8                                                                                          Biomass Allometry Equations of Pilot Experiment (SP7)
+## 9  Biomass of four tree species (Castanea henryi, Quercus serrata, Schima suberba and Elaeocarpus decipiens) as saplings in the Pilot Experiment
+## 10                                            Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
+## 11                                          Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
+## 12                                                Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
+## 13                                                                                                                  Detailed tree allometry data
+## 14                                                                                                          Genetic diversity of Ardisia crenata
+## 15                                                                                                        Genetic diversity of Castanopsis eyrei
+## 16                                                                         Herbivore damage on saplings of 23 tree and shrub species in the CSPs
+## 17                                                                                              Leaf damage of tree individuals Site A fall 2011
+## 18                                                                                            Leaf damage of tree individuals Site A summer 2011
+## 19                                                                                                  NILEX - Rainfall Simulation and Soil Erosion
+## 20                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
+## 21                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
+## 22                                                                                         Traits of ferns and herb species occuring in the CSPs
+## 23                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
+## 24                                                                                                                  Site A tree census from 2010
+## 25                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
+## 26                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
+## 27                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
+## 28                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
+## 29                                                                                                    P concentrations in leaves and roots, CSPs
+## 30                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
+```
+
+
+### Download data 
+
+If all data owners accepted the paper proposal `rbefdata` can be used to to
+access the datasets. After setup we can start right away using data from the
+proposal that we created. The proposal download function of `rbefdata` is used
+for that. It draws all associated datasets of a proposal into the R environment
+in one single step. It returns a list object that keeps a data frame per list
+element containing a dataset of the proposal each (see box below). The function
+requires the ID of the proposal to work. The ID can be found in the URL of the
+proposal (see box below).
+
+![showcase_proposal](./figure/static/showcase_proposal.png)
+
+* caption: The paper proposal in its final approved state. The information on that page
+           contains a title, a rational an envisaged date and journal. The calculated authors
+           and email lists for communication as well as the attached datasets and sub
+           projects involved (only partially shown). The proposal is published alredy see 
+           (Lang et al. 2013).
 
 ```
 # the proposal URL shows the id is 90 
@@ -287,13 +422,20 @@ http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 # proposal id is
 datasets = bef.get.datasets_for_proposal(id = 90)
 extract_second_dataset = datasets[[2]]
-head(extract_first_dataset, 5)
+head(extract_second_dataset, 5)
 ```
 
 ```
-## Error: object 'extract_first_dataset' not found
+##     plot_id recov_plot perleaf_plot perroot_plot perbio_plot persoil_plot gbd_T0.mm.
+## 1 pilot1D01     15.642        2.918       1.0015       3.920        96.08         NA
+## 2 pilot1D02     13.032        5.523       1.3688       6.891        93.11      3.688
+## 3 pilot1D04     20.292        1.057       0.5157       1.572        98.43      2.875
+## 4 pilot1D05      9.595        4.187       1.0861       2.032        97.97      6.000
+## 5 pilot1D07      8.354       15.100       5.0983      17.963        82.04      7.000
 ```
 
+ 
+### Inspect data (EML)
 
 Each dataset in the `BEFdata` portal is associated with metadata the authors of
 the dataset provide. We also provide access to the metadata from within
@@ -352,8 +494,8 @@ names(attributes(datasets[[1]]))
 ```
 
 
-The dataset from the proposal contains three datasets, of which we do only use
-the second and third. These two are written into two variables called
+The dataset list from the proposal contains three datasets, of which we do only
+use the second and third. These two are written into two variables called
 `Nretention` and `design` before deciding upon how to merge them. Inspecting
 the headers of both dataset reveals each of them contains a column containing a
 `plot_id` that seems suitable for merging. But we can also make use the
@@ -419,13 +561,15 @@ design_column_plot_id_description
 ```
 
 
+### Analyse the data 
+
 After merging the datasets the new synthesis dataset still contains many
 columns not required for the analysis that can be dropped. To analyse the
 dataset of system N retention we need information about the species diversity
 in the plots and about which plot is placed in which block from the design
 dataset. 'Species diversity' is used as a factor containing three levels (1,2,4
 species mixtures). The response variables have been checked for normality with
-`qqplot` and transformed (box below).
+`qqplot` and transformed (see box below).
 
 
 ```r
@@ -638,10 +782,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -693,7 +837,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -722,16 +866,24 @@ Anova(model4, type = "II")
 ```
 
 
-### Results of the showcase analysis
+### Results of the analysis
 
 System 15N retention (overall plot recovery) was positively affected by species
-richness at the level of P = 0.l0576 (Chisq: 5.7; Fig. Xa). The analysis of the
+richness at the level of P = 0.0576 (Chisq: 5.7; Fig. Xa). The analysis of the
 different system compartments (leaves, fine roots and soil) revealed that fine
 root recovery was lower than leaf recovery, and biomass recovery (leaves and
 fine roots) was lower than soil recovery.  Whereas the relative leaf and root
 recovery were significantly higher in species mixtures compared with
-monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
-reduced (Fig. Xd).  
+monoculture (Figs. Xb and Xc), the relative soil recovery was significantly
+reduced (Fig. Xd).
+
+![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
+
+
+* caption:  Nitrogen (N) retention affected by species richness. N retention summed as
+            the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root
+            recovery (c) and relative soil recovery (d). Significant differences as revealed by post
+            hoc Tukey’s test (P < 0.05) are indicated by different letters.
 
 Our results demonstrate that species richness of mixtures increases system N
 retention in young subtropical tree plantations. Although relative soil
@@ -749,27 +901,21 @@ after a few years. This in turn has the potential to significantly reduce N
 losses and thus N accumulation in the leachate or groundwater (Lang et al.
 2013).
 
-![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
-
-
-* caption:  Nitrogen (N) retention affected by species richness. N retention summed as
-            the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root
-            recovery (c) and relative soil recovery (d). Significant differences as revealed by post
-            hoc Tukey’s test (P < 0.05) are indicated by different letters.
+### Upload data 
 
 Finally we need to decide on either to upload a full dataset which we could do
 using the dataset upload function `bef.portal.upload.dataset()` or only to
-upload the script and maybe a figure to highlight the road to the results
-starting from the source datasets used. This can be done by attaching to the
-proposal with `bef.portal.attach.to_proposal()`. 
+upload the script and maybe a figure to highlight the road to the results from
+the source datasets used. This can be done by attaching to the proposal with
+`bef.portal.attach.to_proposal()`. For the example shown, it is the best way to
+go with an attachment to the proposal as uploading the merged dataset would
+only mean duplication of data in the database of the `BEFdata` platform.
 
-For the shown example it is the best way to go with an attachment to the
-proposal as uploading the merged dataset would only mean duplication of data in
-the database of the data management platform. So we upload the script and the
-four pane figure with its caption to add them to the proposal. The figure is
-prepared as Portable Network Graphics (PNG) using the R internal PNG device. It
-is written to a temporary folder and then uploaded. The script in this case is
-an R markdown file that we attach to the proposal (see box below).
+So we upload the script and the four pane figure with its caption to add them
+to the proposal. The figure is prepared as Portable Network Graphics (PNG)
+using the R internal PNG device. It is written to a temporary folder and then
+uploaded. The script in this case is an R markdown file that we attach to the
+proposal (see box below).
 
 
 ```r
@@ -791,7 +937,7 @@ bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", descriptio
 
 
 ```r
-# caption for the figure
+# caption of the figure
 caption = "Nitrogen (N) retention affected by species richness. N retention summed as\n           the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root\n           recovery (c) and relative soil recovery (d). Significant differences as revealed by post\n           hoc Tukey’s test (P < 0.05) are indicated by different letters."
 
 # upload the figure
@@ -800,91 +946,140 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 ```
 
 ```
-## Error: specified file does not exist: /tmp/RtmpwjKr5z/results_plot_proposal_90.png.  You must
-## specify a valid file name or provide the contents to send.
+## [1] "Attachment to proposal with ID: 90 successful!"
 ```
 
 
 ![showcase_proposal_attachment](./figure/static/showcase_proposal_attachments.png)
 
 * caption: The paper proposal in its final approved state with attachments. The
-           attachments are the final plot and the R script that has been used to derive
-           the resutls in the published paper. 
+           attachments are the final results figure and the R script that has been 
+           used to derive the results in the published paper.
 
 ## Discussion
 
-* General discussion 
-  - high need to effective use/reuse data 
-  - relevant data needs to be simply detectable 
+There is a growing demand to use and reuse available data, which puts much
+pressure on the development of software solutions that help researchers not
+only to find but also to effectively reuse data. In ecology especially the
+integration of small and often heterogeneous data seems promising. It
+potentiially can be integrated into a wider context to answer questions on a
+broader temporal and spatial scale (cite xxx). But particulary domains like
+ecology are challenging in terms of data management as they show a high degree
+of interdisciplinary interactions which also results in heterogeneity in
+methods and data.
 
-* `BEFdata` and `rbefdata` 
-  - in combination provide a solution to 
-    + data storage
-    + describing data with metadata
-    + collaboration and data sharing 
-    + simply pull data into analysis software and push data back
-    + data provenance by attaching R scripts to uploads
-  - will provide solution with next versions 
-    + easier finding relevant data 
-    + smart merges (including unit conversions)
+The software combination of `rbefdata` and `BEFdata` provides solutions to
+different aspects of the data life cycle. While the `BEFdata` portal covers
+data storage, and harmonization tools, metadata support and a social component
+that fosters sharing data online (cite Karin), the `rbefdata` package offers an
+easy access to data and metadata on the portal as well as it provides upload
+functionality for datasets and attachments like scripts or figures rigth from
+within R. 
 
-As there is a growing demand to effectively reuse available data this puts much
-pressure on the development of solutions that help researchers not only to find
-but also to integrate heterogeneous small data into a wider context. Highly
-interdisciplinary research domains like ecology are challenging in terms of
-data reuse and exchange. While data storage and description is almost the same
-for all kind of data the effective interlinking of data via an ontology
-requires the development of a common terminology all contributing scientist of
-a research domain accept and not only use but help do develop and discuss it.
-Thus collaborative ontology engineering approaches like `ontoverse` 
-(Zoulfa El Jerroudi et al. 2008) or `tematres` are highly valuable as the not 
-only help to set up ontologies but also to develop and maintain them over time 
-even if the researchers change that contribute to it. 
+While it seems a waste of time and bandwidth on one hand to always transfer the
+data to a local script for processing this approach also has its upsides.
+Having the data locally offers full flexibilit in choice of tools and also
+enables the researcher to freely mix in other local data sources. While this
+approach works well for small data the direct opossite is the case for big data
+where the transfer of data is not possible due to its size. The recent trend
+here goes towards on-server/in-database statistics, a scenario where scripts
+are to be sent to the server before it returns the answer after processing. 
 
-The software combination of `rbefdata` and `BEFdata` offers a solutions to data
-storage for different sizes of projects, it helps in describing data with
-metadata and to provide a public with the information via the EMl metadata
-standard, it fosters the collaboration and the trust in sharing data online by
-paper proposals and the helps in analysing by offering simple tools to pull
-data right direct from the portal into the R statistics environment. The upload
-functionality provided by `rbefdata` 
+While well described data helps in understanding the datasets and on deciding
+upon the relevance and applicability of data a certain analysis there is still
+lots of manual intervention necessary after that to prepare the data for
+analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
+reshaped and merged which usually takes up to 70% of an analysis workflow,
+before smart models can be applied to the data to find interesting patters
+(cite the workflow paper of Karin and me). This preparatory steps not only are
+time and labour intensive but also potentially error prone, especially as the
+complexity of the analyses increases.
 
-(metadata) 
-    + collaboration (data sharing)
-    + simply pull data into analysis software and push data back
-    + data provenance by attaching R scripts to uploads
+The tag based exploration of datasets helps to find datasets relevant for a
+certain analysis. The `tematres` vocabulary server integration further supports
+this as it allows to retrieve term definitions as well as semantical relations
+to broaden or narrow down search terms. This feature is part of the upcoming
+integration of an ontology based on the vocabulary and knowledge of
+Biodiversity Ecosystem Functioning Experiments.
+
+The `rbefdata` package facilitates the access of data and metadata. The
+availability of both via the R statistics environment allows for fast analysis.
+The upload mechanisms of the package help to keep the online platform up to
+date and gives other researchers the possibility to reproduce the results by
+downloading scripts attached to proposals. The uploaded script is not only a
+stepping stone to reproducible research but also helps to track down data
+provenance.
 
 
-(data intensive science, long tail). The
-combination of `BEFdata` and the `rbefdata` package provides solutions to parts
-of the data lifecycle as it deals with finding and describing data as well as
-the as it promotes the understanding and reuse of data, as it is adhering
-metadata standards.
 
-a one part of the data life cycle and especially introduces a solution to deal
-with high heterogeneous data.
+understand and use data stored on a `BEFdata` platform.  Additionally it offers
+methods to simply push back datasets and attachments like plots and scripts to
+the `BEFdata` portal which is a stepping stone for reproducibility and data
+provenance. 
 
-We recently stared to develop an ontology using a `tematres` server containing
+like ecology facing problems in dealing with some highly valuable concepts
+of data management like ontologies (e.g michener et al 2012). 
+
+We recently started to develop an ontology using a `tematres` server containing
 knowledge extracted from portals that deal with data management for ecological
 research. The `tematres` server offers an API so all the contained terms can be
-accessed by the upcoming version of `rbefdata` 
+accessed by the upcoming version of `rbefdata`.
 
-The formalization developed is and will be based on the knowledge used in
-biodiversity research. Thus we will here discuss the software combination
-`BEFdata` and `rbefdata` in the light of the upcoming features and in general
-context state of the art data management today. In one of the next versions to
-be rolled out the `BEFdata` portal will get a semantical annotation feature.
-This will give administrators the ability to tag each column of datasets with a
-general term that best describes the content. So the field will contain
-potential top terms of the ontology. The tagging will be reflected in the API
-and can thus be simply queried to use the information within the R package.
-Using the knowledge about the content of a column in the R package will enable
-us to do support smart merges that work.
+The formalization developed will be based on the knowledge used in biodiversity
+research. Thus we will here discuss the software combination `BEFdata` and
+`rbefdata` in the light of the upcoming features and in the general context of state
+of the art data management today. In one of the next versions to be rolled out
+the `BEFdata` portal will get a semantical annotation feature.  This will give
+administrators the ability to tag each column of datasets with a general term
+that best describes the content. So the field will contain potential top terms
+of the ontology. The tagging will be reflected in the API and can thus be
+simply queried to use the information within the R package.  Using the
+knowledge about the content of a column in the R package will enable us to do
+support smart merges *** explain this term again something like: with 'smart merges'
+we refer to the merge...
 
 `tematres` ([homepage](http://www.vocabularyserver.com/))into `BEFdata` and the
 `rbefdata` package so they play well together semantically.
+    
+While well described data can help a lot in understanding datasets and on
+deciding upon the relevance and applicability in a certain analysis there is
+still lots of manual intervention necessary after that to prepare the data for
+analysis (cite Karin and me? or xxx). It may need to be cleaned, imputed,
+reshaped and merged which usually takes up to 70% of an analysis workflow,
+before smart models can be applied to the data to find interesting patters
+(cite the workflow paper of Karin and me). This preparatory steps not only are
+time and labour intensive but also potentially error prone, especially as the
+complexity of the analyses increases.
 
-## Acknowledgements 
+Those potentially can be used to improve or automate some of the most common
+tasks in analyses starting from finding relevant data to cleaning and merging
+as well as they can facilitate the exchange of data.  
+
+Ontologies, as formal representations of knowledge, potentially offer a
+sophisticated tool to deal with that step of data preparation (cite supporting
+ecology as data intensive science). While they are already used in some
+research domains like genetics (cite xxx, eg. http://www.geneontology.org/),
+other domains face more problems using it (cite xxx, morpho team announced
+semantic tagging but the plug-in did not appear anywhere). The application of
+ontologies in ecology is discussed controversially (cite xxx) and it is argued
+that they can be a huge benefit, but it is hard to set up a sophisticated
+ontology covering all necessary terms and relation of a highly complex research
+domains (cite xxx).
+
+
+
+
+While data storage and description is almost the same for all kind of data the
+effective interlinking of data via an ontology requires the development of a
+common terminology all contributing scientist of a research domain accept and
+not only use but help do develop and discuss it.  Thus collaborative ontology
+engineering approaches like `ontoverse` (Zoulfa El Jerroudi et al. 2008) or
+`tematres` are highly valuable as the not only help to set up ontologies but
+also to develop and maintain them over time even if the researchers change that
+contribute to it.
+
+
+## Acknowledgements
 
 Thanks to all the data owners of the proposal for providing access to the
 datasets. ...
@@ -898,66 +1093,19 @@ publication.
 
 ## Appendix
 
-* maybe will not be used extensively but we will see
+### Figures
 
-### Figures 
+### saveaway 
 
-* vizualization plugin (keywords) 
-
-One can visualize the keywords associated with the dataset of a `BEFdata` portal
-using the vitalization functionality. This gives a short overview about the
-contents the portal data is dealing with.
+We discuss `rbefdata` and `BEFdata` in in the light of current and future
+challenges for data management give an outlook onto upcoming features that
+could help to solve them. 
 
 
+The data here is mainly provided by small scale studies spread all over the
+world (e.g heidorn2009 shedding light on the dark) but also through bigger long
+term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
+and local initiatives (cite xxx) and private persons. This in fact results in a
+wild growing, complex and heterogeneous data landscape that an ontology would
+need to capture to be usable.
 
-```
-## Warning: individual based values could not be fit on page. It will not be plotted. Warning:
-## wood perforation plates could not be fit on page. It will not be plotted. Warning: belowground
-## biomass could not be fit on page. It will not be plotted. Warning: cadmium at wavelength 214nm
-## could not be fit on page. It will not be plotted. Warning: coefficient of variation could not
-## be fit on page. It will not be plotted. Warning: digital data acquisition could not be fit on
-## page. It will not be plotted. Warning: diversity treatment could not be fit on page. It will
-## not be plotted. Warning: geomorphology could not be fit on page. It will not be plotted.
-## Warning: microbial biomass could not be fit on page. It will not be plotted. Warning:
-## secondary compounds could not be fit on page. It will not be plotted. Warning: soil horizon
-## could not be fit on page. It will not be plotted. Warning: spatial genetic structure could not
-## be fit on page. It will not be plotted. Warning: species trait could not be fit on page. It
-## will not be plotted. Warning: standard deviation could not be fit on page. It will not be
-## plotted. Warning: trait dissimilarity could not be fit on page. It will not be plotted.
-## Warning: tree rings could not be fit on page. It will not be plotted. Warning: wood bending
-## could not be fit on page. It will not be plotted. Warning: wood compression could not be fit
-## on page. It will not be plotted. Warning: wood shrinkage could not be fit on page. It will not
-## be plotted. Warning: wood toughness could not be fit on page. It will not be plotted. Warning:
-## aeromorphic organic layer could not be fit on page. It will not be plotted. Warning: BEF China
-## projects could not be fit on page. It will not be plotted. Warning: community similarity could
-## not be fit on page. It will not be plotted. Warning: community weighted mean trait could not
-## be fit on page. It will not be plotted. Warning: control treatment could not be fit on page.
-## It will not be plotted. Warning: co-variables could not be fit on page. It will not be
-## plotted. Warning: eco-physiologic traits could not be fit on page. It will not be plotted.
-## Warning: ecosystem functioning could not be fit on page. It will not be plotted. Warning:
-## experimental treatment could not be fit on page. It will not be plotted. Warning: Flora of
-## China could not be fit on page. It will not be plotted. Warning: genetic autocorrelation could
-## not be fit on page. It will not be plotted. Warning: human influence could not be fit on page.
-## It will not be plotted. Warning: land use history could not be fit on page. It will not be
-## plotted. Warning: matching status could not be fit on page. It will not be plotted. Warning:
-## multi-trophic interactions could not be fit on page. It will not be plotted. Warning: nitrogen
-## cycling could not be fit on page. It will not be plotted. Warning: phosphorous could not be
-## fit on page. It will not be plotted. Warning: phylogenetic distinctness could not be fit on
-## page. It will not be plotted. Warning: phytophagous insects could not be fit on page. It will
-## not be plotted. Warning: predators could not be fit on page. It will not be plotted. Warning:
-## research proposals could not be fit on page. It will not be plotted. Warning: respiration
-## could not be fit on page. It will not be plotted. Warning: rooting depth could not be fit on
-## page. It will not be plotted. Warning: runoff plots could not be fit on page. It will not be
-## plotted. Warning: simpson diversity could not be fit on page. It will not be plotted. Warning:
-## specialization could not be fit on page. It will not be plotted. Warning: species identity
-## variable could not be fit on page. It will not be plotted. Warning: vegetation stratum could
-## not be fit on page. It will not be plotted. Warning: Weibull distribution could not be fit on
-## page. It will not be plotted. Warning: wood ground tissue could not be fit on page. It will
-## not be plotted. Warning: wood mechanics could not be fit on page. It will not be plotted.
-## Warning: wood porosity could not be fit on page. It will not be plotted.
-```
-
-![plot of chunk vizalize_keywords](figure/vizalize_keywords.png) 
-
-
-### Tables
