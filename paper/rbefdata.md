@@ -4,78 +4,67 @@
 ## Abstract
 
 Today scientists need to deal with a deluge of data in many different
-disciplines. While there are good solutions to assist researchers throughout
-the life cycle of data, the applicability of the solutions to a certain
-scientific domain often varies. We here introduce the `rbefdata` package that
+disciplines. While there are good solutions to assist them throughout the life
+cycle of data, the applicability or the acceptance of some of the solutions to
+certain scientific domain varies. We here introduce the `rbefdata` package that
 connects the R statistics environment to the open source data management
-platform `BEFdata`. This platform has been developed and is used within the
-BEF-China experiment and is specialized in dealing with small and heterogeneous
-data. We show the usage of the package and highlight its interactions with the
-data management platform `BEFdata`. For this an underlying analysis of already
-published results is used to build a workflow with the `rbefdata` package. We
-discuss the introduced combination of software in the context of the data life
-cycle and current as well as future data management requirements. Additionally,
-we give an outlook on upcoming semantical features like an assisted search and
-smart merging functionality to be integrated with `rbefdata` and `BEFdata`.
+platform `BEFdata`. The platform has been developed and is used within the
+BEF-China experiment. It is specialized in dealing with small and heterogeneous
+data from biodiversity research. We build a workflow with the `rbefdata`
+package and highlight its interactions with the data management platform
+`BEFdata`. The analysis underlying the workflow is based on already published
+results. We discuss the introduced combination of software in the context of
+the data life cycle and current as well as future data management requirements.
+Additionally, we give an outlook on upcoming semantical features like an
+assisted search and smart merging functionality to be integrated with
+`rbefdata` and `BEFdata`.
 
 ## Introduction
 
 With a growing awareness on the value of data, much effort has been put into
-building data management platforms, to preserve all kind of environmental and
-historic data, over the last years (e.g. diversity workbench, GBIF, `BEFdata`,
-DataONE, LifeWatch). Many solutions for different scientific disciplines
-appeared that provide data management plans for small scale projects or
-collaborations as well as for large data producing long term or remote sensing
-projects. An ongoing trend in this context is the development of integrative
-databases or data portals. They serve as nodes that collect data from smaller
-databases of a certain domain and whose researchers get the opportunity to
-access a wide range of relevant data all from one place. In fact, these data
-management portals offer a solution to one of the most pressing problems that
-we face with our valuable data today, their loss. However, by developing tools
-which allow an easy access and analyses of these data it can be ensured that
-these are not only preserved but used and reused. In this paper we want to
-introduce the new R package rbefdata which linkes the befdata portal with the
-statistics environment R. The aim of the package is to provide the tools to
-download data, analyse them and upload them back to the data portal.
+building data management platforms, that preserve all kinds of environmental
+and historic data, (e.g. diversity workbench, GBIF, `BEFdata`, DataONE,
+LifeWatch). Solutions for different scientific disciplines emerged that provide
+data management plans for small scale projects as well as for large data
+producing long term or remote sensing collaborations. An ongoing trend in this
+context is the development of integrative databases and data platforms. They
+serve as nodes that collect data from smaller databases of certain domains and
+enable researchers to access a wide range of relevant data all from one place.
+In fact, these platforms offer a solution to one of the most pressing problems
+that we face with our valuable data today, their loss.  
 
-With a growing global data pool there is also a growing demand to use and reuse
-available data and to embed small heterogeneous data into a wider context. A
-problem here is the legibility of datasets. Usually plain datasets say nothing,
-to one who is not familiar with it and they are even hard to decipher by the
-author himself after some time has passed. It is usually hard to remember
-exactly what methods have been used to collect a certain columns data or what
-the abbreviations or headers in the dataset mean. To solve this problem
-metadata frameworks have been developed and published as standards so nobody
-really needs to think about an own set of requirements to describe their data.
-The Ecological Metadata Language
-[EML](http://knb.ecoinformatics.org/software/eml/) is only one example for
-that. While this theoretically solves the problem with not well described
-datasets it is still hard to make researchers use it extensively as this
-usually always means to learn new tools that help with the description process
-(e.g morpho, data up). Thus, it is helpful to combine well known tools and techniques,
-such as excel workbooks or R scripts with the requirements of metadata language.
-These solutions are easily usable for researchers and may thus lead to more extensive
-use.
+With a growing global data pool the demand to use and reuse available data
+grows as well. Especially in ecology the integration of small and heterogeneous
+data offers the opportunity to answer questions on a much broader temporal and
+spatial scale. Metadata is crucial for the effective reuse of data as it
+improves its legibility. A plain dataset is hard to understand, to one who is
+not familiar with it and it can be hard to decipher even by the author itself,
+after some time has passed. For example it is hard to remember what methods
+have been used to collect the data of a certain column or what the
+abbreviations or the headers in the dataset mean. While metadata theoretically
+solves the problem with undescribed data it is still hard to make researchers
+use it extensively. This is related to the fact that it usually means to learn
+new tools that help with the description process of data (e.g morpho, dataUP).
 
-In this paper we introduce the R package `rbefdata` which links the R
-statistics Environment to the open source data management platform `BEFdata`.
-The `rbefdata` package is part of the rOpenSci initiative which aims to give
-R-Users all the flexibility in access to a wide range of data repositories. The
-aim of the `rbefdata` package is to provide a tool which helps to download and
-analyse data stored on a `BEFdata` platform as well to provide upload
-functionality to push back new datasets, scripts and figures. Additionally the
-package offers methods that ease the exploration of datasets by the integration
-of a vocabulary server. 
-
-We showcase the functionality of the package available with version `0.3.5`
-creating a workflow that integrates two datasets. The use case is dealing with
-data from a small scale experiment called pilot experiment in the BEF
-(Biodiversity and Ecosystem Functioning) - China experiment. It is a 15N tracer
-experiment which aims to disentangle the effect of species mixtures on system N
-retention. The workflow depicts how to pull data into the R environment, the
-inspection of metadata and shows how to upload data and attachments like
-figures and scripts. The analysis in the workflow reconstructs a facet of an
-analysis that has been published already by Lang et al. 2013. 
+By developing tools which closely tie together the data management with data
+exploration, the access to data and tools that help to describe data we can
+ensure an effective use and reuse of data. Thus in this paper we want to
+introduce the new R package `rbefdata` which links the open source data
+management platform `BEFdata` to the R statistics environment. While the
+`BEFdata` platform offers sophisticated tool to preserve, harmonize, describe
+and share data, the focus of the R package is to provide tools to explore,
+understand and download the data for analysis, as well as it offers
+functionality for uploading results back to the data management platform. We
+showcase the functionality of the package available with version `0.3.5` based
+on a workflow that integrates two datasets. The workflow reconstructs a facet
+of an analysis that has been published by Lang et al. 2013. The analysis is
+part of the BEF (Biodiversity and Ecosystem Functioning) - China experiment and
+deals with data from the subproject called "pilot experiment".  It is a 15N
+tracer experiment which aims to disentangle the effect of species mixtures on
+system N retention. The workflow depicts how to ask for data access, how to
+pull data into the R environment, the inspection of metadata and shows how to
+upload data and attachments like figures and scripts back to the data
+management platform. 
 
 ## Material and Methods
 
@@ -125,8 +114,8 @@ in one step to the R environment by `rbefdata` package.
 
 In this paper we use an already published analysis as a use case to build a
 workflow that shows the functionalities and inter linkages between the
-BEF-China data portal and the `rbefdata` package. The underlying analysis we
-use as backbone for our workflow has the following rationale: 
+BEF-China data portal and the `rbefdata` package. The analysis we use has the
+following rationale: 
 
 'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
 forest ecosystems is still very limited, particularly as regards macro
@@ -735,10 +724,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
+## 4 - 1 == 0    0.865      0.497    1.74    0.184   
+## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -790,8 +779,8 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0014 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0282 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -844,7 +833,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
