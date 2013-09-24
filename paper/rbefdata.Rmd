@@ -8,8 +8,8 @@ options(width = 95)
 ## Abstract
 
 Today scientists need to deal with a deluge of data in many disciplines. While
-there are already good solutions to assist them throughout the life cycle of
-data, the general applicability of the solutions to certain domains can be
+there are many good solutions to assist them throughout the data life cycle,
+the applicability of some solutions to certain scientific domains can be
 problematic. We here introduce the `rbefdata` package that links the R
 statistics environment to the open source data management platform `BEFdata`.
 The platform has been developed and is used within the BEF-China experiment and
