@@ -20,10 +20,10 @@ handling of small and heterogeneous data, which is representing the majority of
 data in biodiversity research. We show the usage of the package by creating a
 workflow in form of an R script.  The workflow underlying analysis steps not
 only describe the interactions between the R package and the data management
-platform but reconstruct a facet of an analysis already were results have been
+platform but also reconstruct a facet of an analysis where results have been
 published already. We discuss the introduced combination of software in the
 context of the data life cycle in ecology and the current as well as future
-data management requirements.  Additionally, we give an outlook on upcoming
+data management requirements. Additionally, we give an outlook on upcoming
 semantical assisted features like an improved exploration of data and smart
 merging functionality to be integrated with `rbefdata` and `BEFdata`.
 

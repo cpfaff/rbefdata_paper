@@ -16,10 +16,10 @@ handling of small and heterogeneous data, which is representing the majority of
 data in biodiversity research. We show the usage of the package by creating a
 workflow in form of an R script.  The workflow underlying analysis steps not
 only describe the interactions between the R package and the data management
-platform but reconstruct a facet of an analysis already were results have been
+platform but also reconstruct a facet of an analysis where results have been
 published already. We discuss the introduced combination of software in the
 context of the data life cycle in ecology and the current as well as future
-data management requirements.  Additionally, we give an outlook on upcoming
+data management requirements. Additionally, we give an outlook on upcoming
 semantical assisted features like an improved exploration of data and smart
 merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
@@ -782,10 +782,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
+## 4 - 2 == 0    0.132      0.278    0.48    0.879    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -837,9 +837,9 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
-## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## 2 - 1 == 0   -0.294      0.127   -2.32    0.051 .
+## 4 - 1 == 0   -0.499      0.215   -2.33    0.050 *
+## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
