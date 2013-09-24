@@ -73,9 +73,21 @@ use it extensively. This is closely related to the fact that it usually means
 to learn new tools that help with the description process of data (e.g morpho,
 dataUP).
 
+Karin: there are some papers talking about what users want from data
+repositories. These could be cited (e.g. Kerstin Bach). Motivate that
+researchers prefer to perform the analyses at their own laptops.
+
 By developing tools which closely tie together data management platforms, data
 exploration features, the access to data and tools that help to describe data
-we can ensure an effective use and reuse of data. Thus in this paper we want to
+we can ensure an effective use and reuse of data. 
+
+
+
+
+
+Karin: this is ok as last paragraph, but the tematres part is missing: Data discovery.
+
+Thus in this paper we want to
 introduce the new R package `rbefdata` which links the open source data
 management platform `BEFdata` to the R statistics environment. While the
 `BEFdata` platform offers sophisticated tool to preserve, harmonize, describe
