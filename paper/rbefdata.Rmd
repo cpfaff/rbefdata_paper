@@ -93,6 +93,14 @@ upload data and attachments like figures and scripts back to the data
 management platform.  
 
 
+
+Metadata [citations!]
+
+rbefdata is innovative in that it provides data together with metadata! This
+should be introduced as a problem, that R dataframes are often restricted to
+the tabular information, but we use the attributes to provide metadata
+together with thabular data!
+
 Paper proposals are an emerging concept solving transparant data exchange and
 reuse across disciplines and laboratories [citations!]
 
