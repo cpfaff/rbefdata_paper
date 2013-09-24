@@ -74,6 +74,16 @@ datasets it is still hard to make researchers use it extensively as this
 usually always means to learn new tools that help with the description process
 (e.g morpho, data up).
 
+Something on data discovery and paper proposals: Interdisciplinary analyses
+depend on data coming from different research fields. Not one single research
+project or laboratory measures all data, but they come from different
+researchers.  Data discovery - finding data that is suitable to answer a
+pressing question - has become an integral part of science. Data discovery
+between scientific disciplines is hampared by different vocabularies and
+missing agreement on common semantics. Tools addressing this problem are
+thesauri, ontologies, etc. ...
+
+
 In this paper we introduce the R package `rbefdata` which links the R
 statistics Environment to the open source data management platform `BEFdata`.
 The `rbefdata` package is part of the rOpenSci initiative which aims to give
