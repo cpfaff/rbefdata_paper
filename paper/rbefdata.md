@@ -5,18 +5,19 @@
 
 Today scientists need to deal with a deluge of data in many disciplines. While
 there are already good solutions to assist researchers throughout the life
-cycle of data, the applicability of the solutions to a certain domain often
-varies. We here introduce the `rbefdata` package that links the R statistics
-environment to the open source data management platform `BEFdata`. The platform
-has been developed and is used within the BEF-China experiment and it is
-specialized in dealing with small and heterogeneous data from biodiversity
-research. We show a workflow with the `rbefdata` package based on a facet of an
-analysis that has been published already and highlight the interactions of the
-package with the data management platform `BEFdata`. We discuss the introduced
-combination of software in the context of the data life cycle and current as
-well as future data management requirements.  Additionally, we give an outlook
-on upcoming semantical features like an assisted search and smart merging
-functionality to be integrated with `rbefdata` and `BEFdata`.
+cycle of data, the general applicability of the solutions to certain domains
+can be problematic. We here introduce the `rbefdata` package that links the R
+statistics environment to the open source data management platform `BEFdata`.
+The platform has been developed and is used within the BEF-China experiment and
+it is specialized in dealing with small and heterogeneous data from
+biodiversity research. We show a workflow with the `rbefdata` package based on
+a facet of an analysis that has been published already and highlight the
+interactions of the package with the data management platform `BEFdata`. We
+discuss the introduced combination of software in the context of the data life
+cycle and current as well as future data management requirements.
+Additionally, we give an outlook on upcoming semantical features like an
+assisted search and smart merging functionality to be integrated with
+`rbefdata` and `BEFdata`.
 
 ## Introduction
 
@@ -777,10 +778,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -832,8 +833,8 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
