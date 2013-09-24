@@ -19,19 +19,18 @@ ontologies are not yet wide spread enough. This is related to the facts that
 concepts can be hard to implement into data management solutions, the
 reluctance of users towards new solutions, or a general lack of acceptance. We
 here introduce the `rbefdata` package that links the R statistics environment
-to the open source data management platform `BEFdata`.  The platform has been
-developed and is used within the BEF-China experiment to manage the data. It is
-specialized in the handling of small and heterogeneous data, which is
-representing the majority of data in biodiversity research. We show the usage
-of the package by creating a workflow in form of an R script.  The workflow
-underlying analysis steps not only describe the interactions between the R
-package and the data management platform but also reconstruct a facet of an
-analysis where results have been published already.  We discuss the introduced
-combination of software in the context of the data life cycle in ecology and
-the current as well as future data management requirements.  Additionally, we
-give an outlook on upcoming semantical assisted features like an improved
-exploration of data and smart merging functionality to be integrated with
-`rbefdata` and `BEFdata`.
+to the open source data management platform `BEFdata`. The platform has been
+developed and is used within the BEF-China experiment. It is specialized in
+handling small and heterogeneous data, which is representing the majority of
+data in biodiversity research. We show the usage of the package by creating a
+workflow in form of an R script. The analysis steps underlying the workflow do
+not only show the interactions between the R package and the data management
+platform but also reconstruct a facet of an analysis where results have been
+published already. We discuss the introduced combination of software in the
+context of the data life cycle and the current as well as future data
+management requirements. Additionally, we give an outlook on upcoming
+semantical assisted features like an improved exploration of data and smart
+merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
