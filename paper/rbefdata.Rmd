@@ -55,7 +55,9 @@ context is the development of integrative databases and data platforms. They
 serve as nodes that collect data from smaller databases of certain domains and
 enable researchers to access a wide range of relevant data all from one place.
 In fact, these platforms offer a solution to one of the most pressing problems
-that we face with our valuable data today, their loss.  
+that we face with our valuable data today, their loss. Even tough this improves
+the situation with preserving data there is still reluctance, as researchers
+fear to give away and loose the control over their data.
 
 With a growing global data pool the demand to use and reuse available data
 grows as well. Especially in ecology the integration of small and heterogeneous
@@ -71,21 +73,39 @@ use it extensively. This is closely related to the fact that it usually means
 to learn new tools that help with the description process of data (e.g morpho,
 dataUP).
 
-By developing tools which closely tie together data management platforms, data
-exploration features, the access to data and tools that help to describe data
-we can ensure an effective use and reuse of data. Thus in this paper we want to
-introduce the new R package `rbefdata` (https://github.com/befdata/rbefdata)
-which links the open source data management platform `BEFdata`
-(https://github.com/befdata/befdata) to the R statistics environment. While the
-`BEFdata` platform offers sophisticated tool to preserve, harmonize, describe
-and share data, the focus of the R package is to provide tools to explore,
-understand and download the data for analysis, as well as it offers
-functionality for uploading results back to the data management platform. We
-showcase the functionality of the package available with version `0.3.5` based
-on a workflow that integrates two datasets. The workflow reconstructs a facet
-of an analysis that has been published by Lang et al. 2013. The analysis is
-part of the BEF (Biodiversity and Ecosystem Functioning) - China experiment and
-deals with data from the subproject called "pilot experiment".  It is a 15N
+To find relevant data in the growing pool of available data is a challenge.
+While the extensive use of metadata (Metadata citations!) and the tagging with
+keywords is a good start and in fact an essential part of the solution.
+Nonetheless the process to decide on the relevance of data is still very time
+and labour intensive. The integration of semantic resources like thesauri and
+ontologies into data management and analysis tools offers a way to help
+researchers not only to improve their search queries to find the relevant data
+but also could be used in the process of integrating the data for analysis.
+But ontology engineering and maintenance can be quite complex for certain
+domains of knowledge that characterized by high heterogeneity introduced
+through its interdisciplinary nature.
+
+Additionally it can be error prone especially if analyses get more complex and
+require the expertise of more than one research domain.  Formal representations
+of knowledge like ontologies By developing tools which closely tie together
+data management platforms, data exploration features, the access to data and
+tools that help to describe data we can ensure an effective use and reuse of
+data. Thus in this paper we want to introduce the new R package `rbefdata`
+(https://github.com/befdata/rbefdata) which links the open source data
+management platform `BEFdata` (https://github.com/befdata/befdata) to the R
+statistics environment.  While the `BEFdata` platform offers sophisticated tool
+to preserve, harmonize, describe and share data, the focus of the R package is
+to provide tools to explore, understand and download the data for analysis, as
+well as it offers functionality for uploading results back to the data
+management platform.  `rbefdata` is innovative in that it provides data
+together with metadata in the R environment. 
+
+
+We showcase the functionality of the package available with version `0.3.5`
+based on a workflow that integrates two datasets. The workflow reconstructs a
+facet of an analysis that has been published by Lang et al. 2013. The analysis
+is part of the BEF (Biodiversity and Ecosystem Functioning) - China experiment
+and deals with data from the subproject called "pilot experiment".  It is a 15N
 tracer experiment which aims to disentangle the effect of species mixtures on
 system N retention. The workflow depicts how to ask for data access, how to
 pull data into the R environment, the inspection of metadata and shows how to
@@ -93,13 +113,9 @@ upload data and attachments like figures and scripts back to the data
 management platform.  
 
 
-
-Metadata [citations!]
-
-rbefdata is innovative in that it provides data together with metadata! This
-should be introduced as a problem, that R dataframes are often restricted to
-the tabular information, but we use the attributes to provide metadata
-together with thabular data!
+that R dataframes are
+often restricted to the tabular information, but we use the attributes to
+provide metadata together with thabular data!
 
 Paper proposals are an emerging concept solving transparant data exchange and
 reuse across disciplines and laboratories [citations!]
@@ -296,9 +312,9 @@ narrow_tasks_plant_organ = bef.tematres.api(task = "fetchDown", "plant organ")
 narrow_tasks_plant_organ  
 
 # enrich the search with narrower keywords
-datasets_plant_organ_narrow = bef.get.datasets_for_keyword(c(narrow_tasks_plant_organ$term)) 
-datasets_plant_organ_narrow   
-```
+datasets_plant_organ_narrow =
+bef.get.datasets_for_keyword(c(narrow_tasks_plant_organ$term))
+datasets_plant_organ_narrow   ```
 
 ### Download data 
 
