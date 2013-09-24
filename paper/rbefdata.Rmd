@@ -34,15 +34,22 @@ integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
+<<<<<<< HEAD
 
 One paragraph with all this:
+=======
+>>>>>>> master
 * growing awareness of the value of data
 * general reluctance to use and provide data to and from repositories
 * at the same time a multitude of available data sources
 * especially with small to medium sized datasets, scientists want to have the data
   at their fingertips, they want to use their own tools
 * growing availability of workflow packages on R
+<<<<<<< HEAD
 * introducing the rbefdata package tailored to communicate with BEFdata 
+=======
+* introducing the rbefdata package tailored to communicate with BEFdata
+>>>>>>> master
   repositories and tematres thesauri
 * we demonstrate the usage with an interdisciplinary analysis on nutrient retention
 
@@ -79,6 +86,7 @@ researchers prefer to perform the analyses at their own laptops.
 
 By developing tools which closely tie together data management platforms, data
 exploration features, the access to data and tools that help to describe data
+<<<<<<< HEAD
 we can ensure an effective use and reuse of data. 
 
 
@@ -90,6 +98,12 @@ Karin: this is ok as last paragraph, but the tematres part is missing: Data disc
 Thus in this paper we want to
 introduce the new R package `rbefdata` which links the open source data
 management platform `BEFdata` to the R statistics environment. While the
+=======
+we can ensure an effective use and reuse of data. Thus in this paper we want to
+introduce the new R package `rbefdata` (https://github.com/befdata/rbefdata)
+which links the open source data management platform `BEFdata`
+(https://github.com/befdata/befdata) to the R statistics environment. While the
+>>>>>>> master
 `BEFdata` platform offers sophisticated tool to preserve, harmonize, describe
 and share data, the focus of the R package is to provide tools to explore,
 understand and download the data for analysis, as well as it offers
@@ -103,7 +117,31 @@ tracer experiment which aims to disentangle the effect of species mixtures on
 system N retention. The workflow depicts how to ask for data access, how to
 pull data into the R environment, the inspection of metadata and shows how to
 upload data and attachments like figures and scripts back to the data
-management platform. 
+management platform.  
+
+
+
+Metadata [citations!]
+
+rbefdata is innovative in that it provides data together with metadata! This
+should be introduced as a problem, that R dataframes are often restricted to
+the tabular information, but we use the attributes to provide metadata
+together with thabular data!
+
+Paper proposals are an emerging concept solving transparant data exchange and
+reuse across disciplines and laboratories [citations!]
+
+Introducing workflows, their merits, and ROpenSci. But also Kepler, Pegasus,
+etc. Cite our paper on workflows.
+
+ (http://ropensci.org/),
+which is a community driven approach to wrap all science APIs and to create
+solutions for R users to seamlessly pull data from different repositories
+spread over the internet into R for analysis.
+
+There is a need for tools at the fingertips of the researchers, that can be
+easily integrated into their workflow and leverage their access to data as
+well as semantic repositories.
 
 ## Material and Methods
 
@@ -147,7 +185,7 @@ functionalities and inter linkages between the BEF-China data portal and the
 `rbefdata` package. The analysis is typical for interdisciplinary sciences, as
 it combines soil, taxon, and nutrient data. Data originating from field
 campaigns of different collaborating laboratories and has to be merged prior to
-analyses. The analysis we use has the following rationale: 
+analyses. 
 
 'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
 forest ecosystems is still very limited, particularly as regards macro
