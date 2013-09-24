@@ -120,12 +120,19 @@ initiatives on the same research ideas which adds to the transparency of data
 publication. Finally the datasets assembled in a paper proposal can be imported
 in one step to the R environment by `rbefdata` package.
 
-### The proposal
+### Nutrient retention along a biodiversity gradient
 
-In this paper we use an already published analysis as a use case to build a
-workflow that shows the functionalities and inter linkages between the
-BEF-China data portal and the `rbefdata` package. The underlying analysis we
-use as backbone for our workflow has the following rationale: 
+
+In this paper we use an already published analysis on nutrient retention along
+a biodiversity gradient as a use case to build a workflow that shows the
+functionalities and inter linkages between the BEF-China data portal and the
+`rbefdata` package. The analysis is typical for interdisciplinary sciencies,
+as it combines soil, taxon, and nutrient data. Data originating from field
+compaigns of different collaborating laboratories and has to be merged prior
+to analyses.
+
+
+This is too long and most of it belongs in the introduction:
 
 'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
 forest ecosystems is still very limited, particularly as regards macro
