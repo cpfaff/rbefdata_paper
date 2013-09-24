@@ -30,6 +30,17 @@ integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
+* growing awareness of the value of data
+* general reluctance to use and provide data to and from repositories
+* at the same time a multitude of available data sources
+* especially with small to medium sized datasets, scientists want to have the data
+  at their fingertips, they want to use their own tools
+* growing availability of workflow packages on R
+* introducing the rbefdata package tailored to communicate with BEFdata
+  repositories and tematres thesauri
+* we demonstrate the usage with an interdisciplinary analysis on nutrient retention
+
+
 With a growing awareness on the value of data, much effort has been put into
 building data management platforms, that preserve all kinds of environmental
 and historic data, (e.g. diversity workbench, GBIF, `BEFdata`, DataONE,
@@ -59,8 +70,9 @@ dataUP).
 By developing tools which closely tie together data management platforms, data
 exploration features, the access to data and tools that help to describe data
 we can ensure an effective use and reuse of data. Thus in this paper we want to
-introduce the new R package `rbefdata` which links the open source data
-management platform `BEFdata` to the R statistics environment. While the
+introduce the new R package `rbefdata` (https://github.com/befdata/rbefdata)
+which links the open source data management platform `BEFdata`
+(https://github.com/befdata/befdata) to the R statistics environment. While the
 `BEFdata` platform offers sophisticated tool to preserve, harmonize, describe
 and share data, the focus of the R package is to provide tools to explore,
 understand and download the data for analysis, as well as it offers
@@ -74,7 +86,23 @@ tracer experiment which aims to disentangle the effect of species mixtures on
 system N retention. The workflow depicts how to ask for data access, how to
 pull data into the R environment, the inspection of metadata and shows how to
 upload data and attachments like figures and scripts back to the data
-management platform. 
+management platform.  
+
+
+Paper proposals are an emerging concept solving transparant data exchange and
+reuse across disciplines and laboratories [citations!]
+
+Introducing workflows, their merits, and ROpenSci. But also Kepler, Pegasus,
+etc. Cite our paper on workflows.
+
+ (http://ropensci.org/),
+which is a community driven approach to wrap all science APIs and to create
+solutions for R users to seamlessly pull data from different repositories
+spread over the internet into R for analysis.
+
+There is a need for tools at the fingertips of the researchers, that can be
+easily integrated into their workflow and leverage their access to data as
+well as semantic repositories.
 
 ## Material and Methods
 
@@ -118,7 +146,7 @@ functionalities and inter linkages between the BEF-China data portal and the
 `rbefdata` package. The analysis is typical for interdisciplinary sciences, as
 it combines soil, taxon, and nutrient data. Data originating from field
 campaigns of different collaborating laboratories and has to be merged prior to
-analyses. The analysis we use has the following rationale: 
+analyses. 
 
 'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
 forest ecosystems is still very limited, particularly as regards macro
@@ -735,9 +763,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   0.0008 ***
-## 4 - 1 == 0    0.865      0.497    1.74   0.1840    
-## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -789,9 +817,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0280 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8793   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -843,9 +871,9 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 *
-## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
-## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
