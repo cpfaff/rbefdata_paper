@@ -36,22 +36,16 @@ merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
-<<<<<<< HEAD
 
 One paragraph with all this:
-=======
->>>>>>> master
+
 * growing awareness of the value of data
 * general reluctance to use and provide data to and from repositories
 * at the same time a multitude of available data sources
 * especially with small to medium sized datasets, scientists want to have the data
   at their fingertips, they want to use their own tools
 * growing availability of workflow packages on R
-<<<<<<< HEAD
-* introducing the rbefdata package tailored to communicate with BEFdata 
-=======
 * introducing the rbefdata package tailored to communicate with BEFdata
->>>>>>> master
   repositories and tematres thesauri
 * we demonstrate the usage with an interdisciplinary analysis on nutrient retention
 
@@ -84,52 +78,41 @@ use it extensively. This is closely related to the fact that it usually means
 to learn new tools that help with the description process of data (e.g morpho,
 dataUP).
 
-<<<<<<< HEAD
 Karin: there are some papers talking about what users want from data
 repositories. These could be cited (e.g. Kerstin Bach). Motivate that
 researchers prefer to perform the analyses at their own laptops.
 
 By developing tools which closely tie together data management platforms, data
 exploration features, the access to data and tools that help to describe data
-<<<<<<< HEAD
 we can ensure an effective use and reuse of data. 
 
 
 
 
 
-Karin: this is ok as last paragraph, but the tematres part is missing: Data discovery.
+Karin: this is ok as last paragraph, but the tematres part is missing: Data
+discovery.
 
-Thus in this paper we want to
-introduce the new R package `rbefdata` which links the open source data
-management platform `BEFdata` to the R statistics environment. While the
-=======
-we can ensure an effective use and reuse of data. Thus in this paper we want to
-introduce the new R package `rbefdata` (https://github.com/befdata/rbefdata)
-which links the open source data management platform `BEFdata`
-(https://github.com/befdata/befdata) to the R statistics environment. While the
->>>>>>> master
-`BEFdata` platform offers sophisticated tool to preserve, harmonize, describe
-and share data, the focus of the R package is to provide tools to explore,
-understand and download the data for analysis, as well as it offers
-functionality for uploading results back to the data management platform. We
-showcase the functionality of the package available with version `0.3.5` based
-on a workflow that integrates two datasets. The workflow reconstructs a facet
-of an analysis that has been published by Lang et al. 2013. The analysis is
-part of the BEF (Biodiversity and Ecosystem Functioning) - China experiment and
-deals with data from the subproject called "pilot experiment".  It is a 15N
-=======
-To find relevant data in the growing pool of available data is a challenge.
-While the extensive use of metadata (Metadata citations!) and the tagging with
-keywords is a good start and in fact an essential part of the solution.
-Nonetheless the process to decide on the relevance of data is still very time
-and labour intensive. The integration of semantic resources like thesauri and
-ontologies into data management and analysis tools offers a way to help
-researchers not only to improve their search queries to find the relevant data
-but also could be used in the process of integrating the data for analysis.
-But ontology engineering and maintenance can be quite complex for certain
-domains of knowledge that characterized by high heterogeneity introduced
-through its interdisciplinary nature.
+In this paper we want to introduce the new R package `rbefdata`
+(https://github.com/befdata/rbefdata) which leverages access to instances of
+the open source data management platform `BEFdata`
+(https://github.com/befdata/befdata) and the use of Thematres thesauri. We
+showcase the functionality of the package available with version `0.3.5`. The
+workflow reconstructs a facet of an analysis that has been published by Lang
+et al. 2013 on nutrient retention along biodiveristy gradients. It is a 15N
+
+
+To find relevant data in the growing pool of available data is a
+challenge. While the extensive use of metadata (Metadata citations!) and the
+tagging with keywords is a good start and in fact an essential part of the
+solution. Nonetheless the process to decide on the relevance of data is still
+very time and labour intensive. The integration of semantic resources like
+thesauri and ontologies into data management and analysis tools offers a way
+to help researchers not only to improve their search queries to find the
+relevant data but also could be used in the process of integrating the data
+for analysis. But ontology engineering and maintenance can be quite complex
+for certain domains of knowledge that characterized by high heterogeneity
+introduced through its interdisciplinary nature.
 
 Additionally it can be error prone especially if analyses get more complex and
 require the expertise of more than one research domain.  Formal representations
@@ -152,6 +135,7 @@ based on a workflow that integrates two datasets. The workflow reconstructs a
 facet of an analysis that has been published by Lang et al. 2013. The analysis
 is part of the BEF (Biodiversity and Ecosystem Functioning) - China experiment
 and deals with data from the subproject called "pilot experiment".  It is a 15N
+
 >>>>>>> master
 tracer experiment which aims to disentangle the effect of species mixtures on
 system N retention. The workflow depicts how to ask for data access, how to
