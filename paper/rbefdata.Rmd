@@ -82,9 +82,6 @@ Karin: there are some papers talking about what users want from data
 repositories. These could be cited (e.g. Kerstin Bach). Motivate that
 researchers prefer to perform the analyses at their own laptops.
 
-By developing tools which closely tie together data management platforms, data
-exploration features, the access to data and tools that help to describe data
-we can ensure an effective use and reuse of data. 
 
 
 
@@ -109,8 +106,27 @@ for certain domains of knowledge that characterized by high heterogeneity
 introduced through its interdisciplinary nature.
 
 
+### Metadata is lost when loading .csv files to R platforms
+
+The statistical environmant R is rapidly evolving and used by many scientists.
+However, after data are found, they are mostly loaded into the R environment
+as coma separated files and thus loose their metadata, including data
+ownership information.
+
 ### sharing data and ideas through paper proposals
 
+
+Paper proposals are an emerging concept solving transparant data exchange and
+reuse across disciplines and laboratories [citations!]
+
+### data provenance and workflows
+
+Introducing workflows, their merits, and ROpenSci. But also Kepler, Pegasus,
+etc. Cite our paper on workflows.
+
+Workflows offer the potential to seamlessly trace research results back through the analysis to the original data, thus ensuring the reproducibility of science in data intensive research []. Workflow tools like Kepler, Pegasus []
+
+However, as more and more scientists use the R statistical environment, there is no need to learn other software to access external data and knowledge sources. 
 
 
 ### last paragraph
@@ -136,15 +152,7 @@ inspect metadata, analyse the tracer experiment, and finally upload data and
 workflow scripts back to the data management platform.
 
 
-that R dataframes are
-often restricted to the tabular information, but we use the attributes to
-provide metadata together with thabular data!
 
-Paper proposals are an emerging concept solving transparant data exchange and
-reuse across disciplines and laboratories [citations!]
-
-Introducing workflows, their merits, and ROpenSci. But also Kepler, Pegasus,
-etc. Cite our paper on workflows.
 
  (http://ropensci.org/),
 which is a community driven approach to wrap all science APIs and to create
