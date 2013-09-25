@@ -189,25 +189,25 @@ hr {
 <p>Today scientists need to deal with a deluge of data in many disciplines. While
 there are some widely accepted concepts and tools that solve some of the most
 pressing problems in data management, other highly valuable concepts are not
-yet wide spread throughout scientific domains. While data preservation and the
-general access to data for a wider audience is covered very well, describing
-data with metadata, the use of semantical concepts, and the integration of
-small datasets still lacks behind. This is partially related to the reluctance
-of users towards new solutions, a general lack of acceptance of certain
-concepts, or that some concepts are simply hard to implement for certain
-scientific domains. We here introduce the <code>rbefdata</code> package that links the R
-statistics environment to the open source data management platform <code>BEFdata</code>.
-The platform has been developed and is used within the BEF-China experiment. It
-is specialized in handling small and heterogeneous data, representing the
-majority of data in biodiversity research. We show the usage of the package by
-a workflow in form of an R script. The analysis steps underlying the workflow
-do not only show the interactions between the R package and the data management
-platform but also reconstruct a facet of an analysis, of which the results have
-been published already. We discuss the introduced combination of software in
-the terms of the data life cycle and the current as well as future data
-management requirements. Additionally, we give an outlook on upcoming
-semantical assisted features like an improved exploration of data and smart
-merging functionality to be integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
+yet wide spread throughout the scientific domains. While data preservation and
+the general access to data for a wider audience is covered very well,
+describing data with metadata, the use of semantical concepts, and the
+integration of small datasets still lacks behind. This is partially related to
+the reluctance of users towards new solutions, a general lack of acceptance of
+certain concepts, or that some concepts are simply hard to implement for
+certain scientific domains. We here introduce the <code>rbefdata</code> package that links
+the R statistics environment to the open source data management platform
+<code>BEFdata</code>.  The platform has been developed and is used within the BEF-China
+experiment. It is specialized in handling small and heterogeneous data,
+representing the majority of data in biodiversity research. We show the usage
+of the package by a workflow in form of an R script. The analysis steps
+underlying the workflow do not only show the interactions between the R package
+and the data management platform but also reconstruct a facet of an analysis,
+of which the results have been published already. We discuss the introduced
+combination of software in the terms of the data life cycle and the current as
+well as future data management requirements. Additionally, we give an outlook
+on upcoming semantical assisted features like an improved exploration of data
+and smart merging functionality to be integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
 
 <h2>Introduction</h2>
 
@@ -222,7 +222,7 @@ of data gets more important.</p>
 <h3>Many data</h3>
 
 <ul>
-<li>data repositories</li>
+<li>small data repositories</li>
 <li>data warehouses</li>
 <li>reluctance to share data</li>
 </ul>
@@ -241,10 +241,6 @@ that we face with our valuable data today, their loss. Even tough this improves
 the situation with preserving data there is still reluctance, as researchers
 fear to give away and loose the control over their data.</p>
 
-<p>Karin: there are some papers talking about what users want from data
-repositories. These could be cited (e.g. Kerstin Bach). Motivate that
-researchers prefer to perform the analyses at their own laptops.</p>
-
 <h3>Data reuse and Metadata</h3>
 
 <ul>
@@ -255,22 +251,21 @@ researchers prefer to perform the analyses at their own laptops.</p>
 <li>data legibility </li>
 <li>sharing ideas for analysis: paper proposals 
   Paper proposals are an emerging concept solving transparant data exchange and
-  reuse across disciplines and laboratories [citations!]</li>
+  reuse across disciplines and laboratories <a href="Metadata%20citations!">citations!</a></li>
 </ul>
 
 <p>With a growing global data pool the demand to use and reuse available data
 grows as well. Especially in ecology the integration of small and heterogeneous
-data offers the opportunity to answer questions on a much broader temporal and
+data offers the potential to answer questions on a much broader temporal and
 spatial scale. Metadata is a crucial component for the effective reuse of data
 as it improves its legibility. A plain dataset is hard to understand, to one
-who is not familiar with it and it can be hard to decipher even by the author
+who is not familiar with it and it can be hard to decipher, even by the author
 itself, after some time has passed. For example it is hard to remember what
 methods have been used to collect the data of a certain column or what the
 abbreviations or the headers in the dataset mean. While metadata theoretically
-solves the problem with undescribed data it is still hard to make researchers
+solves the problem with undescribed data, it is still hard to make researchers
 use it extensively. This is closely related to the fact that it usually means
-to learn new tools that help with the description process of data (e.g morpho,
-dataUP).</p>
+to learn new tools for the data description process (e.g morpho, dataUP).</p>
 
 <h3>Data discovery</h3>
 
@@ -279,29 +274,44 @@ dataUP).</p>
 <li>Taxonomies ontologies as formal representations of knowledge </li>
 </ul>
 
-<p>To find relevant data in the growing pool of available data is a challenge.
-The extensive use of metadata (Metadata citations!) and the tagging with
-keywords is a good start and in fact an essential part of the solution.
-Nonetheless the process to decide on the relevance of data is still very time
-and labour intensive. The integration of semantic resources like thesauri and
-ontologies into data management and analysis tools offers a way to help
-researchers not only to improve their search queries to find the relevant data
-However ontology engineering and maintenance can be quite complex for certain
-domains of knowledge that are characterized by high heterogeneity introduced
-through its interdisciplinary nature.</p>
+<p>Simply finding relevant data for a certain analysis is crucial for an effective
+reuse of available data. However this process is challenging and still a mostly
+manual task. A common practice to data discovery is to tag datasets or data
+columns with keywords that describe the content. The keywords can be used as
+simple means to narrow down a set of relevant data. But a keyword search is
+still very limiting without the using semantical repositories that embed a
+keyword into a context. So a plain keywords search only help to find data,
+tagged exactly with that term we are looking for. A search like this is highly
+likely to miss other relevant data that is tagged with keywords that are close
+related to the one we are looking for. Here the integration of formal
+representations knowledge offers the potential to help or guide the process of
+data discovery. For example a hierarchical representation of terms in the form
+of a taxonomy can help in broaden or narrow down search terms to achieve a more
+detailed or general search. Higher representations of formal knowledge like for
+example ontologies can do even more as they allow formal reasoning so it allows
+to develop tools that are smart enough to assist researchers on data reuse and
+integration. While the development of a taxonomy is a more or less simple task
+that is feasible even for smaller project the development of an ontology is
+more challenging. It requires the input of many scientists and discussions
+about definitions and relations of terms in the representation. This might be
+one of the reasons why there is a lack of ontologies especially for highly
+interdisciplinary research domains like ecology. </p>
 
 <h3>Data processing</h3>
 
 <ul>
-<li>workflow repositories and software </li>
+<li>Introducing workflows (merits, ROpenSci, Kepler, Pegasus, etc.) Cite our paper on workflows.</li>
+<li>Workflow repositories and software </li>
 </ul>
 
-<p>Introducing workflows, their merits, and ROpenSci. also Kepler, Pegasus, etc.
-Cite our paper on workflows.</p>
+<p>Workflow software is a trending tool in terms of data processing as they not
+only provide access to many data repository but also give researchers a more
+visual way of communicating ongoing analyses.  However they also enables
+researchers to seamlessly trace research results back through the analysis to
+the original data that has been used. Thus ensuring the reproducibility of
+science in data intensive research []. </p>
 
-<p>Workflows offer the potential to seamlessly trace research results back through
-the analysis to the original data, thus ensuring the reproducibility of science
-in data intensive research []. Workflow tools like Kepler, Pegasus []</p>
+<p>Like Kepler [] or Pegasus [] are </p>
 
 <p>However, as more and more scientists use the R statistical environment, there
 is no need to learn other software to access external data and knowledge
@@ -311,25 +321,41 @@ sources. </p>
 science APIs and to create solutions for R users to seamlessly pull data from
 different repositories spread over the internet into R for analysis.</p>
 
+<p>Karin: there are some papers talking about what users want from data
+repositories. These could be cited (e.g. Kerstin Bach). Motivate that
+researchers prefer to perform the analyses at their own laptops.</p>
+
 <h3>Wrap up (introduce solutions)</h3>
 
-<p>There is a need for tools at the fingertips of the researchers, that can be
-easily integrated into their workflow and leverage their access to data as well
-as semantic repositories. In this paper we want to introduce the new R package
-<code>rbefdata</code> (<a href="https://github.com/befdata/rbefdata">https://github.com/befdata/rbefdata</a>) which ties together data
-repositories using the open source data management platform <code>BEFdata</code>
-(<a href="https://github.com/befdata/befdata">https://github.com/befdata/befdata</a>) and Thematres thesauri (url thematres) to
-the R statistical environment. It provides tools to explore, download, and
-upload data from BEFdata repositories and at the same time explore and refine
-keywords using Thematres thesauri. We showcase the functionality of the package
-available with version <code>0.3.5</code>. The workflow reconstructs a facet of an
-analysis that has been published by Lang et al. 2013 on nutrient retention
-along biodiveristy gradients. It is a 15N tracer experiment which aims to
-disentangle the effect of species mixtures on system N retention. The workflow
-depicts how to refine keywords for search in the thesaurus, ask for data access
-in the data management platform, download data into the R environment, inspect
-metadata, analyse the tracer experiment, and finally upload data and workflow
-scripts back to the data management platform.</p>
+<p>There is a growing demand on tools at the fingertips of researchers, that
+easily integrate with their existing analysis workflows, enable them to simply
+gain access to data repositories, assist them in discovery and the process of
+understanding available data for an effective reuse. The process of assisted
+discovery is highly likely to be enabled by the tight integration of semantic
+repositories in form of taxonomies and ontologies in emerging software
+solutions. </p>
+
+<p>This paper introduces the new R package called <code>rbefdata</code>. It is the companion
+package of the data management platform <code>BEFdata</code>
+(<a href="https://github.com/befdata/befdata">https://github.com/befdata/befdata</a>) and enables a seamless access to data and
+metadata stored on it. On top of that it integrates semantic repositories
+stored on a <code>tematres</code> vocabulary server (<a href="http://www.vocabularyserver.com/">http://www.vocabularyserver.com/</a>).</p>
+
+<p>The package provides tools to explore, download, and upload data from BEFdata
+repositories and  </p>
+
+<p>a way to refine keywords by the integration of the <code>tematres</code> vocabulary
+server. </p>
+
+<p>We showcase the
+functionality of the package available with version <code>0.3.5</code>. The workflow
+reconstructs a facet of an analysis that has been published by Lang et al. 2013
+on nutrient retention along biodiveristy gradients. It is a 15N tracer
+experiment which aims to disentangle the effect of species mixtures on system N
+retention. The workflow depicts how to refine keywords for search in the
+thesaurus, ask for data access in the data management platform, download data
+into the R environment, inspect metadata, analyse the tracer experiment, and
+finally upload data and workflow scripts back to the data management platform.</p>
 
 <h2>Material and Methods</h2>
 
@@ -920,10 +946,10 @@ anova(model2)
 ##     random = ~1 | block, method = &quot;REML&quot;)
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59   0.0011 **
-## 4 - 1 == 0    0.865      0.497    1.74   0.1840   
-## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
+##            Estimate Std. Error z value Pr(&gt;|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   &lt;0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -1018,7 +1044,7 @@ anova(model4)
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)  
 ## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
