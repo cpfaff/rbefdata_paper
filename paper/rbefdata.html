@@ -203,16 +203,19 @@ representing the majority of data in biodiversity research. We show the usage
 of the package by a workflow in form of an R script. The analysis steps
 underlying the workflow do not only show the interactions between the R package
 and the data management platform but also reconstruct a facet of an analysis,
-of which the results have been published already. We discuss the introduced
-combination of software in the terms of the data life cycle and the current as
-well as future data management requirements. Additionally, we give an outlook
-on upcoming semantical assisted features like an improved exploration of data
-and smart merging functionality to be integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
+of which the results have been published already. The data used in the analysis
+is open access so the workflow in this paper can be simply reproduced step by
+step. We discuss the introduced combination of software in the terms of the
+data life cycle and the current as well as future data management requirements.
+Additionally, we give an outlook on upcoming semantical assisted features like
+an improved exploration of data and smart merging functionality to be
+integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
 
 <h2>Introduction</h2>
 
 <ul>
-<li>first paragraph summarizes the intro grid. Three sentences.</li>
+<li>first paragraph summarizes the intro grid. Three sentences. </li>
+<li>that is so redundant to the parts that follow isn&#39;t it? (why)</li>
 </ul>
 
 <p>With a growing awareness on the value of data, a multitude of data management
@@ -305,60 +308,50 @@ interdisciplinary research domains like ecology. </p>
 <ul>
 <li>Introducing workflows (merits, ROpenSci, Kepler, Pegasus, etc.) Cite our paper on workflows.</li>
 <li>Workflow repositories and software </li>
+<li>R needs to be learned as well that is no argument to less acceptance of other tools like Kepler, is there?!</li>
 </ul>
 
-<p>Workflow software is a trending tool in terms of data processing as they not
-only provide access to many data repository but also give researchers a more
-visual way of communicating ongoing analyses.  However they also enables
-researchers to seamlessly trace research results back through the analysis to
-the original data that has been used. Thus ensuring the reproducibility of
-science in data intensive research []. </p>
+<p>Workflows are a trending concept in terms of streamlining the process of data
+access, processing and the preservation of valuable data products. The rOpenSci
+initiative (<a href="http://ropensci.org/">http://ropensci.org/</a>) is a community driven project to provide the
+R statistic environment (cite R) with access to scientific data repositories
+which enables the R users to keep their scripts and use the full flexibility of
+data access from online repositories without the need to learn tool like Kepler
+or any other graphical workflow solution.</p>
 
-<p>Like Kepler [] or Pegasus [] are </p>
-
-<p>However, as more and more scientists use the R statistical environment, there
-is no need to learn other software to access external data and knowledge
-sources. </p>
-
-<p>(<a href="http://ropensci.org/">http://ropensci.org/</a>), which is a community driven approach to wrap all
-science APIs and to create solutions for R users to seamlessly pull data from
-different repositories spread over the internet into R for analysis.</p>
-
-<p>Karin: there are some papers talking about what users want from data
-repositories. These could be cited (e.g. Kerstin Bach). Motivate that
-researchers prefer to perform the analyses at their own laptops.</p>
+<p>While tools like Kepler () or Pegasus () require researchers to learn the new
+tools th is a way to provide acknowledgement to data owners in a more granular
+way. While special workflow tools like Kepler or Pegasus follow a graphical
+approach to give researchers intuitive tools</p>
 
 <h3>Wrap up (introduce solutions)</h3>
 
 <p>There is a growing demand on tools at the fingertips of researchers, that
-easily integrate with their existing analysis workflows, enable them to simply
-gain access to data repositories, assist them in discovery and the process of
-understanding available data for an effective reuse. The process of assisted
-discovery is highly likely to be enabled by the tight integration of semantic
-repositories in form of taxonomies and ontologies in emerging software
+easily integrate with their existing workflows, enable a simple access to data
+repositories, assist them in discovery and the process of understanding
+available data which is crucial for an effective reuse of data. The process of
+assisted discovery is highly likely to be enabled by the tight integration of
+semantic repositories in form of taxonomies and ontologies in emerging software
 solutions. </p>
 
 <p>This paper introduces the new R package called <code>rbefdata</code>. It is the companion
 package of the data management platform <code>BEFdata</code>
-(<a href="https://github.com/befdata/befdata">https://github.com/befdata/befdata</a>) and enables a seamless access to data and
-metadata stored on it. On top of that it integrates semantic repositories
-stored on a <code>tematres</code> vocabulary server (<a href="http://www.vocabularyserver.com/">http://www.vocabularyserver.com/</a>).</p>
+(<a href="https://github.com/befdata/befdata">https://github.com/befdata/befdata</a>). It enables a seamless access to data and
+metadata stored on the portal. On top of that it allows for the integration of
+semantic repositories as it integrates with the <code>tematres</code> vocabulary server
+(<a href="http://www.vocabularyserver.com/">http://www.vocabularyserver.com/</a>).  We showcase the functionality of the
+package available with version <code>0.3.5</code>.  The workflow reconstructs a facet of
+an analysis that has been published by Lang et al. 2013 on nutrient retention
+along biodiveristy gradients. It is a 15N tracer experiment which aims to
+disentangle the effect of species mixtures on system N retention. The workflow
+depicts how to refine keywords for search in the thesaurus, ask for data access
+in the data management platform, download data into the R environment, inspect
+metadata, analyse the tracer experiment, and finally upload data and workflow
+scripts back to the data management platform.</p>
 
-<p>The package provides tools to explore, download, and upload data from BEFdata
-repositories and  </p>
-
-<p>a way to refine keywords by the integration of the <code>tematres</code> vocabulary
-server. </p>
-
-<p>We showcase the
-functionality of the package available with version <code>0.3.5</code>. The workflow
-reconstructs a facet of an analysis that has been published by Lang et al. 2013
-on nutrient retention along biodiveristy gradients. It is a 15N tracer
-experiment which aims to disentangle the effect of species mixtures on system N
-retention. The workflow depicts how to refine keywords for search in the
-thesaurus, ask for data access in the data management platform, download data
-into the R environment, inspect metadata, analyse the tracer experiment, and
-finally upload data and workflow scripts back to the data management platform.</p>
+<p>Karin: there are some papers talking about what users want from data
+repositories. These could be cited (e.g. Kerstin Bach). Motivate that
+researchers prefer to perform the analyses at their own laptops.</p>
 
 <h2>Material and Methods</h2>
 
@@ -950,9 +943,9 @@ anova(model2)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   0.0008 ***
-## 4 - 1 == 0    0.865      0.497    1.74   0.1840    
-## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163    
+## 2 - 1 == 0    1.053      0.293    3.59   &lt;0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -998,9 +991,9 @@ anova(model3)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0279 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -1046,7 +1039,7 @@ anova(model4)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
