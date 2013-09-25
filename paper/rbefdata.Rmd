@@ -149,8 +149,8 @@ this paper we want to introduce the new R package `rbefdata`
 (https://github.com/befdata/rbefdata) which ties together data repositories using the
 open source data management platform `BEFdata`
 (https://github.com/befdata/befdata) and Thematres thesauri (url thematres) to
-the R statistics environment.  It provides tools to explore, download, and
-upload  data from BEFdata repositories and at the same time explore and refine
+the R statistical environment. It provides tools to explore, download, and
+upload data from BEFdata repositories and at the same time explore and refine
 keywords using Thematres thesauri. We showcase the functionality of the
 package available with version `0.3.5`. The workflow reconstructs a facet of
 an analysis that has been published by Lang et al. 2013 on nutrient retention
