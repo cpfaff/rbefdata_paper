@@ -90,8 +90,27 @@ we can ensure an effective use and reuse of data.
 
 
 
-Karin: this is ok as last paragraph, but the tematres part is missing: Data
-discovery.
+
+### formal representation of knowledge to leverage data discovery:
+
+To find relevant data in the growing pool of available data is a
+challenge. While the extensive use of metadata (Metadata citations!) and the
+tagging with keywords is a good start and in fact an essential part of the
+solution. Nonetheless the process to decide on the relevance of data is still
+very time and labour intensive. The integration of semantic resources like
+thesauri and ontologies into data management and analysis tools offers a way
+to help researchers not only to improve their search queries to find the
+relevant data 
+
+
+
+But ontology engineering and maintenance can be quite complex
+for certain domains of knowledge that characterized by high heterogeneity
+introduced through its interdisciplinary nature.
+
+
+
+### last paragraph
 
 In this paper we want to introduce the new R package `rbefdata`
 (https://github.com/befdata/rbefdata) which leverages access to instances of
@@ -102,32 +121,19 @@ workflow reconstructs a facet of an analysis that has been published by Lang
 et al. 2013 on nutrient retention along biodiveristy gradients. It is a 15N
 
 
-To find relevant data in the growing pool of available data is a
-challenge. While the extensive use of metadata (Metadata citations!) and the
-tagging with keywords is a good start and in fact an essential part of the
-solution. Nonetheless the process to decide on the relevance of data is still
-very time and labour intensive. The integration of semantic resources like
-thesauri and ontologies into data management and analysis tools offers a way
-to help researchers not only to improve their search queries to find the
-relevant data but also could be used in the process of integrating the data
-for analysis. But ontology engineering and maintenance can be quite complex
-for certain domains of knowledge that characterized by high heterogeneity
-introduced through its interdisciplinary nature.
 
-Additionally it can be error prone especially if analyses get more complex and
-require the expertise of more than one research domain.  Formal representations
-of knowledge like ontologies By developing tools which closely tie together
-data management platforms, data exploration features, the access to data and
-tools that help to describe data we can ensure an effective use and reuse of
-data. Thus in this paper we want to introduce the new R package `rbefdata`
+There is a need for tools that closely tie together data management platforms,
+data exploration features, the access to data and tools that help to describe
+data we can ensure an effective use and reuse of data. Thus in this paper we
+want to introduce the new R package `rbefdata`
 (https://github.com/befdata/rbefdata) which links the open source data
 management platform `BEFdata` (https://github.com/befdata/befdata) to the R
-statistics environment.  While the `BEFdata` platform offers sophisticated tool
-to preserve, harmonize, describe and share data, the focus of the R package is
-to provide tools to explore, understand and download the data for analysis, as
-well as it offers functionality for uploading results back to the data
-management platform.  `rbefdata` is innovative in that it provides data
-together with metadata in the R environment. 
+statistics environment.  While the `BEFdata` platform offers sophisticated
+tool to preserve, harmonize, describe and share data, the focus of the R
+package is to provide tools to explore, understand and download the data for
+analysis, as well as it offers functionality for uploading results back to the
+data management platform.  `rbefdata` is innovative in that it provides data
+together with metadata in the R environment.
 
 
 We showcase the functionality of the package available with version `0.3.5`
@@ -662,15 +668,43 @@ the server before it returns the answer after processing (xxx). To keep the
 `BEFdata` portal as flexible as possible and to give the researchers the
 freedom of choice this could be one of the future features to be integrated. 
 
-While well described data helps a lot in understanding datasets and on deciding
-upon the relevance and applicability of data for a certain analysis there is
-still lots of manual intervention necessary to prepare the data for
+While well described data helps a lot in understanding datasets and on
+deciding upon the relevance and applicability of data for a certain analysis
+there is still lots of manual intervention necessary to prepare the data for
 analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
 reshaped and merged which usually takes up to 70% of an analysis workflow,
 before smart models can be applied to the data to find interesting patters
 (cite the workflow paper of Karin and me). This preparatory steps not only are
 time and labour intensive but also potentially error prone, especially as the
-complexity of the analyses increases.
+complexity of the analyses increases. Provenance and the advantage of keeping
+scripts (workflows) close to the data.
+
+Clarify: controlled vocabulary - thesaurus - ontology. Controlled vocabulary
+for finding and sorting, ontology for automatic reasoning.
+
+*** Semantics for searching and sorting
+
+We decided not to develop functionality to develop nested controlled
+vocabularies within BEFdata. This decision was based on the fact that there
+are already sophisticated frameworks and software to develop and maintain
+vocabularies. Linking to external vocabularies has the additional advantage
+that several data repositories can simultaneously use the same thesaurus for
+tagging their data. This keeps single repositories small and coherent without
+loosing the potential to link them to other repositories (linked data,
+citations for linked data).
+
+*** Semantics for automated reasoning
+
+
+This is a separate argument, and we do not touch it in the results: automatic
+merging should be only in the discussion:
+
+but also could be used in the process of integrating the data
+for analysis. 
+
+Additionally it can be error prone especially if analyses get more complex and
+require the expertise of more than one research domain.  
+
 
 Ontologies, as formal representations of knowledge, potentially offer a
 sophisticated tool to deal with that step of data preparation (e.g michener et al 2012). 
@@ -681,6 +715,7 @@ ontologies in ecology is discussed controversially (cite xxx) and it is argued
 that they can be a huge benefit, but it is hard to set up a sophisticated
 ontology covering all necessary terms and relation of a highly complex research
 domain (cite xxx).
+
 
 We recently started to develop an ontology using a `tematres` .The
 formalization we develop will be based on the knowledge used in biodiversity
