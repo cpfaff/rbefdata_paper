@@ -9,14 +9,14 @@
 
 Today scientists need to deal with a deluge of data in many disciplines. While
 there are some widely accepted concepts and tools that solve some of the most
-pressing problems in data management, other highly potential concepts are not
+pressing problems in data management, other highly valuable concepts are not
 yet wide spread throughout scientific domains. While data preservation and the
 general access to data for a wider audience is covered very well, describing
 data with metadata, the use of semantical concepts, and the integration of
 small datasets still lacks behind. This is partially related to the reluctance
 of users towards new solutions, a general lack of acceptance of certain
 concepts, or that some concepts are simply hard to implement for certain
-scientific domain. We here introduce the `rbefdata` package that links the R
+scientific domains. We here introduce the `rbefdata` package that links the R
 statistics environment to the open source data management platform `BEFdata`.
 The platform has been developed and is used within the BEF-China experiment. It
 is specialized in handling small and heterogeneous data, representing the
@@ -32,30 +32,47 @@ merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
-* growing awareness of the value of data
-* general reluctance to use and provide data to and from repositories
-* at the same time a multitude of available data sources
-* especially with small to medium sized datasets, scientists want to have the data
-  at their fingertips, they want to use their own tools
-* growing availability of workflow packages on R
-* introducing the rbefdata package tailored to communicate with BEFdata
-  repositories and tematres thesauri
-* we demonstrate the usage with an interdisciplinary analysis on nutrient retention
+* first paragraph summarizes the intro grid. three sentences.
 
+With a growing awareness of the value of data, a multitude of data and
+knowledge platforms are emerging. With more data avaialbe the effective reuse
+of data gets more important.
+
+### Many data
+
+* data repositories
+* data warehouses
+* reluctance to share data
 
 With a growing awareness on the value of data, much effort has been put into
 building data management platforms, that preserve all kinds of environmental
-and historic data, (e.g. diversity workbench, GBIF, `BEFdata`, DataONE,
-LifeWatch). Solutions emerged in different scientific disciplines that provide
-data management plans for small scale projects as well as for large data
-producing long term or remote sensing collaborations. An ongoing trend in that
+and historic data. Solutions emerged in different scientific disciplines that
+provide data management plans for small scale projects as well as for large
+data producing, long term or remote sensing collaborations (e.g. diversity
+workbench, GBIF, `BEFdata`, DataONE, LifeWatch). An ongoing trend in that
 context is the development of integrative databases and data platforms. They
-serve as nodes that collect data from smaller databases of certain domains and
-enable researchers to access a wide range of relevant data all from one place.
+serve as nodes that collect data from smaller databases of a certain domain and
+enable researchers to access a wide range of relevant data, all from one place.
 In fact, these platforms offer a solution to one of the most pressing problems
 that we face with our valuable data today, their loss. Even tough this improves
 the situation with preserving data there is still reluctance, as researchers
 fear to give away and loose the control over their data.
+
+Karin: there are some papers talking about what users want from data
+repositories. These could be cited (e.g. Kerstin Bach). Motivate that
+researchers prefer to perform the analyses at their own laptops.
+
+### Data reuse and Metadata
+
+* Metadata
+* small and heterogeneous data
+* use and re-use of data
+* extra software for metadata
+* data legibility 
+* sharing ideas for analysis: paper proposals 
+      Paper proposals are an emerging concept solving transparant data exchange and
+      reuse across disciplines and laboratories [citations!]
+
 
 With a growing global data pool the demand to use and reuse available data
 grows as well. Especially in ecology the integration of small and heterogeneous
@@ -71,64 +88,67 @@ use it extensively. This is closely related to the fact that it usually means
 to learn new tools that help with the description process of data (e.g morpho,
 dataUP).
 
+### Data discovery
+
+* Data discovery keywords, semantic tagging 
+* Taxonomies ontologies as formal representations of knowledge 
+
 To find relevant data in the growing pool of available data is a challenge.
-While the extensive use of metadata (Metadata citations!) and the tagging with
+The extensive use of metadata (Metadata citations!) and the tagging with
 keywords is a good start and in fact an essential part of the solution.
 Nonetheless the process to decide on the relevance of data is still very time
 and labour intensive. The integration of semantic resources like thesauri and
 ontologies into data management and analysis tools offers a way to help
 researchers not only to improve their search queries to find the relevant data
-but also could be used in the process of integrating the data for analysis.
-But ontology engineering and maintenance can be quite complex for certain
-domains of knowledge that characterized by high heterogeneity introduced
+However ontology engineering and maintenance can be quite complex for certain
+domains of knowledge that are characterized by high heterogeneity introduced
 through its interdisciplinary nature.
 
-Additionally it can be error prone especially if analyses get more complex and
-require the expertise of more than one research domain.  Formal representations
-of knowledge like ontologies By developing tools which closely tie together
-data management platforms, data exploration features, the access to data and
-tools that help to describe data we can ensure an effective use and reuse of
-data. Thus in this paper we want to introduce the new R package `rbefdata`
-(https://github.com/befdata/rbefdata) which links the open source data
-management platform `BEFdata` (https://github.com/befdata/befdata) to the R
-statistics environment.  While the `BEFdata` platform offers sophisticated tool
-to preserve, harmonize, describe and share data, the focus of the R package is
-to provide tools to explore, understand and download the data for analysis, as
-well as it offers functionality for uploading results back to the data
-management platform.  `rbefdata` is innovative in that it provides data
-together with metadata in the R environment. 
+### Data processing 
 
+* workflow repositories and software 
 
-We showcase the functionality of the package available with version `0.3.5`
-based on a workflow that integrates two datasets. The workflow reconstructs a
-facet of an analysis that has been published by Lang et al. 2013. The analysis
-is part of the BEF (Biodiversity and Ecosystem Functioning) - China experiment
-and deals with data from the subproject called "pilot experiment".  It is a 15N
-tracer experiment which aims to disentangle the effect of species mixtures on
-system N retention. The workflow depicts how to ask for data access, how to
-pull data into the R environment, the inspection of metadata and shows how to
-upload data and attachments like figures and scripts back to the data
-management platform.  
+Introducing workflows, their merits, and ROpenSci. also Kepler, Pegasus, etc.
+Cite our paper on workflows.
 
+Workflows offer the potential to seamlessly trace research results back through
+the analysis to the original data, thus ensuring the reproducibility of science
+in data intensive research []. Workflow tools like Kepler, Pegasus []
 
-that R dataframes are
-often restricted to the tabular information, but we use the attributes to
-provide metadata together with thabular data!
+However, as more and more scientists use the R statistical environment, there
+is no need to learn other software to access external data and knowledge
+sources. 
 
-Paper proposals are an emerging concept solving transparant data exchange and
-reuse across disciplines and laboratories [citations!]
+(http://ropensci.org/), which is a community driven approach to wrap all
+science APIs and to create solutions for R users to seamlessly pull data from
+different repositories spread over the internet into R for analysis.
 
-Introducing workflows, their merits, and ROpenSci. But also Kepler, Pegasus,
-etc. Cite our paper on workflows.
-
- (http://ropensci.org/),
-which is a community driven approach to wrap all science APIs and to create
-solutions for R users to seamlessly pull data from different repositories
-spread over the internet into R for analysis.
+### Wrap up (introduce solutions)
 
 There is a need for tools at the fingertips of the researchers, that can be
-easily integrated into their workflow and leverage their access to data as
-well as semantic repositories.
+easily integrated into their workflow and leverage their access to data as well
+as semantic repositories. In this paper we want to introduce the new R package
+`rbefdata` (https://github.com/befdata/rbefdata) which ties together data
+repositories using the open source data management platform `BEFdata`
+(https://github.com/befdata/befdata) and Thematres thesauri (url thematres) to
+the R statistical environment. It provides tools to explore, download, and
+upload data from BEFdata repositories and at the same time explore and refine
+keywords using Thematres thesauri. We showcase the functionality of the package
+available with version `0.3.5`. The workflow reconstructs a facet of an
+analysis that has been published by Lang et al. 2013 on nutrient retention
+along biodiveristy gradients. It is a 15N tracer experiment which aims to
+disentangle the effect of species mixtures on system N retention. The workflow
+depicts how to refine keywords for search in the thesaurus, ask for data access
+in the data management platform, download data into the R environment, inspect
+metadata, analyse the tracer experiment, and finally upload data and workflow
+scripts back to the data management platform.
+
+
+
+
+ 
+
+
 
 ## Material and Methods
 
@@ -147,7 +167,7 @@ provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012).
 The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) platform is
 specialized in managing small and heterogeneous data. It adheres to standards
 like the Ecological Metadata Language (EML) and facilitates research
-cooperation by a paper proposals tool. To create a paper proposal a researcher
+cooperation by a paper proposal tool. To create a paper proposal a researcher
 can select datasets which are to be included in the analysis. Furthermore basic
 information of the proposed paper such as the title, a rationale, the envisaged
 journal and a date needs to be provided.  Sending in a proposal, a researcher
@@ -161,10 +181,13 @@ duplication in publication initiatives on the same research ideas which adds to
 the transparency of data publication. Finally the datasets assembled in a paper
 proposal can be imported in one step to the R environment by `rbefdata`
 package. Another strength of the `BEFdata` portal is the tagging functionality
-for datasets and data columns which which his is also used in the `rbefdata`
-package to explore datasets.
+for datasets and data columns which is also used in the `rbefdata` package to
+explore datasets.
 
 ### Nutrient retention along a biodiversity gradient
+
+Anne: Ich habe wurzeldaten von jemandem bekommen, aber im prinzip stimmt es schon,
+was wir gemacht haben reflektiert das nicht
 
 In this paper we use an already published analysis on nutrient retention along
 a biodiversity gradient as a use case to build a workflow that shows the
@@ -172,7 +195,8 @@ functionalities and inter linkages between the BEF-China data portal and the
 `rbefdata` package. The analysis is typical for interdisciplinary sciences, as
 it combines soil, taxon, and nutrient data. Data originating from field
 campaigns of different collaborating laboratories and has to be merged prior to
-analyses. 
+analyses. The rationale of the paper proposal is:
+
 
 'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
 forest ecosystems is still very limited, particularly as regards macro
@@ -315,8 +339,8 @@ A `tematres` server can hold different representations of formalized knowledge
 like a thesaurus or even an ontology of a project. The `rbefdata` package
 supports exploiting a `tematres` vocabulary server via the `rtematres` package.
 We can find terms and relations as well as we can display their descriptions in
-`rbefata`. This can be used to improve the exploration of datasets. For example
-looking for datasets that deal with  "plant organs" we can display the
+`rbefdata`. This can be used to improve the exploration of datasets. For
+example looking for datasets that deal with  "plant organs" we can display the
 definition of that term first (box below). Then we ask the `BEFdata` portal for
 datasets that are tagged with that term and we get back a few datasets. In a
 next step we use the vocabulary on the `tematres` server to narrow down "plant
@@ -558,8 +582,8 @@ The dataset list from the proposal contains three datasets, of which we do only
 use the second and third. These two are written into two variables called
 `Nretention` and `design` before deciding upon how to merge them. Inspecting
 the headers of both dataset reveals each of them contains a column containing a
-`plot_id` that seems suitable for merging. But we can also make use the
-metadata for columns to check if this really is the case (see box below).
+`plot_id` that seems suitable for merging. But we can also make use of the
+metadata for the columns to check if this really is the case (see box below).
 
 
 ```r
@@ -788,10 +812,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59   0.0011 **
+## 4 - 1 == 0    0.865      0.497    1.74   0.1840   
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -842,10 +866,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0279 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
+## 4 - 2 == 0    0.132      0.278    0.48    0.879    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -897,7 +921,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -953,9 +977,10 @@ Finally we need to decide on either to upload a full dataset which we could do
 using the dataset upload function `bef.portal.upload.dataset()` or only to
 upload the script and maybe a figure to highlight the road to the results from
 the source datasets used. This can be done by attaching to the proposal with
-`bef.portal.attach.to_proposal()`. For the example shown, it is the best way to
-go with an attachment to the proposal as uploading the merged dataset would
-only mean duplication of data in the database of the `BEFdata` platform.
+the command `bef.portal.attach.to_proposal()`. For the example shown, it is the
+best way to go with an attachment to the proposal as uploading the merged
+dataset would only mean duplication of data in the database of the `BEFdata`
+platform.
 
 So we upload the script and the four pane figure with its caption to add them
 to the proposal. The figure is prepared as Portable Network Graphics (PNG)
@@ -1045,15 +1070,51 @@ the server before it returns the answer after processing (xxx). To keep the
 `BEFdata` portal as flexible as possible and to give the researchers the
 freedom of choice this could be one of the future features to be integrated. 
 
-While well described data helps a lot in understanding datasets and on deciding
-upon the relevance and applicability of data for a certain analysis there is
-still lots of manual intervention necessary to prepare the data for
+### rbefdata makes metadata available within the R environment
+
+.  `rbefdata` is innovative in that it
+provides data together with metadata in the R environment.
+
+
+### keeping workflow scripts close to the data: Provenance
+
+While well described data helps a lot in understanding datasets and on
+deciding upon the relevance and applicability of data for a certain analysis
+there is still lots of manual intervention necessary to prepare the data for
 analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
 reshaped and merged which usually takes up to 70% of an analysis workflow,
 before smart models can be applied to the data to find interesting patters
 (cite the workflow paper of Karin and me). This preparatory steps not only are
 time and labour intensive but also potentially error prone, especially as the
-complexity of the analyses increases.
+complexity of the analyses increases. Provenance and the advantage of keeping
+scripts (workflows) close to the data.
+
+Clarify: controlled vocabulary - thesaurus - ontology. Controlled vocabulary
+for finding and sorting, ontology for automatic reasoning.
+
+*** Semantics for searching and sorting
+
+We decided not to develop functionality to develop nested controlled
+vocabularies within BEFdata. This decision was based on the fact that there
+are already sophisticated frameworks and software to develop and maintain
+vocabularies. Linking to external vocabularies has the additional advantage
+that several data repositories can simultaneously use the same thesaurus for
+tagging their data. This keeps single repositories small and coherent without
+loosing the potential to link them to other repositories (linked data,
+citations for linked data).
+
+*** Semantics for automated reasoning
+
+
+This is a separate argument, and we do not touch it in the results: automatic
+merging should be only in the discussion:
+
+but also could be used in the process of integrating the data
+for analysis. 
+
+Additionally it can be error prone especially if analyses get more complex and
+require the expertise of more than one research domain.  
+
 
 Ontologies, as formal representations of knowledge, potentially offer a
 sophisticated tool to deal with that step of data preparation (e.g michener et al 2012). 
@@ -1065,13 +1126,16 @@ that they can be a huge benefit, but it is hard to set up a sophisticated
 ontology covering all necessary terms and relation of a highly complex research
 domain (cite xxx).
 
+
 We recently started to develop an ontology using a `tematres` .The
 formalization we develop will be based on the knowledge used in biodiversity
-ecosystem functioning research. The `BEFdata` portal will get a semantical
-tagging feature that will allow data owners to tag data fine granular ?? on
-data column level. Using the same formalized knowledge from the ontology we
-will be able to provide smart merging and transformation features within the
-`rbefdata` package that help researchers to merge datasets semi automatic.
+ecosystem functioning research. 
+
+The `BEFdata` portal will get a semantical tagging feature that will allow data
+owners to tag data fine granular ?? on data column level. Using the same
+formalized knowledge from the ontology we will be able to provide smart merging
+and transformation features within the `rbefdata` package that help researchers
+to merge datasets semi automatic.
 
 While data storage and description is almost the same for all kind of data the
 effective interlinking of data via an ontology requires the development of a
