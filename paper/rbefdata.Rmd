@@ -50,6 +50,22 @@ One paragraph with all this:
 * we demonstrate the usage with an interdisciplinary analysis on nutrient retention
 
 
+### formal knowledge representations and discovering data
+
+#### data discovery
+
+Data repositories and knowledge repositories.
+
+#### data legibility
+
+Metadata.
+
+### workflows, provenance
+
+#### workflow repositories and software
+
+#### sharing ideas for analysis: paper proposals
+
 ### small data repositories
 ### data warehouses
 ### reluctance to share data
