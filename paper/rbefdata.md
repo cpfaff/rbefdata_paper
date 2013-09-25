@@ -35,10 +35,10 @@ and smart merging functionality to be integrated with `rbefdata` and `BEFdata`.
 * first paragraph summarizes the intro grid. Three sentences.
 
 With a growing awareness on the value of data, a multitude of data management
-and knowledge platforms are emerging. With a growing pool of available data the
-need to use and reuse the data effectively grows as well. This requires the
-development of effective tool that tightly integrate semantic concepts, to help
-researchers with data exploration and processing. 
+and knowledge platforms are emerging. However the need to use and effectively
+reuse data grows as well as more data gets available. This puts much pressure
+on the development of effective tools that tightly integrate into existing
+workflows of researchers to help them dealing with these challenges.
 
 ### Many data
 
@@ -893,8 +893,8 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0280 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0285 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

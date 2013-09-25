@@ -39,10 +39,10 @@ and smart merging functionality to be integrated with `rbefdata` and `BEFdata`.
 * first paragraph summarizes the intro grid. Three sentences.
 
 With a growing awareness on the value of data, a multitude of data management
-and knowledge platforms are emerging. With a growing pool of available data the
-need to use and reuse the data effectively grows as well. This requires the
-development of effective tool that tightly integrate semantic concepts, to help
-researchers with data exploration and processing. 
+and knowledge platforms are emerging. However the need to use and effectively
+reuse data grows as well as more data gets available. This puts much pressure
+on the development of effective tools that tightly integrate into existing
+workflows of researchers to help them dealing with these challenges.
 
 ### Many data
 
