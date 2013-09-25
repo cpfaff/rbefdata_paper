@@ -40,9 +40,9 @@ and smart merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 With a growing awareness on the value of data, a multitude of data management
 and knowledge platforms are emerging. With a growing pool of available data the
-need to use and reuse the data effectively grows as well. This requires
-effective tools for data access, exploration, and to describe data with
-metadata. 
+need to use and reuse the data effectively grows as well. This requires the
+development of effective tool that tightly integrate semantic concepts, to help
+researchers with data exploration and processing. 
 
 ### Many data
 

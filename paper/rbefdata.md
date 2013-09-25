@@ -36,9 +36,9 @@ and smart merging functionality to be integrated with `rbefdata` and `BEFdata`.
 
 With a growing awareness on the value of data, a multitude of data management
 and knowledge platforms are emerging. With a growing pool of available data the
-need to use and reuse the data effectively grows as well. This requires
-effective tools for data access, exploration, and to describe data with
-metadata. 
+need to use and reuse the data effectively grows as well. This requires the
+development of effective tool that tightly integrate semantic concepts, to help
+researchers with data exploration and processing. 
 
 ### Many data
 
@@ -947,8 +947,8 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
