@@ -128,15 +128,21 @@ Workflows offer the potential to seamlessly trace research results back through 
 
 However, as more and more scientists use the R statistical environment, there is no need to learn other software to access external data and knowledge sources. 
 
+(http://ropensci.org/),
+which is a community driven approach to wrap all science APIs and to create
+solutions for R users to seamlessly pull data from different repositories
+spread over the internet into R for analysis.
+
 
 ### last paragraph
 
 
 
-There is a need for tools that closely tie together  data discovery,
-exploration, and management within the working environments of researchers. In
+There is a need for tools at the fingertips of the researchers, that can be
+easily integrated into their workflow and leverage their access to data as
+well as semantic repositories. In
 this paper we want to introduce the new R package `rbefdata`
-(https://github.com/befdata/rbefdata) which links data repositories using the
+(https://github.com/befdata/rbefdata) which ties together data repositories using the
 open source data management platform `BEFdata`
 (https://github.com/befdata/befdata) and Thematres thesauri (url thematres) to
 the R statistics environment.  It provides tools to explore, download, and
@@ -154,14 +160,9 @@ workflow scripts back to the data management platform.
 
 
 
- (http://ropensci.org/),
-which is a community driven approach to wrap all science APIs and to create
-solutions for R users to seamlessly pull data from different repositories
-spread over the internet into R for analysis.
+ 
 
-There is a need for tools at the fingertips of the researchers, that can be
-easily integrated into their workflow and leverage their access to data as
-well as semantic repositories.
+
 
 ## Material and Methods
 
