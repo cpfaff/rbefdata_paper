@@ -15,7 +15,7 @@ users to learn new tools and the situation could potentially be improved by
 tightly integrating new valuable concepts into existing and widely used tools.
 In this paper we introduce the `rbefdata` R package that provides a link to the
 open source data management platform `BEFdata`. The package gives access to
-data and metadata from within R as well as it integrates semantic repositories.
+data and metadata from within R as well as it integrates a semantic repository.
 We use a facet of an analysis that has been published already to show a
 workflow in form of an R script that highlights the usage and the interactions
 between the package and the `BEFdata` portal. As the data is open access the
@@ -899,8 +899,8 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0280 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
