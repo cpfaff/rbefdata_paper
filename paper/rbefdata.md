@@ -14,16 +14,19 @@ throughout the scientific domains. This is partly related to the reluctance of
 users to learn new tools and the situation could potentially be improved by
 tightly integrating new valuable concepts into existing and widely used tools.
 In this paper we introduce the `rbefdata` R package that provides a link to the
-open source data management platform `BEFdata`. The package gives access to
-data and metadata from within R as well as it integrates a semantic repository.
-We use a facet of an analysis that has been published already to show a
-workflow in form of an R script that highlights the usage and the interactions
-between the package and the `BEFdata` portal. As the data is open access the
-workflow presented here can just be reproduced by executing the single steps.
-We discuss the introduced combination of software in terms of the data life
-cycle and data management requirements. Additionally, we give an outlook on
-upcoming features like an improved exploration of data and smart merging
-functionality, to be integrated with `rbefdata` and `BEFdata`.
+open source data management platform `BEFdata`. The platform has been developed
+and is used within the BEF-China experiment. It is specialized in managing
+small and heterogeneous data, representing the majority of data in biodiversity
+related research. The package gives access to data and metadata from within R
+as well as it integrates a semantic repository.  We use a facet of an analysis
+that has been published already to show a workflow in form of an R script that
+highlights the usage and the interactions between the package and the `BEFdata`
+portal. As the data is open access the workflow presented here can just be
+reproduced by executing the single steps.  We discuss the introduced
+combination of software in terms of the data life cycle and data management
+requirements. Additionally, we give an outlook on upcoming features like an
+improved exploration of data and smart merging functionality, to be integrated
+with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
@@ -181,19 +184,6 @@ provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012).
 
 ### BEFdata portal
 
-
-This paper introduces the `rbefdata` package that links the R statistics
-environment to the open source data management platform `BEFdata`. The platform
-has been developed and is used within the BEF-China experiment. It is
-specialized in managing small and heterogeneous data, representing the majority
-of data in biodiversity related research. 
-
-
-
-
-
-
-
 The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) platform is
 specialized in managing small and heterogeneous data. It adheres to standards
 like the Ecological Metadata Language (EML) and facilitates research
@@ -215,9 +205,6 @@ for datasets and data columns which is also used in the `rbefdata` package to
 explore datasets.
 
 ### Nutrient retention along a biodiversity gradient
-
-Anne: Ich habe wurzeldaten von jemandem bekommen, aber im prinzip stimmt es schon,
-was wir gemacht haben reflektiert das nicht
 
 In this paper we use an already published analysis on nutrient retention along
 a biodiversity gradient as a use case to build a workflow that shows the
@@ -899,8 +886,8 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0280 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -953,7 +940,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
