@@ -61,7 +61,7 @@ serve as nodes that collect data from smaller databases of a certain domain and
 enable researchers to access a wide range of relevant data, all from one place.
 In fact, these platforms offer a solution to one of the most pressing problems
 that we face with our valuable data today, their loss. Even tough this improves
-the situation with data preservation there is still reluctance, as researchers
+the situation in data preservation, there is still reluctance as researchers
 fear to give away and loose the control over their data.
 
 ### Data reuse and Metadata
@@ -884,7 +884,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
 ## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 1 == 0    0.733      0.288    2.54   0.0280 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -938,7 +938,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
 ## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

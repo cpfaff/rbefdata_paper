@@ -65,7 +65,7 @@ serve as nodes that collect data from smaller databases of a certain domain and
 enable researchers to access a wide range of relevant data, all from one place.
 In fact, these platforms offer a solution to one of the most pressing problems
 that we face with our valuable data today, their loss. Even tough this improves
-the situation with data preservation there is still reluctance, as researchers
+the situation in data preservation, there is still reluctance as researchers
 fear to give away and loose the control over their data.
 
 ### Data reuse and Metadata
