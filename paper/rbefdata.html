@@ -192,24 +192,24 @@ pressing problems in data management, other highly valuable concepts are not
 yet wide spread throughout the scientific domains. While data preservation and
 the general access to data for a wider audience is covered very well,
 describing data with metadata, the use of semantical concepts, and the
-integration of small datasets still lacks behind. This is partially related to
-the reluctance of users towards new solutions, a general lack of acceptance of
-certain concepts, or that some concepts are simply hard to implement for
-certain scientific domains. We here introduce the <code>rbefdata</code> package that links
-the R statistics environment to the open source data management platform
-<code>BEFdata</code>.  The platform has been developed and is used within the BEF-China
-experiment. It is specialized in handling small and heterogeneous data,
-representing the majority of data in biodiversity research. We show the usage
-of the package by a workflow in form of an R script. The analysis steps
-underlying the workflow do not only show the interactions between the R package
-and the data management platform but also reconstruct a facet of an analysis,
-of which the results have been published already. The data used in the analysis
-is open access so the workflow in this paper can be simply reproduced step by
-step. We discuss the introduced combination of software in the terms of the
-data life cycle and the current as well as future data management requirements.
-Additionally, we give an outlook on upcoming semantical assisted features like
-an improved exploration of data and smart merging functionality to be
-integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
+efficient reuse and integration of small datasets still lacks behind. This is
+partially related to the reluctance of users towards new solutions, a general
+lack of acceptance for certain concepts, or that some concepts are simply hard
+to implement for certain scientific domains. We here introduce the <code>rbefdata</code>
+package that links the R statistics environment to the open source data
+management platform <code>BEFdata</code>. The platform has been developed and is used
+within the BEF-China experiment. It is specialized in managing small and
+heterogeneous data, representing the majority of data in biodiversity related
+research. We show the usage of the package by a workflow in form of an R
+script.  The analysis steps, underlying the workflow do not only show the
+interactions between the R package and the data management platform but also
+reconstruct a facet of an analysis, of which the results have been published
+already. Thus the data used in the analysis is open access and the workflow in
+this paper can be reproduced step by step. We discuss the introduced
+combination of software in the terms of the data life cycle and current as well
+as future data management requirements. Additionally, we give an outlook on
+upcoming semantical features like an improved exploration of data and smart
+merging functionality, to be integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
 
 <h2>Introduction</h2>
 
@@ -244,7 +244,7 @@ serve as nodes that collect data from smaller databases of a certain domain and
 enable researchers to access a wide range of relevant data, all from one place.
 In fact, these platforms offer a solution to one of the most pressing problems
 that we face with our valuable data today, their loss. Even tough this improves
-the situation with preserving data there is still reluctance, as researchers
+the situation with data preservation there is still reluctance, as researchers
 fear to give away and loose the control over their data.</p>
 
 <h3>Data reuse and Metadata</h3>
@@ -280,28 +280,16 @@ to learn new tools for the data description process (e.g morpho, dataUP).</p>
 <li>Taxonomies ontologies as formal representations of knowledge </li>
 </ul>
 
-<p>Simply finding relevant data for a certain analysis is crucial for an effective
-reuse of available data. However this process is challenging and still a mostly
-manual task. A common practice to data discovery is to tag datasets or data
-columns with keywords that describe the content. The keywords can be used as
-simple means to narrow down a set of relevant data. But a keyword search is
-still very limiting without the using semantical repositories that embed a
-keyword into a context. So a plain keywords search only help to find data,
-tagged exactly with that term we are looking for. A search like this is highly
-likely to miss other relevant data that is tagged with keywords that are close
-related to the one we are looking for. Here the integration of formal
-representations knowledge offers the potential to help or guide the process of
-data discovery. For example a hierarchical representation of terms in the form
-of a taxonomy can help in broaden or narrow down search terms to achieve a more
-detailed or general search. Higher representations of formal knowledge like for
-example ontologies can do even more as they allow formal reasoning so it allows
-to develop tools that are smart enough to assist researchers on data reuse and
-integration. While the development of a taxonomy is a more or less simple task
-that is feasible even for smaller project the development of an ontology is
-more challenging. It requires the input of many scientists and discussions
-about definitions and relations of terms in the representation. This might be
-one of the reasons why there is a lack of ontologies especially for highly
-interdisciplinary research domains like ecology. </p>
+<p>Finding relevant data for a certain analysis is crucial for an effective reuse
+of data. However finding data is challenging and is getting even more complex
+if more data gets available. A valuable practice in data discovery next to full
+text search in metadata is keyword tagging. But a keyword search is very coarse
+and may provide access to some of the relevant data but miss other data that
+are tagged with close related keywords. Using semantic repositories that
+provide taxonomies or ontologies that embed the keywords into a context can
+potentially improve this situation. The keyword search could benefit from using
+simple taxonomies as they serve a hierarchic structure that can be used to find
+related narrower or broader terms to improve the search query.</p>
 
 <h3>Data processing</h3>
 
@@ -309,20 +297,32 @@ interdisciplinary research domains like ecology. </p>
 <li>Introducing workflows (merits, ROpenSci, Kepler, Pegasus, etc.) Cite our paper on workflows.</li>
 <li>Workflow repositories and software </li>
 <li>R needs to be learned as well that is no argument to less acceptance of other tools like Kepler, is there?!</li>
+<li>Provenance and the advantage of keeping scripts (workflows) close to the data.</li>
 </ul>
 
-<p>Workflows are a trending concept in terms of streamlining the process of data
-access, processing and the preservation of valuable data products. The rOpenSci
-initiative (<a href="http://ropensci.org/">http://ropensci.org/</a>) is a community driven project to provide the
-R statistic environment (cite R) with access to scientific data repositories
-which enables the R users to keep their scripts and use the full flexibility of
-data access from online repositories without the need to learn tool like Kepler
-or any other graphical workflow solution.</p>
+<p>In the process of reuse the data may needs to be cleaned, imputed, reshaped and
+merged which usually takes up to 70% of an analysis workflow (cite Karin and
+me, and xxx). This preparatory steps not only are time and labour intensive but
+also potentially error prone, especially as the complexity of analyses
+increases. Higher representations of formal knowledge like ontologies can come
+in handy in that context as they allow formal reasoning that allows to develop
+tools smart enough to assist researchers on data reuse and integration. While
+the development of a taxonomy is a more or less simple task the development of
+an ontology is more challenging. Especially for highly interdisciplinary
+research domains this requires the input of many scientists and discussions
+about definitions and relations of terms in the representation. This might be
+one of the reasons why there is a lack of sophisticated ontologies especially
+for highly interdisciplinary research domains like ecology. </p>
 
-<p>While tools like Kepler () or Pegasus () require researchers to learn the new
-tools th is a way to provide acknowledgement to data owners in a more granular
-way. While special workflow tools like Kepler or Pegasus follow a graphical
-approach to give researchers intuitive tools</p>
+<p>Workflows is a trending concept in terms of streamlining the process of data
+access, data processing and the preservation of valuable data products.  While
+specialized software solutions like Kepler (cite) or Pegasus (cite) offer tools
+to create workflows in a graphical manner the integration of the concept into
+wide spread and well accepted tools for data analysis like the R statistics
+environment lacks behind. The rOpenSci initiative (<a href="http://ropensci.org/">http://ropensci.org/</a>) is a
+community driven project to provide the R statistic environment (cite R) with a
+flexible access to scientific data repositories and represents a first step
+towards workflows in R.</p>
 
 <h3>Wrap up (introduce solutions)</h3>
 
@@ -992,7 +992,7 @@ anova(model3)
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
 ## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0279 * 
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
