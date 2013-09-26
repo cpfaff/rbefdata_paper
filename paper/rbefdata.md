@@ -10,24 +10,24 @@
 Today scientists need to deal with a deluge of data in many disciplines. Even
 if there are some good concepts available that solve some of the most pressing
 problems in data management, not all of them are widely spread throughout the
-scientific domains. This is is related to the fact that new concepts often are
-provided by new tools and the reluctance of users to learn new tools. This
-situation could potentially be improved by tightly integrating new valuable
-concepts into existing and widely used tools. In this paper we introduce the
-`rbefdata` R package that provides a link to the open source data management
-platform `BEFdata`. The platform has been developed and is used within the
-BEF-China experiment. It is specialized in managing small and heterogeneous
-data, representing the majority of data in biodiversity related research. The
-package gives access to data and metadata from within R as well as it
-integrates a semantic repository.  We use a facet of an analysis that has been
-published already to show a workflow in form of an R script that highlights the
-usage and the interactions between the package and the `BEFdata` portal. As the
-data is open access the workflow presented here can just be reproduced by
-executing the single steps.  We discuss the introduced combination of software
-in terms of the data life cycle and data management requirements. Additionally,
-we give an outlook on upcoming features like an improved exploration of data
-and smart merging functionality, to be integrated with `rbefdata` and
-`BEFdata`.
+scientific domains. This is related to the fact that new concepts often are
+implemented by new tools and the reluctance of users to learn those new tools.
+This situation could potentially be improved by tightly integrating new
+valuable concepts into existing and widely used tools. In this paper we
+introduce the `rbefdata` R package that provides a link to the open source data
+management platform `BEFdata`. The platform has been developed and is used
+within the BEF-China experiment. It is specialized in managing small and
+heterogeneous data, representing the majority of data in biodiversity related
+research. The package gives access to data and metadata from within R as well
+as it integrates a semantic repository.  We use a facet of an analysis that has
+been published already to show a workflow in form of an R script that
+highlights the usage and the interactions between the package and the `BEFdata`
+portal. As the data is open access the workflow presented here can just be
+reproduced by executing the single steps.  We discuss the introduced
+combination of software in terms of the data life cycle and data management
+requirements. Additionally, we give an outlook on upcoming features like an
+improved exploration of data and smart merging functionality, to be integrated
+with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
@@ -822,10 +822,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
+## 4 - 1 == 0    0.865      0.497    1.74    0.184   
+## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -877,9 +877,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0284 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
