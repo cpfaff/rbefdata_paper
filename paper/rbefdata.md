@@ -7,30 +7,23 @@
 
 ## Abstract
 
-Today scientists need to deal with a deluge of data in many disciplines. While
-there are some widely accepted concepts and tools that solve some of the most
-pressing problems in data management, other highly valuable concepts are not
-yet wide spread throughout the scientific domains. While data preservation and
-the general access to data for a wider audience is covered very well,
-describing data with metadata, the use of semantical concepts, and the
-efficient reuse and integration of small datasets still lacks behind. This is
-partially related to the reluctance of users towards new solutions, a general
-lack of acceptance for certain concepts, or that some concepts are simply hard
-to implement for certain scientific domains. We here introduce the `rbefdata`
-package that links the R statistics environment to the open source data
-management platform `BEFdata`. The platform has been developed and is used
-within the BEF-China experiment. It is specialized in managing small and
-heterogeneous data, representing the majority of data in biodiversity related
-research. We show the usage of the package by a workflow in form of an R
-script.  The analysis steps, underlying the workflow do not only show the
-interactions between the R package and the data management platform but also
-reconstruct a facet of an analysis, of which the results have been published
-already. Thus the data used in the analysis is open access and the workflow in
-this paper can be reproduced step by step. We discuss the introduced
-combination of software in the terms of the data life cycle and current as well
-as future data management requirements. Additionally, we give an outlook on
-upcoming semantical features like an improved exploration of data and smart
-merging functionality, to be integrated with `rbefdata` and `BEFdata`.
+Today scientists need to deal with a deluge of data in many disciplines. Even
+if there are some good concepts already available that solve some of the most
+pressing problems in data management, not all of them are widely spread
+throughout the scientific domains. This is partly related to the reluctance of
+users to learn new tools and the situation could potentially be improved by
+tightly integrating new valuable concepts into existing and widely used tools.
+In this paper we introduce the `rbefdata` R package that provides a link to the
+open source data management platform `BEFdata`. The package gives access to
+data and metadata from within R as well as it integrates semantic repositories.
+We use a facet of an analysis that has been published already to show a
+workflow in form of an R script that highlights the usage and the interactions
+between the package and the `BEFdata` portal. As the data is open access the
+workflow presented here can just be reproduced by executing the single steps.
+We discuss the introduced combination of software in terms of the data life
+cycle and data management requirements. Additionally, we give an outlook on
+upcoming features like an improved exploration of data and smart merging
+functionality, to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
@@ -112,32 +105,40 @@ related narrower or broader terms to improve the search query.
 * R needs to be learned as well that is no argument to less acceptance of other tools like Kepler, is there?!
 * Provenance and the advantage of keeping scripts (workflows) close to the data.
 
-In the process of reuse the data may needs to be cleaned, imputed, reshaped and
-merged which usually takes up to 70% of an analysis workflow (cite Karin and
-me, and xxx). This preparatory steps not only are time and labour intensive but
-also potentially error prone, especially as the complexity of analyses
+In the process of data reuse the data may need to be cleaned, imputed, reshaped
+and merged which usually takes up to 70% of the whole analysis workflow (cite
+Karin and me, and xxx). These preparatory steps are not only time and labour
+intensive but potentially error prone, especially if the complexity of analyses
 increases. Higher representations of formal knowledge like ontologies can come
 in handy in that context as they allow formal reasoning that allows to develop
-tools smart enough to assist researchers on data reuse and integration. While
+tools smart enough to assist researchers on data reuse and integration.  While
 the development of a taxonomy is a more or less simple task the development of
 an ontology is more challenging. Especially for highly interdisciplinary
 research domains this requires the input of many scientists and discussions
-about definitions and relations of terms in the representation. This might be
+about definitions and relations of terms in the representation.  This might be
 one of the reasons why there is a lack of sophisticated ontologies especially
-for highly interdisciplinary research domains like ecology. 
-
-Workflows is a trending concept in terms of streamlining the process of data
-access, data processing and the preservation of valuable data products.  While
-specialized software solutions like Kepler (cite) or Pegasus (cite) offer tools
-to create workflows in a graphical manner the integration of the concept into
-wide spread and well accepted tools for data analysis like the R statistics
-environment lacks behind. The rOpenSci initiative (http://ropensci.org/) is a
-community driven project to provide the R statistic environment (cite R) with a
-flexible access to scientific data repositories and represents a first step
-towards workflows in R.
-
+for highly interdisciplinary research domains like ecology. Workflows is a
+trending concept in terms of streamlining the process of data access, data
+processing and the preservation of valuable data products. While specialized
+software solutions like Kepler (cite) or Pegasus (cite) offer tools to create
+workflows in a graphical manner the integration of the concept into wide spread
+and well accepted tools for data analysis like the R statistics environment
+lacks behind. The rOpenSci initiative (http://ropensci.org/) is a community
+driven project to provide the R statistic environment (cite R) with a flexible
+access to scientific data repositories and represents a first step towards
+workflows in R.
 
 ### Wrap up (introduce solutions)
+
+
+While data preservation and the access to data for a wider audience are covered
+very well, the use of metadata and semantic concepts, which both are related to
+the efficient reuse of data lacks behind.  On one hand this is related to the
+reluctance of users to use new tools or the fear to loose control over valuable
+data. But on the other hand this is also related to the fact that the valuable
+concepts are not yet tightly integrated enough into the researchers daily
+workflow.
+
 
 There is a growing demand on tools at the fingertips of researchers, that
 easily integrate with their existing workflows, enable a simple access to data
@@ -145,22 +146,22 @@ repositories, assist them in discovery and the process of understanding
 available data which is crucial for an effective reuse of data. The process of
 assisted discovery is highly likely to be enabled by the tight integration of
 semantic repositories in form of taxonomies and ontologies in emerging software
-solutions. 
+solutions.
 
-This paper introduces the new R package called `rbefdata`. It is the companion
-package of the data management platform `BEFdata`
-(https://github.com/befdata/befdata). It enables a seamless access to data and
-metadata stored on the portal. On top of that it allows for the integration of
-semantic repositories as it integrates with the `tematres` vocabulary server
-(http://www.vocabularyserver.com/).  We showcase the functionality of the
-package available with version `0.3.5`.  The workflow reconstructs a facet of
-an analysis that has been published by Lang et al. 2013 on nutrient retention
-along biodiveristy gradients. It is a 15N tracer experiment which aims to
-disentangle the effect of species mixtures on system N retention. The workflow
-depicts how to refine keywords for search in the thesaurus, ask for data access
-in the data management platform, download data into the R environment, inspect
-metadata, analyse the tracer experiment, and finally upload data and workflow
-scripts back to the data management platform.
+This paper introduces a new R package called `rbefdata` which is the the
+companion package of the data management platform `BEFdata
+(https://github.com/befdata/befdata) (cite Karin). The R package enables
+seamless access to data and metadata stored on the portal. On top of that it
+allows for the integration of semantic repositories as it integrates with the
+`tematres` vocabulary server (http://www.vocabularyserver.com/).  We showcase
+the functionality of the package available with version `0.3.5`. The workflow
+reconstructs a facet of an analysis that has been published by Lang et al. 2013
+on nutrient retention along biodiveristy gradients. It is a 15N tracer
+experiment which aims to disentangle the effect of species mixtures on system N
+retention. The workflow depicts how to refine keywords for search in the
+thesaurus, ask for data access in the data management platform, download data
+into the R environment, inspect metadata, analyse the tracer experiment, and
+finally upload data and workflow scripts back to the data management platform.
 
 Karin: there are some papers talking about what users want from data
 repositories. These could be cited (e.g. Kerstin Bach). Motivate that
@@ -179,6 +180,19 @@ foundation (DFG, FOR 891) and uses two main research platforms located in the
 provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012).  
 
 ### BEFdata portal
+
+
+This paper introduces the `rbefdata` package that links the R statistics
+environment to the open source data management platform `BEFdata`. The platform
+has been developed and is used within the BEF-China experiment. It is
+specialized in managing small and heterogeneous data, representing the majority
+of data in biodiversity related research. 
+
+
+
+
+
+
 
 The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) platform is
 specialized in managing small and heterogeneous data. It adheres to standards
@@ -452,13 +466,14 @@ datasets_plant_organ_narrow
 ## 21 212
 ## 22 187
 ## 23 381
-## 24 319
-## 25 347
-## 26 322
-## 27 107
-## 28 192
-## 29 313
-## 30 105
+## 24 405
+## 25 319
+## 26 347
+## 27 322
+## 28 107
+## 29 192
+## 30 313
+## 31 105
 ##                                                                                                                                            title
 ## 1                                                               Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
 ## 2                                       Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A& B)
@@ -483,13 +498,14 @@ datasets_plant_organ_narrow
 ## 21                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
 ## 22                                                                                         Traits of ferns and herb species occuring in the CSPs
 ## 23                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
-## 24                                                                                                                  Site A tree census from 2010
-## 25                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
-## 26                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
-## 27                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
-## 28                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
-## 29                                                                                                    P concentrations in leaves and roots, CSPs
-## 30                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
+## 24                                                                                                 Leaf demography in the Main Experiment - 2011
+## 25                                                                                                                  Site A tree census from 2010
+## 26                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
+## 27                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
+## 28                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
+## 29                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
+## 30                                                                                                    P concentrations in leaves and roots, CSPs
+## 31                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
 ```
 
 
@@ -883,8 +899,8 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0280 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -938,7 +954,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
 ## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
