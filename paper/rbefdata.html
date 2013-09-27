@@ -189,76 +189,57 @@ hr {
 <p>Today scientists face a deluge of data in many disciplines. This puts much
 pressure on the development of efficient data management tools that help them
 to deal with requirements like data preservation, description of data with
-metadata and data exploration for reuse. There are good solutions to different
-parts of the data life cycle with each of them having its own downsides that
-impede their extensive use. The situation here could be improved by the
-development of software that tightly integrates new valuable concepts into
-existing and widely used tools and thus into the daily workflow of researchers.
-Paper proposals and data provenance as new form to promote collaboration,
-metadata for information exchange as well as the integration of semantic
-resources are only a few examples of valuable concepts with high potential to
-speed up scientific progress. In this paper we introduce the <code>rbefdata</code> R
-package that provides a link to the open source data management platform
-<code>BEFdata</code>. The platform has been developed and is used within the BEF-China
-experiment and is specialized in managing small and heterogeneous data. The
-package provides access to data and metadata as well as it allows the upload of
-data. We use a facet of an ecological analysis that has been published already
-to showcase the functionality of the R package. As the data used is open access
-the workflow in form of an R script presented here can just be reproduced by
-executing the single steps. We discuss the introduced combination of software
-in terms of the data life cycle and data management requirements.
-Additionally, we give an outlook on upcoming features like an improved
-exploration of data by the integration of semantic repositories and smart
-merging functionality, to be integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
+metadata and the exploration of data for reuse. There are good solutions to
+many parts of the data life cycle with each of them having its strengths but
+also downsides that impede their extensive use. The situation here could be
+improved by the development of software that tightly integrates new valuable
+concepts into existing and widely used tools and thus into the daily workflow
+of researchers.  Paper proposals and data provenance as new ways to promote
+collaboration, metadata for information exchange as well as the integration of
+semantic resources are only a few examples of valuable concepts with high
+potential to speed up scientific progress. In this paper we introduce the
+<code>rbefdata</code> R package that provides a link to the open source data management
+platform <code>BEFdata</code>. The platform has been developed and is used within the
+BEF-China experiment and is specialized in managing small and heterogeneous
+data. The package provides access to data metadata as well as it allows the
+upload of data. We use a facet of an ecological analysis that has been
+published already to showcase the functionality of the R package. As the data
+used is open access, the workflow in form of an R script presented here can
+just be reproduced by executing the single steps. We discuss the introduced
+combination of software in terms of the data life cycle and data management
+requirements.  Additionally, we give an outlook on upcoming features like an
+improved exploration of data by the integration of semantic repositories and
+smart merging functionality, to be integrated with <code>rbefdata</code> and <code>BEFdata</code>.</p>
 
 <h2>Introduction</h2>
 
-<ul>
-<li>first paragraph summarizes the intro grid. Three sentences. </li>
-<li>that is so redundant to the parts that follow isn&#39;t it? (why)</li>
-</ul>
+<p>A multitude of data management and knowledge platforms are emerging which leads
+to a growing global data pool. However the need to use and effectively reuse
+data grows as well as more data gets available. This puts much pressure not
+only on the development of effective tools but also on tools that tightly
+integrate into existing workflows of researchers to help them dealing with the
+challenges like data exploration and processing.</p>
 
-<p>With a growing awareness on the value of data, a multitude of data management
-and knowledge platforms are emerging. However the need to use and effectively
-reuse data grows as well as more data gets available. This puts much pressure
-on the development of effective tools that tightly integrate into existing
-workflows of researchers to help them dealing with the challenges like data
-exploration and processing.</p>
-
-<h3>Many data</h3>
-
-<p>With a growing awareness on the value of data, much effort has been put into
+<p>With a growing awareness on the value of data, much effort was put into
 building data management platforms, that preserve all kinds of environmental
 and historic data. Solutions emerged in different scientific disciplines that
 provide data management plans for small scale projects as well as for large
 data producing, long term or remote sensing collaborations (e.g. diversity
-workbench, GBIF, <code>BEFdata</code>, DataONE, LifeWatch). An ongoing trend in that
-context is the development of integrative databases and data platforms. They
-serve as nodes that collect data from smaller databases of a certain domain and
+workbench, GBIF, <code>BEFdata</code>, DataONE, LifeWatch). An ongoing trend here is the
+development of integrative databases and data platforms (TRY, GBIF). They serve
+as nodes that collect data from smaller databases of a certain domain and
 enable researchers to access a wide range of relevant data, all from one place.
 In fact, these platforms offer a solution to one of the most pressing problems
 that we face with our valuable data today, their loss. Even tough this improves
-the situation in data preservation, there is still reluctance as researchers
-fear to give away and loose the control over their data.</p>
+the situation in data preservation, there is still reluctance to use them
+extensively as researchers fear to give away and loose the control over their
+data. </p>
 
-<h3>Data discovery</h3>
-
-<ul>
-<li>Data discovery keywords, semantic tagging </li>
-<li>Taxonomies ontologies as formal representations of knowledge </li>
-<li>sharing ideas for analysis: paper proposals 
-  Paper proposals are an emerging concept solving transparant data exchange and
-  reuse across disciplines and laboratories [citations!]</li>
-</ul>
-
-<p>With a growing global data pool the demand to use and reuse available data
-grows as well. For example in ecology the integration of small and
-heterogeneous data offers the potential to answer questions on a much broader
-temporal and spatial scale.</p>
-
-<p>Metadata is a crucial component for the effective reuse of data as it improves
-its legibility. A plain dataset is hard to understand, to one who is not
-familiar with it and it can be hard to decipher, even by the author itself,
+<p>Metadata is a crucial component that supports different processes in the data
+life cycle. It is important for data preservation as well as for an effective
+reuse and the integration of data into a wider context. In general it improves
+the legibility of data. A plain dataset is hard to understand, to one who is
+not familiar with it and it can be hard to decipher, even by the author itself,
 after some time has passed. For example it is hard to remember what methods
 have been used to collect the data of a certain column or what the
 abbreviations or the headers in the dataset mean. While metadata theoretically
@@ -266,26 +247,21 @@ solves the problem with undescribed data, it is still hard to make researchers
 use it extensively. This is closely related to the fact that it usually means
 to learn new tools for the data description process (e.g morpho, dataUP).</p>
 
-<p>Finding relevant data for a certain analysis is crucial for an effective reuse.
-However finding data is challenging and is getting even more complex if more
-data gets available. A common practice in data discovery next to full text
-search in metadata is keyword tagging. But a keyword search is very coarse and
-may provide access to parts of the relevant data only as it misses for example
-data of relevance that has been tagged with close related keywords of the
-actual search. The integration of semantic repositories that provide taxonomies
-or ontologies to embed the keywords into a context can potentially improve this
-situation. For example the keyword search could benefit from using taxonomies
-as they serve a hierarchic structure that can be used to find related narrower
-or broader terms to improve the search query.</p>
-
-<h3>Data processing and integration</h3>
-
-<ul>
-<li>Introducing workflows (merits, ROpenSci, Kepler, Pegasus, etc.) Cite our paper on workflows.</li>
-<li>Workflow repositories and software </li>
-<li>R needs to be learned as well that is no argument to less acceptance of other tools like Kepler, is there?!</li>
-<li>Provenance and the advantage of keeping scripts (workflows) close to the data.</li>
-</ul>
+<p>The demand to use and reuse available data grows with the amount of data
+available. For example in ecology the integration of the mostly small and
+heterogeneous data offers the potential to answer questions on a much broader
+temporal and spatial scale.  Finding relevant data for a certain analysis is
+crucial for an effective reuse.  However finding data is challenging and is
+getting even more complex if more data gets available. A common practice in
+data discovery next to full text search in metadata is keyword tagging. But a
+keyword search is very coarse and may provide access to parts of the relevant
+data only as it misses for example data of relevance that has been tagged with
+close related keywords of the actual search. The integration of semantic
+repositories that provide taxonomies or ontologies to embed the keywords into a
+context can potentially improve this situation. For example the keyword search
+could benefit from using taxonomies as they serve a hierarchic structure that
+can be used to find related narrower or broader terms to improve the search
+query.</p>
 
 <p>Workflows is a trending concept in terms of streamlining data processing in
 terms of data access, data manipulation and the preservation of valuable data
@@ -294,16 +270,6 @@ access to different data repositories, in reading metadata of data and provide
 many predefined components that can be used to manipulate and analyse data.
 These tools work as an integrative framework that allows not only the access to
 data but also to external tools like R for statistical analysis.</p>
-
-<p>Especially for statistical analysis </p>
-
-<p>While
-this tools offer a graphical component </p>
-
-<p>While these tools offer a graphical way to data processing the R statistics
-environment </p>
-
-<p>While these tools offer a graphical way to build workflows</p>
 
 <p>In the process of data reuse the data may need to be cleaned, imputed, reshaped
 and merged which usually takes up to 70% of the whole analysis workflow (cite
@@ -334,6 +300,18 @@ input of many scientists and discussions about definitions and relations of
 terms in the representation.  This might be one of the reasons why there is a
 lack of sophisticated ontologies especially for highly interdisciplinary
 research domains like ecology. </p>
+
+<h3>Data processing and integration</h3>
+
+<ul>
+<li><p>sharing ideas for analysis: paper proposals 
+  Paper proposals are an emerging concept solving transparant data exchange and
+  reuse across disciplines and laboratories [citations!]</p></li>
+<li><p>Introducing workflows (merits, ROpenSci, Kepler, Pegasus, etc.) Cite our paper on workflows.</p></li>
+<li><p>Workflow repositories and software </p></li>
+<li><p>R needs to be learned as well that is no argument to less acceptance of other tools like Kepler, is there?!</p></li>
+<li><p>Provenance and the advantage of keeping scripts (workflows) close to the data.</p></li>
+</ul>
 
 <h3>Wrap up (introduce solutions)</h3>
 
@@ -1010,8 +988,8 @@ anova(model3)
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
 ## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0277 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8793   
+## 4 - 1 == 0    0.733      0.288    2.54   0.0282 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
