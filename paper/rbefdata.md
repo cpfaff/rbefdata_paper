@@ -60,70 +60,106 @@ that we face with our valuable data today, their loss. Even tough this improves
 the situation in data preservation, there is still reluctance as researchers
 fear to give away and loose the control over their data.
 
-### Data reuse and Metadata
+### Data discovery
 
+* Data discovery keywords, semantic tagging 
+* Taxonomies ontologies as formal representations of knowledge 
 * sharing ideas for analysis: paper proposals 
       Paper proposals are an emerging concept solving transparant data exchange and
       reuse across disciplines and laboratories [citations!]
 
 With a growing global data pool the demand to use and reuse available data
-grows as well. Especially in ecology the integration of small and heterogeneous
-data offers the potential to answer questions on a much broader temporal and
-spatial scale. Metadata is a crucial component for the effective reuse of data
-as it improves its legibility. A plain dataset is hard to understand, to one
-who is not familiar with it and it can be hard to decipher, even by the author
-itself, after some time has passed. For example it is hard to remember what
-methods have been used to collect the data of a certain column or what the
+grows as well. For example in ecology the integration of small and
+heterogeneous data offers the potential to answer questions on a much broader
+temporal and spatial scale.
+
+Metadata is a crucial component for the effective reuse of data as it improves
+its legibility. A plain dataset is hard to understand, to one who is not
+familiar with it and it can be hard to decipher, even by the author itself,
+after some time has passed. For example it is hard to remember what methods
+have been used to collect the data of a certain column or what the
 abbreviations or the headers in the dataset mean. While metadata theoretically
 solves the problem with undescribed data, it is still hard to make researchers
 use it extensively. This is closely related to the fact that it usually means
 to learn new tools for the data description process (e.g morpho, dataUP).
 
-### Data discovery
+Finding relevant data for a certain analysis is crucial for an effective reuse.
+However finding data is challenging and is getting even more complex if more
+data gets available. A common practice in data discovery next to full text
+search in metadata is keyword tagging. But a keyword search is very coarse and
+may provide access to parts of the relevant data only as it misses for example
+data of relevance that has been tagged with close related keywords of the
+actual search. The integration of semantic repositories that provide taxonomies
+or ontologies to embed the keywords into a context can potentially improve this
+situation. For example the keyword search could benefit from using taxonomies
+as they serve a hierarchic structure that can be used to find related narrower
+or broader terms to improve the search query.
 
-* Data discovery keywords, semantic tagging 
-* Taxonomies ontologies as formal representations of knowledge 
-
-Finding relevant data for a certain analysis is crucial for an effective reuse
-of data. However finding data is challenging and is getting even more complex
-if more data gets available. A valuable practice in data discovery next to full
-text search in metadata is keyword tagging. But a keyword search is very coarse
-and may provide access to some of the relevant data but miss other data that
-are tagged with close related keywords. Using semantic repositories that
-provide taxonomies or ontologies that embed the keywords into a context can
-potentially improve this situation. The keyword search could benefit from using
-simple taxonomies as they serve a hierarchic structure that can be used to find
-related narrower or broader terms to improve the search query.
-
-### Data processing 
+### Data processing and integration
 
 * Introducing workflows (merits, ROpenSci, Kepler, Pegasus, etc.) Cite our paper on workflows.
 * Workflow repositories and software 
 * R needs to be learned as well that is no argument to less acceptance of other tools like Kepler, is there?!
 * Provenance and the advantage of keeping scripts (workflows) close to the data.
 
+Workflows is a trending concept in terms of streamlining data processing in
+terms of data access, data manipulation and the preservation of valuable data
+products. Workflow tools like Kepler or Pegasus assist researchers in the
+access to different data repositories, in reading metadata of data and provide
+many predefined components that can be used to manipulate and analyse data.
+These tools work as an integrative framework that allows not only the access to
+data but also to external tools like R for statistical analysis.
+
+
+
+Especially for statistical analysis 
+
+While
+this tools offer a graphical component 
+
+While these tools offer a graphical way to data processing the R statistics
+environment 
+
+
+While these tools offer a graphical way to build workflows
+
+
+
 In the process of data reuse the data may need to be cleaned, imputed, reshaped
 and merged which usually takes up to 70% of the whole analysis workflow (cite
 Karin and me, and xxx). These preparatory steps are not only time and labour
 intensive but potentially error prone, especially if the complexity of analyses
-increases. Higher representations of formal knowledge like ontologies can come
-in handy in that context as they allow formal reasoning that allows to develop
-tools smart enough to assist researchers on data reuse and integration.  While
-the development of a taxonomy is a more or less simple task the development of
-an ontology is more challenging. Especially for highly interdisciplinary
-research domains this requires the input of many scientists and discussions
-about definitions and relations of terms in the representation.  This might be
-one of the reasons why there is a lack of sophisticated ontologies especially
-for highly interdisciplinary research domains like ecology. Workflows is a
-trending concept in terms of streamlining the process of data access, data
-processing and the preservation of valuable data products. While specialized
-software solutions like Kepler (cite) or Pegasus (cite) offer tools to create
-workflows in a graphical manner the integration of the concept into wide spread
-and well accepted tools for data analysis like the R statistics environment
-lacks behind. The rOpenSci initiative (http://ropensci.org/) is a community
-driven project to provide the R statistic environment (cite R) with a flexible
-access to scientific data repositories and represents a first step towards
-workflows in R.
+increases. Workflow software and the use of semantic repositories that provide
+representations of formal knowledge like ontologies potentially can improve
+dealing with common data processing steps (cite michener). 
+
+The rOpenSci initiative (http://ropensci.org/) is a community driven project to
+provide the R statistic environment (cite R) with a flexible access to
+scientific data repositories and represents a first step towards workflows in
+R.
+
+
+
+
+Workflow tools offer
+a graphical way to communicate results and to break down complex analysis into
+smaller pieces. 
+
+While workflow software solutions like Kepler and Pegasus offer a graphical
+
+While specialized software solutions like Kepler (cite) or Pegasus (cite) offer
+tools to create workflows in a graphical manner the integration of the concept
+into wide spread and well accepted tools for data analysis like the R
+statistics environment lacks behind. 
+
+
+
+
+Especially for highly interdisciplinary research domains this requires the
+input of many scientists and discussions about definitions and relations of
+terms in the representation.  This might be one of the reasons why there is a
+lack of sophisticated ontologies especially for highly interdisciplinary
+research domains like ecology. 
 
 ### Wrap up (introduce solutions)
 
@@ -880,9 +916,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0283 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0277 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8793   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -934,7 +970,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
