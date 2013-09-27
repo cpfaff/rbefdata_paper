@@ -84,23 +84,26 @@ could benefit from using taxonomies as they serve a hierarchic structure that
 can be used to find related narrower or broader terms to improve the search
 query.
 
-
-Workflows is a trending concept in terms of streamlining data processing in
-terms of data access, data manipulation and the preservation of valuable data
+Workflows is a trending concept in streamlining the processing of data in terms
+of data access, data manipulation and the preservation of valuable data
 products. Workflow tools like Kepler or Pegasus assist researchers in the
 access to different data repositories, in reading metadata of data and provide
-many predefined components that can be used to manipulate and analyse data.
-These tools work as an integrative framework that allows not only the access to
-data but also to external tools like R for statistical analysis.
-
-
-In the process of data reuse the data may need to be cleaned, imputed, reshaped
+many predefined components that can be used to manipulate and analyse data. In
+the process of data reuse the data may need to be cleaned, imputed, reshaped
 and merged which usually takes up to 70% of the whole analysis workflow (cite
 Karin and me, and xxx). These preparatory steps are not only time and labour
 intensive but potentially error prone, especially if the complexity of analyses
 increases. Workflow software and the use of semantic repositories that provide
 representations of formal knowledge like ontologies potentially can improve
 dealing with common data processing steps (cite michener). 
+
+
+
+These
+tools work as an integrative framework that allows not only the access to data
+but also to external tools like R for statistical analysis.
+
+
 
 The rOpenSci initiative (http://ropensci.org/) is a community driven project to
 provide the R statistic environment (cite R) with a flexible access to
@@ -902,7 +905,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
 ## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0282 * 
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -955,7 +958,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---

@@ -88,23 +88,26 @@ could benefit from using taxonomies as they serve a hierarchic structure that
 can be used to find related narrower or broader terms to improve the search
 query.
 
-
-Workflows is a trending concept in terms of streamlining data processing in
-terms of data access, data manipulation and the preservation of valuable data
+Workflows is a trending concept in streamlining the processing of data in terms
+of data access, data manipulation and the preservation of valuable data
 products. Workflow tools like Kepler or Pegasus assist researchers in the
 access to different data repositories, in reading metadata of data and provide
-many predefined components that can be used to manipulate and analyse data.
-These tools work as an integrative framework that allows not only the access to
-data but also to external tools like R for statistical analysis.
-
-
-In the process of data reuse the data may need to be cleaned, imputed, reshaped
+many predefined components that can be used to manipulate and analyse data. In
+the process of data reuse the data may need to be cleaned, imputed, reshaped
 and merged which usually takes up to 70% of the whole analysis workflow (cite
 Karin and me, and xxx). These preparatory steps are not only time and labour
 intensive but potentially error prone, especially if the complexity of analyses
 increases. Workflow software and the use of semantic repositories that provide
 representations of formal knowledge like ontologies potentially can improve
 dealing with common data processing steps (cite michener). 
+
+
+
+These
+tools work as an integrative framework that allows not only the access to data
+but also to external tools like R for statistical analysis.
+
+
 
 The rOpenSci initiative (http://ropensci.org/) is a community driven project to
 provide the R statistic environment (cite R) with a flexible access to
