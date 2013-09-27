@@ -237,15 +237,16 @@ data. </p>
 
 <p>Metadata is a crucial component that supports different processes in the data
 life cycle. It is important for data preservation as well as for an effective
-reuse and the integration of data into a wider context. In general it improves
-the legibility of data. A plain dataset is hard to understand, to one who is
-not familiar with it and it can be hard to decipher, even by the author itself,
-after some time has passed. For example it is hard to remember what methods
-have been used to collect the data of a certain column or what the
-abbreviations or the headers in the dataset mean. While metadata theoretically
-solves the problem with undescribed data, it is still hard to make researchers
-use it extensively. This is closely related to the fact that it usually means
-to learn new tools for the data description process (e.g morpho, dataUP).</p>
+reuse, the exchange and the integration of data into a wider context. In
+general it improves the legibility of data. A plain dataset is hard to
+understand, to one who is not familiar with it and it can be hard to decipher,
+even by the author itself, after some time has passed. For example it is hard
+to remember what methods have been used to collect the data of a certain column
+or what the abbreviations or the headers in the dataset mean. While metadata
+theoretically solves the problem with undescribed data, it is still hard to
+make researchers use it extensively. This is closely related to the fact that
+it usually means to learn new tools for the data description process (e.g
+morpho, dataUP).</p>
 
 <p>The demand to use and reuse available data grows with the amount of data
 available. For example in ecology the integration of the mostly small and
@@ -274,55 +275,10 @@ Karin and me, and xxx). These preparatory steps are not only time and labour
 intensive but potentially error prone, especially if the complexity of analyses
 increases. Workflow software and the use of semantic repositories that provide
 representations of formal knowledge like ontologies potentially can improve
-dealing with common data processing steps (cite michener). </p>
-
-<p>These
-tools work as an integrative framework that allows not only the access to data
-but also to external tools like R for statistical analysis.</p>
-
-<p>The rOpenSci initiative (<a href="http://ropensci.org/">http://ropensci.org/</a>) is a community driven project to
-provide the R statistic environment (cite R) with a flexible access to
-scientific data repositories and represents a first step towards workflows in
-R.</p>
-
-<p>Workflow tools offer
-a graphical way to communicate results and to break down complex analysis into
-smaller pieces. </p>
-
-<p>While workflow software solutions like Kepler and Pegasus offer a graphical</p>
-
-<p>While specialized software solutions like Kepler (cite) or Pegasus (cite) offer
-tools to create workflows in a graphical manner the integration of the concept
-into wide spread and well accepted tools for data analysis like the R
-statistics environment lacks behind. </p>
-
-<p>Especially for highly interdisciplinary research domains this requires the
-input of many scientists and discussions about definitions and relations of
-terms in the representation.  This might be one of the reasons why there is a
-lack of sophisticated ontologies especially for highly interdisciplinary
-research domains like ecology. </p>
-
-<h3>Data processing and integration</h3>
-
-<ul>
-<li><p>sharing ideas for analysis: paper proposals 
-  Paper proposals are an emerging concept solving transparant data exchange and
-  reuse across disciplines and laboratories [citations!]</p></li>
-<li><p>Introducing workflows (merits, ROpenSci, Kepler, Pegasus, etc.) Cite our paper on workflows.</p></li>
-<li><p>Workflow repositories and software </p></li>
-<li><p>R needs to be learned as well that is no argument to less acceptance of other tools like Kepler, is there?!</p></li>
-<li><p>Provenance and the advantage of keeping scripts (workflows) close to the data.</p></li>
-</ul>
-
-<h3>Wrap up (introduce solutions)</h3>
-
-<p>While data preservation and the access to data for a wider audience are covered
-very well, the use of metadata and semantic concepts, which both are related to
-the efficient reuse of data lacks behind.  On one hand this is related to the
-reluctance of users to use new tools or the fear to loose control over valuable
-data. But on the other hand this is also related to the fact that the valuable
-concepts are not yet tightly integrated enough into the researchers daily
-workflow.</p>
+dealing with common data processing steps (cite michener). The rOpenSci
+initiative (<a href="http://ropensci.org/">http://ropensci.org/</a>) is a community driven project to provide the
+R statistic environment (cite R) with a flexible access to scientific data
+repositories which represents a first step towards workflows in R.</p>
 
 <p>There is a growing demand on tools at the fingertips of researchers, that
 easily integrate with their existing workflows, enable a simple access to data
@@ -330,10 +286,8 @@ repositories, assist them in discovery and the process of understanding
 available data which is crucial for an effective reuse of data. The process of
 assisted discovery is highly likely to be enabled by the tight integration of
 semantic repositories in form of taxonomies and ontologies in emerging software
-solutions.</p>
-
-<p>This paper introduces a new R package called <code>rbefdata</code> which is the the
-companion package of the data management platform <code>BEFdata
+solutions. This paper introduces a new R package called <code>rbefdata</code> which is the
+the companion package of the data management platform <code>BEFdata
 (https://github.com/befdata/befdata) (cite Karin). The R package enables
 seamless access to data and metadata stored on the portal. On top of that it
 allows for the integration of semantic repositories as it integrates with the
@@ -346,10 +300,6 @@ retention. The workflow depicts how to refine keywords for search in the
 thesaurus, ask for data access in the data management platform, download data
 into the R environment, inspect metadata, analyse the tracer experiment, and
 finally upload data and workflow scripts back to the data management platform.</p>
-
-<p>Karin: there are some papers talking about what users want from data
-repositories. These could be cited (e.g. Kerstin Bach). Motivate that
-researchers prefer to perform the analyses at their own laptops.</p>
 
 <h2>Material and Methods</h2>
 
@@ -988,9 +938,9 @@ anova(model3)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -1037,7 +987,7 @@ anova(model4)
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)  
 ## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
@@ -1276,7 +1226,7 @@ and local initiatives (cite xxx) and private persons. This in fact results in a
 wild growing, complex and heterogeneous data landscape that an ontology would
 need to capture to be usable.</p>
 
-<h3>into karin</h3>
+<h3>intro karin</h3>
 
 <p>Karin:</p>
 
@@ -1320,7 +1270,39 @@ observational plots were selected according to a crossed sampling design along
 tree species richness and stand age. The CSPs address the impact of
 successional age on ecosystem functioning, providing a basis for assessing the
 successional processes at work across tree species diversity in the Main
-Experiment .</p>
+Experiment . </p>
+
+<h3>Data processing and integration</h3>
+
+<ul>
+<li><p>sharing ideas for analysis: paper proposals 
+  Paper proposals are an emerging concept solving transparant data exchange and
+  reuse across disciplines and laboratories [citations!]</p></li>
+<li><p>Introducing workflows (merits, ROpenSci, Kepler, Pegasus, etc.) Cite our paper on workflows.</p></li>
+<li><p>Workflow repositories and software </p></li>
+<li><p>R needs to be learned as well that is no argument to less acceptance of other tools like Kepler, is there?!</p></li>
+<li><p>Provenance and the advantage of keeping scripts (workflows) close to the data.</p></li>
+</ul>
+
+<h3>Wrap up (introduce solutions)</h3>
+
+<p>Especially for highly interdisciplinary research domains this requires the
+input of many scientists and discussions about definitions and relations of
+terms in the representation.  This might be one of the reasons why there is a
+lack of sophisticated ontologies especially for highly interdisciplinary
+research domains like ecology. </p>
+
+<p>Karin: there are some papers talking about what users want from data
+repositories. These could be cited (e.g. Kerstin Bach). Motivate that
+researchers prefer to perform the analyses at their own laptops.</p>
+
+<p>While data preservation and the access to data for a wider audience are covered
+very well, the use of metadata and semantic concepts, which both are related to
+the efficient reuse of data lacks behind.  On one hand this is related to the
+reluctance of users to use new tools or the fear to loose control over valuable
+data. But on the other hand this is also related to the fact that the valuable
+concepts are not yet tightly integrated enough into the researchers daily
+workflow.</p>
 
 </body>
 
