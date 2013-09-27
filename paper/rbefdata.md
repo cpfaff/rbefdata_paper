@@ -11,8 +11,8 @@ Today scientists face a deluge of data in many disciplines. This puts much
 pressure on the development of efficient data management tools that help them
 to deal with requirements like data preservation, description of data with
 metadata and the exploration of data for reuse. There are good solutions to
-many parts of the data life cycle with each of them having its strengths but
-also downsides that impede their extensive use. The situation here could be
+many parts of the data life cycle with each of them having their strengths but
+also downsides that impede an more extensive use. The situation here could be
 improved by the development of software that tightly integrates new valuable
 concepts into existing and widely used tools and thus into the daily workflow
 of researchers.  Paper proposals and data provenance as new ways to promote
@@ -20,7 +20,7 @@ collaboration, metadata for information exchange as well as the integration of
 semantic resources are only a few examples of valuable concepts with high
 potential to speed up scientific progress. In this paper we introduce the
 `rbefdata` R package that provides a link to the open source data management
-platform `BEFdata`. The platform has been developed and is used within the
+portal `BEFdata`. The portal has been developed and is used within the
 BEF-China experiment and is specialized in managing small and heterogeneous
 data. The package provides access to data metadata as well as it allows the
 upload of data. We use a facet of an ecological analysis that has been
@@ -34,7 +34,7 @@ smart merging functionality, to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
-A multitude of data management and knowledge platforms are emerging which leads
+A multitude of data management and knowledge portals are emerging which leads
 to a growing global data pool. However the need to use and effectively reuse
 data grows as well as more data gets available. This puts much pressure not
 only on the development of effective tools but also on tools that tightly
@@ -42,15 +42,15 @@ integrate into existing workflows of researchers to help them dealing with the
 challenges like data exploration and processing.
 
 With a growing awareness on the value of data, much effort was put into
-building data management platforms, that preserve all kinds of environmental
+building data management portals, that preserve all kinds of environmental
 and historic data. Solutions emerged in different scientific disciplines that
 provide data management plans for small scale projects as well as for large
 data producing, long term or remote sensing collaborations (e.g. diversity
 workbench, GBIF, `BEFdata`, DataONE, LifeWatch). An ongoing trend here is the
-development of integrative databases and data platforms (TRY, GBIF). They serve
+development of integrative databases and data portals (TRY, GBIF). They serve
 as nodes that collect data from smaller databases of a certain domain and
 enable researchers to access a wide range of relevant data, all from one place.
-In fact, these platforms offer a solution to one of the most pressing problems
+In fact, these portals offer a solution to one of the most pressing problems
 that we face with our valuable data today, their loss. Even tough this improves
 the situation in data preservation, there is still reluctance to use them
 extensively as researchers fear to give away and loose the control over their
@@ -107,8 +107,8 @@ repositories, assist them in discovery and the process of understanding
 available data which is crucial for an effective reuse of data. The process of
 assisted discovery is highly likely to be enabled by the tight integration of
 semantic repositories in form of taxonomies and ontologies in emerging software
-solutions. This paper introduces a new R package called `rbefdata` which is the
-the companion package of the data management platform `BEFdata
+solutions. This paper introduces a new R package called `rbefdata` which is the the
+companion package of the data management portal `BEFdata
 (https://github.com/befdata/befdata) (cite Karin). The R package enables
 seamless access to data and metadata stored on the portal. On top of that it
 allows for the integration of semantic repositories as it integrates with the
@@ -118,9 +118,9 @@ reconstructs a facet of an analysis that has been published by Lang et al. 2013
 on nutrient retention along biodiveristy gradients. It is a 15N tracer
 experiment which aims to disentangle the effect of species mixtures on system N
 retention. The workflow depicts how to refine keywords for search in the
-thesaurus, ask for data access in the data management platform, download data
+thesaurus, ask for data access in the data management portal, download data
 into the R environment, inspect metadata, analyse the tracer experiment, and
-finally upload data and workflow scripts back to the data management platform.
+finally upload data and workflow scripts back to the data management portal.
 
 ## Material and Methods
 
@@ -131,12 +131,12 @@ independent research groups, whose overarching aim is to disentangle the 'The
 role of tree and shrub diversity for production, erosion control, element
 cycling, and species conservation in Chinese subtropical forest ecosystems'.
 The BEF-China project (www.bef-china.de) is funded by the German science
-foundation (DFG, FOR 891) and uses two main research platforms located in the
+foundation (DFG, FOR 891) and uses two main research portals located in the
 provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012).  
 
 ### BEFdata portal
 
-The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) platform is
+The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is
 specialized in managing small and heterogeneous data. It adheres to standards
 like the Ecological Metadata Language (EML) and facilitates research
 cooperation by a paper proposal tool. To create a paper proposal a researcher
@@ -202,8 +202,8 @@ within the BEF-China project and meanwhile is part of the rOpenSci project
 give R users convenient access to many scientific data repositories. 
 
 `rbefdata` enables access to the data and associated metadata stored on a
-`BEFdata` platform. The metadata is provided attached to the data.frames of raw
-data pulled from the platform. The package provides convenient methods to pull
+`BEFdata` portal. The metadata is provided attached to the data.frames of raw
+data pulled from the portal. The package provides convenient methods to pull
 single or multiple dataset into the R environment and offers functions that
 help to upload final results datasets with the script attached that has been
 used to derive the results from the original datasets which provides a valuable
@@ -367,10 +367,10 @@ narrow_tasks_plant_organ
 
 ```
 ## $id
-## [1] "73" "75" "76" "30"
+## [1] "391" "73"  "75"  "76"  "30" 
 ## 
 ## $term
-## [1] "leaf"  "root"  "roots" "twig"
+## [1] "fruits" "leaf"   "root"   "roots"  "twig"
 ```
 
 ```r
@@ -892,8 +892,8 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -951,7 +951,7 @@ the source datasets used. This can be done by attaching to the proposal with
 the command `bef.portal.attach.to_proposal()`. For the example shown, it is the
 best way to go with an attachment to the proposal as uploading the merged
 dataset would only mean duplication of data in the database of the `BEFdata`
-platform.
+portal.
 
 So we upload the script and the four pane figure with its caption to add them
 to the proposal. The figure is prepared as Portable Network Graphics (PNG)
@@ -1024,7 +1024,7 @@ down search terms.
 
 `rbefdata` makes scripting a workflow to pull data for analysis and push back
 results and scripts simple. The upload mechanism can help to keep the data
-management platform up to date on the fly and gives other researchers the
+management portal up to date on the fly and gives other researchers the
 possibility to reproduce results by downloading scripts attached. An uploaded
 script is not only a stepping stone to reproducible research but also helps to
 track down data provenance which can be interesting in acknowledging data
