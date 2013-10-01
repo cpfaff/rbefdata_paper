@@ -24,11 +24,11 @@ In this paper we introduce the `rbefdata` R package that provides the R
 statistic environment with an access to the open source data management
 platform `BEFdata`. The platform has been developed and is used within the
 BEF-China experiment. It is specialized in managing small and heterogeneous
-data. The R package provides access to data and metadata as well as it offers
-upload functionality. We use a part of the data of an ecological analysis about
-N retention in the BEF-China experiment to showcase the functionality of the R
-package. The data used is open access and thus the workflow in form of an R
-script presented here can be simply reproduced. We discuss the introduced R
+research data. The R package provides access to data and metadata as well as it
+offers upload functionalities. We here use the data of an ecological analysis
+about N retention in the BEF-China experiment to showcase the functionality of
+the R package. The data used is open access and thus the workflow in form of an
+R script presented can be simply reproduced. We discuss the introduced R
 package and the combination of software in terms of the data life cycle and
 data management requirements in ecology. Additionally, we give an outlook on
 upcoming features like an improved exploration of data by the integration of
@@ -848,9 +848,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
