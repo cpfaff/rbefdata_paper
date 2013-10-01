@@ -12,17 +12,17 @@ pressure on the development of efficient data management tools that help them
 to deal with requirements like data preservation, description of data with
 metadata and the exploration of data for reuse. There are good solutions to
 many parts of the data life cycle with each of them having their strengths but
-also downsides that impede an more extensive use. The situation here could be
-improved by the development of software that tightly integrates new valuable
+also downsides that impede their more extensive use. The situation here could
+be improved by the development of software that tightly integrates new valuable
 concepts into existing and widely used tools and thus into the daily workflow
 of researchers.  Paper proposals and data provenance as new ways to promote
 collaboration, metadata for information exchange as well as the integration of
-semantic resources are only a few examples of valuable concepts with high
+semantic resources are only a few examples of valuable concepts with the
 potential to speed up scientific progress. In this paper we introduce the
 `rbefdata` R package that provides a link to the open source data management
-portal `BEFdata`. The portal has been developed and is used within the
+platform `BEFdata`. The platform has been developed and is used within the
 BEF-China experiment and is specialized in managing small and heterogeneous
-data. The package provides access to data metadata as well as it allows the
+data. The package provides access to data and metadata as well as it allows the
 upload of data. We use a facet of an ecological analysis that has been
 published already to showcase the functionality of the R package. As the data
 used is open access, the workflow in form of an R script presented here can
@@ -34,93 +34,84 @@ smart merging functionality, to be integrated with `rbefdata` and `BEFdata`.
 
 ## Introduction
 
-A multitude of data management and knowledge portals are emerging which leads
-to a growing global data pool. However the need to use and effectively reuse
-data grows as well as more data gets available. This puts much pressure not
-only on the development of effective tools but also on tools that tightly
-integrate into existing workflows of researchers to help them dealing with the
-challenges like data exploration and processing.
+With a growing awareness on the value of data, much effort was put into the
+development of data management platforms that preserve all kinds of
+environmental and historic data. Solutions emerged in different scientific
+disciplines that provide data management plans for small scale projects as well
+as for large scale, large data producing, long term or remote sensing
+collaborations (e.g.  diversity workbench, GBIF, `BEFdata`, DataONE,
+LifeWatch), all contributing to a growing global data pool. An ongoing trend in
+that context is the development of integrative databases and data platforms
+(TRY, GBIF). They serve as nodes that collect data from smaller databases of a
+certain domain and enable researchers to access a wide range of relevant data,
+all from one place.  In fact, these platforms offer a solution to one of the
+most pressing problems that we face with our valuable data today, their loss
+(cite xxx). Even tough this improves the situation in data preservation, there
+is still reluctance to extensively use online data platforms as researchers
+fear to give away and loose the control over their data (cite xxx). 
 
-With a growing awareness on the value of data, much effort was put into
-building data management portals, that preserve all kinds of environmental
-and historic data. Solutions emerged in different scientific disciplines that
-provide data management plans for small scale projects as well as for large
-data producing, long term or remote sensing collaborations (e.g. diversity
-workbench, GBIF, `BEFdata`, DataONE, LifeWatch). An ongoing trend here is the
-development of integrative databases and data portals (TRY, GBIF). They serve
-as nodes that collect data from smaller databases of a certain domain and
-enable researchers to access a wide range of relevant data, all from one place.
-In fact, these portals offer a solution to one of the most pressing problems
-that we face with our valuable data today, their loss. Even tough this improves
-the situation in data preservation, there is still reluctance to use them
-extensively as researchers fear to give away and loose the control over their
-data. 
+The demand to reuse available data grows with the amount of data available.
+The reuse of data for example in ecology is of particular interest as the
+integration of data offers the potential to answer questions on a much broader
+temporal and spatial scale. Metadata is not only a crucial component of data
+preservation (cite xxx) but also for data exchange and reuse. Plain primary
+research data can be hard to understand, especially to one who is not familiar
+with it, and it can be even hard to decipher by the authors themselves after
+some time has passed. For example it is hard to remember what methods have been
+used to collect the data of a certain column or what the abbreviations and the
+headers in the dataset mean. While metadata solves the problem of undescribed
+data, it is still hard to make researchers use it extensively. This is closely
+related to the fact that it usually means to learn new tools for the
+description process (e.g morpho, dataUP). Finding data is still challenging and
+it is getting even more complex to find relevant data if more data gets
+available. A common practice in data discovery, next to full text search in
+metadata is the tagging with keywords. However a keyword search is very coarse
+and may provide access to a subset of relevant data only. A keyword search for
+example on "weight" of litter will miss datasets tagged with "dry weight" or
+"wet weight" that might be of interest to for a certain analysis. The
+integration of semantic repositories that provide taxonomies or ontologies can
+potentially improve this situation. They embed the keywords into a hierarchic
+structure so the actual search term can be extended along the known relations
+of a term to enrich the search query.
 
-Metadata is a crucial component that supports different processes in the data
-life cycle. It is important for data preservation as well as for an effective
-reuse, the exchange and the integration of data into a wider context. In
-general it improves the legibility of data. A plain dataset is hard to
-understand, to one who is not familiar with it and it can be hard to decipher,
-even by the author itself, after some time has passed. For example it is hard
-to remember what methods have been used to collect the data of a certain column
-or what the abbreviations or the headers in the dataset mean. While metadata
-theoretically solves the problem with undescribed data, it is still hard to
-make researchers use it extensively. This is closely related to the fact that
-it usually means to learn new tools for the data description process (e.g
-morpho, dataUP).
-
-The demand to use and reuse available data grows with the amount of data
-available. For example in ecology the integration of the mostly small and
-heterogeneous data offers the potential to answer questions on a much broader
-temporal and spatial scale.  Finding relevant data for a certain analysis is
-crucial for an effective reuse.  However finding data is challenging and is
-getting even more complex if more data gets available. A common practice in
-data discovery next to full text search in metadata is keyword tagging. But a
-keyword search is very coarse and may provide access to parts of the relevant
-data only as it misses for example data of relevance that has been tagged with
-close related keywords of the actual search. The integration of semantic
-repositories that provide taxonomies or ontologies to embed the keywords into a
-context can potentially improve this situation. For example the keyword search
-could benefit from using taxonomies as they serve a hierarchic structure that
-can be used to find related narrower or broader terms to improve the search
-query.
-
-Workflows is a trending concept in streamlining the processing of data in terms
-of data access, data manipulation and the preservation of valuable data
-products. Workflow tools like Kepler or Pegasus assist researchers in the
-access to different data repositories, in reading metadata of data and provide
-many predefined components that can be used to manipulate and analyse data. In
-the process of data reuse the data may need to be cleaned, imputed, reshaped
+In the process of data reuse the data may need to be cleaned, imputed, reshaped
 and merged which usually takes up to 70% of the whole analysis workflow (cite
 Karin and me, and xxx). These preparatory steps are not only time and labour
 intensive but potentially error prone, especially if the complexity of analyses
-increases. Workflow software and the use of semantic repositories that provide
-representations of formal knowledge like ontologies potentially can improve
-dealing with common data processing steps (cite michener). The rOpenSci
-initiative (http://ropensci.org/) is a community driven project to provide the
-R statistic environment (cite R) with a flexible access to scientific data
-repositories which represents a first step towards workflows in R.
+increases. Workflows are a trending concept as they streamline the processing
+of data in terms of access, manipulation and preservation of valuable data
+products. Graphical workflow tools like Kepler (cite xxx) or Pegasus (cite xxx)
+assist researchers in the access to different data repositories, in reading
+metadata and they provide many predefined components that can be used to
+manipulate and analyse data. Workflow software that tightly integrates semantic
+concepts like ontologies can assist researchers in common preparatory steps of
+data analysis (cite michener). 
 
 There is a growing demand on tools at the fingertips of researchers, that
 easily integrate with their existing workflows, enable a simple access to data
 repositories, assist them in discovery and the process of understanding
-available data which is crucial for an effective reuse of data. The process of
-assisted discovery is highly likely to be enabled by the tight integration of
-semantic repositories in form of taxonomies and ontologies in emerging software
-solutions. This paper introduces a new R package called `rbefdata` which is the the
-companion package of the data management portal `BEFdata
-(https://github.com/befdata/befdata) (cite Karin). The R package enables
-seamless access to data and metadata stored on the portal. On top of that it
-allows for the integration of semantic repositories as it integrates with the
-`tematres` vocabulary server (http://www.vocabularyserver.com/).  We showcase
-the functionality of the package available with version `0.3.5`. The workflow
-reconstructs a facet of an analysis that has been published by Lang et al. 2013
-on nutrient retention along biodiveristy gradients. It is a 15N tracer
-experiment which aims to disentangle the effect of species mixtures on system N
-retention. The workflow depicts how to refine keywords for search in the
-thesaurus, ask for data access in the data management portal, download data
-into the R environment, inspect metadata, analyse the tracer experiment, and
-finally upload data and workflow scripts back to the data management portal.
+available data, to enable an effective reuse of data. The process of assisted
+discovery can be enabled by the tight integration of semantic repositories in
+form of taxonomies and ontologies in emerging software solutions. This paper
+introduces a new R package called `rbefdata` which is the companion package of
+the data management platform `BEFdata (https://github.com/befdata/befdata)
+(cite Karin) and part of the rOpenSci Initiative. The rOpenSci initiative
+(http://ropensci.org/) is a community driven project to provide the R statistic
+environment (cite R) with a flexible access to scientific data repositories
+which represents a first step towards workflows in R.
+
+The R package enables seamless access to data and metadata stored on the
+platform. On top of that it allows for the integration of semantic repositories
+as it integrates with the `tematres` vocabulary server
+(http://www.vocabularyserver.com/).  We showcase the functionality of the
+package available with version `0.3.5`. The workflow reconstructs a facet of an
+analysis that has been published by Lang et al. 2013 on nutrient retention
+along biodiveristy gradients. It is a 15N tracer experiment which aims to
+disentangle the effect of species mixtures on system N retention. The workflow
+depicts how to refine keywords for search in the thesaurus, ask for data access
+in the data management platform, download data into the R environment, inspect
+metadata, analyse the tracer experiment, and finally upload data and workflow
+scripts back to the data management platform.
 
 ## Material and Methods
 
@@ -131,12 +122,12 @@ independent research groups, whose overarching aim is to disentangle the 'The
 role of tree and shrub diversity for production, erosion control, element
 cycling, and species conservation in Chinese subtropical forest ecosystems'.
 The BEF-China project (www.bef-china.de) is funded by the German science
-foundation (DFG, FOR 891) and uses two main research portals located in the
+foundation (DFG, FOR 891) and uses two main research platforms located in the
 provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012).  
 
-### BEFdata portal
+### BEFdata platform
 
-The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) portal is
+The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) platform is
 specialized in managing small and heterogeneous data. It adheres to standards
 like the Ecological Metadata Language (EML) and facilitates research
 cooperation by a paper proposal tool. To create a paper proposal a researcher
@@ -152,7 +143,7 @@ it promotes collaborations between research units and helps to avoid
 duplication in publication initiatives on the same research ideas which adds to
 the transparency of data publication. Finally the datasets assembled in a paper
 proposal can be imported in one step to the R environment by `rbefdata`
-package. Another strength of the `BEFdata` portal is the tagging functionality
+package. Another strength of the `BEFdata` platform is the tagging functionality
 for datasets and data columns which is also used in the `rbefdata` package to
 explore datasets.
 
@@ -160,7 +151,7 @@ explore datasets.
 
 In this paper we use an already published analysis on nutrient retention along
 a biodiversity gradient as a use case to build a workflow that shows the
-functionalities and inter linkages between the BEF-China data portal and the
+functionalities and inter linkages between the BEF-China data platform and the
 `rbefdata` package. The analysis is typical for interdisciplinary sciences, as
 it combines soil, taxon, and nutrient data. Data originating from field
 campaigns of different collaborating laboratories and has to be merged prior to
@@ -202,8 +193,8 @@ within the BEF-China project and meanwhile is part of the rOpenSci project
 give R users convenient access to many scientific data repositories. 
 
 `rbefdata` enables access to the data and associated metadata stored on a
-`BEFdata` portal. The metadata is provided attached to the data.frames of raw
-data pulled from the portal. The package provides convenient methods to pull
+`BEFdata` platform. The metadata is provided attached to the data.frames of raw
+data pulled from the platform. The package provides convenient methods to pull
 single or multiple dataset into the R environment and offers functions that
 help to upload final results datasets with the script attached that has been
 used to derive the results from the original datasets which provides a valuable
@@ -233,7 +224,7 @@ After loading `rbefdata` into the working environment the settings need to be
 set via the `bef.options()` command. A look into the options reveals several
 fields that can be filled in. The most essential setting for the example
 workflow we present here is the user credentials. These are used to
-authenticate the user against the portal and to ensure the access to the data
+authenticate the user against the platform and to ensure the access to the data
 has been granted as well as to log the data access. We need to set it as the
 data is not yet open access at the time of writing. When it will be open access
 in the near future, a key is no longer required to download the data.
@@ -244,7 +235,7 @@ While the URL fields ensure the package communicates with the right servers the
 download folder name is used to create a folder in case we download attached
 files from a dataset or proposal. In our case there is no need to change the
 URL to `BEFdata` server, as it defaults to the BEF-China instance that we use
-to retrieve data from. If an own instance of the `BEFdata` portal or has been
+to retrieve data from. If an own instance of the `BEFdata` platform or has been
 set up, this URL needs to be changed so the package communicates with the right
 server (see box below).
 
@@ -310,7 +301,7 @@ supports exploiting a `tematres` vocabulary server via the `rtematres` package.
 We can find terms and relations as well as we can display their descriptions in
 `rbefdata`. This can be used to improve the exploration of datasets. For
 example looking for datasets that deal with  "plant organs" we can display the
-definition of that term first (box below). Then we ask the `BEFdata` portal for
+definition of that term first (box below). Then we ask the `BEFdata` platform for
 datasets that are tagged with that term and we get back a few datasets. In a
 next step we use the vocabulary on the `tematres` server to narrow down "plant
 organs" and we find "leaf",  "root", "twig" as well as plural forms. We use the
@@ -367,10 +358,11 @@ narrow_tasks_plant_organ
 
 ```
 ## $id
-## [1] "391" "73"  "75"  "76"  "30" 
+##  [1] "385" "386" "390" "391" "73"  "387" "75"  "76"  "388" "389" "30" 
 ## 
 ## $term
-## [1] "fruits" "leaf"   "root"   "roots"  "twig"
+##  [1] "flower"  "flowers" "fruit"   "fruits"  "leaf"    "leaves"  "root"    "roots"   "seed"   
+## [10] "seeds"   "twig"
 ```
 
 ```r
@@ -398,21 +390,27 @@ datasets_plant_organ_narrow
 ## 14 160
 ## 15 166
 ## 16 147
-## 17 367
-## 18 368
-## 19 384
-## 20 219
-## 21 212
-## 22 187
-## 23 381
-## 24 405
-## 25 319
-## 26 347
-## 27 322
-## 28 107
-## 29 192
-## 30 313
-## 31 105
+## 17 411
+## 18 413
+## 19 367
+## 20 368
+## 21 384
+## 22 219
+## 23 212
+## 24 187
+## 25 381
+## 26 405
+## 27 319
+## 28 347
+## 29 322
+## 30 107
+## 31 379
+## 32 313
+## 33 192
+## 34 105
+## 35 418
+## 36 421
+## 37 375
 ##                                                                                                                                            title
 ## 1                                                               Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
 ## 2                                       Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A& B)
@@ -430,28 +428,34 @@ datasets_plant_organ_narrow
 ## 14                                                                                                          Genetic diversity of Ardisia crenata
 ## 15                                                                                                        Genetic diversity of Castanopsis eyrei
 ## 16                                                                         Herbivore damage on saplings of 23 tree and shrub species in the CSPs
-## 17                                                                                              Leaf damage of tree individuals Site A fall 2011
-## 18                                                                                            Leaf damage of tree individuals Site A summer 2011
-## 19                                                                                                                          NILEX - Soil Erosion
-## 20                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
-## 21                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
-## 22                                                                                         Traits of ferns and herb species occuring in the CSPs
-## 23                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
-## 24                                                                                                 Leaf demography in the Main Experiment - 2011
-## 25                                                                                                                  Site A tree census from 2010
-## 26                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
-## 27                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
-## 28                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
-## 29                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
-## 30                                                                                                    P concentrations in leaves and roots, CSPs
-## 31                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
+## 17                                                                                        herbivory in the Main Experiment site A in summer 2009
+## 18                                                                                                herbivory in the pilot experiment in fall 2010
+## 19                                                                                              Leaf damage of tree individuals Site A fall 2011
+## 20                                                                                            Leaf damage of tree individuals Site A summer 2011
+## 21                                                                                                                          NILEX - Soil Erosion
+## 22                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
+## 23                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
+## 24                                                                                         Traits of ferns and herb species occuring in the CSPs
+## 25                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
+## 26                                                                                                 Leaf demography in the Main Experiment - 2011
+## 27                                                                                                                  Site A tree census from 2010
+## 28                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
+## 29                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
+## 30                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
+## 31                                                                           Functional traits of 45 species in subtropical forest in Dujiangyan
+## 32                                                                                                    P concentrations in leaves and roots, CSPs
+## 33                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
+## 34                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
+## 35                                                                                                                          Resident phytometers
+## 36                                                                                            Pilot experiment: performance, biomass & herbivory
+## 37                                          Functional traits of 14 subtropical woody species across a light-availability gradient in Dujiangyan
 ```
 
 
 ### Download data 
 
 Datasets discovered can then be assembled using paper proposals on `BEFdata`
-portals. Proposals accepted by the project board and the data owners give
+platforms. Proposals accepted by the project board and the data owners give
 proponents access to the datasets requested. The `rbefdata` leverages data
 access through paper proposals by a download function. It loads all associated
 datasets of a proposal into the R environment in one single step.  It returns a
@@ -492,7 +496,7 @@ head(extract_second_dataset, 5)
  
 ### Inspect data (EML)
 
-Each dataset in the `BEFdata` portal is associated with metadata the authors of
+Each dataset in the `BEFdata` platform is associated with metadata the authors of
 the dataset provide. We also provide access to the metadata from within
 `rbefdata`. It can be accessed either directly via a metadata download command
 that takes the ID of a dataset or extracted via the R internal `attributes()`
@@ -1012,9 +1016,9 @@ challenging in terms of data management.
 
 The software combination of `rbefdata` and `BEFdata` provides solutions to
 different aspects of the data life cycle for ecological research groups. While
-the `BEFdata` portal covers storage, and data harmonization tools, metadata
+the `BEFdata` platform covers storage, and data harmonization tools, metadata
 support and a social component that fosters sharing data online (cite Karin),
-the `rbefdata` package gives easy access to data and metadata on the portal as
+the `rbefdata` package gives easy access to data and metadata on the platform as
 well as it provides upload functionality for datasets and attachments like
 scripts or figures right from within R. Additionally, the tag based exploration
 of datasets helps to find datasets relevant for a certain analysis. The
@@ -1024,7 +1028,7 @@ down search terms.
 
 `rbefdata` makes scripting a workflow to pull data for analysis and push back
 results and scripts simple. The upload mechanism can help to keep the data
-management portal up to date on the fly and gives other researchers the
+management platform up to date on the fly and gives other researchers the
 possibility to reproduce results by downloading scripts attached. An uploaded
 script is not only a stepping stone to reproducible research but also helps to
 track down data provenance which can be interesting in acknowledging data
@@ -1038,7 +1042,7 @@ approach works well for small data it does not for big data since the transfer
 of data is not possible for large sized data. The recent trend here is
 on-server/in-database statistics, a scenario where scripts are to be sent to
 the server before it returns the answer after processing (xxx). To keep the
-`BEFdata` portal as flexible as possible and to give the researchers the
+`BEFdata` platform as flexible as possible and to give the researchers the
 freedom of choice this could be one of the future features to be integrated. 
 
 ### rbefdata makes metadata available within the R environment
@@ -1102,7 +1106,7 @@ We recently started to develop an ontology using a `tematres` .The
 formalization we develop will be based on the knowledge used in biodiversity
 ecosystem functioning research. 
 
-The `BEFdata` portal will get a semantical tagging feature that will allow data
+The `BEFdata` platform will get a semantical tagging feature that will allow data
 owners to tag data fine granular ?? on data column level. Using the same
 formalized knowledge from the ontology we will be able to provide smart merging
 and transformation features within the `rbefdata` package that help researchers
@@ -1239,6 +1243,17 @@ concepts are not yet tightly integrated enough into the researchers daily
 workflow.
 
 
+
+* intro summary frame
+
+A multitude of data management and knowledge platforms are emerging which
+contribute to a growing global data pool. The need to effectively reuse the
+available data, grows with the data pool. This puts much pressure on the
+development of tools that tightly integrate valuable concepts into existing and
+widely accepted tools and into the workflows of researchers to help them
+dealing with the upcoming challenges in data management and analysis.
+
+* data preservation -> many data available
 
 
 
