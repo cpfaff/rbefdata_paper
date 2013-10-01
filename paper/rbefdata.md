@@ -29,13 +29,12 @@ offers upload functionalities. To showcase the functionalities of the R package
 we construct a workflow in form of an R script. The script is based on the
 analysis of an experiment about N retention as part of the  BEF-China
 experiment. As the results are published already the data used here is open
-access and thus the workflow in form of an R script presented here can be
-simply reproduced. We discuss the introduced R package and the combination of
-software in terms of the data life cycle and data management requirements in
-ecology.  Additionally, we give an outlook on upcoming features like an
-improved exploration of data by the integration of semantic repositories and
-smart merging functionality that will be implemented in future versions of
-`rbefdata` and `BEFdata`.
+access and thus the workflow presented here can be simply reproduced. We
+discuss the introduced R package and the combination of software in terms of
+the data life cycle and data management requirements in ecology. Additionally,
+we give an outlook on upcoming features like an improved exploration of data by
+the integration of semantic repositories and smart merging functionality that
+will be implemented in future versions of `rbefdata` and `BEFdata`.
 
 ## Introduction
 
@@ -796,9 +795,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## 2 - 1 == 0    1.053      0.293    3.59   0.0008 ***
+## 4 - 1 == 0    0.865      0.497    1.74   0.1839    
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -851,7 +850,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
 ## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0285 * 
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

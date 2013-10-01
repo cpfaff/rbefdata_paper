@@ -33,13 +33,12 @@ offers upload functionalities. To showcase the functionalities of the R package
 we construct a workflow in form of an R script. The script is based on the
 analysis of an experiment about N retention as part of the  BEF-China
 experiment. As the results are published already the data used here is open
-access and thus the workflow in form of an R script presented here can be
-simply reproduced. We discuss the introduced R package and the combination of
-software in terms of the data life cycle and data management requirements in
-ecology.  Additionally, we give an outlook on upcoming features like an
-improved exploration of data by the integration of semantic repositories and
-smart merging functionality that will be implemented in future versions of
-`rbefdata` and `BEFdata`.
+access and thus the workflow presented here can be simply reproduced. We
+discuss the introduced R package and the combination of software in terms of
+the data life cycle and data management requirements in ecology. Additionally,
+we give an outlook on upcoming features like an improved exploration of data by
+the integration of semantic repositories and smart merging functionality that
+will be implemented in future versions of `rbefdata` and `BEFdata`.
 
 ## Introduction
 
