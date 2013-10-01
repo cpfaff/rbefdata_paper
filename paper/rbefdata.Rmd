@@ -16,7 +16,7 @@ interdisciplinary research community. This puts much pressure on the
 development of data management tools that deal with the preservation, the
 exploration as well as with the reuse of data. There are many tools that
 provide solutions to certain parts of the life cycle of data. However not all
-of them are widely spread or accepted throughout ecology. The accaptance can be
+of them are widely spread or accepted throughout ecology. The acceptance can be
 improved by the tight integration of new and valuable data management concepts
 into existing and widely used software and thus into the daily workflow of
 researchers. Paper proposals and data provenance as new ways to promote
@@ -29,16 +29,17 @@ statistic environment with an access to the open source data management
 platform `BEFdata`. The platform has been developed and is used within the
 BEF-China experiment. It is specialized in managing small and heterogeneous
 research data. The R package provides access to data and metadata as well as it
-offers upload functionalities. We here use an ecological analysis about N
-retention in the BEF-China experiment that has been published already to
-showcase the functionality of the R package. The data used is open access and
-thus the workflow in form of an R script presented here can be simply
-reproduced. We discuss the introduced R package and the combination of software
-in terms of the data life cycle and data management requirements in ecology.
-Additionally, we give an outlook on upcoming features like an improved
-exploration of data by the integration of semantic repositories and smart
-merging functionality that will be implemented in future versions of `rbefdata`
-and `BEFdata`.
+offers upload functionalities. To showcase the functionalities of the R package
+we construct a workflow in form of an R script. The script is based on the
+analysis of an experiment about N retention as part of the  BEF-China
+experiment. As the results are published already the data used here is open
+access and thus the workflow in form of an R script presented here can be
+simply reproduced. We discuss the introduced R package and the combination of
+software in terms of the data life cycle and data management requirements in
+ecology.  Additionally, we give an outlook on upcoming features like an
+improved exploration of data by the integration of semantic repositories and
+smart merging functionality that will be implemented in future versions of
+`rbefdata` and `BEFdata`.
 
 ## Introduction
 
