@@ -12,29 +12,33 @@ options(width = 95)
 ## Abstract
 
 Today scientists face a deluge of data in many disciplines. This puts much
-pressure on the development of efficient data management tools that help them
-to deal with requirements like data preservation, description of data with
-metadata and the exploration of data for reuse. There are good solutions to
-many parts of the data life cycle with each of them having their strengths but
-also downsides that impede their more extensive use. The situation here could
-be improved by the development of software that tightly integrates new valuable
-concepts into existing and widely used tools and thus into the daily workflow
-of researchers. Paper proposals and data provenance as new ways to promote
-collaboration, metadata for information exchange as well as the integration of
-semantic resources are only a few examples of valuable concepts with the
-potential to speed up scientific progress. In this paper we introduce the
-`rbefdata` R package that provides a link to the open source data management
-platform `BEFdata`. The platform has been developed and is used within the
-BEF-China experiment and is specialized in managing small and heterogeneous
-data. The package provides access to data and metadata as well as it allows the
-upload of data. We use a facet of an ecological analysis that has been
-published already to showcase the functionality of the R package. As the data
-used is open access, the workflow in form of an R script presented here can
-just be reproduced by executing the single steps. We discuss the introduced
-combination of software in terms of the data life cycle and data management
-requirements.  Additionally, we give an outlook on upcoming features like an
-improved exploration of data by the integration of semantic repositories and
-smart merging functionality, to be integrated with `rbefdata` and `BEFdata`.
+pressure on the development of efficient data management tools that help to
+deal with requirements like data preservation and the exploration of data for
+reuse. While some of the data management solutions still struggle with the
+acceptance of researchers other valuable concepts are either not applicable or
+simply hard to implement for certain scientific domains. The acceptance can be
+improved by the development of tools that tightly integrate new and valuable
+concepts of data management into existing and widely used software and thus
+into the daily workflow of researchers. Paper proposals and data provenance as
+new ways to promote collaboration, metadata for data preservation and
+information exchange as well as the integration of semantic resources,
+represent only a few examples of valuable concepts with the potential to speed
+up the scientific progress. 
+
+In this paper we introduce the `rbefdata` R package that provides access to the
+open source data management platform `BEFdata` from the R statistics
+environment. The platform has been developed and is used within the BEF-China
+experiment. It is specialized in managing small and heterogeneous data. The R
+package provides access to data and metadata as well as it offers upload
+functionality. We use a facet of an ecological analysis that has been published
+already based on data from BEF-China experiment to showcase the functionality
+of the R package. As the data used is open access and thus the workflow in form
+of an R script presented here can just be reproduced by executing the single
+steps. We discuss the introduced R package and the combination of software in
+terms of the data life cycle and data management requirements. Additionally, we
+give an outlook on upcoming features like an improved exploration of data by
+the integration of semantic repositories and smart merging functionality that
+will be implemented in `rbefdata` and `BEFdata`.
 
 ## Introduction
 
