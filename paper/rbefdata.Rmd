@@ -125,7 +125,7 @@ The BEF (Biodiversity Ecosystem Functioning) - China project is a research
 collaboration consisting of 10-15 independent research groups, whose
 overarching aim is to disentangle the role of tree and shrub diversity for
 production, erosion control, element cycling, and species conservation in
-Chinese subtropical forest ecosystems'.  The BEF-China project
+Chinese subtropical forest ecosystems'. The BEF-China project
 (www.bef-china.de) is funded by the German Science Foundation (DFG, FOR 891)
 and uses two main research platforms located in the provinces Jiangxi and
 Zhejiang in China (Bruelheide et al., 2012).  
@@ -171,7 +171,7 @@ acquisition and cycling in early successional stages of secondary forests and
 forest plantations. Insights in the potential of nutrient retention of young
 tree plantations are of particular interest in China, where large areas have
 been reforested in order to counteract soil erosion and to increase the soils’
-water and nutrient retention capacity.  In this study we planted saplings of
+water and nutrient retention capacity. In this study we planted saplings of
 four abundant early successional (evergreen and deciduous) tree species in
 monoculture, two- and four-species combination to test the effect of species
 richness on nitrogen acquisition and retention by using a 15N tracer
@@ -189,11 +189,13 @@ et al. 2013
 
 ### Tematres server and rtematres
 
-Tematres is a vocabulary management server. It can hold formal respresentations
-of knowledge in varying complexity from simple lists over taxonomies up to
-ontologies. We use a tematres server to provide vocabulary that is relevant for
-biodiversity research. The `rtematres` R package is used inside of the
-`rbefdata` package to exploit the vocabulary server.
+Tematres is a vocabulary management server that enables the management of
+formal respresentations of knowledge. These representations can vary in
+complexity from simple lists over taxonomies up to ontologies. We use a
+tematres server to provide vocabulary in hirarchical order that is relevant for
+biodiversity ecosystem functioning research. The `rtematres` R package is
+integrated into the `rbefdata` package to exploit the vocabulary server from
+within.
 
 ### rbefdata
 
