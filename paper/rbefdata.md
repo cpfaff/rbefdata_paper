@@ -41,15 +41,15 @@ With a growing awareness on the value of data, many data management platforms
 have been developed that preserve all kinds of environmental and historic data.
 These provide data preservation plans for small scale projects as well as for
 large scale, big data producing, long term or remote sensing collaborations
-(e.g.  diversity workbench, GBIF, `BEFdata`, DataONE, LifeWatch). An ongoing
-trend is the development of integrative databases or data portals (TRY, GBIF).
-They serve as nodes that collect data from smaller databases of a certain
-domain and enable researchers to access a wide range of relevant data, all from
-one place. These platforms offer a solution to one of the most pressing
-problems that we face with our valuable data today, their loss (cite xxx). Even
-tough this improves the situation in data preservation, there is still
-reluctance to use online data platforms as researchers fear to give away and
-loose the control over their data (cite xxx). 
+(e.g.  diversity workbench, `BEFdata`, DataONE, LifeWatch). An ongoing trend is
+the development of integrative databases or data portals (TRY, GBIF). They
+serve as nodes that collect data from smaller databases of a certain domain and
+enable researchers to access a wide range of relevant data, all from one place.
+These platforms offer a solution to one of the most pressing problems that we
+face with our valuable data today, their loss (cite xxx). Even tough this
+improves the situation in data preservation, there is still reluctance to use
+online data platforms as researchers fear to give away and loose the control
+over their data (cite xxx). 
 
 However the demand to reuse available data grows with the amount of data
 available. In ecology the reuse of data is of particular interest as the
@@ -61,50 +61,58 @@ necessary as plain primary research data can be hard to understand, and even
 hard to decipher by the authors themselves after some time has passed. For
 example it is hard to remember what methods have been used to collect the data
 of a certain column or what the abbreviations and the headers in the dataset
-mean. However it is still not used extensively by as it usually means to learn
-new tools that help to create the meta data (e.g morpho, dataUP).
+mean. However metadata is still not used extensively by as it usually means
+more to put more time into data and to learn new tools that help to describe
+(e.g morpho, dataUP).
 
 Finding relevant data for reuse is a challenging task and it is getting even
 more complex with more data available. A common practice in data discovery,
-next to full text search in metadata, is the tagging with keywords. However a
-keyword search is very coarse and may provide access to a set of data but miss
-other essential and relevant data. A keyword search for example on "weight" of
-plant organs will miss datasets tagged with "dry weight" or "wet weight" that
-might be of interest as well. The integration of semantic repositories that
-provide taxonomies or ontologies can potentially improve this situation. They
-embed the keywords into a hierarchical structure so the actual search term can
-be used to extended the search query with related terms along known relations. 
+next to full text search in metadata, is tagging with keywords. However a
+keyword search can be very coarse as it provides access to a set of data but
+misses other essential and relevant data. A keyword search for example on
+"weight" of leaves will miss datasets tagged only with "dry weight" or "wet
+weight" that might be of interest as well. The integration of semantic
+repositories that provide taxonomies or ontologies can potentially improve this
+situation. These embed the keywords into a hierarchical structure so the actual
+search term can be used to extended the search query with related terms along
+known relations. 
 
-On reuse data may needs to be cleaned, imputed, reshaped and merged which
-usually takes up to 70% of an analysis script (cite Karin and me, and xxx).
-These preparatory steps are not only time and labour intensive but potentially
-error prone especially if the amount and complexity of data to be included
-increases. Workflows are a trending concept as they streamline the processing
-of data in terms of access, manipulation and preservation of valuable data
-products. Graphical workflow tools like Kepler (cite xxx) or Pegasus (cite xxx)
-assist researchers in the access to different data repositories, in reading
-metadata and they provide many predefined components that can be used to
-manipulate and analyse data. Workflow software that tightly integrates semantic
-concepts like ontologies can assist researchers in common preparatory steps of
-data analysis like the ones mentioned above (cite michener). 
+Before data can be reused effectively it may needs to be cleaned, imputed,
+reshaped and merged. This usually makes up to 70% of an analysis script (cite
+Karin and me, and xxx). These preparatory steps are not only time and labour
+intensive but potentially error prone especially if the amount and complexity
+of data to be included increases. Semantic integration of ontologies might
+solve these problem. As ontologies allow the machine readable access to
+knowledge of a scientific domain it can be used to develop tools that
+understand the contents of datasets and guide researchers on the process of
+data preparation. However the development of ontologies is quite complex
+especially for a research domain like ecology that is characterized by
+interdisciplinary interactions which leads to a wide heterogeneous landscape of
+knowledge that would need to be covered and formalized by the ontology.
 
-Metadata as well as paper proposals can reduce the barrier to data sharing for
-reuse. While metadata can give an insight into the actual data without the need
-to give it away, paper proposal can serve as tool to discuss ideas about
-analyses of the data behind the metadata. The integration of semantic
-repositories potentially improves not only the discovery but also the
-processing of data on reuse. Thus there is a growing demand on tools at the
-fingertips of researchers, that easily integrate with their existing tools and
-workflows. These need to enable a simple access to data repositories as well as
-to assist assist researchers in discovery and the process of understanding
-available data.
+Metadata as well as the concept of paper proposals can reduce the barrier to
+data sharing. While metadata allows an insight into the actual raw data without
+the need to give it away, paper proposal can serve as tool to discuss ideas
+with data providers on analyses to be based on the data behind the metadata.
+The integration of semantic repositories potentially improves not only the
+discovery of data but also its processing and preparation on reuse. Thus there
+is a growing demand on tools at the fingertips of researchers, that easily
+integrate with their existing tools. These need to enable a simple access to
+data repositories as well as to assist researchers in discovery and the process
+of understanding available data.
 
 This paper introduces a new R package called `rbefdata` which is the companion
 package of the data management platform `BEFdata`
 (https://github.com/befdata/befdata) (cite Karin) and part of the rOpenSci
 Initiative. The rOpenSci initiative (http://ropensci.org/) is a community
 driven project to provide the R statistic environment (cite R) with a flexible
-access to scientific data repositories. The R package enables seamless access
+access to scientific data repositories. Workflows is a concept to streamline
+and automate the processing of data.  Workflow tools like Kepler and Pegasus
+integrate the access to data and metadata, the manipulation and analysis of
+data as well as the preservation of valuable data products. 
+
+
+The R package enables seamless access
 to data and metadata stored on the platform. On top of that it allows for the
 integration of semantic repositories as it integrates with the `tematres`
 vocabulary server (http://www.vocabularyserver.com/).  We showcase the
@@ -792,10 +800,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59   0.0012 **
-## 4 - 1 == 0    0.865      0.497    1.74   0.1839   
-## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -847,8 +855,8 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0283 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0287 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -902,7 +910,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
 ## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
