@@ -110,7 +110,7 @@ semantic repositories in form of taxonomies and ontologies in emerging software
 solutions. 
 
 This paper introduces a new R package called `rbefdata` which is the companion
-package of the data management platform `BEFdata
+package of the data management platform `BEFdata`
 (https://github.com/befdata/befdata) (cite Karin) and part of the rOpenSci
 Initiative. The rOpenSci initiative (http://ropensci.org/) is a community
 driven project to provide the R statistic environment (cite R) with a flexible
