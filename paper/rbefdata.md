@@ -69,21 +69,21 @@ of a certain column or what the abbreviations and the headers in the dataset
 mean. However it is still not used extensively by as it usually means to learn
 new tools that help to create the meta data (e.g morpho, dataUP).
 
-Finding relevant data is a challenging task and it is getting even more complex
-with more data available. A common practice in data discovery, next to full
-text search in metadata, is the tagging with keywords. However a keyword search
-is very coarse and may provide access to a set of relevant data but miss
-essential data. A keyword search for example on "weight" of litter will miss
-datasets tagged with "dry weight" or "wet weight" that might be of interest to
-a certain analysis. The integration of semantic repositories that provide
-taxonomies or ontologies can potentially improve this situation. They embed the
-keywords into a hierarchic structure so the actual search term can be used to
-extended the query with related terms along the known relations. 
+Finding relevant data for reuse is a challenging task and it is getting even
+more complex with more data available. A common practice in data discovery,
+next to full text search in metadata, is the tagging with keywords. However a
+keyword search is very coarse and may provide access to a set of data but miss
+other essential and relevant data. A keyword search for example on "weight" of
+plant organs will miss datasets tagged with "dry weight" or "wet weight" that
+might be of interest as well. The integration of semantic repositories that
+provide taxonomies or ontologies can potentially improve this situation. They
+embed the keywords into a hierarchical structure so the actual search term can
+be used to extended the search query with related terms along known relations. 
 
-In the process of data reuse the data may need to be cleaned, imputed, reshaped
-and merged which usually takes up to 70% of the whole analysis (cite Karin and
-me, and xxx). These preparatory steps are not only time and labour intensive
-but potentially error prone, especially if the complexity of analyses
+On reuse data may needs to be cleaned, imputed, reshaped and merged which
+usually takes up to 70% of an analysis script (cite Karin and me, and xxx).
+These preparatory steps are not only time and labour intensive but potentially
+error prone especially if the amount and complexity of data to be included
 increases. Workflows are a trending concept as they streamline the processing
 of data in terms of access, manipulation and preservation of valuable data
 products. Graphical workflow tools like Kepler (cite xxx) or Pegasus (cite xxx)
@@ -91,40 +91,36 @@ assist researchers in the access to different data repositories, in reading
 metadata and they provide many predefined components that can be used to
 manipulate and analyse data. Workflow software that tightly integrates semantic
 concepts like ontologies can assist researchers in common preparatory steps of
-data analysis (cite michener). 
+data analysis like the ones mentioned above (cite michener). 
 
 Metadata as well as paper proposals can reduce the barrier to data sharing for
 reuse. While metadata can give an insight into the actual data without the need
 to give it away, paper proposal can serve as tool to discuss ideas about
-analyses of the data behind the metadata. Semantic repositories potentially
-improve not only the discovery but also the processing of data. Thus there is a
-growing demand on tools at the fingertips of researchers, that easily integrate
-with their existing tools and workflows, to enable a simple access to data
-repositories and to assist them in discovery and the process of understanding
-available data. The discovery of data can be enabled by the integration of
-semantic repositories in form of taxonomies and ontologies in emerging software
-solutions. 
+analyses of the data behind the metadata. The integration of semantic
+repositories potentially improves not only the discovery but also the
+processing of data on reuse. Thus there is a growing demand on tools at the
+fingertips of researchers, that easily integrate with their existing tools and
+workflows. These need to enable a simple access to data repositories as well as
+to assist assist researchers in discovery and the process of understanding
+available data.
 
 This paper introduces a new R package called `rbefdata` which is the companion
 package of the data management platform `BEFdata`
 (https://github.com/befdata/befdata) (cite Karin) and part of the rOpenSci
 Initiative. The rOpenSci initiative (http://ropensci.org/) is a community
 driven project to provide the R statistic environment (cite R) with a flexible
-access to scientific data repositories which represents a first step towards
-workflows in R. The R package enables seamless access to data and metadata
-stored on the platform. On top of that it allows for the integration of
-semantic repositories as it integrates with the `tematres` vocabulary server
-(http://www.vocabularyserver.com/).  We showcase the functionality of the
-package available with version `0.3.5`. The workflow reconstructs a facet of an
-analysis that has been published by Lang et al. 2013 on nutrient retention
-along biodiveristy gradients. It is a 15N tracer experiment which aims to
-disentangle the effect of species mixtures on system N retention. The workflow
-depicts how to refine keywords for search in the thesaurus, ask for data access
-in the data management platform, download data into the R environment, inspect
-metadata, analyse the tracer experiment, and finally upload data and workflow
-scripts back to the data management platform.
-
-## Material and Methods
+access to scientific data repositories. The R package enables seamless access
+to data and metadata stored on the platform. On top of that it allows for the
+integration of semantic repositories as it integrates with the `tematres`
+vocabulary server (http://www.vocabularyserver.com/).  We showcase the
+functionality of the package available with version `0.3.5`. The workflow
+reconstructs a facet of an analysis that has been published by Lang et al. 2013
+on nutrient retention along biodiversity gradients. It is a 15N tracer
+experiment which aims to disentangle the effect of species mixtures on system N
+retention. The workflow depicts how to refine keywords for search in the
+thesaurus, ask for data access in the data management platform, download data
+into the R environment, inspect metadata, analyse the tracer experiment, and
+finally upload data and workflow scripts back to the data management platform.
 
 ### BEF-China 
 
@@ -910,7 +906,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
