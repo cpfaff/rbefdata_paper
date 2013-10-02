@@ -193,15 +193,14 @@ effects strengthen over time.' The respective proposal can be assessed under
 (url). For a detailed description of the experimental design we refer to Lang
 et al. 2013 
 
-### Tematres server and rtematres
+### Tematres 
 
-`tematres` is a vocabulary management server that enables the management of
-formal representations of knowledge. These representations can vary in
-complexity from simple lists over taxonomies up to ontologies. We use a
-`tematres` server to provide vocabulary in hierarchical order that is relevant
-for biodiversity ecosystem functioning research. The `rtematres` R package is
-integrated into the `rbefdata` package to exploit the vocabulary server from
-within.
+A `tematres` server can hold different representations of formal knowledge like
+thesauri or even ontologies of projects. We use the `tematres` server that
+stores the vocabulary of the BEF-China experiment to provide relations of
+search terms that we use in an example that shows how to improve search
+queries. The `befdata` packages uses the `rtematres` R package to exploit the
+vocabulary server.
 
 ### rbefdata
 
@@ -226,32 +225,11 @@ analysis.
 
 ## Example workflow 
 
-We start setting up the R package, highlight the dataset exploration features
-using an example that shows the inclusion the `tematres` vocabulary server
-before we finally come to the processing of the data attached to the paper
-proposal, the download of data as well as to the upload of final results.
-
 ### Setup `rbefdata`
 
-After loading `rbefdata` into the working environment (see box below) the
-settings need to be set via the `bef.options()` command. A look into the
-options reveals several fields that can be filled in. The most essential
-setting for the example workflow we present here is the user credentials. These
-are used to authenticate the user against the platform and to ensure the access
-to the data has been granted as well as to log the data access. We need to set
-it as the data is not yet open access at the time of writing. When it will be
-open access in the near future, a key is no longer required to download the
-data.
-
-Other options are the URLs to the `BEFdata` server instance and the `tematres`
-vocabulary server as well as a field that stores the name of a download folder.
-While the URL fields ensure the package communicates with the right servers the
-download folder name is used to create a folder in case we download attached
-files from a dataset or proposal. In our case there is no need to change the
-URL to `BEFdata` server, as it defaults to the BEF-China instance that we use
-to retrieve data from. If an own instance of the `BEFdata` platform or has been
-set up, this URL needs to be changed so the package communicates with the right
-server (see box below).
+The latest version of the `rbefdata` package can be installed by the
+`install.packages()` command. After install the package needs to be loaded into
+the working environment with the `require()` (see box below).
 
 
 ```r
@@ -279,8 +257,28 @@ bef.options()
 ## [1] ""
 ```
 
-```r
 
+After that the options of the `rbefdata` package need to be set via the
+`bef.options()` command.  A look into the options list reveals several fields
+that can be filled in. The most essential setting for the example workflow we
+present here is the user credentials. These are used to authenticate the user
+against the platform and to ensure the access to the data has been granted as
+well as to log the data access. We need to set it as the data is not yet open
+access at the time of writing. When it will be open access in the near future,
+a key is no longer required to download the data.
+
+Other options are the URLs to the `BEFdata` server instance and the `tematres`
+vocabulary server as well as a field that stores the name of a download folder.
+While the URL fields ensure the package communicates with the right servers the
+download folder name is used to create a folder in case we download attached
+files from a dataset or proposal. In our case there is no need to change the
+URL to `BEFdata` server, as it defaults to the BEF-China instance that we use
+to retrieve data from. If an own instance of the `BEFdata` platform or has been
+set up, this URL needs to be changed so the package communicates with the right
+server (see box below).
+
+
+```r
 # querry a single option
 bef.options("url")
 ```
@@ -309,21 +307,19 @@ bef.options(url = "http://my.own.befdata.instance.com")
 
 ### Data discovery 
 
-A `tematres` server can hold different representations of formalized knowledge
-like a thesaurus or even an ontology of a project. The `rbefdata` package
-supports exploiting a `tematres` vocabulary server via the `rtematres` package.
-We can find terms and relations as well as we can display their descriptions in
-`rbefdata`. This can be used to improve the exploration of datasets. For
-example looking for datasets that deal with  "plant organs" we can display the
-definition of that term first (box below). Then we ask the `BEFdata` platform
-for datasets that are tagged with that term and we get back a few datasets. In
-a next step we use the vocabulary on the `tematres` server to narrow down
-"plant organs" and we find "leaf",  "root", "twig" as well as plural forms. We
-use the narrower keywords to query the `BEFdata` server again for datasets
-associated with them and get back all datasets associated with the narrower
-terms. This can be used the other way around as well to restrict the datasets
-we get back to higher order terms with `bef.tematres.api(task = "fetchUp",
-"plant organ")`.
+The `rbefdata` package supports exploiting a `tematres` vocabulary server via
+the `rtematres` package.  We can find terms and relations as well as we can
+display their descriptions in `rbefdata`. This can be used to improve the
+exploration of datasets. For example looking for datasets that deal with
+"plant organs" we can display the definition of that term first (box below).
+Then we ask the `BEFdata` platform for datasets that are tagged with that term
+and we get back a few datasets. In a next step we use the vocabulary on the
+`tematres` server to narrow down "plant organs" and we find "leaf",  "root",
+"twig" as well as plural forms. We use the narrower keywords to query the
+`BEFdata` server again for datasets associated with them and get back all
+datasets associated with the narrower terms. This can be used the other way
+around as well to restrict the datasets we get back to higher order terms with
+`bef.tematres.api(task = "fetchUp", "plant organ")`.
  
 
 ```r
@@ -800,10 +796,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59   0.0011 **
+## 4 - 1 == 0    0.865      0.497    1.74   0.1839   
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -855,9 +851,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -909,7 +905,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---

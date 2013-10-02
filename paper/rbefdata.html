@@ -372,15 +372,14 @@ effects strengthen over time.&#39; The respective proposal can be assessed under
 (url). For a detailed description of the experimental design we refer to Lang
 et al. 2013 </p>
 
-<h3>Tematres server and rtematres</h3>
+<h3>Tematres</h3>
 
-<p><code>tematres</code> is a vocabulary management server that enables the management of
-formal representations of knowledge. These representations can vary in
-complexity from simple lists over taxonomies up to ontologies. We use a
-<code>tematres</code> server to provide vocabulary in hierarchical order that is relevant
-for biodiversity ecosystem functioning research. The <code>rtematres</code> R package is
-integrated into the <code>rbefdata</code> package to exploit the vocabulary server from
-within.</p>
+<p>A <code>tematres</code> server can hold different representations of formal knowledge like
+thesauri or even ontologies of projects. We use the <code>tematres</code> server that
+stores the vocabulary of the BEF-China experiment to provide relations of
+search terms that we use in an example that shows how to improve search
+queries. The <code>befdata</code> packages uses the <code>rtematres</code> R package to exploit the
+vocabulary server.</p>
 
 <h3>rbefdata</h3>
 
@@ -405,32 +404,11 @@ analysis.</p>
 
 <h2>Example workflow</h2>
 
-<p>We start setting up the R package, highlight the dataset exploration features
-using an example that shows the inclusion the <code>tematres</code> vocabulary server
-before we finally come to the processing of the data attached to the paper
-proposal, the download of data as well as to the upload of final results.</p>
-
 <h3>Setup <code>rbefdata</code></h3>
 
-<p>After loading <code>rbefdata</code> into the working environment (see box below) the
-settings need to be set via the <code>bef.options()</code> command. A look into the
-options reveals several fields that can be filled in. The most essential
-setting for the example workflow we present here is the user credentials. These
-are used to authenticate the user against the platform and to ensure the access
-to the data has been granted as well as to log the data access. We need to set
-it as the data is not yet open access at the time of writing. When it will be
-open access in the near future, a key is no longer required to download the
-data.</p>
-
-<p>Other options are the URLs to the <code>BEFdata</code> server instance and the <code>tematres</code>
-vocabulary server as well as a field that stores the name of a download folder.
-While the URL fields ensure the package communicates with the right servers the
-download folder name is used to create a folder in case we download attached
-files from a dataset or proposal. In our case there is no need to change the
-URL to <code>BEFdata</code> server, as it defaults to the BEF-China instance that we use
-to retrieve data from. If an own instance of the <code>BEFdata</code> platform or has been
-set up, this URL needs to be changed so the package communicates with the right
-server (see box below).</p>
+<p>The latest version of the <code>rbefdata</code> package can be installed by the
+<code>install.packages()</code> command. After install the package needs to be loaded into
+the working environment with the <code>require()</code> (see box below).</p>
 
 <pre><code class="r"># load the package
 require(rbefdata)
@@ -455,8 +433,26 @@ bef.options()
 ## [1] &quot;&quot;
 </code></pre>
 
-<pre><code class="r">
-# querry a single option
+<p>After that the options of the <code>rbefdata</code> package need to be set via the
+<code>bef.options()</code> command.  A look into the options list reveals several fields
+that can be filled in. The most essential setting for the example workflow we
+present here is the user credentials. These are used to authenticate the user
+against the platform and to ensure the access to the data has been granted as
+well as to log the data access. We need to set it as the data is not yet open
+access at the time of writing. When it will be open access in the near future,
+a key is no longer required to download the data.</p>
+
+<p>Other options are the URLs to the <code>BEFdata</code> server instance and the <code>tematres</code>
+vocabulary server as well as a field that stores the name of a download folder.
+While the URL fields ensure the package communicates with the right servers the
+download folder name is used to create a folder in case we download attached
+files from a dataset or proposal. In our case there is no need to change the
+URL to <code>BEFdata</code> server, as it defaults to the BEF-China instance that we use
+to retrieve data from. If an own instance of the <code>BEFdata</code> platform or has been
+set up, this URL needs to be changed so the package communicates with the right
+server (see box below).</p>
+
+<pre><code class="r"># querry a single option
 bef.options(&quot;url&quot;)
 </code></pre>
 
@@ -473,21 +469,19 @@ bef.options(url = &quot;http://my.own.befdata.instance.com&quot;)
 
 <h3>Data discovery</h3>
 
-<p>A <code>tematres</code> server can hold different representations of formalized knowledge
-like a thesaurus or even an ontology of a project. The <code>rbefdata</code> package
-supports exploiting a <code>tematres</code> vocabulary server via the <code>rtematres</code> package.
-We can find terms and relations as well as we can display their descriptions in
-<code>rbefdata</code>. This can be used to improve the exploration of datasets. For
-example looking for datasets that deal with  &ldquo;plant organs&rdquo; we can display the
-definition of that term first (box below). Then we ask the <code>BEFdata</code> platform
-for datasets that are tagged with that term and we get back a few datasets. In
-a next step we use the vocabulary on the <code>tematres</code> server to narrow down
-&ldquo;plant organs&rdquo; and we find &ldquo;leaf&rdquo;,  &ldquo;root&rdquo;, &ldquo;twig&rdquo; as well as plural forms. We
-use the narrower keywords to query the <code>BEFdata</code> server again for datasets
-associated with them and get back all datasets associated with the narrower
-terms. This can be used the other way around as well to restrict the datasets
-we get back to higher order terms with <code>bef.tematres.api(task = &quot;fetchUp&quot;,
-&quot;plant organ&quot;)</code>.</p>
+<p>The <code>rbefdata</code> package supports exploiting a <code>tematres</code> vocabulary server via
+the <code>rtematres</code> package.  We can find terms and relations as well as we can
+display their descriptions in <code>rbefdata</code>. This can be used to improve the
+exploration of datasets. For example looking for datasets that deal with
+&ldquo;plant organs&rdquo; we can display the definition of that term first (box below).
+Then we ask the <code>BEFdata</code> platform for datasets that are tagged with that term
+and we get back a few datasets. In a next step we use the vocabulary on the
+<code>tematres</code> server to narrow down &ldquo;plant organs&rdquo; and we find &ldquo;leaf&rdquo;,  &ldquo;root&rdquo;,
+&ldquo;twig&rdquo; as well as plural forms. We use the narrower keywords to query the
+<code>BEFdata</code> server again for datasets associated with them and get back all
+datasets associated with the narrower terms. This can be used the other way
+around as well to restrict the datasets we get back to higher order terms with
+<code>bef.tematres.api(task = &quot;fetchUp&quot;, &quot;plant organ&quot;)</code>.</p>
 
 <pre><code class="r"># define the term plant organ
 term_info = bef.tematres.api(task = &quot;fetchNotes&quot;, &quot;plant organ&quot;)
@@ -910,10 +904,10 @@ anova(model2)
 ##     random = ~1 | block, method = &quot;REML&quot;)
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(&gt;|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   &lt;0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(&gt;|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59   0.0011 **
+## 4 - 1 == 0    0.865      0.497    1.74   0.1839   
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -959,9 +953,9 @@ anova(model3)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -1007,7 +1001,7 @@ anova(model4)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---

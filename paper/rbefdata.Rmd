@@ -197,15 +197,14 @@ effects strengthen over time.' The respective proposal can be assessed under
 (url). For a detailed description of the experimental design we refer to Lang
 et al. 2013 
 
-### Tematres server and rtematres
+### Tematres 
 
-`tematres` is a vocabulary management server that enables the management of
-formal representations of knowledge. These representations can vary in
-complexity from simple lists over taxonomies up to ontologies. We use a
-`tematres` server to provide vocabulary in hierarchical order that is relevant
-for biodiversity ecosystem functioning research. The `rtematres` R package is
-integrated into the `rbefdata` package to exploit the vocabulary server from
-within.
+A `tematres` server can hold different representations of formal knowledge like
+thesauri or even ontologies of projects. We use the `tematres` server that
+stores the vocabulary of the BEF-China experiment to provide relations of
+search terms that we use in an example that shows how to improve search
+queries. The `befdata` packages uses the `rtematres` R package to exploit the
+vocabulary server.
 
 ### rbefdata
 
@@ -230,22 +229,28 @@ analysis.
 
 ## Example workflow 
 
-We start setting up the R package, highlight the dataset exploration features
-using an example that shows the inclusion the `tematres` vocabulary server
-before we finally come to the processing of the data attached to the paper
-proposal, the download of data as well as to the upload of final results.
-
 ### Setup `rbefdata`
 
-After loading `rbefdata` into the working environment (see box below) the
-settings need to be set via the `bef.options()` command. A look into the
-options reveals several fields that can be filled in. The most essential
-setting for the example workflow we present here is the user credentials. These
-are used to authenticate the user against the platform and to ensure the access
-to the data has been granted as well as to log the data access. We need to set
-it as the data is not yet open access at the time of writing. When it will be
-open access in the near future, a key is no longer required to download the
-data.
+The latest version of the `rbefdata` package can be installed by the
+`install.packages()` command. After install the package needs to be loaded into
+the working environment with the `require()` (see box below).
+
+```{r require_and_setup} 
+# load the package
+require(rbefdata)   
+
+# list all options 
+bef.options() 
+```
+
+After that the options of the `rbefdata` package need to be set via the
+`bef.options()` command.  A look into the options list reveals several fields
+that can be filled in. The most essential setting for the example workflow we
+present here is the user credentials. These are used to authenticate the user
+against the platform and to ensure the access to the data has been granted as
+well as to log the data access. We need to set it as the data is not yet open
+access at the time of writing. When it will be open access in the near future,
+a key is no longer required to download the data.
 
 Other options are the URLs to the `BEFdata` server instance and the `tematres`
 vocabulary server as well as a field that stores the name of a download folder.
@@ -257,18 +262,12 @@ to retrieve data from. If an own instance of the `BEFdata` platform or has been
 set up, this URL needs to be changed so the package communicates with the right
 server (see box below).
 
-```{r require_and_setup} 
-# load the package
-require(rbefdata)   
-
-# list all options 
-bef.options() 
-
+```{r list_options}
 # querry a single option
 bef.options("url") 
 ```
 
-```{r require_and_setup_two}
+```{r require_and_setup_two} 
 # set credentials example
 bef.options("user_credentials" = "aölkjspoiul12")  
 ```
@@ -285,21 +284,19 @@ source("secrets.R")
 
 ### Data discovery 
 
-A `tematres` server can hold different representations of formalized knowledge
-like a thesaurus or even an ontology of a project. The `rbefdata` package
-supports exploiting a `tematres` vocabulary server via the `rtematres` package.
-We can find terms and relations as well as we can display their descriptions in
-`rbefdata`. This can be used to improve the exploration of datasets. For
-example looking for datasets that deal with  "plant organs" we can display the
-definition of that term first (box below). Then we ask the `BEFdata` platform
-for datasets that are tagged with that term and we get back a few datasets. In
-a next step we use the vocabulary on the `tematres` server to narrow down
-"plant organs" and we find "leaf",  "root", "twig" as well as plural forms. We
-use the narrower keywords to query the `BEFdata` server again for datasets
-associated with them and get back all datasets associated with the narrower
-terms. This can be used the other way around as well to restrict the datasets
-we get back to higher order terms with `bef.tematres.api(task = "fetchUp",
-"plant organ")`.
+The `rbefdata` package supports exploiting a `tematres` vocabulary server via
+the `rtematres` package.  We can find terms and relations as well as we can
+display their descriptions in `rbefdata`. This can be used to improve the
+exploration of datasets. For example looking for datasets that deal with
+"plant organs" we can display the definition of that term first (box below).
+Then we ask the `BEFdata` platform for datasets that are tagged with that term
+and we get back a few datasets. In a next step we use the vocabulary on the
+`tematres` server to narrow down "plant organs" and we find "leaf",  "root",
+"twig" as well as plural forms. We use the narrower keywords to query the
+`BEFdata` server again for datasets associated with them and get back all
+datasets associated with the narrower terms. This can be used the other way
+around as well to restrict the datasets we get back to higher order terms with
+`bef.tematres.api(task = "fetchUp", "plant organ")`.
  
 ```{r improved_data_exploration}   
 # define the term plant organ
