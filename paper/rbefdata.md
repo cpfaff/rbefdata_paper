@@ -122,6 +122,8 @@ data into the R environment, inspect metadata, analyse the tracer experiment,
 and finally upload data and workflow scripts back to the data management
 platform.
 
+## Material and Methods 
+
 ### BEF-China 
 
 The BEF (Biodiversity Ecosystem Functioning) - China project is a research
@@ -155,16 +157,17 @@ by `rbefdata` package. Another strength of the `BEFdata` platform is the
 tagging functionality for datasets and data columns which is also used in the
 `rbefdata` package to explore datasets.
 
-### Nutrient retention along a biodiversity gradient
+### The analysis: Nutrient retention along a biodiversity gradient
 
 In this paper we use an already published analysis on nutrient retention along
 a biodiversity gradient as a use case to build a workflow that shows the
 functionalities and inter linkages between the BEF-China data platform and the
-`rbefdata` package. The analysis is typical for interdisciplinary sciences, as
+`rbefdata` package. The analysis is typical for interdisciplinary research, as
 it combines soil, taxon, and nutrient data where data originating from field
 campaigns of different collaborating laboratories has to be merged prior to
-analyses. A paper proposal containing 3 datasets was created on the `BEFdata`
-portal of the BEF-China project. The rationale given for the paper proposal is:
+analyses. A paper proposal based on 3 datasets with the title "Mixed
+afforestations of young subtropical trees promote nitrogen acquisition and
+retention" has been created. The rationale given for the paper proposal is:
 
 'Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
 forest ecosystems is still very limited, particularly as regards macro
@@ -192,11 +195,11 @@ et al. 2013
 
 ### Tematres server and rtematres
 
-Tematres is a vocabulary management server that enables the management of
-formal respresentations of knowledge. These representations can vary in
+`tematres` is a vocabulary management server that enables the management of
+formal representations of knowledge. These representations can vary in
 complexity from simple lists over taxonomies up to ontologies. We use a
-tematres server to provide vocabulary in hirarchical order that is relevant for
-biodiversity ecosystem functioning research. The `rtematres` R package is
+`tematres` server to provide vocabulary in hierarchical order that is relevant
+for biodiversity ecosystem functioning research. The `rtematres` R package is
 integrated into the `rbefdata` package to exploit the vocabulary server from
 within.
 
@@ -208,10 +211,10 @@ management platform `BEFdata`. The development takes place on GitHub
 installed directly from the CRAN R package repository. The `rbefdata` package
 is part of the rOpenSci initiative (http://ropensci.org/) which aims to provide
 R packages that enable a seamless integration to scientific data repositories
-into the R statistics enviroment. `rbefdata` enables access to data as well to
+into the R statistics environment. `rbefdata` enables access to data as well to
 metadata stored on a `BEFdata` platform. 
 
-The metadata is provided attached to the data frames of raw primary reserch
+The metadata is provided attached to the data frames of raw primary research
 data pulled from the platform. The package provides convenient methods to pull
 single or multiple dataset into the R environment and offers functions that
 help to upload final results datasets with the script attached that has been
@@ -852,7 +855,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
 ## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
@@ -906,7 +909,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---

@@ -301,6 +301,8 @@ data into the R environment, inspect metadata, analyse the tracer experiment,
 and finally upload data and workflow scripts back to the data management
 platform.</p>
 
+<h2>Material and Methods</h2>
+
 <h3>BEF-China</h3>
 
 <p>The BEF (Biodiversity Ecosystem Functioning) - China project is a research
@@ -334,16 +336,17 @@ by <code>rbefdata</code> package. Another strength of the <code>BEFdata</code> p
 tagging functionality for datasets and data columns which is also used in the
 <code>rbefdata</code> package to explore datasets.</p>
 
-<h3>Nutrient retention along a biodiversity gradient</h3>
+<h3>The analysis: Nutrient retention along a biodiversity gradient</h3>
 
 <p>In this paper we use an already published analysis on nutrient retention along
 a biodiversity gradient as a use case to build a workflow that shows the
 functionalities and inter linkages between the BEF-China data platform and the
-<code>rbefdata</code> package. The analysis is typical for interdisciplinary sciences, as
+<code>rbefdata</code> package. The analysis is typical for interdisciplinary research, as
 it combines soil, taxon, and nutrient data where data originating from field
 campaigns of different collaborating laboratories has to be merged prior to
-analyses. A paper proposal containing 3 datasets was created on the <code>BEFdata</code>
-portal of the BEF-China project. The rationale given for the paper proposal is:</p>
+analyses. A paper proposal based on 3 datasets with the title &ldquo;Mixed
+afforestations of young subtropical trees promote nitrogen acquisition and
+retention&rdquo; has been created. The rationale given for the paper proposal is:</p>
 
 <p>&#39;Knowledge of biodiversity effects on nutrient cycling patterns in subtropical
 forest ecosystems is still very limited, particularly as regards macro
@@ -371,11 +374,11 @@ et al. 2013 </p>
 
 <h3>Tematres server and rtematres</h3>
 
-<p>Tematres is a vocabulary management server that enables the management of
-formal respresentations of knowledge. These representations can vary in
+<p><code>tematres</code> is a vocabulary management server that enables the management of
+formal representations of knowledge. These representations can vary in
 complexity from simple lists over taxonomies up to ontologies. We use a
-tematres server to provide vocabulary in hirarchical order that is relevant for
-biodiversity ecosystem functioning research. The <code>rtematres</code> R package is
+<code>tematres</code> server to provide vocabulary in hierarchical order that is relevant
+for biodiversity ecosystem functioning research. The <code>rtematres</code> R package is
 integrated into the <code>rbefdata</code> package to exploit the vocabulary server from
 within.</p>
 
@@ -387,10 +390,10 @@ management platform <code>BEFdata</code>. The development takes place on GitHub
 installed directly from the CRAN R package repository. The <code>rbefdata</code> package
 is part of the rOpenSci initiative (<a href="http://ropensci.org/">http://ropensci.org/</a>) which aims to provide
 R packages that enable a seamless integration to scientific data repositories
-into the R statistics enviroment. <code>rbefdata</code> enables access to data as well to
+into the R statistics environment. <code>rbefdata</code> enables access to data as well to
 metadata stored on a <code>BEFdata</code> platform. </p>
 
-<p>The metadata is provided attached to the data frames of raw primary reserch
+<p>The metadata is provided attached to the data frames of raw primary research
 data pulled from the platform. The package provides convenient methods to pull
 single or multiple dataset into the R environment and offers functions that
 help to upload final results datasets with the script attached that has been
@@ -956,7 +959,7 @@ anova(model3)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
 ## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
@@ -1004,7 +1007,7 @@ anova(model4)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
