@@ -100,7 +100,11 @@ to discuss ideas with data providers on analyses to be based on the data behind
 the metadata. The integration of semantic repositories potentially improves not
 only the discovery of data but also assists researchers with the preparation of
 data on reuse. There is a growing demand on tools that integrate these concepts
-into widely accepted and commonly used software. 
+into widely accepted and commonly used software. A trending concept to
+streamline the processing of is workflows. They enable the access to data and
+metadata, the manipulation and analysis of data as well as the preservation of
+valuable data products. The Kepler (cite xxx) and the Pegasus (cite xxx)
+software are only two examples of software that follows this concept.
 
 We here introduces the R package called `rbefdata` as companion package to the
 open source data management platform `BEFdata` (cite Karin). The package is
@@ -111,15 +115,6 @@ to data and metadata stored on the data management platform. On top of that it
 allows the use of a semantic repositories stored on `tematres` vocabulary
 servers (http://www.vocabularyserver.com/) and provides upload functionality
 for data as well as for free format attachments. 
-
-The combination of `BEFdata` and `rbefdata` allow the automatization of common
-analysis task which makes it workflow software. Workflows is a concept to
-streamline and automate the processing of data. 
-
-
-Workflow tools like Kepler and Pegasus integrate the access to data and
-metadata, the manipulation and analysis of data as well as the preservation of
-
 
 We showcase the functionality of the package available with version `0.3.5`.
 The workflow reconstructs a facet of an analysis that has been published by
