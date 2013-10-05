@@ -119,17 +119,28 @@ allows to use semantic repositories stored on `tematres` vocabulary servers
 functionality for raw research data as well as for free format attachments
 files. 
 
-We showcase the functionality of the package available with version `0.3.5`
-starting with data exploration and the refinement of keywords using the
-semantic repository integration. Furthermore we use an analysis about N
-retention along a biodiversity gradient in the BEF-China experiment as usecase.
-It is a 15N tracer experiment which aims to disentangle the effect of species
-mixtures on system N retention. The results of the analysis have been published
-alredy and the data is open access (Lang et al. 2013). The analysis workflow
-shows how to ask for data access on the data management platform based on paper
-proposals, download data into the R environment, inspect metadata, the analysis
-of the experiment, and finally the upload of the results and the workflow
-scripts back to the data management platform.
+We showcase the functionality of the `rbefdata` R package available with
+version 0.3.5. We start with an example on how to refine keywords for 
+
+
+starting with We give an example on data exploration and the refinement of
+keywords using the semantic repository integration. Furthermore we use an
+analysis about N retention along a biodiversity gradient that uses data from
+the BEF-China experiment as usecase. The analysis workflow starts with a paper
+proposal on the BEFdata portal of the BEF-China experiment.
+
+shows how to ask for data starting 
+with access
+on the data management platform based on paper proposals, download data into
+the R environment, inspect metadata, the analysis of the experiment, and
+finally the upload of the results and the workflow scripts back to the data
+management platform.
+
+It is a 15N tracer experiment which aims to
+disentangle the effect of species mixtures on system N retention. The results
+of the analysis have been published alredy and the data is open access (Lang et
+al.  2013). 
+
 
 ## Material and Methods 
 
@@ -805,10 +816,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
-## 4 - 1 == 0    0.865      0.497    1.74    0.184   
-## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -860,9 +871,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0278 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8793   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0014 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)

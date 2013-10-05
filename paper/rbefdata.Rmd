@@ -123,17 +123,28 @@ allows to use semantic repositories stored on `tematres` vocabulary servers
 functionality for raw research data as well as for free format attachments
 files. 
 
-We showcase the functionality of the package available with version `0.3.5`
-starting with data exploration and the refinement of keywords using the
-semantic repository integration. Furthermore we use an analysis about N
-retention along a biodiversity gradient in the BEF-China experiment as usecase.
-It is a 15N tracer experiment which aims to disentangle the effect of species
-mixtures on system N retention. The results of the analysis have been published
-alredy and the data is open access (Lang et al. 2013). The analysis workflow
-shows how to ask for data access on the data management platform based on paper
-proposals, download data into the R environment, inspect metadata, the analysis
-of the experiment, and finally the upload of the results and the workflow
-scripts back to the data management platform.
+We showcase the functionality of the `rbefdata` R package available with
+version 0.3.5. We start with an example on how to refine keywords for 
+
+
+starting with We give an example on data exploration and the refinement of
+keywords using the semantic repository integration. Furthermore we use an
+analysis about N retention along a biodiversity gradient that uses data from
+the BEF-China experiment as usecase. The analysis workflow starts with a paper
+proposal on the BEFdata portal of the BEF-China experiment.
+
+shows how to ask for data starting 
+with access
+on the data management platform based on paper proposals, download data into
+the R environment, inspect metadata, the analysis of the experiment, and
+finally the upload of the results and the workflow scripts back to the data
+management platform.
+
+It is a 15N tracer experiment which aims to
+disentangle the effect of species mixtures on system N retention. The results
+of the analysis have been published alredy and the data is open access (Lang et
+al.  2013). 
+
 
 ## Material and Methods 
 
