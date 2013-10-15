@@ -74,15 +74,16 @@ morpho, dataUP).
 
 To find relevant data for reuse is a challenging task that is getting even more
 complex when more data gets available. A common practice in data discovery,
-next to full text search in metadata, is tagging with keywords. However a
-keyword search can be very coarse as it may provide access to a set of data but
-misses other essential and relevant data tagged with close related keywords.
-For example a keyword search on "weight" of leaves will miss datasets tagged
-only with "dry weight" or "wet weight" that might be of interest as well. The
-integration of semantic repositories that provide taxonomies or ontologies can
-potentially improve the situation here. These repositories can embed the
-keywords into a hierarchical or network structure and so the query can be
-extended along known relations of the search term.
+next to full text search in metadata, is tagging with keywords and the linking
+of data using ontologies. However a keyword search can be very coarse as it may
+provide access to a set of data but misses other essential and relevant data
+tagged with close related keywords.  For example a keyword search on "weight"
+of leaves will miss datasets tagged only with "dry weight" or "wet weight" that
+might be of interest as well. The integration of semantic repositories that
+provide taxonomies or ontologies can potentially improve the situation here.
+These repositories can embed the keywords into a hierarchical or network
+structure and so the query can be extended along known relations of the search
+term.
 
 Before data can effectively be reused it may needs to be cleaned, imputed,
 reshaped and merged. This usually takes up to 70% of an analysis script (cite
@@ -211,32 +212,25 @@ package to exploit the vocabulary server.
 
 ### rbefdata
 
-The `rbefdata` R package is the companion package of the open source data
-management platform `BEFdata`. The development takes place on GitHub
-(https://github.com/befdata/befdata) and the latest stable version can be
-installed directly from the CRAN R package repository. The `rbefdata` package
-is part of the rOpenSci initiative (http://ropensci.org/) which aims to provide
-R packages that enable a seamless integration to scientific data repositories
-into the R statistics environment. `rbefdata` enables access to data as well to
-metadata stored on a `BEFdata` platform. 
-
-The metadata is provided attached to the data frames of raw primary research
-data pulled from the platform. The package provides convenient methods to pull
-single or multiple dataset into the R environment and offers functions that
-help to upload final results datasets with the script attached that has been
-used to derive the results from the original datasets which provides a valuable
-insight into data provenance and also is a stepping stone for reproducible
-research. On top of that it also integrates the access to vocabularies stored
-on `tematres` servers which can be useful in exploring relevant data for an
-analysis.
+`rbefdata` (GitHub: https://github.com/befdata/befdata) is the companion
+package to the open source data management platform `BEFdata`. The latest
+stable version of `rbefdata` can be installed via the CRAN package repository.
+It is part of the rOpenSci initiative (http://ropensci.org/) which aims to
+provide the R statistics environment with packages that enable access to
+scientific data repositories. Basically the `rbefdata` package enables access
+to data and the corresponding metadata stored on a `BEFdata` platform as well
+as it allows the upload of data products. The integration of a `tematres`
+vocabulary server allows for an improved exploration of datasets. By default it
+integrates the `tematres` server but this can be changed by the package
+options.
 
 ## Example workflow 
 
 ### Setup `rbefdata`
 
-The latest version of the `rbefdata` package can be installed by the
-`install.packages()` command. After install the package needs to be loaded into
-the working environment with the `require()` (see box below).
+The latest version of `rbefdata` is installed by the `install.packages()`
+command. After the installation the package needs to be loaded into the working
+environment with the `require()` (see box below).
 
 ```{r require_and_setup} 
 # load the package

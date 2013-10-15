@@ -249,15 +249,16 @@ morpho, dataUP).</p>
 
 <p>To find relevant data for reuse is a challenging task that is getting even more
 complex when more data gets available. A common practice in data discovery,
-next to full text search in metadata, is tagging with keywords. However a
-keyword search can be very coarse as it may provide access to a set of data but
-misses other essential and relevant data tagged with close related keywords.
-For example a keyword search on &ldquo;weight&rdquo; of leaves will miss datasets tagged
-only with &ldquo;dry weight&rdquo; or &ldquo;wet weight&rdquo; that might be of interest as well. The
-integration of semantic repositories that provide taxonomies or ontologies can
-potentially improve the situation here. These repositories can embed the
-keywords into a hierarchical or network structure and so the query can be
-extended along known relations of the search term.</p>
+next to full text search in metadata, is tagging with keywords and the linking
+of data using ontologies. However a keyword search can be very coarse as it may
+provide access to a set of data but misses other essential and relevant data
+tagged with close related keywords.  For example a keyword search on &ldquo;weight&rdquo;
+of leaves will miss datasets tagged only with &ldquo;dry weight&rdquo; or &ldquo;wet weight&rdquo; that
+might be of interest as well. The integration of semantic repositories that
+provide taxonomies or ontologies can potentially improve the situation here.
+These repositories can embed the keywords into a hierarchical or network
+structure and so the query can be extended along known relations of the search
+term.</p>
 
 <p>Before data can effectively be reused it may needs to be cleaned, imputed,
 reshaped and merged. This usually takes up to 70% of an analysis script (cite
@@ -386,32 +387,25 @@ package to exploit the vocabulary server.</p>
 
 <h3>rbefdata</h3>
 
-<p>The <code>rbefdata</code> R package is the companion package of the open source data
-management platform <code>BEFdata</code>. The development takes place on GitHub
-(<a href="https://github.com/befdata/befdata">https://github.com/befdata/befdata</a>) and the latest stable version can be
-installed directly from the CRAN R package repository. The <code>rbefdata</code> package
-is part of the rOpenSci initiative (<a href="http://ropensci.org/">http://ropensci.org/</a>) which aims to provide
-R packages that enable a seamless integration to scientific data repositories
-into the R statistics environment. <code>rbefdata</code> enables access to data as well to
-metadata stored on a <code>BEFdata</code> platform. </p>
-
-<p>The metadata is provided attached to the data frames of raw primary research
-data pulled from the platform. The package provides convenient methods to pull
-single or multiple dataset into the R environment and offers functions that
-help to upload final results datasets with the script attached that has been
-used to derive the results from the original datasets which provides a valuable
-insight into data provenance and also is a stepping stone for reproducible
-research. On top of that it also integrates the access to vocabularies stored
-on <code>tematres</code> servers which can be useful in exploring relevant data for an
-analysis.</p>
+<p><code>rbefdata</code> (GitHub: <a href="https://github.com/befdata/befdata">https://github.com/befdata/befdata</a>) is the companion
+package to the open source data management platform <code>BEFdata</code>. The latest
+stable version of <code>rbefdata</code> can be installed via the CRAN package repository.
+It is part of the rOpenSci initiative (<a href="http://ropensci.org/">http://ropensci.org/</a>) which aims to
+provide the R statistics environment with packages that enable access to
+scientific data repositories. Basically the <code>rbefdata</code> package enables access
+to data and the corresponding metadata stored on a <code>BEFdata</code> platform as well
+as it allows the upload of data products. The integration of a <code>tematres</code>
+vocabulary server allows for an improved exploration of datasets. By default it
+integrates the <code>tematres</code> server but this can be changed by the package
+options.</p>
 
 <h2>Example workflow</h2>
 
 <h3>Setup <code>rbefdata</code></h3>
 
-<p>The latest version of the <code>rbefdata</code> package can be installed by the
-<code>install.packages()</code> command. After install the package needs to be loaded into
-the working environment with the <code>require()</code> (see box below).</p>
+<p>The latest version of <code>rbefdata</code> is installed by the <code>install.packages()</code>
+command. After the installation the package needs to be loaded into the working
+environment with the <code>require()</code> (see box below).</p>
 
 <pre><code class="r"># load the package
 require(rbefdata)
@@ -488,20 +482,17 @@ around as well to restrict the datasets we get back to higher order terms with
 
 <pre><code class="r"># define the term plant organ
 term_info = bef.tematres.api(task = &quot;fetchNotes&quot;, &quot;plant organ&quot;)
-term_info
 </code></pre>
 
-<pre><code>## $id
-## [1] &quot;74&quot;
-## 
-## $term
-## [1] &quot;plant organ&quot;
-## 
-## $language
-## [1] &quot;en&quot;
-## 
-## $description
-## [1] &quot;In biology, an organ is a collection of tissues joined in a structural unit to serve a common function.&quot;
+<pre><code>## Error: XML content does not seem to be XML:
+## &#39;http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php?task=fetchNotes&amp;arg=74
+## http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php?task=fetchNotes&amp;arg=534&#39;
+</code></pre>
+
+<pre><code class="r">term_info
+</code></pre>
+
+<pre><code>## Error: object &#39;term_info&#39; not found
 </code></pre>
 
 <pre><code class="r">
@@ -523,101 +514,31 @@ datasets_plant_organ
 <pre><code class="r">
 # narrow down plant organ
 narrow_tasks_plant_organ = bef.tematres.api(task = &quot;fetchDown&quot;, &quot;plant organ&quot;)
-narrow_tasks_plant_organ
 </code></pre>
 
-<pre><code>## $id
-##  [1] &quot;385&quot; &quot;386&quot; &quot;390&quot; &quot;391&quot; &quot;73&quot;  &quot;387&quot; &quot;75&quot;  &quot;76&quot;  &quot;388&quot; &quot;389&quot; &quot;30&quot; 
-## 
-## $term
-##  [1] &quot;flower&quot;  &quot;flowers&quot; &quot;fruit&quot;   &quot;fruits&quot;  &quot;leaf&quot;    &quot;leaves&quot;  &quot;root&quot;    &quot;roots&quot;   &quot;seed&quot;   
-## [10] &quot;seeds&quot;   &quot;twig&quot;
+<pre><code>## Error: XML content does not seem to be XML:
+## &#39;http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php?task=fetchDown&amp;arg=74
+## http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php?task=fetchDown&amp;arg=534&#39;
+</code></pre>
+
+<pre><code class="r">narrow_tasks_plant_organ
+</code></pre>
+
+<pre><code>## Error: object &#39;narrow_tasks_plant_organ&#39; not found
 </code></pre>
 
 <pre><code class="r">
 # enrich the search with narrower keywords
 datasets_plant_organ_narrow = bef.get.datasets_for_keyword(c(narrow_tasks_plant_organ$term))
-datasets_plant_organ_narrow
 </code></pre>
 
-<pre><code>##     id
-## 1  242
-## 2  320
-## 3  323
-## 4  359
-## 5  371
-## 6  372
-## 7  108
-## 8  357
-## 9  188
-## 10 202
-## 11 143
-## 12 145
-## 13 360
-## 14 160
-## 15 166
-## 16 147
-## 17 411
-## 18 413
-## 19 367
-## 20 368
-## 21 384
-## 22 219
-## 23 212
-## 24 187
-## 25 381
-## 26 405
-## 27 319
-## 28 347
-## 29 424
-## 30 322
-## 31 107
-## 32 379
-## 33 313
-## 34 192
-## 35 105
-## 36 418
-## 37 421
-## 38 375
-##                                                                                                                                            title
-## 1                                                               Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
-## 2                                       Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A&amp; B)
-## 3                                                         Leaf traits and chemicals from individual trees in the Main Experiment (Sites A and B)
-## 4                                                                                             Coarse root density in the Comparative Study Plots
-## 5                                                                   Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 &amp; 3)
-## 6                                                                                  Estimated Root Biomass of July 2010 of Pilot Experiment (SP1)
-## 7                                   Talk 5: Leaf eco-physiological traits and coarse root spatial distribution characteristic in CSPs (2010)—SP3
-## 8                                                                                          Biomass Allometry Equations of Pilot Experiment (SP7)
-## 9  Biomass of four tree species (Castanea henryi, Quercus serrata, Schima suberba and Elaeocarpus decipiens) as saplings in the Pilot Experiment
-## 10                                            Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
-## 11                                          Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
-## 12                                                Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
-## 13                                                                                                                  Detailed tree allometry data
-## 14                                                                                                          Genetic diversity of Ardisia crenata
-## 15                                                                                                        Genetic diversity of Castanopsis eyrei
-## 16                                                                         Herbivore damage on saplings of 23 tree and shrub species in the CSPs
-## 17                                                                                        herbivory in the Main Experiment site A in summer 2009
-## 18                                                                                                herbivory in the pilot experiment in fall 2010
-## 19                                                                                              Leaf damage of tree individuals Site A fall 2011
-## 20                                                                                            Leaf damage of tree individuals Site A summer 2011
-## 21                                                                                                                          NILEX - Soil Erosion
-## 22                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
-## 23                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
-## 24                                                                                         Traits of ferns and herb species occuring in the CSPs
-## 25                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
-## 26                                                                                                 Leaf demography in the Main Experiment - 2011
-## 27                                                                                                                  Site A tree census from 2010
-## 28                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
-## 29                                                                                                                    Cuttings experiment - CSPs
-## 30                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
-## 31                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
-## 32                                                                           Functional traits of 45 species in subtropical forest in Dujiangyan
-## 33                                                                                                    P concentrations in leaves and roots, CSPs
-## 34                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
-## 35                                                                                       Talk 2: Research Progress for Belowground Biomass &amp; NPP
-## 36                                                                                                                          Resident phytometers
-## 37                                                                                            Pilot experiment: performance, biomass &amp; herbivory
-## 38                                          Functional traits of 14 subtropical woody species across a light-availability gradient in Dujiangyan
+<pre><code>## Error: object &#39;narrow_tasks_plant_organ&#39; not found
+</code></pre>
+
+<pre><code class="r">datasets_plant_organ_narrow
+</code></pre>
+
+<pre><code>## Error: object &#39;datasets_plant_organ_narrow&#39; not found
 </code></pre>
 
 <h3>Download data</h3>
@@ -958,9 +879,9 @@ anova(model3)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0280 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -1006,7 +927,7 @@ anova(model4)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
