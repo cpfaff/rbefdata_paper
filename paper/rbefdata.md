@@ -298,20 +298,21 @@ around as well to restrict the datasets we get back to higher order terms with
 ```r
 # define the term plant organ
 term_info = bef.tematres.api(task = "fetchNotes", "plant organ")
-```
-
-```
-## Error: XML content does not seem to be XML:
-## 'http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php?task=fetchNotes&arg=74
-## http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php?task=fetchNotes&arg=534'
-```
-
-```r
 term_info
 ```
 
 ```
-## Error: object 'term_info' not found
+## $id
+## [1] "74"
+## 
+## $term
+## [1] "plant organ"
+## 
+## $language
+## [1] "en"
+## 
+## $description
+## [1] "In biology, an organ is a collection of tissues joined in a structural unit to serve a common function."
 ```
 
 ```r
@@ -336,38 +337,108 @@ datasets_plant_organ
 
 # narrow down plant organ
 narrow_tasks_plant_organ = bef.tematres.api(task = "fetchDown", "plant organ")
-```
-
-```
-## Error: XML content does not seem to be XML:
-## 'http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php?task=fetchDown&arg=74
-## http://tematres.befdata.biow.uni-leipzig.de/vocab/services.php?task=fetchDown&arg=534'
-```
-
-```r
 narrow_tasks_plant_organ
 ```
 
 ```
-## Error: object 'narrow_tasks_plant_organ' not found
+## $id
+##  [1] "385" "386" "390" "391" "73"  "387" "75"  "76"  "388" "389" "30" 
+## 
+## $term
+##  [1] "flower"  "flowers" "fruit"   "fruits"  "leaf"    "leaves"  "root"    "roots"   "seed"   
+## [10] "seeds"   "twig"
 ```
 
 ```r
 
 # enrich the search with narrower keywords
 datasets_plant_organ_narrow = bef.get.datasets_for_keyword(c(narrow_tasks_plant_organ$term))
-```
-
-```
-## Error: object 'narrow_tasks_plant_organ' not found
-```
-
-```r
 datasets_plant_organ_narrow
 ```
 
 ```
-## Error: object 'datasets_plant_organ_narrow' not found
+##     id
+## 1  242
+## 2  320
+## 3  323
+## 4  428
+## 5  359
+## 6  371
+## 7  372
+## 8  108
+## 9  357
+## 10 188
+## 11 202
+## 12 143
+## 13 145
+## 14 360
+## 15 160
+## 16 166
+## 17 147
+## 18 411
+## 19 413
+## 20 367
+## 21 368
+## 22 384
+## 23 219
+## 24 212
+## 25 187
+## 26 381
+## 27 405
+## 28 319
+## 29 347
+## 30 424
+## 31 322
+## 32 107
+## 33 379
+## 34 313
+## 35 192
+## 36 127
+## 37 105
+## 38 418
+## 39 421
+## 40 375
+##                                                                                                                                            title
+## 1                                                               Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
+## 2                                       Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A& B)
+## 3                                                         Leaf traits and chemicals from individual trees in the Main Experiment (Sites A and B)
+## 4                                                                                      Leaf traits and chemicals of 122 tree species in the CSPs
+## 5                                                                                             Coarse root density in the Comparative Study Plots
+## 6                                                                   Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 & 3)
+## 7                                                                                  Estimated Root Biomass of July 2010 of Pilot Experiment (SP1)
+## 8                                   Talk 5: Leaf eco-physiological traits and coarse root spatial distribution characteristic in CSPs (2010)—SP3
+## 9                                                                                          Biomass Allometry Equations of Pilot Experiment (SP7)
+## 10 Biomass of four tree species (Castanea henryi, Quercus serrata, Schima suberba and Elaeocarpus decipiens) as saplings in the Pilot Experiment
+## 11                                            Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
+## 12                                          Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
+## 13                                                Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
+## 14                                                                                                                  Detailed tree allometry data
+## 15                                                                                                          Genetic diversity of Ardisia crenata
+## 16                                                                                                        Genetic diversity of Castanopsis eyrei
+## 17                                                                         Herbivore damage on saplings of 23 tree and shrub species in the CSPs
+## 18                                                                                        herbivory in the Main Experiment site A in summer 2009
+## 19                                                                                                herbivory in the pilot experiment in fall 2010
+## 20                                                                                              Leaf damage of tree individuals Site A fall 2011
+## 21                                                                                            Leaf damage of tree individuals Site A summer 2011
+## 22                                                                                                                          NILEX - Soil Erosion
+## 23                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
+## 24                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
+## 25                                                                                         Traits of ferns and herb species occuring in the CSPs
+## 26                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
+## 27                                                                                                 Leaf demography in the Main Experiment - 2011
+## 28                                                                                                                  Site A tree census from 2010
+## 29                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
+## 30                                                                                                                    Cuttings experiment - CSPs
+## 31                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
+## 32                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
+## 33                                                                           Functional traits of 45 species in subtropical forest in Dujiangyan
+## 34                                                                                                    P concentrations in leaves and roots, CSPs
+## 35                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
+## 36                                                                                                CSP soil profile description II: soil horizons
+## 37                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
+## 38                                                                                                                          Resident phytometers
+## 39                                                                                            Pilot experiment: performance, biomass & herbivory
+## 40                                          Functional traits of 14 subtropical woody species across a light-availability gradient in Dujiangyan
 ```
 
 
@@ -759,9 +830,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.029 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0283 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -814,7 +885,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
 ## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
