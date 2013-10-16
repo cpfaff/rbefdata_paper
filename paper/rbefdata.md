@@ -776,9 +776,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59  0.00082 ***
-## 4 - 1 == 0    0.865      0.497    1.74  0.18390    
-## 4 - 2 == 0   -0.188      0.479   -0.39  0.91634    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -830,9 +830,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
-## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0014 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0283 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -884,7 +884,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -993,27 +993,57 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 ## Discussion
 
+* Data life cycle 
+* Data preservation
+  * Metadata 
+* Data exploration/processing
+  * Metadata 
+  * Semantics 
+  * Taxonomies
+* BEFdata and rbefdata solutions
+
 There is a growing demand to use and reuse available data, which puts much
-pressure on the development of software that help researchers not only to find
-but also to effectively reuse data (supporting, Kepler). Especially the
-integration of small and heterogeneous data in ecology, which represent the
-majority of datasets, seems promising as it potentially can be used and
-integrated a wider context to answer questions on a much broader temporal and
-spatial scale (cite xxx). However, particularly research areas like ecology
+pressure on the development of software to help researchers not only in the
+process of finding, but also to effectively reuse data (supporting, Kepler).
+In ecology especially the integration of small and heterogeneous data, which
+represent the majority of data, seems promising. It potentially can be
+integrated into a wider context, to answer questions on a much broader temporal
+and spatial scale (cite xxx). However, particularly research areas like ecology
 which are characterised by a high degree of interdisciplinary interactions are
-challenging in terms of data management.
+challenging in terms of data management and the applicability of some valuable
+concepts like ontologies seems questionable. While ontologies with a very clear
+and close scope are in use already (onto verse examples) the development of a
+sophisticated ontology for ecology research is a very time, labor intensive and
+complex task. The nature of ecology requires a community for the development of
+ontologies that includes experts from all contributing domains to model the
+relevant concepts into a formal representation.
 
 The software combination of `rbefdata` and `BEFdata` provides solutions to
-different aspects of the data life cycle for ecological research groups. While
-the `BEFdata` platform covers data storage and serves as a scratch pad for
-field data. It offers data harmonization tools, metadata support and a social
-component that fosters sharing data online (cite Karin). The `rbefdata` package
-enables access to data and metadata on the platform as well as it provides
-upload functionality for datasets and attachments like scripts or figures right
-from within R. The tag based exploration of datasets of the BEFdata platform
-helps to find relevant data for a certain analysis. The `tematres` vocabulary
-integration further supports this as it allows to retrieve term definitions as
-well as relations to broaden or narrow down search terms along a hierarchy. 
+different aspects of the data life cycle for ecological research groups. The
+`BEFdata` platform serves as a scratch pad for research data and covers the
+preservation of data. It offers data harmonization tools, metadata support and
+a social component to foster sharing data online (cite Karin). The `rbefdata`
+package enables access to data and metadata on the platform as well as it
+provides upload functionality to preserve data products and attachments that
+are generated on analysing data. The tag based exploration of datasets of the
+BEFdata platform improves the exploration of relevant data for a certain
+analysis and the `tematres` vocabulary integration further supports this. It
+allows to retrieve term definitions as well as relations to broaden or narrow
+down search terms along a hierarchy. 
+
+While well described data helps a lot in understanding datasets and on
+deciding upon the relevance and applicability of data for a certain analysis
+there is still lots of manual intervention necessary to prepare the data for
+analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
+reshaped and merged which usually takes up to 70% of an analysis workflow,
+before smart models can be applied to the data to find interesting patters
+(cite the workflow paper of Karin and me). This preparatory steps not only are
+time and labour intensive but also potentially error prone, especially as the
+complexity of the analyses increases. Provenance and the advantage of keeping
+scripts (workflows) close to the data.
+
+
+
 
 `rbefdata` makes scripting a workflow to pull data for analysis and push back
 results and scripts simple. The upload mechanism can help to keep the data
@@ -1034,6 +1064,9 @@ the server before it returns the answer after processing (xxx). To keep the
 `BEFdata` platform as flexible as possible and to give the researchers the
 freedom of choice this could be one of the future features to be integrated. 
 
+
+
+
 ### rbefdata makes metadata available within the R environment
 
 .  `rbefdata` is innovative in that it
@@ -1042,16 +1075,6 @@ provides data together with metadata in the R environment.
 
 ### keeping workflow scripts close to the data: Provenance
 
-While well described data helps a lot in understanding datasets and on
-deciding upon the relevance and applicability of data for a certain analysis
-there is still lots of manual intervention necessary to prepare the data for
-analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
-reshaped and merged which usually takes up to 70% of an analysis workflow,
-before smart models can be applied to the data to find interesting patters
-(cite the workflow paper of Karin and me). This preparatory steps not only are
-time and labour intensive but also potentially error prone, especially as the
-complexity of the analyses increases. Provenance and the advantage of keeping
-scripts (workflows) close to the data.
 
 Clarify: controlled vocabulary - thesaurus - ontology. Controlled vocabulary
 for finding and sorting, ontology for automatic reasoning.
