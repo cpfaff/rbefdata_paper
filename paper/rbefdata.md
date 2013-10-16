@@ -616,7 +616,7 @@ N retention we need information about the species diversity in the plots and
 about which plot is placed in which block from the design dataset. 'Species
 diversity' is used as a factor containing three levels (1,2,4 species
 mixtures). The response variables have been checked for normality with `qqplot`
-and transformed (see box below).
+and transformed as shown in the box below.
 
 
 ```r
@@ -776,9 +776,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## 2 - 1 == 0    1.053      0.293    3.59  0.00082 ***
+## 4 - 1 == 0    0.865      0.497    1.74  0.18390    
+## 4 - 2 == 0   -0.188      0.479   -0.39  0.91634    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -830,9 +830,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0283 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -884,7 +884,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
@@ -919,20 +919,21 @@ System 15N retention (overall plot recovery) was positively affected by species
 richness at the level of P = 0.0576 (Chisq: 5.7; Fig. Xa). The analysis of the
 different system compartments (leaves, fine roots and soil) revealed that fine
 root recovery was lower than leaf recovery, and biomass recovery (leaves and
-fine roots) was lower than soil recovery.  Whereas the relative leaf and root
+fine roots) was lower than soil recovery. Whereas the relative leaf and root
 recovery were significantly higher in species mixtures compared with
-monocultures (Figs. Xb and Xc), the relative soil recovery was significantly
+monoculture (Figs. Xb and Xc), the relative soil recovery was significantly
 reduced (Fig. Xd). Thus, we could show that the relative N retention of biomass
-was significantly increased in mixtures. For an interpretation of these
-results we refer to Lang et al. 2013.
+was significantly increased in mixtures. For an interpretation of these results
+we refer to Lang et al. 2013.
 
 ![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
 
-* caption:  Nitrogen (N) retention affected by species richness. N retention summed as
-            the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root
-            recovery (c) and relative soil recovery (d). Significant differences as revealed by post
-            hoc Tukey’s test (P < 0.05) are indicated by different letters.
+* caption: Nitrogen (N) retention affected by species richness. N retention summed as the
+           recovery of soil, roots and leaves (a), relative leaf recovery (b), relative
+           root recovery (c) and relative soil recovery (d). Significant differences as
+           revealed by post hoc Tukey’s test (P < 0.05) are indicated by different
+           letters.
 
 ### Upload data 
 
@@ -940,10 +941,10 @@ Finally we need to decide on either to upload a full dataset which we could do
 using the dataset upload function `bef.portal.upload.dataset()` or only to
 upload the script and maybe a figure to highlight the road to the results from
 the source datasets used. This can be done by attaching to the proposal with
-the command `bef.portal.attach.to_proposal()`. For the example shown, it is the
-best way to go with an attachment to the proposal as uploading the merged
-dataset would only mean duplication of data in the database of the `BEFdata`
-portal.
+the command `bef.portal.attach.to_proposal()`. For the example shown here, it
+is the best way to go with an attachment to the proposal as uploading the
+merged dataset would only mean duplication of data in the database of the
+`BEFdata` portal.
 
 So we upload the script and the four pane figure with its caption to add them
 to the proposal. The figure is prepared as Portable Network Graphics (PNG)
@@ -993,34 +994,34 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 ## Discussion
 
 There is a growing demand to use and reuse available data, which puts much
-pressure on the development of software solutions that help researchers not
-only to find but also to effectively reuse data (supporting). In ecology
-especially the integration of small and heterogeneous data, which represent the
-majority of datasets, seems promising as it potentially can be integrated into
-a wider context to answer questions on a broader temporal and spatial scale
-(cite xxx). However, particularly research areas like ecology which are
-characterised by a high degree of interdisciplinary interactions are
+pressure on the development of software that help researchers not only to find
+but also to effectively reuse data (supporting, Kepler). Especially the
+integration of small and heterogeneous data in ecology, which represent the
+majority of datasets, seems promising as it potentially can be used and
+integrated a wider context to answer questions on a much broader temporal and
+spatial scale (cite xxx). However, particularly research areas like ecology
+which are characterised by a high degree of interdisciplinary interactions are
 challenging in terms of data management.
 
 The software combination of `rbefdata` and `BEFdata` provides solutions to
 different aspects of the data life cycle for ecological research groups. While
-the `BEFdata` platform covers storage, and data harmonization tools, metadata
-support and a social component that fosters sharing data online (cite Karin),
-the `rbefdata` package gives easy access to data and metadata on the platform as
-well as it provides upload functionality for datasets and attachments like
-scripts or figures right from within R. Additionally, the tag based exploration
-of datasets helps to find datasets relevant for a certain analysis. The
-`tematres` vocabulary server integration further supports this as it allows to
-retrieve term definitions as well as semantical relations to broaden or narrow
-down search terms. 
+the `BEFdata` platform covers data storage and serves as a scratch pad for
+field data. It offers data harmonization tools, metadata support and a social
+component that fosters sharing data online (cite Karin). The `rbefdata` package
+enables access to data and metadata on the platform as well as it provides
+upload functionality for datasets and attachments like scripts or figures right
+from within R. The tag based exploration of datasets of the BEFdata platform
+helps to find relevant data for a certain analysis. The `tematres` vocabulary
+integration further supports this as it allows to retrieve term definitions as
+well as relations to broaden or narrow down search terms along a hierarchy. 
 
 `rbefdata` makes scripting a workflow to pull data for analysis and push back
 results and scripts simple. The upload mechanism can help to keep the data
-management platform up to date on the fly and gives other researchers the
-possibility to reproduce results by downloading scripts attached. An uploaded
-script is not only a stepping stone to reproducible research but also helps to
-track down data provenance which can be interesting in acknowledging data
-providers even for only one data column that has been used in an analysis. 
+management platform up to date and gives other researchers the possibility to
+reproduce results by downloading scripts attached to proposals or datasets. An
+uploaded script is not only a stepping stone to reproducible research but also
+helps to track down data provenance which can be interesting in terms of
+acknowledgement for data providers in a more fine grained view. 
 
 While it seems a waste of time and bandwidth on one hand to always transfer the
 data to a local script for processing, this approach also has its upsides.
