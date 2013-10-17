@@ -59,7 +59,7 @@ situation of data preservation, researchers are still reluctant to use online
 data platforms as they fear to give away and loose the control over their data
 (cite xxx). 
 
-The demand to reuse available data grows with the amount of data available.  In
+The demand to reuse available data grows with the amount of data available. In
 ecology for example the reuse of data is of interest as the integration of data
 offers the potential to answer questions on a much broader temporal and spatial
 scale (cite xxx). A problem with data reuse is that available data is often not
@@ -563,43 +563,108 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 ## Discussion
 
-* Data life cycle 
-* Data preservation
+* structure of intro
+  * many data
+  * reuse
+  * metadata 
+  * data search
+  * preprocessing with semantics integrated
+  * wrapup (metadata/paper proposals/workflows)
+
+* potential structure of discussion?
+  * Data life cycle 
+  * Data preservation
   * Metadata 
-* Data exploration/processing
+  * Data exploration/processing
   * Metadata 
   * Semantics 
   * Taxonomies
-* BEFdata and rbefdata solutions
+  * BEFdata and rbefdata solutions
 
-There is a growing demand to use and reuse available data, which puts much
-pressure on the development of software to help researchers not only in the
-process of finding, but also to effectively reuse data (supporting, Kepler).
-In ecology especially the integration of small and heterogeneous data, which
-represent the majority of data, seems promising. It potentially can be
-integrated into a wider context, to answer questions on a much broader temporal
-and spatial scale (cite xxx). However, particularly research areas like ecology
-which are characterised by a high degree of interdisciplinary interactions are
-challenging in terms of data management and the applicability of some valuable
-concepts like ontologies seems questionable. While ontologies with a very clear
-and close scope are in use already (onto verse examples) the development of a
-sophisticated ontology for ecology research is a very time, labor intensive and
-complex task. The nature of ecology requires a community for the development of
-ontologies that includes experts from all contributing domains to model the
-relevant concepts into a formal representation.
 
-The software combination of `rbefdata` and `BEFdata` provides solutions to
-different aspects of the data life cycle for ecological research groups. The
-`BEFdata` platform serves as a scratch pad for research data and covers the
-preservation of data. It offers data harmonization tools, metadata support and
-a social component to foster sharing data online (cite Karin). The `rbefdata`
-package enables access to data and metadata on the platform as well as it
-provides upload functionality to preserve data products and attachments that
-are generated on analysing data. The tag based exploration of datasets of the
-BEFdata platform improves the exploration of relevant data for a certain
-analysis and the `tematres` vocabulary integration further supports this. It
-allows to retrieve term definitions as well as relations to broaden or narrow
-down search terms along a hierarchy. 
+Even though the situation in data preservation has been improved by online data
+management platforms, there is still lots of valuable data lost (long tail).
+One one hand this is related to the fact that researchers are reluctant to use
+online tools as they fear to give away and loose the control over their data or
+the projects they are working in do not have a data preservation or policy that
+would require them to preserve data. However on the other hand this is also
+related to the fact that there is usually no incentive or direct benefit for
+researchers to share data. The description process with metadata takes time and
+only means to put more effort in "dead" data. A solution to this on one hand is
+a strict policy on side of the  
+
+The software combination `rbefdata` and `BEFdata` provides solutions to data
+management aspects like data preservation, processing and meta data. 
+
+
+Are still reluctant to use these online preservation tools as they fear on one
+hand to give away and loose the control over their data and on the other hand
+there is no direct incentive or benefit that would result from preparing data
+with metadata and to share it online. 
+  
+The vast amount of data available in ecology and other related research
+disciplines offers the opportunity to answer the most pressing questions like
+for example about the global climate change and the maintainability of vital
+ecosystem services. This requires efficient tools that not only help to access
+the data but also to process it and to preserve data products including the way
+they have been derived to be fully reproducible. 
+
+* less effort has been put into preservation of algorithms and workflows that 
+  researchers use to derive their data products and results
+
+
+
+
+
+
+Thus many valuable data gets forgotten somewhere kept on the laptops of
+reserchers. There is usually no direct benefit to share data online an 
+
+Another important component of the problem is that there is usually no benefit
+for sharing data online.
+
+
+lost a high amount of valuable data as researchers are still reluctant to give
+away their data. One possible solution to this would be to make data
+preservation obligatory and make it a condition for sponsorship of projects.
+
+
+One one hand there is many
+data already available. And on the other hand many data is still lost.
+
+
+as researchers are still reluctant to use online
+data preservation tools. This is related to the fact that they fear to loos the
+control over their valuable data. This is also related to the system of
+reputation that we still live in.  We keep our data secret and use it to
+produce publications so we get cited and get a certain impact.
+
+
+
+This requires the reuse and
+integration of mostly small and heterogeneus data.
+
+
+Even though the situation gets
+better there is still many data lost as researchers are reluctant to use online
+data preservation tools as they fear to loose the control over their data.
+
+
+colloaboration.
+
+many aspects of the data life cycle. The `BEFdata` platform serves as a scratch
+pad for research data as well as it covers the preservation of data. It offers
+data harmonization tools, metadata support via the Ecological Metadata Language
+standard and a social component that fosters sharing data online (cite Karin).
+The `rbefdata` package enables access to the data and metadata on the platform
+as well as it provides upload functionality right from within the R environment 
+
+to preserve data products and
+attachments that are generated on analysing data.  The tag based exploration of
+datasets of the BEFdata platform improves the exploration of relevant data for
+a certain analysis and the `tematres` vocabulary integration further supports
+this. It allows to retrieve term definitions as well as relations to broaden or
+narrow down search terms along a hierarchy. 
 
 While well described data helps a lot in understanding datasets and on
 deciding upon the relevance and applicability of data for a certain analysis
@@ -611,6 +676,36 @@ before smart models can be applied to the data to find interesting patters
 time and labour intensive but also potentially error prone, especially as the
 complexity of the analyses increases. Provenance and the advantage of keeping
 scripts (workflows) close to the data.
+
+
+
+In ecology the reuse of the mostly small and heterogeneous data seems
+promising. It can be integrated into a wider context to answer questions on a
+much broader, temporal and spatial scale. 
+
+This is of particular intrest in terms of the most pressing questions in
+ecology
+
+about climate changes and
+ecosystem services. This requires several 
+
+There is a growing demand to reuse available data and for tools that enable
+researchers to deal with requirements like data preservation, exploration and
+reuse as well as with the description process of data via meta data.  
+
+ However, particularly research areas like ecology
+which are characterised by a high degree of interdisciplinary interactions are
+challenging in terms of data management and the applicability of some valuable
+concepts like ontologies seems questionable. While ontologies with a very clear
+and close scope are in use already (onto verse examples) the development of a
+sophisticated ontology for ecology research is a very time, labor intensive and
+complex task. The nature of ecology requires a community for the development of
+ontologies that includes experts from all contributing domains to model the
+relevant concepts into a formal representation.
+
+(supporting, Kepler).
+
+
 
 
 
@@ -636,10 +731,9 @@ freedom of choice this could be one of the future features to be integrated.
 
 
 
-
 ### rbefdata makes metadata available within the R environment
 
-.  `rbefdata` is innovative in that it
+`rbefdata` is innovative in that it
 provides data together with metadata in the R environment.
 
 

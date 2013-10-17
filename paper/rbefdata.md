@@ -55,7 +55,7 @@ situation of data preservation, researchers are still reluctant to use online
 data platforms as they fear to give away and loose the control over their data
 (cite xxx). 
 
-The demand to reuse available data grows with the amount of data available.  In
+The demand to reuse available data grows with the amount of data available. In
 ecology for example the reuse of data is of interest as the integration of data
 offers the potential to answer questions on a much broader temporal and spatial
 scale (cite xxx). A problem with data reuse is that available data is often not
@@ -342,11 +342,11 @@ narrow_tasks_plant_organ
 
 ```
 ## $id
-##  [1] "385" "386" "390" "391" "73"  "387" "75"  "76"  "388" "389" "30" 
+##  [1] "385" "386" "390" "391" "73"  "387" "75"  "388" "389" "30" 
 ## 
 ## $term
-##  [1] "flower"  "flowers" "fruit"   "fruits"  "leaf"    "leaves"  "root"    "roots"   "seed"   
-## [10] "seeds"   "twig"
+##  [1] "flower"  "flowers" "fruit"   "fruits"  "leaf"    "leaves"  "root"    "seed"    "seeds"  
+## [10] "twig"
 ```
 
 ```r
@@ -366,38 +366,40 @@ datasets_plant_organ_narrow
 ## 6  371
 ## 7  372
 ## 8  108
-## 9  357
-## 10 188
-## 11 202
-## 12 143
-## 13 145
-## 14 360
-## 15 160
-## 16 166
-## 17 147
-## 18 411
-## 19 413
-## 20 367
-## 21 368
-## 22 384
-## 23 219
-## 24 212
-## 25 187
-## 26 381
-## 27 405
-## 28 319
-## 29 347
-## 30 424
-## 31 322
-## 32 107
-## 33 379
-## 34 313
-## 35 192
-## 36 127
-## 37 105
-## 38 418
-## 39 421
-## 40 375
+## 9  429
+## 10 357
+## 11 188
+## 12 202
+## 13 143
+## 14 145
+## 15 360
+## 16 160
+## 17 166
+## 18 147
+## 19 411
+## 20 413
+## 21 367
+## 22 368
+## 23 384
+## 24 219
+## 25 212
+## 26 187
+## 27 381
+## 28 405
+## 29 319
+## 30 347
+## 31 424
+## 32 322
+## 33 107
+## 34 430
+## 35 379
+## 36 313
+## 37 192
+## 38 127
+## 39 105
+## 40 418
+## 41 421
+## 42 375
 ##                                                                                                                                            title
 ## 1                                                               Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
 ## 2                                       Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A& B)
@@ -407,38 +409,40 @@ datasets_plant_organ_narrow
 ## 6                                                                   Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 & 3)
 ## 7                                                                                  Estimated Root Biomass of July 2010 of Pilot Experiment (SP1)
 ## 8                                   Talk 5: Leaf eco-physiological traits and coarse root spatial distribution characteristic in CSPs (2010)—SP3
-## 9                                                                                          Biomass Allometry Equations of Pilot Experiment (SP7)
-## 10 Biomass of four tree species (Castanea henryi, Quercus serrata, Schima suberba and Elaeocarpus decipiens) as saplings in the Pilot Experiment
-## 11                                            Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
-## 12                                          Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
-## 13                                                Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
-## 14                                                                                                                  Detailed tree allometry data
-## 15                                                                                                          Genetic diversity of Ardisia crenata
-## 16                                                                                                        Genetic diversity of Castanopsis eyrei
-## 17                                                                         Herbivore damage on saplings of 23 tree and shrub species in the CSPs
-## 18                                                                                        herbivory in the Main Experiment site A in summer 2009
-## 19                                                                                                herbivory in the pilot experiment in fall 2010
-## 20                                                                                              Leaf damage of tree individuals Site A fall 2011
-## 21                                                                                            Leaf damage of tree individuals Site A summer 2011
-## 22                                                                                                                          NILEX - Soil Erosion
-## 23                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
-## 24                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
-## 25                                                                                         Traits of ferns and herb species occuring in the CSPs
-## 26                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
-## 27                                                                                                 Leaf demography in the Main Experiment - 2011
-## 28                                                                                                                  Site A tree census from 2010
-## 29                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
-## 30                                                                                                                    Cuttings experiment - CSPs
-## 31                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
-## 32                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
-## 33                                                                           Functional traits of 45 species in subtropical forest in Dujiangyan
-## 34                                                                                                    P concentrations in leaves and roots, CSPs
-## 35                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
-## 36                                                                                                CSP soil profile description II: soil horizons
-## 37                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
-## 38                                                                                                                          Resident phytometers
-## 39                                                                                            Pilot experiment: performance, biomass & herbivory
-## 40                                          Functional traits of 14 subtropical woody species across a light-availability gradient in Dujiangyan
+## 9                                                                                    Tree - herb interactions and invasibility of exotic species
+## 10                                                                                         Biomass Allometry Equations of Pilot Experiment (SP7)
+## 11 Biomass of four tree species (Castanea henryi, Quercus serrata, Schima suberba and Elaeocarpus decipiens) as saplings in the Pilot Experiment
+## 12                                            Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
+## 13                                          Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
+## 14                                                Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
+## 15                                                                                                                  Detailed tree allometry data
+## 16                                                                                                          Genetic diversity of Ardisia crenata
+## 17                                                                                                        Genetic diversity of Castanopsis eyrei
+## 18                                                                         Herbivore damage on saplings of 23 tree and shrub species in the CSPs
+## 19                                                                                        herbivory in the Main Experiment site A in summer 2009
+## 20                                                                                                herbivory in the pilot experiment in fall 2010
+## 21                                                                                              Leaf damage of tree individuals Site A fall 2011
+## 22                                                                                            Leaf damage of tree individuals Site A summer 2011
+## 23                                                                                                                          NILEX - Soil Erosion
+## 24                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
+## 25                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
+## 26                                                                                         Traits of ferns and herb species occuring in the CSPs
+## 27                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
+## 28                                                                                                 Leaf demography in the Main Experiment - 2011
+## 29                                                                                                                  Site A tree census from 2010
+## 30                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
+## 31                                                                                                                    Cuttings experiment - CSPs
+## 32                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
+## 33                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
+## 34                                                                                        Functional traits herb layer community-main experiment
+## 35                                                                           Functional traits of 45 species in subtropical forest in Dujiangyan
+## 36                                                                                                    P concentrations in leaves and roots, CSPs
+## 37                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
+## 38                                                                                                CSP soil profile description II: soil horizons
+## 39                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
+## 40                                                                                                                          Resident phytometers
+## 41                                                                                            Pilot experiment: performance, biomass & herbivory
+## 42                                          Functional traits of 14 subtropical woody species across a light-availability gradient in Dujiangyan
 ```
 
 
@@ -830,8 +834,8 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0014 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0283 * 
+## 2 - 1 == 0    0.601      0.170    3.53   0.0012 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -993,43 +997,108 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 ## Discussion
 
-* Data life cycle 
-* Data preservation
+* structure of intro
+  * many data
+  * reuse
+  * metadata 
+  * data search
+  * preprocessing with semantics integrated
+  * wrapup (metadata/paper proposals/workflows)
+
+* potential structure of discussion?
+  * Data life cycle 
+  * Data preservation
   * Metadata 
-* Data exploration/processing
+  * Data exploration/processing
   * Metadata 
   * Semantics 
   * Taxonomies
-* BEFdata and rbefdata solutions
+  * BEFdata and rbefdata solutions
 
-There is a growing demand to use and reuse available data, which puts much
-pressure on the development of software to help researchers not only in the
-process of finding, but also to effectively reuse data (supporting, Kepler).
-In ecology especially the integration of small and heterogeneous data, which
-represent the majority of data, seems promising. It potentially can be
-integrated into a wider context, to answer questions on a much broader temporal
-and spatial scale (cite xxx). However, particularly research areas like ecology
-which are characterised by a high degree of interdisciplinary interactions are
-challenging in terms of data management and the applicability of some valuable
-concepts like ontologies seems questionable. While ontologies with a very clear
-and close scope are in use already (onto verse examples) the development of a
-sophisticated ontology for ecology research is a very time, labor intensive and
-complex task. The nature of ecology requires a community for the development of
-ontologies that includes experts from all contributing domains to model the
-relevant concepts into a formal representation.
 
-The software combination of `rbefdata` and `BEFdata` provides solutions to
-different aspects of the data life cycle for ecological research groups. The
-`BEFdata` platform serves as a scratch pad for research data and covers the
-preservation of data. It offers data harmonization tools, metadata support and
-a social component to foster sharing data online (cite Karin). The `rbefdata`
-package enables access to data and metadata on the platform as well as it
-provides upload functionality to preserve data products and attachments that
-are generated on analysing data. The tag based exploration of datasets of the
-BEFdata platform improves the exploration of relevant data for a certain
-analysis and the `tematres` vocabulary integration further supports this. It
-allows to retrieve term definitions as well as relations to broaden or narrow
-down search terms along a hierarchy. 
+Even though the situation in data preservation has been improved by online data
+management platforms, there is still lots of valuable data lost (long tail).
+One one hand this is related to the fact that researchers are reluctant to use
+online tools as they fear to give away and loose the control over their data or
+the projects they are working in do not have a data preservation or policy that
+would require them to preserve data. However on the other hand this is also
+related to the fact that there is usually no incentive or direct benefit for
+researchers to share data. The description process with metadata takes time and
+only means to put more effort in "dead" data. A solution to this on one hand is
+a strict policy on side of the  
+
+The software combination `rbefdata` and `BEFdata` provides solutions to data
+management aspects like data preservation, processing and meta data. 
+
+
+Are still reluctant to use these online preservation tools as they fear on one
+hand to give away and loose the control over their data and on the other hand
+there is no direct incentive or benefit that would result from preparing data
+with metadata and to share it online. 
+  
+The vast amount of data available in ecology and other related research
+disciplines offers the opportunity to answer the most pressing questions like
+for example about the global climate change and the maintainability of vital
+ecosystem services. This requires efficient tools that not only help to access
+the data but also to process it and to preserve data products including the way
+they have been derived to be fully reproducible. 
+
+* less effort has been put into preservation of algorithms and workflows that 
+  researchers use to derive their data products and results
+
+
+
+
+
+
+Thus many valuable data gets forgotten somewhere kept on the laptops of
+reserchers. There is usually no direct benefit to share data online an 
+
+Another important component of the problem is that there is usually no benefit
+for sharing data online.
+
+
+lost a high amount of valuable data as researchers are still reluctant to give
+away their data. One possible solution to this would be to make data
+preservation obligatory and make it a condition for sponsorship of projects.
+
+
+One one hand there is many
+data already available. And on the other hand many data is still lost.
+
+
+as researchers are still reluctant to use online
+data preservation tools. This is related to the fact that they fear to loos the
+control over their valuable data. This is also related to the system of
+reputation that we still live in.  We keep our data secret and use it to
+produce publications so we get cited and get a certain impact.
+
+
+
+This requires the reuse and
+integration of mostly small and heterogeneus data.
+
+
+Even though the situation gets
+better there is still many data lost as researchers are reluctant to use online
+data preservation tools as they fear to loose the control over their data.
+
+
+colloaboration.
+
+many aspects of the data life cycle. The `BEFdata` platform serves as a scratch
+pad for research data as well as it covers the preservation of data. It offers
+data harmonization tools, metadata support via the Ecological Metadata Language
+standard and a social component that fosters sharing data online (cite Karin).
+The `rbefdata` package enables access to the data and metadata on the platform
+as well as it provides upload functionality right from within the R environment 
+
+to preserve data products and
+attachments that are generated on analysing data.  The tag based exploration of
+datasets of the BEFdata platform improves the exploration of relevant data for
+a certain analysis and the `tematres` vocabulary integration further supports
+this. It allows to retrieve term definitions as well as relations to broaden or
+narrow down search terms along a hierarchy. 
 
 While well described data helps a lot in understanding datasets and on
 deciding upon the relevance and applicability of data for a certain analysis
@@ -1041,6 +1110,36 @@ before smart models can be applied to the data to find interesting patters
 time and labour intensive but also potentially error prone, especially as the
 complexity of the analyses increases. Provenance and the advantage of keeping
 scripts (workflows) close to the data.
+
+
+
+In ecology the reuse of the mostly small and heterogeneous data seems
+promising. It can be integrated into a wider context to answer questions on a
+much broader, temporal and spatial scale. 
+
+This is of particular intrest in terms of the most pressing questions in
+ecology
+
+about climate changes and
+ecosystem services. This requires several 
+
+There is a growing demand to reuse available data and for tools that enable
+researchers to deal with requirements like data preservation, exploration and
+reuse as well as with the description process of data via meta data.  
+
+ However, particularly research areas like ecology
+which are characterised by a high degree of interdisciplinary interactions are
+challenging in terms of data management and the applicability of some valuable
+concepts like ontologies seems questionable. While ontologies with a very clear
+and close scope are in use already (onto verse examples) the development of a
+sophisticated ontology for ecology research is a very time, labor intensive and
+complex task. The nature of ecology requires a community for the development of
+ontologies that includes experts from all contributing domains to model the
+relevant concepts into a formal representation.
+
+(supporting, Kepler).
+
+
 
 
 
@@ -1066,10 +1165,9 @@ freedom of choice this could be one of the future features to be integrated.
 
 
 
-
 ### rbefdata makes metadata available within the R environment
 
-.  `rbefdata` is innovative in that it
+`rbefdata` is innovative in that it
 provides data together with metadata in the R environment.
 
 
