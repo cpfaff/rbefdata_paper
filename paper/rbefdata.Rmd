@@ -42,95 +42,101 @@ the introduced R package and the combination of software in terms of the data
 life cycle and the current data management requirements in ecology as well as
 we given an outlook on upcoming features of `rbefdata` and `BEFdata`.
 
-## Introduction
+## Introduction 
 
 With a growing awareness on the value of data, many data management platforms
 have been developed to preserve all kinds of environmental and historic data.
 These provide data preservation for small scale projects as well as for large
-scale, big data producing, long term or remote sensing collaborations (e.g.
-diversity workbench, `BEFdata`, DataONE, LifeWatch, Pangea, Bexis). An ongoing
-trend in data preservation and accessibility is the development of integrative
-databases or data portals (TRY, GBIF, Pangea). They serve as nodes that collect
-data from smaller databases of a certain domain and enable researchers to
-access a wide range of relevant data, all from one place. All these platforms
-offer a solution to one of the most pressing problems in data management the
-loss of valuable data (cite xxx). Even tough these platforms improve the
-situation of data preservation, researchers are still reluctant to use online
-data platforms as they fear to give away and loose the control over their data
-(cite xxx). 
+scale, big data producing, long term or remote sensing collaborations (cite
+e.g.  diversity workbench, `BEFdata`, DataONE, LifeWatch, Pangea, Bexis). An
+ongoing trend in data preservation and accessibility is the development of
+integrative databases or data portals (cite TRY, GBIF, Pangea). They serve as
+nodes that collect data from smaller databases of a certain domain and enable
+researchers to access a wide range of relevant data, all from one place. All
+these platforms offer a solution to one of the most pressing problems in data
+management the loss of valuable data (Heidorn, 2008). Even tough these
+platforms improve the situation of data preservation, researchers are still
+reluctant to use online data platforms as they fear to give away and loose the
+control over their data (michener 2012). 
 
-The demand to reuse available data grows with the amount of data available. In
-ecology for example the reuse of data is of interest as the integration of data
-offers the potential to answer questions on a much broader temporal and spatial
-scale (cite xxx). A problem with data reuse is that available data is often not
-well described. Metadata gives researchers the opportunity to describe their
-data and others to understand raw research data even if they are not familiar
-with it. Metadata is necessary as plain primary research data can be hard to
-understand, and even hard to decipher by the authors themselves after some time
-has passed. For example it is hard to remember what methods have been used to
-collect the data of a certain column or what the abbreviations and the headers
-in the dataset mean. However metadata is still not used exhaustive as it
-usually always means to put more time into the collected data and to learn new
-tools that help to describe it (e.g morpho, dataUP).
+The demand to reuse available data grows with the amount of data available
+(Heidorn, 2008). In ecology for example the reuse of data is of interest as the
+integration of data offers the potential to answer questions on a much broader
+temporal and spatial scale (michener, 2008). A problem with data reuse is that
+available data is often not well described. Metadata gives researchers the
+opportunity to describe their data and others to understand raw research data
+even if they are not familiar with it (Fegraus 2005). Metadata is necessary as
+plain primary research data can be hard to understand, and even hard to
+decipher by the authors themselves after some time has passed. For example it
+is hard to remember what methods have been used to collect the data of a
+certain column or what the abbreviations and the headers in the dataset mean.
+However metadata is still not used exhaustive as it usually always means to put
+more time into the collected data and to learn new tools that help to describe
+it (e.g morpho, dataUP).
 
 To find relevant data for reuse is a challenging task that is getting even more
-complex if more data gets available. A common practice in data discovery, next
-to full text search in data and metadata, is tagging with keywords (BEFdata).
-However a keyword search can be very coarse as it may provide access to a set
-of data but misses other essential and relevant data tagged with close related
-or synonymous keywords. For example a keyword search on "weight" and "leaves"
-will miss datasets tagged only with "dry weight" or "wet weight" and "plant
-products" that might be of interest as well. The integration of semantic
-repositories that provide taxonomies can potentially improve the situation
-here. These repositories can embed the keywords into a hierarchical structure
-and so the query can be extended along known relations of the search term.
+complex if more data gets available (Leinfelder et al, xxx). A common practice
+in data discovery, next to full text search in data and metadata, is tagging
+with keywords (Nadrowski 2013).  However a keyword search can be very coarse as
+it may provide access to a set of data but misses other essential and relevant
+data tagged with close related or synonymous keywords (Leinfelder et al. xxx,
+michener 2008). For example a keyword search on "weight" and "leaves" will miss
+datasets tagged only with "dry weight" or "wet weight" and "plant products"
+that might be of interest as well.  The integration of semantic repositories
+that provide taxonomies can potentially improve the situation here. These
+repositories can embed the keywords into a hierarchical structure and so the
+query can be extended along known relations of the search term (Leinfelder et
+al.).
 
 Before data can effectively be reused it may needs to be cleaned, imputed,
-reshaped and merged. This usually takes up to 70% of an analysis script (cite
-Karin and me, and xxx). These preparatory steps are not only time and labour
+reshaped and merged. This usually takes up to 70% of an analysis script (Garijo
+2012, Pfaff 2013 in prep). These preparatory steps are not only time and labour
 intensive but also potentially error prone, especially if the amount and
 complexity of data to be included increases. The integration of semantic
-repositories that provide ontologies can help to solve these problems. As
-ontologies allow the machine readable access to knowledge of a scientific
-domain they can be used to develop tools that "understand" the contents of
-datasets and guide researchers on the process of data preparation. While
-ontologies with a clear and small scope are very well used already it is a
-challenging tasks to create an ontology for research domains like ecology that
-are characterized by a high degree of interdisciplinary interactions. This
-characteristic leads to a heterogeneous landscape of knowledge and concepts
-that would need to be covered and formalized in the ontology.
+repositories that provide ontologies can help to solve these problems (michener
+2008). As ontologies allow the machine readable access to knowledge of a
+scientific domain they can be used to develop tools that "understand" the
+contents of datasets and guide researchers on the process of data preparation.
+While ontologies with a clear and small scope are very well used already (cite
+xxx, e.g gene Ontology) it is a challenging tasks to create an ontology for
+research domains like ecology that are characterized by a high degree of
+interdisciplinarity (Parsons 2011). This characteristic leads to a
+heterogeneous landscape of knowledge and concepts that would need to be covered
+and formalized by the ontology.
 
 Metadata as well as the concept of paper proposals can reduce the barrier to
-data sharing and foster collaboration (cite Karin). While metadata allows an
-insight into raw data without the need to give the data away, paper proposals
-can serve as tool to discuss research ideas based on the metadata available.
-The integration of semantic repositories potentially improves not only the
-discovery of data but also assists researchers with the preparation of data on
-reuse. A trending concept to streamline the processing of data is workflows.
-They enable the access to data and metadata, the manipulation and analysis of
-data as well as the preservation of valuable data products. The Kepler (cite
-xxx) and the Pegasus (cite xxx) software are only two examples of software that
-implement the workflow concept. However there is still demand on tools that
-integrate a full set of data management concepts into a widely accepted and
-commonly used analysis software like R. 
+data sharing and foster collaboration (Nadrowski 2013). While metadata allows
+an insight into raw data without the need to give the data away, paper
+proposals can serve as tool to discuss research ideas based on the metadata
+available (Nadrowski 2013, Bruelheide xxx). The integration of semantic
+repositories potentially improves not only the discovery of data but also
+assists researchers with the preparation of data on reuse (michener 2008). A
+trending concept to streamline the processing of data is workflows (altintas
+2004/2005, michener 2012). They enable the access to data and metadata, the
+manipulation and analysis of data as well as the preservation of valuable data
+products. The Kepler (Altintas xxx) and the Pegasus (cite xxx) software are
+only two examples of software that implement the workflow concept. However
+there is still demand on tools that integrate a full set of data management
+concepts into a widely accepted and commonly used analysis software like R. 
 
 We here introduce the `rbefdata` R package as companion to the open source data
-management platform `BEFdata` (cite Karin). The package is part of the rOpenSci
-(http://ropensci.org/) initiative which is a community driven project to
-provide the R statistics environment (cite R) with a flexible access to
-scientific data repositories. The R package enables access to data and metadata
-stored on a `BEFdata` platform, integrates semantic repositories stored on
-`tematres` vocabulary servers (http://www.vocabularyserver.com/) and provides
-data preservation functionality for raw research data as well as for free
-format attachments files. We showcase the functionality of the `rbefdata`
-package available with version 0.3.5. We create a workflow in form of an R
-script that shows the semantic refinement of keywords to improve the search of
-datasets, the use of metadata in data processing, how to pull a complete set of
-data into the R environment based on a paper proposal, and finally the upload
-of data products. The workflow is created along an analysis about N retention
-that was done in the BEF-China experiment. The results of the analysis have
-been published already and the related data is open access (Lang et al.  2013)
-which makes the workflow shown here fully reproducible. 
+management platform `BEFdata` (Nadrowski 2013). The package is part of the
+rOpenSci (http://ropensci.org/) initiative which is a community driven project
+to provide the R statistics environment (R Development Core Team 2008) with a
+flexible access to scientific data repositories. The R package enables access
+to data and metadata stored on a `BEFdata` platform, integrates semantic
+repositories stored on `tematres` vocabulary servers
+(http://www.vocabularyserver.com/) and provides data preservation functionality
+for raw research data as well as for free format attachments files. We showcase
+the functionality of the `rbefdata` package available with version 0.3.5. We
+create a workflow in form of an R script that shows the semantic refinement of
+keywords to improve the search of datasets, the use of metadata in data
+processing, how to pull a complete set of data into the R environment based on
+a paper proposal, and finally the upload of data products. The workflow is
+created along an analysis about N retention that was done in the BEF-China
+experiment. The results of the analysis have been published already and the
+related data is open access (Lang et al.  2013) which makes the workflow shown
+here fully reproducible. 
 
 ## Material and Methods 
 
