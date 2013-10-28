@@ -10,14 +10,16 @@
 
 ### Read the paper
 
-You can have a first glance on the contents in nice formatted markdown if you go
-to the [markdown representation](paper/rbefdata.md) of the paper in this repository.
+You can have a first glance on the contents in nice formatted markdown if you
+go to the [markdown representation](paper/rbefdata.md) of the paper in this
+repository.
 
 ### Edit the paper
 
-To edit the paper please work in the .Rmd file in the paper folder as it is the original
-file. Changes in this fle will be overwritten if i start a compilation (knitr) run to
-the .md file and to the .html file. Here a link to the right file:
+To edit the paper please work in the .Rmd file in the paper folder as it is the
+original file. Changes in this fle will be overwritten if i start a compilation
+(knitr) run to the .md file and to the .html file. Here a link to the right
+file:
 
 [R markdown representation](paper/rbefdata.Rmd)
 
@@ -44,8 +46,8 @@ For the collaboration on github please create your own author branch for writing
 git checkout -b author_yourname
 ```
 
-Work on that branch only and once and a while merge it into the master branch. This works
-as follows:
+Work on that branch only and once and a while merge it into the master branch.
+This works as follows:
 
 * Checkout the master
 
