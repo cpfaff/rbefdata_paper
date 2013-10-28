@@ -655,8 +655,6 @@ ANOVA Type II was carried out to test for main effects using the R package
 
 
 ```r
-require(nlme)
-require(multcomp)
 require(car)
 ```
 
@@ -669,7 +667,7 @@ model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1
 ```
 
 ```
-## Error: object 'syndata' not found
+## Error: could not find function "lme"
 ```
 
 ```r
@@ -685,7 +683,7 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## Error: could not find function "glht"
 ```
 
 ```r
@@ -718,7 +716,7 @@ model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, m
 ```
 
 ```
-## Error: object 'syndata' not found
+## Error: could not find function "lme"
 ```
 
 ```r
@@ -734,7 +732,7 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## Error: could not find function "glht"
 ```
 
 ```r
@@ -755,7 +753,7 @@ model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, m
 ```
 
 ```
-## Error: object 'syndata' not found
+## Error: could not find function "lme"
 ```
 
 ```r
@@ -771,7 +769,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## Error: could not find function "glht"
 ```
 
 ```r
@@ -792,7 +790,7 @@ model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, m
 ```
 
 ```
-## Error: object 'syndata' not found
+## Error: could not find function "lme"
 ```
 
 ```r
@@ -808,7 +806,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: no 'model.matrix' method for 'model' found!
+## Error: could not find function "glht"
 ```
 
 ```r

@@ -403,8 +403,6 @@ ANOVA Type II was carried out to test for main effects using the R package
 `car` (Fox and Weisberg 2011). The models have been evaluated visually.
 
 ```{r anne_script_load_packages, message = F} 
-require(nlme)
-require(multcomp)
 require(car)
 ```
 
