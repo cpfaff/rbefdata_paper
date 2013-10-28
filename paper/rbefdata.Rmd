@@ -11,38 +11,40 @@ options(width = 95)
 
 ## Abstract
 
-Today ecologists face a deluge of data like in many other disciplines. This
-puts much pressure on the development of tools that foster the preservation of
-data as well as the exploration and reuse of available data. Many tools and
-concepts available for data management provide solutions to different parts of
-the life cycle of data. However not all of them are widely spread or accepted
-throughout ecology. This situation can be improved by the tight integration of
-data management concepts into existing and widely used software and thus into
-the daily workflow of researchers. Paper proposals and data provenance as ways
-to promote the discussion of ideas and collaborations, metadata to improve data
-preservation and information exchange as well as the integration of semantic
-resources to enhance data exploration and processing, only represent a few
-examples of valuable concepts with the potential to improve the progress of a
-data intensive scientific domain like ecology. 
-
 In this paper we introduce the `rbefdata` package that provides the R
 statistics environment with access to the open source data management platform
-`BEFdata`. The R package leverages access to data and metadata, includes the
-integration of a semantic repository (thesaurus) and offers preservation
-functionality for datasets and other data products. We showcase the
-functionality of the R package and the interactions with the data management
-platform using an R script workflow. It pulls and analyses data associated with
-a research idea in form of a paper proposal from the `BEFdata` instance of the
-BEF-China experiment. The analysis in the workflow deals with N retention along
-a biodiversity gradient and asks for the influence of biodiversity in this
-process. The results of the analysis itself have been published already and
-thus the data used here is open access. This makes the workflow script
-presented, fully reproducible by executing the script step by step. We discuss
-the introduced R package and the combination of software in terms of the data
-life cycle and the current data management requirements in ecology as well as
-we given an outlook on upcoming features of `rbefdata` and `BEFdata`.
+`BEFdata`. The R package leverages access to data and metadata, integrates a
+semantic repository (thesaurus) and offers preservation for datasets and other
+data products like scripts and figures. We showcase the functionality of the R
+package and the interactions with the data management platform using an R
+script. It pulls and analyses data associated with a research idea in form of a
+paper proposal from the `BEFdata` instance of the BEF-China experiment. The
+analysis in the workflow deals with N retention along a biodiversity gradient
+and asks for the influence of biodiversity on the process. The results of the
+analysis have been published already and thus the data used here is open
+access. Thus the script and analysis presented here is fully reproducible by
+executing the script. We discuss the introduced R package and the combination
+of software in terms of the data life cycle and the current data management
+requirements in ecology as well as we given an outlook on upcoming features of
+`rbefdata` and `BEFdata`.
 
 ## Introduction 
+
+Today ecologists face a deluge of data like in many other disciplines. This
+puts much pressure on the development of tools that foster the preservation,
+the exploration and the reuse of data. Many tools and concepts in data
+management provide solutions to different parts of the life cycle of data.
+However not all of them are widely spread or accepted throughout ecology. This
+situation can be improved by the tight integration of data management concepts
+into existing and widely used software and thus into the daily workflow of
+researchers. Paper proposals and data provenance as ways to promote the
+discussion of ideas and collaborations, metadata to improve data preservation
+and information exchange as well as the integration of semantic resources to
+enhance data exploration and processing, only represent a few examples of
+valuable concepts with the potential to improve the progress of a data
+intensive scientific domain like ecology. The `rbefdata` R package is an
+approach to combine the strengths of the mentioned data management concepts
+into a single and simple usable R package.
 
 With a growing awareness on the value of data, many data management platforms
 have been developed to preserve all kinds of environmental and historic data.
@@ -103,21 +105,6 @@ research domains like ecology that are characterized by a high degree of
 interdisciplinarity (Parsons 2011). This characteristic leads to a
 heterogeneous landscape of knowledge and concepts that would need to be covered
 and formalized by the ontology.
-
-Metadata as well as the concept of paper proposals can reduce the barrier to
-data sharing and foster collaboration (Nadrowski 2013). While metadata allows
-an insight into raw data without the need to give the data away, paper
-proposals can serve as tool to discuss research ideas based on the metadata
-available (Nadrowski 2013, Bruelheide xxx). The integration of semantic
-repositories potentially improves not only the discovery of data but also
-assists researchers with the preparation of data on reuse (michener 2008). A
-trending concept to streamline the processing of data is workflows (altintas
-2004/2005, michener 2012). They enable the access to data and metadata, the
-manipulation and analysis of data as well as the preservation of valuable data
-products. The Kepler (Altintas xxx) and the Pegasus (cite xxx) software are
-only two examples of software that implement the workflow concept. However
-there is still demand on tools that integrate a full set of data management
-concepts into a widely accepted and commonly used analysis software like R. 
 
 We here introduce the `rbefdata` R package as companion to the open source data
 management platform `BEFdata` (Nadrowski 2013). The package is part of the
