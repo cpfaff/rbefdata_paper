@@ -311,19 +311,19 @@ term_info
 ```r
 
 # get datasets tagged with plant organ
-datasets_plant_organ = bef.get.datasets_for_keyword("plant organ")
-```
-
-```
-## Error: could not find function "bef.get.datasets_for_keyword"
-```
-
-```r
+datasets_plant_organ = bef.get.datasets.for_keyword("plant organ")
 datasets_plant_organ
 ```
 
 ```
-## Error: object 'datasets_plant_organ' not found
+##    id
+## 1 357
+## 2 202
+## 3 187
+##                                                                                                title
+## 1                                              Biomass Allometry Equations of Pilot Experiment (SP7)
+## 2 Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
+## 3                                              Traits of ferns and herb species occuring in the CSPs
 ```
 
 ```r
@@ -346,19 +346,105 @@ narrow_tasks_plant_organ
 ```r
 
 # enrich the search with narrower keywords
-datasets_plant_organ_narrow = bef.get.datasets_for_keyword(c(narrow_tasks_plant_organ$term))
-```
-
-```
-## Error: could not find function "bef.get.datasets_for_keyword"
-```
-
-```r
+datasets_plant_organ_narrow = bef.get.datasets.for_keyword(c(narrow_tasks_plant_organ$term))
 datasets_plant_organ_narrow
 ```
 
 ```
-## Error: object 'datasets_plant_organ_narrow' not found
+##     id
+## 1  242
+## 2  320
+## 3  323
+## 4  428
+## 5  359
+## 6  371
+## 7  372
+## 8  108
+## 9  429
+## 10 357
+## 11 188
+## 12 202
+## 13 143
+## 14 145
+## 15 360
+## 16 160
+## 17 166
+## 18 147
+## 19 411
+## 20 413
+## 21 367
+## 22 368
+## 23 384
+## 24 219
+## 25 212
+## 26 187
+## 27 381
+## 28 405
+## 29 319
+## 30 347
+## 31 424
+## 32 322
+## 33 107
+## 34 430
+## 35 379
+## 36 313
+## 37 192
+## 38 127
+## 39 105
+## 40 434
+## 41 433
+## 42 435
+## 43 436
+## 44 418
+## 45 421
+## 46 375
+##                                                                                                                                            title
+## 1                                                               Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
+## 2                                       Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A& B)
+## 3                                                         Leaf traits and chemicals from individual trees in the Main Experiment (Sites A and B)
+## 4                                                                                      Leaf traits and chemicals of 122 tree species in the CSPs
+## 5                                                                                             Coarse root density in the Comparative Study Plots
+## 6                                                                   Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 & 3)
+## 7                                                                                  Estimated Root Biomass of July 2010 of Pilot Experiment (SP1)
+## 8                                   Talk 5: Leaf eco-physiological traits and coarse root spatial distribution characteristic in CSPs (2010)—SP3
+## 9                                                                                    Tree - herb interactions and invasibility of exotic species
+## 10                                                                                         Biomass Allometry Equations of Pilot Experiment (SP7)
+## 11 Biomass of four tree species (Castanea henryi, Quercus serrata, Schima suberba and Elaeocarpus decipiens) as saplings in the Pilot Experiment
+## 12                                            Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
+## 13                                          Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
+## 14                                                Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
+## 15                                                                                                                  Detailed tree allometry data
+## 16                                                                                                          Genetic diversity of Ardisia crenata
+## 17                                                                                                        Genetic diversity of Castanopsis eyrei
+## 18                                                                         Herbivore damage on saplings of 23 tree and shrub species in the CSPs
+## 19                                                                                        herbivory in the Main Experiment site A in summer 2009
+## 20                                                                                                herbivory in the pilot experiment in fall 2010
+## 21                                                                                              Leaf damage of tree individuals Site A fall 2011
+## 22                                                                                            Leaf damage of tree individuals Site A summer 2011
+## 23                                                                                                                          NILEX - Soil Erosion
+## 24                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
+## 25                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
+## 26                                                                                         Traits of ferns and herb species occuring in the CSPs
+## 27                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
+## 28                                                                                                 Leaf demography in the Main Experiment - 2011
+## 29                                                                                                                  Site A tree census from 2010
+## 30                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
+## 31                                                                                                                    Cuttings experiment - CSPs
+## 32                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
+## 33                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
+## 34                                                                                        Functional traits herb layer community-main experiment
+## 35                                                                           Functional traits of 45 species in subtropical forest in Dujiangyan
+## 36                                                                                                    P concentrations in leaves and roots, CSPs
+## 37                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
+## 38                                                                                                CSP soil profile description II: soil horizons
+## 39                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
+## 40                                                                         Seed addition experiment  Site A (VIPs) – abiotic predictor variables
+## 41                                                                                       Seed addition experiment  Site A (VIPs) - biomass data 
+## 42                                                                                Seed addition experiment  Site A (VIP´s) – repeated monitoring
+## 43                                                                                        Seed addition experiment  Site A (VIPs) – Tree heights
+## 44                                                                                                                          Resident phytometers
+## 45                                                                                            Pilot experiment: performance, biomass & herbivory
+## 46                                          Functional traits of 14 subtropical woody species across a light-availability gradient in Dujiangyan
 ```
 
 
@@ -387,27 +473,18 @@ http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 
 ```r
 # proposal id is
-datasets = bef.get.datasets_for_proposal(id = 90)
-```
-
-```
-## Error: could not find function "bef.get.datasets_for_proposal"
-```
-
-```r
+datasets = bef.get.datasets.for_proposal(id = 90)
 extract_second_dataset = datasets[[2]]
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 head(extract_second_dataset, 5)
 ```
 
 ```
-## Error: object 'extract_second_dataset' not found
+##     plot_id recov_plot perleaf_plot perroot_plot perbio_plot persoil_plot gbd_T0.mm.
+## 1 pilot1D01     15.642        2.918       1.0015       3.920        96.08         NA
+## 2 pilot1D02     13.032        5.523       1.3688       6.891        93.11      3.688
+## 3 pilot1D04     20.292        1.057       0.5157       1.572        98.43      2.875
+## 4 pilot1D05      9.595        4.187       1.0861       2.032        97.97      6.000
+## 5 pilot1D07      8.354       15.100       5.0983      17.963        82.04      7.000
 ```
 
  
@@ -438,25 +515,20 @@ attributes(datasets[[1]])$title
 ```
 
 ```
-## Error: object 'datasets' not found
+## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
 ```
 
 ```r
 
 # extract all dataset titles in the proposal
 titles = sapply(datasets, function(x) attributes(x)$title)
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 titles
 ```
 
 ```
-## Error: object 'titles' not found
+## [1] "Competition of saplings for N -Pilot- 15N recovery in leaves and fine roots "
+## [2] "Competition of saplings for N -Pilot- system 15N retention"                  
+## [3] "Plottreatment and -location within the blocks of the Pilot-Experiment"
 ```
 
 ```r
@@ -466,7 +538,12 @@ names(attributes(datasets[[1]]))
 ```
 
 ```
-## Error: object 'datasets' not found
+##  [1] "names"                    "class"                    "row.names"               
+##  [4] "title"                    "abstract"                 "publicationDate"         
+##  [7] "language"                 "creators"                 "authors"                 
+## [10] "intellectualRights"       "distribution"             "keywords"                
+## [13] "generalTaxonomicCoverage" "samplingDescription"      "spatial_coverage"        
+## [16] "temporal_coverage"        "related_material"         "columns"
 ```
 
 
@@ -481,21 +558,7 @@ metadata for the columns to check if this really is the case (see box below).
 ```r
 # extract into separate datasets
 Nretention = datasets[[2]]
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 design = datasets[[3]]
-```
-
-```
-## Error: object 'datasets' not found
-```
-
-```r
 
 # overview about the contents of the datasets
 
@@ -504,25 +567,19 @@ names(Nretention)
 ```
 
 ```
-## Error: object 'Nretention' not found
+## [1] "plot_id"      "recov_plot"   "perleaf_plot" "perroot_plot" "perbio_plot"  "persoil_plot"
+## [7] "gbd_T0.mm."
 ```
 
 ```r
 
 # description of column plot_id
 Nretention_column_plot_id_description = attributes(Nretention)$columns[1, ]$description
-```
-
-```
-## Error: object 'Nretention' not found
-```
-
-```r
 Nretention_column_plot_id_description
 ```
 
 ```
-## Error: object 'Nretention_column_plot_id_description' not found
+## [1] "Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively. (plot_id: plot_id; Datagroup description: Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively.)"
 ```
 
 ```r
@@ -532,24 +589,28 @@ names(design)
 ```
 
 ```
-## Error: object 'design' not found
+##  [1] "block"                    "x"                        "y"                       
+##  [4] "plot_id"                  "control_ID"               "block_community_code"    
+##  [7] "community_number"         "species_mixture"          "species_diversity"       
+## [10] "species_pool"             "species_code"             "research_group_colour"   
+## [13] "control"                  "closed_canopy"            "density"                 
+## [16] "Natives"                  "depth"                    "harvest"                 
+## [19] "fungicide"                "inoculation"              "pesticide"               
+## [22] "native"                   "genetic_diverstiy"        "seed_addition"           
+## [25] "fertilizer"               "plot_treatment_connected" "sp1"                     
+## [28] "sp2"                      "sp3"                      "sp4"                     
+## [31] "sp5"                      "sp7"                      "sp8"                     
+## [34] "sp11"                     "sp_connected"
 ```
 
 ```r
 
 design_column_plot_id_description = attributes(design)$columns[4, ]$description
-```
-
-```
-## Error: object 'design' not found
-```
-
-```r
 design_column_plot_id_description
 ```
 
 ```
-## Error: object 'design_column_plot_id_description' not found
+## [1] "Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively. (plot_id: Individual complex ID for identifying exactly each plot; it connects with underline character the block number and the community code, i. e. the block number with the plots treatment. The plot identifier contains the information, which block the plot is in and which community is is comprised of.)"
 ```
 
 
@@ -567,82 +628,51 @@ and transformed as shown in the box below.
 ```r
 # the synthesis dataset
 syndata = merge(Nretention, design)
-```
-
-```
-## Error: object 'Nretention' not found
-```
-
-```r
 
 # overview about the content of the synthesis dataset
 names(syndata)
 ```
 
 ```
-## Error: object 'syndata' not found
+##  [1] "plot_id"                  "recov_plot"               "perleaf_plot"            
+##  [4] "perroot_plot"             "perbio_plot"              "persoil_plot"            
+##  [7] "gbd_T0.mm."               "block"                    "x"                       
+## [10] "y"                        "control_ID"               "block_community_code"    
+## [13] "community_number"         "species_mixture"          "species_diversity"       
+## [16] "species_pool"             "species_code"             "research_group_colour"   
+## [19] "control"                  "closed_canopy"            "density"                 
+## [22] "Natives"                  "depth"                    "harvest"                 
+## [25] "fungicide"                "inoculation"              "pesticide"               
+## [28] "native"                   "genetic_diverstiy"        "seed_addition"           
+## [31] "fertilizer"               "plot_treatment_connected" "sp1"                     
+## [34] "sp2"                      "sp3"                      "sp4"                     
+## [37] "sp5"                      "sp7"                      "sp8"                     
+## [40] "sp11"                     "sp_connected"
 ```
 
 ```r
 
 # remove unwanted variables from synthesis datset
 syndata = syndata[-c(9:14, 16:41)]
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 names(syndata)
 ```
 
 ```
-## Error: object 'syndata' not found
+## [1] "plot_id"           "recov_plot"        "perleaf_plot"      "perroot_plot"     
+## [5] "perbio_plot"       "persoil_plot"      "gbd_T0.mm."        "block"            
+## [9] "species_diversity"
 ```
 
 ```r
 
 # > we want to use 'species_diversity' as a factor
 syndata$species_diversity = as.factor(syndata$species_diversity)
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 
 # square root transforme response variables
 syndata$recov_plot_t = syndata$recov_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 syndata$perleaf_plot_t = syndata$perleaf_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 syndata$perroot_plot_t = syndata$perroot_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
-```
-
-```r
 syndata$persoil_plot_t = syndata$persoil_plot^0.5
-```
-
-```
-## Error: object 'syndata' not found
 ```
 
 
@@ -664,18 +694,14 @@ require(car)
 ### Model 1: Overall recovery/N retention
 model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
     method = "REML")
-```
-
-```
-## Error: could not find function "lme"
-```
-
-```r
 anova(model1)
 ```
 
 ```
-## Error: object 'model1' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    34   870.6  <.0001
+## gbd_T0.mm.            1    34     7.5  0.0098
+## species_diversity     2    34     2.9  0.0714
 ```
 
 ```r
@@ -683,25 +709,41 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: could not find function "glht"
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
+##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)  
+## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
+## 4 - 1 == 0    0.478      0.420    1.14    0.482  
+## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
 
 # ANOVA type II test for unbalanced design
 model1c = Anova(model1, type = "II")
-```
-
-```
-## Error: object 'model1' not found
-```
-
-```r
 model1c
 ```
 
 ```
-## Error: object 'model1c' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: recov_plot_t
+##                   Chisq Df Pr(>Chisq)   
+## gbd_T0.mm.         7.42  1     0.0064 **
+## species_diversity  5.71  2     0.0576 . 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -713,18 +755,13 @@ model1c
 
 ## Model2 percentage leaf recovery of plot recovery
 model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: could not find function "lme"
-```
-
-```r
 anova(model2)
 ```
 
 ```
-## Error: object 'model2' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36  273.06  <.0001
+## species_diversity     2    36    6.56  0.0037
 ```
 
 ```r
@@ -732,7 +769,23 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: could not find function "glht"
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -740,7 +793,13 @@ Anova(model2, type = "II")
 ```
 
 ```
-## Error: object 'model2' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: perleaf_plot_t
+##                   Chisq Df Pr(>Chisq)   
+## species_diversity  13.1  2     0.0014 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -750,18 +809,13 @@ Anova(model2, type = "II")
 
 ## Model3 percentage root recovery of overall recovery
 model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: could not find function "lme"
-```
-
-```r
 anova(model3)
 ```
 
 ```
-## Error: object 'model3' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36   374.2  <.0001
+## species_diversity     2    36     7.2  0.0024
 ```
 
 ```r
@@ -769,7 +823,23 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: could not find function "glht"
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
+## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -777,7 +847,13 @@ Anova(model3, type = "II")
 ```
 
 ```
-## Error: object 'model3' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: perroot_plot_t
+##                   Chisq Df Pr(>Chisq)    
+## species_diversity  14.3  2    0.00077 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -787,18 +863,13 @@ Anova(model3, type = "II")
 
 ## Model 4 percentage soil recovery of overall recovery
 model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: could not find function "lme"
-```
-
-```r
 anova(model4)
 ```
 
 ```
-## Error: object 'model4' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36   26248  <.0001
+## species_diversity     2    36       4  0.0274
 ```
 
 ```r
@@ -806,7 +877,23 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: could not find function "glht"
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)  
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -814,7 +901,13 @@ Anova(model4, type = "II")
 ```
 
 ```
-## Error: object 'model4' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: persoil_plot_t
+##                   Chisq Df Pr(>Chisq)  
+## species_diversity  7.96  2      0.019 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -837,42 +930,7 @@ reduced (Fig. Xd). Thus, we could show that the relative N retention of biomass
 was significantly increased in mixtures. For an interpretation of these results
 we refer to Lang et al. 2013.
 
-
-```
-## Error: object 'syndata' not found
-```
-
-```
-## Error: object 'recov_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'perleaf_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'perroot_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'persoil_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
+![plot of chunk anne_final_plot](figure/anne_final_plot.png) 
 
 
 * caption: Nitrogen (N) retention affected by species richness. N retention summed as the
@@ -909,38 +967,6 @@ bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", descriptio
 ```
 
 
-
-```
-## Error: object 'recov_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'perleaf_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'perroot_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
-
-```
-## Error: object 'persoil_plot' not found
-```
-
-```
-## Error: plot.new has not been called yet
-```
 
 ```
 ## pdf 

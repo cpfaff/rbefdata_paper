@@ -270,7 +270,7 @@ term_info = bef.tematres.api(task = "fetchNotes", "plant organ")
 term_info
 
 # get datasets tagged with plant organ 
-datasets_plant_organ = bef.get.datasets_for_keyword("plant organ")
+datasets_plant_organ = bef.get.datasets.for_keyword("plant organ")
 datasets_plant_organ 
 
 # narrow down plant organ
@@ -278,7 +278,7 @@ narrow_tasks_plant_organ = bef.tematres.api(task = "fetchDown", "plant organ")
 narrow_tasks_plant_organ  
 
 # enrich the search with narrower keywords
-datasets_plant_organ_narrow = bef.get.datasets_for_keyword(c(narrow_tasks_plant_organ$term))
+datasets_plant_organ_narrow = bef.get.datasets.for_keyword(c(narrow_tasks_plant_organ$term))
 datasets_plant_organ_narrow   
 ```
 
@@ -306,7 +306,7 @@ http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 
 ```{r rbefdata_get_datasets_from_proposal, cache = T}
 # proposal id is 
-datasets = bef.get.datasets_for_proposal(id = 90)
+datasets = bef.get.datasets.for_proposal(id = 90)
 extract_second_dataset = datasets[[2]] 
 head(extract_second_dataset, 5)
 ```
