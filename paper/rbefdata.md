@@ -385,22 +385,950 @@ http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
 ```
 
 
+```r
+# proposal id is
+datasets = bef.get.datasets_for_proposal(id = 90)
+```
+
+```
+## Error: could not find function "bef.get.datasets_for_proposal"
+```
+
+```r
+extract_second_dataset = datasets[[2]]
+```
+
+```
+## Error: object 'datasets' not found
+```
+
+```r
+head(extract_second_dataset, 5)
+```
+
+```
+## Error: object 'extract_second_dataset' not found
+```
+
+ 
+### Inspect data (EML)
+
+Each dataset in the `BEFdata` platform is associated with metadata the authors
+of the dataset provide. We also can access the metadata from within `rbefdata`.
+It can be accessed either directly via a metadata download command that takes
+the ID of a dataset or extracted from a dataset via the R internal
+`attributes()` command. The extraction via attributes is possible as each
+dataset is attached with its metadata when using one of the download commands
+of `rbefdata` (see box below).
+
+
+```r
+# get metadata only, by dataset ID
+bef.portal.get.metadata(dataset = 335)$title
+```
+
+```
+## [1] "Competition of saplings for N -Pilot- system 15N retention"
+```
+
+```r
+
+# extract title of first dataset in proposal
+attributes(datasets[[1]])$title
+```
+
+```
+## Error: object 'datasets' not found
+```
+
+```r
+
+# extract all dataset titles in the proposal
+titles = sapply(datasets, function(x) attributes(x)$title)
+```
+
+```
+## Error: object 'datasets' not found
+```
+
+```r
+titles
+```
+
+```
+## Error: object 'titles' not found
+```
+
+```r
+
+# other metadata available
+names(attributes(datasets[[1]]))
+```
+
+```
+## Error: object 'datasets' not found
+```
+
+
+The dataset list from the proposal contains three datasets, of which we do only
+use the second and third. These two are written into two variables called
+`Nretention` and `design` before deciding upon how to merge them. Inspecting
+the headers of both dataset reveals each of them contains a column containing a
+`plot_id` that seems suitable for merging. But we can also make use of the
+metadata for the columns to check if this really is the case (see box below).
+
+
+```r
+# extract into separate datasets
+Nretention = datasets[[2]]
+```
+
+```
+## Error: object 'datasets' not found
+```
+
+```r
+design = datasets[[3]]
+```
+
+```
+## Error: object 'datasets' not found
+```
+
+```r
+
+# overview about the contents of the datasets
+
+# names in dataset Nretention
+names(Nretention)
+```
+
+```
+## Error: object 'Nretention' not found
+```
+
+```r
+
+# description of column plot_id
+Nretention_column_plot_id_description = attributes(Nretention)$columns[1, ]$description
+```
+
+```
+## Error: object 'Nretention' not found
+```
+
+```r
+Nretention_column_plot_id_description
+```
+
+```
+## Error: object 'Nretention_column_plot_id_description' not found
+```
+
+```r
+
+# names in dataset Nretention
+names(design)
+```
+
+```
+## Error: object 'design' not found
+```
+
+```r
+
+design_column_plot_id_description = attributes(design)$columns[4, ]$description
+```
+
+```
+## Error: object 'design' not found
+```
+
+```r
+design_column_plot_id_description
+```
+
+```
+## Error: object 'design_column_plot_id_description' not found
+```
+
+
+### Analyse the data 
+
+After merging the new synthesis dataset still contains many columns not
+required for the analysis that can be dropped. To analyse the dataset of system
+N retention we need information about the species diversity in the plots and
+about which plot is placed in which block from the design dataset. 'Species
+diversity' is used as a factor containing three levels (1,2,4 species
+mixtures). The response variables have been checked for normality with `qqplot`
+and transformed as shown in the box below.
+
+
+```r
+# the synthesis dataset
+syndata = merge(Nretention, design)
+```
+
+```
+## Error: object 'Nretention' not found
+```
+
+```r
+
+# overview about the content of the synthesis dataset
+names(syndata)
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+
+# remove unwanted variables from synthesis datset
+syndata = syndata[-c(9:14, 16:41)]
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+names(syndata)
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+
+# > we want to use 'species_diversity' as a factor
+syndata$species_diversity = as.factor(syndata$species_diversity)
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+
+# square root transforme response variables
+syndata$recov_plot_t = syndata$recov_plot^0.5
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+syndata$perleaf_plot_t = syndata$perleaf_plot^0.5
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+syndata$perroot_plot_t = syndata$perroot_plot^0.5
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+syndata$persoil_plot_t = syndata$persoil_plot^0.5
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+
+We analysed our data by linear mixed effects models. Since the plots are nested
+in blocks, we use block as a random factor. The analysis uses the R packages
+`nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
+for post-hoc comparisons. To adjust for an unbalanced experimental design an
+ANOVA Type II was carried out to test for main effects using the R package
+`car` (Fox and Weisberg 2011). The models have been evaluated visually.
+
+
+```r
+require(nlme)
+require(multcomp)
+require(car)
+```
+
+
+
+```r
+### Model 1: Overall recovery/N retention
+model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
+    method = "REML")
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+anova(model1)
+```
+
+```
+## Error: object 'model1' not found
+```
+
+```r
+summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
+```
+
+```
+## Error: no 'model.matrix' method for 'model' found!
+```
+
+```r
+
+# ANOVA type II test for unbalanced design
+model1c = Anova(model1, type = "II")
+```
+
+```
+## Error: object 'model1' not found
+```
+
+```r
+model1c
+```
+
+```
+## Error: object 'model1c' not found
+```
+
+```r
+
+### model evaluation checking plots to assess whether residuals are well behaved plot(model1)
+### whether the response variable is a reasonable linear function of the fitted values
+### plot(model1,recov_plot_t~fitted(.)) and whether the errors are reasonably close to normal
+### distribution in all four blocks (Crawley 2009) qqnorm(model1,~resid(.)|block)
+
+## Model2 percentage leaf recovery of plot recovery
+model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+anova(model2)
+```
+
+```
+## Error: object 'model2' not found
+```
+
+```r
+summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
+```
+
+```
+## Error: no 'model.matrix' method for 'model' found!
+```
+
+```r
+Anova(model2, type = "II")
+```
+
+```
+## Error: object 'model2' not found
+```
+
+```r
+
+# model evaluation plot(model2) plot(model2,recov_plot_t~fitted(.))
+# qqnorm(model2,~resid(.)|block)
+
+## Model3 percentage root recovery of overall recovery
+model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+anova(model3)
+```
+
+```
+## Error: object 'model3' not found
+```
+
+```r
+summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
+```
+
+```
+## Error: no 'model.matrix' method for 'model' found!
+```
+
+```r
+Anova(model3, type = "II")
+```
+
+```
+## Error: object 'model3' not found
+```
+
+```r
+
+# model evaluation plot(model3) plot(model3,recov_plot_t~fitted(.))
+# qqnorm(model3,~resid(.)|block)
+
+## Model 4 percentage soil recovery of overall recovery
+model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: object 'syndata' not found
+```
+
+```r
+anova(model4)
+```
+
+```
+## Error: object 'model4' not found
+```
+
+```r
+summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
+```
+
+```
+## Error: no 'model.matrix' method for 'model' found!
+```
+
+```r
+Anova(model4, type = "II")
+```
+
+```
+## Error: object 'model4' not found
+```
+
+```r
+
+# model evalution plot(model4) plot(model4,recov_plot_t~fitted(.))
+# qqnorm(model4,~resid(.)|block)
+```
+
+
+### Results of the analysis
+
+System 15N retention (overall plot recovery) was positively affected by species
+richness at the level of P = 0.0576 (Chisq: 5.7; Fig. Xa). The analysis of the
+different system compartments (leaves, fine roots and soil) revealed that fine
+root recovery was lower than leaf recovery, and biomass recovery (leaves and
+fine roots) was lower than soil recovery. Whereas the relative leaf and root
+recovery were significantly higher in species mixtures compared with
+monoculture (Figs. Xb and Xc), the relative soil recovery was significantly
+reduced (Fig. Xd). Thus, we could show that the relative N retention of biomass
+was significantly increased in mixtures. For an interpretation of these results
+we refer to Lang et al. 2013.
+
+
+```
+## Error: object 'syndata' not found
+```
+
+```
+## Error: object 'recov_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```
+## Error: object 'perleaf_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```
+## Error: object 'perroot_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```
+## Error: object 'persoil_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+
+* caption: Nitrogen (N) retention affected by species richness. N retention summed as the
+           recovery of soil, roots and leaves (a), relative leaf recovery (b), relative
+           root recovery (c) and relative soil recovery (d). Significant differences as
+           revealed by post hoc Tukey’s test (P < 0.05) are indicated by different
+           letters.
+
+### Upload data 
+
+Finally we need to decide on either to upload a full dataset which we could do
+using the dataset upload function `bef.portal.upload.dataset()` or only to
+upload the script and maybe a figure to highlight the road to the results from
+the source datasets used. This can be done by attaching to the proposal with
+the command `bef.portal.attach.to_proposal()`. For the example shown here, it
+is the best way to go with an attachment to the proposal as uploading the
+merged dataset would only mean duplication of data in the database of the
+`BEFdata` portal.
+
+So we upload the script and the four pane figure with its caption to add them
+to the proposal. The figure is prepared as Portable Network Graphics (PNG)
+using the R internal PNG device. It is written to a temporary folder and then
+uploaded. The script in this case is an R markdown file that we attach to the
+proposal (see box below).
+
+
+```r
+# attach the script using a path
+bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", description = "The R script that has been used to derive the results in the published paper")
+```
+
+```
+## [1] "Attachment to proposal with ID: 90 successful!"
+```
+
+
+
+```
+## Error: object 'recov_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```
+## Error: object 'perleaf_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```
+## Error: object 'perroot_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```
+## Error: object 'persoil_plot' not found
+```
+
+```
+## Error: plot.new has not been called yet
+```
+
+```
+## pdf 
+##   2
+```
+
+
+
+```r
+# caption of the figure
+caption = "Nitrogen (N) retention affected by species richness. N retention summed as\n           the recovery of soil, roots and leaves (a), relative leaf recovery (b), relative root\n           recovery (c) and relative soil recovery (d). Significant differences as revealed by post\n           hoc Tukey’s test (P < 0.05) are indicated by different letters."
+
+# upload the figure
+bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "results_plot_proposal_90.png"), 
+    description = caption)
+```
+
+```
+## Error: specified file does not exist: /tmp/Rtmp2GkxZH/results_plot_proposal_90.png.  You must
+## specify a valid file name or provide the contents to send.
+```
+
+
+![showcase_proposal_attachment](./figure/static/showcase_proposal_attachments.png)
+
+* caption: The paper proposal in its final approved state with attachments. The
+           attachments are the final results figure and the R script that has been 
+           used to derive the results in the published paper.
+
+## Discussion
+
+* structure of intro
+  * many data
+  * reuse
+  * metadata 
+  * data search
+  * preprocessing with semantics integrated
+  * wrapup (metadata/paper proposals/workflows)
+
+* potential structure of discussion?
+  * Data life cycle 
+  * Data preservation
+  * Metadata 
+  * Data exploration/processing
+  * Metadata 
+  * Semantics 
+  * Taxonomies
+  * BEFdata and rbefdata solutions
+
+Even though the situation with data preservation has been improved by online
+data management platforms, there is still many valuable data lost (long tail).
+One one hand this is related to the fact that researchers are reluctant to use
+online data management tools, as they fear to loose the control over their data
+and on the other hand to the fact that most research projects do not have a
+data preservation plan that would force the contributors to preserve their
+data. More general this is related to no direct benefit to data providers for
+sharing data online and that it usually only means to put more effort into the
+data after the results have been published already. However the availability of
+a broad range of data and useful metadata describing it is essential to
+different aspects of the life cycle of data. In ecology the integration of
+available data offers the potential to answer some of the most pressing global
+relevant questions like for example about the global climate change and the
+maintainability of vital ecosystem services. 
+
+* BEFdata and rbefdata solutions
+  * set incentives for data preservation
+    * acknowledgement
+    * contribution to upcoming papers 
+    * data publishing (citable) 
+  * use common tools transfer to metadata standards 
+    * metadata from spreadsheets to EML  
+  * reproducibility  
+    * preservation of scripts as attachments to proposals/datasets
+
+To further improve the situation on one hand is a strict policy related to
+funding    
+
+This requires efficient tools that not only help to access the data but also to
+process it and to preserve data products and results including how they have
+been derived to be fully reproducible as scripts or workflows
+
+less effort has been put into preservation of algorithms and workflows that
+researchers use to derive their data products and results.
+
+The software combination `rbefdata` and `BEFdata` provides solutions to many of
+these aspects of data management like data preservation, online data sharing
+and discussion of ideas, data processing, intensive use of meta data and the
+preservation of workflows used to derive results which is important for
+reproducibility and provenance that in turn is again a crucial component to
+provide effective incentives in form of acknowledgements for data providers.  
+ 
+The `BEFdata` platform serves as a scratch pad for research data as well as it
+covers the preservation of data. It offers data harmonization tools, metadata
+support via the Ecological Metadata Language standard and a social component
+that fosters sharing data online (cite Karin). The `rbefdata` package enables
+access to the data and metadata on the platform as well as it provides upload
+functionality right from within the R environment 
+
+Lost a high amount of valuable data as researchers are still reluctant to give
+away their data. One possible solution to this would be to make data
+preservation obligatory and make it a condition for sponsorship of projects.
+
+
+One one hand there is many
+data already available. And on the other hand many data is still lost.
+
+This requires the reuse and integration of mostly small and heterogeneous data.
+
+Even though the situation gets better there is still many data lost as
+researchers are reluctant to use online data preservation tools as they fear to
+loose the control over their data.
+
+Collaboration.
+
+
+to preserve data products and
+attachments that are generated on analysing data.  The tag based exploration of
+datasets of the BEFdata platform improves the exploration of relevant data for
+a certain analysis and the `tematres` vocabulary integration further supports
+this. It allows to retrieve term definitions as well as relations to broaden or
+narrow down search terms along a hierarchy. 
+
+While well described data helps a lot in understanding datasets and on
+deciding upon the relevance and applicability of data for a certain analysis
+there is still lots of manual intervention necessary to prepare the data for
+analysis (cite Karin and me? or xxx). It may needs to be cleaned, imputed,
+reshaped and merged which usually takes up to 70% of an analysis workflow,
+before smart models can be applied to the data to find interesting patters
+(cite the workflow paper of Karin and me). This preparatory steps not only are
+time and labour intensive but also potentially error prone, especially as the
+complexity of the analyses increases. Provenance and the advantage of keeping
+scripts (workflows) close to the data.
+
+
+
+In ecology the reuse of the mostly small and heterogeneous data seems
+promising. It can be integrated into a wider context to answer questions on a
+much broader, temporal and spatial scale. 
+
+This is of particular intrest in terms of the most pressing questions in
+ecology
+
+about climate changes and
+ecosystem services. This requires several 
+
+There is a growing demand to reuse available data and for tools that enable
+researchers to deal with requirements like data preservation, exploration and
+reuse as well as with the description process of data via meta data.  
+
+ However, particularly research areas like ecology
+which are characterised by a high degree of interdisciplinary interactions are
+challenging in terms of data management and the applicability of some valuable
+concepts like ontologies seems questionable. While ontologies with a very clear
+and close scope are in use already (onto verse examples) the development of a
+sophisticated ontology for ecology research is a very time, labor intensive and
+complex task. The nature of ecology requires a community for the development of
+ontologies that includes experts from all contributing domains to model the
+relevant concepts into a formal representation.
+
+(supporting, Kepler).
 
 
 
 
 
 
+`rbefdata` makes scripting a workflow to pull data for analysis and push back
+results and scripts simple. The upload mechanism can help to keep the data
+management platform up to date and gives other researchers the possibility to
+reproduce results by downloading scripts attached to proposals or datasets. An
+uploaded script is not only a stepping stone to reproducible research but also
+helps to track down data provenance which can be interesting in terms of
+acknowledgement for data providers in a more fine grained view. 
+
+While it seems a waste of time and bandwidth on one hand to always transfer the
+data to a local script for processing, this approach also has its upsides.
+Having the data locally offers full flexibility in choice of tools and also
+enables the researcher to freely mix in other local data sources. While this
+approach works well for small data it does not for big data since the transfer
+of data is not possible for large sized data. The recent trend here is
+on-server/in-database statistics, a scenario where scripts are to be sent to
+the server before it returns the answer after processing (xxx). To keep the
+`BEFdata` platform as flexible as possible and to give the researchers the
+freedom of choice this could be one of the future features to be integrated. 
+
+
+
+### rbefdata makes metadata available within the R environment
+
+`rbefdata` is innovative in that it
+provides data together with metadata in the R environment.
+
+
+### keeping workflow scripts close to the data: Provenance
+
+
+Clarify: controlled vocabulary - thesaurus - ontology. Controlled vocabulary
+for finding and sorting, ontology for automatic reasoning.
+
+*** Semantics for searching and sorting
+
+We decided not to develop functionality to develop nested controlled
+vocabularies within BEFdata. This decision was based on the fact that there
+are already sophisticated frameworks and software to develop and maintain
+vocabularies. Linking to external vocabularies has the additional advantage
+that several data repositories can simultaneously use the same thesaurus for
+tagging their data. This keeps single repositories small and coherent without
+loosing the potential to link them to other repositories (linked data,
+citations for linked data).
+
+*** Semantics for automated reasoning
+
+
+This is a separate argument, and we do not touch it in the results: automatic
+merging should be only in the discussion:
+
+but also could be used in the process of integrating the data
+for analysis. 
+
+Additionally it can be error prone especially if analyses get more complex and
+require the expertise of more than one research domain.  
+
+
+Ontologies, as formal representations of knowledge, potentially offer a
+sophisticated tool to deal with that step of data preparation (e.g michener et al 2012). 
+While they are already used in some research domains like genetics (cite xxx, eg. http://www.geneontology.org/),
+other domains face more problems using it (cite xxx, morpho team announced
+semantic tagging but the plug-in did not appear anywhere). The application of
+ontologies in ecology is discussed controversially (cite xxx) and it is argued
+that they can be a huge benefit, but it is hard to set up a sophisticated
+ontology covering all necessary terms and relation of a highly complex research
+domain (cite xxx).
+
+
+We recently started to develop an ontology using a `tematres` .The
+formalization we develop will be based on the knowledge used in biodiversity
+ecosystem functioning research. 
+
+The `BEFdata` platform will get a semantical tagging feature that will allow data
+owners to tag data fine granular ?? on data column level. Using the same
+formalized knowledge from the ontology we will be able to provide smart merging
+and transformation features within the `rbefdata` package that help researchers
+to merge datasets semi automatic.
+
+While data storage and description is almost the same for all kind of data the
+effective interlinking of data via an ontology requires the development of a
+common terminology. The terminology should not only be accepted but used, developped and discussed
+by all contributing scientist of the project. The future goal on ontologies is of
+course the development of domain ontologies that can be interlinked to an
+overarching ontology. Thus, collaborative ontology
+engineering approaches like `ontoverse` (Zoulfa El Jerroudi et al. 2008) or
+`tematres` are highly valuable as they not only help to set up ontologies but
+also to develop and maintain them over time even if the researchers change that
+contribute to it.
+
+
+## Acknowledgements
+
+Thanks to all the data owners of the proposal for providing access to the
+datasets. ...
+
+## Literature
+
+This will be done externally as markdown has no good way to deal with
+references and stuff. We can collect here a list of links to references. I will
+then collect them with e.g zotero to export a format we can hand them in for
+publication.
+
+## Appendix
+
+### Figures
+
+### saveaway 
+
+We discuss `rbefdata` and `BEFdata` in in the light of current and future
+challenges for data management give an outlook onto upcoming features that
+could help to solve them. 
+
+The data here is mainly provided by small scale studies spread all over the
+world (e.g heidorn2009 shedding light on the dark) but also through bigger long
+term projects like LTER (cite xxx), BEF-China (cite xxx), governmental projects
+and local initiatives (cite xxx) and private persons. This in fact results in a
+wild growing, complex and heterogeneous data landscape that an ontology would
+need to capture to be usable.
 
 
 
 
 
+### intro karin
+
+Karin:
+
+thesauri, ontologies, etc. ... 
+
+Something on data discovery and paper
+proposals: Interdisciplinary analyses depend on data coming from different
+research fields. Not one single research project or laboratory measures all
+data, but they come from different researchers.  Data discovery - finding data
+that is suitable to answer a pressing question - has become an integral part of
+science. Data discovery between scientific disciplines is hampered by different
+vocabularies and missing agreement on common semantics. Tools addressing this
+problem are
+
+
+
+Introducing workflows, their merits, and ROpenSci. But also Kepler, Pegasus,
+etc. Cite our paper on workflows.
+
+ (http://ropensci.org/),
+which is a community driven approach to wrap all science APIs and to create
+solutions for R users to seamlessly pull data from different repositories
+spread over the internet into R for analysis.  
+
+
+### material and methods 
+
+Karin: 
+- I would suggest to reduce the details of the following dramatically:
+
+The Main experiment was established in 2009 and 2010 as the first large scale
+forest biodiversity–ecosystem functioning experiment in the highly species-rich
+subtropics.  In total, the area covers 50 ha and there are 566 plots of 400
+trees each, ranging in diversity from monoculture to 24-species mixtures. The
+experiment used 42 native tree species and 10 shrub species, combined into
+different species pools. More than 400 000 tree and shrub saplings were
+planted.  In a parallel observational approach, a total of 27 Comparative Study
+Plots (CSPs) of 30x30 m each were set up in existing forests in the adjacent
+Gutianshan National Nature Reserve (Zhejiang Province) in 2008.  The
+observational plots were selected according to a crossed sampling design along
+tree species richness and stand age. The CSPs address the impact of
+successional age on ecosystem functioning, providing a basis for assessing the
+successional processes at work across tree species diversity in the Main
+Experiment . 
+
+
+
+### Data processing and integration
+
+* sharing ideas for analysis: paper proposals 
+      Paper proposals are an emerging concept solving transparant data exchange and
+      reuse across disciplines and laboratories [citations!]
+
+
+* Introducing workflows (merits, ROpenSci, Kepler, Pegasus, etc.) Cite our paper on workflows.
+* Workflow repositories and software 
+* R needs to be learned as well that is no argument to less acceptance of other tools like Kepler, is there?!
+* Provenance and the advantage of keeping scripts (workflows) close to the data.
+
+
+### Wrap up (introduce solutions)
+
+Especially for highly interdisciplinary research domains this requires the
+input of many scientists and discussions about definitions and relations of
+terms in the representation.  This might be one of the reasons why there is a
+lack of sophisticated ontologies especially for highly interdisciplinary
+research domains like ecology. 
 
 
 
 
+Karin: there are some papers talking about what users want from data
+repositories. These could be cited (e.g. Kerstin Bach). Motivate that
+researchers prefer to perform the analyses at their own laptops.
 
+
+While data preservation and the access to data for a wider audience are covered
+very well, the use of metadata and semantic concepts, which both are related to
+the efficient reuse of data lacks behind.  On one hand this is related to the
+reluctance of users to use new tools or the fear to loose control over valuable
+data. But on the other hand this is also related to the fact that the valuable
+concepts are not yet tightly integrated enough into the researchers daily
+workflow.
+
+
+
+* intro summary frame
+
+A multitude of data management and knowledge platforms are emerging which
+contribute to a growing global data pool. The need to effectively reuse the
+available data, grows with the data pool. This puts much pressure on the
+development of tools that tightly integrate valuable concepts into existing and
+widely accepted tools and into the workflows of researchers to help them
+dealing with the upcoming challenges in data management and analysis.
+
+* data preservation -> many data available
 
 
 
