@@ -744,9 +744,7 @@ for post-hoc comparisons. To adjust for an unbalanced experimental design an
 ANOVA Type II was carried out to test for main effects using the R package
 <code>car</code> (Fox and Weisberg 2011). The models have been evaluated visually.</p>
 
-<pre><code class="r">require(nlme)
-require(multcomp)
-require(car)
+<pre><code class="r">require(car)
 </code></pre>
 
 <pre><code class="r">### Model 1: Overall recovery/N retention
@@ -754,7 +752,7 @@ model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1
     method = &quot;REML&quot;)
 </code></pre>
 
-<pre><code>## Error: object &#39;syndata&#39; not found
+<pre><code>## Error: could not find function &quot;lme&quot;
 </code></pre>
 
 <pre><code class="r">anova(model1)
@@ -766,7 +764,7 @@ model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1
 <pre><code class="r">summary(glht(model1, linfct = mcp(species_diversity = &quot;Tukey&quot;)))
 </code></pre>
 
-<pre><code>## Error: no &#39;model.matrix&#39; method for &#39;model&#39; found!
+<pre><code>## Error: could not find function &quot;glht&quot;
 </code></pre>
 
 <pre><code class="r">
@@ -793,7 +791,7 @@ model1c = Anova(model1, type = &quot;II&quot;)
 model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = &quot;REML&quot;)
 </code></pre>
 
-<pre><code>## Error: object &#39;syndata&#39; not found
+<pre><code>## Error: could not find function &quot;lme&quot;
 </code></pre>
 
 <pre><code class="r">anova(model2)
@@ -805,7 +803,7 @@ model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, m
 <pre><code class="r">summary(glht(model2, linfct = mcp(species_diversity = &quot;Tukey&quot;)))
 </code></pre>
 
-<pre><code>## Error: no &#39;model.matrix&#39; method for &#39;model&#39; found!
+<pre><code>## Error: could not find function &quot;glht&quot;
 </code></pre>
 
 <pre><code class="r">Anova(model2, type = &quot;II&quot;)
@@ -822,7 +820,7 @@ model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, m
 model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = &quot;REML&quot;)
 </code></pre>
 
-<pre><code>## Error: object &#39;syndata&#39; not found
+<pre><code>## Error: could not find function &quot;lme&quot;
 </code></pre>
 
 <pre><code class="r">anova(model3)
@@ -834,7 +832,7 @@ model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, m
 <pre><code class="r">summary(glht(model3, linfct = mcp(species_diversity = &quot;Tukey&quot;)))
 </code></pre>
 
-<pre><code>## Error: no &#39;model.matrix&#39; method for &#39;model&#39; found!
+<pre><code>## Error: could not find function &quot;glht&quot;
 </code></pre>
 
 <pre><code class="r">Anova(model3, type = &quot;II&quot;)
@@ -851,7 +849,7 @@ model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, m
 model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = &quot;REML&quot;)
 </code></pre>
 
-<pre><code>## Error: object &#39;syndata&#39; not found
+<pre><code>## Error: could not find function &quot;lme&quot;
 </code></pre>
 
 <pre><code class="r">anova(model4)
@@ -863,7 +861,7 @@ model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, m
 <pre><code class="r">summary(glht(model4, linfct = mcp(species_diversity = &quot;Tukey&quot;)))
 </code></pre>
 
-<pre><code>## Error: no &#39;model.matrix&#39; method for &#39;model&#39; found!
+<pre><code>## Error: could not find function &quot;glht&quot;
 </code></pre>
 
 <pre><code class="r">Anova(model4, type = &quot;II&quot;)
