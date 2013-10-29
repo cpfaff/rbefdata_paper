@@ -7,22 +7,22 @@
 
 ## Abstract
 
-In this paper we introduce the `rbefdata` package that provides the R
-statistics environment with access to the open source data management platform
-`BEFdata`. The R package leverages access to data and metadata, integrates a
-semantic repository (thesaurus) and offers preservation for datasets and other
-data products like scripts and figures. We showcase the functionality of the R
-package and the interactions with the data management platform using an R
-script. It pulls and analyses data associated with a research idea in form of a
-paper proposal from the `BEFdata` instance of the BEF-China experiment. The
-analysis in the workflow deals with N retention along a biodiversity gradient
-and asks for the influence of biodiversity on the process. The results of the
-analysis have been published already and thus the data used here is open
-access. Thus the script and analysis presented here is fully reproducible by
-executing the script. We discuss the introduced R package and the combination
-of software in terms of the data life cycle and the current data management
-requirements in ecology as well as we given an outlook on upcoming features of
-`rbefdata` and `BEFdata`.
+In this paper we introduce the `rbefdata` package that provides the R statistic
+environment with an access to the open source data management platform
+`BEFdata`.  It leverages the access to data and metadata, integrates a semantic
+repository (thesaurus) and offers preservation for datasets and other data
+products like scripts and figures that are generated while analysing data. We
+showcase the functionality of the R package and the interactions with the data
+management platform using an R script. It pulls and analyses data associated to
+a research idea in form of a paper proposal from the `BEFdata` instance of the
+BEF-China experiment. The analysis in the script deals with N retention along a
+biodiversity gradient and asks for the influence of biodiversity on the
+process. The results of the analysis have been published already and the data
+is open access. Thus the analysis shown here to introduce the R package is
+fully reproducible by executing the script. We discuss the R package and the
+combination of software in terms of the data life cycle and the current data
+management requirements in ecology as well as we given an outlook on upcoming
+features of `rbefdata` and `BEFdata`.
 
 ## Introduction 
 
@@ -31,76 +31,67 @@ puts much pressure on the development of tools that foster the preservation,
 the exploration and the reuse of data. Many tools and concepts in data
 management provide solutions to different parts of the life cycle of data.
 However not all of them are widely spread or accepted throughout ecology. This
-situation can be improved by the tight integration of data management concepts
-into existing and widely used software and thus into the daily workflow of
-researchers. Paper proposals and data provenance as ways to promote the
-discussion of ideas and collaborations, metadata to improve data preservation
-and information exchange as well as the integration of semantic resources to
-enhance data exploration and processing, only represent a few examples of
-valuable concepts with the potential to improve the progress of a data
-intensive scientific domain like ecology. The `rbefdata` R package is an
+situation can potentially be improved by the tight integration of data
+management concepts into existing and widely used software and thus into the
+daily workflow of researchers. Paper proposals and data provenance as ways to
+promote the discussion of ideas and collaborations, metadata to improve data
+preservation and information exchange as well as the integration of semantic
+resources to enhance data exploration and processing, only represent a few
+examples of valuable concepts with the potential to improve the progress of a
+data intensive scientific domain like ecology. The `rbefdata` R package is an
 approach to combine the strengths of the mentioned data management concepts
 into a single and simple usable R package.
 
 With a growing awareness on the value of data, many data management platforms
 have been developed to preserve all kinds of environmental and historic data.
-These provide data preservation for small scale projects as well as for large
-scale, big data producing, long term or remote sensing collaborations (cite
-e.g.  diversity workbench, `BEFdata`, DataONE, LifeWatch, Pangea, Bexis). An
-ongoing trend in data preservation and accessibility is the development of
-integrative databases or data portals (cite TRY, GBIF, Pangea). They serve as
-nodes that collect data from smaller databases of a certain domain and enable
-researchers to access a wide range of relevant data, all from one place. All
-these platforms offer a solution to one of the most pressing problems in data
-management the loss of valuable data (Heidorn, 2008). Even tough these
-platforms improve the situation of data preservation, researchers are still
-reluctant to use online data platforms as they fear to give away and loose the
-control over their data (michener 2012). 
+These provide data preservation plans for small scale projects as well as for
+large scale, big data producing, long term or remote sensing collaborations
+(cite e.g.  diversity workbench, `BEFdata`, DataONE, LifeWatch, Pangea, Bexis).
+An ongoing trend in data preservation and accessibility is the development of
+integrative data platforms (cite TRY, GBIF, Pangea). They serve as nodes that
+collect data from smaller databases and enable researchers to access a wide
+range of relevant data, all from one place. All these platforms offer a
+solution to one of the most pressing problems in data management the loss of
+valuable data (Heidorn, 2008). Even tough these platforms improve the situation
+of data preservation, researchers are still reluctant to use online data
+platforms as they fear to give away and loose the control over their data
+(michener 2012). Here the `BEFdata` platform offers full control of uploaded
+data via a fine grained access system. Uploading data from within R via the
+`rbefdata` makes the data accessible to the owner only by default.
 
 The demand to reuse available data grows with the amount of data available
-(Heidorn, 2008). In ecology for example the reuse of data is of interest as the
-integration of data offers the potential to answer questions on a much broader
-temporal and spatial scale (michener, 2008). A problem with data reuse is that
-available data is often not well described. Metadata gives researchers the
-opportunity to describe their data and others to understand raw research data
-even if they are not familiar with it (Fegraus 2005). Metadata is necessary as
-plain primary research data can be hard to understand, and even hard to
-decipher by the authors themselves after some time has passed. For example it
-is hard to remember what methods have been used to collect the data of a
-certain column or what the abbreviations and the headers in the dataset mean.
-However metadata is still not used exhaustive as it usually always means to put
-more time into the collected data and to learn new tools that help to describe
-it (e.g morpho, dataUP).
+(Heidorn, 2008). In ecology for example the reuse of data is of particular
+interest as the integration of data offers the potential to answer questions on
+a much broader temporal and spatial scale (michener, 2008). However a problem
+with the reuse of data is, that available data is often not well described.
+Metadata is necessary here as plain primary research data can be hard to
+understand, and even hard to decipher by the authors themselves after some time
+has passed. For example it is hard to remember what methods have been used to
+collect the data of a certain column or what the abbreviations and the headers
+in the dataset mean. However metadata is still not used exhaustive as it
+usually always means to put more time into the collected data and to learn new
+tools that help to describe it (e.g morpho, dataUP). Metadata gives researchers
+the opportunity to describe their data and others to understand raw research
+data even if they are not familiar with it (Fegraus 2005). Thus the `BEFdata`
+portal sticks to the EML standard and the R package provides the metadata as
+attributes of data frames right from within R.
 
 To find relevant data for reuse is a challenging task that is getting even more
 complex if more data gets available (Leinfelder et al, xxx). A common practice
 in data discovery, next to full text search in data and metadata, is tagging
-with keywords (Nadrowski 2013).  However a keyword search can be very coarse as
+with keywords (Nadrowski 2013). However a keyword search can be very coarse as
 it may provide access to a set of data but misses other essential and relevant
 data tagged with close related or synonymous keywords (Leinfelder et al. xxx,
 michener 2008). For example a keyword search on "weight" and "leaves" will miss
-datasets tagged only with "dry weight" or "wet weight" and "plant products"
-that might be of interest as well.  The integration of semantic repositories
-that provide taxonomies can potentially improve the situation here. These
-repositories can embed the keywords into a hierarchical structure and so the
-query can be extended along known relations of the search term (Leinfelder et
-al.).
-
-Before data can effectively be reused it may needs to be cleaned, imputed,
-reshaped and merged. This usually takes up to 70% of an analysis script (Garijo
-2012, Pfaff 2013 in prep). These preparatory steps are not only time and labour
-intensive but also potentially error prone, especially if the amount and
-complexity of data to be included increases. The integration of semantic
-repositories that provide ontologies can help to solve these problems (michener
-2008). As ontologies allow the machine readable access to knowledge of a
-scientific domain they can be used to develop tools that "understand" the
-contents of datasets and guide researchers on the process of data preparation.
-While ontologies with a clear and small scope are very well used already (cite
-xxx, e.g gene Ontology) it is a challenging tasks to create an ontology for
-research domains like ecology that are characterized by a high degree of
-interdisciplinarity (Parsons 2011). This characteristic leads to a
-heterogeneous landscape of knowledge and concepts that would need to be covered
-and formalized by the ontology.
+datasets tagged only with "dry weight", "wet weight" or "plant products" that
+might be associated to datasets that are of interest as well. The integration
+of semantic repositories that provide taxonomies can potentially improve the
+situation here. These repositories can embed the keywords from the search query
+into a hierarchical structure and so the query can be extended along known
+relations of the search term (Leinfelder et al.). Thus the `rbefdata` package
+enables the access to semantic repositories stored on `tematres` servers which
+can be used with the keyword base dataset search of the `BEFdata` portal to
+find relevant data.
 
 We here introduce the `rbefdata` R package as companion to the open source data
 management platform `BEFdata` (Nadrowski 2013). The package is part of the
@@ -110,16 +101,16 @@ flexible access to scientific data repositories. The R package enables access
 to data and metadata stored on a `BEFdata` platform, integrates semantic
 repositories stored on `tematres` vocabulary servers
 (http://www.vocabularyserver.com/) and provides data preservation functionality
-for raw research data as well as for free format attachments files. We showcase
-the functionality of the `rbefdata` package available with version 0.3.5. We
-create a workflow in form of an R script that shows the semantic refinement of
-keywords to improve the search of datasets, the use of metadata in data
-processing, how to pull a complete set of data into the R environment based on
-a paper proposal, and finally the upload of data products. The workflow is
-created along an analysis about N retention that was done in the BEF-China
-experiment. The results of the analysis have been published already and the
-related data is open access (Lang et al.  2013) which makes the workflow shown
-here fully reproducible. 
+for raw research data as well as for free format attachments files that are
+generated while analysing data with R. We showcase the functionality of the
+`rbefdata` package available with version 0.3.5. The R script we present shows
+the semantic refinement of keywords to improve the search of datasets, the use
+of metadata in data processing, the access to a complete set of data based on a
+paper proposal of the BEF-China experiment, and finally the upload of the data
+products. The script contains an analysis about N retention that was done in
+the BEF-China experiment. The results of the analysis have been published
+already and the related data is open access (Lang et al. 2013). Thus the script
+shown here is fully reproducible. 
 
 ## Material and Methods 
 
@@ -135,27 +126,26 @@ provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012).
 
 ### BEFdata platform
 
-The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) platform is has
-been developed as part of the BEF-China experiment. It specialized in the
-management of small and heterogeneous data that are typical for biodiversity
-research. It offers data harmonization features, adheres to standards like
+The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) platform has been
+developed as part of the BEF-China experiment. It is specialized in the
+management of small and heterogeneous data that is typical for biodiversity
+research. It offers data harmonization features, adheres to standards like the
 Ecological Metadata Language (EML) for metadata support and fosters the
-exploration of data by keyword tagging and faceted search and faceted search
-The platform facilitates research cooperations and the discussion of ideas by a
-paper proposal tool. To create a paper proposal a researcher can select
-datasets on the platform to be included in an analysis. Furthermore basic
-information like a title, a rationale, the envisaged journal and a date needs
-to be provided. Submitting a proposal, a researcher asks for access to the data
-and proposes his research idea to the project board and the data owners. 
-
-The data owners can decide if and how they like to participate in the upcoming
-analysis or if they only like to get acknowledged for providing their data
-(cite Karin). This process allows to include or acknowledge all researchers
-involved in the data sampling process, it promotes collaborations between
-research units and helps to avoid duplication in publication initiatives on the
-same research ideas which adds to the transparency of data publication.
-Finally all datasets assembled in a paper proposal can be imported into the R
-environment by the `rbefdata` package. 
+exploration of data by a keyword tagging and search system. The platform
+facilitates research cooperations and the discussion of ideas by a paper
+proposal tool. To create a paper proposal a researcher can select datasets on
+the platform to be included in an analysis. Furthermore basic information like
+a title, a rationale, the envisaged journal and a date needs to be provided.
+Submitting a proposal, a researcher asks for access to the data and proposes
+his research idea to the project board and the data owners.  The data owners
+can decide if and how they like to participate in the upcoming analysis or if
+they only like to get acknowledged for providing their data (Nadrowski 2013).
+This process allows to include or acknowledge all researchers involved in the
+data sampling process, it promotes collaborations between research units and
+helps to avoid duplication in publication initiatives on the same research
+ideas which adds to the transparency of data publication.  Finally all datasets
+assembled in a paper proposal can be imported into the R environment by the
+`rbefdata` package. 
 
 ### The workflow: Nutrient retention along a biodiversity gradient
 
@@ -193,15 +183,29 @@ the search of relevant data for an analysis.
 
 ### Setup `rbefdata`
 
-The latest version of `rbefdata` is installed by the `install.packages()`
-command. After the installation the package needs to be loaded into the working
-environment with the `require()` (see box below).
+The latest version of `rbefdata` can be installed from the CRAN repository by
+the `install.packages()` command. After installation the package needs to be
+loaded using the `require(rbefdata)` command. `rbefdata` offers a set of
+options that modify the behavior of the R package. The options of the package
+can be set or queried via the `bef.options()`. A look into the options list
+(see box below) reveals several fields that can be filled in. One of the most
+essential settings is the user credentials. These are used to authenticate the
+user against the platform and to ensure weather the access to the specific
+datasets has been granted or not. The credentials can be obtained from the
+`BEFdata` platform where each user will find its credentials on its profile
+page. The other options represent the URLs to the `BEFdata` server instance and
+the `tematres` vocabulary server as well as a field that stores the name of a
+download folder. While the URL fields ensure the package communicates with the
+right servers the download folder name is used to create a folder in case we
+download attached files from a dataset or proposal. The URL to `BEFdata` server
+and the `tematres` defaults to the BEF-China project instances that we use to
+retrieve data from. If an own instance of the `BEFdata` platform or `tematres`
+has been set up, this URLs needs to be changed accordingly, so the package
+communicates with the right server (see box below). As the data is open access
+we need no authentication so we can stick to the default options. 
 
 
 ```r
-# load the package
-require(rbefdata)
-
 # list all options
 bef.options()
 ```
@@ -223,28 +227,8 @@ bef.options()
 ## [1] ""
 ```
 
-
-After that the options of the `rbefdata` package need to be set via the
-`bef.options()` command.  A look into the options list reveals several fields
-that can be filled in. The most essential setting for the example workflow we
-present here is the user credentials. These are used to authenticate the user
-against the platform and to ensure the access to the data has been granted as
-well as to log the data access. We need to set it as the data is not yet open
-access at the time of writing. When it will be open access in the near future,
-a key is no longer required to download the data.
-
-Other options are the URLs to the `BEFdata` server instance and the `tematres`
-vocabulary server as well as a field that stores the name of a download folder.
-While the URL fields ensure the package communicates with the right servers the
-download folder name is used to create a folder in case we download attached
-files from a dataset or proposal. In our case there is no need to change the
-URL to `BEFdata` server, as it defaults to the BEF-China instance that we use
-to retrieve data from. If an own instance of the `BEFdata` platform or has been
-set up, this URL needs to be changed so the package communicates with the right
-server (see box below).
-
-
 ```r
+
 # querry a single option
 bef.options("url")
 ```
@@ -270,22 +254,32 @@ bef.options(url = "http://my.own.befdata.instance.com")
 
 
 
-
+* Caption: 
+          The code box shows how to use the `bef.options()` command that is used to set
+          and query the options of the `rbefdata` package which modify the behavior of
+          the package. All options can ben shown at once to get anoverview as well as one
+          can pick only a single one to display the value it is set to. The options can
+          be set using the names of their fields shown here for the "user_credentials"
+          and the "url".
+  
 ### Data discovery 
 
 The `rbefdata` package supports exploiting a `tematres` vocabulary server via
-the `rtematres` package.  We can find terms and relations as well as we can
-display their descriptions in `rbefdata`. This can be used to improve the
-exploration of datasets. For example looking for datasets that deal with
-"plant organs" we can display the definition of that term first (box below).
-Then we ask the `BEFdata` platform for datasets that are tagged with that term
-and we get back a few datasets. In a next step we use the vocabulary on the
-`tematres` server to narrow down "plant organs" and we find "leaf",  "root",
-"twig" as well as plural forms. We use the narrower keywords to query the
-`BEFdata` server again for datasets associated with them and get back all
-datasets associated with the narrower terms. This can be used the other way
-around as well to restrict the datasets we get back to higher order terms with
-`bef.tematres.api(task = "fetchUp", "plant organ")`.
+the `rtematres` package. We can find terms and relations as well as we can
+display their descriptions in `rbefdata` which can be used to improve the
+exploration of datasets. For example looking for datasets that deal with the
+fresh weight of plant organs we are searching for the keywords "plant organs"
+and "fresh weight". We can show the definition of the term "plant organs" first
+if we like. We then ask the `BEFdata` platform for datasets that are tagged
+with that terms and we get back a few datasets (see box xxx). 
+
+In a next step we use the vocabulary on the `tematres` server to narrow down
+"plant organs" and we find "leaf", "root", "twig" as well as plural forms. We
+use the narrower keywords to query the `BEFdata` server again for datasets
+associated with them and get back all datasets associated with the narrower
+terms. This can be used the other way around as well to restrict the datasets
+we get back to higher order terms with `bef.tematres.api(task = "fetchUp",
+"plant organ")` (see box xxx).
  
 
 ```r
@@ -452,7 +446,7 @@ datasets_plant_organ_narrow
 
 The `rbefdata` package leverages data access through paper proposals by a
 download function. It loads all associated datasets of a proposal into the R
-environment in one single step.  It returns a list object that keeps a data
+environment in one single step. It returns a list object that keeps a data
 frame per list element containing a dataset of the proposal each (see box
 below). The function requires the ID of the proposal to work, which can be
 found in the URL (see box below).
@@ -491,7 +485,7 @@ head(extract_second_dataset, 5)
 ### Inspect data (EML)
 
 Each dataset in the `BEFdata` platform is associated with metadata the authors
-of the dataset provide. We also can access the metadata from within `rbefdata`.
+of the dataset provide. We can also access the metadata from within `rbefdata`.
 It can be accessed either directly via a metadata download command that takes
 the ID of a dataset or extracted from a dataset via the R internal
 `attributes()` command. The extraction via attributes is possible as each
@@ -694,14 +688,18 @@ require(car)
 ### Model 1: Overall recovery/N retention
 model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
     method = "REML")
+```
+
+```
+## Error: could not find function "lme"
+```
+
+```r
 anova(model1)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    34   870.6  <.0001
-## gbd_T0.mm.            1    34     7.5  0.0098
-## species_diversity     2    34     2.9  0.0714
+## Error: object 'model1' not found
 ```
 
 ```r
@@ -709,41 +707,25 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
-##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
-## 4 - 1 == 0    0.478      0.420    1.14    0.482  
-## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: could not find function "glht"
 ```
 
 ```r
 
 # ANOVA type II test for unbalanced design
 model1c = Anova(model1, type = "II")
+```
+
+```
+## Error: object 'model1' not found
+```
+
+```r
 model1c
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: recov_plot_t
-##                   Chisq Df Pr(>Chisq)   
-## gbd_T0.mm.         7.42  1     0.0064 **
-## species_diversity  5.71  2     0.0576 . 
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model1c' not found
 ```
 
 ```r
@@ -755,13 +737,18 @@ model1c
 
 ## Model2 percentage leaf recovery of plot recovery
 model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: could not find function "lme"
+```
+
+```r
 anova(model2)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36  273.06  <.0001
-## species_diversity     2    36    6.56  0.0037
+## Error: object 'model2' not found
 ```
 
 ```r
@@ -769,23 +756,7 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: could not find function "glht"
 ```
 
 ```r
@@ -793,13 +764,7 @@ Anova(model2, type = "II")
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: perleaf_plot_t
-##                   Chisq Df Pr(>Chisq)   
-## species_diversity  13.1  2     0.0014 **
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model2' not found
 ```
 
 ```r
@@ -809,13 +774,18 @@ Anova(model2, type = "II")
 
 ## Model3 percentage root recovery of overall recovery
 model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: could not find function "lme"
+```
+
+```r
 anova(model3)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36   374.2  <.0001
-## species_diversity     2    36     7.2  0.0024
+## Error: object 'model3' not found
 ```
 
 ```r
@@ -823,23 +793,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: could not find function "glht"
 ```
 
 ```r
@@ -847,13 +801,7 @@ Anova(model3, type = "II")
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: perroot_plot_t
-##                   Chisq Df Pr(>Chisq)    
-## species_diversity  14.3  2    0.00077 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model3' not found
 ```
 
 ```r
@@ -863,13 +811,18 @@ Anova(model3, type = "II")
 
 ## Model 4 percentage soil recovery of overall recovery
 model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: could not find function "lme"
+```
+
+```r
 anova(model4)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36   26248  <.0001
-## species_diversity     2    36       4  0.0274
+## Error: object 'model4' not found
 ```
 
 ```r
@@ -877,23 +830,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
-## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: could not find function "glht"
 ```
 
 ```r
@@ -901,13 +838,7 @@ Anova(model4, type = "II")
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: persoil_plot_t
-##                   Chisq Df Pr(>Chisq)  
-## species_diversity  7.96  2      0.019 *
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model4' not found
 ```
 
 ```r
@@ -1166,7 +1097,7 @@ provides data together with metadata in the R environment.
 Clarify: controlled vocabulary - thesaurus - ontology. Controlled vocabulary
 for finding and sorting, ontology for automatic reasoning.
 
-*** Semantics for searching and sorting
+* Semantics for searching and sorting
 
 We decided not to develop functionality to develop nested controlled
 vocabularies within BEFdata. This decision was based on the fact that there
@@ -1177,7 +1108,7 @@ tagging their data. This keeps single repositories small and coherent without
 loosing the potential to link them to other repositories (linked data,
 citations for linked data).
 
-*** Semantics for automated reasoning
+* Semantics for automated reasoning
 
 
 This is a separate argument, and we do not touch it in the results: automatic
@@ -1240,6 +1171,33 @@ publication.
 ### Figures
 
 ### saveaway 
+
+
+
+
+Before data can effectively be reused it may need to be cleaned, imputed,
+reshaped and merged which usually takes up to 70% of an analysis (Garijo 2012,
+Pfaff 2013 in prep). These preparatory steps are not only time and labour
+intensive but also potentially error prone, especially if the amount and
+complexity of data to be included increases. The integration of ontologies can
+help to solve these problems (michener 2008). As ontologies allow the machine
+readable access to knowledge of a scientific domain they can be used to develop
+tools that "understand" the contents of datasets and guide researchers on the
+process of data preparation. While ontologies with a narrow and clear scope are
+very well used already (cite xxx, e.g gene Ontology) it is a challenging tasks
+to create an ontology for research domains like ecology that are characterized
+by a high degree of interdisciplinary interactions (Parsons 2011). This
+characteristic leads to a heterogeneous landscape of knowledge and concepts
+that would need to be covered and formalized by the ontology.
+
+
+As the `BEFdata` platform is open source each project can set up an own
+instance profit from the data sharing and preservation offers data preservation
+and harmonizing functionality.  The `rbefdata` package enables an easy access
+to the data preservation from within R and the   
+
+
+
 
 We discuss `rbefdata` and `BEFdata` in in the light of current and future
 challenges for data management give an outlook onto upcoming features that
