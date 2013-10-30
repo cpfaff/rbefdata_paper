@@ -9,42 +9,60 @@ options(width = 95)
 
 `rbefdata` - leveraging access to data and semantics
 
+## Keywords 
+
+Data management, data sharing, data processing, paper proposals, biodiversity ecosystem functioning, semantic integration
+open source, open science 
+
 ## Abstract
 
-In this paper we introduce the `rbefdata` package that provides the R statistic
-environment with an access to the open source data management platform
-`BEFdata`.  It leverages the access to data and metadata, integrates a semantic
-repository (thesaurus) and offers preservation for datasets and other data
-products like scripts and figures that are generated while analysing data. We
-showcase the functionality of the R package and the interactions with the data
-management platform using an R script. It pulls and analyses data associated to
-a research idea in form of a paper proposal from the `BEFdata` instance of the
-BEF-China experiment. The analysis in the script deals with N retention along a
-biodiversity gradient and asks for the influence of biodiversity on the
-process. The results of the analysis have been published already and the data
-is open access. Thus the analysis shown here to introduce the R package is
-fully reproducible by executing the script. We discuss the R package and the
-combination of software in terms of the data life cycle and the current data
-management requirements in ecology as well as we given an outlook on upcoming
-features of `rbefdata` and `BEFdata`.
+A growing amount of data in ecology gets available which puts much pressure on
+the development of tools that help researchers to deal with data exploration,
+reuse, processing and the preservation of data products and their provenance.
+Although many tools and concepts are available for data management not all of
+them are widely spread throughout ecology due to different reasons. One of them
+is a missing tight integration of valuable data management concepts into widely
+used tools like the R environment for statistics. We designed an R package
+named `rbefdata` that provides the R statistics environment with an access to
+the open source data management platform `BEFdata` which is specialized in the
+preservation and harmonization of small and heterogeneous ecological data. The
+R package includes the access to the data stored on the platform as well as to
+the metadata provided by dataset authors. The metadata can be accessed while
+processing the data and thus gives a shortcut that helps in understanding the
+associated data which facilitates the processing and analysis of data. The R
+package integrates an online semantic repository (thesaurus) that can be used
+to improve the search for datasets stored on the portal. Furthermore the R
+package provides upload functionality so any data product can be pushed
+directly back to the data portal for preservation. So we integrate data
+management concepts like the semantic improved exploration of datasets, a
+seamless access to data and metadata, for data processing and the preservation
+of data products directly into the R environment. The open source character of
+the data management platform `BEFdata` and the companion package `rbefata` make
+it possible for any ecological project to used a sophisticate data management
+solution with the benefit of closely integrated valuable concepts of data
+management. 
 
 ## Introduction 
 
-Today ecologists face a deluge of data like in many other disciplines. This
-puts much pressure on the development of tools that foster the preservation,
-the exploration and the reuse of data. Many tools and concepts in data
-management provide solutions to different parts of the life cycle of data.
-However not all of them are widely spread or accepted throughout ecology. This
-situation can potentially be improved by the tight integration of data
+Today ecologists face a deluge of data which puts much pressure on the
+development of tools that foster the exploration, the processing, the reuse and
+the preservation of data. Although tools and concepts in data management
+already provide many solutions to different parts of the life cycle of data,
+not all of them are widely spread or accepted throughout ecology. This is
+related to different reasons like the reluctance of researchers to use online
+data management platforms or the lack of integration of data management
+concepts into widely used software tools like for example the R statistics
+environment. This situation can be improved by the tight integration of data
 management concepts into existing and widely used software and thus into the
 daily workflow of researchers. Paper proposals and data provenance as ways to
-promote the discussion of ideas and collaborations, metadata to improve data
+promote collaborations by the discussion of ideas and, metadata to improve data
 preservation and information exchange as well as the integration of semantic
 resources to enhance data exploration and processing, only represent a few
-examples of valuable concepts with the potential to improve the progress of a
-data intensive scientific domain like ecology. The `rbefdata` R package is an
-approach to combine the strengths of the mentioned data management concepts
-into a single and simple usable R package.
+examples of concepts with the potential to improve the progress of a data
+intensive scientific domain like ecology. The `rbefdata` R package in
+combination with the data management platform `BEFdata` combine the strengths
+of the data management concepts mentioned into a single and simple usable data
+management package that makes use of widely accepted tools in ecology.
 
 With a growing awareness on the value of data, many data management platforms
 have been developed to preserve all kinds of environmental and historic data.
@@ -96,6 +114,22 @@ relations of the search term (Leinfelder et al.). Thus the `rbefdata` package
 enables the access to semantic repositories stored on `tematres` servers which
 can be used with the keyword base dataset search of the `BEFdata` portal to
 find relevant data.
+
+
+and offers preservation for datasets and other data products like scripts and
+figures that are generated while analysing data. We showcase the functionality
+of the R package and the interactions with the data management platform using
+an R script. It pulls and analyses data associated to a research idea in form
+of a paper proposal from the `BEFdata` instance of the BEF-China experiment.
+The analysis in the script deals with N retention along a biodiversity gradient
+and asks for the influence of biodiversity on the process. The results of the
+analysis have been published already and the data is open access. Thus the
+analysis shown here to introduce the R package is fully reproducible by
+executing the script.  We discuss the R package and the combination of software
+in terms of the data life cycle and the current data management requirements in
+ecology as well as we given an outlook on upcoming features of `rbefdata` and
+`BEFdata`.
+
 
 We here introduce the `rbefdata` R package as companion to the open source data
 management platform `BEFdata` (Nadrowski 2013). The package is part of the
@@ -828,6 +862,17 @@ and local initiatives (cite xxx) and private persons. This in fact results in a
 wild growing, complex and heterogeneous data landscape that an ontology would
 need to capture to be usable.
 
+
+data management concepts into existing and widely
+used software and thus into the daily workflow of researchers in ecology. Paper
+proposals and data provenance as a way to promote the discussion of ideas and
+collaborations, metadata to improve data preservation and information exchange
+for data reuse as well as the integration of semantic resources to enhance data
+exploration and its processing, only represent a few examples of concepts with
+the potential to improve the progress of a data intensive scientific domain
+like ecology. The `rbefdata` R package and the `BEFdata` platform are an
+approach to combine the strengths of the mentioned data management concepts
+into a single and simple usable data management package.
 
 
 
