@@ -15,28 +15,28 @@ open source, open science
 A growing amount of data in ecology gets available which puts much pressure on
 the development of tools that help researchers to deal with data exploration,
 reuse, processing and the preservation of data products and their provenance.
-Although many tools and concepts are available for data management not all of
-them are widely spread throughout ecology due to different reasons. One of them
-is a missing tight integration of valuable data management concepts into widely
-used tools like the R environment for statistics. We designed an R package
-named `rbefdata` that provides the R statistics environment with an access to
-the open source data management platform `BEFdata` which is specialized in the
-preservation and harmonization of small and heterogeneous ecological data. The
-R package includes the access to the data stored on the platform as well as to
-the metadata provided by dataset authors. The metadata can be accessed while
-processing the data and thus gives a shortcut that helps in understanding the
-associated data which facilitates the processing and analysis of data. The R
-package integrates an online semantic repository (thesaurus) that can be used
-to improve the search for datasets stored on the portal. Furthermore the R
-package provides upload functionality so any data product can be pushed
-directly back to the data portal for preservation. So we integrate data
-management concepts like the semantic improved exploration of datasets, a
-seamless access to data and metadata, for data processing and the preservation
-of data products directly into the R environment. The open source character of
-the data management platform `BEFdata` and the companion package `rbefata` make
-it possible for any ecological project to used a sophisticate data management
-solution with the benefit of closely integrated valuable concepts of data
-management. 
+Although many tools and concepts are available for data management only a few
+of them are widely spread throughout ecology due to different reasons. One of
+them is a missing tight integration of valuable data management concepts into
+widely used tools like the R environment for statistics. We designed an R
+package named `rbefdata` that provides the R statistics environment with an
+access to the open source data management platform `BEFdata` which is
+specialized in the preservation and harmonization of small and heterogeneous
+ecological data. The R package includes the access to the data stored on the
+platform as well as to the metadata provided by dataset authors. The metadata
+can be accessed while processing the data and thus gives a shortcut that helps
+to understand the associated data which in turn facilitates the processing and
+analysis of data. The R package integrates an semantic online repository
+(thesaurus) that can be used to improve the search for datasets stored on the
+portal. Furthermore the R package provides upload functionality so any data
+product can be pushed directly back to the data portal for preservation. So we
+integrate data management concepts like the semantic improved exploration of
+datasets, a seamless access to data and metadata, for data processing and the
+preservation of data products directly into the R environment. The open source
+character of the data management platform `BEFdata` and the companion package
+`rbefata` make it possible for any ecological project to use this package as a
+sophisticated data management solution with the benefit of closely integrated
+valuable concepts of data management. 
 
 ## Introduction 
 
@@ -50,87 +50,75 @@ data management platforms or the lack of integration of data management
 concepts into widely used software tools like for example the R statistics
 environment. This situation can be improved by the tight integration of data
 management concepts into existing and widely used software and thus into the
-daily workflow of researchers. Paper proposals and data provenance as ways to
-promote collaborations by the discussion of ideas and, metadata to improve data
-preservation and information exchange as well as the integration of semantic
-resources to enhance data exploration and processing, only represent a few
-examples of concepts with the potential to improve the progress of a data
-intensive scientific domain like ecology. The `rbefdata` R package in
-combination with the data management platform `BEFdata` combine the strengths
-of the data management concepts mentioned into a single and simple usable data
-management package that makes use of widely accepted tools in ecology.
+daily workflow of researchers but also through concepts that help researchers
+gain trust in online data mangement platforms. Paper proposals and data
+provenance as a way to promote collaborations by the discussion of ideas and,
+metadata to improve data preservation and information exchange as well as the
+integration of semantic resources to enhance data exploration and processing,
+only represent a few examples of concepts with the potential to improve the
+progress of a data intensive scientific domain like ecology. The `rbefdata` R
+package together with the data management platform `BEFdata` combine the
+strengths of the data management concepts mentioned into a sophisticated data
+management software package that makes use of widely accepted tools in ecology.
 
 With a growing awareness on the value of data, many data management platforms
 have been developed to preserve all kinds of environmental and historic data.
-These provide data preservation plans for small scale projects as well as for
-large scale, big data producing, long term or remote sensing collaborations
-(cite e.g.  diversity workbench, `BEFdata`, DataONE, LifeWatch, Pangea, Bexis).
-An ongoing trend in data preservation and accessibility is the development of
+These provide data preservation for small scale projects as well as for large
+scale, big data producing, long term or remote sensing collaborations (cite
+e.g.  diversity workbench, `BEFdata`, DataONE, LifeWatch, Pangea, Bexis). An
+ongoing trend in data preservation and accessibility is the development of
 integrative data platforms (cite TRY, GBIF, Pangea). They serve as nodes that
 collect data from smaller databases and enable researchers to access a wide
-range of relevant data, all from one place. All these platforms offer a
-solution to one of the most pressing problems in data management the loss of
-valuable data (Heidorn, 2008). Even tough these platforms improve the situation
-of data preservation, researchers are still reluctant to use online data
-platforms as they fear to give away and loose the control over their data
-(michener 2012). Here the `BEFdata` platform offers full control of uploaded
-data via a fine grained access system. Uploading data from within R via the
-`rbefdata` makes the data accessible to the owner only by default.
+range of relevant data all from one place. These platforms offer a solution to
+one of the most pressing problems in data management, the loss of valuable data
+(Heidorn, 2008). Even tough these platforms improve the situation in data
+preservation, researchers are still reluctant to use online data platforms as
+they fear to give away and loose the control over their data (michener 2012).
+On top of that there is even no benefit in sharing data that would motivate to
+put more time into a data to prepare it for preservation. The `BEFdata`
+platform offers full control over the access to uploaded data via a fine
+grained access system. Uploading data from within R via the `rbefdata` makes
+the data accessible to the owner only by default but the access rights can be
+adapted to working groups, project wide or even the public (cite Karin). 
 
 The demand to reuse available data grows with the amount of data available
-(Heidorn, 2008). In ecology for example the reuse of data is of particular
-interest as the integration of data offers the potential to answer questions on
-a much broader temporal and spatial scale (michener, 2008). However a problem
-with the reuse of data is, that available data is often not well described.
-Metadata is necessary here as plain primary research data can be hard to
-understand, and even hard to decipher by the authors themselves after some time
-has passed. For example it is hard to remember what methods have been used to
-collect the data of a certain column or what the abbreviations and the headers
-in the dataset mean. However metadata is still not used exhaustive as it
-usually always means to put more time into the collected data and to learn new
-tools that help to describe it (e.g morpho, dataUP). Metadata gives researchers
-the opportunity to describe their data and others to understand raw research
-data even if they are not familiar with it (Fegraus 2005). Thus the `BEFdata`
-portal sticks to the EML standard and the R package provides the metadata as
-attributes of data frames right from within R.
+(Heidorn, 2008). In ecology the reuse of data is of particular interest as the
+integration of data offers the potential to answer questions on a much broader
+temporal and spatial scale (michener, 2008). However a problem with the reuse
+of data is, that available data is rarely well described. Metadata is crucial
+here as plain primary research data can be hard to understand, and even hard to
+decipher by the authors themselves after some time has passed. For example it
+is hard to remember what methods have been used to collect the data of a
+certain column or what the abbreviations and the headers in the dataset mean.
+However metadata is still not used exhaustive as it usually means to put more
+time into the data with no direct benefit and to learn new tools that help to
+describe the data (e.g morpho, dataUP). Metadata gives researchers the
+opportunity to describe their data and others to understand raw research data
+even if they are not familiar with it (Fegraus 2005). The `BEFdata` portal
+allows an upload of metadata as spreadsheet and exports it to the EML metadata
+standard. The R package provides the metadata of datasets as attributes of data
+frames right from within R.
 
 To find relevant data for reuse is a challenging task that is getting even more
 complex if more data gets available (Leinfelder et al, xxx). A common practice
-in data discovery, next to full text search in data and metadata, is tagging
-with keywords (Nadrowski 2013). However a keyword search can be very coarse as
-it may provide access to a set of data but misses other essential and relevant
-data tagged with close related or synonymous keywords (Leinfelder et al. xxx,
-michener 2008). For example a keyword search on "weight" and "leaves" will miss
-datasets tagged only with "dry weight", "wet weight" or "plant products" that
-might be associated to datasets that are of interest as well. The integration
-of semantic repositories that provide taxonomies can potentially improve the
-situation here. These repositories can embed the keywords from the search query
-into a hierarchical structure and so the query can be extended along known
-relations of the search term (Leinfelder et al.). Thus the `rbefdata` package
-enables the access to semantic repositories stored on `tematres` servers which
-can be used with the keyword base dataset search of the `BEFdata` portal to
-find relevant data.
-
-
-and offers preservation for datasets and other data products like scripts and
-figures that are generated while analysing data. We showcase the functionality
-of the R package and the interactions with the data management platform using
-an R script. It pulls and analyses data associated to a research idea in form
-of a paper proposal from the `BEFdata` instance of the BEF-China experiment.
-The analysis in the script deals with N retention along a biodiversity gradient
-and asks for the influence of biodiversity on the process. The results of the
-analysis have been published already and the data is open access. Thus the
-analysis shown here to introduce the R package is fully reproducible by
-executing the script.  We discuss the R package and the combination of software
-in terms of the data life cycle and the current data management requirements in
-ecology as well as we given an outlook on upcoming features of `rbefdata` and
-`BEFdata`.
-
+in data discovery, next to full text search in data and metadata, is the
+tagging with keywords (Nadrowski 2013). However a keyword search can be very
+coarse as the search for one specific keyword may cover the access to a set of
+data but misses other essential and relevant data tagged with close related or
+synonymous keywords (Leinfelder et al. xxx, michener 2008). For example a
+search with the keywords "weight" and "leaves" will likely miss datasets tagged
+with "dry weight", "wet weight" or "plant organs", that might be associated to
+datasets that are of interest as well. The integration of semantic repositories
+that provide taxonomies of terms can improve the situation. These repositories
+embed the keywords from the search query into a hierarchical structure and so
+the query can be extended along known relations (Leinfelder et al.). Thus the
+`rbefdata` package implements the access to semantic repositories stored on
+`tematres` servers which can be used to improve the search query.
 
 We here introduce the `rbefdata` R package as companion to the open source data
 management platform `BEFdata` (Nadrowski 2013). The package is part of the
-rOpenSci (http://ropensci.org/) initiative which is a community driven project
-to provide the R statistics environment (R Development Core Team 2008) with a
+rOpenSci (http://ropensci.org/) initiative, a community driven project to
+provide the R statistics environment (R Development Core Team 2008) with a
 flexible access to scientific data repositories. The R package enables access
 to data and metadata stored on a `BEFdata` platform, integrates semantic
 repositories stored on `tematres` vocabulary servers
@@ -139,62 +127,13 @@ for raw research data as well as for free format attachments files that are
 generated while analysing data with R. We showcase the functionality of the
 `rbefdata` package available with version 0.3.5. The R script we present shows
 the semantic refinement of keywords to improve the search of datasets, the use
-of metadata in data processing, the access to a complete set of data based on a
+of metadata in data processing, how to access a complete set of data based on a
 paper proposal of the BEF-China experiment, and finally the upload of the data
-products. The script contains an analysis about N retention that was done in
-the BEF-China experiment. The results of the analysis have been published
-already and the related data is open access (Lang et al. 2013). Thus the script
-shown here is fully reproducible. 
+products. The R script shown here employs an analysis about N retention to
+showcase the package. The results of the analysis have been published already
+and the related data is open access (Lang et al. 2013). Thus the script shown
+here is fully reproducible. 
 
-## Material and Methods 
-
-### BEF-China 
-
-The BEF (Biodiversity Ecosystem Functioning) - China project, funded by the
-German Science Foundation (DFG, FOR 891) is a research collaboration consisting
-of 10-15 independent research groups (www.bef-china.de). The overarching aim is
-to disentangle the role of tree and shrub diversity for production, erosion
-control, element cycling, and species conservation in Chinese subtropical
-forest ecosystems. The project uses two main research platforms located in the
-provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012).  
-
-### BEFdata platform
-
-The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) platform has been
-developed as part of the BEF-China experiment. It is specialized in the
-management of small and heterogeneous data that is typical for biodiversity
-research. It offers data harmonization features, adheres to standards like the
-Ecological Metadata Language (EML) for metadata support and fosters the
-exploration of data by a keyword tagging and search system. The platform
-facilitates research cooperations and the discussion of ideas by a paper
-proposal tool. To create a paper proposal a researcher can select datasets on
-the platform to be included in an analysis. Furthermore basic information like
-a title, a rationale, the envisaged journal and a date needs to be provided.
-Submitting a proposal, a researcher asks for access to the data and proposes
-his research idea to the project board and the data owners.  The data owners
-can decide if and how they like to participate in the upcoming analysis or if
-they only like to get acknowledged for providing their data (Nadrowski 2013).
-This process allows to include or acknowledge all researchers involved in the
-data sampling process, it promotes collaborations between research units and
-helps to avoid duplication in publication initiatives on the same research
-ideas which adds to the transparency of data publication.  Finally all datasets
-assembled in a paper proposal can be imported into the R environment by the
-`rbefdata` package. 
-
-### The workflow: Nutrient retention along a biodiversity gradient
-
-We use an analysis about N retention along biodiversity gradient in the
-BEF-China experiment as a use case. We build a script that shows the
-functionalities and inter linkages between the BEF-China data platform and the
-`rbefdata` package. The analysis is typical for interdisciplinary research in
-ecology, as it combines soil, taxon, and nutrient data where data originating
-from field campaigns of different collaborating laboratories has to be merged
-prior to analyses. A paper proposal based on 3 datasets with the title "Mixed
-afforestations of young subtropical trees promote nitrogen acquisition and
-retention" has been created. For a detailed rationale we refer to the paper
-proposal on the `BEFdata` instance of the BEF-China portal (URL XX).
-
-### rbefdata
 
 The `rbefdata` package (GitHub: https://github.com/befdata/befdata) is a
 companion to the open source data management platform `BEFdata`. The latest
@@ -213,15 +152,65 @@ taxonomy on the server contains xxx terms used in biodiversity research. The
 relations of terms provided by the `tematres` vocabulary can be used to improve
 the search of relevant data for an analysis. 
 
-## Example workflow 
 
-### Setup `rbefdata`
+## Material and Methods 
+
+### BEF-China and the analysis usecase
+
+The BEF (Biodiversity Ecosystem Functioning) - China project, funded by the
+German Science Foundation (DFG, FOR 891) is a research collaboration consisting
+of 10-15 independent research groups (www.bef-china.de) with the overarching
+aim to disentangle the role of tree and shrub diversity for production, erosion
+control, element cycling, and species conservation in Chinese subtropical
+forest ecosystems. The project uses two main research platforms located in the
+provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012).  We used an
+analysis about N retention along biodiversity gradient in the BEF-China
+experiment as a use case. We built a script that shows the functionalities and
+inter linkages between the `rbefdata` packakge and the `BEFdata` platform and.
+The analysis shows typical characteristics for interdisciplinary research in
+ecology, as it combines soil, taxon, and nutrient data where data originating
+from field campaigns of different collaborating laboratories has to be merged
+prior to analyses.  
+
+### BEFdata platform
+
+The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) platform has been
+developed as part of the BEF-China experiment. It is specialized in the
+management of small and heterogeneous data that is typical for biodiversity
+research. It offers data harmonization features, adheres to standards like the
+Ecological Metadata Language (EML) for metadata support and fosters the
+exploration of data by a keyword tagging and search system. The platform
+facilitates research cooperations and the discussion of ideas by a paper
+proposal tool. To create a paper proposal a researcher can select datasets on
+the platform to be included in an analysis. Furthermore basic information like
+a title, a rationale, the envisaged journal and a date needs to be provided.
+Submitting a proposal, a researcher asks for access to the data and proposes
+his research idea to the project board and the data owners. The data owners can
+decide if and how they like to participate in the upcoming analysis or if they
+only like to get acknowledged for providing their data (Nadrowski 2013). 
+
+This process allows to include or acknowledge all researchers involved in the
+data sampling process, it promotes collaborations between research units and
+helps to avoid duplication in publication initiatives on the same research
+ideas which adds to the transparency of data publication. Finally all datasets
+assembled in a paper proposal can be imported into the R environment by the
+`rbefdata` package.  
+
+We used a proposal for the script that is based on 3 datasets with the title
+"Mixed afforestations of young subtropical trees promote nitrogen acquisition
+and retention". For a detailed rationale of the proposal we refer to the paper
+proposal page on the `BEFdata` instance of the BEF-China project (URL XX) and
+the publihed paper (A. Lang xxx).
+
+## Usecase
+
+### Setup rbefdata 
 
 The latest version of `rbefdata` can be installed from the CRAN repository by
-the `install.packages()` command. After installation the package needs to be
-loaded using the `require(rbefdata)` command. `rbefdata` offers a set of
-options that modify the behavior of the R package. The options of the package
-can be set or queried via the `bef.options()`. A look into the options list
+the `install.packages("rbefdata")` command. After installation the package
+needs to be loaded using the `require(rbefdata)` command. `rbefdata` offers a
+set of options that modify the behavior of the R package. The options can be
+set or queried via the `bef.options()` command. A look into the options list
 (see box below) reveals several fields that can be filled in. One of the most
 essential settings is the user credentials. These are used to authenticate the
 user against the platform and to ensure weather the access to the specific
@@ -229,14 +218,13 @@ datasets has been granted or not. The credentials can be obtained from the
 `BEFdata` platform where each user will find its credentials on its profile
 page. The other options represent the URLs to the `BEFdata` server instance and
 the `tematres` vocabulary server as well as a field that stores the name of a
-download folder. While the URL fields ensure the package communicates with the
-right servers the download folder name is used to create a folder in case we
-download attached files from a dataset or proposal. The URL to `BEFdata` server
-and the `tematres` defaults to the BEF-China project instances that we use to
-retrieve data from. If an own instance of the `BEFdata` platform or `tematres`
-has been set up, this URLs needs to be changed accordingly, so the package
-communicates with the right server (see box below). As the data is open access
-we need no authentication so we can stick to the default options. 
+download folder. While the URL fields ensure the communication with the right
+servers, the download folder name is used to create a folder in case we
+download attached files from a dataset or proposal. The URL to the `BEFdata`
+and the `tematres` server default to the BEF-China project instances that we
+use to retrieve data from. If an own instance of either the `BEFdata` platform
+or `tematres` has been set up, this URLs needs to be changed accordingly, so
+the package communicates with the right servers (see box below). 
 
 
 ```r
@@ -290,30 +278,28 @@ bef.options(url = "http://my.own.befdata.instance.com")
 
 * Caption: 
           The code box shows how to use the `bef.options()` command that is used to set
-          and query the options of the `rbefdata` package which modify the behavior of
-          the package. All options can ben shown at once to get anoverview as well as one
-          can pick only a single one to display the value it is set to. The options can
-          be set using the names of their fields shown here for the "user_credentials"
+          and query the options of the `rbefdata` package. The options determine the behavior of
+          the package. All options can ben shown at once to get an overview as well as one
+          can pick a single options to display the value it is set to. The options can
+          be set using the names of their fields like shown here for example the "user_credentials"
           and the "url".
   
-### Data discovery 
+### Discover Data 
 
 The `rbefdata` package supports exploiting a `tematres` vocabulary server via
-the `rtematres` package. We can find terms and relations as well as we can
-display their descriptions in `rbefdata` which can be used to improve the
-exploration of datasets. For example looking for datasets that deal with the
-fresh weight of plant organs we are searching for the keywords "plant organs"
-and "fresh weight". We can show the definition of the term "plant organs" first
-if we like. We then ask the `BEFdata` platform for datasets that are tagged
-with that terms and we get back a few datasets (see box xxx). 
-
-In a next step we use the vocabulary on the `tematres` server to narrow down
-"plant organs" and we find "leaf", "root", "twig" as well as plural forms. We
-use the narrower keywords to query the `BEFdata` server again for datasets
-associated with them and get back all datasets associated with the narrower
-terms. This can be used the other way around as well to restrict the datasets
-we get back to higher order terms with `bef.tematres.api(task = "fetchUp",
-"plant organ")` (see box xxx).
+the `rtematres` package (cran link). We can find terms and relations as well as
+we can display their descriptions which can be used to improve the exploration
+of datasets. For example looking for datasets that deal with the fresh weight
+of plant organs we are searching for the keywords "plant organ" and "fresh
+weight". We can show the definition of the term "plant organ" first if we like.
+We then ask the `BEFdata` platform for datasets that are tagged with that terms
+and we get back a few datasets (see box xxx). In a further step we use the
+vocabulary on the `tematres` server to narrow down "plant organs" and we get
+back keywords like "leaf", "root", "twig". We use these narrower keywords to
+query the `BEFdata` server again for datasets associated with them and get back
+all datasets associated with the narrower terms. This method can be used the
+other way around as well to restrict the datasets we get back to higher order
+terms with `bef.tematres.api(task = "fetchUp", "plant organ")` (see box xxx).
  
 
 ```r
@@ -363,12 +349,12 @@ narrow_tasks_plant_organ
 
 ```
 ## $id
-##  [1] "385"  "800"  "386"  "390"  "391"  "1336" "73"   "387"  "75"   "388"  "30"  
+##  [1] "385"  "800"  "386"  "390"  "391"  "1336" "73"   "387"  "75"   "388"  "28"   "30"  
 ## 
 ## $term
 ##  [1] "flower"        "flower-head"   "flowers"       "fruit"         "fruits"       
 ##  [6] "inflorescence" "leaf"          "leaves"        "root"          "seed"         
-## [11] "twig"
+## [11] "stem"          "twig"
 ```
 
 ```r
@@ -388,44 +374,60 @@ datasets_plant_organ_narrow
 ## 6  371
 ## 7  372
 ## 8  108
-## 9  429
-## 10 357
-## 11 188
-## 12 202
-## 13 143
-## 14 145
-## 15 360
-## 16 160
-## 17 166
-## 18 147
-## 19 411
-## 20 413
-## 21 367
-## 22 368
-## 23 384
-## 24 219
-## 25 212
-## 26 187
-## 27 381
-## 28 405
-## 29 319
-## 30 347
-## 31 424
-## 32 322
-## 33 107
-## 34 430
-## 35 379
-## 36 313
-## 37 192
-## 38 127
-## 39 105
-## 40 434
-## 41 433
-## 42 435
-## 43 436
-## 44 418
-## 45 421
-## 46 375
+## 9   52
+## 10 429
+## 11 357
+## 12 188
+## 13 202
+## 14 143
+## 15 145
+## 16 360
+## 17 160
+## 18 166
+## 19 147
+## 20 411
+## 21 413
+## 22 367
+## 23 368
+## 24 384
+## 25 219
+## 26 212
+## 27 187
+## 28 381
+## 29 405
+## 30 319
+## 31 347
+## 32 424
+## 33 322
+## 34 107
+## 35 430
+## 36 379
+## 37 313
+## 38 412
+## 39 192
+## 40 127
+## 41 105
+## 42 434
+## 43 433
+## 44 435
+## 45 436
+## 46 418
+## 47 421
+## 48 375
+## 49 204
+## 50 161
+## 51 399
+## 52 401
+## 53 239
+## 54 235
+## 55 425
+## 56 162
+## 57 238
+## 58 123
+## 59 327
+## 60 122
+## 61 136
+## 62 135
 ##                                                                                                                                            title
 ## 1                                                               Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
 ## 2                                       Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A& B)
@@ -435,74 +437,99 @@ datasets_plant_organ_narrow
 ## 6                                                                   Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 & 3)
 ## 7                                                                                  Estimated Root Biomass of July 2010 of Pilot Experiment (SP1)
 ## 8                                   Talk 5: Leaf eco-physiological traits and coarse root spatial distribution characteristic in CSPs (2010)—SP3
-## 9                                                                                    Tree - herb interactions and invasibility of exotic species
-## 10                                                                                         Biomass Allometry Equations of Pilot Experiment (SP7)
-## 11 Biomass of four tree species (Castanea henryi, Quercus serrata, Schima suberba and Elaeocarpus decipiens) as saplings in the Pilot Experiment
-## 12                                            Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
-## 13                                          Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
-## 14                                                Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
-## 15                                                                                                                  Detailed tree allometry data
-## 16                                                                                                          Genetic diversity of Ardisia crenata
-## 17                                                                                                        Genetic diversity of Castanopsis eyrei
-## 18                                                                         Herbivore damage on saplings of 23 tree and shrub species in the CSPs
-## 19                                                                                        herbivory in the Main Experiment site A in summer 2009
-## 20                                                                                                herbivory in the pilot experiment in fall 2010
-## 21                                                                                              Leaf damage of tree individuals Site A fall 2011
-## 22                                                                                            Leaf damage of tree individuals Site A summer 2011
-## 23                                                                                                                          NILEX - Soil Erosion
-## 24                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
-## 25                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
-## 26                                                                                         Traits of ferns and herb species occuring in the CSPs
-## 27                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
-## 28                                                                                                 Leaf demography in the Main Experiment - 2011
-## 29                                                                                                                  Site A tree census from 2010
-## 30                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
-## 31                                                                                                                    Cuttings experiment - CSPs
-## 32                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
-## 33                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
-## 34                                                                                        Functional traits herb layer community-main experiment
-## 35                                                                           Functional traits of 45 species in subtropical forest in Dujiangyan
-## 36                                                                                                    P concentrations in leaves and roots, CSPs
-## 37                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
-## 38                                                                                                CSP soil profile description II: soil horizons
-## 39                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
-## 40                                                                         Seed addition experiment  Site A (VIPs) – abiotic predictor variables
-## 41                                                                                       Seed addition experiment  Site A (VIPs) - biomass data 
-## 42                                                                                Seed addition experiment  Site A (VIP´s) – repeated monitoring
-## 43                                                                                        Seed addition experiment  Site A (VIPs) – Tree heights
-## 44                                                                                                                          Resident phytometers
-## 45                                                                                            Pilot experiment: performance, biomass & herbivory
-## 46                                          Functional traits of 14 subtropical woody species across a light-availability gradient in Dujiangyan
+## 9                                                                                     Talk 2: Comparing the designs of different BEF experiments
+## 10                                                                                   Tree - herb interactions and invasibility of exotic species
+## 11                                                                                         Biomass Allometry Equations of Pilot Experiment (SP7)
+## 12 Biomass of four tree species (Castanea henryi, Quercus serrata, Schima suberba and Elaeocarpus decipiens) as saplings in the Pilot Experiment
+## 13                                            Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
+## 14                                          Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
+## 15                                                Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
+## 16                                                                                                                  Detailed tree allometry data
+## 17                                                                                                          Genetic diversity of Ardisia crenata
+## 18                                                                                                        Genetic diversity of Castanopsis eyrei
+## 19                                                                         Herbivore damage on saplings of 23 tree and shrub species in the CSPs
+## 20                                                                                        herbivory in the Main Experiment site A in summer 2009
+## 21                                                                                                herbivory in the pilot experiment in fall 2010
+## 22                                                                                              Leaf damage of tree individuals Site A fall 2011
+## 23                                                                                            Leaf damage of tree individuals Site A summer 2011
+## 24                                                                                                                          NILEX - Soil Erosion
+## 25                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
+## 26                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
+## 27                                                                                         Traits of ferns and herb species occuring in the CSPs
+## 28                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
+## 29                                                                                                 Leaf demography in the Main Experiment - 2011
+## 30                                                                                                                  Site A tree census from 2010
+## 31                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
+## 32                                                                                                                    Cuttings experiment - CSPs
+## 33                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
+## 34                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
+## 35                                                                                        Functional traits herb layer community-main experiment
+## 36                                                                           Functional traits of 45 species in subtropical forest in Dujiangyan
+## 37                                                                                                    P concentrations in leaves and roots, CSPs
+## 38                                                                                        Tree demographical survey in CSPs--sapling individuals
+## 39                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
+## 40                                                                                                CSP soil profile description II: soil horizons
+## 41                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
+## 42                                                                         Seed addition experiment  Site A (VIPs) – abiotic predictor variables
+## 43                                                                                       Seed addition experiment  Site A (VIPs) - biomass data 
+## 44                                                                                Seed addition experiment  Site A (VIP´s) – repeated monitoring
+## 45                                                                                        Seed addition experiment  Site A (VIPs) – Tree heights
+## 46                                                                                                                          Resident phytometers
+## 47                                                                                            Pilot experiment: performance, biomass & herbivory
+## 48                                          Functional traits of 14 subtropical woody species across a light-availability gradient in Dujiangyan
+## 49                                          Coarse woody debris (CWD): Collection of data on dead wood with special regard to the 2008 ice storm
+## 50                                                                        Corrected tree tags on the CSP trees and tree size measures from 2010.
+## 51                                                                                                        CSP >10cm dbh matching trees 2008-2010
+## 52                                                                                  CSP 3 to 10 cm dbh matching trees in the years 2008 and 2010
+## 53                                                                                               Living or killed trees after the 2008 ice storm
+## 54               Metal tags for coarse woody debris (CWD) items in the CSPs and corresponding metal tags and stem ids from the living tree data.
+## 55                                                        The relative spatial coordinates of all tagged trees in Comparative Study Plots (CSPs)
+## 56                                                                                                        Tree size in the CSPs in 2008 and 2009
+## 57                                                                               Tree stem reference list for the Comparative Study Sites (CSPs)
+## 58                                                                                                      Wood density of tree species in the CSPs
+## 59                                                                                  Deviations from stem breaking probabilities at species level
+## 60                                                                                                            Tree age from core drillings, CSPs
+## 61                                                              Tree neighbour competitive traits in the comparative study plots - target groups
+## 62                                                           Tree neighbour competitive traits in the comparative study plots - tree individuals
 ```
 
 
-### Download data 
+* caption:  
+          This code box shows how to use the default `tematres` thesaurus of the
+          `rbefdata` package to improve the search of datasets on a `BEFdata` platform.
+          Terms can be defined narrowed or broadened to extend the search query for of
+          the bef.get.datasets.for_keyord() command.
 
-The `rbefdata` package leverages data access through paper proposals by a
-download function. It loads all associated datasets of a proposal into the R
-environment in one single step. It returns a list object that keeps a data
-frame per list element containing a dataset of the proposal each (see box
-below). The function requires the ID of the proposal to work, which can be
-found in the URL (see box below).
+### Download data
+
+The `rbefdata` package leverages access to data stored on a `BEFdata` platform
+through paper proposals. It loads all associated datasets of a proposal into
+the R environment in one single step. The function returns a list object that
+keeps a data frame per list element containing one dataset of the proposal
+each. The function requires the ID of the proposal to work, which can be found
+in the URL (see box below). If the data is not open access the function
+requires the "user_credentials" as well to ensure the access rights.
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
 
-* caption: The paper proposal in its final approved state. The information on that page
-           contains a title, a rational an envisaged date and journal. The calculated authors
-           and email lists for communication as well as the attached datasets and sub
-           projects involved (only partially shown). The proposal is published alredy see 
-           (Lang et al. 2013).
-
-```
-# the proposal URL shows the id is 90 
-http://befdataproduction.biow.uni-leipzig.de/paperproposals/90
-```
+* caption:  
+          The paper proposal in its final approved state. The information on that page
+          contains a title, a rational an envisaged date and the journal. The calculated
+          authors and email lists for communication as well as the attached datasets and
+          sub-projects involved (only partially shown). The results of the underlying
+          analysis of the proposal are published already (Lang et al. 2013).
 
 
 ```r
-# proposal id is
+# the proposal URL shows the id is 90 http://china.befdata.biow.uni-leipzig.de/paperproposals/90
+
+# get datasets
 datasets = bef.get.datasets.for_proposal(id = 90)
+
+# extract second dataset
 extract_second_dataset = datasets[[2]]
+
+# show the first lines of the second dataset
 head(extract_second_dataset, 5)
 ```
 
@@ -515,20 +542,27 @@ head(extract_second_dataset, 5)
 ## 5 pilot1D07      8.354       15.100       5.0983      17.963        82.04      7.000
 ```
 
- 
-### Inspect data (EML)
 
-Each dataset in the `BEFdata` platform is associated with metadata the authors
-of the dataset provide. We can also access the metadata from within `rbefdata`.
-It can be accessed either directly via a metadata download command that takes
-the ID of a dataset or extracted from a dataset via the R internal
-`attributes()` command. The extraction via attributes is possible as each
-dataset is attached with its metadata when using one of the download commands
-of `rbefdata` (see box below).
+* caption:  
+          The code box shows how to find the id of the paper proposal and how to download
+          the associated data into the R environment. As example the second dataset is
+          extracted from the returned list element and the first few lines are displayed.
+
+### Inspect data 
+
+Each dataset on the `BEFdata` platform is associated with metadata which the
+authors of the dataset provide. We can access the metadata trough `rbefdata`
+directly by a metadata download function or extract it from a dataset after we
+have downloaded it already. The second method is possible as each dataset is
+associated with its metadata on download. The metadata is added as attributes
+to the data frame that can be displayed using the data frame object in
+combination with the R built-in `attributes()` function (see box below).
 
 
 ```r
-# get metadata only, by dataset ID
+# the URL of the dataset, ID (335) http://china.befdata.biow.uni-leipzig.de/datasets/335
+
+# get metadata by dataset ID
 bef.portal.get.metadata(dataset = 335)$title
 ```
 
@@ -575,12 +609,19 @@ names(attributes(datasets[[1]]))
 ```
 
 
-The dataset list from the proposal contains three datasets, of which we do only
-use the second and third. These two are written into two variables called
-`Nretention` and `design` before deciding upon how to merge them. Inspecting
-the headers of both dataset reveals each of them contains a column containing a
-`plot_id` that seems suitable for merging. But we can also make use of the
-metadata for the columns to check if this really is the case (see box below).
+* caption:  
+          The code box shows the two ways of getting metadata information of a dataset.
+          First the meta data can be directly accessed by the `bef.portal.get.metadata()`
+          command that needs the ID of dataset for download. The ID can be found in the
+          URL of the dataset. As each dataset is associated with metadata on download it
+          can also be extracted by the R internal `attributes()` command.
+
+The dataset list from the proposal contains three datasets, of which we only
+use the second and third. These two are written into two separate R variables
+called `Nretention` and `design` before decide upon how to merge them.
+Inspecting the headers of both datasets shows that each of them contains a
+column with a `plot_id` that seems suitable for merging. We make use of the
+metadata of the columns to check if this really is the case.
 
 
 ```r
@@ -641,22 +682,30 @@ design_column_plot_id_description
 ## [1] "Reasearch plots of the Biodiversity - Ecosystem functioning experiment (BEF-China). There are three main sites for research plots in the BEF Experiment: Comparative Study Plots (CSP) in the  Gutianshan Nature Reserve, having a size of 30x30m^2, measured on the ground. Main Experiment plots have a size of 1 mu, which is about 25x25m^2 in horizontal projection. Pilot Study Plots have a size of 1x1 m^2.  \nResearch plots on the main experiment have a \"p\" in front of their IDs and then a 6 digit code: Plots in the main sites A and B are named according to their position in the original spreadsheet, in which they were designed.  They consist of 6 digits: _1st digit_: Site (1:A, 2:B), _digit 2and3_: southwards row: as in spreadsheets the rows are named from the top to the bottom; _digit 4 and 5_: westward column: as in the original spreadsheet, but the letters are converted to numbers (A=01, B=02); _6th digit_: indicator, if the plot has been shifted a quarter mu.  Example: \"p205260\": \"p\" means that this is a plot that is specified.  \"2\" means, that we are at site B.  Now the coordinates of the south - west corner: \"0526\".  Since \"e\" is the fifth letter of the alphabet, this is Plot E26.   The last digit \"0\" means that this plot was not moved by a quarter of a Mu, as some sites in Site A. The 6th digit can also indicate the subplot within the plot. \"5\", \"6\", \"7\", \"8\" indicate the northwest, northeast, southeast, and southwest quarter plot respectively. (plot_id: Individual complex ID for identifying exactly each plot; it connects with underline character the block number and the community code, i. e. the block number with the plots treatment. The plot identifier contains the information, which block the plot is in and which community is is comprised of.)"
 ```
 
+```r
 
-### Analyse the data 
+# the synthesis dataset
+syndata = merge(Nretention, design)
+```
 
-After merging the new synthesis dataset still contains many columns not
-required for the analysis that can be dropped. To analyse the dataset of system
-N retention we need information about the species diversity in the plots and
-about which plot is placed in which block from the design dataset. 'Species
-diversity' is used as a factor containing three levels (1,2,4 species
-mixtures). The response variables have been checked for normality with `qqplot`
-and transformed as shown in the box below.
+
+* caption: 
+          The second and the third dataset from the proposal are written into separate
+          variables. The metadata is used to ensure the merge ids contain appropriate
+          values. The datasets are merged then.
+
+### Analyse data 
+
+After merging the two dataset into a new synthesis dataset the data frame still
+contains many columns that are not required for the analysis and thus can be
+dropped. To analyse system N retention we need information about the species
+diversity in the plots and about which plot is placed in which block from the
+design dataset. 'Species diversity' is used as a factor containing three levels
+(1,2,4 species mixtures). The response variables have been checked for
+normality with `qqplot` and transformed as shown in the box below.
 
 
 ```r
-# the synthesis dataset
-syndata = merge(Nretention, design)
-
 # overview about the content of the synthesis dataset
 names(syndata)
 ```
@@ -680,7 +729,7 @@ names(syndata)
 
 ```r
 
-# remove unwanted variables from synthesis datset
+# remove unused variables from synthesis dataset
 syndata = syndata[-c(9:14, 16:41)]
 names(syndata)
 ```
@@ -696,7 +745,7 @@ names(syndata)
 # > we want to use 'species_diversity' as a factor
 syndata$species_diversity = as.factor(syndata$species_diversity)
 
-# square root transforme response variables
+# square root transform response variables
 syndata$recov_plot_t = syndata$recov_plot^0.5
 syndata$perleaf_plot_t = syndata$perleaf_plot^0.5
 syndata$perroot_plot_t = syndata$perroot_plot^0.5
@@ -704,12 +753,12 @@ syndata$persoil_plot_t = syndata$persoil_plot^0.5
 ```
 
 
-We analysed our data by linear mixed effects models. Since the plots are nested
-in blocks, we use block as a random factor. The analysis uses the R packages
-`nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn et al. 2008)
-for post-hoc comparisons. To adjust for an unbalanced experimental design an
-ANOVA Type II was carried out to test for main effects using the R package
-`car` (Fox and Weisberg 2011). The models have been evaluated visually.
+The data was analysed by linear mixed effects models. Since the plots are
+nested in blocks, the block was used as a random factor. The analysis uses the
+R packages `nlme` (Pinheiro et al. 2013) for modeling and `multcomp` (Hothorn
+et al. 2008) for post-hoc comparisons. To adjust for an unbalanced experimental
+design an ANOVA Type II was carried out to test for main effects using the R
+package `car` (Fox and Weisberg 2011). The models have been evaluated visually.
 
 
 ```r
@@ -722,18 +771,14 @@ require(car)
 ### Model 1: Overall recovery/N retention
 model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
     method = "REML")
-```
-
-```
-## Error: could not find function "lme"
-```
-
-```r
 anova(model1)
 ```
 
 ```
-## Error: object 'model1' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    34   870.6  <.0001
+## gbd_T0.mm.            1    34     7.5  0.0098
+## species_diversity     2    34     2.9  0.0714
 ```
 
 ```r
@@ -741,25 +786,41 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: could not find function "glht"
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
+##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)  
+## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
+## 4 - 1 == 0    0.478      0.420    1.14    0.482  
+## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
 
 # ANOVA type II test for unbalanced design
 model1c = Anova(model1, type = "II")
-```
-
-```
-## Error: object 'model1' not found
-```
-
-```r
 model1c
 ```
 
 ```
-## Error: object 'model1c' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: recov_plot_t
+##                   Chisq Df Pr(>Chisq)   
+## gbd_T0.mm.         7.42  1     0.0064 **
+## species_diversity  5.71  2     0.0576 . 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -771,18 +832,13 @@ model1c
 
 ## Model2 percentage leaf recovery of plot recovery
 model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: could not find function "lme"
-```
-
-```r
 anova(model2)
 ```
 
 ```
-## Error: object 'model2' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36  273.06  <.0001
+## species_diversity     2    36    6.56  0.0037
 ```
 
 ```r
@@ -790,7 +846,23 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: could not find function "glht"
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -798,7 +870,13 @@ Anova(model2, type = "II")
 ```
 
 ```
-## Error: object 'model2' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: perleaf_plot_t
+##                   Chisq Df Pr(>Chisq)   
+## species_diversity  13.1  2     0.0014 **
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -808,18 +886,13 @@ Anova(model2, type = "II")
 
 ## Model3 percentage root recovery of overall recovery
 model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: could not find function "lme"
-```
-
-```r
 anova(model3)
 ```
 
 ```
-## Error: object 'model3' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36   374.2  <.0001
+## species_diversity     2    36     7.2  0.0024
 ```
 
 ```r
@@ -827,7 +900,23 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: could not find function "glht"
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0279 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -835,7 +924,13 @@ Anova(model3, type = "II")
 ```
 
 ```
-## Error: object 'model3' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: perroot_plot_t
+##                   Chisq Df Pr(>Chisq)    
+## species_diversity  14.3  2    0.00077 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -845,18 +940,13 @@ Anova(model3, type = "II")
 
 ## Model 4 percentage soil recovery of overall recovery
 model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
-```
-
-```
-## Error: could not find function "lme"
-```
-
-```r
 anova(model4)
 ```
 
 ```
-## Error: object 'model4' not found
+##                   numDF denDF F-value p-value
+## (Intercept)           1    36   26248  <.0001
+## species_diversity     2    36       4  0.0274
 ```
 
 ```r
@@ -864,7 +954,23 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## Error: could not find function "glht"
+## 
+## 	 Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = "REML")
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(>|z|)  
+## 2 - 1 == 0   -0.294      0.127   -2.32    0.051 .
+## 4 - 1 == 0   -0.499      0.215   -2.33    0.050 *
+## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## (Adjusted p values reported -- single-step method)
 ```
 
 ```r
@@ -872,7 +978,13 @@ Anova(model4, type = "II")
 ```
 
 ```
-## Error: object 'model4' not found
+## Analysis of Deviance Table (Type II tests)
+## 
+## Response: persoil_plot_t
+##                   Chisq Df Pr(>Chisq)  
+## species_diversity  7.96  2      0.019 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 ```r
@@ -906,20 +1018,18 @@ we refer to Lang et al. 2013.
 
 ### Upload data 
 
-Finally we need to decide on either to upload a full dataset which we could do
-using the dataset upload function `bef.portal.upload.dataset()` or only to
+Finally we need to decide on either to upload a full dataset which could be
+done using the dataset upload function `bef.portal.upload.dataset()` or only to
 upload the script and maybe a figure to highlight the road to the results from
 the source datasets used. This can be done by attaching to the proposal with
-the command `bef.portal.attach.to_proposal()`. For the example shown here, it
+the command `bef.portal.attach.to_proposal()`. For the analysis shown here, it
 is the best way to go with an attachment to the proposal as uploading the
 merged dataset would only mean duplication of data in the database of the
-`BEFdata` portal.
-
-So we upload the script and the four pane figure with its caption to add them
-to the proposal. The figure is prepared as Portable Network Graphics (PNG)
-using the R internal PNG device. It is written to a temporary folder and then
-uploaded. The script in this case is an R markdown file that we attach to the
-proposal (see box below).
+`BEFdata` portal. So we upload the script and the four pane figure with its
+caption to add them to the proposal. The figure is prepared as Portable Network
+Graphics (PNG) using the R internal PNG device. It is written to a temporary
+folder and then uploaded. The script in this case is an R markdown file that we
+attach to the proposal (see box below).
 
 
 ```r
@@ -932,12 +1042,23 @@ bef.portal.attach.to_proposal(id = 90, attachment = "./rbefdata.Rmd", descriptio
 ```
 
 
+* caption: 
+          The script is attached to the proposal using the
+          `bef.portal.attach.to_proposal()` command. It takes the id of the proposal, the
+          file attachment and a description as parameters.
+
+
 
 ```
 ## pdf 
 ##   2
 ```
 
+
+* caption: 
+          The plots are prepared and put together into a single four pane graphic. It is
+          exported to hard drive using the R built-in Portable Networks Graphics (PNG)
+          device.
 
 
 ```r
@@ -954,6 +1075,11 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 ## specify a valid file name or provide the contents to send.
 ```
 
+
+* caption: 
+          A description of the figure is written into a variable and the `rbefdata`
+          command to attach to a proposal is used again to upload the exported four pane
+          graphic to the proposal. 
 
 ![showcase_proposal_attachment](./figure/static/showcase_proposal_attachments.png)
 
