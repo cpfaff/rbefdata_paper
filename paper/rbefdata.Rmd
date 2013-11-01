@@ -138,6 +138,7 @@ showcase the package. The results of the analysis have been published already
 and the related data is open access (Lang et al. 2013). Thus the script shown
 here is fully reproducible. 
 
+----- This here needs integration into paragraph above
 
 The `rbefdata` package (GitHub: https://github.com/befdata/befdata) is a
 companion to the open source data management platform `BEFdata`. The latest
@@ -155,7 +156,6 @@ experiment stored on a `tematres` server (url xxx). By the time of writing the
 taxonomy on the server contains xxx terms used in biodiversity research. The
 relations of terms provided by the `tematres` vocabulary can be used to improve
 the search of relevant data for an analysis. 
-
 
 ## Material and Methods 
 
@@ -291,8 +291,11 @@ narrow_tasks_plant_organ = bef.tematres.api(task = "fetchDown", "plant organ")
 narrow_tasks_plant_organ  
 
 # enrich the search with narrower keywords
-datasets_plant_organ_narrow = bef.get.datasets.for_keyword(c(narrow_tasks_plant_organ$term))
-datasets_plant_organ_narrow   
+datasets_plant_organ_narrow = bef.get.datasets.for_keyword(c(narrow_tasks_plant_organ$term)) 
+
+# get an indea what is in the response
+head(datasets_plant_organ_narrow)    
+dim(datasets_plant_organ_narrow)
 ```  
 
 * caption:  
@@ -300,6 +303,7 @@ datasets_plant_organ_narrow
           `rbefdata` package to improve the search of datasets on a `BEFdata` platform.
           Terms can be defined narrowed or broadened to extend the search query for of
           the bef.get.datasets.for_keyord() command.
+
 
 ### Download data
 

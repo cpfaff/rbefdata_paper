@@ -134,6 +134,7 @@ showcase the package. The results of the analysis have been published already
 and the related data is open access (Lang et al. 2013). Thus the script shown
 here is fully reproducible. 
 
+----- This here needs integration into paragraph above
 
 The `rbefdata` package (GitHub: https://github.com/befdata/befdata) is a
 companion to the open source data management platform `BEFdata`. The latest
@@ -151,7 +152,6 @@ experiment stored on a `tematres` server (url xxx). By the time of writing the
 taxonomy on the server contains xxx terms used in biodiversity research. The
 relations of terms provided by the `tematres` vocabulary can be used to improve
 the search of relevant data for an analysis. 
-
 
 ## Material and Methods 
 
@@ -349,148 +349,45 @@ narrow_tasks_plant_organ
 
 ```
 ## $id
-##  [1] "385"  "800"  "386"  "390"  "391"  "1336" "73"   "387"  "75"   "388"  "28"   "30"  
+## [1] "385"  "390"  "1336" "73"   "75"   "388"  "28"   "30"  
 ## 
 ## $term
-##  [1] "flower"        "flower-head"   "flowers"       "fruit"         "fruits"       
-##  [6] "inflorescence" "leaf"          "leaves"        "root"          "seed"         
-## [11] "stem"          "twig"
+## [1] "flower"        "fruit"         "inflorescence" "leaf"          "root"         
+## [6] "seed"          "stem"          "twig"
 ```
 
 ```r
 
 # enrich the search with narrower keywords
 datasets_plant_organ_narrow = bef.get.datasets.for_keyword(c(narrow_tasks_plant_organ$term))
-datasets_plant_organ_narrow
+
+# get an indea what is in the response
+head(datasets_plant_organ_narrow)
 ```
 
 ```
-##     id
-## 1  242
-## 2  320
-## 3  323
-## 4  428
-## 5  359
-## 6  371
-## 7  372
-## 8  108
-## 9   52
-## 10 429
-## 11 357
-## 12 188
-## 13 202
-## 14 143
-## 15 145
-## 16 360
-## 17 160
-## 18 166
-## 19 147
-## 20 411
-## 21 413
-## 22 367
-## 23 368
-## 24 384
-## 25 219
-## 26 212
-## 27 187
-## 28 381
-## 29 405
-## 30 319
-## 31 347
-## 32 424
-## 33 322
-## 34 107
-## 35 430
-## 36 379
-## 37 313
-## 38 412
-## 39 192
-## 40 127
-## 41 105
-## 42 434
-## 43 433
-## 44 435
-## 45 436
-## 46 418
-## 47 421
-## 48 375
-## 49 204
-## 50 161
-## 51 399
-## 52 401
-## 53 239
-## 54 235
-## 55 425
-## 56 162
-## 57 238
-## 58 123
-## 59 327
-## 60 122
-## 61 136
-## 62 135
-##                                                                                                                                            title
-## 1                                                               Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
-## 2                                       Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A& B)
-## 3                                                         Leaf traits and chemicals from individual trees in the Main Experiment (Sites A and B)
-## 4                                                                                      Leaf traits and chemicals of 122 tree species in the CSPs
-## 5                                                                                             Coarse root density in the Comparative Study Plots
-## 6                                                                   Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 & 3)
-## 7                                                                                  Estimated Root Biomass of July 2010 of Pilot Experiment (SP1)
-## 8                                   Talk 5: Leaf eco-physiological traits and coarse root spatial distribution characteristic in CSPs (2010)—SP3
-## 9                                                                                     Talk 2: Comparing the designs of different BEF experiments
-## 10                                                                                   Tree - herb interactions and invasibility of exotic species
-## 11                                                                                         Biomass Allometry Equations of Pilot Experiment (SP7)
-## 12 Biomass of four tree species (Castanea henryi, Quercus serrata, Schima suberba and Elaeocarpus decipiens) as saplings in the Pilot Experiment
-## 13                                            Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
-## 14                                          Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
-## 15                                                Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
-## 16                                                                                                                  Detailed tree allometry data
-## 17                                                                                                          Genetic diversity of Ardisia crenata
-## 18                                                                                                        Genetic diversity of Castanopsis eyrei
-## 19                                                                         Herbivore damage on saplings of 23 tree and shrub species in the CSPs
-## 20                                                                                        herbivory in the Main Experiment site A in summer 2009
-## 21                                                                                                herbivory in the pilot experiment in fall 2010
-## 22                                                                                              Leaf damage of tree individuals Site A fall 2011
-## 23                                                                                            Leaf damage of tree individuals Site A summer 2011
-## 24                                                                                                                          NILEX - Soil Erosion
-## 25                                                                      Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
-## 26                                                              Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
-## 27                                                                                         Traits of ferns and herb species occuring in the CSPs
-## 28                                                                           Tracer NILEx, decomposition rates of leaves and plot topograpy data
-## 29                                                                                                 Leaf demography in the Main Experiment - 2011
-## 30                                                                                                                  Site A tree census from 2010
-## 31                                              Synthesis dataset: Plant traits aggregated from wood, leaf, and root traits of trees in the CSPs
-## 32                                                                                                                    Cuttings experiment - CSPs
-## 33                                                                         Leaf toughness from individual trees in the Gutianshan Nature Reserve
-## 34                                           Talk 4: Constant functional diversity during secondary succession of a subtropical forest in Chinaf
-## 35                                                                                        Functional traits herb layer community-main experiment
-## 36                                                                           Functional traits of 45 species in subtropical forest in Dujiangyan
-## 37                                                                                                    P concentrations in leaves and roots, CSPs
-## 38                                                                                        Tree demographical survey in CSPs--sapling individuals
-## 39                                                      Root Carbon (C) and Nitrogen (N) Concentration of 124 tree and shrub species in the CSPs
-## 40                                                                                                CSP soil profile description II: soil horizons
-## 41                                                                                       Talk 2: Research Progress for Belowground Biomass & NPP
-## 42                                                                         Seed addition experiment  Site A (VIPs) – abiotic predictor variables
-## 43                                                                                       Seed addition experiment  Site A (VIPs) - biomass data 
-## 44                                                                                Seed addition experiment  Site A (VIP´s) – repeated monitoring
-## 45                                                                                        Seed addition experiment  Site A (VIPs) – Tree heights
-## 46                                                                                                                          Resident phytometers
-## 47                                                                                            Pilot experiment: performance, biomass & herbivory
-## 48                                          Functional traits of 14 subtropical woody species across a light-availability gradient in Dujiangyan
-## 49                                          Coarse woody debris (CWD): Collection of data on dead wood with special regard to the 2008 ice storm
-## 50                                                                        Corrected tree tags on the CSP trees and tree size measures from 2010.
-## 51                                                                                                        CSP >10cm dbh matching trees 2008-2010
-## 52                                                                                  CSP 3 to 10 cm dbh matching trees in the years 2008 and 2010
-## 53                                                                                               Living or killed trees after the 2008 ice storm
-## 54               Metal tags for coarse woody debris (CWD) items in the CSPs and corresponding metal tags and stem ids from the living tree data.
-## 55                                                        The relative spatial coordinates of all tagged trees in Comparative Study Plots (CSPs)
-## 56                                                                                                        Tree size in the CSPs in 2008 and 2009
-## 57                                                                               Tree stem reference list for the Comparative Study Sites (CSPs)
-## 58                                                                                                      Wood density of tree species in the CSPs
-## 59                                                                                  Deviations from stem breaking probabilities at species level
-## 60                                                                                                            Tree age from core drillings, CSPs
-## 61                                                              Tree neighbour competitive traits in the comparative study plots - target groups
-## 62                                                           Tree neighbour competitive traits in the comparative study plots - tree individuals
+##    id
+## 1 242
+## 2 320
+## 3 323
+## 4 428
+## 5 359
+## 6 371
+##                                                                                                      title
+## 1                         Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
+## 2 Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A& B)
+## 3                   Leaf traits and chemicals from individual trees in the Main Experiment (Sites A and B)
+## 4                                                Leaf traits and chemicals of 122 tree species in the CSPs
+## 5                                                       Coarse root density in the Comparative Study Plots
+## 6                             Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 & 3)
+```
+
+```r
+dim(datasets_plant_organ_narrow)
+```
+
+```
+## [1] 60  2
 ```
 
 
@@ -499,6 +396,7 @@ datasets_plant_organ_narrow
           `rbefdata` package to improve the search of datasets on a `BEFdata` platform.
           Terms can be defined narrowed or broadened to extend the search query for of
           the bef.get.datasets.for_keyord() command.
+
 
 ### Download data
 
@@ -771,14 +669,18 @@ require(car)
 ### Model 1: Overall recovery/N retention
 model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
     method = "REML")
+```
+
+```
+## Error: could not find function "lme"
+```
+
+```r
 anova(model1)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    34   870.6  <.0001
-## gbd_T0.mm.            1    34     7.5  0.0098
-## species_diversity     2    34     2.9  0.0714
+## Error: object 'model1' not found
 ```
 
 ```r
@@ -786,41 +688,25 @@ summary(glht(model1, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
-##     data = syndata, random = ~1 | block, method = "REML", na.action = na.omit)
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
-## 4 - 1 == 0    0.478      0.420    1.14    0.482  
-## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: could not find function "glht"
 ```
 
 ```r
 
 # ANOVA type II test for unbalanced design
 model1c = Anova(model1, type = "II")
+```
+
+```
+## Error: object 'model1' not found
+```
+
+```r
 model1c
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: recov_plot_t
-##                   Chisq Df Pr(>Chisq)   
-## gbd_T0.mm.         7.42  1     0.0064 **
-## species_diversity  5.71  2     0.0576 . 
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model1c' not found
 ```
 
 ```r
@@ -832,13 +718,18 @@ model1c
 
 ## Model2 percentage leaf recovery of plot recovery
 model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: could not find function "lme"
+```
+
+```r
 anova(model2)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36  273.06  <.0001
-## species_diversity     2    36    6.56  0.0037
+## Error: object 'model2' not found
 ```
 
 ```r
@@ -846,23 +737,7 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: could not find function "glht"
 ```
 
 ```r
@@ -870,13 +745,7 @@ Anova(model2, type = "II")
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: perleaf_plot_t
-##                   Chisq Df Pr(>Chisq)   
-## species_diversity  13.1  2     0.0014 **
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model2' not found
 ```
 
 ```r
@@ -886,13 +755,18 @@ Anova(model2, type = "II")
 
 ## Model3 percentage root recovery of overall recovery
 model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: could not find function "lme"
+```
+
+```r
 anova(model3)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36   374.2  <.0001
-## species_diversity     2    36     7.2  0.0024
+## Error: object 'model3' not found
 ```
 
 ```r
@@ -900,23 +774,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0279 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: could not find function "glht"
 ```
 
 ```r
@@ -924,13 +782,7 @@ Anova(model3, type = "II")
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: perroot_plot_t
-##                   Chisq Df Pr(>Chisq)    
-## species_diversity  14.3  2    0.00077 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model3' not found
 ```
 
 ```r
@@ -940,13 +792,18 @@ Anova(model3, type = "II")
 
 ## Model 4 percentage soil recovery of overall recovery
 model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = "REML")
+```
+
+```
+## Error: could not find function "lme"
+```
+
+```r
 anova(model4)
 ```
 
 ```
-##                   numDF denDF F-value p-value
-## (Intercept)           1    36   26248  <.0001
-## species_diversity     2    36       4  0.0274
+## Error: object 'model4' not found
 ```
 
 ```r
@@ -954,23 +811,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ```
 
 ```
-## 
-## 	 Simultaneous Tests for General Linear Hypotheses
-## 
-## Multiple Comparisons of Means: Tukey Contrasts
-## 
-## 
-## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
-##     random = ~1 | block, method = "REML")
-## 
-## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32    0.051 .
-## 4 - 1 == 0   -0.499      0.215   -2.33    0.050 *
-## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## (Adjusted p values reported -- single-step method)
+## Error: could not find function "glht"
 ```
 
 ```r
@@ -978,13 +819,7 @@ Anova(model4, type = "II")
 ```
 
 ```
-## Analysis of Deviance Table (Type II tests)
-## 
-## Response: persoil_plot_t
-##                   Chisq Df Pr(>Chisq)  
-## species_diversity  7.96  2      0.019 *
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Error: object 'model4' not found
 ```
 
 ```r
