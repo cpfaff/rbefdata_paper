@@ -790,41 +790,59 @@ et al. 2008) for post-hoc comparisons. To adjust for an unbalanced experimental
 design an ANOVA Type II was carried out to test for main effects using the R
 package <code>car</code> (Fox and Weisberg 2011). The models have been evaluated visually.</p>
 
-<pre><code class="r">require(car)
+<pre><code class="r">require(nlme)
+require(multcomp)
+require(car)
 </code></pre>
 
 <pre><code class="r">### Model 1: Overall recovery/N retention
 model1 = lme(recov_plot_t ~ gbd_T0.mm. + species_diversity, syndata, random = ~1 | block, na.action = na.omit, 
     method = &quot;REML&quot;)
+anova(model1)
 </code></pre>
 
-<pre><code>## Error: could not find function &quot;lme&quot;
-</code></pre>
-
-<pre><code class="r">anova(model1)
-</code></pre>
-
-<pre><code>## Error: object &#39;model1&#39; not found
+<pre><code>##                   numDF denDF F-value p-value
+## (Intercept)           1    34   870.6  &lt;.0001
+## gbd_T0.mm.            1    34     7.5  0.0098
+## species_diversity     2    34     2.9  0.0714
 </code></pre>
 
 <pre><code class="r">summary(glht(model1, linfct = mcp(species_diversity = &quot;Tukey&quot;)))
 </code></pre>
 
-<pre><code>## Error: could not find function &quot;glht&quot;
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = recov_plot_t ~ gbd_T0.mm. + species_diversity, 
+##     data = syndata, random = ~1 | block, method = &quot;REML&quot;, na.action = na.omit)
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(&gt;|z|)  
+## 2 - 1 == 0   -0.378      0.251   -1.51    0.280  
+## 4 - 1 == 0    0.478      0.420    1.14    0.482  
+## 4 - 2 == 0    0.857      0.399    2.15    0.077 .
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## (Adjusted p values reported -- single-step method)
 </code></pre>
 
 <pre><code class="r">
 # ANOVA type II test for unbalanced design
 model1c = Anova(model1, type = &quot;II&quot;)
+model1c
 </code></pre>
 
-<pre><code>## Error: object &#39;model1&#39; not found
-</code></pre>
-
-<pre><code class="r">model1c
-</code></pre>
-
-<pre><code>## Error: object &#39;model1c&#39; not found
+<pre><code>## Analysis of Deviance Table (Type II tests)
+## 
+## Response: recov_plot_t
+##                   Chisq Df Pr(&gt;Chisq)   
+## gbd_T0.mm.         7.42  1     0.0064 **
+## species_diversity  5.71  2     0.0576 . 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 </code></pre>
 
 <pre><code class="r">
@@ -835,27 +853,46 @@ model1c = Anova(model1, type = &quot;II&quot;)
 
 ## Model2 percentage leaf recovery of plot recovery
 model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, method = &quot;REML&quot;)
+anova(model2)
 </code></pre>
 
-<pre><code>## Error: could not find function &quot;lme&quot;
-</code></pre>
-
-<pre><code class="r">anova(model2)
-</code></pre>
-
-<pre><code>## Error: object &#39;model2&#39; not found
+<pre><code>##                   numDF denDF F-value p-value
+## (Intercept)           1    36  273.06  &lt;.0001
+## species_diversity     2    36    6.56  0.0037
 </code></pre>
 
 <pre><code class="r">summary(glht(model2, linfct = mcp(species_diversity = &quot;Tukey&quot;)))
 </code></pre>
 
-<pre><code>## Error: could not find function &quot;glht&quot;
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = perleaf_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = &quot;REML&quot;)
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(&gt;|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   &lt;0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## (Adjusted p values reported -- single-step method)
 </code></pre>
 
 <pre><code class="r">Anova(model2, type = &quot;II&quot;)
 </code></pre>
 
-<pre><code>## Error: object &#39;model2&#39; not found
+<pre><code>## Analysis of Deviance Table (Type II tests)
+## 
+## Response: perleaf_plot_t
+##                   Chisq Df Pr(&gt;Chisq)   
+## species_diversity  13.1  2     0.0014 **
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 </code></pre>
 
 <pre><code class="r">
@@ -864,27 +901,46 @@ model2 = lme(perleaf_plot_t ~ species_diversity, syndata, random = ~1 | block, m
 
 ## Model3 percentage root recovery of overall recovery
 model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, method = &quot;REML&quot;)
+anova(model3)
 </code></pre>
 
-<pre><code>## Error: could not find function &quot;lme&quot;
-</code></pre>
-
-<pre><code class="r">anova(model3)
-</code></pre>
-
-<pre><code>## Error: object &#39;model3&#39; not found
+<pre><code>##                   numDF denDF F-value p-value
+## (Intercept)           1    36   374.2  &lt;.0001
+## species_diversity     2    36     7.2  0.0024
 </code></pre>
 
 <pre><code class="r">summary(glht(model3, linfct = mcp(species_diversity = &quot;Tukey&quot;)))
 </code></pre>
 
-<pre><code>## Error: could not find function &quot;glht&quot;
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = perroot_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = &quot;REML&quot;)
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(&gt;|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## (Adjusted p values reported -- single-step method)
 </code></pre>
 
 <pre><code class="r">Anova(model3, type = &quot;II&quot;)
 </code></pre>
 
-<pre><code>## Error: object &#39;model3&#39; not found
+<pre><code>## Analysis of Deviance Table (Type II tests)
+## 
+## Response: perroot_plot_t
+##                   Chisq Df Pr(&gt;Chisq)    
+## species_diversity  14.3  2    0.00077 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 </code></pre>
 
 <pre><code class="r">
@@ -893,27 +949,46 @@ model3 = lme(perroot_plot_t ~ species_diversity, syndata, random = ~1 | block, m
 
 ## Model 4 percentage soil recovery of overall recovery
 model4 = lme(persoil_plot_t ~ species_diversity, syndata, random = ~1 | block, method = &quot;REML&quot;)
+anova(model4)
 </code></pre>
 
-<pre><code>## Error: could not find function &quot;lme&quot;
-</code></pre>
-
-<pre><code class="r">anova(model4)
-</code></pre>
-
-<pre><code>## Error: object &#39;model4&#39; not found
+<pre><code>##                   numDF denDF F-value p-value
+## (Intercept)           1    36   26248  &lt;.0001
+## species_diversity     2    36       4  0.0274
 </code></pre>
 
 <pre><code class="r">summary(glht(model4, linfct = mcp(species_diversity = &quot;Tukey&quot;)))
 </code></pre>
 
-<pre><code>## Error: could not find function &quot;glht&quot;
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lme.formula(fixed = persoil_plot_t ~ species_diversity, data = syndata, 
+##     random = ~1 | block, method = &quot;REML&quot;)
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error z value Pr(&gt;|z|)  
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## (Adjusted p values reported -- single-step method)
 </code></pre>
 
 <pre><code class="r">Anova(model4, type = &quot;II&quot;)
 </code></pre>
 
-<pre><code>## Error: object &#39;model4&#39; not found
+<pre><code>## Analysis of Deviance Table (Type II tests)
+## 
+## Response: persoil_plot_t
+##                   Chisq Df Pr(&gt;Chisq)  
+## species_diversity  7.96  2      0.019 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 </code></pre>
 
 <pre><code class="r">
@@ -992,8 +1067,7 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), &quot;r
     description = caption)
 </code></pre>
 
-<pre><code>## Error: specified file does not exist: /tmp/Rtmp2GkxZH/results_plot_proposal_90.png.  You must
-## specify a valid file name or provide the contents to send.
+<pre><code>## [1] &quot;Attachment to proposal with ID: 90 successful!&quot;
 </code></pre>
 
 <ul>
