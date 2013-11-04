@@ -19,28 +19,26 @@ open source, open science
 A growing amount of data in ecology gets available which puts much pressure on
 the development of tools that help researchers to deal with data exploration,
 reuse, processing and the preservation of data products and their provenance.
-Although many tools and concepts are available for data management only a few
+Although many tools and concepts are available for data management, only a few
 of them are widely spread throughout ecology due to different reasons. One of
-them is a missing tight integration of valuable data management concepts into
-widely used tools like the R environment for statistics. We designed an R
-package named `rbefdata` that provides the R statistics environment with an
-access to the open source data management platform `BEFdata` which is
-specialized in the preservation and harmonization of small and heterogeneous
-ecological data. The R package includes the access to the data stored on the
-platform as well as to the metadata provided by dataset authors. The metadata
-can be accessed while processing the data and thus gives a shortcut that helps
-to understand the associated data which in turn facilitates the processing and
-analysis of data. The R package integrates an semantic online repository
+them is a missing tight integration of data management concepts into widely
+used tools like for example the R environment for statistics. We created an R
+package named `rbefdata` that provides the R environment with an access to the
+open source data management platform `BEFdata`. The platform is specialized in
+the preservation and harmonization of small and heterogeneous ecological data.
+The R package includes the access to the data stored on the platform as well as
+to the metadata provided by dataset authors. The metadata can be accessed while
+analysing the data which facilitates the understanding and thus the processing
+and analysis of data. The R package integrates a semantic online repository
 (thesaurus) that can be used to improve the search for datasets stored on the
-portal. Furthermore the R package provides upload functionality so any data
-product can be pushed directly back to the data portal for preservation. So we
-integrate data management concepts like the semantic improved exploration of
-datasets, a seamless access to data and metadata, for data processing and the
-preservation of data products directly into the R environment. The open source
-character of the data management platform `BEFdata` and the companion package
-`rbefata` make it possible for any ecological project to use this package as a
-sophisticated data management solution with the benefit of closely integrated
-valuable concepts of data management. 
+portal. Furthermore it provides upload functionality so any data product can be
+pushed directly back to the data portal for preservation. We integrate data
+management concepts like the semantic improved exploration of datasets, a
+seamless access to data and metadata and the preservation of data products
+directly into the R environment. The open source character of the data
+management platform `BEFdata` and the companion package `rbefata` makes it
+possible for any ecological project to use this package as a sophisticated
+solution for their own data management. 
 
 ## Introduction 
 

@@ -15,28 +15,26 @@ open source, open science
 A growing amount of data in ecology gets available which puts much pressure on
 the development of tools that help researchers to deal with data exploration,
 reuse, processing and the preservation of data products and their provenance.
-Although many tools and concepts are available for data management only a few
+Although many tools and concepts are available for data management, only a few
 of them are widely spread throughout ecology due to different reasons. One of
-them is a missing tight integration of valuable data management concepts into
-widely used tools like the R environment for statistics. We designed an R
-package named `rbefdata` that provides the R statistics environment with an
-access to the open source data management platform `BEFdata` which is
-specialized in the preservation and harmonization of small and heterogeneous
-ecological data. The R package includes the access to the data stored on the
-platform as well as to the metadata provided by dataset authors. The metadata
-can be accessed while processing the data and thus gives a shortcut that helps
-to understand the associated data which in turn facilitates the processing and
-analysis of data. The R package integrates an semantic online repository
+them is a missing tight integration of data management concepts into widely
+used tools like for example the R environment for statistics. We created an R
+package named `rbefdata` that provides the R environment with an access to the
+open source data management platform `BEFdata`. The platform is specialized in
+the preservation and harmonization of small and heterogeneous ecological data.
+The R package includes the access to the data stored on the platform as well as
+to the metadata provided by dataset authors. The metadata can be accessed while
+analysing the data which facilitates the understanding and thus the processing
+and analysis of data. The R package integrates a semantic online repository
 (thesaurus) that can be used to improve the search for datasets stored on the
-portal. Furthermore the R package provides upload functionality so any data
-product can be pushed directly back to the data portal for preservation. So we
-integrate data management concepts like the semantic improved exploration of
-datasets, a seamless access to data and metadata, for data processing and the
-preservation of data products directly into the R environment. The open source
-character of the data management platform `BEFdata` and the companion package
-`rbefata` make it possible for any ecological project to use this package as a
-sophisticated data management solution with the benefit of closely integrated
-valuable concepts of data management. 
+portal. Furthermore it provides upload functionality so any data product can be
+pushed directly back to the data portal for preservation. We integrate data
+management concepts like the semantic improved exploration of datasets, a
+seamless access to data and metadata and the preservation of data products
+directly into the R environment. The open source character of the data
+management platform `BEFdata` and the companion package `rbefata` makes it
+possible for any ecological project to use this package as a sophisticated
+solution for their own data management. 
 
 ## Introduction 
 
@@ -757,9 +755,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+## 2 - 1 == 0    1.053      0.293    3.59  0.00081 ***
+## 4 - 1 == 0    0.865      0.497    1.74  0.18391    
+## 4 - 2 == 0   -0.188      0.479   -0.39  0.91634    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -810,10 +808,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -865,8 +863,8 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
