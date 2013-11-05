@@ -16,6 +16,43 @@ open source, open science
 
 ## Abstract
 
+In order to answer the most pressing global questions in ecology, scientists
+need to deal with the huge amount of environmental and historic data, already
+available today. The effective employment and curation of this data requires
+tools that not only help to explore but also to process, to reuse and to
+prepare data for long term preservation. Although there is a rag rug of data
+management tools and concepts already available that cover most of the data
+management requirements in ecology, their tight integration into widely used
+data analysis tools lacks behind. Thus we created an R package named `rbefdata`
+that implements data management concepts and tools into the R statistics
+environment. As companion package to the open source data management platform
+`BEFdata` it offers a search for datasets that is improved by the integration
+of an online thesaurus, the seamless access to datasets and metadata for
+analysis and also provides upload functionality for data preservation. The open
+source character of the data management platform `BEFdata` and the companion
+package `rbefata` allow any ecological project to use this package as a
+sophisticated solution to their own data management requirements. 
+
+## Introduction 
+
+* State the reason for the work
+* the context and the hypotheses
+* being tested. 
+
+The package enables access to data and metadata stored on the platform as well
+as it  the dataset exploration by the integration of an online thesaurus. 
+
+It tightly integrates the metadata into R data frames so it can be accessed
+directly when processing data from the portal.  `rbefdata` includes an access
+to an online thesaurus that can be used to improve the discovery of datasets
+stored on the portal. Furthermore it provides upload functionality so any data
+product can be pushed directly back to the data portal for preservation. We
+integrate data management concepts like a semantic improved exploration of
+datasets, a seamless access to data and metadata and the preservation of data
+products directly into the R environment.   
+
+
+
 A growing amount of data available in ecology puts much pressure on the
 development of tools that help researchers to deal with the exploration, the
 reuse, the processing and the preservation of data products. Although there are
@@ -23,44 +60,19 @@ many valuable concepts and tools available that cover parts of the life cycle
 of data, only a few of them are widely spread throughout ecology. This
 situation is partly related to a missing tight integration of these data
 management concepts into widely accepted tools like for example the R
-statistics environment. We created an R package named `rbefdata` that provides
-an access to the open source data management platform `BEFdata`. The R package
-enables access to data stored on the platform as well as to the metadata
-provided by dataset authors. It tightly integrates the metadata into R data
-frames so it can be accessed directly when processing data from the portal.
-`rbefdata` includes an access to an online thesaurus that can be used to
-improve the discovery of datasets stored on the portal. Furthermore it provides
-upload functionality so any data product can be pushed directly back to the
-data portal for preservation. We integrate data management concepts like a
-semantic improved exploration of datasets, a seamless access to data and
-metadata and the preservation of data products directly into the R environment.
-The open source character of the data management platform `BEFdata` and the
-companion package `rbefata` makes it possible for any ecological project to use
-this package as a sophisticated solution to their own data management
-requirements. 
+statistics environment. 
 
-## Introduction 
+The `rbefdata` R package together with the data management platform `BEFdata`
+combine the strengths of the data management concepts mentioned into a
+sophisticated data management software package that makes use of widely
+accepted tools in ecology.
 
-Today ecologists face a deluge of data which puts much pressure on the
-development of tools that foster the exploration, the processing, the reuse and
-the preservation of data. Although tools and concepts in data management
-already provide many solutions to different parts of the life cycle of data,
-not all of them are widely spread or accepted throughout ecology. This is
-related to different reasons like the reluctance of researchers to use online
-data management platforms or the lack of integration of data management
-concepts into widely used software tools like for example the R statistics
-environment. This situation can be improved by the tight integration of data
-management concepts into existing and widely used software and thus into the
-daily workflow of researchers but also through concepts that help researchers
-gain trust in online data mangement platforms. Paper proposals and data
-provenance as a way to promote collaborations by the discussion of ideas and,
-metadata to improve data preservation and information exchange as well as the
-integration of semantic resources to enhance data exploration and processing,
-only represent a few examples of concepts with the potential to improve the
-progress of a data intensive scientific domain like ecology. The `rbefdata` R
-package together with the data management platform `BEFdata` combine the
-strengths of the data management concepts mentioned into a sophisticated data
-management software package that makes use of widely accepted tools in ecology.
+Paper proposals and data provenance as a way to promote collaborations by the
+discussion of ideas and, metadata to improve data preservation and information
+exchange as well as the integration of semantic resources to enhance data
+exploration and processing, only represent a few examples of concepts with the
+potential to improve the progress of a data intensive scientific domain like
+ecology. 
 
 With a growing awareness on the value of data, many data management platforms
 have been developed to preserve all kinds of environmental and historic data.
@@ -137,6 +149,8 @@ here is fully reproducible.
 
 ## Material and Methods 
 
+• Materials and methods: Include sufficient details for the work to be repeated.
+
 ### The BEF-China project and the N retention analysis 
 
 The BEF (Biodiversity Ecosystem Functioning) - China project, funded by the
@@ -198,6 +212,8 @@ xxx).
 
 
 ## rbefdata 
+
+• Results: State the results, drawing attention to important details in tables and figures.
 
 ### Setup 
 
@@ -606,6 +622,8 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
         been used to derive the results in the published paper.
 
 ## Discussion
+
+• Discussion: Point out the importance of the results and place them in the context of previous studies and in relation to the application of the work (expanding on the Synthesis and applications section of the Summary). Where appropriate, set out recommendations for management or policy.
 
 * structure of intro
   * many data
