@@ -43,8 +43,8 @@ collect data from smaller databases and enable researchers to access a wide
 range of data all from one place. These platforms offer a solution to one of
 the most pressing general problems in data management, the loss of valuable
 data (Heidorn, 2008). Even tough these platforms improve the situation in data
-preservation, researchers are still reluctant to them extensively as they fear
-to give away and loose the control over their data (michener 2012).
+preservation, researchers are still reluctant to use them extensively as they
+fear to give away and loose the control over their data (michener 2012).
 Additionally there is no direct benefit of sharing data online that could
 motivate researchers to put more time into data that is required to prepare and
 upload it for sharing. The `rbefata` R package provides upload functionality
@@ -109,7 +109,7 @@ here is fully reproducible.
 
 ## Material and Methods 
 
-• Materials and methods: Include sufficient details for the work to be repeated.
+• Include sufficient details for the work to be repeated.
 
 ### The BEF-China project and the N retention analysis 
 
@@ -119,46 +119,62 @@ of 10-15 independent research groups (www.bef-china.de) with the overarching
 aim to disentangle the role of tree and shrub diversity for production, erosion
 control, element cycling, and species conservation in Chinese subtropical
 forest ecosystems. The project uses two main research platforms located in the
-provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012). An analysis
-about N along a biodiversity gradient has been choosen from the project as an
-example usecase to hightlight the interlinkages between the `BEFdata` data
-management platform and the `rbefdata` package in this paper. The analysis has
-typical characteristics for interdisciplinary research in ecology, as it
-combines soil, taxon, and nutrient data where the data originating from field
-campaigns of different collaborating laboratories has to be merged prior to the
-analysis. We created an R script that highlights the functionalities and inter
-linkages between the `rbefdata` packakge and the `BEFdata` data management
-platform.  
+provinces Jiangxi and Zhejiang in China (Bruelheide et al., 2012).
 
 ### The BEFdata platform
 
-The [BEFdata](http://befdataproduction.biow.uni-leipzig.de/) data management
-platform has been developed and is used within the BEF-China project. The
-platform is specialized in the management of small and heterogeneous data,
-typical for biodiversity research. It offers data harmonization features,
-adheres to standards like the Ecological Metadata Language (EML) for metadata
-support and it fosters the exploration of data by a keyword tagging and search
-system. Additionally the platform facilitates research cooperations and the
-discussion of ideas by a paper proposal tool. To create a paper proposal a
-researcher can select datasets from the platform to be included in an analysis.
-In the process of creating a proposal basic information like a title, a
-rationale, the envisaged journal and a date needs to be provided. 
+[BEFdata](http://befdataproduction.biow.uni-leipzig.de/) it the data management
+platform of the BEF-China project. It that has been developed within the
+project and it is is specialized in the management of small and heterogeneous
+data typical for ecology related research. It offers data preservation in a
+harmonized environment, fosters the exploration of data by a keyword tagging
+and search system and adheres to the Ecological Metadata Lanuage standard
+standard for describing preserved data. The platform additionally facilitates
+research cooperations and discussions of ideas by a paper proposal tool. To
+create a paper proposal a researcher can select datasets from the platform to
+be included in an analysis. In the process of creating a proposal, basic
+information like a title, a rationale, the envisaged journal and a date needs
+to be provided. Submitting a proposal, a researcher asks data owner for access
+to the selected data and proposes his research idea to the project board and
+the data owners. The data owners can decide if they like to participate in the
+upcoming analysis or if they only like to get acknowledged for providing their
+data (Nadrowski 2013). This process allows to include or acknowledge all
+researchers involved in the data sampling process. Thus the paper proposals on
+the portal result in a direct benefit for providin data, they promote
+collaborations between research units and help to avoid duplication in
+publication initiatives on the same research ideas. Finally all datasets
+assembled in a paper proposal can be imported into the R environment using the
+`rbefdata` package. 
 
-Submitting a proposal, a researcher asks for access to the data and proposes
-his research idea to the project board and the data owners. The data owners can
-decide if they like to participate in the upcoming analysis or if they only
-like to get acknowledged for providing their data (Nadrowski 2013). This
-process allows to include or acknowledge all researchers involved in the data
-sampling process, it promotes collaborations between research units and helps
-to avoid duplication in publication initiatives on the same research ideas. 
+### Analysis: N retention along a diversity gradient 
 
-Finally all datasets assembled in a paper proposal can be imported into the R
-environment by the `rbefdata` package. We used a proposal for the script that
-is based on 3 datasets with the title "Mixed afforestations of young
-subtropical trees promote nitrogen acquisition and retention". For a detailed
-rationale of the proposal we refer to the paper proposal page on the `BEFdata`
-instance of the BEF-China project (URL XX) and the publihed paper (A. Lang
-xxx).
+comment cpfaff: will work in this tomorrow again and finish it then
+
+We used a paper proposal from the BEF-China project instance of the BEFdata
+portal (http://china.befdata.biow.uni-leipzig.de/paperproposals/90) to showcase
+the functionality of the `rbefdata` package. The proposal contains 3 datasets 
+
+that deals with N retention along biodivesity gradient. The results of the
+analysis that follwed the paper proposal have been published already and thus
+the data attached to the proposal is open access. We used  
+
+An analysis about N retention along a biodiversity gradient has been choosen
+from the BEF-China project as an example to hightlight the interlinkages
+between the `BEFdata` data management platform and the `rbefdata` package in
+this paper. 
+
+ on the BEFdata platform of the the BEF-China
+experiment that deals with N retention along a biodiversity gradient as staring
+point to showcase the functionality of the `rbefdata` package. 
+
+to write an R script that shows the functionality of the R package and
+interlinkages bet
+
+for the script that is based on 3 datasets with the title "Mixed afforestations
+of young subtropical trees promote nitrogen acquisition and retention". For a
+detailed rationale of the proposal we refer to the paper proposal page on the
+`BEFdata` instance of the BEF-China project (URL XX) and the publihed paper (A.
+Lang xxx).
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
 
@@ -777,10 +793,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0283 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -832,9 +848,9 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
-## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
-## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
+## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 .
+## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
+## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
