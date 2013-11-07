@@ -111,7 +111,7 @@ here is fully reproducible.
 
 • Include sufficient details for the work to be repeated.
 
-### The BEF-China project and the N retention analysis 
+### The BEF-China project
 
 The BEF (Biodiversity Ecosystem Functioning) - China project, funded by the
 German Science Foundation (DFG, FOR 891) is a research collaboration consisting
@@ -146,7 +146,7 @@ publication initiatives on the same research ideas. Finally all datasets
 assembled in a paper proposal can be imported into the R environment using the
 `rbefdata` package. 
 
-### Analysis: N retention along a diversity gradient 
+### Usecase: N retention along a diversity gradient 
 
 We used a paper proposal from the BEF-China project as starting point to
 showcase the interlinkages between the data management platform and the
@@ -720,9 +720,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59   0.0012 **
-## 4 - 1 == 0    0.865      0.497    1.74   0.1839   
-## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
+## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
+## 4 - 1 == 0    0.865      0.497    1.74    0.184   
+## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
