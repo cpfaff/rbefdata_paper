@@ -150,7 +150,7 @@ publication initiatives on the same research ideas. Finally all datasets
 assembled in a paper proposal can be imported into the R environment using the
 `rbefdata` package. 
 
-### Usecase: N retention along a diversity gradient 
+### Usecase: N retention along a biodiversity gradient 
 
 We used a paper proposal from the BEF-China project as starting point to
 showcase the interlinkages between the data management platform and the
