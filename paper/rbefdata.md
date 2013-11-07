@@ -148,44 +148,24 @@ assembled in a paper proposal can be imported into the R environment using the
 
 ### Analysis: N retention along a diversity gradient 
 
-comment cpfaff: will work in this tomorrow again and finish it then
-
-We used a paper proposal from the BEF-China project instance of the BEFdata
-portal (http://china.befdata.biow.uni-leipzig.de/paperproposals/90) to showcase
-the functionality of the `rbefdata` package. The proposal contains 3 datasets 
-
-that deals with N retention along biodivesity gradient. The results of the
-analysis that follwed the paper proposal have been published already and thus
-the data attached to the proposal is open access. We used  
-
-An analysis about N retention along a biodiversity gradient has been choosen
-from the BEF-China project as an example to hightlight the interlinkages
-between the `BEFdata` data management platform and the `rbefdata` package in
-this paper. 
-
- on the BEFdata platform of the the BEF-China
-experiment that deals with N retention along a biodiversity gradient as staring
-point to showcase the functionality of the `rbefdata` package. 
-
-to write an R script that shows the functionality of the R package and
-interlinkages bet
-
-for the script that is based on 3 datasets with the title "Mixed afforestations
-of young subtropical trees promote nitrogen acquisition and retention". For a
-detailed rationale of the proposal we refer to the paper proposal page on the
-`BEFdata` instance of the BEF-China project (URL XX) and the publihed paper (A.
-Lang xxx).
+We used a paper proposal from the BEF-China project as starting point to
+showcase the interlinkages between the data management platform and the
+`rbefdata` package. The proposal contains 3 datasets and deals with N retention
+along a biodiversity gradient. The results to the paper proposal have been
+published already elsewhere (A. Lang xxx) and the data is open access. For a
+detailed rationale on the analysis we refer to the online resource of the
+proposal (http://china.befdata.biow.uni-leipzig.de/paperproposals/90) as well
+as to the publihed paper (A. Lang xxx).
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
 
 * caption:  
-        The paper proposal about N retention analysis in its final approved state. The
+        The paper proposal about the N retention analysis in its final approved state. The
         information on that page contains a title, a rational an envisaged date and the
         journal. The calculated authors and email lists for communication as well as
         the attached datasets and sub-projects involved (only partially shown). The
         results of the underlying analysis of the proposal are published already and
         thus for a detailed insight we refer to Lang et al. 2013.
-
 
 ## rbefdata 
 
@@ -739,10 +719,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59   0.0012 **
+## 4 - 1 == 0    0.865      0.497    1.74   0.1839   
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -794,9 +774,9 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0283 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+## 2 - 1 == 0    0.601      0.170    3.53    0.001 **
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 * 
+## 4 - 2 == 0    0.132      0.278    0.48    0.879   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -848,9 +828,9 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32    0.050 .
-## 4 - 1 == 0   -0.499      0.215   -2.33    0.049 *
-## 4 - 2 == 0   -0.205      0.207   -0.99    0.573  
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
+## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
