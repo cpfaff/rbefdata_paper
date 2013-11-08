@@ -167,6 +167,16 @@ as to the publihed paper (A. Lang xxx).
         results of the underlying analysis of the proposal are published already and
         thus for a detailed insight we refer to Lang et al. 2013.
 
+
+### the tematres thesaurus 
+
+comment ctpfaff: this needs to be improved
+
+The `rbefdata` offers access to vocabuaries stored on tematres vocabulary
+server. The default vocabulary contains ~1000 terms related to exology and
+biodiversity research in form of a thesaurus. Partly the terms are covered by
+descriptions.
+
 ## rbefdata 
 
 • Results: State the results, drawing attention to important details in tables and figures.
@@ -254,21 +264,23 @@ bef.options(url = "http://my.own.befdata.instance.com")
   
 ### Discover Data 
 
-The `rbefdata` package supports exploiting vocabularies stored on `tematres`
-vocabulary servers. We can search terms and display their descriptions as well
-as we can ask for their relations. As the `BEFdata` platform offers a keyword
-based search for datasets we can use the vocabulary integration to improve the
-search along the relations provided. For example looking for datasets that deal
-with the fresh weight of plant organs we are searching for the keywords "plant
-organ". We query the `BEFdata` platform for datasets that are tagged with that
-terms and we get back a few datasets (see box xxx). In a further step we use
-the vocabulary on the `tematres` server to narrow down "plant organs" and we
-get back keywords like "leaf", "root" and "twig" (see box xxx). These narrower
-keywords are used to query the `BEFdata` server again and it returns all
-datasets tagged with the narrower plant organ terms. This method can be used
-the other way around as well to restrict the datasets we get back to higher
-order terms with `bef.tematres.api(task = "fetchUp", "plant organ")` (see box
-xxx).
+The `rbefdata` package supports exploiting vocabularies stored on a `tematres`
+vocabulary server. It can search terms, display their descriptions as well as
+we can ask the server for the terms relations. The `BEFdata` platform offers a
+keyword based search for datasets that is made available from within the
+`rbefdata` package as well by the `bef.get.datasets.for_keyword()` command.
+Thus we can use the vocabulary integration to enhance the exploration of
+datasets along the relations provided by the vocabulary server.  For example
+looking for datasets that deal with the weight of plant organs we use the terms
+"plant organ" and "weight" to query the `BEFdata` platform. It returns a few
+(~10) datasets tagged with these keywords (see box xxx). In a further step we
+use the `tematres` vocabulary integration to narrow down the term "plant
+organ". We get back narrower terms like "leaf", "root", "twig" and "stem" (see
+box xxx). These keywords are then to query the `BEFdata` server again where it
+returns all datasets tagged with the narrower plant organ terms.  This method
+can be used the other way around as well to restrict the datasets that get
+returned to higher order terms with `bef.tematres.api(task = "fetchUp", "plant
+organ")` (see box xxx).
 
 
 ```r
@@ -294,20 +306,33 @@ term_info
 ```r
 
 # get datasets tagged with plant organ
-datasets_plant_organ = bef.get.datasets.for_keyword("plant organ")
-nitrogen = bef.get.datasets.for_keyword("nitrogen")
+datasets_plant_organ = bef.get.datasets.for_keyword(c("plant organ", "weight"))
 datasets_plant_organ
 ```
 
 ```
-##    id
-## 1 357
-## 2 202
-## 3 187
-##                                                                                                title
-## 1                                              Biomass Allometry Equations of Pilot Experiment (SP7)
-## 2 Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
-## 3                                              Traits of ferns and herb species occuring in the CSPs
+##     id
+## 1  326
+## 2  212
+## 3  323
+## 4  428
+## 5  433
+## 6  356
+## 7  355
+## 8  357
+## 9  202
+## 10 187
+##                                                                                                 title
+## 1                                          Tree functional identity weighted by abundance in the CSPs
+## 2                    Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
+## 3              Leaf traits and chemicals from individual trees in the Main Experiment (Sites A and B)
+## 4                                           Leaf traits and chemicals of 122 tree species in the CSPs
+## 5                                             Seed addition experiment  Site A (VIPs) - biomass data 
+## 6                     Stem disc data from undecomposed Schima superba used in the Ecoscape experiment
+## 7                                        Wood decomposition on the ESPs (VIPs and VIPREPs) first year
+## 8                                               Biomass Allometry Equations of Pilot Experiment (SP7)
+## 9  Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
+## 10                                              Traits of ferns and herb species occuring in the CSPs
 ```
 
 ```r
@@ -329,7 +354,7 @@ narrow_tasks_plant_organ
 ```r
 
 # enrich the search with narrower keywords
-datasets_plant_organ_narrow = bef.get.datasets.for_keyword(c(narrow_tasks_plant_organ$term))
+datasets_plant_organ_narrow = bef.get.datasets.for_keyword(c(narrow_tasks_plant_organ$term, "weigth"))
 
 # get an indea what is in the response
 head(datasets_plant_organ_narrow)
@@ -362,7 +387,7 @@ dim(datasets_plant_organ_narrow)
 
 
 * caption:   
-        The code box shows the use of the default `tematres` thesaurus of the
+        The code box shows the use of the default `tematres` thesaurus used by the
         `rbefdata` package to improve the search of datasets on a `BEFdata` platform.
         Terms can be defined, narrowed or broadened to extend the search query for
         datasets against the `BEFdata` portal with the `bef.get.datasets.for_keyord()`
@@ -370,17 +395,20 @@ dim(datasets_plant_organ_narrow)
 
 ### Download data
 
-The `rbefdata` package leverages access to data stored on a `BEFdata` platform
-through paper proposals. It loads all associated datasets of a proposal into
-the R environment in one single step. The function returns a list object that
-keeps a data frame per list element containing one dataset of the proposal
-each. The function requires the ID of the proposal to work, which can be found
-in its URL (see box xxx). If the data is not open access the function requires
-the "user_credentials" as well to check for the access rights before download.
+The `rbefdata` package leverages access to data stored on a `BEFdata` platform.
+It can fetch single datasets as well as it can load all associated datasets of
+a proposal into the R environment in one single step. The latter functionality
+returns a list object that keeps a data frame per list element containing one
+dataset of a proposal each. The download functions requires either an ID of the
+dataset or proposal to work, which can be found in the URLs (box xxx). If a
+dataset is not open access the functions additionally require the
+"user_credentials" to work as they check for the access rights before
+downloading data.
 
 
 ```r
 # the proposal URL shows the id is 90 http://china.befdata.biow.uni-leipzig.de/paperproposals/90
+# http://china.befdata.biow.uni-leipzig.de/datasets/
 
 # get datasets
 datasets = bef.get.datasets.for_proposal(id = 90)
@@ -775,7 +803,7 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)    
 ## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.029 *  
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
 ## 4 - 2 == 0    0.132      0.278    0.48    0.879    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
