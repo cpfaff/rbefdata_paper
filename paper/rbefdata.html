@@ -191,23 +191,23 @@ open source, open science </p>
 
 <h2>Abstract</h2>
 
-<p>In order to answer the most pressing global questions in ecology, scientists
-need to deal with the huge amount of environmental and historic data, already
+<p>In order to answer the most pressing questions in ecology, scientists need to
+deal with the huge amount of environmental and historic data, that is already
 available today. The effective employment and curation of this data requires
-tools that not only foster exploration but also the processing, the reuse and
-the preparation of data for long term preservation. Although there is a rag rug
-of data management tools and concepts already available that cover most of the
-data management requirements in ecology, their tight integration into widely
-used data analysis tools lacks behind. Thus we created an R package named
-<code>rbefdata</code> that implements data management concepts and tools into the R
-statistics environment. As companion package to the open source data management
-platform <code>BEFdata</code>, it offers a search for datasets. It enhances the search
-feature by the integration of an online thesaurus, enables a seamless access to
-datasets and metadata for analysis as well as it provides upload functionality
-for data preservation. The open source character of the data management
-platform <code>BEFdata</code> and the companion package <code>rbefata</code> allow any ecological
-project to use this package as a sophisticated solution to their own data
-management requirements. </p>
+tools that not only foster the exploration but also the processing, the reuse
+and the preparation of data for long term preservation. Although there is a rag
+rug of data management tools and concepts already available that cover most of
+the data management requirements in ecology, their tight integration into
+widely used data analysis tools lacks behind. Thus we created an R package
+named <code>rbefdata</code> that implements valuable data management concepts into the R
+statistics environment. As companion package to the data management platform
+<code>BEFdata</code>, it offers a dataset search, enhances the search feature by the
+integration of an online thesaurus, enables a seamless access to datasets and
+metadata for analysis as well as it provides upload functionality for data
+preservation. The open source character of the data management platform
+<code>BEFdata</code> and the companion package <code>rbefata</code> allow any project to use this
+package as a sophisticated solution to their own data research data related
+requirements. </p>
 
 <h2>Introduction</h2>
 
@@ -347,14 +347,19 @@ as to the publihed paper (A. Lang xxx).</p>
     thus for a detailed insight we refer to Lang et al. 2013.</li>
 </ul>
 
-<h3>the tematres thesaurus</h3>
+<h3>the <code>tematres</code> thesaurus</h3>
 
-<p>comment ctpfaff: this needs to be improved</p>
-
-<p>The <code>rbefdata</code> offers access to vocabuaries stored on tematres vocabulary
-server. The default vocabulary contains ~1000 terms related to exology and
-biodiversity research in form of a thesaurus. Partly the terms are covered by
-descriptions.</p>
+<p>The <code>tematres</code> vocabulary server is an open source server software that offers
+features to manage, share and publish formal representations of knowledge. The
+<code>rbefdata</code> package can exploit vocabularies stored on <code>tematres</code> vocabulary
+servers. It can search for terms, display their descriptions as well as it can
+query the server for the relations of terms (broader, narrower). The <code>rbefdata</code>
+package by default connects to a <code>tematres</code> server instance with a thesaurus
+that, by the time of writing, contains round about 1000 terms which are related
+to ecology and biodiversity research. We used the default thesaurus to retrieve
+narrower keywords to a improve a keyword based search for datasets to highlight
+a way on how the integration of semantic repositories can enhance the process
+of data exploration on a <code>BEFdata</code> portal. </p>
 
 <h2>rbefdata</h2>
 
@@ -362,25 +367,22 @@ descriptions.</p>
 
 <h3>Setup</h3>
 
-<p>The latest version of <code>rbefdata</code> can be installed from the CRAN repository by
-the <code>install.packages(&quot;rbefdata&quot;)</code> command. After installation the package
-needs to be loaded using the <code>require(rbefdata)</code> command. <code>rbefdata</code> offers a
-set of options that modify the behavior of the R package. The options can be
-set or queried via the <code>bef.options()</code> command. A look into the options list
-(see box below) reveals several option fields. One of the most essential
-settings is the user credentials. These are used to authenticate the user
-against the platform and to ensure weather the access to the specific datasets
-has been granted or not. The credentials can be obtained from the <code>BEFdata</code>
-platform where each user will find its credentials on its profile page. The
-other options represent the URLs to the <code>BEFdata</code> server instance and the
-<code>tematres</code> vocabulary server as well as a field that stores the name of a
-download folder. While the URL fields ensure the communication with the right
-servers, the download folder name is used to create a folder in case of a
-download of attached files from a dataset or paper proposal. The URL to the
-<code>BEFdata</code> and the <code>tematres</code> server default to the BEF-China project instances
-that are used in this paper to retrieve data from. If an own instance of either
-the <code>BEFdata</code> platform or <code>tematres</code> has been set up, this URLs need to be
-changed accordingly, so the package communicates with the right servers (see
+<p>The latest version of <code>rbefdata</code> can be directly installed from the CRAN
+repository. <code>rbefdata</code> offers a set of options that modify the behavior of the
+R package. The options can be set or queried via the <code>bef.options()</code> command.
+One of the most essential options is the user credentials. These are used to
+authenticate the user against the platform and to ensure weather the access to
+a specific datasets has been granted or not. Each user can find and change its
+credentials on his profile page on the <code>BEFdata</code> platform. The other options in
+the list represent the URLs to the <code>BEFdata</code> server instance and the <code>tematres</code>
+vocabulary server as well as a field that stores the name for a download
+folder. While the URL fields ensure the communication with the right servers,
+the download folder name is used to create a folder in case of a download of
+attached files from a dataset or paper proposal. The URL to the <code>BEFdata</code> and
+the <code>tematres</code> server default to the BEF-China project instances that are used
+in this paper to retrieve data from. If an own instance of either the <code>BEFdata</code>
+platform or the <code>tematres</code> vocabulary server has been set up, this URLs need to
+be changed accordingly, so the package communicates with the right servers (see
 box below). </p>
 
 <pre><code class="r"># list all options
@@ -421,33 +423,25 @@ bef.options(url = &quot;http://my.own.befdata.instance.com&quot;)
 
 <ul>
 <li>Caption:<br/>
-    The code box shows how to use the <code>bef.options()</code> command. It is used to set
-    and query the options of the <code>rbefdata</code> package. The options determine the
-    behavior of the package. All options can ben shown at once to get an overview
-    as well as one can pick a single options to display the value it is set to. The
-    options can be set using the names of their fields like shown here for example
-    the &ldquo;user_credentials&rdquo; and the &ldquo;url&rdquo;.</li>
+      The <code>bef.options()</code> is used to set and query the options of the <code>rbefdata</code>
+      package. The options determine the behavior of the package. All options can be
+      shown at once to get an overview as well as one can pick a single options to
+      display the value it is set to. The options can be set using the names of their
+      fields like shown here for example the &ldquo;user_credentials&rdquo; and the &ldquo;URL&rdquo;.</li>
 </ul>
 
 <h3>Discover Data</h3>
 
-<p>The <code>rbefdata</code> package supports exploiting vocabularies stored on a <code>tematres</code>
-vocabulary server. It can search terms, display their descriptions as well as
-we can ask the server for the terms relations. The <code>BEFdata</code> platform offers a
-keyword based search for datasets that is made available from within the
-<code>rbefdata</code> package as well by the <code>bef.get.datasets.for_keyword()</code> command.
-Thus we can use the vocabulary integration to enhance the exploration of
-datasets along the relations provided by the vocabulary server.  For example
-looking for datasets that deal with the weight of plant organs we use the terms
-&ldquo;plant organ&rdquo; and &ldquo;weight&rdquo; to query the <code>BEFdata</code> platform. It returns a few
-(~10) datasets tagged with these keywords (see box xxx). In a further step we
-use the <code>tematres</code> vocabulary integration to narrow down the term &ldquo;plant
-organ&rdquo;. We get back narrower terms like &ldquo;leaf&rdquo;, &ldquo;root&rdquo;, &ldquo;twig&rdquo; and &ldquo;stem&rdquo; (see
-box xxx). These keywords are then to query the <code>BEFdata</code> server again where it
-returns all datasets tagged with the narrower plant organ terms.  This method
-can be used the other way around as well to restrict the datasets that get
-returned to higher order terms with <code>bef.tematres.api(task = &quot;fetchUp&quot;, &quot;plant
-organ&quot;)</code> (see box xxx).</p>
+<p>For example looking for datasets that deal with the weight of plant organs we
+use the terms &ldquo;plant organ&rdquo; and &ldquo;weight&rdquo; to query the <code>BEFdata</code> platform. It
+returns a few (~10) datasets tagged with these keywords (see box xxx). In a
+further step we use the <code>tematres</code> vocabulary integration to narrow down the
+term &ldquo;plant organ&rdquo;. We get back narrower terms like &ldquo;leaf&rdquo;, &ldquo;root&rdquo;, &ldquo;twig&rdquo; and
+&ldquo;stem&rdquo; (see box xxx). These keywords are then to query the <code>BEFdata</code> server
+again where it returns all datasets tagged with the narrower plant organ terms.
+This method can be used the other way around as well to restrict the datasets
+that get returned to higher order terms with <code>bef.tematres.api(task =
+&quot;fetchUp&quot;, &quot;plant organ&quot;)</code> (see box xxx).</p>
 
 <pre><code class="r"># define the term plant organ
 term_info = bef.tematres.api(task = &quot;fetchNotes&quot;, &quot;plant organ&quot;)
@@ -912,10 +906,10 @@ anova(model3)
 ##     random = ~1 | block, method = &quot;REML&quot;)
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(&gt;|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   &lt;0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+##            Estimate Std. Error z value Pr(&gt;|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -1335,6 +1329,12 @@ product can be pushed directly back to the data portal for preservation. We
 integrate data management concepts like a semantic improved exploration of
 datasets, a seamless access to data and metadata and the preservation of data
 products directly into the R environment.   </p>
+
+<p>The <code>BEFdata</code> platform offers a keyword based search for datasets that is made
+available from within the <code>rbefdata</code> package as well by the
+<code>bef.get.datasets.for_keyword()</code> command.  Thus we can use the vocabulary
+integration to enhance the exploration of datasets along the relations provided
+by the vocabulary server.  </p>
 
 <p>Today ecologists have access to a huge amount of environmental and historic
 data. This puts much pressure on the development of tools that enable
