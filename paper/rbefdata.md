@@ -12,25 +12,37 @@ open source, open science
 
 ## Abstract
 
-In order to answer the most pressing questions in ecology, scientists need to
-deal with the huge amount of environmental and historic data, that is already
-available today. The effective employment and curation of this data requires
-tools that not only foster the exploration but also the processing, the reuse
-and the preparation of data for long term preservation. Although there is a rag
-rug of data management tools and concepts already available that cover most of
-the data management requirements in ecology, their tight integration into
-widely used data analysis tools lacks behind. Thus we created an R package
-named `rbefdata` that implements valuable data management concepts into the R
-statistics environment. As companion package to the data management platform
-`BEFdata`, it offers a dataset search, enhances the search feature by the
-integration of an online thesaurus, enables a seamless access to datasets and
-metadata for analysis as well as it provides upload functionality for data
-preservation. The open source character of the data management platform
-`BEFdata` and the companion package `rbefata` allow any project to use this
-package as a sophisticated solution to their own data research data related
-requirements. 
+In order to answer the most pressing, global relevant questions in ecology,
+scientists need to deal with the huge amount of environmental and historic
+data, that is already available today. The effective employment and curation of
+this data requires tools that not only foster the exploration but also the
+processing, the reuse and the preparation of data for long term preservation.
+Although there are many useful data management tools and concepts already
+available that cover most of the data management requirements in ecology, their
+tight integration into widely used data analysis software lacks behind. Thus we
+created an R package named `rbefdata` that implements concepts of data
+management and thus provides these to users of the R statistics environment.
+As companion package to the data management platform `BEFdata`, it offers a
+dataset search, enables a seamless access to datasets and metadata for analysis
+as well as it provides upload functionality for data preservation. The open
+source character of the data management platform `BEFdata` and the companion
+package `rbefata` allow any project to use this package as a sophisticated
+solution to their own data research data related requirements. 
 
 ## Introduction 
+
+Huge amounts of ecological data are gathered every year by researchers
+worldwide to enhance our knowledge on specific research questions. However, to
+address overarching issues it is important to use many of these data in common.
+Thus, a number of dataportals have been developed which allow the access of
+these data to other scientists. Furthermore, datasets need to be accompanied by
+metadata to provide the necessary background informations for other scientists
+to use these datasets. And even more it is necessary to develop tools to
+leverage the search of specific datasets on these portals. In this paper we
+introduce the rbefdata package which serves as a connection tool between the
+BEF dataportal and the statistics environment R. It provides tools for the up-
+and download of datasets and their respective metadata, as well as functions
+for easy search of datasets that can be enhanced by terms from a thesaurus. 
 
 With a growing awareness on the value of data, many data management platforms
 have been developed to preserve all kinds of environmental and historic data.
@@ -148,8 +160,6 @@ assembled in a paper proposal can be imported into the R environment using the
 
 ### Usecase: N retention along a biodiversity gradient 
 
-
-
 We used a paper proposal from the BEF-China project as starting point to
 showcase the interlinkages between the data management platform and the
 `rbefdata` package. The proposal contains 3 datasets and deals with N retention
@@ -173,15 +183,13 @@ as to the publihed paper (A. Lang xxx).
 
 The `tematres` vocabulary server is an open source server software that offers
 features to manage, share and publish formal representations of knowledge. The
-`rbefdata` package can exploit vocabularies stored on `tematres` vocabulary
-servers. It can search for terms, display their descriptions as well as it can
+`rbefdata` package can exploit vocabularies stored on a `tematres` vocabulary
+server. It can search for terms, display their descriptions as well as it can
 query the server for the relations of terms (broader, narrower). The `rbefdata`
 package by default connects to a `tematres` server instance with a thesaurus
 that, by the time of writing, contains round about 1000 terms which are related
-to ecology and biodiversity research. We used the default thesaurus to retrieve
-narrower keywords to a improve a keyword based search for datasets to highlight
-a way on how the integration of semantic repositories can enhance the process
-of data exploration on a `BEFdata` portal. 
+to ecology research. We used this default thesaurus to retrieve narrower
+keywords to show how the keyword based search for datasets can be improved.
 
 ## rbefdata 
 
@@ -308,26 +316,34 @@ datasets_plant_organ
 ```
 ##     id
 ## 1  326
-## 2  212
-## 3  323
-## 4  428
-## 5  433
-## 6  356
-## 7  355
-## 8  357
-## 9  202
-## 10 187
-##                                                                                                 title
-## 1                                          Tree functional identity weighted by abundance in the CSPs
-## 2                    Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
-## 3              Leaf traits and chemicals from individual trees in the Main Experiment (Sites A and B)
-## 4                                           Leaf traits and chemicals of 122 tree species in the CSPs
-## 5                                             Seed addition experiment  Site A (VIPs) - biomass data 
-## 6                     Stem disc data from undecomposed Schima superba used in the Ecoscape experiment
-## 7                                        Wood decomposition on the ESPs (VIPs and VIPREPs) first year
-## 8                                               Biomass Allometry Equations of Pilot Experiment (SP7)
-## 9  Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
-## 10                                              Traits of ferns and herb species occuring in the CSPs
+## 2  143
+## 3  145
+## 4  360
+## 5  212
+## 6  323
+## 7  428
+## 8  433
+## 9  219
+## 10 356
+## 11 187
+## 12 355
+## 13 357
+## 14 202
+##                                                                                                   title
+## 1                                            Tree functional identity weighted by abundance in the CSPs
+## 2  Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
+## 3        Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
+## 4                                                                          Detailed tree allometry data
+## 5                      Leaf traits and chemicals from individual trees in the Gutianshan Nature Reserve
+## 6                Leaf traits and chemicals from individual trees in the Main Experiment (Sites A and B)
+## 7                                             Leaf traits and chemicals of 122 tree species in the CSPs
+## 8                                               Seed addition experiment  Site A (VIPs) - biomass data 
+## 9                              Speficic leaf area (SLA) of Cunninghamia lanceolata and Pinus massoniana
+## 10                      Stem disc data from undecomposed Schima superba used in the Ecoscape experiment
+## 11                                                Traits of ferns and herb species occuring in the CSPs
+## 12                                         Wood decomposition on the ESPs (VIPs and VIPREPs) first year
+## 13                                                Biomass Allometry Equations of Pilot Experiment (SP7)
+## 14   Carbon (C) and Nitrogen (N) Concentration (Root, Stem, Twig, Leaf) of 8 target species in the CSPs
 ```
 
 ```r
@@ -796,10 +812,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
+## 4 - 2 == 0    0.132      0.278    0.48    0.879    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -1226,6 +1242,8 @@ publication.
 
 ### saveaway 
 
+This highlight a way on how the integration of semantic repositories can
+enhance the process of data exploration on a `BEFdata` portal. 
 
 The package enables access to data and metadata stored on the platform as well
 as it  the dataset exploration by the integration of an online thesaurus. 
