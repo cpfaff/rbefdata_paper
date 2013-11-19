@@ -600,7 +600,10 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 ## Discussion
 
-• Discussion: Point out the importance of the results and place them in the context of previous studies and in relation to the application of the work (expanding on the Synthesis and applications section of the Summary). Where appropriate, set out recommendations for management or policy.
+• Discussion: Point out the importance of the results and place them in the
+context of previous studies and in relation to the application of the work
+(expanding on the Synthesis and applications section of the Summary). Where
+appropriate, set out recommendations for management or policy.
 
 * structure of intro
   * many data
@@ -622,18 +625,38 @@ bef.portal.attach.to_proposal(id = 90, attachment = file.path(tempdir(), "result
 
 Even though the situation with data preservation has been improved by online
 data management platforms, there is still many valuable data lost (long tail).
-One one hand this is related to the fact that researchers are reluctant to use
-online data management tools, as they fear to loose the control over their data
-and on the other hand to the fact that most research projects do not have a
-data preservation plan that would force the contributors to preserve their
-data. More general this is related to no direct benefit to data providers for
-sharing data online and that it usually only means to put more effort into the
-data after the results have been published already. However the availability of
-a broad range of data and useful metadata describing it is essential to
-different aspects of the life cycle of data. In ecology the integration of
-available data offers the potential to answer some of the most pressing global
-relevant questions like for example about the global climate change and the
-maintainability of vital ecosystem services. 
+This is mainly related due to the heterogeneic stucture of ecology, where most
+of the data is gathered by small, short term research projects spread over the
+world. Many of these projects do not have a data management plan at all, that
+would ensure the provision of metadata, the preservation of data or data
+sharing for resuse. Additionally many researchers are still reluctant to use
+online data management platforms on own initiative, as they fear to give away
+and loose the control over their data. On top of that there is a lack of
+benefit to researchers providing data for sharing online. Thus the preparation
+of data for preservation and reuse, usually only means to put more effort into
+the data. The open source data mangement platform BEFdata offers a
+sophisticated online data management for projects that covers data preservation
+and metadata.  Each project can set up its own instance and thus benefit from
+online project data management without giving data away. The colose integration
+of metadata standards into the platform offers a simple exit strategy. If the
+projets ends the Ecological Metadata Standard Language files can be used to
+transfere the collected data and analyses to long term preservation.  
+
+simple
+tool that even small project can afford to set up.
+
+
+
+However the availability of a broad range of data and useful metadata is
+essential to many stepts in the life cycle of data. Not only the reuse, but
+also data processing and analysis can be improved.
+
+Thus tools that make it simple to use and provide metadat are essential.
+
+In ecology the integration of available data offers the potential to
+answer some of the most pressing global relevant questions like for example
+about the global climate change and the maintainability of vital ecosystem
+services. 
 
 * BEFdata and rbefdata solutions
   * set incentives for data preservation
@@ -654,6 +677,7 @@ been derived to be fully reproducible as scripts or workflows
 
 less effort has been put into preservation of algorithms and workflows that
 researchers use to derive their data products and results.
+
 
 The software combination `rbefdata` and `BEFdata` provides solutions to many of
 these aspects of data management like data preservation, online data sharing
@@ -703,8 +727,6 @@ before smart models can be applied to the data to find interesting patters
 time and labour intensive but also potentially error prone, especially as the
 complexity of the analyses increases. Provenance and the advantage of keeping
 scripts (workflows) close to the data.
-
-
 
 In ecology the reuse of the mostly small and heterogeneous data seems
 promising. It can be integrated into a wider context to answer questions on a
