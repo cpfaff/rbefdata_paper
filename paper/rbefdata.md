@@ -12,41 +12,59 @@ open source, open science
 
 ## Abstract
 
+Point 1: set the context and purpose for the work;
+Point 2: indicate the approach and methods used;
+Point 3: outline the main results;
+Point 4: identify the conclusions, the wider implications and the relevance to management
+(max 350 words)
+
 Ecology has grown into a more collaborative and data intensive science over the
 last decade in order to answer more complex questions regarding our ecosystems.
-Ecologists thus have to deal with a growing amount of heterogeneous
-environmental and historic data that needs to be harmonized and integrated in
-order to make use of it in a wider context. The effective use and reuse of
-environmental data requires tools that foster the exploration, the access, the
-analysis and the preparation of data with a long term perspective in mind, to
-ensure it can be used by future generations of research. 
+Ecologists thus have to deal with a growing amount of heterogeneous ecological
+and historic data that needs to be harmonized and integrated in order to make
+use of the data in a wider context. The effective use and reuse of ecological
+data requires tools that foster the exploration, the access, the analysis as
+well as preparation of data with a long term perspective in mind, to ensure it
+can be reused by future generations of research.
 
 We created the R package `rbefdata` as companion package to the open source
-data management platform for environmental data `BEFdata`. It allows to search
-for data, access the data for analysis, as well as it gives direct access to
-metadata right from within R. Additionally it allows to upload new data and
-thus offers a way to preserve data products for further reuse. The open source
-character of the data management platform `BEFdata` and the companion R package
-`rbefata` allow even small projects to have their own online data management
-and analysis setup that. We showcase the use of the `rbefdata` package using
-data from the BEF-China project where we reconstruct one facet of an analysis
-that has been published already.
+data management platform for ecological data `BEFdata`. The package allows to
+search for data, access data for analysis, as well as it gives direct access to
+metadata right from within R. Additionally the package allows to upload new
+data to the portal and thus also offers a way to preserve data products for
+further reuse. We here showcase the use of the `rbefdata` package using data
+from the BEF-China project where we reconstruct one facet of an analysis that
+has been published already. 
+
+The open source character of the data management platform `BEFdata` and the
+companion R package `rbefata` allow even small projects to have their own
+sophisticated online data management and analysis setup without to give away
+data. Additionally the portal supports the Ecological Metadata Language format
+which allows other tools to import the data seamlessly which is important to
+save the valuable gathered data if a project ends.
 
 ## Introduction 
 
-Huge amounts of ecological data is gathered every year by researchers worldwide
-to enhance our knowledge on ecosystems and relations. specific research
-questions. However, to address overarching issues it is important to use many
-of these data in common.  Thus, a number of data portals have been developed
-which allow the access of these data to other scientists. Furthermore, datasets
-need to be accompanied by metadata to provide the necessary background
-informations for other scientists to use these datasets. And even more it is
-necessary to develop tools to leverage the search of specific datasets on these
-portals. In this paper we introduce the rbefdata package which serves as a
-connection tool between the BEF dataportal and the statistics environment R. It
-provides tools for the up- and download of datasets and their respective
-metadata, as well as functions for easy search of datasets that can be enhanced
-by terms from a thesaurus. 
+Introduction: State the reason for the work, the context and the hypotheses being tested.
+
+Large amounts of ecological data is gathered each year by researchers worldwide
+to enhance our knowledge on ecosystems and their relations. Most of this data
+is collected in small projects with their own designs and methods in order
+answer a few very specific ecological questions. This means the data that is
+produced by small projects has its own idiosyncratic structure that is hard to
+translate into a more general one in order to make use of a very specific
+dataset in a wider context. However, to address global issues in ecology it is
+important to use many of these data in common. 
+
+A number of data portals and networks have been developed which allow the
+access of these small data. Furthermore, datasets need to be accompanied by
+metadata to provide the necessary background informations for other scientists
+to use these datasets.  And even more it is necessary to develop tools to
+leverage the search of specific datasets on these portals. In this paper we
+introduce the `rbefdata` package which serves as a connection tool between the
+BEF data portal and the statistics environment R. It provides tools for the up-
+and download of datasets and their respective metadata, as well as functions
+for easy search of datasets that can be enhanced by terms from a thesaurus. 
 
 With a growing awareness on the value of data, many data management platforms
 have been developed to preserve all kinds of environmental and historic data.
@@ -763,9 +781,9 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59   0.0011 **
-## 4 - 1 == 0    0.865      0.497    1.74   0.1841   
-## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
+## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
+## 4 - 1 == 0    0.865      0.497    1.74    0.184   
+## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -816,10 +834,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
-## 4 - 1 == 0    0.733      0.288    2.54   0.0279 * 
-## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
+## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
+## 4 - 2 == 0    0.132      0.278    0.48    0.879    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
