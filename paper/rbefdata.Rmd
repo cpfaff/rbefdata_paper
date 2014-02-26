@@ -623,60 +623,26 @@ appropriate, set out recommendations for management or policy.
   * Taxonomies
   * BEFdata and rbefdata solutions
 
-Even though the situation with data preservation has been improved by online
-data management platforms, there is still many valuable data lost (long tail).
-This is mainly related due to the heterogeneic stucture of ecology, where most
-of the data is gathered by small, short term research projects spread over the
-world. Many of these projects do not have a data management plan at all, that
-would ensure the provision of metadata, the preservation of data or data
-sharing for resuse. Additionally many researchers are still reluctant to use
-online data management platforms on own initiative, as they fear to give away
-and loose the control over their data. On top of that there is a lack of
-benefit to researchers providing data for sharing online. Thus the preparation
-of data for preservation and reuse, usually only means to put more effort into
-the data. The open source data mangement platform BEFdata offers a
-sophisticated online data management for projects that covers data preservation
-and metadata.  Each project can set up its own instance and thus benefit from
-online project data management without giving data away. The colose integration
-of metadata standards into the platform offers a simple exit strategy. If the
-projets ends the Ecological Metadata Standard Language files can be used to
-transfere the collected data and analyses to long term preservation.  
-
-simple
-tool that even small project can afford to set up.
-
-
-
-However the availability of a broad range of data and useful metadata is
-essential to many stepts in the life cycle of data. Not only the reuse, but
-also data processing and analysis can be improved.
-
-Thus tools that make it simple to use and provide metadat are essential.
-
-In ecology the integration of available data offers the potential to
-answer some of the most pressing global relevant questions like for example
-about the global climate change and the maintainability of vital ecosystem
-services. 
-
-* BEFdata and rbefdata solutions
-  * set incentives for data preservation
-    * acknowledgement
-    * contribution to upcoming papers 
-    * data publishing (citable) 
-  * use common tools transfer to metadata standards 
-    * metadata from spreadsheets to EML  
-  * reproducibility  
-    * preservation of scripts as attachments to proposals/datasets
-
-To further improve the situation on one hand is a strict policy related to
-funding    
-
-This requires efficient tools that not only help to access the data but also to
-process it and to preserve data products and results including how they have
-been derived to be fully reproducible as scripts or workflows
-
-less effort has been put into preservation of algorithms and workflows that
-researchers use to derive their data products and results.
+Even though the situation with preserving data has been improved by online data
+management platforms (data warehouses), there is still many valuable data lost
+(long tail). In ecology this is related to the overall heterogeneic nature of
+the research domain and to the fact that data is collected mostly by small and
+short term research projects spread all over the world. Many of these projects
+lack a data management plan that would ensure the preservation and preparation
+of data for sharing and resuse. Additionally researchers are still reluctant to
+use online data management on their own initiative. They fear to give away and
+loose the control over their data and ideas. Another hurdle to online data
+preservation and sharing is a lack of benefit for data providers. The
+preparation of data for this porpose only means more effort without any further
+outcome. The open source data mangement platform BEFdata offers a sophisticated
+online data management platform for ecological projects. It covers requirements
+like the preservation of data and offers a metadata description tool for data
+that helps to prepare data for the long term preservation and reuse. Due to its
+open source character and simplicity each project can set up its own instance
+of the platform to directly benefit from online data management, without giving
+data away. If a project ends, the BEFdata portal also offers a simple exti
+strategy as it sticks to metadata standars (EML) that make importing the
+datasets into other platforms simple.
 
 
 The software combination `rbefdata` and `BEFdata` provides solutions to many of
@@ -693,9 +659,46 @@ that fosters sharing data online (cite Karin). The `rbefdata` package enables
 access to the data and metadata on the platform as well as it provides upload
 functionality right from within the R environment 
 
-Lost a high amount of valuable data as researchers are still reluctant to give
-away their data. One possible solution to this would be to make data
-preservation obligatory and make it a condition for sponsorship of projects.
+
+The availability of a broad range of data and useful metadata is essential to
+many steps in the life cycle of data starting from exploration over the
+integration to processing and the effective reuse of data. 
+
+In ecology the integration of available data offers the potential to answer
+some of the most pressing global relevant questions like for example about the
+global climate change and the maintainability of vital ecosystem services.  
+
+
+
+
+
+
+
+
+* BEFdata and rbefdata solutions
+  * set incentives for data preservation
+    * acknowledgement
+    * contribution to upcoming papers 
+    * data publishing (citable) 
+  * use common tools transfer to metadata standards 
+    * metadata from spreadsheets to EML  
+  * reproducibility  
+    * preservation of scripts as attachments to proposals/datasets
+
+
+
+To further improve the situation on one hand is a strict policy related to
+funding    
+
+This requires efficient tools that not only help to access the data but also to
+process it and to preserve data products and results including how they have
+been derived to be fully reproducible as scripts or workflows
+
+less effort has been put into preservation of algorithms and workflows that
+researchers use to derive their data products and results.
+
+
+
 
 
 One one hand there is many
@@ -870,6 +873,10 @@ publication.
 
 
 ### saveaway 
+
+Lost a high amount of valuable data as researchers are still reluctant to give
+away their data. One possible solution to this would be to make data
+preservation obligatory and make it a condition for sponsorship of projects.
 
 This highlight a way on how the integration of semantic repositories can
 enhance the process of data exploration on a `BEFdata` portal. 
