@@ -191,37 +191,41 @@ open source, open science </p>
 
 <h2>Abstract</h2>
 
-<p>In order to answer the most pressing, global relevant questions in ecology,
-scientists need to deal with the huge amount of environmental and historic
-data, that is already available today. The effective employment and curation of
-this data requires tools that not only foster the exploration but also the
-processing, the reuse and the preparation of data for long term preservation.
-Although there are many useful data management tools and concepts already
-available that cover most of the data management requirements in ecology, their
-tight integration into widely used data analysis software lacks behind. Thus we
-created an R package named <code>rbefdata</code> that implements concepts of data
-management and thus provides these to users of the R statistics environment.
-As companion package to the data management platform <code>BEFdata</code>, it offers a
-dataset search, enables a seamless access to datasets and metadata for analysis
-as well as it provides upload functionality for data preservation. The open
-source character of the data management platform <code>BEFdata</code> and the companion
-package <code>rbefata</code> allow any project to use this package as a sophisticated
-solution to their own data research data related requirements. </p>
+<p>Ecology has grown into a more collaborative and data intensive science over the
+last decade in order to answer more complex questions regarding our ecosystems.
+Ecologists thus have to deal with a growing amount of heterogeneous
+environmental and historic data that needs to be harmonized and integrated in
+order to make use of it in a wider context. The effective use and reuse of
+environmental data requires tools that foster the exploration, the access, the
+analysis and the preparation of data with a long term perspective in mind, to
+ensure it can be used by future generations of research. </p>
+
+<p>We created the R package <code>rbefdata</code> as companion package to the open source
+data management platform for environmental data <code>BEFdata</code>. It allows to search
+for data, access the data for analysis, as well as it gives direct access to
+metadata right from within R. Additionally it allows to upload new data and
+thus offers a way to preserve data products for further reuse. The open source
+character of the data management platform <code>BEFdata</code> and the companion R package
+<code>rbefata</code> allow even small projects to have their own online data management
+and analysis setup that. We showcase the use of the <code>rbefdata</code> package using
+data from the BEF-China project where we reconstruct one facet of an analysis
+that has been published already.</p>
 
 <h2>Introduction</h2>
 
-<p>Huge amounts of ecological data are gathered every year by researchers
-worldwide to enhance our knowledge on specific research questions. However, to
-address overarching issues it is important to use many of these data in common.
-Thus, a number of dataportals have been developed which allow the access of
-these data to other scientists. Furthermore, datasets need to be accompanied by
-metadata to provide the necessary background informations for other scientists
-to use these datasets. And even more it is necessary to develop tools to
-leverage the search of specific datasets on these portals. In this paper we
-introduce the rbefdata package which serves as a connection tool between the
-BEF dataportal and the statistics environment R. It provides tools for the up-
-and download of datasets and their respective metadata, as well as functions
-for easy search of datasets that can be enhanced by terms from a thesaurus. </p>
+<p>Huge amounts of ecological data is gathered every year by researchers worldwide
+to enhance our knowledge on ecosystems and relations. specific research
+questions. However, to address overarching issues it is important to use many
+of these data in common.  Thus, a number of data portals have been developed
+which allow the access of these data to other scientists. Furthermore, datasets
+need to be accompanied by metadata to provide the necessary background
+informations for other scientists to use these datasets. And even more it is
+necessary to develop tools to leverage the search of specific datasets on these
+portals. In this paper we introduce the rbefdata package which serves as a
+connection tool between the BEF dataportal and the statistics environment R. It
+provides tools for the up- and download of datasets and their respective
+metadata, as well as functions for easy search of datasets that can be enhanced
+by terms from a thesaurus. </p>
 
 <p>With a growing awareness on the value of data, many data management platforms
 have been developed to preserve all kinds of environmental and historic data.
@@ -876,10 +880,10 @@ anova(model2)
 ##     random = ~1 | block, method = &quot;REML&quot;)
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(&gt;|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59   &lt;0.001 ***
-## 4 - 1 == 0    0.865      0.497    1.74     0.18    
-## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
+##            Estimate Std. Error z value Pr(&gt;|z|)   
+## 2 - 1 == 0    1.053      0.293    3.59   0.0011 **
+## 4 - 1 == 0    0.865      0.497    1.74   0.1841   
+## 4 - 2 == 0   -0.188      0.479   -0.39   0.9163   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -924,10 +928,10 @@ anova(model3)
 ##     random = ~1 | block, method = &quot;REML&quot;)
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(&gt;|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   &lt;0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+##            Estimate Std. Error z value Pr(&gt;|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0279 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
