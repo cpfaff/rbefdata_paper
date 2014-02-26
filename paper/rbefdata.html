@@ -459,7 +459,7 @@ term_info
 </code></pre>
 
 <pre><code>## $id
-## [1] &quot;74&quot;
+## [1] &quot;446&quot;
 ## 
 ## $term
 ## [1] &quot;plant organ&quot;
@@ -468,7 +468,7 @@ term_info
 ## [1] &quot;en&quot;
 ## 
 ## $description
-## [1] &quot;In biology, an organ is a collection of tissues joined in a structural unit to serve a common function.&quot;
+## [1] &quot;plant organ - a functional and structural unit of a plant&quot;
 </code></pre>
 
 <pre><code class="r">
@@ -516,11 +516,11 @@ narrow_tasks_plant_organ
 </code></pre>
 
 <pre><code>## $id
-## [1] &quot;385&quot;  &quot;390&quot;  &quot;1336&quot; &quot;73&quot;   &quot;75&quot;   &quot;388&quot;  &quot;28&quot;   &quot;30&quot;  
+## [1] &quot;456&quot; &quot;447&quot; &quot;449&quot; &quot;450&quot; &quot;451&quot; &quot;454&quot; &quot;457&quot;
 ## 
 ## $term
-## [1] &quot;flower&quot;        &quot;fruit&quot;         &quot;inflorescence&quot; &quot;leaf&quot;          &quot;root&quot;         
-## [6] &quot;seed&quot;          &quot;stem&quot;          &quot;twig&quot;
+## [1] &quot;branch&quot;        &quot;flower&quot;        &quot;fruit&quot;         &quot;inflorescence&quot; &quot;leaf&quot;         
+## [6] &quot;seed&quot;          &quot;twig&quot;
 </code></pre>
 
 <pre><code class="r">
@@ -532,25 +532,25 @@ head(datasets_plant_organ_narrow)
 </code></pre>
 
 <pre><code>##    id
-## 1 242
-## 2 320
-## 3 323
-## 4 428
-## 5 359
-## 6 371
-##                                                                                                      title
-## 1                         Leaf traits and chemicals from 130 tree species in the Gutianshan Nature Reserve
-## 2 Leaf traits and chemicals from 59 tree and shrub species in the main Experiment of BEF-China (Site A&amp; B)
-## 3                   Leaf traits and chemicals from individual trees in the Main Experiment (Sites A and B)
-## 4                                                Leaf traits and chemicals of 122 tree species in the CSPs
-## 5                                                       Coarse root density in the Comparative Study Plots
-## 6                             Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 &amp; 3)
+## 1 357
+## 2 143
+## 3 145
+## 4 360
+## 5 371
+## 6 411
+##                                                                                                  title
+## 1                                                Biomass Allometry Equations of Pilot Experiment (SP7)
+## 2 Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
+## 3       Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
+## 4                                                                         Detailed tree allometry data
+## 5                         Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 &amp; 3)
+## 6                                               herbivory in the Main Experiment site A in summer 2009
 </code></pre>
 
 <pre><code class="r">dim(datasets_plant_organ_narrow)
 </code></pre>
 
-<pre><code>## [1] 62  2
+<pre><code>## [1] 54  2
 </code></pre>
 
 <ul>
@@ -877,9 +877,9 @@ anova(model2)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)    
-## 2 - 1 == 0    1.053      0.293    3.59  0.00082 ***
-## 4 - 1 == 0    0.865      0.497    1.74  0.18392    
-## 4 - 2 == 0   -0.188      0.479   -0.39  0.91634    
+## 2 - 1 == 0    1.053      0.293    3.59   &lt;0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)
@@ -1122,38 +1122,48 @@ appropriate, set out recommendations for management or policy.</p>
 </ul></li>
 </ul>
 
-<p>Even though the situation with data preservation has been improved by online
-data management platforms, there is still many valuable data lost (long tail).
-This is mainly related due to the heterogeneic stucture of ecology, where most
-of the data is gathered by small, short term research projects spread over the
-world. Many of these projects do not have a data management plan at all, that
-would ensure the provision of metadata, the preservation of data or data
-sharing for resuse. Additionally many researchers are still reluctant to use
-online data management platforms on own initiative, as they fear to give away
-and loose the control over their data. On top of that there is a lack of
-benefit to researchers providing data for sharing online. Thus the preparation
-of data for preservation and reuse, usually only means to put more effort into
-the data. The open source data mangement platform BEFdata offers a
-sophisticated online data management for projects that covers data preservation
-and metadata.  Each project can set up its own instance and thus benefit from
-online project data management without giving data away. The colose integration
-of metadata standards into the platform offers a simple exit strategy. If the
-projets ends the Ecological Metadata Standard Language files can be used to
-transfere the collected data and analyses to long term preservation.  </p>
+<p>Even though the situation with preserving data has been improved by online data
+management platforms (data warehouses), there is still many valuable data lost
+(long tail). In ecology this is related to the overall heterogeneic nature of
+the research domain and to the fact that data is collected mostly by small and
+short term research projects spread all over the world. Many of these projects
+lack a data management plan that would ensure the preservation and preparation
+of data for sharing and resuse. Additionally researchers are still reluctant to
+use online data management on their own initiative. They fear to give away and
+loose the control over their data and ideas. Another hurdle to online data
+preservation and sharing is a lack of benefit for data providers. The
+preparation of data for this porpose only means more effort without any further
+outcome. The open source data mangement platform BEFdata offers a sophisticated
+online data management platform for ecological projects. It covers requirements
+like the preservation of data and offers a metadata description tool for data
+that helps to prepare data for the long term preservation and reuse. Due to its
+open source character and simplicity each project can set up its own instance
+of the platform to directly benefit from online data management, without giving
+data away. If a project ends, the BEFdata portal also offers a simple exti
+strategy as it sticks to metadata standars (EML) that make importing the
+datasets into other platforms simple.</p>
 
-<p>simple
-tool that even small project can afford to set up.</p>
+<p>The software combination <code>rbefdata</code> and <code>BEFdata</code> provides solutions to many of
+these aspects of data management like data preservation, online data sharing
+and discussion of ideas, data processing, intensive use of meta data and the
+preservation of workflows used to derive results which is important for
+reproducibility and provenance that in turn is again a crucial component to
+provide effective incentives in form of acknowledgements for data providers.  </p>
 
-<p>However the availability of a broad range of data and useful metadata is
-essential to many stepts in the life cycle of data. Not only the reuse, but
-also data processing and analysis can be improved.</p>
+<p>The <code>BEFdata</code> platform serves as a scratch pad for research data as well as it
+covers the preservation of data. It offers data harmonization tools, metadata
+support via the Ecological Metadata Language standard and a social component
+that fosters sharing data online (cite Karin). The <code>rbefdata</code> package enables
+access to the data and metadata on the platform as well as it provides upload
+functionality right from within the R environment </p>
 
-<p>Thus tools that make it simple to use and provide metadat are essential.</p>
+<p>The availability of a broad range of data and useful metadata is essential to
+many steps in the life cycle of data starting from exploration over the
+integration to processing and the effective reuse of data. </p>
 
-<p>In ecology the integration of available data offers the potential to
-answer some of the most pressing global relevant questions like for example
-about the global climate change and the maintainability of vital ecosystem
-services. </p>
+<p>In ecology the integration of available data offers the potential to answer
+some of the most pressing global relevant questions like for example about the
+global climate change and the maintainability of vital ecosystem services.  </p>
 
 <ul>
 <li>BEFdata and rbefdata solutions
@@ -1179,24 +1189,6 @@ been derived to be fully reproducible as scripts or workflows</p>
 
 <p>less effort has been put into preservation of algorithms and workflows that
 researchers use to derive their data products and results.</p>
-
-<p>The software combination <code>rbefdata</code> and <code>BEFdata</code> provides solutions to many of
-these aspects of data management like data preservation, online data sharing
-and discussion of ideas, data processing, intensive use of meta data and the
-preservation of workflows used to derive results which is important for
-reproducibility and provenance that in turn is again a crucial component to
-provide effective incentives in form of acknowledgements for data providers.  </p>
-
-<p>The <code>BEFdata</code> platform serves as a scratch pad for research data as well as it
-covers the preservation of data. It offers data harmonization tools, metadata
-support via the Ecological Metadata Language standard and a social component
-that fosters sharing data online (cite Karin). The <code>rbefdata</code> package enables
-access to the data and metadata on the platform as well as it provides upload
-functionality right from within the R environment </p>
-
-<p>Lost a high amount of valuable data as researchers are still reluctant to give
-away their data. One possible solution to this would be to make data
-preservation obligatory and make it a condition for sponsorship of projects.</p>
 
 <p>One one hand there is many
 data already available. And on the other hand many data is still lost.</p>
@@ -1356,6 +1348,10 @@ publication.</p>
 <h3>Figures</h3>
 
 <h3>saveaway</h3>
+
+<p>Lost a high amount of valuable data as researchers are still reluctant to give
+away their data. One possible solution to this would be to make data
+preservation obligatory and make it a condition for sponsorship of projects.</p>
 
 <p>This highlight a way on how the integration of semantic repositories can
 enhance the process of data exploration on a <code>BEFdata</code> portal. </p>
