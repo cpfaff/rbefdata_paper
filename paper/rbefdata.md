@@ -19,91 +19,136 @@ Point 4: identify the conclusions, the wider implications and the relevance to m
 (max 350 words)
 
 Ecology has grown into a more collaborative and data intensive science over the
-last decade in order to answer more complex questions regarding our ecosystems.
-Ecologists thus have to deal with a growing amount of heterogeneous ecological
+last decade, in order to answer more complex questions regarding our
+ecosystems. 
+
+Maybe one sentence about eco-informatics development here that allows all that
+
+Ecologists have to deal with a growing amount of heterogeneous environmental
 and historic data that needs to be harmonized and integrated in order to make
-use of the data in a wider context. The effective use and reuse of ecological
-data requires tools that foster the exploration, the access, the analysis as
-well as preparation of data with a long term perspective in mind, to ensure it
-can be reused by future generations of research.
+use of the valuable data in a wider context. The effective use and reuse of
+ecological data requires tools that foster the exploration, the access, the
+analysis as well as the preparation of data with a long term perspective in
+mind, to ensure it can be reused also by future generations of research.
 
 We created the R package `rbefdata` as companion package to the open source
-data management platform for ecological data `BEFdata`. The package allows to
-search for data, access data for analysis, as well as it gives direct access to
-metadata right from within R. Additionally the package allows to upload new
-data to the portal and thus also offers a way to preserve data products for
-further reuse. We here showcase the use of the `rbefdata` package using data
-from the BEF-China project where we reconstruct one facet of an analysis that
-has been published already. 
+data management platform for ecological data `BEFdata`. The package allows for
+the search of data, the access of data for analysis, as well as it gives direct
+access to metadata right from within R. Additionally the package allows to
+upload new data to the portal and thus offers a solution to preserve data
+products for further reuse. We showcase a workflow to make use of the
+`rbefdata` package in an analysis using data from the BEF-China project. The
+workflow reconstructs one facet of an ecological analysis about N-retention in
+the BEF-China project that has been published already. 
 
 The open source character of the data management platform `BEFdata` and the
-companion R package `rbefata` allow even small projects to have their own
-sophisticated online data management and analysis setup without to give away
-data. Additionally the portal supports the Ecological Metadata Language format
-which allows other tools to import the data seamlessly which is important to
-save the valuable gathered data if a project ends.
+companion R package `rbefata` allow even small ecological projects to have
+their own sophisticated online data management and analysis setup without to
+give their valuable data away. The portal supports the Ecological Metadata
+Language format which allows other tools understanding the format to import the
+data seamlessly which is a crucial requirement to save the valuable if a
+project ends.
 
 ## Introduction 
 
 Introduction: State the reason for the work, the context and the hypotheses being tested.
 
-Large amounts of ecological data is gathered each year by researchers worldwide
-to enhance our knowledge on ecosystems and their relations. Most of this data
-is collected in small projects with their own designs and methods in order
-answer a few very specific ecological questions. This means the data that is
-produced by small projects has its own idiosyncratic structure that is hard to
-translate into a more general one in order to make use of a very specific
-dataset in a wider context. However, to address global issues in ecology it is
-important to use many of these data in common. 
+- context of the work 
+  + many data is available 
+  + in ecology mostly small data  
+  + Small data is valuable data 
+  + small data is often not well described 
+  + We use meta data standards to provide users with information on data processing
 
-A number of data portals and networks have been developed which allow the
-access of these small data. Furthermore, datasets need to be accompanied by
-metadata to provide the necessary background informations for other scientists
-to use these datasets.  And even more it is necessary to develop tools to
-leverage the search of specific datasets on these portals. In this paper we
-introduce the `rbefdata` package which serves as a connection tool between the
-BEF data portal and the statistics environment R. It provides tools for the up-
-and download of datasets and their respective metadata, as well as functions
-for easy search of datasets that can be enhanced by terms from a thesaurus. 
+- why do you developed rbefdata
+  + To provide access to a data platform that is good in metadata and harmonization of data
 
-With a growing awareness on the value of data, many data management platforms
-have been developed to preserve all kinds of environmental and historic data.
-These provide data preservation for small scale projects as well as for large
-scale, big data producing, long term or remote sensing collaborations (cite
-e.g.  diversity workbench, `BEFdata`, DataONE, LifeWatch, Pangea, Bexis). An
-ongoing trend in data preservation and accessibility is integrative data
+- hypotheses tested 
+  + none we only do the showcase workflow
+
+Large amounts of ecological data are gathered each year by researchers
+worldwide to enhance the knowledge on our ecosystems. With a growing awareness
+on the value of data, various online data management platforms and metadata
+standards have been developed to preserve and provide access to a wide range of
+environmental data (cite e.g. diversity workbench, `BEFdata`, DataONE,
+LifeWatch, Pangea, Bexis, EML, ABCD). However there is still reluctance to use
+the platforms and the standards extensively as researchers fear to give away
+their data and describing data via metadata has no direct benefit.
+
+In ecology the reuse of data is of particular interest as its integration
+offers the potential to answer questions on a much broader temporal and spatial
+scale (michener, 2008). Most of the data in ecology is collected in small and
+short term projects with their own design and methods they apply in order
+answer a few specific questions (e.g cite). Thus the data produced by these
+small projects often follows its own idiosyncratic structure that can be hard
+to understand, especially if no sufficient information about the study design,
+the applied methods or the codes used for abbreviations in datasets is provided
+(cite EML).
+
+
+owever, to address global issues in ecology it is important to use many of
+these complex small datasets in common (cite xx).
+
+
+
+ Unfortunately there are still
+some reasons many data is not well described and thus potentially lost for
+future generations of research.
+
+However a problem with the reuse of data is, that available data is rarely well
+described.
+
+
+
+ Metadata is crucial here as plain
+primary research data can be hard to understand, and even hard to decipher by
+the authors themselves after some time has passed. For example it is hard to
+remember what methods have been used to collect the data of a certain column or
+what the abbreviations and the headers in the dataset mean.  However metadata
+is still not used exhaustive as it usually means to put more time into the data
+with no direct benefit and to learn new tools that help to describe the data
+(e.g morpho, dataUP). Metadata gives researchers the opportunity to describe
+their data and others to understand raw research data even if they are not
+familiar with it (Fegraus 2005). The `BEFdata` portal allows an upload of
+metadata as spreadsheet and exports it to the EML metadata standard. The R
+package tightly integrates the metadata of datasets into attributes of R data
+frames.
+
+
+
+
+
+
+Unfortunately there is no direct benefit of sharing data online that could
+motivate researchers to put more time into data that is required to prepare and
+upload it for sharing. 
+
+The `rbefata` R package provides upload functionality for datasets to the
+`BEFdata` portal for preservation. The `BEFdata` offers control over the access
+to uploaded data via a fine grained access rights system. Uploading data to the
+portal from within R sets the access rights to private which gives access to
+the owner only. 
+
+
+
+  
+
+
+These platform provide data preservation for small scale projects as well as
+for large scale, big data producing, long term or remote sensing collaborations
+(cite e.g. diversity workbench, `BEFdata`, DataONE, LifeWatch, Pangea, Bexis).
+An ongoing trend in data preservation and accessibility is integrative data
 platforms that represent nodes (cite TRY, GBIF, Pangea) in a data network that
 collect data from smaller databases and enable researchers to access a wide
-range of data all from one place. These platforms offer a solution to one of
-the most pressing general problems in data management, the loss of valuable
-data (Heidorn, 2008). Even tough these platforms improve the situation in data
-preservation, researchers are still reluctant to use them extensively as they
-fear to give away and loose the control over their data (michener 2012).
-Additionally there is no direct benefit of sharing data online that could
-motivate researchers to put more time into data that is required to prepare and
-upload it for sharing. The `rbefata` R package provides upload functionality
-for datasets to the `BEFdata` portal for preservation. The `BEFdata` offers
-control over the access to uploaded data via a fine grained access rights
-system. Uploading data to the portal from within R sets the access rights to
-private which gives access to the owner only. 
+range of data all from one place. 
 
-The demand to reuse available data grows with the amount of data available
-(Heidorn, 2008). In ecology the reuse of data is of particular interest as the
-integration of data offers the potential to answer questions on a much broader
-temporal and spatial scale (michener, 2008). However a problem with the reuse
-of data is, that available data is rarely well described. Metadata is crucial
-here as plain primary research data can be hard to understand, and even hard to
-decipher by the authors themselves after some time has passed. For example it
-is hard to remember what methods have been used to collect the data of a
-certain column or what the abbreviations and the headers in the dataset mean.
-However metadata is still not used exhaustive as it usually means to put more
-time into the data with no direct benefit and to learn new tools that help to
-describe the data (e.g morpho, dataUP). Metadata gives researchers the
-opportunity to describe their data and others to understand raw research data
-even if they are not familiar with it (Fegraus 2005). The `BEFdata` portal
-allows an upload of metadata as spreadsheet and exports it to the EML metadata
-standard. The R package tightly integrates the metadata of datasets into
-attributes of R data frames.
+These platforms offer a solution to one of the most pressing general problems
+in data management, the loss of valuable data (Heidorn, 2008). Even tough these
+platforms improve the situation in data preservation, researchers are still
+reluctant to use them extensively as they fear to give away and loose the
+control over their data (michener 2012).  
+
+
 
 To find relevant data for reuse is a challenging task that is getting even more
 complex if more data gets available (Leinfelder et al, xxx). A common practice
@@ -162,7 +207,7 @@ platform of the BEF-China project. It that has been developed within the
 project and it is is specialized in the management of small and heterogeneous
 data typical for ecology related research. It offers data preservation in a
 harmonized environment, fosters the exploration of data by a keyword tagging
-and search system and adheres to the Ecological Metadata Lanuage standard
+and search system and adheres to the Ecological Metadata Language standard
 standard for describing preserved data. The platform additionally facilitates
 research cooperations and discussions of ideas by a paper proposal tool. To
 create a paper proposal a researcher can select datasets from the platform to
@@ -174,7 +219,7 @@ the data owners. The data owners can decide if they like to participate in the
 upcoming analysis or if they only like to get acknowledged for providing their
 data (Nadrowski 2013). This process allows to include or acknowledge all
 researchers involved in the data sampling process. Thus the paper proposals on
-the portal result in a direct benefit for providin data, they promote
+the portal result in a direct benefit for providing data, they promote
 collaborations between research units and help to avoid duplication in
 publication initiatives on the same research ideas. Finally all datasets
 assembled in a paper proposal can be imported into the R environment using the
@@ -183,13 +228,13 @@ assembled in a paper proposal can be imported into the R environment using the
 ### Usecase: N retention along a biodiversity gradient 
 
 We used a paper proposal from the BEF-China project as starting point to
-showcase the interlinkages between the data management platform and the
+showcase the inter linkages between the data management platform and the
 `rbefdata` package. The proposal contains 3 datasets and deals with N retention
 along a biodiversity gradient. The results to the paper proposal have been
 published already elsewhere (A. Lang xxx) and the data is open access. For a
 detailed rationale on the analysis we refer to the online resource of the
 proposal (http://china.befdata.biow.uni-leipzig.de/paperproposals/90) as well
-as to the publihed paper (A. Lang xxx).
+as to the published paper (A. Lang xxx).
 
 ![showcase_proposal](./figure/static/showcase_proposal.png)
 
@@ -262,7 +307,7 @@ bef.options()
 
 ```r
 
-# querry a single option
+# query a single option
 bef.options("url")
 ```
 
@@ -433,7 +478,7 @@ It can fetch single datasets as well as it can load all associated datasets of
 a proposal into the R environment in one single step. The latter functionality
 returns a list object that keeps a data frame per list element containing one
 dataset of a proposal each. The download functions requires either an ID of the
-dataset or proposal to work, which can be found in the URLs (box xxx). If a
+dataset or proposal to work, which can be found in the URL (box xxx). If a
 dataset is not open access the functions additionally require the
 "user_credentials" to work as they check for the access rights before
 downloading data.
@@ -780,10 +825,10 @@ summary(glht(model2, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)   
-## 2 - 1 == 0    1.053      0.293    3.59    0.001 **
-## 4 - 1 == 0    0.865      0.497    1.74    0.184   
-## 4 - 2 == 0   -0.188      0.479   -0.39    0.916   
+##            Estimate Std. Error z value Pr(>|z|)    
+## 2 - 1 == 0    1.053      0.293    3.59   <0.001 ***
+## 4 - 1 == 0    0.865      0.497    1.74     0.18    
+## 4 - 2 == 0   -0.188      0.479   -0.39     0.92    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -834,10 +879,10 @@ summary(glht(model3, linfct = mcp(species_diversity = "Tukey")))
 ##     random = ~1 | block, method = "REML")
 ## 
 ## Linear Hypotheses:
-##            Estimate Std. Error z value Pr(>|z|)    
-## 2 - 1 == 0    0.601      0.170    3.53   <0.001 ***
-## 4 - 1 == 0    0.733      0.288    2.54    0.028 *  
-## 4 - 2 == 0    0.132      0.278    0.48    0.879    
+##            Estimate Std. Error z value Pr(>|z|)   
+## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
+## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -889,7 +934,7 @@ summary(glht(model4, linfct = mcp(species_diversity = "Tukey")))
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(>|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
