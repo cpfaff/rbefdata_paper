@@ -180,14 +180,21 @@ hr {
 </head>
 
 <body>
+<p>Methods in Ecology and Evolution
+Ecological modeling
+Plos 
+PeerJ </p>
+
+<p>Ökologen und</p>
+
 <h2>Title</h2>
 
-<p><code>rbefdata</code> - leveraging access to data and semantics</p>
+<p><code>rbefdata</code> - leveraging access to data and semantics in ecological research projects</p>
 
 <h2>Keywords</h2>
 
-<p>Data management, data sharing, data processing, paper proposals, biodiversity ecosystem functioning, semantic integration
-open source, open science </p>
+<p>Data management, data sharing, data processing, paper proposals, biodiversity
+ecosystem functioning, semantic integration open source, open science </p>
 
 <h2>Abstract</h2>
 
@@ -197,36 +204,38 @@ Point 3: outline the main results;
 Point 4: identify the conclusions, the wider implications and the relevance to management
 (max 350 words)</p>
 
-<p>Ecology has grown into a more collaborative and data intensive science over the
-last decade, in order to answer more complex questions regarding our
-ecosystems. </p>
+<p>Over the last decade ecology has grown into a more collaborative and data
+intensive science in order to answer complex questions regarding our
+ecosystems. Fast developments in technical equipment and methodology for data
+acquisition allow researchers to gain almost real-time insights into various
+ecosystem variables. However a large amount of data in ecology traditionally
+is, and will be in future, collected manually by single researchers or small
+projects with experiments tailored to answer specific ecological questions.
+Emerging data management platforms and data sharing networks are of particular
+interest in ecology as they potentially allow to approach ecological questions
+in a synthetic way integrating various data sources to answer questions on a
+much broader temporal and spatial scale. </p>
 
-<p>Maybe one sentence about eco-informatics development here that allows all that</p>
+<p>We here present the R package <code>rbefdata</code> as companion package to the ecological
+data management platform <code>BEFdata</code>. The package allows for the search of data,
+the access to data and metadata for analysis, as well as it offers upload
+functionality to either preserve new data or to update existing data. For the
+very first time the package tightly integrates the Ecological Metadata Language
+into R using attributes of data frames. It also allows to query a thesaurus
+which allows an enhanced search of datasets. We show how to use the <code>rbefdata</code>
+package with an example analysis that reconstructs one facet of an analysis
+about N-retention from the BEF-China experiment that has been published
+already.</p>
 
-<p>Ecologists have to deal with a growing amount of heterogeneous environmental
-and historic data that needs to be harmonized and integrated in order to make
-use of the valuable data in a wider context. The effective use and reuse of
-ecological data requires tools that foster the exploration, the access, the
-analysis as well as the preparation of data with a long term perspective in
-mind, to ensure it can be reused also by future generations of research.</p>
-
-<p>We created the R package <code>rbefdata</code> as companion package to the open source
-data management platform for ecological data <code>BEFdata</code>. The package allows for
-the search of data, the access of data for analysis, as well as it gives direct
-access to metadata right from within R. Additionally the package allows to
-upload new data to the portal and thus offers a solution to preserve data
-products for further reuse. We showcase a workflow to make use of the
-<code>rbefdata</code> package in an analysis using data from the BEF-China project. The
-workflow reconstructs one facet of an ecological analysis about N-retention in
-the BEF-China project that has been published already. </p>
-
-<p>The open source character of the data management platform <code>BEFdata</code> and the
-companion R package <code>rbefata</code> allow even small ecological projects to have
-their own sophisticated online data management and analysis setup without to
-give their valuable data away. The portal supports the Ecological Metadata
-Language format which allows other tools understanding the format to import the
-data seamlessly which is a crucial requirement to save the valuable if a
-project ends.</p>
+<p>The open source licensing of the data management platform as well as of the
+companion R package <code>rbefdata</code> allows even small ecological projects to run
+their own sophisticated data management and analysis setup. The integration of
+the Ecological Metadata Language into the portal and the R package enhance the
+analysis of data. Additionally the metadata ensures the data is prepared for
+reuse, the automatic import into workflow tools and the preservation of the
+valuable research data in case a project ends. Combining the rbefdata package
+with the data management portal significantly improves the data analysis
+workflow, the productivity and collaboration of any ecological project. </p>
 
 <h2>Introduction</h2>
 
@@ -237,7 +246,7 @@ project ends.</p>
 
 <ul>
 <li>many data is available </li>
-<li>in ecology mostly small data<br/></li>
+<li>in ecology mostly small data </li>
 <li>Small data is valuable data </li>
 <li>small data is often not well described </li>
 <li>We use meta data standards to provide users with information on data processing</li>
@@ -250,7 +259,10 @@ project ends.</p>
 <li><p>hypotheses tested </p>
 
 <ul>
-<li>none we only do the showcase workflow</li>
+<li>actually none because we do not test something.</li>
+<li>rbefdata can significantly reduce the barrier to analyse ecological data stored on 
+a befdata data management platform. 
+we show this in a workflow.</li>
 </ul></li>
 </ul>
 
@@ -585,31 +597,26 @@ narrow_tasks_plant_organ
 <pre><code class="r">
 # enrich the search with narrower keywords
 datasets_plant_organ_narrow = bef.get.datasets.for_keyword(c(narrow_tasks_plant_organ$term, &quot;weigth&quot;))
+</code></pre>
 
+<pre><code>## Warning: cannot open: HTTP status was &#39;0 (null)&#39;
+</code></pre>
+
+<pre><code>## Error: cannot open the connection
+</code></pre>
+
+<pre><code class="r">
 # get an indea what is in the response
 head(datasets_plant_organ_narrow)
 </code></pre>
 
-<pre><code>##    id
-## 1 357
-## 2 143
-## 3 145
-## 4 360
-## 5 371
-## 6 411
-##                                                                                                  title
-## 1                                                Biomass Allometry Equations of Pilot Experiment (SP7)
-## 2 Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to constituents
-## 3       Competition of tree saplings -Pilot- Biomass of target saplings - biomass allocation to strata
-## 4                                                                         Detailed tree allometry data
-## 5                         Estimated Biomass of July 2010 of Pilot Experiment (SP7, Species Pool 1 &amp; 3)
-## 6                                               herbivory in the Main Experiment site A in summer 2009
+<pre><code>## Error: object &#39;datasets_plant_organ_narrow&#39; not found
 </code></pre>
 
 <pre><code class="r">dim(datasets_plant_organ_narrow)
 </code></pre>
 
-<pre><code>## [1] 54  2
+<pre><code>## Error: object &#39;datasets_plant_organ_narrow&#39; not found
 </code></pre>
 
 <ul>
@@ -984,7 +991,7 @@ anova(model3)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)   
-## 2 - 1 == 0    0.601      0.170    3.53   0.0011 **
+## 2 - 1 == 0    0.601      0.170    3.53   0.0013 **
 ## 4 - 1 == 0    0.733      0.288    2.54   0.0281 * 
 ## 4 - 2 == 0    0.132      0.278    0.48   0.8792   
 ## ---
@@ -1032,7 +1039,7 @@ anova(model4)
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error z value Pr(&gt;|z|)  
-## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 .
+## 2 - 1 == 0   -0.294      0.127   -2.32     0.05 *
 ## 4 - 1 == 0   -0.499      0.215   -2.33     0.05 *
 ## 4 - 2 == 0   -0.205      0.207   -0.99     0.57  
 ## ---
